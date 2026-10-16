@@ -13,9 +13,20 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Static checks
         run: |
-          python -m ruff check poker_spot tests scripts
-          python -m compileall -q poker_spot scripts
+          python -m ruff check poker_spot tests scripts benchmarks/harness.py
+          python -m compileall -q poker_spot scripts benchmarks
       - name: Run tests
         run: python -m unittest discover -s tests -v
         env:
           OPENBLAS_NUM_THREADS: '1'
+      - name: Independent same-tree river benchmark
+        timeout-minutes: 5
+        run: python scripts/benchmark.py --output .artifacts/benchmark --sensitivity
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain differential report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: river-benchmark
+          path: .artifacts/benchmark.*

@@ -1,0 +1,507 @@
+[
+  {
+    "id": "polarized_pot",
+    "description": "Analytical nuts/air indifference",
+    "board": [
+      "2c",
+      "3d",
+      "4h",
+      "8s",
+      "9c"
+    ],
+    "pot": 100,
+    "stack": 100,
+    "bet_sizes": [
+      1
+    ],
+    "oop": [
+      {
+        "hand": "KhKd",
+        "weight": 1
+      }
+    ],
+    "ip": [
+      {
+        "hand": "AsAd",
+        "weight": 1
+      },
+      {
+        "hand": "QhJd",
+        "weight": 1
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "polarized_half",
+    "description": "Analytical half-pot equilibrium",
+    "board": [
+      "2c",
+      "3d",
+      "4h",
+      "8s",
+      "9c"
+    ],
+    "pot": 100,
+    "stack": 100,
+    "bet_sizes": [
+      0.5
+    ],
+    "oop": [
+      {
+        "hand": "KhKd",
+        "weight": 1
+      }
+    ],
+    "ip": [
+      {
+        "hand": "AsAd",
+        "weight": 1
+      },
+      {
+        "hand": "QhJd",
+        "weight": 1
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "dry_merged",
+    "description": "Merged weighted ranges, board removal, fractional weights",
+    "board": [
+      "2c",
+      "7d",
+      "9h",
+      "Js",
+      "Ac"
+    ],
+    "pot": 100,
+    "stack": 150,
+    "bet_sizes": [
+      0.5,
+      1
+    ],
+    "oop": [
+      {
+        "hand": "AsKd",
+        "weight": 0.8
+      },
+      {
+        "hand": "AdQd",
+        "weight": 0.4
+      },
+      {
+        "hand": "KcQh",
+        "weight": 0.5
+      },
+      {
+        "hand": "8s8h",
+        "weight": 0.2
+      },
+      {
+        "hand": "AcAs",
+        "weight": 0.9
+      }
+    ],
+    "ip": [
+      {
+        "hand": "AhQs",
+        "weight": 0.7
+      },
+      {
+        "hand": "AdTd",
+        "weight": 0.3
+      },
+      {
+        "hand": "KsTh",
+        "weight": 0.6
+      },
+      {
+        "hand": "6s5s",
+        "weight": 0.1
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "monotone",
+    "description": "Flushes, set, pair and missed hands with cross-range blockers",
+    "board": [
+      "Ah",
+      "Kh",
+      "7h",
+      "3c",
+      "2d"
+    ],
+    "pot": 100,
+    "stack": 150,
+    "bet_sizes": [
+      0.5,
+      1
+    ],
+    "oop": [
+      {
+        "hand": "QhJh",
+        "weight": 0.8
+      },
+      {
+        "hand": "AsKd",
+        "weight": 0.5
+      },
+      {
+        "hand": "7c7d",
+        "weight": 0.4
+      },
+      {
+        "hand": "9c8c",
+        "weight": 0.2
+      }
+    ],
+    "ip": [
+      {
+        "hand": "Th9h",
+        "weight": 0.7
+      },
+      {
+        "hand": "AcKs",
+        "weight": 0.6
+      },
+      {
+        "hand": "7s7c",
+        "weight": 0.3
+      },
+      {
+        "hand": "QcJd",
+        "weight": 0.2
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "paired_blockers",
+    "description": "Paired live-hand board and nut-spade blocker",
+    "board": [
+      "Ks",
+      "9s",
+      "5h",
+      "Td",
+      "Ts"
+    ],
+    "pot": 100,
+    "stack": 150,
+    "bet_sizes": [
+      0.5,
+      1
+    ],
+    "oop": [
+      {
+        "hand": "9h9d",
+        "weight": 0.6
+      },
+      {
+        "hand": "QsJs",
+        "weight": 0.4
+      },
+      {
+        "hand": "KdQd",
+        "weight": 0.8
+      },
+      {
+        "hand": "AhJh",
+        "weight": 0.2
+      }
+    ],
+    "ip": [
+      {
+        "hand": "5c5d",
+        "weight": 0.5
+      },
+      {
+        "hand": "AsQs",
+        "weight": 0.7
+      },
+      {
+        "hand": "QhJh",
+        "weight": 0.4
+      },
+      {
+        "hand": "AsJh",
+        "weight": 0.2
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "four_flush",
+    "description": "Four spades with sets and competing flush blockers",
+    "board": [
+      "2s",
+      "5s",
+      "9s",
+      "Ks",
+      "3d"
+    ],
+    "pot": 100,
+    "stack": 150,
+    "bet_sizes": [
+      0.5,
+      1
+    ],
+    "oop": [
+      {
+        "hand": "AsQh",
+        "weight": 0.7
+      },
+      {
+        "hand": "QsJh",
+        "weight": 0.4
+      },
+      {
+        "hand": "AhAd",
+        "weight": 0.5
+      },
+      {
+        "hand": "KhKc",
+        "weight": 0.2
+      }
+    ],
+    "ip": [
+      {
+        "hand": "JsTh",
+        "weight": 0.8
+      },
+      {
+        "hand": "AsTd",
+        "weight": 0.3
+      },
+      {
+        "hand": "KdQc",
+        "weight": 0.4
+      },
+      {
+        "hand": "9h9d",
+        "weight": 0.5
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "four_straight",
+    "description": "Four-card straight board with overpairs and missed broadways",
+    "board": [
+      "6c",
+      "7d",
+      "8h",
+      "9s",
+      "2c"
+    ],
+    "pot": 100,
+    "stack": 150,
+    "bet_sizes": [
+      0.5,
+      1
+    ],
+    "oop": [
+      {
+        "hand": "TsTh",
+        "weight": 0.8
+      },
+      {
+        "hand": "5c5d",
+        "weight": 0.5
+      },
+      {
+        "hand": "AsAd",
+        "weight": 0.7
+      },
+      {
+        "hand": "QhJh",
+        "weight": 0.2
+      }
+    ],
+    "ip": [
+      {
+        "hand": "TdJd",
+        "weight": 0.6
+      },
+      {
+        "hand": "5sAs",
+        "weight": 0.4
+      },
+      {
+        "hand": "KhKd",
+        "weight": 0.8
+      },
+      {
+        "hand": "QcJc",
+        "weight": 0.3
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "board_tie",
+    "description": "Every showdown ties; many equivalent policies",
+    "board": [
+      "As",
+      "Ks",
+      "Qs",
+      "Js",
+      "Ts"
+    ],
+    "pot": 100,
+    "stack": 150,
+    "bet_sizes": [
+      0.5
+    ],
+    "oop": [
+      {
+        "hand": "7h7d",
+        "weight": 0.3
+      },
+      {
+        "hand": "2c2d",
+        "weight": 0.8
+      }
+    ],
+    "ip": [
+      {
+        "hand": "4h4d",
+        "weight": 0.5
+      },
+      {
+        "hand": "5c6c",
+        "weight": 0.9
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "short_stack",
+    "description": "Single bet capped by a 0.2 SPR",
+    "board": [
+      "2c",
+      "7d",
+      "9h",
+      "Js",
+      "Ac"
+    ],
+    "pot": 100,
+    "stack": 20,
+    "bet_sizes": [
+      0.5
+    ],
+    "oop": [
+      {
+        "hand": "AsKd",
+        "weight": 0.8
+      },
+      {
+        "hand": "AdQd",
+        "weight": 0.4
+      },
+      {
+        "hand": "KcQh",
+        "weight": 0.5
+      },
+      {
+        "hand": "8s8h",
+        "weight": 0.2
+      }
+    ],
+    "ip": [
+      {
+        "hand": "AhQs",
+        "weight": 0.7
+      },
+      {
+        "hand": "AdTd",
+        "weight": 0.3
+      },
+      {
+        "hand": "KsTh",
+        "weight": 0.6
+      },
+      {
+        "hand": "6s5s",
+        "weight": 0.1
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  },
+  {
+    "id": "sterling_multi_rare",
+    "description": "Three sizes, fractional currency, rare weighted hand",
+    "board": [
+      "Ks",
+      "9s",
+      "5h",
+      "Td",
+      "Ts"
+    ],
+    "pot": 505,
+    "stack": 450,
+    "bet_sizes": [
+      0.33,
+      0.6,
+      0.8910891089108911
+    ],
+    "oop": [
+      {
+        "hand": "9h9d",
+        "weight": 0.6
+      },
+      {
+        "hand": "QsJs",
+        "weight": 0.4
+      },
+      {
+        "hand": "KdQd",
+        "weight": 0.8
+      },
+      {
+        "hand": "AhJh",
+        "weight": 0.001
+      }
+    ],
+    "ip": [
+      {
+        "hand": "5c5d",
+        "weight": 0.5
+      },
+      {
+        "hand": "AsQs",
+        "weight": 0.7
+      },
+      {
+        "hand": "QhJh",
+        "weight": 0.4
+      },
+      {
+        "hand": "AsJh",
+        "weight": 0.2
+      }
+    ],
+    "rake": 0,
+    "max_raises": 0,
+    "include_all_in": false
+  }
+]
