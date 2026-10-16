@@ -1,12 +1,13 @@
 import copy
 import json
+import os
 import random
 import unittest
 from unittest.mock import patch
 
 from benchmarks.harness import (
-    ROOT, compare_fixture, evaluate_profile, make_game, parse_cards, rank7,
-    state_mapping, validate_fixture, verify_reference,
+    ROOT, compare_fixture, evaluate_profile, import_reference, make_game, parse_cards, rank7,
+    reference_config, run_reference, state_mapping, validate_fixture, verify_reference,
 )
 from algorithms.naive_eval import showdown_values_naive
 from algorithms.vector_eval import build_blocked_indices, build_strength_summary, showdown_values
@@ -79,6 +80,47 @@ class BenchmarkTests(unittest.TestCase):
                                                 'ip_facing_oop_bet_1', 'oop_facing_ip_bet_1'})
         self.assertAlmostEqual(sum(evaluated['nodes'][(1, 'c')]['reach']), 0.5)
         self.assertAlmostEqual(sum(evaluated['nodes'][(0, 'c/b10000')]['reach']), 0.25)
+
+    def test_exact_issue_contract_in_independent_process(self):
+        config = json.loads((ROOT / 'reference-polarized.json').read_text())
+        actual = reference_config(FIXTURES[0])
+        actual['pot'] /= 100
+        actual['stack'] /= 100
+        self.assertEqual(actual, config)
+        exported = run_reference(config, 4000)
+        self.assertNotEqual(exported['pid'], os.getpid())
+        self.assertFalse(exported['product_modules_loaded'])
+        golden = json.loads((ROOT / 'reference-polarized-output.json').read_text())
+        self.assertEqual(exported['config'], golden['config'])
+        self.assertEqual(exported['reference_commit'], golden['reference_commit'])
+        # Same pinned code, inputs and iteration schedule: deterministic replay,
+        # not a required exact mix across different approximate equilibria.
+        for actual_player, expected in zip(exported['players'], golden['players'], strict=True):
+            self.assertEqual(actual_player['hands'], expected['hands'])
+            self.assertEqual(actual_player['weights'], expected['weights'])
+            for key, node in actual_player['profile'].items():
+                self.assertEqual(node['actions'], expected['profile'][key]['actions'])
+                for row, expected_row in zip(node['strategy'], expected['profile'][key]['strategy'], strict=True):
+                    for value, expected_value in zip(row, expected_row, strict=True):
+                        self.assertAlmostEqual(value, expected_value, delta=1e-9)
+        self.assertLess(exported['checkpoints'][-1]['raw_exploitability'], 0.25)
+        self.assertLess(exported['checkpoints'][-1]['raw_exploitability'],
+                        exported['checkpoints'][0]['raw_exploitability'])
+
+    def test_serialized_reference_order_and_weight_validation(self):
+        game = make_game(FIXTURES[0])
+        exported = run_reference(reference_config(FIXTURES[0]), 100)
+        original = import_reference(game, exported)
+        reordered = copy.deepcopy(exported)
+        player = reordered['players'][1]
+        player['hands'].reverse()
+        player['weights'].reverse()
+        for node in player['profile'].values():
+            node['strategy'].reverse()
+        self.assertEqual(import_reference(game, reordered), original)
+        player['weights'][0] = 0.9
+        with self.assertRaises(ValueError):
+            import_reference(game, reordered)
 
 
 if __name__ == '__main__':

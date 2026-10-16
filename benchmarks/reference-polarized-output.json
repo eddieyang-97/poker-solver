@@ -1,0 +1,161 @@
+{
+  "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+  "pid": 17464,
+  "product_modules_loaded": false,
+  "config": {
+    "board": [
+      "2c",
+      "3d",
+      "4h",
+      "8s",
+      "9c"
+    ],
+    "pot": 100,
+    "stack": 100,
+    "bet_sizes": [
+      1.0
+    ],
+    "include_all_in": false,
+    "max_raises": 0,
+    "players": [
+      {
+        "hands": [
+          "KhKd"
+        ],
+        "weights": [
+          1.0
+        ]
+      },
+      {
+        "hands": [
+          "AsAd",
+          "QhJd"
+        ],
+        "weights": [
+          1.0,
+          1.0
+        ]
+      }
+    ]
+  },
+  "iterations": 4000,
+  "use_naive_eval": true,
+  "checkpoints": [
+    {
+      "iterations": 25,
+      "raw_exploitability": 1.355506444298868
+    },
+    {
+      "iterations": 50,
+      "raw_exploitability": 0.5341306541970283
+    },
+    {
+      "iterations": 100,
+      "raw_exploitability": 0.25398739188631225
+    },
+    {
+      "iterations": 200,
+      "raw_exploitability": 0.14413389092032958
+    },
+    {
+      "iterations": 400,
+      "raw_exploitability": 0.08845777507509922
+    },
+    {
+      "iterations": 800,
+      "raw_exploitability": 0.03442477760531659
+    },
+    {
+      "iterations": 1600,
+      "raw_exploitability": 0.021473036427657632
+    },
+    {
+      "iterations": 4000,
+      "raw_exploitability": 0.007520691204078389
+    }
+  ],
+  "players": [
+    {
+      "hands": [
+        "KdKh"
+      ],
+      "weights": [
+        1.0
+      ],
+      "profile": {
+        "root": {
+          "actions": [
+            "c",
+            "b100"
+          ],
+          "strategy": [
+            [
+              0.9999994321979289,
+              5.678020711773405e-07
+            ]
+          ]
+        },
+        "c/b100": {
+          "actions": [
+            "c",
+            "f"
+          ],
+          "strategy": [
+            [
+              0.4999870975725464,
+              0.5000129024274536
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "hands": [
+        "AdAs",
+        "JdQh"
+      ],
+      "weights": [
+        0.5,
+        0.5
+      ],
+      "profile": {
+        "c": {
+          "actions": [
+            "c",
+            "b100"
+          ],
+          "strategy": [
+            [
+              1.8745313671582105e-07,
+              0.9999998125468633
+            ],
+            [
+              0.5002876413269998,
+              0.4997123586730003
+            ]
+          ]
+        },
+        "b100": {
+          "actions": [
+            "c",
+            "f"
+          ],
+          "strategy": [
+            [
+              0.9999999375156211,
+              6.248437890527368e-08
+            ],
+            [
+              6.248437890527368e-08,
+              0.9999999375156211
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "training_cost": {
+    "seconds": 0.52888980001444,
+    "python_peak_bytes": 15491
+  }
+}
