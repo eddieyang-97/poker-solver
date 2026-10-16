@@ -1,12 +1,16 @@
 import asyncio
+import json
+import os
 import time
 import unittest
+from unittest.mock import patch
 
 import jwt
+import httpx
 from cryptography.hazmat.primitives.asymmetric import rsa
 from starlette.testclient import TestClient
 
-from poker_spot.auth import Settings
+from poker_spot.auth import Settings, Verifier
 from poker_spot.execution import CalculationError, Runner
 from poker_spot.http_server import MAX_BODY_BYTES, create_app
 
@@ -171,6 +175,61 @@ class OAuthTests(unittest.TestCase):
         self.assertEqual(self.send(forged).status_code, 401)
         unsigned = jwt.encode({'sub': 'owner'}, '', algorithm='none')
         self.assertEqual(self.send(unsigned).status_code, 401)
+
+    def test_environment_fails_closed_and_render_forbids_static_token(self):
+        with patch.dict(os.environ, {'POKER_MODE': 'local', 'POKER_MCP_TOKEN': TOKEN}, clear=True):
+            self.assertTrue(Settings.from_env().configured)
+            with patch.dict(os.environ, {'RENDER': 'true'}):
+                self.assertFalse(Settings.from_env().configured)
+        for issuer in ('http://identity.example', 'https://name:password@identity.example',
+                       'https://identity.example/#fragment'):
+            with patch.dict(os.environ, {'POKER_RESOURCE': 'https://poker.example/mcp',
+                                        'POKER_OAUTH_ISSUER': issuer,
+                                        'POKER_OAUTH_JWKS_URL': 'https://identity.example/keys'}, clear=True):
+                with self.assertRaises(ValueError):
+                    Settings.from_env()
+
+
+class JWKSIntegrationTests(unittest.IsolatedAsyncioTestCase):
+    async def test_fetch_rotation_throttling_and_provider_failure(self):
+        private = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+        public = json.loads(jwt.algorithms.RSAAlgorithm.to_jwk(private.public_key()))
+        settings = Settings(resource='https://poker.example/mcp', issuer='https://identity.example/',
+                            jwks_url='https://identity.example/keys', subjects=frozenset({'owner'}))
+        verifier = Verifier(settings)
+        fetched = []
+        kid = ['first']
+        status = [200]
+
+        def jwks(request):
+            fetched.append(str(request.url))
+            return httpx.Response(status[0], json={'keys': [{**public, 'kid': kid[0]}]})
+
+        real_client = httpx.AsyncClient
+
+        def client(**kwargs):
+            return real_client(transport=httpx.MockTransport(jwks), **kwargs)
+
+        def token(key_id):
+            return 'Bearer '+jwt.encode({'sub': 'owner', 'iss': settings.issuer, 'aud': settings.resource,
+                                         'iat': int(time.time()), 'exp': int(time.time())+60,
+                                         'scope': 'poker:solve'}, private, algorithm='RS256', headers={'kid': key_id})
+
+        with patch('poker_spot.auth.httpx.AsyncClient', side_effect=client):
+            self.assertTrue(await verifier.verify(token('first')))
+            self.assertTrue(await verifier.verify(token('first')))
+            self.assertFalse(await verifier.verify(token('attacker-key')))
+            self.assertEqual(fetched, [settings.jwks_url])
+            kid[0] = 'rotated'
+            verifier.fetched -= 61
+            self.assertTrue(await verifier.verify(token('rotated')))
+            self.assertFalse(await verifier.verify(token('first')))
+            self.assertEqual(len(fetched), 2)
+            status[0] = 500
+            verifier.fetched -= 301
+            self.assertFalse(await verifier.verify(token('rotated')))
+            self.assertFalse(await verifier.verify(token('rotated')))
+            self.assertEqual(len(fetched), 3)
 
 
 if __name__ == '__main__':
