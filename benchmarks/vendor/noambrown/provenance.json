@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/noambrown/poker_solver",
+  "commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+  "license": "MIT",
+  "modifications": "None. SHA-256 values normalize CRLF to LF for checkout portability.",
+  "sha256_lf": {
+    "LICENSE": "8500c2d5baf92f86df07dbb51e4912f400afb7bed22c87795a57fa36478c9db6",
+    "algorithms/naive_eval.py": "4bea3896ae9899bb2124284be1f53ded4fc78679c3007c6736b9001489c3f140",
+    "algorithms/vector_cfr.py": "36a5eb74a4c42edbd77c88105d9238e5e6d6419d54202d4be7feecf576052372",
+    "algorithms/vector_eval.py": "548b3427d217debcc07fa9a3c3d9b9d48d65b804ec41ad89ab6ea41367b15498",
+    "games/river_holdem.py": "b690c5f7b2d40ecda33a874cdbfb170be5c9d90474fa0271444529de5b3b4494"
+  }
+}
