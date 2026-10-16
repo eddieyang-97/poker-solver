@@ -4,6 +4,7 @@ import asyncio
 import json
 import logging
 from contextlib import asynccontextmanager
+from time import monotonic
 from urllib.parse import urlsplit
 
 from mcp.server.lowlevel import Server
@@ -71,18 +72,24 @@ def create_app(settings: Settings | None = None, runner: Runner | None = None):
         async def __call__(self, scope, receive, send):
             request = Request(scope, receive)
             if not settings.configured:
-                response = JSONResponse({'error': 'service_not_configured'}, status_code=503)
+                # Permit initial OAuth linking before the owner subject is known,
+                # while continuing to deny every tool request until allowlisted.
+                available = bool(settings.resource and settings.issuer and settings.jwks_url)
+                response = JSONResponse({'error': 'owner_not_configured' if available else 'service_not_configured'},
+                                        status_code=401 if available else 503,
+                                        headers={'WWW-Authenticate': settings.challenge()} if available else {})
             elif not await verifier.verify(request.headers.get('authorization', '')):
                 response = JSONResponse({'error': 'unauthorized'}, status_code=401,
                                         headers={'WWW-Authenticate': settings.challenge()})
             else:
                 body_done = False
+                body_deadline = monotonic() + 10
 
                 async def bounded_receive():
                     nonlocal body_done
                     if body_done:
                         return await receive()
-                    message = await asyncio.wait_for(receive(), timeout=10)
+                    message = await asyncio.wait_for(receive(), timeout=max(0, body_deadline-monotonic()))
                     if message['type'] == 'http.request' and not message.get('more_body', False):
                         body_done = True
                     return message

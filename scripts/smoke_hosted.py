@@ -12,11 +12,9 @@ from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 
 
-async def main():
-    url = os.environ['POKER_RESOURCE']
+async def smoke(url: str, token: str):
     if not url.startswith('https://'):
         raise ValueError('Hosted endpoint must use HTTPS')
-    token = os.environ['POKER_ACCEPTANCE_TOKEN']
     async with httpx.AsyncClient(headers={'Authorization': f'Bearer {token}'}, timeout=60) as client:
         async with streamable_http_client(url, http_client=client) as (read, write, _):
             async with ClientSession(read, write) as session:
@@ -38,4 +36,4 @@ async def main():
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    asyncio.run(smoke(os.environ['POKER_RESOURCE'], os.environ['POKER_ACCEPTANCE_TOKEN']))

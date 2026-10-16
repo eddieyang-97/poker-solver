@@ -84,7 +84,9 @@ deployment/authentication patterns; poker-solver has no runtime dependency on it
 | `/.well-known/oauth-protected-resource` | OAuth resource, issuer and scope discovery |
 | `/mcp` | Authenticated official-SDK Streamable HTTP tools |
 
-Unconfigured deployments refuse MCP traffic with 503. Missing/invalid hosted
+Deployments missing provider configuration refuse MCP traffic with 503. A configured
+provider with no owner allowlist challenges with 401 to permit first-time linking,
+while denying all tool execution. Missing/invalid hosted
 tokens receive 401 and a resource-metadata challenge. No public unauthenticated
 solve path exists. A single worker admits one calculation at a time, 30 starts
 per minute, a 16 KiB body limit and hard 20-second process timeout. Linux workers

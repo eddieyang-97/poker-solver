@@ -20,8 +20,10 @@ Use this repository's `render.yaml`, or create a Python Web Service with:
 | Auto deploy | Off |
 
 Do not attach a disk or database, upgrade plans, or reuse the travel service.
-An unconfigured deployment is intentionally reachable but refuses `/mcp` and
-returns 503 on `/ready`. `/health` is process liveness and reports
+An unconfigured deployment is intentionally reachable but refuses all computation
+and returns 503 on `/ready`. With provider settings but no owner allowlist,
+`/mcp` challenges with 401 so initial login can establish the owner's subject;
+with no provider it returns 503. `/health` is process liveness and reports
 `auth_configured`; it is not proof of usable tools or reachable signing keys.
 Free services can sleep and share workspace free-instance hours; cold starts can
 disrupt MCP connections. See [Render Free limits](https://render.com/docs/free).
@@ -112,6 +114,20 @@ replace the working local plugin with an unconfigured endpoint. No new private
 plugin is needed merely to change transport.
 
 ## Verify the connection
+
+For the first owner's identity, register a dedicated Native public diagnostic
+client with token endpoint auth `none`, authorization-code grant, and only
+`http://127.0.0.1:8733/callback` as its callback. Grant it only user-delegated
+`poker:solve`. With `POKER_RESOURCE`, `POKER_OAUTH_ISSUER` and its public
+`POKER_OAUTH_CLIENT_ID` in the shell, run `python scripts/acceptance_oauth.py`.
+Open its authorization URL, verify the named client and consent, and sign in.
+The official SDK handles discovery, S256 PKCE, state and token exchange. The
+helper independently verifies the token and saves only the owner subject in
+ignored `.data/acceptance-owner-subject`. Set that subject privately in Render
+and redeploy; the helper then exercises both hosted tools. No password, token,
+authorization code, verifier or client secret is saved or printed. Its loopback
+listener expires; it is a diagnostic, not a production authorization server.
+It does not request refresh tokens. Revoke its test grant after acceptance.
 
 1. Connect the hosted server in ChatGPT with OAuth. Verify the consent names the
    intended poker resource and only `poker:solve`, then complete sign-in/consent.

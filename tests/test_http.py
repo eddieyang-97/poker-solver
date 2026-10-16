@@ -35,6 +35,12 @@ class HTTPTests(unittest.TestCase):
         with TestClient(create_app(Settings())) as client:
             self.assertEqual(client.get('/ready').status_code, 503)
             self.assertEqual(client.post('/mcp').status_code, 503)
+        pending = Settings(resource='https://poker.example/mcp', issuer='https://identity.example/',
+                           jwks_url='https://identity.example/keys')
+        with TestClient(create_app(pending)) as client:
+            self.assertEqual(client.get('/ready').status_code, 503)
+            self.assertEqual(client.post('/mcp').status_code, 401)
+            self.assertIn('resource_metadata=', client.post('/mcp').headers['WWW-Authenticate'])
 
     def test_auth_all_methods_and_origin_host_protection(self):
         for method in ('get', 'post', 'delete'):
