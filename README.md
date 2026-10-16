@@ -1,8 +1,10 @@
 # poker-solver
 
+[![CI](https://github.com/eddieyang-97/poker-solver/actions/workflows/ci.yml/badge.svg)](https://github.com/eddieyang-97/poker-solver/actions/workflows/ci.yml)
+
 Decision-focused **heads-up Texas Hold'em river analysis** backed by a lightweight, restricted-tree CFR+ solver. Designed to supply *computed* frequencies and action EVs to conversational poker review—not to replace a general-purpose NLHE solver.
 
-**Status: scaffold / MVP v0.1.** The river engine, stdio MCP adapter, HTTP MCP adapter and local tests work. A hosted Render instance and ChatGPT OAuth connection have **not** yet been deployed or verified. No preflop/flop/turn solve, multiway analysis, raises, rake, or live-game opponent modeling is included.
+**Status: published MVP v0.1 (not deployed).** The river engine, stdio MCP adapter, HTTP MCP adapter and local tests work. A hosted Render instance and ChatGPT OAuth connection have **not** yet been deployed or verified. No preflop/flop/turn solve, multiway analysis, raises, rake, or live-game opponent modeling is included.
 
 ## What it can do
 
@@ -121,10 +123,12 @@ AGENTS.md
 
 ## Next milestones
 
-1. Publish repository; verify GitHub Actions builds and tests.
+1. Keep GitHub Actions green (initial CI passed on the scaffold commit).
 2. Deploy a private Render service and test authenticated remote MCP calls.
 3. Integrate ChatGPT-compatible OAuth (or confirm a supported alternative) and validate real connector calls.
 4. Benchmark several river spots against an independent solver and expand input-range diagnostics.
 5. Evaluate adding turn/flop solving with an established engine behind the same MCP interface.
+
+The GitHub repository is currently **public**. Keep deployment secrets out of git.
 
 MIT licensed (see `LICENSE`).
