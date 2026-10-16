@@ -11,6 +11,9 @@ metadata and JWT verification, bounded subprocess calculations, analytical
 regressions and official-client integration tests. Real provider setup, deployment
 and ChatGPT connection evidence are tracked in [validation](docs/validation.md).
 A passing local SDK test does not establish a working hosted ChatGPT plugin.
+The dedicated [Free Render service](https://poker-solver-vie0.onrender.com/health)
+is live; real Auth0 S256 OAuth and both hosted tools passed the official SDK
+diagnostic. ChatGPT-specific connection and conversational acceptance are pending.
 
 | Tool | Returns |
 | --- | --- |

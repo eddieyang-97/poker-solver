@@ -28,7 +28,7 @@ travel code, modify that repository, use its credentials, or add a database.
 
 ## Automated evidence
 
-Local Windows / Python 3.14 virtual environment: **24 tests passed**, including an
+Local Windows / Python 3.14 virtual environment: **26 tests passed**, including an
 official MCP client → HTTP app → signed ES256 token validation → actual worker →
 both solver tools round trip. The HTTP boundary also tests RS256, algorithm
 confusion, unsigned/expired/future-issued, wrong issuer/audience/scope/user tokens.
@@ -102,10 +102,45 @@ solver-derived response nodes saved in the JSON.
 
 ## Hosted acceptance gates
 
-At this implementation checkpoint, real Auth0 sign-in/configuration and ChatGPT
-OAuth/tool execution remain pending. Do not describe the local ASGI SDK test or
-the computed study above as real hosted ChatGPT acceptance. The existing local
-plugin is unchanged. See [hosting.md](hosting.md) for exact configuration steps.
+The separate **Free Render** service is deployed at
+[poker-solver-vie0.onrender.com](https://poker-solver-vie0.onrender.com/health),
+service `srv-db934j67bikc73bppelg`. Auth0 uses the new dedicated poker tenant,
+RS256, the exact `/mcp` audience, a one-hour access-token lifetime, required
+consent, a `poker:solve` permission and an owner subject allowlist. No database,
+paid service, client secret, signing secret or travel credential was used.
+
+**Real hosted acceptance passed on 16 October:** the dedicated public diagnostic
+client completed official-SDK discovery, S256 PKCE, state-checked loopback
+callback and authorization-code exchange. Independent JWT verification confirmed
+signature, issuer, exact poker audience and scope. After privately allowlisting
+the verified owner, the hosted service negotiated MCP **2025-11-25**, listed both
+tools and computed actual results. The exact weighted call test returned 1/3
+equity and zero incremental EV. The polarized solve returned 50.01% air betting,
+49.93% calling and NashConv 0.0371 chips (0.037% pot), matching the local benchmark.
+The diagnostic exited successfully and cleared its in-memory token references;
+no token, code, verifier or password was saved. The ignored local subject file
+contains only a non-credential identity used for allowlisting.
+
+The first diagnostic token exposed a roughly two-second clock offset. Validation
+initially rejected it as future-issued; a bounded 30-second clock-skew allowance
+resolved that while future-issued-by-ten-minutes tokens remain rejected in tests.
+Signing-key fetch caching, rotation, unknown-key throttling and failure denial
+also have regression coverage. `/health` now reports `auth_configured: true` and
+`/ready` returns 200. Unauthenticated solve requests remain denied.
+
+Deployed implementation `a4ba8e750582899642e468ba6c55d82bcc787d2f` passed
+[GitHub Actions](https://github.com/eddieyang-97/poker-solver/actions/runs/38917109865).
+The initial implementation also passed
+[CI run 38914568790](https://github.com/eddieyang-97/poker-solver/actions/runs/38914568790).
+
+**Still pending:** ChatGPT-specific OAuth/tool execution and the conversational
+£505 acceptance, refresh/revocation/reconnect checks, and replacing Auth0's Google
+development keys for production SSO/federated logout. The SDK diagnostic does not
+prove those behaviors. The user approved the diagnostic client's solver-only
+grant; the separately prepared third-party ChatGPT client's scope and domain-level
+Google login promotion await approval. Arbitrary client registration is disabled.
+The existing private plugin is still local; its 0.2.0 hosted overlay is prepared
+but has not been published at this checkpoint. See [hosting.md](hosting.md).
 
 After connecting the hosted plugin, submit:
 
