@@ -46,17 +46,43 @@ The half-pot counterpart checks the analytical 1/3 air bets and 2/3 calls.
 No external commercial-solver comparison has been performed. Tests bound the
 observed approximation; they do not establish correctness for every river game.
 
-## Independent solver benchmarking (not yet implemented)
+## Independent solver benchmarking
 
 **Tracking:** [Issue #1 — independent river-solver benchmarking and differential regression harness](https://github.com/eddieyang-97/poker-solver/issues/1).
 
-The analytical bluff/call equilibria, exact weighted call-EV regressions and internal best-response/NashConv checks above are **internal validation**, not independent solver benchmarking. No commercial or open-source second-engine strategy/EV baseline has yet been run against matching custom ranges and an identical betting tree.
+The analytical and internal checks above are now supplemented by an offline
+comparison with [noambrown/poker_solver](https://github.com/noambrown/poker_solver),
+pinned to `6a10442877ffc8fd28af93e16e279b9bbdd97b2a`. Its independently authored
+MIT reference subset is retained with license and source hashes under
+`benchmarks/vendor/noambrown/`; the hosted application does not import it.
 
-The next correctness milestone is a versioned, automated *same-tree* differential benchmark. Initial fixtures should cover representative river textures, card removal, polarized/merged weighted ranges, bet sizing and SPR; a reference solver must use the same no-raise, zero-rake decision tree, pot, effective stack, weights and legal actions. Normalize EV sign and the solver's half-pot baseline and compare meaningful action-EV differences, exploitability, strategy/node reach and resource costs. Investigate disagreements rather than trusting a small internal NashConv as proof of agreement.
+Ten versioned fixtures compare matching zero-rake, no-raise river trees, exact
+bet amounts, weighted chance/card removal and normalized half-pot EVs. The
+runner trains both engines separately, then independently evaluates the product
+policy's root EV, action EVs and best responses. Reports include convergence,
+reach, strategy differences, action regret and measured allocation/time costs.
+Tree and rounding mismatches are rejected; near-tied frequencies are diagnostic.
 
-**Separate experiment:** compare our restricted no-raise river tree with a richer raise-enabled river tree under otherwise similar assumptions, to measure **modeling error**, not code correctness. Published mixed frequencies are not necessarily unique for near-tied actions; rare/low-reach nodes need special treatment.
+All ten cases passed at 1500 product / 4000 reference iterations. The largest
+root-EV difference was approximately **0.00111% of pot**. For the same policy,
+independent action-EV evaluation differed by at most about `5.2e-15` of pot.
+The reference fast evaluator initially raised `KeyError` for disjoint rank sets;
+the supported upstream brute-force fallback is used explicitly, with a regression
+for that limitation. No vendored algorithm or acceptance tolerance was patched
+to force agreement. A fault-injection test confirms that corrupted product
+evaluation is detected. The local suite now includes **32 passing tests**.
 
-An independent engine/reference, fixture corpus and CI delta report are **not yet in place**. Exact deliverables and acceptance tests live in Issue #1. This work should precede expanding the product into flop/turn solving, while current river results can remain available as clearly qualified exploratory post-session calculations.
+A separate reference-only one-extra-raise experiment changed OOP root EV by
+about **£0.6124 in a £100 pot** for the dry merged fixture. This is a concrete
+example of no-raise **modeling error**, excluded from same-tree correctness scores.
+The product's action tree and hosted tools are unchanged.
+
+See [benchmarking.md](benchmarking.md) for provenance, normalization, thresholds,
+limitations and reproduction; [benchmark-results.md](benchmark-results.md) for
+the delta table, and [benchmark-results.json](benchmark-results.json) for full
+diagnostics. GitHub Actions runs the reference offline and retains JSON/Markdown
+reports. This is a second-engine comparison on a small corpus, not exhaustive
+correctness, commercial-GTO equivalence or empirical live-population validation.
 
 ## £505 checked-river acceptance study
 

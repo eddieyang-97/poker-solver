@@ -18,3 +18,5 @@
 - Only Free Render/Auth0 resources are authorized. Do not upgrade plans or modify trip-planning-engine.
 - Record actual evidence and unresolved gates in docs/validation.md; do not label SDK/ASGI tests as real ChatGPT or hosted OAuth acceptance.
 - Educational/post-session use only; do not add live real-money in-hand assistance.
+- `benchmarks/` is development-only. Never import its vendored reference into `poker_spot` or add it to the hosted requirements. Preserve its MIT license, pinned commit and source hashes; review provenance before changing the reference.
+- Run `python scripts/benchmark.py --sensitivity` after solver or benchmark changes. Reject differing action trees/rounding rather than silently adapting them. Keep raise-enabled reference experiments separate from same-tree correctness gates and never expose them through the hosted tools.

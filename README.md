@@ -21,6 +21,11 @@ three call calculations and overlap diagnostic were reproduced locally with no
 numerical discrepancies. Raw hosted tool payloads were not supplied with that
 report. Refresh/reconnect and production Google login setup remain follow-ups.
 
+An [independent river benchmark](docs/benchmarking.md) now compares ten matching
+trees with a pinned MIT reference engine, including independently evaluated EVs,
+card removal and convergence. CI runs it offline and publishes delta reports.
+This small-corpus agreement does not establish full NLHE GTO correctness.
+
 | Tool | Returns |
 | --- | --- |
 | `evaluate_river_call` | Exact card-removal-adjusted showdown equity, pot odds and incremental call EV against a supplied weighted **betting range** |
