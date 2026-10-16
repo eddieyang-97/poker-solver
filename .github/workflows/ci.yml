@@ -11,6 +11,10 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r requirements-dev.txt
+      - name: Static checks
+        run: |
+          python -m ruff check poker_spot tests scripts
+          python -m compileall -q poker_spot scripts
       - name: Run tests
         run: python -m unittest discover -s tests -v
         env:

@@ -14,7 +14,9 @@ services:
         value: 3.12.8
       - key: OPENBLAS_NUM_THREADS
         value: "1"
-      - key: POKER_MCP_TOKEN
-        sync: false
-      - key: POKER_ALLOWED_ORIGINS
-        value: "https://chatgpt.com"
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: POKER_MODE
+        value: hosted
+    # Add the four OAuth settings in the dashboard after provider setup.
+    # Until then /ready and /mcp return 503; /health only checks process liveness.

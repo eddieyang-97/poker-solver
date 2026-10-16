@@ -1,134 +1,113 @@
-# poker-solver
+# Poker Solver
 
 [![CI](https://github.com/eddieyang-97/poker-solver/actions/workflows/ci.yml/badge.svg)](https://github.com/eddieyang-97/poker-solver/actions/workflows/ci.yml)
 
-Decision-focused **heads-up Texas Hold'em river analysis** backed by a lightweight, restricted-tree CFR+ solver. Designed to supply *computed* frequencies and action EVs to conversational poker review—not to replace a general-purpose NLHE solver.
+Computed heads-up NLHE **river-only, post-session study** with a Python solver and
+MCP tools. This is a restricted no-raise, no-rake river model, not a full GTO solver.
+No preflop, flop, turn, multiway, database, or web UI support.
 
-**Status: published MVP v0.1 (not deployed).** The river engine, stdio MCP adapter, HTTP MCP adapter and local tests work. A hosted Render instance and ChatGPT OAuth connection have **not** yet been deployed or verified. No preflop/flop/turn solve, multiway analysis, raises, rake, or live-game opponent modeling is included.
+**v0.2 implementation:** official-SDK stateless Streamable HTTP, OAuth resource
+metadata and JWT verification, bounded subprocess calculations, analytical
+regressions and official-client integration tests. Real provider setup, deployment
+and ChatGPT connection evidence are tracked in [validation](docs/validation.md).
+A passing local SDK test does not establish a working hosted ChatGPT plugin.
 
-## What it can do
+| Tool | Returns |
+| --- | --- |
+| `evaluate_river_call` | Exact card-removal-adjusted showdown equity, pot odds and incremental call EV against a supplied weighted **betting range** |
+| `solve_river` | Alternating CFR+ action frequencies, action EVs, effective bet amounts and NashConv for two supplied weighted **arrival ranges** |
 
-| Tool | Function | Interpretation |
-| --- | --- | --- |
-| `evaluate_river_call` | Exact river showdown equity and incremental call EV against a *supplied betting range*, with card blockers | Exact under the given assumptions; **not** a GTO calculation |
-| `solve_river` | Approximate equilibrium with CFR+ given both river arrival ranges and 1–3 allowed bet sizes | Frequencies/EVs describe the **restricted no-raise river subgame**, not unconstrained GTO |
+Ranges support `AA`, `AKs`, `KQo:0.4`, `AsJh`, comma-separated. Weights are relative
+arrival/betting likelihoods in [0,1], not independently inferred population facts.
+Board cards and conflicting hole cards are removed. Overlapping range tokens use
+the last token's weight. Raises and rake are excluded; each player may check or
+bet one to three pot fractions, capped at remaining effective stack. Facing a bet,
+only call/fold is available.
 
-A river solve supports OOP check/bet, IP check/bet after a check, and fold/call facing bets. The tool returns per-hand action frequencies, action EVs and a NashConv diagnostic. Input ranges are **not** inferred from earlier streets: you must supply plausible ranges *at the start of the river*.
+## Run and validate
 
-### Example: evaluate Carrie's bluff-catch
+Python 3.10+; Render and CI use 3.12. Use a project virtual environment:
 
-```python
-from poker_spot.core import evaluate_river_call
-
-result = evaluate_river_call(
-    board="Ks,9s,5h,Td,Ts",
-    hero_hand="KdQd",
-    villain_betting_range="QJs,AsJh:0.5,AsQd:0.5,AsJs",
-    pot=505,
-    bet=450,
-)
-print(result)
-```
-
-**Important:** The betting range is hypothetical and does not represent an independently verified range for the hand.
-
-## Quickstart
-
-Requires Python 3.10+ (deployment example uses Python 3.12).
-
-```bash
+```sh
 python -m venv .venv
-source .venv/bin/activate               # Windows: .venv\Scripts\activate
+# Activate .venv (Windows: .venv\Scripts\Activate.ps1)
 pip install -r requirements-dev.txt
+python -m ruff check poker_spot tests scripts
+python -m compileall -q poker_spot scripts
 OPENBLAS_NUM_THREADS=1 python -m unittest discover -s tests -v
-python -m poker_spot example.json        # example restricted river solve
+python -m poker_spot example.json
+python scripts/acceptance.py
 ```
 
-### Local MCP (stdio)
+In PowerShell use `$env:OPENBLAS_NUM_THREADS='1'` before the test command. Windows
+subprocess tests require normal process/pipe access; restricted sandboxes can
+prevent asyncio subprocess creation. The suite includes actual worker calls,
+timeout recovery, JWT rejection, protocol negotiation and a signed-token official
+MCP SDK round trip. It needs no provider credentials or network.
 
-```bash
-python -m poker_spot.mcp_server
+## MCP transports
+
+Local stdio remains available with `python -m poker_spot.mcp_server` and the root
+`plugin.json`, `mcp.json`, and `skills/river-review/`. The previously published
+private plugin remains local until a tested hosted release replaces its config.
+
+Local HTTP development requires `POKER_MODE=local` and a random
+`POKER_MCP_TOKEN` of at least 32 characters, then:
+
+```sh
+uvicorn poker_spot.http_server:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-The program reads newline-delimited JSON-RPC messages from stdin and emits MCP tool responses to stdout. The root `plugin.json`/`mcp.json` and `skills/river-review/` are retained from the local ChatGPT Desktop MVP.
+Supply the token in `Authorization: Bearer ...`; accept both `application/json`
+and `text/event-stream`. The SDK negotiates protocol versions, handles JSON-RPC
+and returns JSON responses; no persistent MCP session or SSE subscription exists.
+GET may return 405 as permitted by Streamable HTTP. Local-token mode is disabled
+on Render. Hosted solves always require OAuth and an allowed user subject.
 
-### Local HTTP MCP
+## Hosting and ChatGPT
 
-```bash
-export POKER_MCP_TOKEN="$(python -c 'import secrets; print(secrets.token_urlsafe(32))')"
-export OPENBLAS_NUM_THREADS=1
-uvicorn poker_spot.http_server:app --host 127.0.0.1 --port 8000
-```
+Use the dedicated **Free Render** service in `render.yaml` and **Auth0 Free** for
+authorization-code/PKCE, consent and client registration. The service verifies
+signature, issuer, exact resource audience, expiry, issued-at, `poker:solve` scope
+and the owner subject allowlist. No OAuth signing secrets or client secret are
+stored by this service. `.env.example` lists configuration; never commit real
+credentials or tokens.
 
-In another terminal, using the same token:
+Follow the [deployment, Auth0 and private-plugin setup guide](docs/hosting.md).
+The trip-planning-engine architecture was reviewed read-only for reusable
+deployment/authentication patterns; poker-solver has no runtime dependency on it.
 
-```bash
-curl -s -X POST http://127.0.0.1:8000/mcp \
-  -H "Authorization: Bearer $POKER_MCP_TOKEN" \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json, text/event-stream' \
-  --data '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
-```
+| Endpoint | Meaning |
+| --- | --- |
+| `/health` | Process liveness, including whether auth is configured |
+| `/ready` | 200 if configuration is complete; 503 otherwise; does not probe the provider |
+| `/.well-known/oauth-protected-resource` | OAuth resource, issuer and scope discovery |
+| `/mcp` | Authenticated official-SDK Streamable HTTP tools |
 
-`GET /health` returns 200 only when the token is configured. The stateless `/mcp` endpoint implements JSON responses for basic initialize, discovery and tool calls, and 202 for notifications. **It is a deliberately small MCP HTTP implementation, not yet certified against ChatGPT's hosted connection/OAuth handshake.** Callers need a way to send an Authorization bearer header. There are no persistent MCP sessions or SSE streams.
+Unconfigured deployments refuse MCP traffic with 503. Missing/invalid hosted
+tokens receive 401 and a resource-metadata challenge. No public unauthenticated
+solve path exists. A single worker admits one calculation at a time, 30 starts
+per minute, a 16 KiB body limit and hard 20-second process timeout. Linux workers
+also have CPU/address-space limits. Hosted CFR caps are 1500 iterations, 180
+combos per side and 22500 Cartesian pairs. Free Render cold starts and shared
+free-instance hours limit availability. There is no paid infrastructure approval.
 
-For a browser client sending an `Origin` header, the origin must appear in `POKER_ALLOWED_ORIGINS` (comma-separated); absent Origin is allowed if authorized. No unauthenticated solve requests are accepted. Limitations include no rate limiter across instances, no global compute timeout, and no production OAuth authorization server. Keep it private until the protection and compatibility checks are complete.
+## Interpret results
 
-## Deploy to Render
+`solve_river` EVs use the symmetric **half of the starting pot** baseline; compare
+actions at the same node. Negative values can still be preferable to checking.
+For a checked river inspect `ip_after_oop_check`. OOP's checking strategy is solved
+endogenously, not fixed by an exogenous check range. Check node reach before
+interpreting a rare branch. `null` action EV means no opponent reach at that node.
 
-`render.yaml` uses a **separate Python Web Service** on Render's Free tier, in Frankfurt, one Uvicorn worker, with `/health` health checks. It does **not** reuse the trip-planning engine deployment and does not require Supabase or PostgreSQL.
+`evaluate_river_call` uses pot **before** the opponent's bet and reports
+`equity*(pot+2*bet)-bet` relative to folding. Required equity is
+`bet/(pot+2*bet)`. It does not solve equilibrium or infer a betting range.
 
-1. In Render, create a Blueprint from [this repository](https://github.com/eddieyang-97/poker-solver) and review `render.yaml`.
-2. Set a long random `POKER_MCP_TOKEN` as a Render secret; **do not put it in git**. Verify `/health` and an authorized `/mcp` call. Deployment is intentionally manual (`autoDeployTrigger: off`).
-3. **Before ChatGPT integration:** verify client transport and add OAuth 2.0 authorization/resource metadata if needed for the hosted private plugin. Use the patterns in [trip-planning-engine](https://github.com/eddieyang-97/trip-planning-engine), not its travel-specific database logic. The pre-existing private local poker plugin has not automatically been switched to this endpoint.
+Small NashConv measures exploitability only inside this supplied game. It cannot
+validate ranges, omitted raises, population tendencies, or exact frequencies for
+rare hands. Nearly tied EVs can support different mixtures. The
+[£505 pot acceptance study](docs/validation.md) records all ranges, assumptions,
+computed outputs and remaining integration gates.
 
-An authenticated HTTP endpoint is **not automatically a working hosted ChatGPT plugin**. That final connection and authorization work remains a separate milestone.
-
-### Clone for development
-
-```bash
-git clone https://github.com/eddieyang-97/poker-solver.git
-cd poker-solver
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements-dev.txt
-python -m unittest discover -s tests -v
-```
-
-## Repo layout
-
-```text
-poker_spot/
-  core.py             Range expansion, showdown evaluator, CFR+ river solving
-  mcp_server.py       Local MCP stdio adapter and tool schemas
-  http_server.py      Authenticated stateless HTTP MCP adapter
-  __main__.py         Run example solve from a JSON file
-tests/
-  test_core.py        Hand ranks, pot odds, CFR smoke checks
-  test_mcp.py         Stdio JSON-RPC handshake/tool calls
-  test_http.py        HTTP auth, MCP calls, request bounds
-.github/workflows/ci.yml
-render.yaml
-AGENTS.md
-```
-
-## Modeling conventions and limits
-
-- Inputs are heads-up *river-node* ranges, not showdown hands alone; they can use `AA`, `AKs`, `KQo:0.4`, `AsJh`, and comma-separated combinations. Cards use `Ks`/`Th` notation.
-- `solve_river`'s EV baseline is symmetric relative to splitting the already committed pot. Compare action EVs **at the same node**. NashConv reports exploitability only against strategies in this fixed tree.
-- For `evaluate_river_call`, `pot` is before the bet and `bet` is the amount to call. Pot-odds threshold = `bet / (pot + 2*bet)`.
-- Hosted solve limits: up to 1,500 iterations; up to 180 combos per range; up to 22,500 pair combinations as an upper bound; one solve at a time per process. These bounds reduce but do not eliminate denial-of-service/compute risks.
-- Missing game-tree branches (raises) and range assumptions may distort recommendations even when CFR convergence is good.
-- **Educational/post-session analysis only.** Do not rely on this tool for decisions during live real-money play.
-
-## Next milestones
-
-1. Keep GitHub Actions green (initial CI passed on the scaffold commit).
-2. Deploy a private Render service and test authenticated remote MCP calls.
-3. Integrate ChatGPT-compatible OAuth (or confirm a supported alternative) and validate real connector calls.
-4. Benchmark several river spots against an independent solver and expand input-range diagnostics.
-5. Evaluate adding turn/flop solving with an established engine behind the same MCP interface.
-
-The GitHub repository is currently **public**. Keep deployment secrets out of git.
-
-MIT licensed (see `LICENSE`).
+MIT licensed. The GitHub repository is public; keep deployment secrets out of git.

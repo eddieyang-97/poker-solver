@@ -1,0 +1,123 @@
+# Audit and validation — 16 October 2026
+
+## Implementation audit
+
+Audited repository baseline `ef174d8`: README, AGENTS, Python core, stdio/HTTP
+adapters, tests, CI and Render Blueprint. The workspace was empty and was cloned
+from the primary repository. Baseline core/stdio checks passed; the initial
+environment lacked FastAPI, so HTTP tests could not import until dependencies
+were installed. No prior poker deployment was listed in Render.
+
+Findings and corrections:
+
+| Finding | Resolution |
+| --- | --- |
+| HTTP hand-rolled partial MCP; arbitrary protocol version echoed | Official Python MCP SDK 1.30.0 stateless JSON-response transport; tested negotiation, methods, headers, invalid messages, body bounds |
+| Static bearer token only; no OAuth metadata | External-provider OAuth resource server, JWT signature/issuer/audience/expiry/iat/scope/user checks, 401 discovery challenges; local static mode explicitly prohibited on Render |
+| Thread execution had no hard timeout and queued requests | Disposable subprocess; timeout kills/reaps it; CPU/address-space cap on Linux; one in flight, no waiting compute queue, bounded starts/minute |
+| Amounts accepted NaN/Infinity; inconsistent queries detected after solve | Finite positive numeric inputs, strict MCP schema validation, early queried-combo compatibility checks |
+| Simultaneous clipped-regret updates converged slowly in polarized benchmark | Alternating CFR+ updates. The initial half-pot benchmark exceeded its 0.5%-pot NashConv test bound at 1500 iterations (0.545%); fixed algorithm passes the same test without relaxing its threshold |
+| Few correctness regressions and no independent best-response check | Known category/tiebreak/board-tie and weighted call-EV cases; analytical half-/full-pot equilibrium; exhaustive pure-strategy deviation check of reported NashConv |
+| Published private plugin still local | Verified editable personal plugin source/identity. Retain it until hosted OAuth works; transport conversion documented without creating a duplicate |
+
+The architecture reference was inspected read-only: `README.md`, `src/auth.ts`,
+`src/app.ts`, `render.yaml`, `docs/account-linking.md`. Reused the patterns of
+stateless MCP, resource metadata, exact-audience signed-token verification,
+single-process limits, Free Render and explicit acceptance evidence. Did not copy
+travel code, modify that repository, use its credentials, or add a database.
+
+## Automated evidence
+
+Local Windows / Python 3.14 virtual environment: **24 tests passed**, including an
+official MCP client → HTTP app → signed ES256 token validation → actual worker →
+both solver tools round trip. The HTTP boundary also tests RS256, algorithm
+confusion, unsigned/expired/future-issued, wrong issuer/audience/scope/user tokens.
+Body limits cover declared and chunked bodies. Timeout tests stop the worker and
+prove the next calculation succeeds. Static checks: Ruff E9/F and compileall.
+CI runs the same checks on Ubuntu/Python 3.12; remote results are recorded below
+after pushing. Local execution required normal Windows subprocess access because
+the restricted sandbox blocked asyncio process pipes.
+
+The simple pot-sized analytical game uses board `2c,3d,4h,8s,9c`, OOP `KhKd`, IP
+`AsAd,QhJd`, P=B=100. OOP checks. Indifference implies 50% IP air betting and 50%
+OOP calls. At 1500 iterations: **50.01%** air bets, **49.93%** calls, root OOP
+EV **−25.0001** relative to half pot, NashConv **0.0371 chips / 0.037% pot**.
+The half-pot counterpart checks the analytical 1/3 air bets and 2/3 calls.
+No external commercial-solver comparison has been performed. Tests bound the
+observed approximation; they do not establish correctness for every river game.
+
+## £505 checked-river acceptance study
+
+Board `Ks,9s,5h,Td,Ts`; BTN/IP `AsJh`; pot £505, effective remaining stack £450.
+Prior streets and opponent tendencies were not supplied. All ranges are therefore
+**illustrative weighted arrival hypotheses**, including value, showdown hands
+and missed draws, rather than reconstructed facts. They do not use a revealed
+opponent hand as the entire range. `KdQd` is a separate representative OOP
+bluffcatcher query, not a statement of the opponent's actual cards.
+
+Reproduce with `python scripts/acceptance.py`. Exact input ranges and complete
+computed outputs are committed in [acceptance-results.json](acceptance-results.json).
+The three OOP variants differ in full-house and flush weights: some traps, more
+traps and fewer traps. Both players have the same allowed sizes. OOP can bet;
+read the IP action conditional on its solved check. This is not a solve against
+an externally forced checking range.
+
+| OOP range | Allowed bets (£) | AsJh after check: bet frequency | Action EVs relative to £252.50 baseline | NashConv / pot |
+| --- | --- | --- | --- | --- |
+| Some traps | 450 | 100% jam | Check −252.50; jam −197.99 | 0.001% |
+| More traps | 450 | 100% jam | Check −252.50; jam −230.14 | 0.001% |
+| Fewer traps | 450 | 100% jam | Check −252.50; jam −169.70 | 0.001% |
+| Some traps | 166.65 / 303 / 450 | 12.64% / 62.93% / 24.43% | −41.59 / −41.59 / −41.55 | 0.002% |
+| More traps | 166.65 / 303 / 450 | 7.18% / 92.71% / 0.10% | −166.58 / −166.54 / −167.98 | 0.002% |
+| Fewer traps | 166.65 / 303 / 450 | 8.77% / 89.91% / 1.32% | −11.13 / −11.03 / −11.31 | 0.003% |
+
+The multi-size action EVs are often very close. These rounded frequencies are
+computed average strategies, not precise or unique prescriptions. Adding sizes
+also changes OOP's lead/check behavior and therefore its conditional checking
+range. In the multi-size “some traps” case KdQd checks only 0.13%, so its later
+bluffcatch frequencies at that node deserve particular caution. A small global
+gap does not certify every rare-node strategy.
+
+As blocks nut-spade flush combinations; Jh removes J-containing hands. Blockers
+remove potential value and bluffs, and their net effect depends on the supplied
+ranges and strategies. The observed small-tree preference for bluffing cannot
+establish a live-population recommendation, especially if opponents trap more,
+call too much, or arrive with different ranges. Those are hypotheses requiring
+new computed assumptions, not measured population facts.
+
+Separately, `evaluate_river_call` evaluates KdQd facing £450 against the exogenous
+betting range `AsQs,QsJs,Js8s,99:0.5,55:0.25,QJs:0.5` plus five possible bluffs
+`AsJh,AsQh,AsQc,AhQh,AhJh`, each at the indicated weight:
+
+| Each bluff's weight | Call EV minus fold | Decision under that range |
+| --- | --- | --- |
+| 0.1 | −£337.60 | Fold |
+| 0.5 | −£24.24 | Fold |
+| 1.0 | +£203.49 | Call |
+
+Required equity = 450/1405 = **32.0285%**. These are exact weighted showdown
+calculations under assumed betting ranges, not equilibrium frequencies or proof
+that the population uses any of those bluff rates. They are separate from the
+solver-derived response nodes saved in the JSON.
+
+## Hosted acceptance gates
+
+At this implementation checkpoint, real Auth0 sign-in/configuration and ChatGPT
+OAuth/tool execution remain pending. Do not describe the local ASGI SDK test or
+the computed study above as real hosted ChatGPT acceptance. The existing local
+plugin is unchanged. See [hosting.md](hosting.md) for exact configuration steps.
+
+After connecting the hosted plugin, submit:
+
+> Review a past heads-up river: BTN AsJh on Ks9s5hTdTs, £505 before river betting,
+> £450 remaining, OOP checks. Use plausible full weighted arrival ranges including
+> traps, bluffcatchers and misses, state assumptions, and call solve_river with
+> both one-size (£450) and multi-size (£166.65, £303, £450) trees. Report actual
+> AsJh frequencies, action EVs, NashConv and node reach. Separately evaluate KdQd
+> bluffcatching against low/medium/high hypothetical betting-bluff weights using
+> evaluate_river_call. Distinguish computation from population speculation.
+
+Save the server version, deployed commit, provider/client identity (no secrets),
+tool payloads/results, rejection cases and ChatGPT invocation evidence. Confirm
+GitHub Actions passes. Verify token refresh, access removal and reconnect before
+claiming reliable private hosted use. No unrestricted GTO claim is warranted.
