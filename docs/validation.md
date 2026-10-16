@@ -87,6 +87,41 @@ The benchmark implementation at `0a3be662624e604cb816365a9b6a41cf9fc62ce8`
 passed [GitHub Actions](https://github.com/eddieyang-97/poker-solver/actions/runs/38962276458),
 including all 32 tests, static checks and the offline benchmark with sensitivity.
 
+### Issue #1 contract follow-up
+
+Read all two issue comments, including the latest source-verified configuration.
+The ten-fixture implementation was already on `main`; this follow-up closes the
+separate-process and exact-input evidence gaps rather than claiming a new initial
+implementation. The unmodified upstream CLI was actually executed on the exact
+£100 polarized input and **failed** with `KeyError: (1, 13, 9, 8, 4)` before
+exporting a strategy. The independently executed upstream brute-force option
+succeeded in an isolated worker that imports no product code. Its exact input
+and actual output are versioned under `benchmarks/reference-polarized*.json`.
+
+At 4000 reference iterations QJ bet **49.9712359%**, KK called **49.9987098%** and
+OOP checked **99.9999432%**. Raw exploitability was **£0.0075206912**;
+NashConv = twice that, **£0.0150413824**. Analytical targets are 50% QJ betting,
+50% KK calls, 100% OOP checking and OOP root EV −£25 relative to half the pot.
+The same pinned algorithm/input policy replay has a separate `1e-9` tolerance;
+cross-engine frequencies retain the existing 0.04 analytical tolerance, with no
+exact-mixture gate on general fixtures. Normalization, hand-order permutations
+and weights have dedicated checks. No solver, transport, Auth0 or deployed
+configuration was changed. See [benchmarking.md](benchmarking.md) for commands,
+the failed CLI invocation, normalization and reference limitations. TexasSolver
+cross-validation remains a subsequent milestone, not completed evidence.
+
+Follow-up local verification: **34 tests passed**, Ruff and compileall passed,
+and `python scripts/benchmark.py --output .artifacts/issue-1-benchmark --sensitivity`
+passed all ten same-tree fixtures plus the separately reported raise experiment.
+The pot-sized root EVs were −£25.00007147 (product, 1500 iterations) and
+−£25.00000914 (reference, 4000). Product QJ betting / KK calling were
+50.005608% / 49.931648%. No same-tree gate failed and no tolerance was widened.
+The largest root delta remains about 0.00111% of pot across this small corpus.
+Full refreshed outputs, convergence checkpoints and ordered reference profiles
+are in [benchmark-results.json](benchmark-results.json); the readable table is
+[benchmark-results.md](benchmark-results.md). This local evidence does not imply
+hosted service changes or a successful run of the incompatible upstream CLI.
+
 ## £505 checked-river acceptance study
 
 Board `Ks,9s,5h,Td,Ts`; BTN/IP `AsJh`; pot £505, effective remaining stack £450.

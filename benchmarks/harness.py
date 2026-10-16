@@ -4,7 +4,9 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
+import subprocess
 import sys
 import time
 import tracemalloc
@@ -31,7 +33,6 @@ def verify_reference():
 
 verify_reference()
 sys.path.insert(0, str(VENDOR))
-from algorithms.vector_cfr import VectorCFRConfig, VectorCFRTrainer
 from algorithms.naive_eval import exploitability_naive, showdown_values_naive
 from algorithms.vector_eval import (
     action_tokens, build_blocked_indices, build_strength_summary,
@@ -39,7 +40,7 @@ from algorithms.vector_eval import (
 )
 from games.river_holdem import RiverHoldemConfig, RiverHoldemGame, card_str, parse_cards, parse_hand
 
-for _module in ('algorithms.vector_cfr', 'algorithms.vector_eval', 'algorithms.naive_eval', 'games.river_holdem'):
+for _module in ('algorithms.vector_eval', 'algorithms.naive_eval', 'games.river_holdem'):
     if VENDOR.resolve() not in Path(sys.modules[_module].__file__).resolve().parents:
         raise ValueError('Reference module was shadowed by another installed package')
 
@@ -231,6 +232,97 @@ def measured(function):
     return result, {'seconds': elapsed, 'python_peak_bytes': peak}
 
 
+def reference_config(fixture, raises=0):
+    validate_fixture(fixture)
+    return {'board': fixture['board'], 'pot': round(SCALE*fixture['pot']),
+            'stack': round(SCALE*fixture['stack']), 'bet_sizes': fixture['bet_sizes'],
+            'include_all_in': False, 'max_raises': raises,
+            'players': [{'hands': [x['hand'] for x in fixture[side]],
+                         'weights': [x['weight'] for x in fixture[side]]} for side in ('oop', 'ip')]}
+
+
+def run_reference(config, iterations=4000):
+    result = subprocess.run(
+        [sys.executable, '-I', str(ROOT / 'reference_worker.py'), '--iterations', str(iterations)],
+        input=json.dumps(config), capture_output=True, text=True, timeout=120, check=True)
+    exported = json.loads(result.stdout)
+    if (exported['reference_commit'] != REFERENCE_COMMIT or exported['pid'] == os.getpid()
+            or exported['product_modules_loaded'] or exported['config'] != config
+            or exported['iterations'] != iterations or not exported['use_naive_eval']):
+        raise ValueError('Unexpected independent worker provenance/configuration')
+    return exported
+
+
+def import_reference(game, exported):
+    """Match the serialized hand/action order explicitly, never by row index."""
+    profile = {0: {}, 1: {}}
+    for side in (0, 1):
+        player = exported['players'][side]
+        hands = [frozenset((h[:2], h[2:])) for h in player['hands']]
+        if len(set(hands)) != len(hands) or set(hands) != {hand_key(h) for h in game.hands[side]}:
+            raise ValueError('Exported reference combo set differs')
+        order = [hands.index(hand_key(h)) for h in game.hands[side]]
+        if len(player['weights']) != len(hands) or any(
+                not math.isclose(player['weights'][j], game.hand_weights[side][i], abs_tol=1e-12)
+                for i, j in enumerate(order)):
+            raise ValueError('Exported reference weights differ')
+        for key, node in player['profile'].items():
+            matrix = np.asarray(node['strategy'], dtype=float)
+            if (matrix.shape != (len(hands), len(node['actions'])) or not np.isfinite(matrix).all()
+                    or (matrix < 0).any() or not np.allclose(matrix.sum(axis=1), 1, atol=1e-12, rtol=0)):
+                raise ValueError('Invalid reference strategy matrix')
+            profile[side][key] = (node['actions'], matrix[order].tolist())
+
+    def visit(state):
+        if game.is_terminal(state):
+            return
+        side = state.player
+        key = game.infoset_key(state, side)
+        actions = game.legal_actions(state)
+        if profile[side][key][0] != action_tokens(actions):
+            raise ValueError('Exported reference action order differs')
+        for action in actions:
+            visit(game.next_state(state, action))
+    visit(game.initial_state())
+    return profile
+
+
+def polarized_analytical(fixture, local, reference, mapping):
+    if fixture['id'] not in ('polarized_pot', 'polarized_half'):
+        return None, []
+    contract = json.loads((ROOT / 'reference-polarized.json').read_text())
+    size = 1 if fixture['id'] == 'polarized_pot' else 0.5
+    contract['bet_sizes'] = [size]
+    actual = reference_config(fixture)
+    # The issue's integer £100 input and the cents-scaled fixture are the same game.
+    actual['pot'] /= SCALE
+    actual['stack'] /= SCALE
+    if actual != contract:
+        raise ValueError('Analytical fixture differs from the reviewed polarized contract')
+    expected_root = -fixture['pot']*size/(2*(1+size))
+    expected = {'oop_check': 1.0, 'qj_bet': size/(1+size),
+                'kk_call': 1/(1+size), 'aa_bet': 1.0}
+    summaries = {'expected_root_ev': expected_root, 'expected_frequency': expected,
+                 'frequency_absolute_tolerance': 0.04}
+    failures = []
+    for label, evaluated in (('local', local), ('reference', reference)):
+        nodes = {mapping[key]: node for (side, key), node in evaluated['nodes'].items()}
+        # Find hand rows from the independently ordered game, not assumed indices.
+        game = make_game(fixture)
+        qj = next(i for i, h in enumerate(game.hands[1]) if hand_key(h) == {'Qh', 'Jd'})
+        aa = next(i for i, h in enumerate(game.hands[1]) if hand_key(h) == {'As', 'Ad'})
+        frequencies = {'oop_check': float(nodes['oop_first']['strategy'][0, 0]),
+                       'qj_bet': float(nodes['ip_after_oop_check']['strategy'][qj, 1]),
+                       'kk_call': float(nodes[f'oop_facing_ip_bet_{size:g}']['strategy'][0, 0]),
+                       'aa_bet': float(nodes['ip_after_oop_check']['strategy'][aa, 1])}
+        summaries[label] = {'root_ev': evaluated['root'][0], 'frequency': frequencies}
+        if any(abs(frequencies[k]-value) > 0.04 for k, value in expected.items()):
+            failures.append(f'{label}_polarized_analytical_frequency_disagrees')
+        if abs(evaluated['root'][0]-expected_root) > evaluated['gap']+0.000051:
+            failures.append(f'{label}_polarized_analytical_value_exceeds_gap')
+    return summaries, failures
+
+
 def compare_fixture(fixture, iterations=1500, reference_iterations=4000):
     game = make_game(fixture)
     mapping = state_mapping(game, fixture)
@@ -239,9 +331,9 @@ def compare_fixture(fixture, iterations=1500, reference_iterations=4000):
     local, local_cost = measured(lambda: solver.solve(iterations))
     imported = product_profile(solver, game, mapping)
     local_external = evaluate_profile(game, imported)
-    trainer = VectorCFRTrainer(game, VectorCFRConfig(use_plus=True, linear_weighting=True, use_naive_eval=True))
-    _, reference_cost = measured(lambda: trainer.run(reference_iterations))
-    reference = evaluate_profile(game, trainer.average_strategy_profile())
+    exported = run_reference(reference_config(fixture), reference_iterations)
+    reference = evaluate_profile(game, import_reference(game, exported))
+    reference_cost = exported['training_cost']
     checks = []
     pot = fixture['pot']
     delta = abs(local['root_ev_oop_relative_to_split_pot']-reference['root'][0])/pot
@@ -255,6 +347,10 @@ def compare_fixture(fixture, iterations=1500, reference_iterations=4000):
         checks.append('independent_root_evaluation_disagrees')
     if abs(local_external['gap']-local['nash_conv_chips']) > 0.000051:
         checks.append('independent_best_response_disagrees')
+    if abs(reference['gap']-2*exported['checkpoints'][-1]['raw_exploitability']/SCALE) > 1e-9*pot:
+        checks.append('reference_exploitability_normalization_disagrees')
+    analytical, analytical_failures = polarized_analytical(fixture, local_external, reference, mapping)
+    checks.extend(analytical_failures)
     rank_mismatches = []
     for side in (0, 1):
         for hand in game.hands[side]:
@@ -311,6 +407,7 @@ def compare_fixture(fixture, iterations=1500, reference_iterations=4000):
             'same_profile_max_action_ev_delta_pot': max_q_delta,
             'reach_weighted_strategy_l1': weighted_l1/total_reach,
             'rank_mismatches': rank_mismatches, 'local_cost': local_cost, 'reference_cost': reference_cost,
+            'reference_export': exported, 'analytical': analytical,
             'nodes': node_report, 'failures': sorted(set(checks))}
 
 
@@ -319,9 +416,8 @@ def tree_sensitivity(fixture, iterations=4000):
     output = []
     for raises in (0, 2):  # Upstream counts the opening bet as its first raise.
         game = make_game(fixture, raises)
-        trainer = VectorCFRTrainer(game, VectorCFRConfig(use_plus=True, linear_weighting=True, use_naive_eval=True))
-        trainer.run(iterations)
-        result = evaluate_profile(game, trainer.average_strategy_profile())
+        exported = run_reference(reference_config(fixture, raises), iterations)
+        result = evaluate_profile(game, import_reference(game, exported))
         output.append({'upstream_max_raises': raises, 'extra_raises_allowed': 0 if raises == 0 else 1,
                        'root_ev': result['root'][0], 'nashconv': result['gap'],
                        'infosets': len(result['nodes'])})

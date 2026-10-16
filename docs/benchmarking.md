@@ -32,6 +32,53 @@ fast-path limitation and checks the fallback result. This reference is itself
 experimental; agreement does not prove both engines are universally correct.
 No proprietary baseline has been used or redistributed.
 
+### Issue #1 reference contract and actual CLI outcome
+
+Read both Issue #1 comments, including the
+[source-verified contract](https://github.com/eddieyang-97/poker-solver/issues/1#issuecomment-6219355562),
+before this follow-up. [reference-polarized.json](../benchmarks/reference-polarized.json)
+preserves its exact £100 JSON, including equal weights, `max_raises=0` and
+`include_all_in=false`. On 16 October the following command was run against a
+separate checkout at the pinned commit:
+
+```powershell
+.venv/Scripts/python .artifacts/upstream-reference/python/src/cli/run_river_exploitability.py --config benchmarks/reference-polarized.json --algo cfr+ --dump-strategy .artifacts/upstream-polarized-strategy.json
+```
+
+**Actual outcome: exit 1; no strategy dump.** The traceback ended at
+`vector_eval.py:103`, `opp_summary.strength_ranges[hand.strength]`, with
+`KeyError: (1, 13, 9, 8, 4)`. The CLI selects the fast evaluator and exposes no
+naive-evaluation flag. Its advertised command is therefore incompatible with
+this fixture at the pinned revision. This was not reported as a passing CLI run.
+
+The unmodified `VectorCFRTrainer` has a supported `use_naive_eval=True` option.
+Our small development-only wrapper calls that implementation in a **fresh
+isolated Python process**, without importing `poker_spot`. It emits upstream-style
+ordered `hands`/`weights`/`profile`, raw exploitability checkpoints and training
+costs. It verifies source hashes and import origins. Reproduce the successful
+exact-configuration run with:
+
+```powershell
+.venv/Scripts/python -I benchmarks/reference_worker.py --config benchmarks/reference-polarized.json --iterations 4000
+```
+
+[reference-polarized-output.json](../benchmarks/reference-polarized-output.json)
+retains the actual output (including the observed process ID and timing).
+The report's usual currency scale of 100 is not used in this particular command;
+the reference's integer chip is £1, exactly as the issue specified. The generic
+adapter uses cents and verifies the same game after scaling. The test compares
+configuration, source commit, normalized weights and every ordered policy row
+against this snapshot. Its `1e-9` frequency tolerance permits floating-point
+replay differences in the **same pinned algorithm and iteration schedule**, not
+differences between valid equilibrium mixtures or external solver versions.
+
+The first exact run returned QJ bluff frequency **49.9712359%**, KK call frequency
+**49.9987098%**, OOP check frequency **99.9999432%**, and raw exploitability
+**£0.0075206912** at 4000 iterations. Thus its normalized NashConv is
+**£0.0150413824**, twice raw exploitability. The snapshot includes checkpoints
+25–4000; the initial raw exploitability was £1.3555064. Convergence need not be
+monotonic at every iteration.
+
 ## Matching the game
 
 `benchmarks/fixtures.json` contains ten explicit fixtures: full-/half-pot
@@ -64,7 +111,12 @@ that joint distribution after conditioning.
 
 ## What is checked
 
-The runner trains the product and reference separately. It also imports the
+The runner trains the product and reference separately; all reference training,
+including the richer-tree experiment, runs in the isolated worker with a
+120-second process deadline. It validates exported hand sets, row probabilities,
+weights and action ordering before importing them, and checks raw upstream
+exploitability against the independently evaluated normalized NashConv.
+It also imports the
 product's averaged strategy into the reference tree and evaluates that *same
 policy* using the reference's independent showdown and best-response routines.
 This separates evaluator/normalization bugs from different approximate equilibria.
@@ -79,6 +131,13 @@ This separates evaluator/normalization bugs from different approximate equilibri
   most **0.5% of pot**. The difference between independently trained root EVs
   must lie within the sum of their measured gaps, plus `1e-6` of pot for output
   rounding. That gap bound is a zero-sum value bound, not a fitted target.
+- Both polarized cases explicitly compare QJ bluffing, KK calling, AA value
+  betting and OOP checking with analytical frequencies. The absolute frequency
+  gate is 0.04, retained from the existing analytical test, not selected to match
+  this reference. Analytical root EV is `-P*B/(2*(P+B))`; each computed value must
+  be within its measured NashConv plus rounding error. The Markdown report shows
+  both engines beside the analytical values; full checkpoints and profiles are
+  retained in JSON.
 - Strategy L1 distances, each hand's joint node reach, conditional action EVs,
   and action regret against the reference opponent are recorded. Best-action
   agreement is reported only when the reference's best/second-best gap exceeds
@@ -93,6 +152,8 @@ Timing uses `perf_counter`; peak allocation uses `tracemalloc`. That is Python
 allocation tracking, not operating-system RSS or a hosted latency measurement.
 Both fields cover training only, excluding initial game/range construction and
 later evaluation. Allocations made before tracing begins are not included.
+For the worker, the peak is the largest traced allocation across training
+segments between checkpoints; checkpoint evaluation and process startup are excluded.
 Tracing adds overhead, so the timing fields are not general performance claims.
 
 Fault-injection tests corrupt only the product's hand evaluator and verify that
@@ -147,3 +208,9 @@ difference was about **0.00111% of pot**; same-policy action EVs agreed to aroun
 implementation and commercial comparisons remain useful follow-ups. The current
 corpus is not an exhaustive proof, a production security audit, or validation of
 assumed live-population ranges.
+
+**Subsequent milestone:** independently configure and cross-validate with
+TexasSolver after verifying its exact river/no-raise tree and export semantics.
+No TexasSolver execution, proprietary reference or gold-standard claim is part
+of this milestone. Keep the corpus at ten until the current harness has further
+review and useful failure evidence; expansion to 20–30 is intentionally deferred.

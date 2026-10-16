@@ -10,7 +10,9 @@
   "input_sha256_lf": {
     "benchmarks/fixtures.json": "1c5f825abad768dd75668c467311abc2a02b7644fcd5b93b82434aae25f3b834",
     "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-    "benchmarks/harness.py": "76ca65a21dde2552d35a9446f22dcd0166e7e156d159f103e659d46a9b9a4b53"
+    "benchmarks/harness.py": "28ee971822a87fdfb7f3bdfdd7e2a1b55074ababa2070619f12d002ed849370d",
+    "benchmarks/reference_worker.py": "e6e96eb272212b40428b6bb25bdbe64a91aa850d85323130b61ae214862d748b",
+    "benchmarks/reference-polarized.json": "d70f807d5d5defb0747bea14b9228cdbb4b5ff0cfd9efb4087afc5fa885c3e15"
   },
   "cases": [
     {
@@ -27,12 +29,201 @@
       "reach_weighted_strategy_l1": 0.0004936982938485306,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 0.7508480999968015,
-        "python_peak_bytes": 7827
+        "seconds": 0.8328749000211246,
+        "python_peak_bytes": 7782
       },
       "reference_cost": {
-        "seconds": 0.8702901000215206,
-        "python_peak_bytes": 10703
+        "seconds": 0.5331996000313666,
+        "python_peak_bytes": 15501
+      },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 30336,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 10000,
+          "bet_sizes": [
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "KhKd"
+              ],
+              "weights": [
+                1
+              ]
+            },
+            {
+              "hands": [
+                "AsAd",
+                "QhJd"
+              ],
+              "weights": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 135.55064442988714
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 53.413065419702434
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 25.398739188631225
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 14.413389092035686
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 8.84577750750941
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 3.442477760532711
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 2.1473036427614716
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.7520691204026662
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "KdKh"
+            ],
+            "weights": [
+              1.0
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    0.9999994321979289,
+                    5.678020711773405e-07
+                  ]
+                ]
+              },
+              "c/b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.4999870975725472,
+                    0.5000129024274528
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "AdAs",
+              "JdQh"
+            ],
+            "weights": [
+              0.5,
+              0.5
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    1.8745313671582105e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    0.5002876413269988,
+                    0.49971235867300123
+                  ]
+                ]
+              },
+              "b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999999375156211,
+                    6.248437890527368e-08
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 0.5331996000313666,
+          "python_peak_bytes": 15501
+        }
+      },
+      "analytical": {
+        "expected_root_ev": -25.0,
+        "expected_frequency": {
+          "oop_check": 1.0,
+          "qj_bet": 0.5,
+          "kk_call": 0.5,
+          "aa_bet": 1.0
+        },
+        "frequency_absolute_tolerance": 0.04,
+        "local": {
+          "root_ev": -25.000071467908413,
+          "frequency": {
+            "oop_check": 0.9999959639776385,
+            "qj_bet": 0.5000560789887406,
+            "kk_call": 0.49931648410512175,
+            "aa_bet": 0.9999986675549634
+          }
+        },
+        "reference": {
+          "root_ev": -25.000009137714713,
+          "frequency": {
+            "oop_check": 0.9999994321979289,
+            "qj_bet": 0.49971235867300123,
+            "kk_call": 0.4999870975725472,
+            "aa_bet": 0.9999998125468633
+          }
+        }
       },
       "nodes": [
         {
@@ -238,12 +429,201 @@
       "reach_weighted_strategy_l1": 0.0001753456492643638,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 0.873905599990394,
-        "python_peak_bytes": 6136
+        "seconds": 0.7832452000002377,
+        "python_peak_bytes": 5624
       },
       "reference_cost": {
-        "seconds": 0.6798108000075445,
-        "python_peak_bytes": 7012
+        "seconds": 0.5790137000149116,
+        "python_peak_bytes": 15496
+      },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 38024,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 10000,
+          "bet_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "KhKd"
+              ],
+              "weights": [
+                1
+              ]
+            },
+            {
+              "hands": [
+                "AsAd",
+                "QhJd"
+              ],
+              "weights": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 62.73789970727739
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 33.55805934075488
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 11.415160110542274
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 8.056780567918395
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 3.3051125754946042
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 1.7653448077271605
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.8431350311511778
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.32010797424845805
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "KdKh"
+            ],
+            "weights": [
+              1.0
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b5000"
+                ],
+                "strategy": [
+                  [
+                    0.9999983402936887,
+                    1.659706311244502e-06
+                  ]
+                ]
+              },
+              "c/b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.6668258617645628,
+                    0.3331741382354372
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "AdAs",
+              "JdQh"
+            ],
+            "weights": [
+              0.5,
+              0.5
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b5000"
+                ],
+                "strategy": [
+                  [
+                    1.8745313671582105e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    0.6667148358218078,
+                    0.33328516417819226
+                  ]
+                ]
+              },
+              "b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999999375156211,
+                    6.248437890527368e-08
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 0.5790137000149116,
+          "python_peak_bytes": 15496
+        }
+      },
+      "analytical": {
+        "expected_root_ev": -16.666666666666668,
+        "expected_frequency": {
+          "oop_check": 1.0,
+          "qj_bet": 0.3333333333333333,
+          "kk_call": 0.6666666666666666,
+          "aa_bet": 1.0
+        },
+        "frequency_absolute_tolerance": 0.04,
+        "local": {
+          "root_ev": -16.666748078282012,
+          "frequency": {
+            "oop_check": 0.999988202558381,
+            "qj_bet": 0.333153920963196,
+            "kk_call": 0.6670620697296046,
+            "aa_bet": 0.9999986675549634
+          }
+        },
+        "reference": {
+          "root_ev": -16.66667794770347,
+          "frequency": {
+            "oop_check": 0.9999983402936887,
+            "qj_bet": 0.33328516417819226,
+            "kk_call": 0.6668258617645628,
+            "aa_bet": 0.9999998125468633
+          }
+        }
       },
       "nodes": [
         {
@@ -449,13 +829,296 @@
       "reach_weighted_strategy_l1": 0.006556230261521629,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 1.3654499000112992,
-        "python_peak_bytes": 8768
+        "seconds": 1.4088095999904908,
+        "python_peak_bytes": 9392
       },
       "reference_cost": {
-        "seconds": 2.77666030000546,
-        "python_peak_bytes": 19323
+        "seconds": 1.8722618000174407,
+        "python_peak_bytes": 30709
       },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 33932,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "7d",
+            "9h",
+            "Js",
+            "Ac"
+          ],
+          "pot": 10000,
+          "stack": 15000,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "AsKd",
+                "AdQd",
+                "KcQh",
+                "8s8h",
+                "AcAs"
+              ],
+              "weights": [
+                0.8,
+                0.4,
+                0.5,
+                0.2,
+                0.9
+              ]
+            },
+            {
+              "hands": [
+                "AhQs",
+                "AdTd",
+                "KsTh",
+                "6s5s"
+              ],
+              "weights": [
+                0.7,
+                0.3,
+                0.6,
+                0.1
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 103.63518311688586
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 29.43794088978757
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 7.849988183197638
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 2.268663081767045
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 0.6331246603285763
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 0.22893364315314102
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.13694276656860893
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.06162410778597405
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "KdAs",
+              "QdAd",
+              "KcQh",
+              "8h8s"
+            ],
+            "weights": [
+              0.42105263157894735,
+              0.21052631578947367,
+              0.2631578947368421,
+              0.10526315789473684
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    0.006669087613775532,
+                    7.504366806131707e-07,
+                    0.9933301619495438
+                  ],
+                  [
+                    0.9999767246959338,
+                    2.841702993305194e-07,
+                    2.2991133766959407e-05
+                  ],
+                  [
+                    0.43237710499365606,
+                    1.6367425820032687e-06,
+                    0.5676212582637619
+                  ],
+                  [
+                    0.4323771049936562,
+                    1.6367425820032685e-06,
+                    0.5676212582637618
+                  ]
+                ]
+              },
+              "c/b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999968769151782,
+                    3.1230848217881744e-06
+                  ],
+                  [
+                    0.9999999791713889,
+                    2.0828611094014386e-08
+                  ],
+                  [
+                    0.22026588060953067,
+                    0.7797341193904693
+                  ],
+                  [
+                    0.22026588060953092,
+                    0.7797341193904691
+                  ]
+                ]
+              },
+              "c/b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999968769151782,
+                    3.1230848217881744e-06
+                  ],
+                  [
+                    0.9999999791713889,
+                    2.0828611094014386e-08
+                  ],
+                  [
+                    0.005101708215396826,
+                    0.9948982917846032
+                  ],
+                  [
+                    0.005101708215396818,
+                    0.9948982917846032
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "AhQs",
+              "TdAd",
+              "ThKs",
+              "5s6s"
+            ],
+            "weights": [
+              0.4117647058823529,
+              0.17647058823529413,
+              0.35294117647058826,
+              0.05882352941176471
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    1.5039203610849248e-05,
+                    0.9999805565983987,
+                    4.404197990516073e-06
+                  ],
+                  [
+                    1.5039203610849224e-05,
+                    0.9999805565983986,
+                    4.40419799051608e-06
+                  ],
+                  [
+                    0.5238524745876897,
+                    0.476145276625544,
+                    2.2487867663367354e-06
+                  ],
+                  [
+                    0.5238524745876901,
+                    0.4761452766255436,
+                    2.248786766336739e-06
+                  ]
+                ]
+              },
+              "b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9934301451175335,
+                    0.006569854882466537
+                  ],
+                  [
+                    0.9911888408385231,
+                    0.008811159161476873
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.999999937515621
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              },
+              "b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.8385265360753166,
+                    0.1614734639246835
+                  ],
+                  [
+                    0.2657384010343824,
+                    0.7342615989656176
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.999999937515621
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 1.8722618000174407,
+          "python_peak_bytes": 30709
+        }
+      },
+      "analytical": null,
       "nodes": [
         {
           "node": "oop_facing_ip_bet_0.5",
@@ -1258,13 +1921,294 @@
       "reach_weighted_strategy_l1": 0.005709880713100638,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 1.378393299994059,
-        "python_peak_bytes": 8928
+        "seconds": 1.3913875999860466,
+        "python_peak_bytes": 9168
       },
       "reference_cost": {
-        "seconds": 2.6512065999850165,
-        "python_peak_bytes": 18963
+        "seconds": 1.7980514999944717,
+        "python_peak_bytes": 30685
       },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 17268,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "Ah",
+            "Kh",
+            "7h",
+            "3c",
+            "2d"
+          ],
+          "pot": 10000,
+          "stack": 15000,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "QhJh",
+                "AsKd",
+                "7c7d",
+                "9c8c"
+              ],
+              "weights": [
+                0.8,
+                0.5,
+                0.4,
+                0.2
+              ]
+            },
+            {
+              "hands": [
+                "Th9h",
+                "AcKs",
+                "7s7c",
+                "QcJd"
+              ],
+              "weights": [
+                0.7,
+                0.6,
+                0.3,
+                0.2
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 62.620952120471884
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 20.123115343671998
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 7.111746406773818
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 3.0464808681281283
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 2.392785250437555
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 0.5312043879694102
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.1649492242731867
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.03992070390449953
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "JhQh",
+              "KdAs",
+              "7c7d",
+              "8c9c"
+            ],
+            "weights": [
+              0.42105263157894735,
+              0.2631578947368421,
+              0.21052631578947367,
+              0.10526315789473684
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    0.1444251454564423,
+                    1.0131016127183672e-06,
+                    0.855573841441945
+                  ],
+                  [
+                    0.7140028593464218,
+                    0.0015307972029190845,
+                    0.284466343450659
+                  ],
+                  [
+                    0.9980690917545065,
+                    0.0019301500113352355,
+                    7.58234158286676e-07
+                  ],
+                  [
+                    1.196791937138807e-06,
+                    8.666921708261126e-06,
+                    0.9999901362863546
+                  ]
+                ]
+              },
+              "c/b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999998557860112,
+                    1.442139887478216e-07
+                  ],
+                  [
+                    1.7106755599278799e-06,
+                    0.99999828932444
+                  ],
+                  [
+                    0.8683495477664047,
+                    0.13165045223359528
+                  ],
+                  [
+                    0.01740329764549725,
+                    0.9825967023545028
+                  ]
+                ]
+              },
+              "c/b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999998557860112,
+                    1.442139887478216e-07
+                  ],
+                  [
+                    7.756327198812229e-07,
+                    0.9999992243672801
+                  ],
+                  [
+                    0.5788993649822378,
+                    0.42110063501776224
+                  ],
+                  [
+                    0.01740329764549725,
+                    0.9825967023545028
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "9hTh",
+              "AcKs",
+              "7c7s",
+              "QcJd"
+            ],
+            "weights": [
+              0.3888888888888889,
+              0.33333333333333337,
+              0.16666666666666669,
+              0.11111111111111113
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    2.191376928625321e-06,
+                    0.4736704443627473,
+                    0.5263273642603241
+                  ],
+                  [
+                    0.842030726136805,
+                    0.04630617191840455,
+                    0.11166310194479044
+                  ],
+                  [
+                    0.9999964739358658,
+                    2.4955005475970016e-06,
+                    1.0305635866586918e-06
+                  ],
+                  [
+                    3.930295965702795e-06,
+                    0.4138810984184631,
+                    0.5861149712855712
+                  ]
+                ]
+              },
+              "b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999998721037792,
+                    1.2789622072720754e-07
+                  ],
+                  [
+                    0.1726300018183509,
+                    0.8273699981816491
+                  ],
+                  [
+                    0.9999997385448426,
+                    2.614551575240715e-07
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              },
+              "b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.7992558738775403,
+                    0.2007441261224598
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    0.7141166171676443,
+                    0.2858833828323557
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 1.7980514999944717,
+          "python_peak_bytes": 30685
+        }
+      },
+      "analytical": null,
       "nodes": [
         {
           "node": "oop_facing_ip_bet_0.5",
@@ -2067,13 +3011,294 @@
       "reach_weighted_strategy_l1": 0.0023249403114171726,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 1.4584590999875218,
-        "python_peak_bytes": 9024
+        "seconds": 1.3071348999801558,
+        "python_peak_bytes": 8216
       },
       "reference_cost": {
-        "seconds": 2.6418554999982007,
-        "python_peak_bytes": 18643
+        "seconds": 1.7939909000124317,
+        "python_peak_bytes": 30845
       },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 14600,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "Ks",
+            "9s",
+            "5h",
+            "Td",
+            "Ts"
+          ],
+          "pot": 10000,
+          "stack": 15000,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "9h9d",
+                "QsJs",
+                "KdQd",
+                "AhJh"
+              ],
+              "weights": [
+                0.6,
+                0.4,
+                0.8,
+                0.2
+              ]
+            },
+            {
+              "hands": [
+                "5c5d",
+                "AsQs",
+                "QhJh",
+                "AsJh"
+              ],
+              "weights": [
+                0.5,
+                0.7,
+                0.4,
+                0.2
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 106.7059291457872
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 32.12088490128008
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 6.58428154525518
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 3.6744628387796183
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 1.6971591860046829
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 0.5460743182629813
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.22083655364531296
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.1041951910874559
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "9d9h",
+              "JsQs",
+              "QdKd",
+              "JhAh"
+            ],
+            "weights": [
+              0.3,
+              0.2,
+              0.4,
+              0.1
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    6.009998863131944e-07,
+                    1.4248338220043813e-06,
+                    0.9999979741662917
+                  ],
+                  [
+                    2.816885852436387e-06,
+                    0.9999500797737706,
+                    4.710334037695067e-05
+                  ],
+                  [
+                    0.4583964832656756,
+                    0.16660315731151454,
+                    0.3750003594228098
+                  ],
+                  [
+                    0.9999985127923049,
+                    6.189311454352003e-07,
+                    8.682765496933622e-07
+                  ]
+                ]
+              },
+              "c/b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9653442092484791,
+                    0.03465579075152086
+                  ],
+                  [
+                    0.9926059743302189,
+                    0.007394025669781109
+                  ],
+                  [
+                    2.351043068443558e-06,
+                    0.9999976489569316
+                  ],
+                  [
+                    2.082815727755367e-08,
+                    0.9999999791718427
+                  ]
+                ]
+              },
+              "c/b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9653442092484791,
+                    0.03465579075152086
+                  ],
+                  [
+                    0.9926059743302189,
+                    0.007394025669781109
+                  ],
+                  [
+                    1.129544529012804e-06,
+                    0.9999988704554709
+                  ],
+                  [
+                    2.082815727755367e-08,
+                    0.9999999791718427
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "5c5d",
+              "QsAs",
+              "JhQh",
+              "JhAs"
+            ],
+            "weights": [
+              0.2777777777777778,
+              0.38888888888888884,
+              0.22222222222222224,
+              0.11111111111111112
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    0.9518291551094348,
+                    0.04816965838595732,
+                    1.1865046077983288e-06
+                  ],
+                  [
+                    0.17261013048197973,
+                    0.5145953189655892,
+                    0.3127945505524311
+                  ],
+                  [
+                    0.9518291551094954,
+                    0.04816965838590443,
+                    1.1865046002255883e-06
+                  ],
+                  [
+                    7.829931632036793e-07,
+                    0.5873623491346354,
+                    0.41263686787220144
+                  ]
+                ]
+              },
+              "b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.5708582717070253,
+                    0.4291417282929747
+                  ],
+                  [
+                    0.9999987028539162,
+                    1.2971460838026787e-06
+                  ],
+                  [
+                    0.5366245873785183,
+                    0.46337541262148174
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              },
+              "b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.33729674279283794,
+                    0.662703257207162
+                  ],
+                  [
+                    0.9488971346357744,
+                    0.05110286536422559
+                  ],
+                  [
+                    0.16786078630390006,
+                    0.8321392136961
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 1.7939909000124317,
+          "python_peak_bytes": 30845
+        }
+      },
+      "analytical": null,
       "nodes": [
         {
           "node": "oop_facing_ip_bet_0.5",
@@ -2876,13 +4101,294 @@
       "reach_weighted_strategy_l1": 0.0016855895334997478,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 1.2184533000108786,
-        "python_peak_bytes": 8272
+        "seconds": 1.373100799974054,
+        "python_peak_bytes": 8512
       },
       "reference_cost": {
-        "seconds": 2.5937688999983948,
-        "python_peak_bytes": 18539
+        "seconds": 1.768932799983304,
+        "python_peak_bytes": 30685
       },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 28828,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2s",
+            "5s",
+            "9s",
+            "Ks",
+            "3d"
+          ],
+          "pot": 10000,
+          "stack": 15000,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "AsQh",
+                "QsJh",
+                "AhAd",
+                "KhKc"
+              ],
+              "weights": [
+                0.7,
+                0.4,
+                0.5,
+                0.2
+              ]
+            },
+            {
+              "hands": [
+                "JsTh",
+                "AsTd",
+                "KdQc",
+                "9h9d"
+              ],
+              "weights": [
+                0.8,
+                0.3,
+                0.4,
+                0.5
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 63.11247478691712
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 23.44894484748602
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 9.414439382109776
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 2.3999920576306977
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 0.602848622388592
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 0.15308142658614088
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.03901081159710884
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.006108742782089394
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "QhAs",
+              "JhQs",
+              "AdAh",
+              "KcKh"
+            ],
+            "weights": [
+              0.38888888888888884,
+              0.22222222222222224,
+              0.2777777777777778,
+              0.11111111111111112
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    0.007840687619282485,
+                    2.6803428068444428e-06,
+                    0.9921566320379107
+                  ],
+                  [
+                    0.23622733275552335,
+                    0.0002142506626437077,
+                    0.763558416581833
+                  ],
+                  [
+                    8.752110487853364e-06,
+                    5.9200982398160016e-05,
+                    0.9999320469071139
+                  ],
+                  [
+                    0.9999930280888684,
+                    4.611915214695565e-06,
+                    2.359995916942031e-06
+                  ]
+                ]
+              },
+              "c/b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999973435842221,
+                    2.6564157779396277e-06
+                  ],
+                  [
+                    0.9999999118301593,
+                    8.816984071573706e-08
+                  ],
+                  [
+                    0.12055718708478212,
+                    0.8794428129152179
+                  ],
+                  [
+                    0.5000409016247737,
+                    0.4999590983752264
+                  ]
+                ]
+              },
+              "c/b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999973435842221,
+                    2.6564157779396277e-06
+                  ],
+                  [
+                    0.8653434955454952,
+                    0.1346565044545048
+                  ],
+                  [
+                    0.06026558386342102,
+                    0.9397344161365789
+                  ],
+                  [
+                    0.31368014714903264,
+                    0.6863198528509674
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "ThJs",
+              "TdAs",
+              "QcKd",
+              "9d9h"
+            ],
+            "weights": [
+              0.4,
+              0.15,
+              0.2,
+              0.25
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    0.0037857999671994016,
+                    0.9962110309345494,
+                    3.1690982512193887e-06
+                  ],
+                  [
+                    1.2496875781054732e-07,
+                    1.4174465212911179e-06,
+                    0.9999984575847208
+                  ],
+                  [
+                    0.01787918263624338,
+                    0.625710279582164,
+                    0.3564105377815927
+                  ],
+                  [
+                    0.9543838276199338,
+                    0.0307435753111261,
+                    0.014872597068940077
+                  ]
+                ]
+              },
+              "b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9878179832910259,
+                    0.012182016708974213
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527368e-08
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.999999937515621
+                  ],
+                  [
+                    0.4431145835054509,
+                    0.556885416494549
+                  ]
+                ]
+              },
+              "b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.687635376493495,
+                    0.312364623506505
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527368e-08
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.999999937515621
+                  ],
+                  [
+                    0.2624201678900236,
+                    0.7375798321099764
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 1.768932799983304,
+          "python_peak_bytes": 30685
+        }
+      },
+      "analytical": null,
       "nodes": [
         {
           "node": "oop_facing_ip_bet_0.5",
@@ -3685,13 +5191,294 @@
       "reach_weighted_strategy_l1": 0.034810150406823906,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 1.2450268999964464,
-        "python_peak_bytes": 8272
+        "seconds": 1.3684089000162203,
+        "python_peak_bytes": 8512
       },
       "reference_cost": {
-        "seconds": 2.601586100005079,
-        "python_peak_bytes": 18507
+        "seconds": 1.760807000042405,
+        "python_peak_bytes": 30845
       },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 21968,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "6c",
+            "7d",
+            "8h",
+            "9s",
+            "2c"
+          ],
+          "pot": 10000,
+          "stack": 15000,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "TsTh",
+                "5c5d",
+                "AsAd",
+                "QhJh"
+              ],
+              "weights": [
+                0.8,
+                0.5,
+                0.7,
+                0.2
+              ]
+            },
+            {
+              "hands": [
+                "TdJd",
+                "5sAs",
+                "KhKd",
+                "QcJc"
+              ],
+              "weights": [
+                0.6,
+                0.4,
+                0.8,
+                0.3
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 31.699871881815852
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 6.027675033357809
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 2.1511503799301863
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 1.134421833219676
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 0.47309568826131
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 0.30690331264486304
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.18896257635424263
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.10408539857144206
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "ThTs",
+              "5c5d",
+              "AdAs",
+              "JhQh"
+            ],
+            "weights": [
+              0.36363636363636365,
+              0.22727272727272727,
+              0.3181818181818181,
+              0.09090909090909091
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    1.7869822782420529e-06,
+                    0.9999978467241761,
+                    3.6629354561061814e-07
+                  ],
+                  [
+                    0.13904662992896824,
+                    0.8609528386041787,
+                    5.314668530555673e-07
+                  ],
+                  [
+                    0.2291577285231286,
+                    0.7708419763267215,
+                    2.9515014989259427e-07
+                  ],
+                  [
+                    4.165625260351579e-08,
+                    0.9999993490420385,
+                    6.093017088312565e-07
+                  ]
+                ]
+              },
+              "c/b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9135074260523369,
+                    0.086492573947663
+                  ],
+                  [
+                    0.9999921162497188,
+                    7.883750281228222e-06
+                  ],
+                  [
+                    0.6697465752904287,
+                    0.3302534247095713
+                  ],
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
+              },
+              "c/b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.7947564867852078,
+                    0.20524351321479212
+                  ],
+                  [
+                    0.9999763164635292,
+                    2.3683536470776904e-05
+                  ],
+                  [
+                    0.28353981708929327,
+                    0.7164601829107068
+                  ],
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "TdJd",
+              "5sAs",
+              "KdKh",
+              "JcQc"
+            ],
+            "weights": [
+              0.2857142857142857,
+              0.19047619047619047,
+              0.38095238095238093,
+              0.14285714285714285
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b5000",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    1.2496875781054735e-07,
+                    4.6729549551143354e-07,
+                    0.9999994077357467
+                  ],
+                  [
+                    0.6204874376670838,
+                    0.0029677208905582795,
+                    0.37654484144235784
+                  ],
+                  [
+                    0.7273595851124864,
+                    1.2496875781054743e-07,
+                    0.27264028991875566
+                  ],
+                  [
+                    0.727359585112487,
+                    1.2496875781054735e-07,
+                    0.27264028991875505
+                  ]
+                ]
+              },
+              "b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999999375156211,
+                    6.248437890527368e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              },
+              "b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999999375156211,
+                    6.248437890527368e-08
+                  ],
+                  [
+                    0.7882978775777447,
+                    0.2117021224222553
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 1.760807000042405,
+          "python_peak_bytes": 30845
+        }
+      },
+      "analytical": null,
       "nodes": [
         {
           "node": "oop_facing_ip_bet_0.5",
@@ -4494,13 +6281,187 @@
       "reach_weighted_strategy_l1": 7.63327788252189e-07,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 0.7858897999976762,
-        "python_peak_bytes": 5872
+        "seconds": 0.8609388000040781,
+        "python_peak_bytes": 6496
       },
       "reference_cost": {
-        "seconds": 0.6243706999812275,
-        "python_peak_bytes": 8492
+        "seconds": 0.6442050999903586,
+        "python_peak_bytes": 16312
       },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 7448,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "As",
+            "Ks",
+            "Qs",
+            "Js",
+            "Ts"
+          ],
+          "pot": 10000,
+          "stack": 15000,
+          "bet_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "7h7d",
+                "2c2d"
+              ],
+              "weights": [
+                0.3,
+                0.8
+              ]
+            },
+            {
+              "hands": [
+                "4h4d",
+                "5c6c"
+              ],
+              "weights": [
+                0.5,
+                0.9
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 5.769230769230489
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 1.4705882352936896
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 0.3712871287134476
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 0.09328358208949794
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 0.023379052369818965
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 0.005852059925928188
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.0014639287946920376
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.00023431642148352694
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "7d7h",
+              "2c2d"
+            ],
+            "weights": [
+              0.2727272727272727,
+              0.7272727272727273
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b5000"
+                ],
+                "strategy": [
+                  [
+                    6.248437890527368e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              },
+              "c/b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.5,
+                    0.5
+                  ],
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "4d4h",
+              "5c6c"
+            ],
+            "weights": [
+              0.35714285714285715,
+              0.6428571428571429
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b5000"
+                ],
+                "strategy": [
+                  [
+                    0.5,
+                    0.5
+                  ],
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
+              },
+              "b5000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.999999937515621,
+                    6.248437890527369e-08
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 0.6442050999903586,
+          "python_peak_bytes": 16312
+        }
+      },
+      "analytical": null,
       "nodes": [
         {
           "node": "oop_facing_ip_bet_0.5",
@@ -4767,13 +6728,235 @@
       "reach_weighted_strategy_l1": 0.0002222518842443138,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 0.7703901999921072,
-        "python_peak_bytes": 6576
+        "seconds": 0.7865873000118881,
+        "python_peak_bytes": 6520
       },
       "reference_cost": {
-        "seconds": 1.64059900000575,
-        "python_peak_bytes": 13796
+        "seconds": 1.098954799992498,
+        "python_peak_bytes": 20952
       },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 35120,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "7d",
+            "9h",
+            "Js",
+            "Ac"
+          ],
+          "pot": 10000,
+          "stack": 2000,
+          "bet_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "AsKd",
+                "AdQd",
+                "KcQh",
+                "8s8h"
+              ],
+              "weights": [
+                0.8,
+                0.4,
+                0.5,
+                0.2
+              ]
+            },
+            {
+              "hands": [
+                "AhQs",
+                "AdTd",
+                "KsTh",
+                "6s5s"
+              ],
+              "weights": [
+                0.7,
+                0.3,
+                0.6,
+                0.1
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 27.017450192687647
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 7.643099183400409
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 1.9984980077815635
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 0.8103298039586662
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 0.38955143021667027
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 0.1480688462715989
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.0755665299757311
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.022338768096233252
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "KdAs",
+              "QdAd",
+              "KcQh",
+              "8h8s"
+            ],
+            "weights": [
+              0.42105263157894735,
+              0.21052631578947367,
+              0.2631578947368421,
+              0.10526315789473684
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b2000"
+                ],
+                "strategy": [
+                  [
+                    0.49319374682426503,
+                    0.5068062531757349
+                  ],
+                  [
+                    0.9999915556076298,
+                    8.444392370210596e-06
+                  ],
+                  [
+                    0.9034277257969392,
+                    0.09657227420306076
+                  ],
+                  [
+                    0.9034277257969393,
+                    0.09657227420306068
+                  ]
+                ]
+              },
+              "c/b2000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999999366533139,
+                    6.334668607177014e-08
+                  ],
+                  [
+                    0.9999999687575468,
+                    3.1242453276170915e-08
+                  ],
+                  [
+                    0.6239591936563667,
+                    0.37604080634363335
+                  ],
+                  [
+                    0.6239591936563675,
+                    0.37604080634363235
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "AhQs",
+              "TdAd",
+              "ThKs",
+              "5s6s"
+            ],
+            "weights": [
+              0.4117647058823529,
+              0.17647058823529413,
+              0.35294117647058826,
+              0.05882352941176471
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b2000"
+                ],
+                "strategy": [
+                  [
+                    0.18914363734058998,
+                    0.81085636265941
+                  ],
+                  [
+                    0.18914363734059866,
+                    0.8108563626594013
+                  ],
+                  [
+                    0.8069235723247304,
+                    0.19307642767526945
+                  ],
+                  [
+                    0.8069235723247307,
+                    0.1930764276752693
+                  ]
+                ]
+              },
+              "b2000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9644279170025889,
+                    0.035572082997411
+                  ],
+                  [
+                    0.9030247830496286,
+                    0.09697521695037138
+                  ],
+                  [
+                    6.248437890527368e-08,
+                    0.999999937515621
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 1.098954799992498,
+          "python_peak_bytes": 20952
+        }
+      },
+      "analytical": null,
       "nodes": [
         {
           "node": "oop_facing_ip_bet_0.5",
@@ -5288,13 +7471,353 @@
       "reach_weighted_strategy_l1": 0.0009214193035138639,
       "rank_mismatches": [],
       "local_cost": {
-        "seconds": 1.7781665999791585,
-        "python_peak_bytes": 10544
+        "seconds": 1.8322171000181697,
+        "python_peak_bytes": 9944
       },
       "reference_cost": {
-        "seconds": 6.282725799974287,
-        "python_peak_bytes": 19624
+        "seconds": 3.829866599990055,
+        "python_peak_bytes": 39530
       },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 33660,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "Ks",
+            "9s",
+            "5h",
+            "Td",
+            "Ts"
+          ],
+          "pot": 50500,
+          "stack": 45000,
+          "bet_sizes": [
+            0.33,
+            0.6,
+            0.8910891089108911
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "9h9d",
+                "QsJs",
+                "KdQd",
+                "AhJh"
+              ],
+              "weights": [
+                0.6,
+                0.4,
+                0.8,
+                0.001
+              ]
+            },
+            {
+              "hands": [
+                "5c5d",
+                "AsQs",
+                "QhJh",
+                "AsJh"
+              ],
+              "weights": [
+                0.5,
+                0.7,
+                0.4,
+                0.2
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 466.72421714095253
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 143.51246814912156
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 44.74551071085807
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 9.70561879996967
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 5.355272920893185
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 1.2319546642065689
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 0.45077118268818595
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.18665971848167828
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "9d9h",
+              "JsQs",
+              "QdKd",
+              "JhAh"
+            ],
+            "weights": [
+              0.3331482509716824,
+              0.22209883398112162,
+              0.44419766796224325,
+              0.000555247084952804
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b16665",
+                  "b30300",
+                  "b45000"
+                ],
+                "strategy": [
+                  [
+                    2.2467467449307358e-07,
+                    1.813303997545226e-07,
+                    2.3080496990163165e-06,
+                    0.9999972859452267
+                  ],
+                  [
+                    1.3280891448909995e-06,
+                    1.097293082664811e-05,
+                    0.999939491044293,
+                    4.820793573538835e-05
+                  ],
+                  [
+                    0.45908084504495134,
+                    2.418604959279791e-06,
+                    0.18749993056682387,
+                    0.35341680578326545
+                  ],
+                  [
+                    0.9999971848117859,
+                    7.001369622989268e-07,
+                    9.377171531606123e-07,
+                    1.1773340986075365e-06
+                  ]
+                ]
+              },
+              "c/b16665": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9304723829618813,
+                    0.0695276170381188
+                  ],
+                  [
+                    0.9882379170205472,
+                    0.01176208297945277
+                  ],
+                  [
+                    6.965759776818466e-07,
+                    0.9999993034240223
+                  ],
+                  [
+                    1.5621138702763992e-08,
+                    0.9999999843788614
+                  ]
+                ]
+              },
+              "c/b30300": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9304723829618813,
+                    0.0695276170381188
+                  ],
+                  [
+                    0.9882379170205472,
+                    0.01176208297945277
+                  ],
+                  [
+                    5.40452955728591e-07,
+                    0.9999994595470443
+                  ],
+                  [
+                    1.5621138702763992e-08,
+                    0.9999999843788614
+                  ]
+                ]
+              },
+              "c/b45000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9304723829618813,
+                    0.0695276170381188
+                  ],
+                  [
+                    0.9882379170205472,
+                    0.01176208297945277
+                  ],
+                  [
+                    2.9636569225236774e-07,
+                    0.9999997036343077
+                  ],
+                  [
+                    1.5621138702763992e-08,
+                    0.9999999843788614
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "5c5d",
+              "QsAs",
+              "JhQh",
+              "JhAs"
+            ],
+            "weights": [
+              0.2777777777777778,
+              0.38888888888888884,
+              0.22222222222222224,
+              0.11111111111111112
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b16665",
+                  "b30300",
+                  "b45000"
+                ],
+                "strategy": [
+                  [
+                    0.7658411733160927,
+                    0.23415621906186246,
+                    1.8404291882141475e-06,
+                    7.671928566147748e-07
+                  ],
+                  [
+                    0.15715405496282947,
+                    0.28074502776182775,
+                    0.3236555222298024,
+                    0.23844539504554035
+                  ],
+                  [
+                    0.7658411733160783,
+                    0.23415621906187048,
+                    1.840429191412277e-06,
+                    7.671928598129117e-07
+                  ],
+                  [
+                    3.4899587164511344e-07,
+                    0.43791188854712815,
+                    0.3029917084697734,
+                    0.25909605398722685
+                  ]
+                ]
+              },
+              "b16665": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.7964915108542442,
+                    0.2035084891457558
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527368e-08
+                  ],
+                  [
+                    0.796284595764178,
+                    0.203715404235822
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              },
+              "b30300": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.47225923218436117,
+                    0.5277407678156388
+                  ],
+                  [
+                    0.9999985045163016,
+                    1.495483698517946e-06
+                  ],
+                  [
+                    0.47214310387157693,
+                    0.5278568961284231
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              },
+              "b45000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.30552347877297586,
+                    0.6944765212270242
+                  ],
+                  [
+                    0.9676967086817505,
+                    0.03230329131824949
+                  ],
+                  [
+                    0.304187489991195,
+                    0.6958125100088051
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 3.829866599990055,
+          "python_peak_bytes": 39530
+        }
+      },
+      "analytical": null,
       "nodes": [
         {
           "node": "oop_facing_ip_bet_0.33",

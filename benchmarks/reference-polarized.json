@@ -1,0 +1,12 @@
+{
+  "board": ["2c", "3d", "4h", "8s", "9c"],
+  "pot": 100,
+  "stack": 100,
+  "bet_sizes": [1.0],
+  "include_all_in": false,
+  "max_raises": 0,
+  "players": [
+    {"hands": ["KhKd"], "weights": [1.0]},
+    {"hands": ["AsAd", "QhJd"], "weights": [1.0, 1.0]}
+  ]
+}
