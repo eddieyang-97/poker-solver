@@ -46,6 +46,18 @@ The half-pot counterpart checks the analytical 1/3 air bets and 2/3 calls.
 No external commercial-solver comparison has been performed. Tests bound the
 observed approximation; they do not establish correctness for every river game.
 
+## Independent solver benchmarking (not yet implemented)
+
+**Tracking:** [Issue #1 — independent river-solver benchmarking and differential regression harness](https://github.com/eddieyang-97/poker-solver/issues/1).
+
+The analytical bluff/call equilibria, exact weighted call-EV regressions and internal best-response/NashConv checks above are **internal validation**, not independent solver benchmarking. No commercial or open-source second-engine strategy/EV baseline has yet been run against matching custom ranges and an identical betting tree.
+
+The next correctness milestone is a versioned, automated *same-tree* differential benchmark. Initial fixtures should cover representative river textures, card removal, polarized/merged weighted ranges, bet sizing and SPR; a reference solver must use the same no-raise, zero-rake decision tree, pot, effective stack, weights and legal actions. Normalize EV sign and the solver's half-pot baseline and compare meaningful action-EV differences, exploitability, strategy/node reach and resource costs. Investigate disagreements rather than trusting a small internal NashConv as proof of agreement.
+
+**Separate experiment:** compare our restricted no-raise river tree with a richer raise-enabled river tree under otherwise similar assumptions, to measure **modeling error**, not code correctness. Published mixed frequencies are not necessarily unique for near-tied actions; rare/low-reach nodes need special treatment.
+
+An independent engine/reference, fixture corpus and CI delta report are **not yet in place**. Exact deliverables and acceptance tests live in Issue #1. This work should precede expanding the product into flop/turn solving, while current river results can remain available as clearly qualified exploratory post-session calculations.
+
 ## £505 checked-river acceptance study
 
 Board `Ks,9s,5h,Td,Ts`; BTN/IP `AsJh`; pot £505, effective remaining stack £450.
