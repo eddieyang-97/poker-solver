@@ -15,9 +15,11 @@ The dedicated [Free Render service](https://poker-solver-vie0.onrender.com/healt
 is live; real Auth0 S256 OAuth and both hosted tools passed the official SDK
 diagnostic. ChatGPT OAuth consent completed for the private **Poker Solver Hosted**
 connection, linked to the existing **poker-spot-study 0.2.1** workflow. Conversational
-tool execution evidence is tracked separately in validation. ChatGPT currently
-fails to render the acceptance replies, so the conversational milestone is not
-signed off; the verified hosted computations are from the official SDK diagnostic.
+tool execution evidence is tracked separately in validation. The owner subsequently
+supplied the completed hosted ChatGPT acceptance report; its four river solves,
+three call calculations and overlap diagnostic were reproduced locally with no
+numerical discrepancies. Raw hosted tool payloads were not supplied with that
+report. Refresh/reconnect and production Google login setup remain follow-ups.
 
 | Tool | Returns |
 | --- | --- |

@@ -145,10 +145,11 @@ Deployed implementation `a4ba8e750582899642e468ba6c55d82bcc787d2f` passed
 The initial implementation also passed
 [CI run 38914568790](https://github.com/eddieyang-97/poker-solver/actions/runs/38914568790).
 
-**Still pending:** observable ChatGPT tool results and the conversational
-£505 acceptance, refresh/revocation/reconnect checks, and replacing Auth0's Google
-development keys for production SSO/federated logout. The SDK diagnostic does not
-prove those behaviors. The user approved the diagnostic client's solver-only
+**Current evidence:** hosted SDK acceptance was directly verified; the owner later
+supplied the completed conversational £505 report, reproduced below. Raw hosted
+tool payload capture, refresh/revocation/reconnect checks, and replacing Auth0's
+Google development keys for production SSO/federated logout remain open. The SDK
+diagnostic alone does not prove those behaviors. The user approved the diagnostic client's solver-only
 grant and subsequently approved the third-party ChatGPT client's solver-only scope
 and domain-level Google login promotion; both settings were saved and verified.
 Arbitrary client registration is disabled. The same private plugin was published
@@ -165,7 +166,7 @@ was added to the original workflow as private 0.2.1, release
 `pluginrel_6ad2397100c88191b12f471d1fc68503`, and read back. Source overlay:
 `plugins/hosted/`. See [hosting.md](hosting.md).
 
-### Actual ChatGPT attempt and current blocker
+### Initial ChatGPT attempt and reply-rendering blocker
 
 Submitted the complete £505 request through the explicitly selected **Poker Solver
 Hosted** connection. ChatGPT announced four solves (two trees × two range
@@ -185,11 +186,12 @@ results**; HTTP 200 can contain a structured tool error. The separate official-S
 diagnostic remains the verified hosted computation evidence. Do not relabel the
 local £505 study as a completed conversational run.
 
-To close this gate, retry the prompt below in a fresh ChatGPT chat with **Poker
-Solver Hosted** explicitly selected once reply rendering works, inspect both
-tools' returned payloads, record the full range assumptions and compare the
-results. No new paid plan, broader scope or solver credential is required for
-that retry. Access tokens currently last one hour; refresh is not configured or
+For a direct payload audit, retry the prompt below in a fresh ChatGPT chat with
+**Poker Solver Hosted** explicitly selected, and retain both tools' returned
+payloads. The owner-supplied completed report and numerical reproduction below
+supersede the earlier lack of visible results; they do not retroactively make
+these failed display attempts successful. No new paid plan, broader scope or
+solver credential is required for a retry. Access tokens currently last one hour; refresh is not configured or
 verified, so reauthorization may be required. Production Google login keys and
 refresh/revocation/reconnect tests are separate follow-up work. The diagnostic
 client grant remains available for retesting; it has not been revoked.
@@ -199,9 +201,57 @@ also passed [GitHub Actions](https://github.com/eddieyang-97/poker-solver/action
 before that commit; the hosted Python implementation remains `a4ba8e7` because
 the later changes affect documentation and plugin packaging only.
 
-After connecting the hosted plugin, submit:
+### Owner-supplied completed ChatGPT report and reproduction
 
-> Review a past heads-up river: BTN AsJh on Ks9s5hTdTs, £505 before river betting,
+On 16 October the owner supplied the completed ChatGPT response stating that all
+four final hosted solves and all three requested call evaluations succeeded. It
+included full weighted ranges, 1200 iterations per solve, computed frequencies,
+action EVs, root EVs, NashConv, combo counts, own strategic reach and an additional
+range-overlap diagnostic. This is **owner-supplied conversational evidence**;
+the attachment contains the assistant's report rather than raw MCP payloads.
+
+Ran `python scripts/reproduce_chatgpt_acceptance.py` using those exact ranges and
+parameters against the preserved Python engine. All four solves reproduced the
+reported frequencies, check/bet/call EVs, root EVs, NashConv and 112/119 OOP/IP
+combo counts. The three call evaluations and reversed-overlap diagnostic also
+matched. **No numerical discrepancies were found and no solver output or
+convergence threshold was tuned.** Complete local inputs/results and discrepancy
+list: [chatgpt-acceptance-reproduction.json](chatgpt-acceptance-reproduction.json).
+This reproduction independently checks the numbers, not their hosted provenance.
+
+| Reported range/tree | AsJh after check: check / £166.65 / £303 / £450 | Check EV | Best bet EV | NashConv (£) |
+| --- | --- | --- | --- | --- |
+| Trap-rich, one size | 0.03% / — / — / 99.97% | −245.7149 | −244.7502 | 0.0057 |
+| Trap-rich, three sizes | 0.02% / 89.57% / 4.79% / 5.62% | −252.4987 | −233.0067 | 0.0126 |
+| Trap-light, one size | 0.02% / — / — / 99.98% | −215.4237 | −210.8820 | 0.0049 |
+| Trap-light, three sizes | 0.01% / 30.39% / 19.28% / 50.32% | −252.4580 | −226.8926 | 0.0112 |
+
+These are a separate set of range hypotheses from the earlier six-case study;
+their different outputs are not a discrepancy. EVs use the half-pot baseline.
+Near-pure betting does not imply a large gain: in the trap-rich one-size case,
+jamming improves on checking by only £0.9647. The three bet EVs are nearly tied
+within each multi-size solve. Their precise mixtures should not be generalized
+to live opponents or called full GTO.
+
+The report correctly distinguishes `own_reach_probability: 1.0` at the IP nodes
+from OOP's check/bet probability. It is not an unconditional node-reach estimate;
+the endpoint currently does not expose that probability. Keep that limitation
+explicit when discussing rare branches.
+
+The betting range `AsQs,QsJs,Js8s,99:0.5,55:0.25,QJs:0.5` overlaps: the later
+`QJs:0.5` replaces QsJs's earlier weight with 0.5. With each of the five bluffs
+weighted 0.5, KdQd has equity 30.3030%, weighted opponent combos 8.25 and call EV
+−£24.2424. Placing `QsJs` after `QJs:0.5` changes its weight to 1, giving equity
+28.5714%, weighted combos 8.75 and EV −£48.5714. Both retain 16 distinct combos
+after blockers. Added a regression for this diagnostic; **27 tests**, Ruff and
+compileall passed. Last-token weighting remains documented behavior.
+
+The report also identified an input-format failure: `Ks9s5hTdTs` was rejected;
+`Ks,9s,5h,Td,Ts` succeeded. Use the latter in conversational tool arguments.
+
+For a repeat through the connected hosted plugin, submit:
+
+> Review a past heads-up river: BTN AsJh on Ks,9s,5h,Td,Ts, £505 before river betting,
 > £450 remaining, OOP checks. Use plausible full weighted arrival ranges including
 > traps, bluffcatchers and misses, state assumptions, and call solve_river with
 > both one-size (£450) and multi-size (£166.65, £303, £450) trees. Report actual

@@ -39,6 +39,23 @@ class RegressionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             solver.solve(100, oop_hand='AsAd')
 
+    def test_overlapping_range_order_in_acceptance_bluffcatch(self):
+        # QJs includes QsJs: later tokens replace that combo's earlier weight.
+        # KdQd also removes QdJd. Five half-weight bluffs contribute 2.5 wins.
+        common = 'AsQs,Js8s,99:0.5,55:0.25'
+        bluffs = 'AsJh:0.5,AsQh:0.5,AsQc:0.5,AhQh:0.5,AhJh:0.5'
+        results = []
+        for overlap in ('QsJs,QJs:0.5', 'QJs:0.5,QsJs'):
+            result = evaluate_river_call('Ks,9s,5h,Td,Ts', 'KdQd',
+                                        f'{common},{overlap},{bluffs}', 505, 450)
+            self.assertEqual(result['opponent_combos_after_blockers'], 16)
+            self.assertEqual(result['best_action_given_range'], 'fold')
+            results.append(result)
+        self.assertEqual([r['weighted_opponent_combos_after_blockers'] for r in results], [8.25, 8.75])
+        self.assertEqual([r['ev_call_minus_fold'] for r in results], [-24.2424, -48.5714])
+        for result, total in zip(results, (8.25, 8.75)):
+            self.assertAlmostEqual(result['hero_equity_vs_assumed_betting_range'], 2.5/total, places=6)
+
     def test_polarized_analytical_equilibrium_for_two_sizes(self):
         # IP equally weighted nuts/air vs one bluffcatcher, with no card collisions.
         # Indifference gives IP air bet B/(P+B), OOP call P/(P+B).

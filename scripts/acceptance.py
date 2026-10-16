@@ -22,7 +22,7 @@ OOP = {
 
 
 def study():
-    results = {'status': 'local computation; hosted ChatGPT acceptance pending',
+    results = {'status': 'local study; separate user-reported ChatGPT acceptance in docs/validation.md',
                'assumptions': ('Illustrative weighted river arrival ranges. Prior streets were not supplied. '
                                'OOP check remains an endogenous action; inspect IP after that check. '
                                'No raises or rake; these are not full GTO solutions.'), 'solves': [], 'calls': []}

@@ -1,0 +1,497 @@
+{
+  "provenance": "User-supplied hosted ChatGPT report; independent local reproduction",
+  "hosted_raw_payloads_observed_by_this_script": false,
+  "solves": [
+    {
+      "scenario": "rich_one",
+      "inputs": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "oop_range": "QJo:0.25,QhJh:0.55,QcJc:0.55,QdJd:0.55,ATs:0.65,T8s:0.5,QTs:0.55,JTs:0.55,KQs:0.7,KQo:0.6,KJs:0.5,AKo:0.25,98s:0.4,A9s:0.45,88:0.4,77:0.25,AJo:0.25,AQo:0.25,87s:0.5,76s:0.5,99:0.9,55:0.65,TT:0.9,KTs:0.75,T9s:0.65,AsQs:0.75,QsJs:0.8,AsJs:0.7,Js8s:0.5",
+        "ip_range": "99:0.8,55:0.6,TT:0.8,KTs:0.7,T9s:0.65,AsQs:0.8,QsJs:0.85,AsJs:0.7,Js8s:0.4,QJo:0.5,QhJh:0.65,QcJc:0.65,QdJd:0.65,ATs:0.85,T8s:0.7,QTs:0.7,JTs:0.7,KQs:0.8,KQo:0.7,KJs:0.5,AKo:0.6,98s:0.4,A9s:0.45,88:0.5,77:0.3,AJo:0.8,AQo:0.7,87s:0.6,76s:0.55,65s:0.4,A7s:0.4",
+        "pot": 505,
+        "stack": 450,
+        "bet_sizes": [
+          0.8910891089108911
+        ],
+        "iterations": 1200,
+        "ip_hand": "AsJh"
+      },
+      "result": {
+        "model": "two-player zero-sum, fixed river ranges, no raises, no rake",
+        "board": [
+          "Ks",
+          "9s",
+          "5h",
+          "Td",
+          "Ts"
+        ],
+        "pot": 505.0,
+        "stack": 450.0,
+        "bet_sizes": [
+          0.8910891089108911
+        ],
+        "iterations": 1200,
+        "range_combos": {
+          "oop": 112,
+          "ip": 119
+        },
+        "effective_bet_amounts": [
+          450.0
+        ],
+        "computation": "Alternating CFR+ with nonnegative regret clipping and linear strategy averaging",
+        "root_ev_oop_relative_to_split_pot": 36.3053,
+        "nash_conv_chips": 0.0057,
+        "nash_conv_pct_pot": 0.001,
+        "interpretation": "EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.",
+        "hands": {
+          "ip": {
+            "combo": [
+              "Jh",
+              "As"
+            ],
+            "node_strategy": {
+              "ip_after_oop_check": {
+                "frequency": {
+                  "check": 0.0003,
+                  "bet_0.891089pot": 0.9997
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -245.7149,
+                  "bet_0.891089pot": -244.7502
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.891089": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -252.5,
+                  "call": -337.7471
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "scenario": "rich_multi",
+      "inputs": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "oop_range": "QJo:0.25,QhJh:0.55,QcJc:0.55,QdJd:0.55,ATs:0.65,T8s:0.5,QTs:0.55,JTs:0.55,KQs:0.7,KQo:0.6,KJs:0.5,AKo:0.25,98s:0.4,A9s:0.45,88:0.4,77:0.25,AJo:0.25,AQo:0.25,87s:0.5,76s:0.5,99:0.9,55:0.65,TT:0.9,KTs:0.75,T9s:0.65,AsQs:0.75,QsJs:0.8,AsJs:0.7,Js8s:0.5",
+        "ip_range": "99:0.8,55:0.6,TT:0.8,KTs:0.7,T9s:0.65,AsQs:0.8,QsJs:0.85,AsJs:0.7,Js8s:0.4,QJo:0.5,QhJh:0.65,QcJc:0.65,QdJd:0.65,ATs:0.85,T8s:0.7,QTs:0.7,JTs:0.7,KQs:0.8,KQo:0.7,KJs:0.5,AKo:0.6,98s:0.4,A9s:0.45,88:0.5,77:0.3,AJo:0.8,AQo:0.7,87s:0.6,76s:0.55,65s:0.4,A7s:0.4",
+        "pot": 505,
+        "stack": 450,
+        "bet_sizes": [
+          0.33,
+          0.6,
+          0.8910891089108911
+        ],
+        "iterations": 1200,
+        "ip_hand": "AsJh"
+      },
+      "result": {
+        "model": "two-player zero-sum, fixed river ranges, no raises, no rake",
+        "board": [
+          "Ks",
+          "9s",
+          "5h",
+          "Td",
+          "Ts"
+        ],
+        "pot": 505.0,
+        "stack": 450.0,
+        "bet_sizes": [
+          0.33,
+          0.6,
+          0.8910891089108911
+        ],
+        "iterations": 1200,
+        "range_combos": {
+          "oop": 112,
+          "ip": 119
+        },
+        "effective_bet_amounts": [
+          166.65,
+          303.0,
+          450.0
+        ],
+        "computation": "Alternating CFR+ with nonnegative regret clipping and linear strategy averaging",
+        "root_ev_oop_relative_to_split_pot": 46.4037,
+        "nash_conv_chips": 0.0126,
+        "nash_conv_pct_pot": 0.002,
+        "interpretation": "EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.",
+        "hands": {
+          "ip": {
+            "combo": [
+              "Jh",
+              "As"
+            ],
+            "node_strategy": {
+              "ip_after_oop_check": {
+                "frequency": {
+                  "check": 0.0002,
+                  "bet_0.33pot": 0.8957,
+                  "bet_0.6pot": 0.0479,
+                  "bet_0.891089pot": 0.0562
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -252.4987,
+                  "bet_0.33pot": -233.0067,
+                  "bet_0.6pot": -233.0874,
+                  "bet_0.891089pot": -233.0757
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.33": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -252.5,
+                  "call": -354.8609
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.6": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -252.5,
+                  "call": -554.6244
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.891089": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -252.5,
+                  "call": -429.7307
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "scenario": "light_one",
+      "inputs": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "oop_range": "QJo:0.25,QhJh:0.55,QcJc:0.55,QdJd:0.55,ATs:0.65,T8s:0.5,QTs:0.55,JTs:0.55,KQs:0.7,KQo:0.6,KJs:0.5,AKo:0.25,98s:0.4,A9s:0.45,88:0.4,77:0.25,AJo:0.25,AQo:0.25,87s:0.5,76s:0.5,99:0.25,55:0.2,TT:0.25,KTs:0.25,T9s:0.25,AsQs:0.25,QsJs:0.25,AsJs:0.25,Js8s:0.2",
+        "ip_range": "99:0.8,55:0.6,TT:0.8,KTs:0.7,T9s:0.65,AsQs:0.8,QsJs:0.85,AsJs:0.7,Js8s:0.4,QJo:0.5,QhJh:0.65,QcJc:0.65,QdJd:0.65,ATs:0.85,T8s:0.7,QTs:0.7,JTs:0.7,KQs:0.8,KQo:0.7,KJs:0.5,AKo:0.6,98s:0.4,A9s:0.45,88:0.5,77:0.3,AJo:0.8,AQo:0.7,87s:0.6,76s:0.55,65s:0.4,A7s:0.4",
+        "pot": 505,
+        "stack": 450,
+        "bet_sizes": [
+          0.8910891089108911
+        ],
+        "iterations": 1200,
+        "ip_hand": "AsJh"
+      },
+      "result": {
+        "model": "two-player zero-sum, fixed river ranges, no raises, no rake",
+        "board": [
+          "Ks",
+          "9s",
+          "5h",
+          "Td",
+          "Ts"
+        ],
+        "pot": 505.0,
+        "stack": 450.0,
+        "bet_sizes": [
+          0.8910891089108911
+        ],
+        "iterations": 1200,
+        "range_combos": {
+          "oop": 112,
+          "ip": 119
+        },
+        "effective_bet_amounts": [
+          450.0
+        ],
+        "computation": "Alternating CFR+ with nonnegative regret clipping and linear strategy averaging",
+        "root_ev_oop_relative_to_split_pot": -30.6844,
+        "nash_conv_chips": 0.0049,
+        "nash_conv_pct_pot": 0.001,
+        "interpretation": "EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.",
+        "hands": {
+          "ip": {
+            "combo": [
+              "Jh",
+              "As"
+            ],
+            "node_strategy": {
+              "ip_after_oop_check": {
+                "frequency": {
+                  "check": 0.0002,
+                  "bet_0.891089pot": 0.9998
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -215.4237,
+                  "bet_0.891089pot": -210.882
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.891089": {
+                "frequency": {
+                  "fold": 0.9998,
+                  "call": 0.0002
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -252.5,
+                  "call": -284.9457
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "scenario": "light_multi",
+      "inputs": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "oop_range": "QJo:0.25,QhJh:0.55,QcJc:0.55,QdJd:0.55,ATs:0.65,T8s:0.5,QTs:0.55,JTs:0.55,KQs:0.7,KQo:0.6,KJs:0.5,AKo:0.25,98s:0.4,A9s:0.45,88:0.4,77:0.25,AJo:0.25,AQo:0.25,87s:0.5,76s:0.5,99:0.25,55:0.2,TT:0.25,KTs:0.25,T9s:0.25,AsQs:0.25,QsJs:0.25,AsJs:0.25,Js8s:0.2",
+        "ip_range": "99:0.8,55:0.6,TT:0.8,KTs:0.7,T9s:0.65,AsQs:0.8,QsJs:0.85,AsJs:0.7,Js8s:0.4,QJo:0.5,QhJh:0.65,QcJc:0.65,QdJd:0.65,ATs:0.85,T8s:0.7,QTs:0.7,JTs:0.7,KQs:0.8,KQo:0.7,KJs:0.5,AKo:0.6,98s:0.4,A9s:0.45,88:0.5,77:0.3,AJo:0.8,AQo:0.7,87s:0.6,76s:0.55,65s:0.4,A7s:0.4",
+        "pot": 505,
+        "stack": 450,
+        "bet_sizes": [
+          0.33,
+          0.6,
+          0.8910891089108911
+        ],
+        "iterations": 1200,
+        "ip_hand": "AsJh"
+      },
+      "result": {
+        "model": "two-player zero-sum, fixed river ranges, no raises, no rake",
+        "board": [
+          "Ks",
+          "9s",
+          "5h",
+          "Td",
+          "Ts"
+        ],
+        "pot": 505.0,
+        "stack": 450.0,
+        "bet_sizes": [
+          0.33,
+          0.6,
+          0.8910891089108911
+        ],
+        "iterations": 1200,
+        "range_combos": {
+          "oop": 112,
+          "ip": 119
+        },
+        "effective_bet_amounts": [
+          166.65,
+          303.0,
+          450.0
+        ],
+        "computation": "Alternating CFR+ with nonnegative regret clipping and linear strategy averaging",
+        "root_ev_oop_relative_to_split_pot": -14.4852,
+        "nash_conv_chips": 0.0112,
+        "nash_conv_pct_pot": 0.002,
+        "interpretation": "EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.",
+        "hands": {
+          "ip": {
+            "combo": [
+              "Jh",
+              "As"
+            ],
+            "node_strategy": {
+              "ip_after_oop_check": {
+                "frequency": {
+                  "check": 0.0001,
+                  "bet_0.33pot": 0.3039,
+                  "bet_0.6pot": 0.1928,
+                  "bet_0.891089pot": 0.5032
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -252.458,
+                  "bet_0.33pot": -226.9145,
+                  "bet_0.6pot": -226.9299,
+                  "bet_0.891089pot": -226.8926
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.33": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -252.5,
+                  "call": -319.5973
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.6": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -252.5,
+                  "call": -335.2454
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.891089": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -252.5,
+                  "call": -380.5523
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "calls": [
+    {
+      "inputs": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "hero_hand": "KdQd",
+        "pot": 505,
+        "bet": 450,
+        "villain_betting_range": "AsQs,QsJs,Js8s,99:0.5,55:0.25,QJs:0.5,AsJh:0.1,AsQh:0.1,AsQc:0.1,AhQh:0.1,AhJh:0.1"
+      },
+      "result": {
+        "board": [
+          "Ks",
+          "9s",
+          "5h",
+          "Td",
+          "Ts"
+        ],
+        "hero_hand": [
+          "Kd",
+          "Qd"
+        ],
+        "pot_before_bet": 505,
+        "villain_bet": 450,
+        "caller_pot_odds": 0.320285,
+        "hero_equity_vs_assumed_betting_range": 0.08,
+        "ev_call_minus_fold": -337.6,
+        "best_action_given_range": "fold",
+        "opponent_combos_after_blockers": 16,
+        "weighted_opponent_combos_after_blockers": 6.25,
+        "assumption": "Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium."
+      }
+    },
+    {
+      "inputs": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "hero_hand": "KdQd",
+        "pot": 505,
+        "bet": 450,
+        "villain_betting_range": "AsQs,QsJs,Js8s,99:0.5,55:0.25,QJs:0.5,AsJh:0.5,AsQh:0.5,AsQc:0.5,AhQh:0.5,AhJh:0.5"
+      },
+      "result": {
+        "board": [
+          "Ks",
+          "9s",
+          "5h",
+          "Td",
+          "Ts"
+        ],
+        "hero_hand": [
+          "Kd",
+          "Qd"
+        ],
+        "pot_before_bet": 505,
+        "villain_bet": 450,
+        "caller_pot_odds": 0.320285,
+        "hero_equity_vs_assumed_betting_range": 0.30303,
+        "ev_call_minus_fold": -24.2424,
+        "best_action_given_range": "fold",
+        "opponent_combos_after_blockers": 16,
+        "weighted_opponent_combos_after_blockers": 8.25,
+        "assumption": "Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium."
+      }
+    },
+    {
+      "inputs": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "hero_hand": "KdQd",
+        "pot": 505,
+        "bet": 450,
+        "villain_betting_range": "AsQs,QsJs,Js8s,99:0.5,55:0.25,QJs:0.5,AsJh:1.0,AsQh:1.0,AsQc:1.0,AhQh:1.0,AhJh:1.0"
+      },
+      "result": {
+        "board": [
+          "Ks",
+          "9s",
+          "5h",
+          "Td",
+          "Ts"
+        ],
+        "hero_hand": [
+          "Kd",
+          "Qd"
+        ],
+        "pot_before_bet": 505,
+        "villain_bet": 450,
+        "caller_pot_odds": 0.320285,
+        "hero_equity_vs_assumed_betting_range": 0.465116,
+        "ev_call_minus_fold": 203.4884,
+        "best_action_given_range": "call",
+        "opponent_combos_after_blockers": 16,
+        "weighted_opponent_combos_after_blockers": 10.75,
+        "assumption": "Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium."
+      }
+    }
+  ],
+  "discrepancies": [],
+  "overlap_diagnostic": {
+    "inputs": {
+      "board": "Ks,9s,5h,Td,Ts",
+      "hero_hand": "KdQd",
+      "pot": 505,
+      "bet": 450,
+      "villain_betting_range": "AsQs,Js8s,99:0.5,55:0.25,QJs:0.5,QsJs,AsJh:0.5,AsQh:0.5,AsQc:0.5,AhQh:0.5,AhJh:0.5"
+    },
+    "result": {
+      "board": [
+        "Ks",
+        "9s",
+        "5h",
+        "Td",
+        "Ts"
+      ],
+      "hero_hand": [
+        "Kd",
+        "Qd"
+      ],
+      "pot_before_bet": 505,
+      "villain_bet": 450,
+      "caller_pot_odds": 0.320285,
+      "hero_equity_vs_assumed_betting_range": 0.285714,
+      "ev_call_minus_fold": -48.5714,
+      "best_action_given_range": "fold",
+      "opponent_combos_after_blockers": 16,
+      "weighted_opponent_combos_after_blockers": 8.75,
+      "assumption": "Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium."
+    }
+  }
+}
