@@ -81,6 +81,7 @@ stored by this service. `.env.example` lists configuration; never commit real
 credentials or tokens.
 
 Follow the [deployment, Auth0 and private-plugin setup guide](docs/hosting.md).
+For friends-only beta onboarding and later distribution phases, see the [distribution flow](docs/distribution-flow.md). This remains a proposed flow until a second account successfully connects and invokes both tools.
 The trip-planning-engine architecture was reviewed read-only for reusable
 deployment/authentication patterns; poker-solver has no runtime dependency on it.
 
