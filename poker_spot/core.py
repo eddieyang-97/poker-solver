@@ -6,6 +6,7 @@ This is a research/study tool, not an unrestricted NLHE equilibrium solver.
 from __future__ import annotations
 
 import itertools
+import math
 import re
 from dataclasses import dataclass, field
 from functools import lru_cache
@@ -158,10 +159,11 @@ class RiverSolver:
     def __init__(self,board: str,oop_range: str,ip_range: str,pot:float,stack:float,
                  bet_sizes:list[float]|None=None):
         self.board=cards(board,5)
-        if pot<=0 or stack<=0:raise ValueError('Pot and stack must be positive')
+        if any(isinstance(v, bool) or not isinstance(v, (int,float)) or not math.isfinite(v) or v<=0 for v in (pot,stack)):
+            raise ValueError('Pot and stack must be finite positive numbers')
         self.pot=float(pot);self.stack=float(stack)
         self.sizes=bet_sizes if bet_sizes is not None else [0.5,1.0]
-        if not 1<=len(self.sizes)<=3 or any(not 0 < b <= 3 for b in self.sizes) or len(set(self.sizes))!=len(self.sizes):
+        if not 1<=len(self.sizes)<=3 or any(isinstance(b,bool) or not isinstance(b,(int,float)) or not math.isfinite(b) or not 0 < b <= 3 for b in self.sizes) or len(set(self.sizes))!=len(self.sizes):
             raise ValueError('Provide 1-3 distinct bet sizes as pot fractions in (0,3]')
         if any(b*self.pot>=self.stack for b in self.sizes) and len({min(self.stack,b*self.pot) for b in self.sizes})!=len(self.sizes):
             raise ValueError('Multiple bet sizes collapse to identical all-ins')
@@ -201,28 +203,31 @@ class RiverSolver:
             return half*(self.valid@r1),-half*(self.valid.T@r0)
         raise AssertionError(kind)
 
-    def _recurse(self,node: Node | tuple[str,float],r0:np.ndarray,r1:np.ndarray,iteration:int):
+    def _recurse(self,node: Node | tuple[str,float],r0:np.ndarray,r1:np.ndarray,iteration:int,update_player:int):
         if not isinstance(node,Node):return self._terminal(node,r0,r1)
         own_reach=r0 if node.player==0 else r1
         s=node.strat
-        node.avg_sum+=iteration*own_reach[:,None]*s
+        if node.player==update_player:
+            node.avg_sum+=iteration*own_reach[:,None]*s
         child=[]
         for a,c in enumerate(node.children):
             if node.player==0:
-                child.append(self._recurse(c,r0*s[:,a],r1,iteration))
+                child.append(self._recurse(c,r0*s[:,a],r1,iteration,update_player))
             else:
-                child.append(self._recurse(c,r0,r1*s[:,a],iteration))
+                child.append(self._recurse(c,r0,r1*s[:,a],iteration,update_player))
         if node.player==0:
             # actor counterfactual: own action reach must be omitted; child values are with own reach multiplied
             # Recompute each actor action with a unit reach at the actor node by eliminating the local action weight.
             # Since all terminal cfvs0 omit own reach, those child cfvs0 are already action values.
             vals=np.stack([v[0] for v in child],axis=1)
             mixed=(vals*s).sum(axis=1)
-            node.regret=np.maximum(0,node.regret+vals-mixed[:,None])
+            if update_player==0:
+                node.regret=np.maximum(0,node.regret+vals-mixed[:,None])
             return mixed, np.sum([v[1] for v in child],axis=0)
         vals=np.stack([v[1] for v in child],axis=1)
         mixed=(vals*s).sum(axis=1)
-        node.regret=np.maximum(0,node.regret+vals-mixed[:,None])
+        if update_player==1:
+            node.regret=np.maximum(0,node.regret+vals-mixed[:,None])
         return np.sum([v[0] for v in child],axis=0),mixed
 
     def _eval(self,node,r0,r1,best_response:int|None=None,collect:dict|None=None):
@@ -250,10 +255,20 @@ class RiverSolver:
         return np.sum([v[0] for v in results],axis=0),res1
 
     def solve(self,iterations:int=500,oop_hand:str|None=None,ip_hand:str|None=None):
-        if not 20<=iterations<=10000:raise ValueError('Iterations must be between 20 and 10000')
+        if type(iterations) is not int or not 20<=iterations<=10000:raise ValueError('Iterations must be an integer between 20 and 10000')
+        for label,text,hands,opponent_weights,valid in (
+            ('oop',oop_hand,self.h0,self.w1,self.valid),
+            ('ip',ip_hand,self.h1,self.w0,self.valid.T),
+        ):
+            if text is not None:
+                key=combo_key(*cards(text,2))
+                if key not in hands:raise ValueError(f'{label} hand {text} not in supplied starting range')
+                if valid[hands.index(key)]@opponent_weights<=0:
+                    raise ValueError(f'{label} queried hand has no compatible opponent combos')
         for t in range(1,iterations+1):
-            for n in self.nodes.values():n.update_strategy()
-            self._recurse(self.root,self.w0,self.w1,t)
+            for player in (0,1):
+                for n in self.nodes.values():n.update_strategy()
+                self._recurse(self.root,self.w0,self.w1,t,player)
         node_values={}
         values=self._eval(self.root,self.w0,self.w1,collect=node_values)
         br0=self._eval(self.root,self.w0,self.w1,0)[0]
@@ -263,6 +278,8 @@ class RiverSolver:
         out={'model':'two-player zero-sum, fixed river ranges, no raises, no rake',
              'board':list(self.board),'pot':self.pot,'stack':self.stack,'bet_sizes':self.sizes,
              'iterations':iterations,'range_combos':{'oop':len(self.h0),'ip':len(self.h1)},
+             'effective_bet_amounts':[min(self.stack,b*self.pot) for b in self.sizes],
+             'computation':'Alternating CFR+ with nonnegative regret clipping and linear strategy averaging',
              'root_ev_oop_relative_to_split_pot':round(game_ev,4),
              'nash_conv_chips':round(max(0,gap),4),
              'nash_conv_pct_pot':round(max(0,gap)/self.pot*100,3),
@@ -302,7 +319,8 @@ def evaluate_river_call(board:str,hero_hand:str,villain_betting_range:str,
     """
     b=cards(board,5);h=cards(hero_hand,2)
     if set(h)&set(b):raise ValueError('Hero shares a card with the board')
-    if pot<=0 or bet<=0:raise ValueError('Pot and bet must be positive')
+    if any(isinstance(v,bool) or not isinstance(v,(int,float)) or not math.isfinite(v) or v<=0 for v in (pot,bet)):
+        raise ValueError('Pot and bet must be finite positive numbers')
     hands=expand_range(villain_betting_range,b)
     compatible={c:w for c,w in hands.items() if not (set(c)&set(h))}
     if not compatible:raise ValueError('No opponent combos remain after blocking with hero hand')
