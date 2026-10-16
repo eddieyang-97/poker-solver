@@ -1,0 +1,11 @@
+{
+  "board": "Ks,9s,5h,Td,Ts",
+  "pot": 505,
+  "stack": 450,
+  "oop_range": "KK:0.4,99,55,KTs,K9s,KJs,KQs,AKo,AKs,AA,QQ,QJs,AQs,AJs,A5s,A4s",
+  "ip_range": "99:0.4,55:0.4,KTs,T9s,ATs,JTs,QJs,87s,76s,AsJh,AsQd,AsJd,Js8s,Qs8s,AhJh,AdJd,AcJc",
+  "bet_sizes": [0.5,0.89],
+  "oop_hand": "KdQd",
+  "ip_hand": "AsJh",
+  "iterations": 500
+}

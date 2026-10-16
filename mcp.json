@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "poker-spot-study": {
+      "type": "stdio",
+      "command": "python",
+      "args": ["-m", "poker_spot.mcp_server"],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "poker-spot-study",
+  "version": "0.1.0",
+  "description": "Study-only decision-focused heads-up NLHE river solver, with simplified CFR+ game trees and exact bluff-catch EV against supplied ranges.",
+  "license": "MIT",
+  "keywords": ["poker", "holdem", "solver", "game-theory", "hand-review"],
+  "extensions": {
+    "com.openai": {
+      "requires_local_executor": true
+    }
+  }
+}
