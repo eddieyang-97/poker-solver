@@ -133,7 +133,7 @@ Deployed implementation `a4ba8e750582899642e468ba6c55d82bcc787d2f` passed
 The initial implementation also passed
 [CI run 38914568790](https://github.com/eddieyang-97/poker-solver/actions/runs/38914568790).
 
-**Still pending:** ChatGPT-specific OAuth/tool execution and the conversational
+**Still pending:** observable ChatGPT tool results and the conversational
 £505 acceptance, refresh/revocation/reconnect checks, and replacing Auth0's Google
 development keys for production SSO/federated logout. The SDK diagnostic does not
 prove those behaviors. The user approved the diagnostic client's solver-only
@@ -152,6 +152,40 @@ offline scope was requested for the ChatGPT connection. The verified app binding
 was added to the original workflow as private 0.2.1, release
 `pluginrel_6ad2397100c88191b12f471d1fc68503`, and read back. Source overlay:
 `plugins/hosted/`. See [hosting.md](hosting.md).
+
+### Actual ChatGPT attempt and current blocker
+
+Submitted the complete £505 request through the explicitly selected **Poker Solver
+Hosted** connection. ChatGPT announced four solves (two trees × two range
+hypotheses) and three separate call evaluations. The web client then reported
+“Connection interrupted. Waiting for the complete answer”. A smaller explicit
+call with board `Ks,9s,5h,Td,Ts`, hero `KdQd`, betting range `AsJs,AsJh:0.5`,
+pot/bet 100 completed with the activity label “Evaluated River Bluff-Catch Call EV”.
+The final reply displayed “This response couldn’t load”. Reloading and requesting
+the previous raw result also failed to display it. The app's read-thread tool
+reported completed turns but returned unresolved content references rather than
+the final text. No returned JSON, frequencies or EVs could be inspected there.
+
+Render logs independently showed authenticated `/mcp` HTTP 200 requests during
+the ChatGPT connection and follow-up (16 October, approximately 15:48 and 15:53
+Europe/London). This establishes traffic, **not successful calculations or correct
+results**; HTTP 200 can contain a structured tool error. The separate official-SDK
+diagnostic remains the verified hosted computation evidence. Do not relabel the
+local £505 study as a completed conversational run.
+
+To close this gate, retry the prompt below in a fresh ChatGPT chat with **Poker
+Solver Hosted** explicitly selected once reply rendering works, inspect both
+tools' returned payloads, record the full range assumptions and compare the
+results. No new paid plan, broader scope or solver credential is required for
+that retry. Access tokens currently last one hour; refresh is not configured or
+verified, so reauthorization may be required. Production Google login keys and
+refresh/revocation/reconnect tests are separate follow-up work. The diagnostic
+client grant remains available for retesting; it has not been revoked.
+
+The connection/configuration commit `fab6fc0c61f29728e791e0915f14cc013315a38e`
+also passed [GitHub Actions](https://github.com/eddieyang-97/poker-solver/actions/runs/38919280695). All 26 local tests, Ruff and compileall passed again
+before that commit; the hosted Python implementation remains `a4ba8e7` because
+the later changes affect documentation and plugin packaging only.
 
 After connecting the hosted plugin, submit:
 
