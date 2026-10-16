@@ -87,6 +87,7 @@ async def main():
                 tokens.access_token)
             claims = jwt.decode(tokens.access_token, key.key, algorithms=['RS256', 'ES256'],
                                 issuer=issuer, audience=resource,
+                                leeway=30,
                                 options={'require': ['sub', 'exp', 'iat']})
             if 'poker:solve' not in claims.get('scope', '').split():
                 raise ValueError('Poker permission missing from token')

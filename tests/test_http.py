@@ -166,6 +166,7 @@ class OAuthTests(unittest.TestCase):
 
     def test_signed_token_boundaries(self):
         self.assertEqual(self.send(self.token()).status_code, 200)
+        self.assertEqual(self.send(self.token(iat=int(time.time())+2)).status_code, 200)
         for change in ({'aud': 'https://trip.example/mcp'}, {'iss': 'https://evil.example'},
                        {'sub': 'other-user'}, {'scope': 'travel:read'}, {'exp': 1},
                        {'iat': int(time.time())+600}):

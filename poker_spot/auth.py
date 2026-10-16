@@ -100,6 +100,7 @@ class Verifier:
                 return False
             claims = jwt.decode(token, key.key, algorithms=[key.algorithm_name],
                                 issuer=self.settings.issuer, audience=self.settings.resource,
+                                leeway=30,
                                 options={'require': ['exp', 'iat', 'sub', 'iss', 'aud']})
             scope = claims.get('scope', '')
             return (claims['sub'] in self.settings.subjects and isinstance(scope, str)

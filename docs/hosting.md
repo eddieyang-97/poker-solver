@@ -144,7 +144,9 @@ It does not request refresh tokens. Revoke its test grant after acceptance.
 
 JWT signature keys are fetched only from the configured HTTPS JWKS URL, bounded
 to 64 KiB and a five-second timeout, cached for five minutes with rotation retry
-throttling. RS256/ES256 only; required issuer/audience/subject/iat/exp and scope.
+throttling. RS256/ES256 only; required issuer/audience/subject/iat/exp and scope,
+with a bounded 30-second clock-skew allowance. The first real diagnostic token
+exposed a roughly two-second difference between the Windows and provider clocks.
 There is no server-side token revocation database: provider logout does not
 invalidate an already issued token before expiry. Use short lifetimes, revoke
 refresh grants in Auth0, and remove an allowlisted subject for emergency denial.
