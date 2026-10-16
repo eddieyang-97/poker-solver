@@ -82,30 +82,65 @@ The OBO/downstream API portions of Auth0's example are not needed here.
 
 ## Update the existing private plugin
 
-The existing personal plugin `poker-spot-study` is editable. Inspected release:
-`pluginrel_6ad187c88ed48191a1c023d4863f3cce`, version 0.1.0. It uses local stdio.
+The existing private personal plugin `poker-spot-study` was updated in place to
+0.2.1, release `pluginrel_6ad2397100c88191b12f471d1fc68503`, on 16 October 2026.
+[Open the plugin](https://chatgpt.com/plugins/plugins_6ad187c711c081919843668ed33c8a8d).
+Its hosted source was read back after publication; identity and private audience
+were preserved. Repository-root manifests remain the local development package.
+The published overlay is tracked in `plugins/hosted/`; omitted legacy account
+source files are preserved by Plugin Creator updates.
 Its root manifest includes author/developer metadata added during publication;
 use the **current account source**, not the older repository manifest, for updates.
 
-After hosted auth works, change that source's `mcp.json` server to:
+The published `mcp.json` server uses:
 
 ```json
 {
   "type": "streamable-http",
-  "url": "https://YOUR-SERVICE.onrender.com/mcp",
+  "url": "https://poker-solver-vie0.onrender.com/mcp",
   "extensions": {
     "com.openai": {
       "auth": {
         "type": "oauth",
-        "client": {"mode": "cimd"},
-        "baseScopes": ["poker:solve"]
+        "client": {
+          "mode": "provided",
+          "clientId": "tpc_uZ1nakgLRZZ4t3ocxR6sUp",
+          "tokenEndpointAuthMethod": "none"
+        },
+        "baseScopes": ["poker:solve"],
+        "resource": "https://poker-solver-vie0.onrender.com/mcp"
       }
     }
   }
 }
 ```
 
-Bump root and existing compatibility manifest to 0.2.0, set local-executor
+The dedicated Auth0 tenant is `dev-p1mh4uh1le8zh2am.us.auth0.com`. The registered
+third-party Native public client is **Poker Solver ChatGPT**, with exact callback
+`https://chatgpt.com/connector_platform_oauth_redirect` verified from ChatGPT's
+public client metadata. Only user-delegated `poker:solve` is granted. Dynamic
+registration remains disabled. The owner approved promoting the Google basic
+profile/email login connection to domain level for third-party sign-in.
+Auth0 development Google keys remain a pilot limitation; use owner-managed
+Google credentials before claiming production SSO/federated-logout readiness.
+
+Uploading remote MCP configuration made it visible on the plugin detail page,
+but did not expose callable tools in the first web chat. The working web path
+required Plugins → Add → Add custom MCP server, using the same endpoint and
+provided public client above. OAuth discovery correctly found the issuer,
+resource, callback and `poker:solve`; set base/default scope to `poker:solve`,
+token authentication to `none`, and OIDC off (no profile/email/offline scope is
+needed by the solver). Sign-in reached the named Auth0 client consent and
+returned to ChatGPT with a connected notification.
+
+The resulting private connection is
+[Poker Solver Hosted](https://chatgpt.com/plugins/plugin_asdk_app_6ad238f3cce881919faa6ecfcd1faee0).
+Its verified app ID `asdk_app_6ad238f3cce881919faa6ecfcd1faee0` is bound through
+`.app.json` in the existing `poker-spot-study` 0.2.1 package. This preserves the
+original workflow identity while providing ChatGPT's registered connection.
+The hosted app and package are private; the HTTP owner allowlist is still enforced.
+
+For future updates, bump root and existing compatibility manifests, set local-executor
 requirement false, and update the existing compatibility MCP config consistently.
 Preserve the plugin ID, name, author/developer identity, skills, assets, private
 audience and complete defaultPrompt values. Include the updated river-review

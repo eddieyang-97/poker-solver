@@ -1,0 +1,30 @@
+{
+  "interface": {
+    "developerName": "Eddie Yang",
+    "displayName": "poker-spot-study",
+    "shortDescription": "Study-only decision-focused heads-up NLHE river solver, with simplified CFR+ game trees and exact bluff-catch EV against supplied ranges.",
+    "longDescription": "Study-only decision-focused heads-up NLHE river solver, with simplified CFR+ game trees and exact bluff-catch EV against supplied ranges.",
+    "category": "Other",
+    "capabilities": [],
+    "defaultPrompt": null
+  },
+  "requires_local_executor": false,
+  "name": "poker-spot-study",
+  "version": "0.2.1",
+  "description": "Study-only decision-focused heads-up NLHE river solver, with simplified CFR+ game trees and exact bluff-catch EV against supplied ranges.",
+  "author": {
+    "name": "Eddie Yang",
+    "email": "eddieyang97@gmail.com"
+  },
+  "keywords": [
+    "poker",
+    "holdem",
+    "solver",
+    "game-theory",
+    "hand-review"
+  ],
+  "license": "MIT",
+  "skills": "./skills",
+  "mcpServers": "./.mcp.json",
+  "apps": "./.app.json"
+}

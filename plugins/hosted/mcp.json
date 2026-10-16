@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "poker-spot-study": {
+      "type": "streamable-http",
+      "url": "https://poker-solver-vie0.onrender.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "provided",
+              "clientId": "tpc_uZ1nakgLRZZ4t3ocxR6sUp",
+              "tokenEndpointAuthMethod": "none"
+            },
+            "baseScopes": [
+              "poker:solve"
+            ],
+            "resource": "https://poker-solver-vie0.onrender.com/mcp"
+          }
+        }
+      }
+    }
+  }
+}

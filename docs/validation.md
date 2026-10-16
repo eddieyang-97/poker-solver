@@ -18,7 +18,7 @@ Findings and corrections:
 | Amounts accepted NaN/Infinity; inconsistent queries detected after solve | Finite positive numeric inputs, strict MCP schema validation, early queried-combo compatibility checks |
 | Simultaneous clipped-regret updates converged slowly in polarized benchmark | Alternating CFR+ updates. The initial half-pot benchmark exceeded its 0.5%-pot NashConv test bound at 1500 iterations (0.545%); fixed algorithm passes the same test without relaxing its threshold |
 | Few correctness regressions and no independent best-response check | Known category/tiebreak/board-tie and weighted call-EV cases; analytical half-/full-pot equilibrium; exhaustive pure-strategy deviation check of reported NashConv |
-| Published private plugin still local | Verified editable personal plugin source/identity. Retain it until hosted OAuth works; transport conversion documented without creating a duplicate |
+| Published private plugin still local | Updated the same private identity to 0.2.0 with hosted OAuth transport after real SDK acceptance; read source back. ChatGPT runtime connection is a separate gate |
 
 The architecture reference was inspected read-only: `README.md`, `src/auth.ts`,
 `src/app.ts`, `render.yaml`, `docs/account-linking.md`. Reused the patterns of
@@ -137,10 +137,21 @@ The initial implementation also passed
 £505 acceptance, refresh/revocation/reconnect checks, and replacing Auth0's Google
 development keys for production SSO/federated logout. The SDK diagnostic does not
 prove those behaviors. The user approved the diagnostic client's solver-only
-grant; the separately prepared third-party ChatGPT client's scope and domain-level
-Google login promotion await approval. Arbitrary client registration is disabled.
-The existing private plugin is still local; its 0.2.0 hosted overlay is prepared
-but has not been published at this checkpoint. See [hosting.md](hosting.md).
+grant and subsequently approved the third-party ChatGPT client's solver-only scope
+and domain-level Google login promotion; both settings were saved and verified.
+Arbitrary client registration is disabled. The same private plugin was published
+as 0.2.0, release `pluginrel_6ad238301cb48191bdf3e8d25bcf6f8a`, and its hosted
+endpoint, public client ID, scope and preserved identity were read back.
+The first actual ChatGPT test found the skill but no callable solver tools;
+publication alone has not established a runtime connection. A dedicated custom
+MCP connection was therefore registered as private **Poker Solver Hosted**,
+`plugin_asdk_app_6ad238f3cce881919faa6ecfcd1faee0`. ChatGPT discovered the correct
+OAuth issuer/resource/scope and callback, completed solver-only Auth0 consent,
+and displayed a connected notification. OIDC was disabled; no profile/email or
+offline scope was requested for the ChatGPT connection. The verified app binding
+was added to the original workflow as private 0.2.1, release
+`pluginrel_6ad2397100c88191b12f471d1fc68503`, and read back. Source overlay:
+`plugins/hosted/`. See [hosting.md](hosting.md).
 
 After connecting the hosted plugin, submit:
 
