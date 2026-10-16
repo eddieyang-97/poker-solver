@@ -83,6 +83,9 @@ the delta table, and [benchmark-results.json](benchmark-results.json) for full
 diagnostics. GitHub Actions runs the reference offline and retains JSON/Markdown
 reports. This is a second-engine comparison on a small corpus, not exhaustive
 correctness, commercial-GTO equivalence or empirical live-population validation.
+The benchmark implementation at `0a3be662624e604cb816365a9b6a41cf9fc62ce8`
+passed [GitHub Actions](https://github.com/eddieyang-97/poker-solver/actions/runs/38962276458),
+including all 32 tests, static checks and the offline benchmark with sensitivity.
 
 ## £505 checked-river acceptance study
 
@@ -289,3 +292,45 @@ Save the server version, deployed commit, provider/client identity (no secrets),
 tool payloads/results, rejection cases and ChatGPT invocation evidence. Confirm
 GitHub Actions passes. Verify token refresh, access removal and reconnect before
 claiming reliable private hosted use. No unrestricted GTO claim is warranted.
+
+### Direct authenticated connector acceptance after reconnect
+
+Later on 16 October, invoked the actual **Poker Solver Hosted** connector tools
+directly in this chat and retained their returned `structuredContent`, rather
+than an assistant's summary. The connection initially requested authentication,
+then returned `UNAUTHORIZED` / requires reauthentication. The owner explicitly
+reconnected it in their signed-in ChatGPT account. Another auth prompt was
+accepted, followed by a network timeout at 20 seconds. A public `/health` request
+then took about 29 seconds; after this startup delay, authenticated calculations
+succeeded. No scope, allowlist or security check was weakened.
+
+Both diagnostic calls succeeded: the exact call test returned 1/3 equity and
+zero call EV; the analytical polarized solve returned 50.01% air betting, 49.93%
+calling and NashConv £0.0371. Then all four full £505 solves and all three
+bluff-weight call evaluations succeeded sequentially. **Every input and every
+returned result field matched `chatgpt-acceptance-reproduction.json` exactly**
+(JSON numeric equality, without a tolerance). This closes the raw-payload gap
+for those seven calculations. The earlier range-order diagnostic remains local
+reproduction/owner-reported evidence; it was not repeated through the connector.
+
+[hosted-acceptance-results.json](hosted-acceptance-results.json) records the actual
+seven requests/results plus two analytical diagnostics, endpoint, deployed
+Python commit, service version, issuer and app binding. It contains no bearer
+tokens, authorization codes, passwords or owner subject. The service remains
+version 0.2.0 at `a4ba8e750582899642e468ba6c55d82bcc787d2f`; subsequent benchmark,
+packaging and evidence commits require no production redeployment.
+
+The £505 frequencies and EV table above is now directly confirmed by hosted
+payloads. For KdQd facing £450 into £505, the three hypothetical betting ranges
+returned call EV −£337.60, −£24.2424 and +£203.4884, with required equity 32.0285%.
+Those are exact calculations against supplied betting weights, not an inferred
+opponent strategy. The full-range CFR solves remain no-raise/no-rake
+approximations, and closely tied action EVs do not justify precise live mixtures.
+
+**Remaining operational gates:** explicit reconnect recovery now has positive
+evidence, but automatic refresh is neither configured nor verified. Provider
+grant revocation/access removal and a second-account connection remain untested.
+Auth0 Google login still uses development keys. Free Render cold starts can
+exceed the connector's request timeout, so this is a working private pilot with
+availability limits. Do not describe it as reliable always-on hosting or a
+friends beta that has passed multi-account acceptance.

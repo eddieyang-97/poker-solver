@@ -194,3 +194,22 @@ per side, 22500 Cartesian pairs, three sizes. These are private-pilot controls,
 not distributed abuse protection. Do not increase Uvicorn worker count without
 redesigning admission limits. Public/wider distribution needs further operational
 review. Tool errors have `isError: true` and `structuredContent.error.code`.
+
+### Free-instance startup and reconnect
+
+The private owner connection has returned both tool payloads successfully after
+an explicit reconnect; see [the direct acceptance evidence](validation.md#direct-authenticated-connector-acceptance-after-reconnect).
+It also returned a 20-second network timeout while the Free Render instance was
+starting. A manual public `/health` request took about 29 seconds; authenticated
+tool calls worked afterwards. When a request times out after idle, allow the
+instance to start and retry once. A successful health response alone proves no
+tool execution or OAuth acceptance. No periodic keepalive or paid upgrade is
+configured.
+
+If the connector explicitly reports `requires reauthentication`, reconnect
+**Poker Solver Hosted** in the signed-in ChatGPT account and retry. Accepted
+authentication prompts alone did not establish recovery in this session; the
+owner's reconnect followed by successful tool results did. Automatic token
+refresh remains unconfigured/unverified, so the one-hour access-token lifetime
+can require another explicit sign-in. Keep that limitation visible until refresh,
+revocation and repeat reconnect tests are completed.

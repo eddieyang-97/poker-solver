@@ -140,7 +140,8 @@ The first recorded run changed OOP root EV from approximately £34.7803 to
 NashConv values were about £0.00123 and £0.00067. This is one example of modeling
 error from the omitted actions, not an estimate of typical real-world error.
 
-The initial ten-fixture run passed. Its largest independently trained root-EV
+The initial ten-fixture run and [GitHub Actions](https://github.com/eddieyang-97/poker-solver/actions/runs/38962276458)
+passed. Its largest independently trained root-EV
 difference was about **0.00111% of pot**; same-policy action EVs agreed to around
 `5.2e-15` of pot. Broader/larger ranges, additional fixtures, another reference
 implementation and commercial comparisons remain useful follow-ups. The current
