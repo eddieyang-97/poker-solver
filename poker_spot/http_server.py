@@ -1,133 +1,131 @@
-"""Stateless Streamable HTTP MCP adapter for the restricted river study engine.
-
-Uses JSON responses (not server-sent events). It supports the basic MCP methods
-implemented by mcp_server.dispatch. This is a small integration adapter rather
-than a full authorization / OAuth server.
-"""
-from __future__ import annotations
-
+"""Stateless official-SDK Streamable HTTP service; fail-closed OAuth authorization."""
+import copy
 import asyncio
-import hmac
-import os
+import json
+import logging
+from contextlib import asynccontextmanager
+from urllib.parse import urlsplit
 
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse, Response
+from mcp.server.lowlevel import Server
+from mcp.server.streamable_http_manager import StreamableHTTPSessionManager
+from mcp.server.transport_security import TransportSecuritySettings
+from mcp.types import CallToolResult, TextContent, Tool
+from starlette.applications import Starlette
+from starlette.middleware.cors import CORSMiddleware
+from starlette.requests import Request
+from starlette.responses import JSONResponse
+from starlette.routing import Route
 
-from .core import cards, expand_range
-from .mcp_server import dispatch
+from .auth import SCOPE, Settings, Verifier
+from .execution import CalculationError, Runner
+from .mcp_server import CALL_TOOL, TOOL
 
-PROTOCOL_VERSION = "2025-06-18"
+logger = logging.getLogger(__name__)
 MAX_BODY_BYTES = 16_384
-MAX_COMBOS_PER_SIDE = 180
-MAX_COMPATIBLE_PAIR_UPPER_BOUND = 22_500
-MAX_ITERATIONS = 1_500
-
-app = FastAPI(title="Poker Solver MCP", docs_url=None, redoc_url=None, openapi_url=None)
-_solve_slot = asyncio.Semaphore(1)
 
 
-def _error(code: int, message: str, ident=None, status: int = 200) -> JSONResponse:
-    return JSONResponse({"jsonrpc": "2.0", "id": ident,
-                         "error": {"code": code, "message": message}},
-                        status_code=status)
+def create_app(settings: Settings | None = None, runner: Runner | None = None):
+    settings = settings or Settings.from_env()
+    verifier = Verifier(settings)
+    runner = runner or Runner()
+    server = Server('poker-spot-study', version='0.2.0', instructions=(
+        'Post-session heads-up river study only. Supply both complete weighted arrival ranges. '
+        'Computed CFR results use a no-raise, no-rake restricted tree. Report NashConv and '
+        'assumptions; never claim full GTO. For a checked river, inspect ip_after_oop_check.'))
 
+    @server.list_tools()
+    async def list_tools():
+        definitions = copy.deepcopy([TOOL, CALL_TOOL])
+        definitions[0]['inputSchema']['properties']['iterations']['maximum'] = 1500
+        for definition in definitions:
+            definition['securitySchemes'] = [{'type': 'oauth2', 'scopes': [SCOPE]}]
+            definition['_meta'] = {'securitySchemes': definition['securitySchemes']}
+        return [Tool(**definition) for definition in definitions]
 
-def _authorized(request: Request) -> bool:
-    token = os.getenv("POKER_MCP_TOKEN", "")
-    if not token:
-        return False  # fail closed until deployment secret is configured
-    supplied = request.headers.get("authorization", "")
-    if not supplied.startswith("Bearer "):
-        return False
-    return hmac.compare_digest(supplied.removeprefix("Bearer "), token)
-
-
-def _allowed_origin(request: Request) -> bool:
-    # MCP clients often omit Origin. Browser-based callers that send it must be
-    # explicitly allowlisted, mitigating DNS rebinding/cross-origin exposure.
-    origin = request.headers.get("origin")
-    if not origin:
-        return True
-    allowed = {x.strip() for x in os.getenv("POKER_ALLOWED_ORIGINS", "").split(",") if x.strip()}
-    return origin in allowed
-
-
-def _validate_solver_request(message: dict) -> None:
-    if message.get("method") != "tools/call":
-        return
-    call = message.get("params") or {}
-    if call.get("name") != "solve_river":
-        return
-    args = call.get("arguments") or {}
-    iterations = args.get("iterations", 700)
-    if type(iterations) is not int or not 20 <= iterations <= MAX_ITERATIONS:
-        raise ValueError(f"iterations must be an integer in [20, {MAX_ITERATIONS}]")
-    board = cards(args["board"], 5)
-    n0 = len(expand_range(args["oop_range"], board))
-    n1 = len(expand_range(args["ip_range"], board))
-    if n0 > MAX_COMBOS_PER_SIDE or n1 > MAX_COMBOS_PER_SIDE or n0*n1 > MAX_COMPATIBLE_PAIR_UPPER_BOUND:
-        raise ValueError("Range too large for the hosted MVP; narrow the supplied river ranges")
-
-
-@app.get("/health")
-async def health():
-    if not os.getenv("POKER_MCP_TOKEN"):
-        return JSONResponse({"status": "unconfigured"}, status_code=503)
-    return {"status": "ok", "engine": "river-only", "version": "0.1.0"}
-
-
-@app.post("/mcp")
-async def mcp_endpoint(request: Request):
-    if not _authorized(request):
-        return JSONResponse({"error": "unauthorized"}, status_code=401,
-                            headers={"WWW-Authenticate": "Bearer"})
-    if not _allowed_origin(request):
-        return JSONResponse({"error": "forbidden origin"}, status_code=403)
-    if "application/json" not in request.headers.get("content-type", ""):
-        return JSONResponse({"error": "content-type must be application/json"}, status_code=415)
-    content_length = request.headers.get("content-length")
-    if content_length:
+    @server.call_tool(validate_input=False)
+    async def call_tool(name, arguments):
         try:
-            if int(content_length) > MAX_BODY_BYTES:
-                return JSONResponse({"error": "request too large"}, status_code=413)
-        except ValueError:
-            return JSONResponse({"error": "invalid content-length"}, status_code=400)
-    body = await request.body()
-    if len(body) > MAX_BODY_BYTES:
-        return JSONResponse({"error": "request too large"}, status_code=413)
-    try:
-        import json
-        message = json.loads(body)
-    except (ValueError, UnicodeDecodeError):
-        return _error(-32700, "Invalid JSON", status=400)
-    if not isinstance(message, dict) or message.get("jsonrpc") != "2.0" or not isinstance(message.get("method"), str):
-        return _error(-32600, "Invalid JSON-RPC request", status=400)
-    if "id" not in message:
-        # MCP initialized notifications / cancelled notifications do not need responses.
-        return Response(status_code=202)
-    ident = message["id"]
-    try:
-        _validate_solver_request(message)
-        if message.get("method") == "tools/call" and (message.get("params") or {}).get("name") == "solve_river":
-            # Prevent overlapping CPU-heavy CFR loops within a single worker.
-            async with _solve_slot:
-                result = await asyncio.to_thread(dispatch, message)
-        else:
-            result = await asyncio.to_thread(dispatch, message)
-        return JSONResponse({"jsonrpc": "2.0", "id": ident, "result": result},
-                            headers={"MCP-Protocol-Version": PROTOCOL_VERSION})
-    except (ValueError, KeyError, TypeError) as exc:
-        if message.get("method") == "tools/call":
-            result = {"content": [{"type": "text", "text": f"{type(exc).__name__}: {exc}"}], "isError": True}
-            return JSONResponse({"jsonrpc": "2.0", "id": ident, "result": result})
-        return _error(-32602, str(exc), ident)
-    except Exception:
-        # Never send stack traces over the network.
-        return _error(-32603, "Internal server error", ident, status=500)
+            result = await runner.run(name, arguments)
+            logger.info('calculation_completed tool=%s', name)
+            return CallToolResult(content=[TextContent(type='text', text=json.dumps(result))],
+                                  structuredContent=result, isError=False)
+        except CalculationError as exc:
+            logger.info('calculation_failed code=%s', exc.code)
+            error = {'code': exc.code, 'message': str(exc)}
+            return CallToolResult(content=[TextContent(type='text', text=json.dumps(error))],
+                                  structuredContent={'error': error}, isError=True)
+        except Exception:
+            logger.error('calculation_failed code=internal_error')
+            return CallToolResult(content=[TextContent(type='text', text='Internal calculation error')],
+                                  structuredContent={'error': {'code': 'internal_error'}}, isError=True)
+
+    host = urlsplit(settings.resource).netloc
+    manager = StreamableHTTPSessionManager(
+        server, stateless=True, json_response=True, max_request_body_size=MAX_BODY_BYTES,
+        security_settings=TransportSecuritySettings(
+            enable_dns_rebinding_protection=True,
+            allowed_hosts=[host] if host else ['127.0.0.1:*', 'localhost:*', 'testserver'],
+            allowed_origins=list(settings.origins)))
+
+    class ProtectedMCP:
+        async def __call__(self, scope, receive, send):
+            request = Request(scope, receive)
+            if not settings.configured:
+                response = JSONResponse({'error': 'service_not_configured'}, status_code=503)
+            elif not await verifier.verify(request.headers.get('authorization', '')):
+                response = JSONResponse({'error': 'unauthorized'}, status_code=401,
+                                        headers={'WWW-Authenticate': settings.challenge()})
+            else:
+                body_done = False
+
+                async def bounded_receive():
+                    nonlocal body_done
+                    if body_done:
+                        return await receive()
+                    message = await asyncio.wait_for(receive(), timeout=10)
+                    if message['type'] == 'http.request' and not message.get('more_body', False):
+                        body_done = True
+                    return message
+
+                try:
+                    return await manager.handle_request(scope, bounded_receive, send)
+                except TimeoutError:
+                    response = JSONResponse({'error': 'request_body_timeout'}, status_code=408)
+            await response(scope, receive, send)
+
+    async def health(request):
+        return JSONResponse({'status': 'ok', 'auth_configured': settings.configured,
+                             'engine': 'river-only', 'version': '0.2.0'})
+
+    async def ready(request):
+        return JSONResponse({'status': 'ready' if settings.configured else 'unconfigured'},
+                            status_code=200 if settings.configured else 503)
+
+    async def metadata(request):
+        if not settings.resource:
+            return JSONResponse({'error': 'oauth_not_configured'}, status_code=503)
+        return JSONResponse({'resource': settings.resource,
+                             'authorization_servers': [settings.issuer],
+                             'scopes_supported': [SCOPE], 'bearer_methods_supported': ['header']})
+
+    @asynccontextmanager
+    async def lifespan(app):
+        async with manager.run():
+            yield
+
+    app = Starlette(lifespan=lifespan, routes=[
+        Route('/health', health), Route('/ready', ready),
+        Route('/.well-known/oauth-protected-resource', metadata),
+        Route('/.well-known/oauth-protected-resource/mcp', metadata),
+        Route('/mcp', ProtectedMCP(), methods=['GET', 'POST', 'DELETE']),
+    ])
+    app.state.verifier = verifier
+    app.state.runner = runner
+    app.add_middleware(CORSMiddleware, allow_origins=list(settings.origins),
+                       allow_methods=['GET', 'POST', 'DELETE'],
+                       allow_headers=['Authorization', 'Content-Type', 'MCP-Protocol-Version'],
+                       expose_headers=['WWW-Authenticate', 'MCP-Protocol-Version'])
+    return app
 
 
-@app.get("/mcp")
-async def mcp_get(request: Request):
-    if not _authorized(request):
-        return JSONResponse({"error": "unauthorized"}, status_code=401)
-    return Response(status_code=405, headers={"Allow": "POST"})
+app = create_app()

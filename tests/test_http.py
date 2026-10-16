@@ -1,58 +1,171 @@
-import os
+import asyncio
+import time
 import unittest
-from unittest.mock import patch
 
-from fastapi.testclient import TestClient
-from poker_spot.http_server import app
+import jwt
+from cryptography.hazmat.primitives.asymmetric import rsa
+from starlette.testclient import TestClient
+
+from poker_spot.auth import Settings
+from poker_spot.execution import CalculationError, Runner
+from poker_spot.http_server import MAX_BODY_BYTES, create_app
+
+TOKEN = 'local-test-token-with-at-least-32-characters'
+CALL = {'board': 'Ks,9s,5h,Td,Ts', 'hero_hand': 'KdQd',
+        'villain_betting_range': 'AsJh', 'pot': 505, 'bet': 450}
+
 
 class HTTPTests(unittest.TestCase):
     def setUp(self):
-        self.client = TestClient(app)
-        self.patch = patch.dict(os.environ, {'POKER_MCP_TOKEN': 'test-secret','POKER_ALLOWED_ORIGINS':'https://chatgpt.com'})
-        self.patch.start()
-        self.addCleanup(self.patch.stop)
+        self.app = create_app(Settings(local_token=TOKEN))
+        self.client = self.enterContext(TestClient(self.app))
 
-    def send(self, message, token='test-secret', origin=None):
-        headers={'Authorization':f'Bearer {token}', 'Content-Type':'application/json'}
-        if origin:headers['Origin']=origin
-        return self.client.post('/mcp',json=message,headers=headers)
+    def send(self, message, **extra):
+        headers = {'Authorization': f'Bearer {TOKEN}',
+                   'Accept': 'application/json, text/event-stream', **extra}
+        return self.client.post('/mcp', json=message, headers=headers)
 
-    def test_health_requires_configuration(self):
+    def call(self, args, name='evaluate_river_call'):
+        return self.send({'jsonrpc': '2.0', 'id': 3, 'method': 'tools/call',
+                          'params': {'name': name, 'arguments': args}}).json()['result']
+
+    def test_health_and_fail_closed_readiness(self):
         self.assertEqual(self.client.get('/health').status_code, 200)
-        with patch.dict(os.environ, {'POKER_MCP_TOKEN':''}):
-            self.assertEqual(self.client.get('/health').status_code, 503)
+        self.assertEqual(self.client.get('/ready').status_code, 200)
+        with TestClient(create_app(Settings())) as client:
+            self.assertEqual(client.get('/ready').status_code, 503)
+            self.assertEqual(client.post('/mcp').status_code, 503)
 
-    def test_authentication(self):
-        body={'jsonrpc':'2.0','id':1,'method':'tools/list'}
-        self.assertEqual(self.send(body,token='wrong').status_code, 401)
-        self.assertEqual(self.send(body,origin='https://not-allowed.example').status_code,403)
-        self.assertEqual(self.send(body,origin='https://chatgpt.com').status_code,200)
+    def test_auth_all_methods_and_origin_host_protection(self):
+        for method in ('get', 'post', 'delete'):
+            r = getattr(self.client, method)('/mcp')
+            self.assertEqual(r.status_code, 401)
+            self.assertIn('WWW-Authenticate', r.headers)
+        req = {'jsonrpc': '2.0', 'id': 1, 'method': 'ping'}
+        self.assertEqual(self.send(req, Origin='https://evil.example').status_code, 403)
+        self.assertEqual(self.send(req, Host='evil.example').status_code, 421)
+        self.assertEqual(self.send(req, Origin='https://chatgpt.com').status_code, 200)
 
     def test_protocol(self):
-        r=self.send({'jsonrpc':'2.0','id':1,'method':'initialize',
-                     'params':{'protocolVersion':'2025-06-18'}})
-        self.assertEqual(r.status_code,200)
-        self.assertEqual(r.json()['result']['serverInfo']['name'],'poker-spot-local')
-        r=self.send({'jsonrpc':'2.0','id':2,'method':'tools/list'})
-        self.assertEqual(len(r.json()['result']['tools']),2)
-        r=self.send({'jsonrpc':'2.0','method':'notifications/initialized'})
-        self.assertEqual(r.status_code,202)
+        r = self.send({'jsonrpc': '2.0', 'id': 1, 'method': 'initialize',
+                       'params': {'protocolVersion': '2099-01-01', 'capabilities': {},
+                                  'clientInfo': {'name': 'test', 'version': '1'}}})
+        result = r.json()['result']
+        self.assertNotEqual(result['protocolVersion'], '2099-01-01')
+        self.assertEqual(result['serverInfo']['name'], 'poker-spot-study')
+        self.assertNotIn('mcp-session-id', r.headers)
+        r = self.send({'jsonrpc': '2.0', 'id': 2, 'method': 'tools/list'})
+        tools = r.json()['result']['tools']
+        self.assertEqual(len(tools), 2)
+        self.assertEqual(tools[0]['inputSchema']['properties']['iterations']['maximum'], 1500)
+        self.assertEqual(tools[0]['securitySchemes'][0]['scopes'], ['poker:solve'])
+        self.assertEqual(self.send({'jsonrpc': '2.0', 'method': 'notifications/initialized'}).status_code, 202)
+        r = self.send({'jsonrpc': '2.0', 'id': 4, 'method': 'unknown'})
+        self.assertIn(r.json()['error']['code'], (-32601, -32602))
+        self.assertEqual(self.send({'jsonrpc': '2.0', 'id': 4, 'method': 'ping'},
+                                   **{'MCP-Protocol-Version': '2099-01-01'}).status_code, 400)
 
-    def test_calculation(self):
-        req={'jsonrpc':'2.0','id':3,'method':'tools/call','params':{
-            'name':'evaluate_river_call','arguments':{
-            'board':'Ks,9s,5h,Td,Ts','hero_hand':'KdQd',
-            'villain_betting_range':'AsJh','pot':505,'bet':450}}}
-        out=self.send(req).json()['result']['structuredContent']
-        self.assertEqual(out['best_action_given_range'],'call')
-        self.assertAlmostEqual(out['caller_pot_odds'],450/1405,places=5)
+    def test_invalid_protocol_and_body_limit(self):
+        headers = {'Authorization': f'Bearer {TOKEN}', 'Content-Type': 'application/json',
+                   'Accept': 'application/json, text/event-stream'}
+        for body in ('not-json', '[]', '{"jsonrpc":"wrong","id":1,"method":"ping"}'):
+            r = self.client.post('/mcp', content=body, headers=headers)
+            self.assertEqual(r.status_code, 400)
+        self.assertEqual(self.client.post('/mcp', content='x'*(MAX_BODY_BYTES+1), headers=headers).status_code, 413)
+        chunks = (b'x'*1024 for _ in range(20))
+        self.assertEqual(self.client.post('/mcp', content=chunks, headers=headers).status_code, 413)
 
-    def test_solve_cap(self):
-        req={'jsonrpc':'2.0','id':4,'method':'tools/call','params':{
-            'name':'solve_river','arguments':{'board':'2c,3d,4h,8s,9c',
-            'oop_range':'AA','ip_range':'KK','pot':100,'stack':100,'iterations':10000}}}
-        result=self.send(req).json()['result']
-        self.assertTrue(result['isError'])
-        self.assertIn('iterations',result['content'][0]['text'])
+    def test_actual_worker_call_and_solve(self):
+        out = self.call(CALL)
+        self.assertFalse(out['isError'])
+        self.assertEqual(out['structuredContent']['ev_call_minus_fold'], 955)
+        result = self.call({'board': '2c,3d,4h,8s,9c', 'oop_range': 'AsAd',
+                            'ip_range': 'KhQd', 'pot': 100, 'stack': 100,
+                            'iterations': 100, 'bet_sizes': [1.0], 'oop_hand': 'AsAd'}, 'solve_river')
+        self.assertFalse(result['isError'], result)
+        self.assertLess(result['structuredContent']['nash_conv_pct_pot'], 1)
 
-if __name__=='__main__':unittest.main()
+    def test_strict_arguments_and_hosted_limits(self):
+        for args in ({**CALL, 'pot': True}, {**CALL, 'pot': '505'},
+                     {**CALL, 'surprise': 1}, {**CALL, 'board': 'bad'},
+                     {**CALL, 'villain_betting_range': 'AsJh:NaN'}):
+            self.assertTrue(self.call(args)['isError'])
+        args = {'board': '2c,3d,4h,8s,9c', 'oop_range': 'AA', 'ip_range': 'KK',
+                'pot': 100, 'stack': 100, 'iterations': 1501}
+        self.assertTrue(self.call(args, 'solve_river')['isError'])
+        args.update(iterations=100, oop_range='AA,KK,QQ,JJ,TT,99,88,77,66,55,44,33,22,AK,AQ,AJ,AT,KQ,KJ,KT,QJ,QT')
+        self.assertTrue(self.call(args, 'solve_river')['isError'])
+
+
+class ExecutionTests(unittest.IsolatedAsyncioTestCase):
+    async def test_timeout_kills_worker_and_releases_slot(self):
+        runner = Runner(timeout=0.001)
+        with self.assertRaises(CalculationError) as error:
+            await runner.run('evaluate_river_call', CALL)
+        self.assertEqual(error.exception.code, 'timeout')
+        self.assertFalse(runner.busy)
+        runner.timeout = 10
+        self.assertEqual((await runner.run('evaluate_river_call', CALL))['ev_call_minus_fold'], 955)
+
+    async def test_concurrent_admission_and_rate(self):
+        runner = Runner(rate=1)
+        task = asyncio.create_task(runner.run('evaluate_river_call', CALL))
+        await asyncio.sleep(0)
+        with self.assertRaises(CalculationError) as error:
+            await runner.run('evaluate_river_call', CALL)
+        self.assertIn(error.exception.code, ('busy', 'rate_limited'))
+        await task
+        with self.assertRaises(CalculationError) as error:
+            await runner.run('evaluate_river_call', CALL)
+        self.assertEqual(error.exception.code, 'rate_limited')
+
+
+class OAuthTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.private = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+
+    def setUp(self):
+        self.settings = Settings(resource='https://poker.example/mcp', issuer='https://identity.example/',
+                                 jwks_url='https://identity.example/.well-known/jwks.json',
+                                 subjects=frozenset({'owner'}))
+        self.app = create_app(self.settings)
+        jwk = jwt.PyJWK.from_json(jwt.algorithms.RSAAlgorithm.to_jwk(self.private.public_key()))
+        self.app.state.verifier.keys = {'test': jwk}
+        self.app.state.verifier.fetched = time.monotonic()
+        self.client = self.enterContext(TestClient(self.app, base_url='https://poker.example'))
+
+    def token(self, **changes):
+        payload = {'sub': 'owner', 'iss': self.settings.issuer, 'aud': self.settings.resource,
+                   'iat': int(time.time()), 'exp': int(time.time())+120, 'scope': 'poker:solve'}
+        payload.update(changes)
+        return jwt.encode(payload, self.private, algorithm='RS256', headers={'kid': 'test'})
+
+    def send(self, token):
+        return self.client.post('/mcp', json={'jsonrpc': '2.0', 'id': 1, 'method': 'ping'},
+                                headers={'Authorization': f'Bearer {token}',
+                                         'Accept': 'application/json, text/event-stream'})
+
+    def test_resource_metadata_and_challenge(self):
+        doc = self.client.get('/.well-known/oauth-protected-resource').json()
+        self.assertEqual(doc['resource'], self.settings.resource)
+        self.assertEqual(doc['authorization_servers'], [self.settings.issuer])
+        r = self.send('bad')
+        self.assertEqual(r.status_code, 401)
+        self.assertIn('resource_metadata=', r.headers['WWW-Authenticate'])
+
+    def test_signed_token_boundaries(self):
+        self.assertEqual(self.send(self.token()).status_code, 200)
+        for change in ({'aud': 'https://trip.example/mcp'}, {'iss': 'https://evil.example'},
+                       {'sub': 'other-user'}, {'scope': 'travel:read'}, {'exp': 1},
+                       {'iat': int(time.time())+600}):
+            with self.subTest(change=change):
+                self.assertEqual(self.send(self.token(**change)).status_code, 401)
+        forged = jwt.encode({'sub': 'owner'}, 'wrong-key-that-is-at-least-32-characters', algorithm='HS256', headers={'kid': 'test'})
+        self.assertEqual(self.send(forged).status_code, 401)
+        unsigned = jwt.encode({'sub': 'owner'}, '', algorithm='none')
+        self.assertEqual(self.send(unsigned).status_code, 401)
+
+
+if __name__ == '__main__':
+    unittest.main()

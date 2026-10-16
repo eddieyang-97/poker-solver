@@ -7,8 +7,7 @@ from __future__ import annotations
 
 import json
 import sys
-import traceback
-from .core import RiverSolver, evaluate_river_call
+from .validation import calculate
 
 TOOL={
     'name':'solve_river',
@@ -77,15 +76,7 @@ def dispatch(req:dict):
     if method=='tools/call':
         params=req.get('params') or {}
         name=params.get('name')
-        kwargs=dict(params.get('arguments') or {})
-        if name=='solve_river':
-            it=kwargs.pop('iterations',700)
-            oop=kwargs.pop('oop_hand',None)
-            ip=kwargs.pop('ip_hand',None)
-            result=RiverSolver(**kwargs).solve(it,oop,ip)
-        elif name=='evaluate_river_call':
-            result=evaluate_river_call(**kwargs)
-        else:raise ValueError('Unknown tool')
+        result=calculate(name,params.get('arguments') or {})
         return {'content':[{'type':'text','text':json.dumps(result)}], 'structuredContent':result, 'isError':False}
     if method in ('resources/list','prompts/list'):
         return {'resources':[]} if method=='resources/list' else {'prompts':[]}
