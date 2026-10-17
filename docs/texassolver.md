@@ -137,3 +137,7 @@ Next steps: assess a separately pinned version/build supporting concrete combos
 and controllable all-in settings, verify general blocker/weighted-range
 normalization, then consider broader fixtures. Do not patch production behavior,
 broaden this pilot implicitly, or call TexasSolver a proven gold standard.
+
+A later [weighted-blocker diagnostic](texas-blocker-audit.md) found material
+convergence failures at 4,000 and 40,000 iterations. Those results remain FAIL
+and are outside this admitted symmetric pilot and the passing fixture corpus.
