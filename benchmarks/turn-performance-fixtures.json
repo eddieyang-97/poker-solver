@@ -1,0 +1,38 @@
+[
+  {
+    "id": "deep_dry_24x24",
+    "config": {
+      "board": "2c,3d,4h,8s",
+      "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+      "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+      "pot": 100,
+      "stack": 1000,
+      "turn_bet_sizes": [
+        0.5,
+        1.5
+      ],
+      "river_bet_sizes": [
+        0.5,
+        1.5
+      ]
+    }
+  },
+  {
+    "id": "four_flush_weighted_24x24",
+    "config": {
+      "board": "Ks,9s,5s,2s",
+      "oop_range": "AcAd:0.2,AcAh:0.4,AcAs:0.6,AdAh:0.8,AdAs:1.0,AhAs:0.2,QcQd:0.4,QcQh:0.6,QcQs:0.8,QdQh:1.0,QdQs:0.2,QhQs:0.4,JcJd:0.6,JcJh:0.8,JcJs:1.0,JdJh:0.2,JdJs:0.4,JhJs:0.6,TcTd:0.8,TcTh:1.0,TcTs:0.2,TdTh:0.4,TdTs:0.6,ThTs:0.8",
+      "ip_range": "AcAd:0.2,AcAh:0.4,AcAs:0.6,AdAh:0.8,AdAs:1.0,AhAs:0.2,QcQd:0.4,QcQh:0.6,QcQs:0.8,QdQh:1.0,QdQs:0.2,QhQs:0.4,JcJd:0.6,JcJh:0.8,JcJs:1.0,JdJh:0.2,JdJs:0.4,JhJs:0.6,TcTd:0.8,TcTh:1.0,TcTs:0.2,TdTh:0.4,TdTs:0.6,ThTs:0.8",
+      "pot": 100,
+      "stack": 1000,
+      "turn_bet_sizes": [
+        0.5,
+        1.5
+      ],
+      "river_bet_sizes": [
+        0.5,
+        1.5
+      ]
+    }
+  }
+]
