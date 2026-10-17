@@ -1,5 +1,14 @@
 # Audit and validation — 16 October 2026
 
+## River milestone status — 17 October 2026
+
+PR #5 is merged as `af3d3984f569e70a2900a2b91fcd11e3619e332f`, after checking
+both final-head workflows and the empty review threads. The original private
+river pilot and Issue #1's initial ten-fixture acceptance criteria are met.
+[River milestone closeout](river-milestone.md) maps each deliverable to actual
+evidence and lists the still-open broader-reference and hosting/distribution
+follow-ups. This does not claim those follow-ups or turn support are complete.
+
 ## Controlled reference experiment — 17 October 2026
 
 PR #4's weighted-blocker diagnostic was reviewed and merged as
