@@ -13,7 +13,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Static checks
         run: |
-          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py
+          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py
           python -m compileall -q poker_spot scripts benchmarks
       - name: Run tests
         run: python -m unittest discover -s tests -v
@@ -30,3 +30,14 @@ jobs:
         with:
           name: river-benchmark
           path: .artifacts/benchmark.*
+      - name: Replay recorded TexasSolver policy (no external executable)
+        timeout-minutes: 5
+        run: python scripts/benchmark_texas.py --evidence docs/texassolver-results.json --output .artifacts/texas-replay
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain TexasSolver replay report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: texas-evidence-replay
+          path: .artifacts/texas-replay.*

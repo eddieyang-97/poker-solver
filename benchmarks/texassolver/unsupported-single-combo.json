@@ -1,0 +1,13 @@
+{
+  "source_tag": "v0.2.0",
+  "source_commit": "95f039c116fa7bcae7fb6c01aca56adb0f24c680",
+  "board": "2c,3d,4h,8s,9c",
+  "pot": 100,
+  "stack": 100,
+  "oop_range": "KhKd",
+  "ip_range": "AsAd,QhJd",
+  "exit_code": 3,
+  "strategy_dump_produced": false,
+  "log_after_start": "<<<START SOLVING>>>\nterminate called after throwing an instance of 'std::runtime_error'\n  what():   range str AsAd len not valid \n",
+  "classification": "Unsupported concrete-combo syntax; not a numerical mismatch"
+}
