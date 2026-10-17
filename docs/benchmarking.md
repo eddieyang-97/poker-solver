@@ -209,8 +209,10 @@ implementation and commercial comparisons remain useful follow-ups. The current
 corpus is not an exhaustive proof, a production security audit, or validation of
 assumed live-population ranges.
 
-**Subsequent milestone:** independently configure and cross-validate with
-TexasSolver after verifying its exact river/no-raise tree and export semantics.
-No TexasSolver execution, proprietary reference or gold-standard claim is part
-of this milestone. Keep the corpus at ten until the current harness has further
-review and useful failure evidence; expansion to 20–30 is intentionally deferred.
+**TexasSolver follow-up:** a [separate compatibility pilot](texassolver.md) now
+records actual standalone execution for a rank-class polarized game. The release
+rejects the original single-combo fixture, so that remains unsupported rather
+than silently substituted. Its general weighted/blocker behavior and all ten
+fixtures have not been cross-validated. Keep the core corpus at ten until the
+current harness has further review and useful failure evidence; expansion to
+20–30 is intentionally deferred. Neither reference is a proven gold standard.
