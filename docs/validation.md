@@ -1,5 +1,54 @@
 # Audit and validation — 16 October 2026
 
+## Turn decomposition and performance follow-ups — 17 October 2026
+
+After PR #7 merged at `3e3a5ae7e72240851cc3d3a4678d6f35cf27fa96`, added a
+development harness for independent river-subgame training with turn betting
+disabled, plus maximum-dimension local performance workers. Solver core,
+transports, production configuration and Auth0 are unchanged.
+
+All **59 tests**, Ruff and compileall passed locally. The existing eight turn
+fixtures and ten river fixtures plus separate raise sensitivity passed. New
+tests verify weighted chance, zero-mass runouts, explicit independent tree/hand
+mapping, fault detection, rejected tree/rounding substitutions, native memory
+measurement and timeout reporting. See [method and limitations](turn-followups.md).
+
+Initial Ubuntu CI run `39044753235` at `15cfc13` failed its eight-minute
+decomposition step deadline: three cases passed and the fourth reached 36/48
+cards. It did not complete acceptance. Based on the logged rate (about 2.8
+seconds per river), the development sweep deadline is now 12 minutes; numerical
+gates, per-process bounds and hosted limits remain unchanged. Retain this failed
+attempt separately from the subsequent final-head result.
+
+Four turn-disabled decomposition cases passed: 188 supported river games were
+separately trained by the pinned independent reference, with four additional
+zero-mass public cards explicitly recorded. Maximum aggregate EV difference
+between separately trained engines was £0.00134293, within its £0.00876999
+combined convergence-gap bound. Same-policy aggregate EV/gap discrepancies were
+at most about `5.5e-14` chips. Every supported subgame and each aggregate passed
+the unchanged 0.5%-of-pot convergence gate. Per-card masses, results and
+reference-profile digests are versioned in
+[decomposition evidence](turn-decomposition-results.json); full raw worker
+exports are retained separately under `.artifacts/` and by CI. This special
+case independently constructs and trains river trees, but does not validate
+strategic turn betting against a separately trained full turn engine.
+
+Six maximum-dimension subprocess measurements (24 combos/side, two sizes/street,
+2,000 iterations, all-river queries) completed in 11.79–12.16 seconds process
+wall time on Windows, maximum observed resident peak 34.66 MiB. Full measured
+configuration, source hashes, platform and diagnostics are in
+[performance evidence](turn-performance-results.json). These numbers are not
+hosted resource-limit acceptance or a universal worst-case performance bound.
+
+Ubuntu run `39045573429` at `eede111` passed all computational checks. Its two
+maximum-dimension runs took 22.081 and 21.949 seconds process wall time, above
+the hosted 20-second budget; turn remains local. Artifact retention did not
+work: the default uploader excluded hidden `.artifacts/` paths and emitted
+no-files warnings for all five report groups. The workflow now explicitly
+includes hidden files within those narrow report paths and errors on missing
+reports. Logs from the prior run remain evidence of computation, not successful
+report upload. Local raw reference exports were independently hash-verified.
+
 ## Initial local turn implementation — 17 October 2026
 
 After river prerequisite closeout merged as

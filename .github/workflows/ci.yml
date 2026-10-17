@@ -13,7 +13,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Static checks
         run: |
-          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py
+          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py
           python -m compileall -q poker_spot scripts benchmarks
       - name: Run tests
         run: python -m unittest discover -s tests -v
@@ -34,12 +34,34 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: turn-policy-validation
+          include-hidden-files: true
+          if-no-files-found: error
           path: .artifacts/turn-benchmark.*
+      - name: Independently trained river-subgame decomposition
+        timeout-minutes: 12
+        run: python scripts/benchmark_turn_decomposition.py --output .artifacts/turn-decomposition
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Maximum-dimension local turn performance
+        timeout-minutes: 5
+        run: python scripts/benchmark_turn_performance.py --repeats 1 --output .artifacts/turn-performance
+      - name: Retain turn follow-up reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: turn-decomposition-performance
+          include-hidden-files: true
+          if-no-files-found: error
+          path: |
+            .artifacts/turn-decomposition.*
+            .artifacts/turn-performance.*
       - name: Retain differential report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: river-benchmark
+          include-hidden-files: true
+          if-no-files-found: error
           path: .artifacts/benchmark.*
       - name: Replay recorded TexasSolver policy (no external executable)
         timeout-minutes: 5
@@ -51,6 +73,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: texas-evidence-replay
+          include-hidden-files: true
+          if-no-files-found: error
           path: .artifacts/texas-replay.*
       - name: Replay controlled averaging evidence (no external build)
         timeout-minutes: 2
@@ -62,4 +86,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: texas-averaging-replay
+          include-hidden-files: true
+          if-no-files-found: error
           path: .artifacts/texas-averaging-replay.*
