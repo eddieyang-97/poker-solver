@@ -1,9 +1,9 @@
 {
   "mode": "Actual local CLI execution",
   "python": "3.14.8",
-  "source_commit": "ac2cb27243dd190ff3e3f40bb5f2bac349d6ebb4",
+  "source_commit": "96e2c8e89634231add394779e2fc04f3b1bc3a91",
   "source_sha256_lf": {
-    "poker_spot/turn.py": "c93f3f9f61db07ff403a177305979bf40a62c823fd03c8385193c9220d6f625a",
+    "poker_spot/turn.py": "f206463cdabc88ada8a174e1627a3496479916ad76296b1736879dd316950f3c",
     "scripts/solve_turn.py": "ec3804e4694b845068a020a02224c529d4693a4b094cd1349f1b6063cc0b41a2"
   },
   "calls": [
@@ -87,6 +87,7 @@
         },
         "computation": "Alternating CFR+, linear own-reach averaging, exact river enumeration",
         "ev_baseline": "Half of the initial turn pot; cumulative turn and river contributions included",
+        "action_ev_interpretation": "One action followed by fixed average continuation; future deviations are not optimized. Low-reach continuations may be poorly converged despite a small root gap.",
         "diagnostics": {
           "iterations": 1000,
           "oop_ev": -50.00121814774249,
