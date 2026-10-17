@@ -103,3 +103,18 @@ completed passing sweep. The logged rate was roughly 2.8 seconds per river,
 versus about 1.1 seconds locally. CI now allows 12 minutes for the full 188-game
 sweep, with the existing per-reference-process 120-second bound unchanged.
 Accuracy/convergence gates and hosted limits were not relaxed.
+
+At `eede111`, Ubuntu CI run `39045573429` completed all computational checks,
+including the full 188-game sweep, maximum-dimension runs and Texas replays.
+The two maximum-dimension process times were 22.081 and 21.949 seconds, with
+resident peaks approximately 33.24 and 32.99 MiB. These observed wall times
+exceed the current hosted 20-second budget; Windows measurements alone cannot
+justify deploying the maximum supported turn workload.
+
+Inspection also found that `actions/upload-artifact` excluded the hidden
+`.artifacts/` directory by default. All five report uploads at that head warned
+that no files were found, so that run retained logs but no downloadable reports.
+Do not interpret its green computational status as verified artifact retention.
+Uploads now explicitly include hidden files only for the existing narrow report
+paths and fail when reports are missing. Complete local reference exports remain
+available at the raw-evidence path and match the recorded byte/profile hashes.

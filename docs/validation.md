@@ -40,6 +40,15 @@ configuration, source hashes, platform and diagnostics are in
 [performance evidence](turn-performance-results.json). These numbers are not
 hosted resource-limit acceptance or a universal worst-case performance bound.
 
+Ubuntu run `39045573429` at `eede111` passed all computational checks. Its two
+maximum-dimension runs took 22.081 and 21.949 seconds process wall time, above
+the hosted 20-second budget; turn remains local. Artifact retention did not
+work: the default uploader excluded hidden `.artifacts/` paths and emitted
+no-files warnings for all five report groups. The workflow now explicitly
+includes hidden files within those narrow report paths and errors on missing
+reports. Logs from the prior run remain evidence of computation, not successful
+report upload. Local raw reference exports were independently hash-verified.
+
 ## Initial local turn implementation — 17 October 2026
 
 After river prerequisite closeout merged as
