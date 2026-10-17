@@ -58,7 +58,8 @@ class TurnTests(unittest.TestCase):
     def test_two_street_profile_and_best_response_oracle(self):
         solver = TurnSolver('Ks,9s,5h,Td', 'KdQd,AsJh:0.5', 'QsJs,9h9d:0.5', 100, 140, [0.5], [0.5, 1.0])
         result = solver.solve(500, 'KdQd', 'QsJs', 'Ts')
-        direct = TurnPolicyOracle(solver).evaluate()
+        oracle = TurnPolicyOracle(solver)
+        direct = oracle.evaluate()
         for key in ('oop_ev', 'ip_ev', 'nash_conv_chips'):
             self.assertAlmostEqual(result['diagnostics'][key], direct[key], delta=1e-9)
         self.assertAlmostEqual(direct['oop_ev']+direct['ip_ev'], 0, places=10)
@@ -68,6 +69,12 @@ class TurnTests(unittest.TestCase):
         # Public rivers are separate information sets, with different policies.
         river = solver.nodes['turn/check/check/river'].average()
         self.assertGreater(np.max(np.ptp(river, axis=0)), 0.05)
+        # Root action EVs hold all later actions to the average policy. They do
+        # not optimize future decisions along a rarely selected turn action.
+        row = result['hands']['oop']['node_strategy']['turn']['action_ev_relative_to_half_turn_pot']
+        opponent = oracle.weights[1]
+        for action, child in zip(solver.root.actions, solver.root.children, strict=True):
+            self.assertAlmostEqual(row[action], oracle._walk(child, 0, 0, opponent, False)/sum(opponent), places=10)
 
     def test_oracle_detects_corrupted_runout_evaluation(self):
         solver = TurnSolver('2c,3d,4h,8s', 'KhKd', 'AsAd', 100, 100, [1.0], [])

@@ -67,6 +67,10 @@ contributions. Queried hands include action frequencies, conditional action EVs
 and node reach probability **given that hand**, including both players' actions
 and chance. Impossible-opponent branches return null action EVs; low/zero-reach
 strategies should not be treated as precise recommendations.
+Action EVs hold later decisions to the average continuation policy after that
+one action; they do not optimize all future deviations. A rarely reached
+continuation can therefore be poorly converged even when the root NashConv is
+small. Best-response diagnostics optimize future decisions separately.
 
 Limits: at most 24 expanded combos per side, 0–2 distinct fractions in `(0,3]`
 per street, 20–2000 iterations, positive finite pot/stack up to 1e9, range text

@@ -249,6 +249,7 @@ class TurnSolver:
                   'chance': {'enumerated_public_rivers': 48, 'legal_rivers_per_compatible_deal': 44},
                   'computation': 'Alternating CFR+, linear own-reach averaging, exact river enumeration',
                   'ev_baseline': 'Half of the initial turn pot; cumulative turn and river contributions included',
+                  'action_ev_interpretation': 'One action followed by fixed average continuation; future deviations are not optimized. Low-reach continuations may be poorly converged despite a small root gap.',
                   'diagnostics': checkpoints[-1], 'checkpoints': checkpoints, 'hands': {},
                   'limitations': 'Small fixed arrival ranges; no independent external turn-engine validation; local only'}
         if queries:
