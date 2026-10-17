@@ -36,7 +36,7 @@ jobs:
           name: turn-policy-validation
           path: .artifacts/turn-benchmark.*
       - name: Independently trained river-subgame decomposition
-        timeout-minutes: 8
+        timeout-minutes: 12
         run: python scripts/benchmark_turn_decomposition.py --output .artifacts/turn-decomposition
         env:
           OPENBLAS_NUM_THREADS: '1'

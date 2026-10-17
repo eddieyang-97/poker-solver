@@ -95,3 +95,11 @@ payoff corruption, incompatible trees/rounding, maximum worker dimensions/memory
 units and structured timeout reporting. Existing river, transport and turn
 tests remain required. CI runs fresh decomposition, performance and the existing
 benchmarks, retaining both summary and full reference artifacts.
+
+The first Ubuntu CI attempt at `15cfc13` exceeded the initial eight-minute
+decomposition step deadline after three cases passed and the fourth reached
+36/48 public cards. Run `39044753235` remains recorded as failed; this was not a
+completed passing sweep. The logged rate was roughly 2.8 seconds per river,
+versus about 1.1 seconds locally. CI now allows 12 minutes for the full 188-game
+sweep, with the existing per-reference-process 120-second bound unchanged.
+Accuracy/convergence gates and hosted limits were not relaxed.

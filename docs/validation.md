@@ -13,6 +13,13 @@ tests verify weighted chance, zero-mass runouts, explicit independent tree/hand
 mapping, fault detection, rejected tree/rounding substitutions, native memory
 measurement and timeout reporting. See [method and limitations](turn-followups.md).
 
+Initial Ubuntu CI run `39044753235` at `15cfc13` failed its eight-minute
+decomposition step deadline: three cases passed and the fourth reached 36/48
+cards. It did not complete acceptance. Based on the logged rate (about 2.8
+seconds per river), the development sweep deadline is now 12 minutes; numerical
+gates, per-process bounds and hosted limits remain unchanged. Retain this failed
+attempt separately from the subsequent final-head result.
+
 Four turn-disabled decomposition cases passed: 188 supported river games were
 separately trained by the pinned independent reference, with four additional
 zero-mass public cards explicitly recorded. Maximum aggregate EV difference
