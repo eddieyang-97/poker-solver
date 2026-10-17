@@ -1,0 +1,3604 @@
+{
+  "mode": "actual external execution",
+  "execution": {
+    "fixture": {
+      "id": "texas_weighted_blocker_diagnostic",
+      "description": "Weighted cross-range KK blockers; separate reference convergence audit",
+      "board": [
+        "2c",
+        "3d",
+        "4h",
+        "8s",
+        "9c"
+      ],
+      "pot": 100,
+      "stack": 100,
+      "bet_sizes": [
+        1
+      ],
+      "oop": [
+        {
+          "hand": "KcKd",
+          "weight": 1
+        },
+        {
+          "hand": "KcKh",
+          "weight": 1
+        },
+        {
+          "hand": "KcKs",
+          "weight": 1
+        },
+        {
+          "hand": "KdKh",
+          "weight": 1
+        },
+        {
+          "hand": "KdKs",
+          "weight": 1
+        },
+        {
+          "hand": "KhKs",
+          "weight": 1
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AcAd",
+          "weight": 1
+        },
+        {
+          "hand": "AcAh",
+          "weight": 1
+        },
+        {
+          "hand": "AcAs",
+          "weight": 1
+        },
+        {
+          "hand": "AdAh",
+          "weight": 1
+        },
+        {
+          "hand": "AdAs",
+          "weight": 1
+        },
+        {
+          "hand": "AhAs",
+          "weight": 1
+        },
+        {
+          "hand": "QcJd",
+          "weight": 0.5
+        },
+        {
+          "hand": "QcJh",
+          "weight": 0.5
+        },
+        {
+          "hand": "QcJs",
+          "weight": 0.5
+        },
+        {
+          "hand": "QdJc",
+          "weight": 0.5
+        },
+        {
+          "hand": "QdJh",
+          "weight": 0.5
+        },
+        {
+          "hand": "QdJs",
+          "weight": 0.5
+        },
+        {
+          "hand": "QhJc",
+          "weight": 0.5
+        },
+        {
+          "hand": "QhJd",
+          "weight": 0.5
+        },
+        {
+          "hand": "QhJs",
+          "weight": 0.5
+        },
+        {
+          "hand": "QsJc",
+          "weight": 0.5
+        },
+        {
+          "hand": "QsJd",
+          "weight": 0.5
+        },
+        {
+          "hand": "QsJh",
+          "weight": 0.5
+        },
+        {
+          "hand": "KcKd",
+          "weight": 0.5
+        },
+        {
+          "hand": "KcKh",
+          "weight": 0.5
+        },
+        {
+          "hand": "KcKs",
+          "weight": 0.5
+        },
+        {
+          "hand": "KdKh",
+          "weight": 0.5
+        },
+        {
+          "hand": "KdKs",
+          "weight": 0.5
+        },
+        {
+          "hand": "KhKs",
+          "weight": 0.5
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    },
+    "runs": [
+      {
+        "provenance": "Actual standalone upstream Windows v0.2.0 execution",
+        "source_tag": "v0.2.0",
+        "source_commit": "95f039c116fa7bcae7fb6c01aca56adb0f24c680",
+        "binary_sha256": "8b74cd6f687387a9ea6c567591642cfe0bfca88360a1748ff7c7db769d0c5c1a",
+        "download_zip_sha256": "0a9122fa0cd9384e6c1cbe0492e8a3b8ac7809890c649e1a53f77a59d6d50a7c",
+        "lookup_sha256": "4b68eee7bd91224157b125aad7429bf25cedd96370bcd228f316058d197afba2",
+        "input_commands": "set_pot 100\nset_effective_stack 100\nset_board 2c,3d,4h,8s,9c\nset_range_oop KK\nset_range_ip AA,KK:0.5,QJo:0.5\nset_bet_sizes oop,river,bet,100\nset_bet_sizes ip,river,bet,100\nset_bet_sizes oop,river,raise\nset_bet_sizes ip,river,raise\nset_allin_threshold 100\nbuild_tree\nset_thread_num 1\nset_accuracy 0.001\nset_max_iteration 4000\nset_print_interval 100\nset_use_isomorphism 0\nstart_solve\nset_dump_rounds 1\ndump_result strategy.json\n",
+        "exit_code": 0,
+        "log_after_start": "<<<START SOLVING>>>\r\nUsing 1 threads\r\nIter: 0\r\nplayer 0 exploitability 36.499992\r\nplayer 1 exploitability 25.000004\r\nTotal exploitability 30.749998 precent\r\n-------------------\r\nIter: 101\r\nplayer 0 exploitability 25.592537\r\nplayer 1 exploitability -24.005608\r\nTotal exploitability 0.79346466 precent\r\ntime used: 0.002\r\n-------------------\r\nIter: 201\r\nplayer 0 exploitability 25.826275\r\nplayer 1 exploitability -24.621395\r\nTotal exploitability 0.6024399 precent\r\ntime used: 0.002\r\n-------------------\r\nIter: 301\r\nplayer 0 exploitability 25.289822\r\nplayer 1 exploitability -23.96928\r\nTotal exploitability 0.6602707 precent\r\ntime used: 0.004\r\n-------------------\r\nIter: 401\r\nplayer 0 exploitability 25.7678\r\nplayer 1 exploitability -24.19865\r\nTotal exploitability 0.78457457 precent\r\ntime used: 0.006\r\n-------------------\r\nIter: 501\r\nplayer 0 exploitability 25.993217\r\nplayer 1 exploitability -24.76579\r\nTotal exploitability 0.61371326 precent\r\ntime used: 0.006\r\n-------------------\r\nIter: 601\r\nplayer 0 exploitability 25.887718\r\nplayer 1 exploitability -24.369854\r\nTotal exploitability 0.7589321 precent\r\ntime used: 0.008\r\n-------------------\r\nIter: 701\r\nplayer 0 exploitability 25.97818\r\nplayer 1 exploitability -24.935131\r\nTotal exploitability 0.5215244 precent\r\ntime used: 0.008\r\n-------------------\r\nIter: 801\r\nplayer 0 exploitability 25.940258\r\nplayer 1 exploitability -24.486488\r\nTotal exploitability 0.72688484 precent\r\ntime used: 0.008\r\n-------------------\r\nIter: 901\r\nplayer 0 exploitability 25.46759\r\nplayer 1 exploitability -24.131697\r\nTotal exploitability 0.6679468 precent\r\ntime used: 0.012\r\n-------------------\r\nIter: 1001\r\nplayer 0 exploitability 25.123379\r\nplayer 1 exploitability -23.949644\r\nTotal exploitability 0.58686733 precent\r\ntime used: 0.012\r\n-------------------\r\nIter: 1101\r\nplayer 0 exploitability 25.152145\r\nplayer 1 exploitability -23.992245\r\nTotal exploitability 0.57995033 precent\r\ntime used: 0.012\r\n-------------------\r\nIter: 1201\r\nplayer 0 exploitability 25.90226\r\nplayer 1 exploitability -24.662096\r\nTotal exploitability 0.6200819 precent\r\ntime used: 0.012\r\n-------------------\r\nIter: 1301\r\nplayer 0 exploitability 25.448933\r\nplayer 1 exploitability -23.992388\r\nTotal exploitability 0.72827244 precent\r\ntime used: 0.012\r\n-------------------\r\nIter: 1401\r\nplayer 0 exploitability 26.072414\r\nplayer 1 exploitability -24.665762\r\nTotal exploitability 0.7033262 precent\r\ntime used: 0.012\r\n-------------------\r\nIter: 1501\r\nplayer 0 exploitability 26.064053\r\nplayer 1 exploitability -24.890396\r\nTotal exploitability 0.58682823 precent\r\ntime used: 0.018\r\n-------------------\r\nIter: 1601\r\nplayer 0 exploitability 26.076942\r\nplayer 1 exploitability -24.945776\r\nTotal exploitability 0.5655832 precent\r\ntime used: 0.018\r\n-------------------\r\nIter: 1701\r\nplayer 0 exploitability 26.038738\r\nplayer 1 exploitability -24.547667\r\nTotal exploitability 0.74553585 precent\r\ntime used: 0.018\r\n-------------------\r\nIter: 1801\r\nplayer 0 exploitability 25.364609\r\nplayer 1 exploitability -23.970118\r\nTotal exploitability 0.6972456 precent\r\ntime used: 0.018\r\n-------------------\r\nIter: 1901\r\nplayer 0 exploitability 25.823418\r\nplayer 1 exploitability -24.492321\r\nTotal exploitability 0.6655483 precent\r\ntime used: 0.018\r\n-------------------\r\nIter: 2001\r\nplayer 0 exploitability 25.522846\r\nplayer 1 exploitability -24.03987\r\nTotal exploitability 0.74148846 precent\r\ntime used: 0.018\r\n-------------------\r\nIter: 2101\r\nplayer 0 exploitability 26.085342\r\nplayer 1 exploitability -24.97555\r\nTotal exploitability 0.55489635 precent\r\ntime used: 0.018\r\n-------------------\r\nIter: 2201\r\nplayer 0 exploitability 25.557217\r\nplayer 1 exploitability -24.187706\r\nTotal exploitability 0.6847553 precent\r\ntime used: 0.018\r\n-------------------\r\nIter: 2301\r\nplayer 0 exploitability 25.03064\r\nplayer 1 exploitability -23.956383\r\nTotal exploitability 0.53712845 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 2401\r\nplayer 0 exploitability 25.272625\r\nplayer 1 exploitability -23.953667\r\nTotal exploitability 0.65947914 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 2501\r\nplayer 0 exploitability 25.26352\r\nplayer 1 exploitability -23.957907\r\nTotal exploitability 0.6528063 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 2601\r\nplayer 0 exploitability 25.0318\r\nplayer 1 exploitability -23.945505\r\nTotal exploitability 0.5431471 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 2701\r\nplayer 0 exploitability 25.472008\r\nplayer 1 exploitability -24.102583\r\nTotal exploitability 0.6847124 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 2801\r\nplayer 0 exploitability 25.921326\r\nplayer 1 exploitability -24.667856\r\nTotal exploitability 0.62673473 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 2901\r\nplayer 0 exploitability 25.969025\r\nplayer 1 exploitability -24.410496\r\nTotal exploitability 0.77926445 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 3001\r\nplayer 0 exploitability 25.046753\r\nplayer 1 exploitability -23.957224\r\nTotal exploitability 0.5447645 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 3101\r\nplayer 0 exploitability 25.989697\r\nplayer 1 exploitability -24.890392\r\nTotal exploitability 0.5496521 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 3201\r\nplayer 0 exploitability 25.292103\r\nplayer 1 exploitability -23.958277\r\nTotal exploitability 0.66691303 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 3301\r\nplayer 0 exploitability 26.084248\r\nplayer 1 exploitability -24.9502\r\nTotal exploitability 0.56702423 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 3401\r\nplayer 0 exploitability 25.163795\r\nplayer 1 exploitability -23.97922\r\nTotal exploitability 0.592288 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 3501\r\nplayer 0 exploitability 25.825409\r\nplayer 1 exploitability -24.307365\r\nTotal exploitability 0.75902176 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 3601\r\nplayer 0 exploitability 25.956638\r\nplayer 1 exploitability -24.759798\r\nTotal exploitability 0.59842014 precent\r\ntime used: 0.028\r\n-------------------\r\nIter: 3701\r\nplayer 0 exploitability 25.44403\r\nplayer 1 exploitability -24.099566\r\nTotal exploitability 0.6722326 precent\r\ntime used: 0.044\r\n-------------------\r\nIter: 3801\r\nplayer 0 exploitability 25.19794\r\nplayer 1 exploitability -23.947823\r\nTotal exploitability 0.6250591 precent\r\ntime used: 0.044\r\n-------------------\r\nIter: 3901\r\nplayer 0 exploitability 25.682579\r\nplayer 1 exploitability -24.11585\r\nTotal exploitability 0.7833643 precent\r\ntime used: 0.044\r\n",
+        "checkpoints": [
+          {
+            "exploitibility": 0.7934646606445312,
+            "iteration": 100,
+            "time_ms": 2
+          },
+          {
+            "exploitibility": 0.6024398803710938,
+            "iteration": 200,
+            "time_ms": 2
+          },
+          {
+            "exploitibility": 0.6602706909179688,
+            "iteration": 300,
+            "time_ms": 4
+          },
+          {
+            "exploitibility": 0.784574568271637,
+            "iteration": 400,
+            "time_ms": 6
+          },
+          {
+            "exploitibility": 0.613713264465332,
+            "iteration": 500,
+            "time_ms": 6
+          },
+          {
+            "exploitibility": 0.7589321136474609,
+            "iteration": 600,
+            "time_ms": 8
+          },
+          {
+            "exploitibility": 0.5215244293212891,
+            "iteration": 700,
+            "time_ms": 8
+          },
+          {
+            "exploitibility": 0.7268848419189453,
+            "iteration": 800,
+            "time_ms": 8
+          },
+          {
+            "exploitibility": 0.6679468154907227,
+            "iteration": 900,
+            "time_ms": 12
+          },
+          {
+            "exploitibility": 0.5868673324584961,
+            "iteration": 1000,
+            "time_ms": 12
+          },
+          {
+            "exploitibility": 0.5799503326416016,
+            "iteration": 1100,
+            "time_ms": 12
+          },
+          {
+            "exploitibility": 0.620081901550293,
+            "iteration": 1200,
+            "time_ms": 12
+          },
+          {
+            "exploitibility": 0.7282724380493164,
+            "iteration": 1300,
+            "time_ms": 12
+          },
+          {
+            "exploitibility": 0.7033262252807617,
+            "iteration": 1400,
+            "time_ms": 12
+          },
+          {
+            "exploitibility": 0.5868282318115234,
+            "iteration": 1500,
+            "time_ms": 18
+          },
+          {
+            "exploitibility": 0.5655832290649414,
+            "iteration": 1600,
+            "time_ms": 18
+          },
+          {
+            "exploitibility": 0.7455358505249023,
+            "iteration": 1700,
+            "time_ms": 18
+          },
+          {
+            "exploitibility": 0.6972455978393555,
+            "iteration": 1800,
+            "time_ms": 18
+          },
+          {
+            "exploitibility": 0.6655483245849609,
+            "iteration": 1900,
+            "time_ms": 18
+          },
+          {
+            "exploitibility": 0.7414884567260742,
+            "iteration": 2000,
+            "time_ms": 18
+          },
+          {
+            "exploitibility": 0.554896354675293,
+            "iteration": 2100,
+            "time_ms": 18
+          },
+          {
+            "exploitibility": 0.6847553253173828,
+            "iteration": 2200,
+            "time_ms": 18
+          },
+          {
+            "exploitibility": 0.5371284484863281,
+            "iteration": 2300,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.6594791412353516,
+            "iteration": 2400,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.652806282043457,
+            "iteration": 2500,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.543147087097168,
+            "iteration": 2600,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.6847124099731445,
+            "iteration": 2700,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.626734733581543,
+            "iteration": 2800,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.7792644500732422,
+            "iteration": 2900,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.544764518737793,
+            "iteration": 3000,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.549652099609375,
+            "iteration": 3100,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.6669130325317383,
+            "iteration": 3200,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.5670242309570312,
+            "iteration": 3300,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.5922880172729492,
+            "iteration": 3400,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.7590217590332031,
+            "iteration": 3500,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.5984201431274414,
+            "iteration": 3600,
+            "time_ms": 28
+          },
+          {
+            "exploitibility": 0.6722326278686523,
+            "iteration": 3700,
+            "time_ms": 44
+          },
+          {
+            "exploitibility": 0.6250591278076172,
+            "iteration": 3800,
+            "time_ms": 44
+          },
+          {
+            "exploitibility": 0.7833642959594727,
+            "iteration": 3900,
+            "time_ms": 44
+          }
+        ],
+        "strategy": {
+          "actions": [
+            "CHECK",
+            "BET 100.000000"
+          ],
+          "childrens": {
+            "BET 100.000000": {
+              "actions": [
+                "CALL",
+                "FOLD"
+              ],
+              "node_type": "action_node",
+              "player": 0,
+              "strategy": {
+                "actions": [
+                  "CALL",
+                  "FOLD"
+                ],
+                "strategy": {
+                  "AdAc": [
+                    1.0,
+                    0.0
+                  ],
+                  "AhAc": [
+                    1.0,
+                    0.0
+                  ],
+                  "AhAd": [
+                    1.0,
+                    0.0
+                  ],
+                  "AsAc": [
+                    1.0,
+                    0.0
+                  ],
+                  "AsAd": [
+                    1.0,
+                    0.0
+                  ],
+                  "AsAh": [
+                    1.0,
+                    0.0
+                  ],
+                  "KdKc": [
+                    1.0,
+                    0.0
+                  ],
+                  "KhKc": [
+                    1.0,
+                    0.0
+                  ],
+                  "KhKd": [
+                    1.0,
+                    0.0
+                  ],
+                  "KsKc": [
+                    1.0,
+                    0.0
+                  ],
+                  "KsKd": [
+                    1.0,
+                    0.0
+                  ],
+                  "KsKh": [
+                    1.0,
+                    0.0
+                  ],
+                  "QcJd": [
+                    0.0,
+                    1.0
+                  ],
+                  "QcJh": [
+                    0.0,
+                    1.0
+                  ],
+                  "QcJs": [
+                    0.0,
+                    1.0
+                  ],
+                  "QdJc": [
+                    0.0,
+                    1.0
+                  ],
+                  "QdJh": [
+                    0.0,
+                    1.0
+                  ],
+                  "QdJs": [
+                    0.0,
+                    1.0
+                  ],
+                  "QhJc": [
+                    0.0,
+                    1.0
+                  ],
+                  "QhJd": [
+                    0.0,
+                    1.0
+                  ],
+                  "QhJs": [
+                    0.0,
+                    1.0
+                  ],
+                  "QsJc": [
+                    0.0,
+                    1.0
+                  ],
+                  "QsJd": [
+                    0.0,
+                    1.0
+                  ],
+                  "QsJh": [
+                    0.0,
+                    1.0
+                  ]
+                }
+              }
+            },
+            "CHECK": {
+              "actions": [
+                "CHECK",
+                "BET 100.000000"
+              ],
+              "childrens": {
+                "BET 100.000000": {
+                  "actions": [
+                    "CALL",
+                    "FOLD"
+                  ],
+                  "node_type": "action_node",
+                  "player": 1,
+                  "strategy": {
+                    "actions": [
+                      "CALL",
+                      "FOLD"
+                    ],
+                    "strategy": {
+                      "KdKc": [
+                        0.4838315546512604,
+                        0.516168475151062
+                      ],
+                      "KhKc": [
+                        0.4838315546512604,
+                        0.516168475151062
+                      ],
+                      "KhKd": [
+                        0.4838315546512604,
+                        0.516168475151062
+                      ],
+                      "KsKc": [
+                        0.4838315546512604,
+                        0.516168475151062
+                      ],
+                      "KsKd": [
+                        0.4838315546512604,
+                        0.516168475151062
+                      ],
+                      "KsKh": [
+                        0.4838315546512604,
+                        0.516168475151062
+                      ]
+                    }
+                  }
+                }
+              },
+              "node_type": "action_node",
+              "player": 0,
+              "strategy": {
+                "actions": [
+                  "CHECK",
+                  "BET 100.000000"
+                ],
+                "strategy": {
+                  "AdAc": [
+                    0.0,
+                    1.0
+                  ],
+                  "AhAc": [
+                    0.0,
+                    1.0
+                  ],
+                  "AhAd": [
+                    0.0,
+                    1.0
+                  ],
+                  "AsAc": [
+                    0.0,
+                    1.0
+                  ],
+                  "AsAd": [
+                    0.0,
+                    1.0
+                  ],
+                  "AsAh": [
+                    0.0,
+                    1.0
+                  ],
+                  "KdKc": [
+                    0.0,
+                    1.0
+                  ],
+                  "KhKc": [
+                    0.0,
+                    1.0
+                  ],
+                  "KhKd": [
+                    0.0,
+                    1.0
+                  ],
+                  "KsKc": [
+                    0.0,
+                    1.0
+                  ],
+                  "KsKd": [
+                    0.0,
+                    1.0
+                  ],
+                  "KsKh": [
+                    0.0,
+                    1.0
+                  ],
+                  "QcJd": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QcJh": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QcJs": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QdJc": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QdJh": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QdJs": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QhJc": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QhJd": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QhJs": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QsJc": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QsJd": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ],
+                  "QsJh": [
+                    0.5371315479278564,
+                    0.46286842226982117
+                  ]
+                }
+              }
+            }
+          },
+          "node_type": "action_node",
+          "player": 1,
+          "strategy": {
+            "actions": [
+              "CHECK",
+              "BET 100.000000"
+            ],
+            "strategy": {
+              "KdKc": [
+                1.0,
+                0.0
+              ],
+              "KhKc": [
+                1.0,
+                0.0
+              ],
+              "KhKd": [
+                1.0,
+                0.0
+              ],
+              "KsKc": [
+                1.0,
+                0.0
+              ],
+              "KsKd": [
+                1.0,
+                0.0
+              ],
+              "KsKh": [
+                1.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "maximum_iterations": 4000
+      },
+      {
+        "provenance": "Actual standalone upstream Windows v0.2.0 execution",
+        "source_tag": "v0.2.0",
+        "source_commit": "95f039c116fa7bcae7fb6c01aca56adb0f24c680",
+        "binary_sha256": "8b74cd6f687387a9ea6c567591642cfe0bfca88360a1748ff7c7db769d0c5c1a",
+        "download_zip_sha256": "0a9122fa0cd9384e6c1cbe0492e8a3b8ac7809890c649e1a53f77a59d6d50a7c",
+        "lookup_sha256": "4b68eee7bd91224157b125aad7429bf25cedd96370bcd228f316058d197afba2",
+        "input_commands": "set_pot 100\nset_effective_stack 100\nset_board 2c,3d,4h,8s,9c\nset_range_oop KK\nset_range_ip AA,KK:0.5,QJo:0.5\nset_bet_sizes oop,river,bet,100\nset_bet_sizes ip,river,bet,100\nset_bet_sizes oop,river,raise\nset_bet_sizes ip,river,raise\nset_allin_threshold 100\nbuild_tree\nset_thread_num 1\nset_accuracy 0.001\nset_max_iteration 40000\nset_print_interval 1000\nset_use_isomorphism 0\nstart_solve\nset_dump_rounds 1\ndump_result strategy.json\n",
+        "exit_code": 0,
+        "log_after_start": "<<<START SOLVING>>>\r\nUsing 1 threads\r\nIter: 0\r\nplayer 0 exploitability 36.499992\r\nplayer 1 exploitability 25.000004\r\nTotal exploitability 30.749998 precent\r\n-------------------\r\nIter: 1001\r\nplayer 0 exploitability 25.123379\r\nplayer 1 exploitability -23.949644\r\nTotal exploitability 0.58686733 precent\r\ntime used: 0.013\r\n-------------------\r\nIter: 2001\r\nplayer 0 exploitability 25.522846\r\nplayer 1 exploitability -24.03987\r\nTotal exploitability 0.74148846 precent\r\ntime used: 0.017\r\n-------------------\r\nIter: 3001\r\nplayer 0 exploitability 25.046753\r\nplayer 1 exploitability -23.957224\r\nTotal exploitability 0.5447645 precent\r\ntime used: 0.032\r\n-------------------\r\nIter: 4001\r\nplayer 0 exploitability 25.93435\r\nplayer 1 exploitability -24.366428\r\nTotal exploitability 0.78396034 precent\r\ntime used: 0.043\r\n-------------------\r\nIter: 5001\r\nplayer 0 exploitability 25.695507\r\nplayer 1 exploitability -24.177013\r\nTotal exploitability 0.7592468 precent\r\ntime used: 0.048\r\n-------------------\r\nIter: 6001\r\nplayer 0 exploitability 25.456604\r\nplayer 1 exploitability -24.090178\r\nTotal exploitability 0.68321323 precent\r\ntime used: 0.064\r\n-------------------\r\nIter: 7001\r\nplayer 0 exploitability 25.36906\r\nplayer 1 exploitability -24.060503\r\nTotal exploitability 0.65427876 precent\r\ntime used: 0.077\r\n-------------------\r\nIter: 8001\r\nplayer 0 exploitability 25.723427\r\nplayer 1 exploitability -24.283037\r\nTotal exploitability 0.7201948 precent\r\ntime used: 0.083\r\n-------------------\r\nIter: 9001\r\nplayer 0 exploitability 25.418472\r\nplayer 1 exploitability -24.091621\r\nTotal exploitability 0.66342545 precent\r\ntime used: 0.099\r\n-------------------\r\nIter: 10001\r\nplayer 0 exploitability 25.957794\r\nplayer 1 exploitability -24.660122\r\nTotal exploitability 0.64883614 precent\r\ntime used: 0.112\r\n-------------------\r\nIter: 11001\r\nplayer 0 exploitability 25.906624\r\nplayer 1 exploitability -24.65952\r\nTotal exploitability 0.6235523 precent\r\ntime used: 0.115\r\n-------------------\r\nIter: 12001\r\nplayer 0 exploitability 25.94403\r\nplayer 1 exploitability -24.584024\r\nTotal exploitability 0.68000317 precent\r\ntime used: 0.131\r\n-------------------\r\nIter: 13001\r\nplayer 0 exploitability 25.992325\r\nplayer 1 exploitability -24.694954\r\nTotal exploitability 0.64868546 precent\r\ntime used: 0.149\r\n-------------------\r\nIter: 14001\r\nplayer 0 exploitability 25.905907\r\nplayer 1 exploitability -24.679348\r\nTotal exploitability 0.61327934 precent\r\ntime used: 0.15\r\n-------------------\r\nIter: 15001\r\nplayer 0 exploitability 25.671803\r\nplayer 1 exploitability -24.308796\r\nTotal exploitability 0.6815033 precent\r\ntime used: 0.166\r\n-------------------\r\nIter: 16001\r\nplayer 0 exploitability 25.289474\r\nplayer 1 exploitability -24.014717\r\nTotal exploitability 0.6373787 precent\r\ntime used: 0.182\r\n-------------------\r\nIter: 17001\r\nplayer 0 exploitability 25.77972\r\nplayer 1 exploitability -24.452005\r\nTotal exploitability 0.66385746 precent\r\ntime used: 0.182\r\n-------------------\r\nIter: 18001\r\nplayer 0 exploitability 25.886166\r\nplayer 1 exploitability -24.65777\r\nTotal exploitability 0.61419773 precent\r\ntime used: 0.198\r\n-------------------\r\nIter: 19001\r\nplayer 0 exploitability 25.233444\r\nplayer 1 exploitability -24.03644\r\nTotal exploitability 0.59850216 precent\r\ntime used: 0.217\r\n-------------------\r\nIter: 20001\r\nplayer 0 exploitability 25.869942\r\nplayer 1 exploitability -24.631128\r\nTotal exploitability 0.6194067 precent\r\ntime used: 0.217\r\n-------------------\r\nIter: 21001\r\nplayer 0 exploitability 25.561577\r\nplayer 1 exploitability -24.225573\r\nTotal exploitability 0.6680021 precent\r\ntime used: 0.237\r\n-------------------\r\nIter: 22001\r\nplayer 0 exploitability 25.939953\r\nplayer 1 exploitability -24.770418\r\nTotal exploitability 0.58476734 precent\r\ntime used: 0.249\r\n-------------------\r\nIter: 23001\r\nplayer 0 exploitability 25.978989\r\nplayer 1 exploitability -24.737024\r\nTotal exploitability 0.62098217 precent\r\ntime used: 0.249\r\n-------------------\r\nIter: 24001\r\nplayer 0 exploitability 25.771313\r\nplayer 1 exploitability -24.376476\r\nTotal exploitability 0.6974182 precent\r\ntime used: 0.265\r\n-------------------\r\nIter: 25001\r\nplayer 0 exploitability 25.9268\r\nplayer 1 exploitability -24.851587\r\nTotal exploitability 0.53760624 precent\r\ntime used: 0.276\r\n-------------------\r\nIter: 26001\r\nplayer 0 exploitability 25.913342\r\nplayer 1 exploitability -24.694624\r\nTotal exploitability 0.6093588 precent\r\ntime used: 0.286\r\n-------------------\r\nIter: 27001\r\nplayer 0 exploitability 25.382378\r\nplayer 1 exploitability -24.110664\r\nTotal exploitability 0.6358566 precent\r\ntime used: 0.298\r\n-------------------\r\nIter: 28001\r\nplayer 0 exploitability 25.10571\r\nplayer 1 exploitability -24.03132\r\nTotal exploitability 0.53719425 precent\r\ntime used: 0.307\r\n-------------------\r\nIter: 29001\r\nplayer 0 exploitability 25.834232\r\nplayer 1 exploitability -24.485826\r\nTotal exploitability 0.6742029 precent\r\ntime used: 0.316\r\n-------------------\r\nIter: 30001\r\nplayer 0 exploitability 25.236164\r\nplayer 1 exploitability -24.04487\r\nTotal exploitability 0.59564686 precent\r\ntime used: 0.332\r\n-------------------\r\nIter: 31001\r\nplayer 0 exploitability 25.404377\r\nplayer 1 exploitability -24.10222\r\nTotal exploitability 0.6510782 precent\r\ntime used: 0.349\r\n-------------------\r\nIter: 32001\r\nplayer 0 exploitability 25.337032\r\nplayer 1 exploitability -24.103619\r\nTotal exploitability 0.61670685 precent\r\ntime used: 0.36\r\n-------------------\r\nIter: 33001\r\nplayer 0 exploitability 25.883812\r\nplayer 1 exploitability -24.489872\r\nTotal exploitability 0.69697 precent\r\ntime used: 0.372\r\n-------------------\r\nIter: 34001\r\nplayer 0 exploitability 25.926128\r\nplayer 1 exploitability -24.946447\r\nTotal exploitability 0.4898405 precent\r\ntime used: 0.382\r\n-------------------\r\nIter: 35001\r\nplayer 0 exploitability 25.935314\r\nplayer 1 exploitability -24.603754\r\nTotal exploitability 0.66578007 precent\r\ntime used: 0.387\r\n-------------------\r\nIter: 36001\r\nplayer 0 exploitability 25.01353\r\nplayer 1 exploitability -24.039803\r\nTotal exploitability 0.4868641 precent\r\ntime used: 0.393\r\n-------------------\r\nIter: 37001\r\nplayer 0 exploitability 25.822815\r\nplayer 1 exploitability -24.526339\r\nTotal exploitability 0.6482382 precent\r\ntime used: 0.396\r\n-------------------\r\nIter: 38001\r\nplayer 0 exploitability 25.911213\r\nplayer 1 exploitability -24.832306\r\nTotal exploitability 0.5394535 precent\r\ntime used: 0.396\r\n-------------------\r\nIter: 39001\r\nplayer 0 exploitability 25.78553\r\nplayer 1 exploitability -24.46678\r\nTotal exploitability 0.6593752 precent\r\ntime used: 0.396\r\n",
+        "checkpoints": [
+          {
+            "exploitibility": 0.5868673324584961,
+            "iteration": 1000,
+            "time_ms": 13
+          },
+          {
+            "exploitibility": 0.7414884567260742,
+            "iteration": 2000,
+            "time_ms": 17
+          },
+          {
+            "exploitibility": 0.544764518737793,
+            "iteration": 3000,
+            "time_ms": 32
+          },
+          {
+            "exploitibility": 0.7839603424072266,
+            "iteration": 4000,
+            "time_ms": 43
+          },
+          {
+            "exploitibility": 0.759246826171875,
+            "iteration": 5000,
+            "time_ms": 48
+          },
+          {
+            "exploitibility": 0.6832132339477539,
+            "iteration": 6000,
+            "time_ms": 64
+          },
+          {
+            "exploitibility": 0.6542787551879883,
+            "iteration": 7000,
+            "time_ms": 77
+          },
+          {
+            "exploitibility": 0.7201948165893555,
+            "iteration": 8000,
+            "time_ms": 83
+          },
+          {
+            "exploitibility": 0.6634254455566406,
+            "iteration": 9000,
+            "time_ms": 99
+          },
+          {
+            "exploitibility": 0.6488361358642578,
+            "iteration": 10000,
+            "time_ms": 112
+          },
+          {
+            "exploitibility": 0.6235523223876953,
+            "iteration": 11000,
+            "time_ms": 115
+          },
+          {
+            "exploitibility": 0.6800031661987305,
+            "iteration": 12000,
+            "time_ms": 131
+          },
+          {
+            "exploitibility": 0.6486854553222656,
+            "iteration": 13000,
+            "time_ms": 149
+          },
+          {
+            "exploitibility": 0.6132793426513672,
+            "iteration": 14000,
+            "time_ms": 150
+          },
+          {
+            "exploitibility": 0.6815032958984375,
+            "iteration": 15000,
+            "time_ms": 166
+          },
+          {
+            "exploitibility": 0.6373786926269531,
+            "iteration": 16000,
+            "time_ms": 182
+          },
+          {
+            "exploitibility": 0.6638574600219727,
+            "iteration": 17000,
+            "time_ms": 182
+          },
+          {
+            "exploitibility": 0.6141977310180664,
+            "iteration": 18000,
+            "time_ms": 198
+          },
+          {
+            "exploitibility": 0.5985021591186523,
+            "iteration": 19000,
+            "time_ms": 217
+          },
+          {
+            "exploitibility": 0.6194067001342773,
+            "iteration": 20000,
+            "time_ms": 217
+          },
+          {
+            "exploitibility": 0.6680021286010742,
+            "iteration": 21000,
+            "time_ms": 237
+          },
+          {
+            "exploitibility": 0.5847673416137695,
+            "iteration": 22000,
+            "time_ms": 249
+          },
+          {
+            "exploitibility": 0.6209821701049805,
+            "iteration": 23000,
+            "time_ms": 249
+          },
+          {
+            "exploitibility": 0.697418212890625,
+            "iteration": 24000,
+            "time_ms": 265
+          },
+          {
+            "exploitibility": 0.5376062393188477,
+            "iteration": 25000,
+            "time_ms": 276
+          },
+          {
+            "exploitibility": 0.6093587875366211,
+            "iteration": 26000,
+            "time_ms": 286
+          },
+          {
+            "exploitibility": 0.6358566284179688,
+            "iteration": 27000,
+            "time_ms": 298
+          },
+          {
+            "exploitibility": 0.5371942520141602,
+            "iteration": 28000,
+            "time_ms": 307
+          },
+          {
+            "exploitibility": 0.6742029190063477,
+            "iteration": 29000,
+            "time_ms": 316
+          },
+          {
+            "exploitibility": 0.595646858215332,
+            "iteration": 30000,
+            "time_ms": 332
+          },
+          {
+            "exploitibility": 0.6510782241821289,
+            "iteration": 31000,
+            "time_ms": 349
+          },
+          {
+            "exploitibility": 0.6167068481445312,
+            "iteration": 32000,
+            "time_ms": 360
+          },
+          {
+            "exploitibility": 0.6969699859619141,
+            "iteration": 33000,
+            "time_ms": 372
+          },
+          {
+            "exploitibility": 0.4898405075073242,
+            "iteration": 34000,
+            "time_ms": 382
+          },
+          {
+            "exploitibility": 0.6657800674438477,
+            "iteration": 35000,
+            "time_ms": 387
+          },
+          {
+            "exploitibility": 0.4868640899658203,
+            "iteration": 36000,
+            "time_ms": 393
+          },
+          {
+            "exploitibility": 0.6482381820678711,
+            "iteration": 37000,
+            "time_ms": 396
+          },
+          {
+            "exploitibility": 0.5394535064697266,
+            "iteration": 38000,
+            "time_ms": 396
+          },
+          {
+            "exploitibility": 0.6593751907348633,
+            "iteration": 39000,
+            "time_ms": 396
+          }
+        ],
+        "strategy": {
+          "actions": [
+            "CHECK",
+            "BET 100.000000"
+          ],
+          "childrens": {
+            "BET 100.000000": {
+              "actions": [
+                "CALL",
+                "FOLD"
+              ],
+              "node_type": "action_node",
+              "player": 0,
+              "strategy": {
+                "actions": [
+                  "CALL",
+                  "FOLD"
+                ],
+                "strategy": {
+                  "AdAc": [
+                    1.0,
+                    0.0
+                  ],
+                  "AhAc": [
+                    1.0,
+                    0.0
+                  ],
+                  "AhAd": [
+                    1.0,
+                    0.0
+                  ],
+                  "AsAc": [
+                    1.0,
+                    0.0
+                  ],
+                  "AsAd": [
+                    1.0,
+                    0.0
+                  ],
+                  "AsAh": [
+                    1.0,
+                    0.0
+                  ],
+                  "KdKc": [
+                    1.0,
+                    0.0
+                  ],
+                  "KhKc": [
+                    1.0,
+                    0.0
+                  ],
+                  "KhKd": [
+                    1.0,
+                    0.0
+                  ],
+                  "KsKc": [
+                    1.0,
+                    0.0
+                  ],
+                  "KsKd": [
+                    1.0,
+                    0.0
+                  ],
+                  "KsKh": [
+                    1.0,
+                    0.0
+                  ],
+                  "QcJd": [
+                    0.0,
+                    1.0
+                  ],
+                  "QcJh": [
+                    0.0,
+                    1.0
+                  ],
+                  "QcJs": [
+                    0.0,
+                    1.0
+                  ],
+                  "QdJc": [
+                    0.0,
+                    1.0
+                  ],
+                  "QdJh": [
+                    0.0,
+                    1.0
+                  ],
+                  "QdJs": [
+                    0.0,
+                    1.0
+                  ],
+                  "QhJc": [
+                    0.0,
+                    1.0
+                  ],
+                  "QhJd": [
+                    0.0,
+                    1.0
+                  ],
+                  "QhJs": [
+                    0.0,
+                    1.0
+                  ],
+                  "QsJc": [
+                    0.0,
+                    1.0
+                  ],
+                  "QsJd": [
+                    0.0,
+                    1.0
+                  ],
+                  "QsJh": [
+                    0.0,
+                    1.0
+                  ]
+                }
+              }
+            },
+            "CHECK": {
+              "actions": [
+                "CHECK",
+                "BET 100.000000"
+              ],
+              "childrens": {
+                "BET 100.000000": {
+                  "actions": [
+                    "CALL",
+                    "FOLD"
+                  ],
+                  "node_type": "action_node",
+                  "player": 1,
+                  "strategy": {
+                    "actions": [
+                      "CALL",
+                      "FOLD"
+                    ],
+                    "strategy": {
+                      "KdKc": [
+                        0.4957805871963501,
+                        0.5042194128036499
+                      ],
+                      "KhKc": [
+                        0.4957805871963501,
+                        0.5042194128036499
+                      ],
+                      "KhKd": [
+                        0.4957805871963501,
+                        0.5042194128036499
+                      ],
+                      "KsKc": [
+                        0.4957805871963501,
+                        0.5042194128036499
+                      ],
+                      "KsKd": [
+                        0.4957805871963501,
+                        0.5042194128036499
+                      ],
+                      "KsKh": [
+                        0.4957805871963501,
+                        0.5042194128036499
+                      ]
+                    }
+                  }
+                }
+              },
+              "node_type": "action_node",
+              "player": 0,
+              "strategy": {
+                "actions": [
+                  "CHECK",
+                  "BET 100.000000"
+                ],
+                "strategy": {
+                  "AdAc": [
+                    0.0,
+                    1.0
+                  ],
+                  "AhAc": [
+                    0.0,
+                    1.0
+                  ],
+                  "AhAd": [
+                    0.0,
+                    1.0
+                  ],
+                  "AsAc": [
+                    0.0,
+                    1.0
+                  ],
+                  "AsAd": [
+                    0.0,
+                    1.0
+                  ],
+                  "AsAh": [
+                    0.0,
+                    1.0
+                  ],
+                  "KdKc": [
+                    0.0,
+                    1.0
+                  ],
+                  "KhKc": [
+                    0.0,
+                    1.0
+                  ],
+                  "KhKd": [
+                    0.0,
+                    1.0
+                  ],
+                  "KsKc": [
+                    0.0,
+                    1.0
+                  ],
+                  "KsKd": [
+                    0.0,
+                    1.0
+                  ],
+                  "KsKh": [
+                    0.0,
+                    1.0
+                  ],
+                  "QcJd": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QcJh": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QcJs": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QdJc": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QdJh": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QdJs": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QhJc": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QhJd": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QhJs": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QsJc": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QsJd": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ],
+                  "QsJh": [
+                    0.5016507506370544,
+                    0.49834924936294556
+                  ]
+                }
+              }
+            }
+          },
+          "node_type": "action_node",
+          "player": 1,
+          "strategy": {
+            "actions": [
+              "CHECK",
+              "BET 100.000000"
+            ],
+            "strategy": {
+              "KdKc": [
+                1.0,
+                0.0
+              ],
+              "KhKc": [
+                1.0,
+                0.0
+              ],
+              "KhKd": [
+                1.0,
+                0.0
+              ],
+              "KsKc": [
+                1.0,
+                0.0
+              ],
+              "KsKd": [
+                1.0,
+                0.0
+              ],
+              "KsKh": [
+                1.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "maximum_iterations": 40000
+      }
+    ]
+  },
+  "analysis": {
+    "fixture_id": "texas_weighted_blocker_diagnostic",
+    "chance": {
+      "compatible_pairs": 114,
+      "unnormalized_joint_weight": 75.0,
+      "ip_category_probability_after_card_removal": {
+        "AA": 0.48,
+        "KK": 0.04,
+        "QJ": 0.48
+      }
+    },
+    "analytical": {
+      "oop_root_ev": -25.00000000000001,
+      "nashconv": 3.637978807091713e-14,
+      "qj_bet": 0.4791666666666667,
+      "kk_call": 0.5,
+      "ip_kk_bet": 1.0
+    },
+    "runs": [
+      {
+        "maximum_iterations": 4000,
+        "oop_root_ev": -24.974704162899585,
+        "independently_evaluated_nashconv": 1.590739548206384,
+        "convergence_gate_chips": 0.5,
+        "status": "FAIL",
+        "last_logged_iteration_index": 3900,
+        "last_logged_exploitability_percent": 0.7833642959594727,
+        "last_logged_normalized_nashconv": 1.5667285919189453,
+        "log_and_dump_are_different_checkpoints": true
+      },
+      {
+        "maximum_iterations": 40000,
+        "oop_root_ev": -25.00777016656343,
+        "independently_evaluated_nashconv": 1.1317346096038818,
+        "convergence_gate_chips": 0.5,
+        "status": "FAIL",
+        "last_logged_iteration_index": 39000,
+        "last_logged_exploitability_percent": 0.6593751907348633,
+        "last_logged_normalized_nashconv": 1.3187503814697266,
+        "log_and_dump_are_different_checkpoints": true
+      }
+    ],
+    "failed_runs": [
+      4000,
+      40000
+    ],
+    "product_and_noambrown": {
+      "id": "texas_weighted_blocker_diagnostic",
+      "local_iterations": 1500,
+      "reference_iterations": 4000,
+      "local_root_ev": -25.0001,
+      "reference_root_ev": -25.000006739803332,
+      "root_ev_delta_pot": 9.3260196667444e-07,
+      "combined_gap_bound_pot": 0.0005202388154357104,
+      "local_nashconv": 0.03584236611837696,
+      "reference_nashconv": 0.016081515425194082,
+      "same_profile_max_action_ev_delta_pot": 4.263256414560601e-16,
+      "reach_weighted_strategy_l1": 0.00023422498692027182,
+      "rank_mismatches": [],
+      "local_cost": {
+        "seconds": 1.619093100016471,
+        "python_peak_bytes": 12158
+      },
+      "reference_cost": {
+        "seconds": 8.698865300044417,
+        "python_peak_bytes": 49773
+      },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 28812,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 10000,
+          "bet_sizes": [
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "KcKd",
+                "KcKh",
+                "KcKs",
+                "KdKh",
+                "KdKs",
+                "KhKs"
+              ],
+              "weights": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "hands": [
+                "AcAd",
+                "AcAh",
+                "AcAs",
+                "AdAh",
+                "AdAs",
+                "AhAs",
+                "QcJd",
+                "QcJh",
+                "QcJs",
+                "QdJc",
+                "QdJh",
+                "QdJs",
+                "QhJc",
+                "QhJd",
+                "QhJs",
+                "QsJc",
+                "QsJd",
+                "QsJh",
+                "KcKd",
+                "KcKh",
+                "KcKs",
+                "KdKh",
+                "KdKs",
+                "KhKs"
+              ],
+              "weights": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 134.32878470666037
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 59.578287179718245
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 25.007632013974217
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 13.231366054908904
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 6.5313576095777535
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 3.572612977398421
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 1.9407672313100193
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.8040757712597042
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "KcKd",
+              "KcKh",
+              "KcKs",
+              "KdKh",
+              "KdKs",
+              "KhKs"
+            ],
+            "weights": [
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    0.9999994051805506,
+                    5.948194494174216e-07
+                  ],
+                  [
+                    0.9999994051805506,
+                    5.948194494174216e-07
+                  ],
+                  [
+                    0.9999994051805506,
+                    5.948194494174216e-07
+                  ],
+                  [
+                    0.9999994051805506,
+                    5.948194494174216e-07
+                  ],
+                  [
+                    0.9999994051805506,
+                    5.948194494174216e-07
+                  ],
+                  [
+                    0.9999994051805506,
+                    5.948194494174216e-07
+                  ]
+                ]
+              },
+              "c/b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.5000850763057703,
+                    0.4999149236942297
+                  ],
+                  [
+                    0.5000850763057703,
+                    0.4999149236942297
+                  ],
+                  [
+                    0.5000850763057703,
+                    0.4999149236942297
+                  ],
+                  [
+                    0.5000850763057703,
+                    0.4999149236942297
+                  ],
+                  [
+                    0.5000850763057703,
+                    0.4999149236942297
+                  ],
+                  [
+                    0.5000850763057703,
+                    0.4999149236942297
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "AcAd",
+              "AcAh",
+              "AcAs",
+              "AdAh",
+              "AdAs",
+              "AhAs",
+              "QcJd",
+              "QcJh",
+              "QcJs",
+              "JcQd",
+              "QdJh",
+              "QdJs",
+              "JcQh",
+              "JdQh",
+              "QhJs",
+              "JcQs",
+              "JdQs",
+              "JhQs",
+              "KcKd",
+              "KcKh",
+              "KcKs",
+              "KdKh",
+              "KdKs",
+              "KhKs"
+            ],
+            "weights": [
+              0.06666666666666667,
+              0.06666666666666667,
+              0.06666666666666667,
+              0.06666666666666667,
+              0.06666666666666667,
+              0.06666666666666667,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333,
+              0.03333333333333333
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    1.8745313671582108e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582108e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582108e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582108e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582108e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582108e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    0.520580305643965,
+                    0.479419694356035
+                  ],
+                  [
+                    3.7490627343164216e-07,
+                    0.9999996250937266
+                  ],
+                  [
+                    3.7490627343164216e-07,
+                    0.9999996250937266
+                  ],
+                  [
+                    3.7490627343164216e-07,
+                    0.9999996250937266
+                  ],
+                  [
+                    3.7490627343164216e-07,
+                    0.9999996250937266
+                  ],
+                  [
+                    3.7490627343164216e-07,
+                    0.9999996250937266
+                  ],
+                  [
+                    3.7490627343164216e-07,
+                    0.9999996250937266
+                  ]
+                ]
+              },
+              "b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 8.698865300044417,
+          "python_peak_bytes": 49773
+        }
+      },
+      "analytical": null,
+      "nodes": [
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KcKd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.499925558365157,
+            0.5000744416348429
+          ],
+          "reference_frequency": [
+            0.5000850763057703,
+            0.4999149236942297
+          ],
+          "local_joint_reach": 0.125052612067596,
+          "reference_joint_reach": 0.1250201503550622,
+          "rare": false,
+          "strategy_l1": 0.0003190358812265037,
+          "local_action_ev": [
+            -49.91473381950265,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -49.967606699673446,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 0.03239330032655374,
+          "local_action_regret_vs_reference_opponent": 0.016199061573509255,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KcKh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.499925558365157,
+            0.5000744416348429
+          ],
+          "reference_frequency": [
+            0.5000850763057703,
+            0.4999149236942297
+          ],
+          "local_joint_reach": 0.125052612067596,
+          "reference_joint_reach": 0.1250201503550622,
+          "rare": false,
+          "strategy_l1": 0.0003190358812265037,
+          "local_action_ev": [
+            -49.91473381950265,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -49.967606699673446,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 0.03239330032655374,
+          "local_action_regret_vs_reference_opponent": 0.016199061573509255,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KcKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.499925558365157,
+            0.5000744416348429
+          ],
+          "reference_frequency": [
+            0.5000850763057703,
+            0.4999149236942297
+          ],
+          "local_joint_reach": 0.125052612067596,
+          "reference_joint_reach": 0.1250201503550622,
+          "rare": false,
+          "strategy_l1": 0.0003190358812265037,
+          "local_action_ev": [
+            -49.91473381950265,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -49.967606699673446,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 0.03239330032655374,
+          "local_action_regret_vs_reference_opponent": 0.016199061573509255,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KdKh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.499925558365157,
+            0.5000744416348429
+          ],
+          "reference_frequency": [
+            0.5000850763057703,
+            0.4999149236942297
+          ],
+          "local_joint_reach": 0.125052612067596,
+          "reference_joint_reach": 0.1250201503550622,
+          "rare": false,
+          "strategy_l1": 0.0003190358812265037,
+          "local_action_ev": [
+            -49.91473381950265,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -49.967606699673446,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 0.03239330032655374,
+          "local_action_regret_vs_reference_opponent": 0.016199061573509255,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KdKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.4999255583651557,
+            0.5000744416348443
+          ],
+          "reference_frequency": [
+            0.5000850763057703,
+            0.4999149236942297
+          ],
+          "local_joint_reach": 0.125052612067596,
+          "reference_joint_reach": 0.1250201503550622,
+          "rare": false,
+          "strategy_l1": 0.00031903588122916826,
+          "local_action_ev": [
+            -49.91473381950265,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -49.967606699673446,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 0.03239330032655374,
+          "local_action_regret_vs_reference_opponent": 0.016199061573509255,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KhKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.4999255583651557,
+            0.5000744416348443
+          ],
+          "reference_frequency": [
+            0.5000850763057703,
+            0.4999149236942297
+          ],
+          "local_joint_reach": 0.125052612067596,
+          "reference_joint_reach": 0.1250201503550622,
+          "rare": false,
+          "strategy_l1": 0.00031903588122916826,
+          "local_action_ev": [
+            -49.91473381950265,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -49.967606699673446,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 0.03239330032655374,
+          "local_action_regret_vs_reference_opponent": 0.016199061573509255,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_first",
+          "hand": "KcKd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999957719340581,
+            4.228065942028166e-06
+          ],
+          "reference_frequency": [
+            0.9999994051805506,
+            5.948194494174216e-07
+          ],
+          "local_joint_reach": 0.16666666666666663,
+          "reference_joint_reach": 0.16666666666666663,
+          "rare": false,
+          "strategy_l1": 7.266492985162223e-06,
+          "local_action_ev": [
+            -24.99997011896828,
+            -47.99993515434151
+          ],
+          "reference_action_ev": [
+            -24.999993058957294,
+            -47.99999087728071
+          ],
+          "reference_best_second_ev_gap": 22.999997818323415,
+          "local_action_regret_vs_reference_opponent": 9.724550744394378e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KcKh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999957719340581,
+            4.228065942028166e-06
+          ],
+          "reference_frequency": [
+            0.9999994051805506,
+            5.948194494174216e-07
+          ],
+          "local_joint_reach": 0.16666666666666663,
+          "reference_joint_reach": 0.16666666666666663,
+          "rare": false,
+          "strategy_l1": 7.266492985162223e-06,
+          "local_action_ev": [
+            -24.99997011896828,
+            -47.99993515434151
+          ],
+          "reference_action_ev": [
+            -24.999993058957294,
+            -47.99999087728071
+          ],
+          "reference_best_second_ev_gap": 22.999997818323415,
+          "local_action_regret_vs_reference_opponent": 9.724550744394378e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KcKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999957719340581,
+            4.228065942028166e-06
+          ],
+          "reference_frequency": [
+            0.9999994051805506,
+            5.948194494174216e-07
+          ],
+          "local_joint_reach": 0.16666666666666663,
+          "reference_joint_reach": 0.16666666666666663,
+          "rare": false,
+          "strategy_l1": 7.266492985162223e-06,
+          "local_action_ev": [
+            -24.99997011896828,
+            -47.99993515434151
+          ],
+          "reference_action_ev": [
+            -24.999993058957294,
+            -47.99999087728071
+          ],
+          "reference_best_second_ev_gap": 22.999997818323415,
+          "local_action_regret_vs_reference_opponent": 9.724550744394378e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KdKh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999957719340581,
+            4.228065942028166e-06
+          ],
+          "reference_frequency": [
+            0.9999994051805506,
+            5.948194494174216e-07
+          ],
+          "local_joint_reach": 0.16666666666666663,
+          "reference_joint_reach": 0.16666666666666663,
+          "rare": false,
+          "strategy_l1": 7.266492985162223e-06,
+          "local_action_ev": [
+            -24.99997011896828,
+            -47.99993515434151
+          ],
+          "reference_action_ev": [
+            -24.999993058957294,
+            -47.99999087728071
+          ],
+          "reference_best_second_ev_gap": 22.999997818323415,
+          "local_action_regret_vs_reference_opponent": 9.724550744394378e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KdKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999957719340581,
+            4.228065942028166e-06
+          ],
+          "reference_frequency": [
+            0.9999994051805506,
+            5.948194494174216e-07
+          ],
+          "local_joint_reach": 0.16666666666666663,
+          "reference_joint_reach": 0.16666666666666663,
+          "rare": false,
+          "strategy_l1": 7.266492985162223e-06,
+          "local_action_ev": [
+            -24.99997011896828,
+            -47.99993515434151
+          ],
+          "reference_action_ev": [
+            -24.999993058957294,
+            -47.99999087728071
+          ],
+          "reference_best_second_ev_gap": 22.999997818323415,
+          "local_action_regret_vs_reference_opponent": 9.724550744394378e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KhKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999957719340581,
+            4.228065942028166e-06
+          ],
+          "reference_frequency": [
+            0.9999994051805506,
+            5.948194494174216e-07
+          ],
+          "local_joint_reach": 0.16666666666666663,
+          "reference_joint_reach": 0.16666666666666663,
+          "rare": false,
+          "strategy_l1": 7.266492985162223e-06,
+          "local_action_ev": [
+            -24.99997011896828,
+            -47.99993515434151
+          ],
+          "reference_action_ev": [
+            -24.999993058957294,
+            -47.99999087728071
+          ],
+          "reference_best_second_ev_gap": 22.999997818323415,
+          "local_action_regret_vs_reference_opponent": 9.724550744394378e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AcAd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582108e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.07999966175472464,
+          "reference_joint_reach": 0.07999995241444405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            50.0,
+            99.99255583651565
+          ],
+          "reference_action_ev": [
+            50.0,
+            100.00850763057704
+          ],
+          "reference_best_second_ev_gap": 50.00850763057704,
+          "local_action_regret_vs_reference_opponent": 6.66335877781421e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AcAh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582108e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.07999966175472464,
+          "reference_joint_reach": 0.07999995241444405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            50.0,
+            99.99255583651565
+          ],
+          "reference_action_ev": [
+            50.0,
+            100.00850763057704
+          ],
+          "reference_best_second_ev_gap": 50.00850763057704,
+          "local_action_regret_vs_reference_opponent": 6.66335877781421e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AcAs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582108e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.07999966175472464,
+          "reference_joint_reach": 0.07999995241444405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            50.0,
+            99.99255583651565
+          ],
+          "reference_action_ev": [
+            50.0,
+            100.00850763057704
+          ],
+          "reference_best_second_ev_gap": 50.00850763057704,
+          "local_action_regret_vs_reference_opponent": 6.66335877781421e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AdAh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582108e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.07999966175472464,
+          "reference_joint_reach": 0.07999995241444405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            50.0,
+            99.99255583651565
+          ],
+          "reference_action_ev": [
+            50.0,
+            100.00850763057704
+          ],
+          "reference_best_second_ev_gap": 50.00850763057704,
+          "local_action_regret_vs_reference_opponent": 6.66335877781421e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AdAs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582108e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.07999966175472464,
+          "reference_joint_reach": 0.07999995241444405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            50.0,
+            99.99255583651565
+          ],
+          "reference_action_ev": [
+            50.0,
+            100.00850763057704
+          ],
+          "reference_best_second_ev_gap": 50.00850763057704,
+          "local_action_regret_vs_reference_opponent": 6.66335877781421e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AhAs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582108e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.07999966175472464,
+          "reference_joint_reach": 0.07999995241444405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            50.0,
+            99.99255583651565
+          ],
+          "reference_action_ev": [
+            50.0,
+            100.00850763057704
+          ],
+          "reference_best_second_ev_gap": 50.00850763057704,
+          "local_action_regret_vs_reference_opponent": 6.66335877781421e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JdQc",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JhQc",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JsQc",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JcQd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JhQd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JsQd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JcQh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JdQh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JsQh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JcQs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JdQs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JhQs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.5201675188076048,
+            0.4798324811923951
+          ],
+          "reference_frequency": [
+            0.520580305643965,
+            0.479419694356035
+          ],
+          "local_joint_reach": 0.03999983087736232,
+          "reference_joint_reach": 0.039999976207222024,
+          "rare": false,
+          "strategy_l1": 0.0008255736727202367,
+          "local_action_ev": [
+            -50.0,
+            -49.985111673031305
+          ],
+          "reference_action_ev": [
+            -50.0,
+            -50.01701526115407
+          ],
+          "reference_best_second_ev_gap": 0.01701526115407148,
+          "local_action_regret_vs_reference_opponent": 0.008164474977689906,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "KcKd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            2.664890073284477e-06,
+            0.9999973351099267
+          ],
+          "reference_frequency": [
+            3.7490627343164216e-07,
+            0.9999996250937266
+          ],
+          "local_joint_reach": 0.006666638479560384,
+          "reference_joint_reach": 0.006666662701203671,
+          "rare": false,
+          "strategy_l1": 4.5799675997719054e-06,
+          "local_action_ev": [
+            1.3642478207891403e-14,
+            25.003722081742218
+          ],
+          "reference_action_ev": [
+            -6.8212143206879075e-15,
+            24.995746184711464
+          ],
+          "reference_best_second_ev_gap": 24.99574618471147,
+          "local_action_regret_vs_reference_opponent": 6.661091588355816e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "KcKh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            2.664890073284477e-06,
+            0.9999973351099267
+          ],
+          "reference_frequency": [
+            3.7490627343164216e-07,
+            0.9999996250937266
+          ],
+          "local_joint_reach": 0.006666638479560384,
+          "reference_joint_reach": 0.006666662701203671,
+          "rare": false,
+          "strategy_l1": 4.5799675997719054e-06,
+          "local_action_ev": [
+            1.3642478207891403e-14,
+            25.003722081742218
+          ],
+          "reference_action_ev": [
+            -6.8212143206879075e-15,
+            24.995746184711464
+          ],
+          "reference_best_second_ev_gap": 24.99574618471147,
+          "local_action_regret_vs_reference_opponent": 6.661091588355816e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "KcKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            2.664890073284477e-06,
+            0.9999973351099267
+          ],
+          "reference_frequency": [
+            3.7490627343164216e-07,
+            0.9999996250937266
+          ],
+          "local_joint_reach": 0.006666638479560384,
+          "reference_joint_reach": 0.006666662701203671,
+          "rare": false,
+          "strategy_l1": 4.5799675997719054e-06,
+          "local_action_ev": [
+            1.3642478207891403e-14,
+            25.003722081742154
+          ],
+          "reference_action_ev": [
+            -6.8212143206879075e-15,
+            24.995746184711464
+          ],
+          "reference_best_second_ev_gap": 24.99574618471147,
+          "local_action_regret_vs_reference_opponent": 6.661091588355816e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "KdKh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            2.664890073284477e-06,
+            0.9999973351099267
+          ],
+          "reference_frequency": [
+            3.7490627343164216e-07,
+            0.9999996250937266
+          ],
+          "local_joint_reach": 0.006666638479560384,
+          "reference_joint_reach": 0.006666662701203671,
+          "rare": false,
+          "strategy_l1": 4.5799675997719054e-06,
+          "local_action_ev": [
+            1.3642478207891403e-14,
+            25.003722081742154
+          ],
+          "reference_action_ev": [
+            -6.8212143206879075e-15,
+            24.995746184711464
+          ],
+          "reference_best_second_ev_gap": 24.99574618471147,
+          "local_action_regret_vs_reference_opponent": 6.661091588355816e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "KdKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            2.664890073284477e-06,
+            0.9999973351099267
+          ],
+          "reference_frequency": [
+            3.7490627343164216e-07,
+            0.9999996250937266
+          ],
+          "local_joint_reach": 0.006666638479560384,
+          "reference_joint_reach": 0.006666662701203671,
+          "rare": false,
+          "strategy_l1": 4.5799675997719054e-06,
+          "local_action_ev": [
+            1.3642478207891403e-14,
+            25.003722081742154
+          ],
+          "reference_action_ev": [
+            -6.8212143206879075e-15,
+            24.995746184711464
+          ],
+          "reference_best_second_ev_gap": 24.99574618471147,
+          "local_action_regret_vs_reference_opponent": 6.661091588355816e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "KhKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            2.664890073284477e-06,
+            0.9999973351099267
+          ],
+          "reference_frequency": [
+            3.7490627343164216e-07,
+            0.9999996250937266
+          ],
+          "local_joint_reach": 0.006666638479560384,
+          "reference_joint_reach": 0.006666662701203671,
+          "rare": false,
+          "strategy_l1": 4.5799675997719054e-06,
+          "local_action_ev": [
+            1.3642478207891403e-14,
+            25.003722081742154
+          ],
+          "reference_action_ev": [
+            -6.8212143206879075e-15,
+            24.995746184711464
+          ],
+          "reference_best_second_ev_gap": 24.99574618471147,
+          "local_action_regret_vs_reference_opponent": 6.661091588355816e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AcAd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.382452753622533e-07,
+          "reference_joint_reach": 4.7585555953393724e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 200.0,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AcAh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.382452753622533e-07,
+          "reference_joint_reach": 4.7585555953393724e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 200.0,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AcAs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.382452753622533e-07,
+          "reference_joint_reach": 4.7585555953393724e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 200.0,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AdAh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.382452753622533e-07,
+          "reference_joint_reach": 4.7585555953393724e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 200.0,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AdAs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.382452753622533e-07,
+          "reference_joint_reach": 4.7585555953393724e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 200.0,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AhAs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.382452753622533e-07,
+          "reference_joint_reach": 4.7585555953393724e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 200.0,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JdQc",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JhQc",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JsQc",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JcQd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JhQd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JsQd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JcQh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JdQh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JsQh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JcQs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JdQs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JhQs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6912263768112665e-07,
+          "reference_joint_reach": 2.3792777976696862e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "KcKd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 2.8187106280187786e-08,
+          "reference_joint_reach": 3.965462996116144e-09,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -2.4617262357237618e-14,
+            -50.0
+          ],
+          "reference_action_ev": [
+            0.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 50.0,
+          "local_action_regret_vs_reference_opponent": 2.2207417277370642e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "KcKh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 2.8187106280187786e-08,
+          "reference_joint_reach": 3.965462996116144e-09,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -2.4617262357237618e-14,
+            -50.0
+          ],
+          "reference_action_ev": [
+            0.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 50.0,
+          "local_action_regret_vs_reference_opponent": 2.2207417277370642e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "KcKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 2.8187106280187786e-08,
+          "reference_joint_reach": 3.965462996116144e-09,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -2.4617262357237618e-14,
+            -50.0
+          ],
+          "reference_action_ev": [
+            0.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 50.0,
+          "local_action_regret_vs_reference_opponent": 2.2207417277370642e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "KdKh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 2.8187106280187786e-08,
+          "reference_joint_reach": 3.965462996116144e-09,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -2.4617262357237618e-14,
+            -50.0
+          ],
+          "reference_action_ev": [
+            0.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 50.0,
+          "local_action_regret_vs_reference_opponent": 2.2207417277370642e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "KdKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 2.8187106280187786e-08,
+          "reference_joint_reach": 3.965462996116144e-09,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -2.4617262357237618e-14,
+            -50.0
+          ],
+          "reference_action_ev": [
+            0.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 50.0,
+          "local_action_regret_vs_reference_opponent": 2.2207417277370642e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "KhKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 2.8187106280187786e-08,
+          "reference_joint_reach": 3.965462996116144e-09,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -2.4617262357237618e-14,
+            -50.0
+          ],
+          "reference_action_ev": [
+            0.0,
+            -50.0
+          ],
+          "reference_best_second_ev_gap": 50.0,
+          "local_action_regret_vs_reference_opponent": 2.2207417277370642e-05,
+          "best_action_agrees": true
+        }
+      ],
+      "failures": []
+    },
+    "classification": "Reference convergence discrepancy; excluded from passing corpus",
+    "independent_failures": []
+  }
+}

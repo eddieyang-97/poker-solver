@@ -62,6 +62,15 @@ def commands(fixture):
 
 
 def run_external(binary, fixture):
+    captured = capture_commands(binary, commands(fixture))
+    return dict(captured, ranges=RANGES, fixture=fixture)
+
+
+def capture_commands(binary, command_text):
+    """Local laboratory capture; accepted pilot validation stays in run_external/analyze.
+
+    Callers generate fixed reviewed commands, never accept commands from hosted tools.
+    """
     binary = Path(binary).resolve()
     if hashlib.sha256(binary.read_bytes()).hexdigest() != EXE_SHA256:
         raise ValueError('Executable differs from the inspected upstream Windows v0.2.0 release')
@@ -75,7 +84,7 @@ def run_external(binary, fixture):
     artifact_dir.mkdir(exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='texas-', dir=artifact_dir) as temp:
         work = Path(temp)
-        (work / 'input.txt').write_text(commands(fixture), encoding='ascii')
+        (work / 'input.txt').write_text(command_text, encoding='ascii')
         result = subprocess.run([str(binary), '-r', str(resources), '-i', str(work / 'input.txt')],
                                 cwd=work, capture_output=True, timeout=60, check=True)
         text = (result.stdout+result.stderr).decode('utf-8', errors='replace')
@@ -90,8 +99,8 @@ def run_external(binary, fixture):
     return {'provenance': 'Actual standalone upstream Windows v0.2.0 execution',
             'source_tag': 'v0.2.0', 'source_commit': SOURCE_COMMIT,
             'binary_sha256': EXE_SHA256, 'download_zip_sha256': ZIP_SHA256,
-            'lookup_sha256': comparer_hash, 'input_commands': commands(fixture),
-            'ranges': RANGES, 'fixture': fixture, 'exit_code': result.returncode,
+            'lookup_sha256': comparer_hash, 'input_commands': command_text,
+            'exit_code': result.returncode,
             'log_after_start': log, 'checkpoints': records, 'strategy': dump}
 
 
