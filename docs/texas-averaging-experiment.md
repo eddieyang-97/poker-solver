@@ -61,5 +61,67 @@ cmake --build .artifacts/texas-build --parallel 2
 OPENBLAS_NUM_THREADS=1 python scripts/texas_averaging_experiment.py run --source /path/to/TexasSolver --prepared .artifacts/texas-prepared --build .artifacts/texas-build --output .artifacts/averaging-results
 ```
 
-Initial status: guarded preparation verified locally; source compilation and
-execution pending the dedicated PR workflow. No experiment results are claimed yet.
+## Actual execution — 17 October 2026
+
+[The dedicated source-build workflow](https://github.com/eddieyang-97/poker-solver/actions/runs/39023271206)
+passed at repository commit `23b054f318a143ea60d579aeeb9596d320751852`, using
+Ubuntu 24.04, GCC 13.3, Qt5 Core 5.15.13, Python 3.12.15 and OpenMP. Both actual
+40,000-iteration processes completed successfully. The artifact ZIP's SHA256 is
+`48e0afa746c02a805d45238cf36377f7bff532945f4793c36b15e6ee84b1e24c`;
+the downloaded ZIP was verified against GitHub's recorded artifact digest before
+its reports were retained. No binaries, lookup data or source are in that ZIP.
+
+[texas-averaging-results.json](texas-averaging-results.json) preserves all ten
+raw checkpoints per variant, both policies, source metrics, input commands,
+compiler/platform, logs, final post-statistics exports, binary hashes and build
+input hashes. [texas-averaging-results.md](texas-averaging-results.md) is the full
+generated comparison table. These are real builds and calculations, not synthetic
+or offline-only observations.
+
+| Variant | Iterations | Independently evaluated OOP EV | Average-policy NashConv | £0.50 gate |
+| --- | --- | --- | --- | --- |
+| Observer baseline, theta=0.9 | 4,000 | −£24.97470416 | £1.59073955 | FAIL |
+| History-preserving variant, theta=1 | 4,000 | −£24.99999894 | £0.00335872 | PASS |
+| Observer baseline, theta=0.9 | 40,000 | −£25.00777017 | £1.13173461 | FAIL |
+| History-preserving variant, theta=1 | 40,000 | −£24.99999705 | £0.00005794 | PASS |
+
+All ten baseline average policies fail; all ten variant average policies pass.
+The current policies are **exactly identical between the two builds at every
+sampled checkpoint**, while both builds' current-policy NashConv remains above
+£0.50. At 40,000 it is £1.77262557. The variant's average gap is not monotonic
+across every sample, and there is no claim of a monotonic convergence guarantee.
+
+At 40,000, the variant checks OOP KK 100%, calls with KK 50%, and bets QJ
+47.91679084% after a check, close to the weighted game's analytical 23/48
+(47.91666667%). IP AA and KK bet 100%. These are computed conditional
+frequencies for this constrained tree and arrival ranges, not live-play advice.
+
+The observer's 4,000/40,000 average-policy JSON is **exactly identical** to the
+earlier unmodified Windows release exports. This strengthens confidence that
+observation/build compatibility changes did not create the original failure.
+The final post-statistics exports also equal the final checkpoint averages for
+both builds. At identical checkpoints, source-normalized and independently
+evaluated average NashConv differ by at most £0.00002164, below the existing
+£0.000051 output-precision allowance used by the admitted pilot. No tolerance
+was fitted to this experiment or widened.
+
+The controlled single-multiplier change isolates a material averaging effect
+on this fixture while the sampled current trajectory matches. It supports
+averaging as the cause of this fixture's exported-policy failure. It does not
+prove the absence of other issues, exact behavior at unsampled iterations,
+general convergence on other games, or correctness of a patched release. The
+original release audit remains FAIL and excluded from accepted benchmarks.
+Concrete-combo support, independently verified alternative sizes and broader
+Texas fixtures remain outstanding. Product/hosted behavior and OAuth are unchanged.
+
+Re-evaluate every saved policy without compiling/running TexasSolver:
+
+```sh
+OPENBLAS_NUM_THREADS=1 python scripts/texas_averaging_experiment.py replay --evidence docs/texas-averaging-results.json --output .artifacts/texas-averaging-replay
+```
+
+Replay exits 0 when evaluation succeeds, regardless of the preserved FAIL
+classifications; it is a diagnostic rather than an accepted-corpus convergence
+command. Tests separately enforce the expected classifications and unchanged
+gates. The older `audit_texas_blockers.py` still deliberately exits 1 for its
+unmodified release failures. Normal CI performs replay, not a fresh source build.

@@ -60,6 +60,29 @@ class TexasExperimentTests(unittest.TestCase):
         self.assertGreater(report['max_current_policy_difference_between_variants'], 0)
         self.assertFalse(report['averaging_effect_observed_with_matching_current_policies'])
 
+    def test_actual_source_build_evidence_preserves_baseline_and_isolates_average(self):
+        root = Path(__file__).resolve().parents[1]
+        evidence = json.loads((root / 'docs/texas-averaging-results.json').read_text())
+        report = analyze(evidence['execution'])
+        self.assertEqual(report['iterations_checked'], list(range(4000, 40001, 4000)))
+        self.assertEqual(report['max_current_policy_difference_between_variants'], 0)
+        self.assertTrue(report['averaging_effect_observed_with_matching_current_policies'])
+        for row, saved in zip(report['rows'], evidence['analysis']['rows'], strict=True):
+            # Same serialized policies evaluated again, not a cross-engine convergence tolerance.
+            self.assertAlmostEqual(row['nashconv'], saved['nashconv'], delta=1e-9)
+            self.assertAlmostEqual(row['oop_ev'], saved['oop_ev'], delta=1e-9)
+            expected = 'PASS' if row['variant'] == 'theta_one' and row['policy'] == 'average' else 'FAIL'
+            self.assertEqual(row['status'], expected)
+            if row['policy'] == 'average':
+                # Same £0.000051 output-precision allowance used by the admitted pilot.
+                self.assertLess(row['source_vs_independent_gap_delta'], 0.000051)
+        release = json.loads((root / 'docs/texas-blocker-results.json').read_text())
+        baseline = evidence['execution']['variants']['baseline_observer']['checkpoints']
+        for point, original in zip((baseline[0], baseline[-1]), release['execution']['runs'], strict=True):
+            self.assertEqual(point['average'], original['strategy'])
+        for variant in evidence['execution']['variants'].values():
+            self.assertEqual(variant['post_statistics_final_policy'], variant['checkpoints'][-1]['average'])
+
 
 if __name__ == '__main__':
     unittest.main()

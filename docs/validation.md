@@ -10,12 +10,29 @@ an observer baseline and one history-preserving averaging variant. Matched
 current/average policy snapshots will distinguish an averaging effect from a
 changed training trajectory. Guarded preparation succeeded on the actual clean
 source checkout locally; this Windows environment has no Qt/C++ toolchain.
-Compilation and numerical execution are pending the dedicated ephemeral Ubuntu
-PR workflow. No experiment output is yet claimed as measured evidence.
+The [dedicated source-build workflow](https://github.com/eddieyang-97/poker-solver/actions/runs/39023271206)
+now passed on Ubuntu/GCC 13.3/Qt5. Both actual 40,000-iteration runs completed.
+At 4,000/40,000 iterations the observer's JSON equals the original Windows
+release exports exactly, retaining NashConv £1.59073955/£1.13173461 (FAIL).
+Changing only the averaging multiplier to 1 yields independently evaluated
+average NashConv £0.00335872/£0.00005794 (PASS under the unchanged £0.50 gate).
+Current strategies match exactly between variants at all ten sampled checkpoints;
+both current policies still fail. Same-checkpoint source/independent metric
+difference is at most £0.00002164. This isolates a material averaging effect for
+this fixture, not a general solver fix or new unmodified-reference acceptance.
+All raw checkpoints, build hashes, commands and logs are retained in
+[texas-averaging-results.json](texas-averaging-results.json); the detailed
+interpretation and reproduction commands are in the experiment document.
 
-Local preflight: **43 tests**, Ruff and compileall pass. Tests reject mismatched
+Local verification: **45 tests**, Ruff and compileall pass. Tests reject mismatched
 checkpoint iterations, changed fixture/commands and nonfinite source metrics;
-identical policies cannot be labelled an observed averaging improvement.
+identical policies cannot be labelled an observed averaging improvement. Actual
+recorded policies are re-evaluated with a `1e-9` numerical replay tolerance and
+the existing £0.000051 source-output precision allowance. The original accepted
+ten-fixture benchmark, sensitivity analysis and Texas pilot replay still pass.
+The numerical source-build commit also passed
+[normal CI](https://github.com/eddieyang-97/poker-solver/actions/runs/39023271275).
+Normal CI now replays the experiment evidence without compiling external source.
 
 ## Implementation audit
 
@@ -201,15 +218,17 @@ has OOP EV −£25 and independently evaluated near-zero NashConv.
 
 The source conditions relative probabilities on compatible opponent weight, so
 this has not been identified as a simple missing-blocker bug. A fixed 0.9
-strategy-averaging discount is one candidate explanation for oscillation; no
-modified build/ablation was run, and root cause remains unresolved. All source
+strategy-averaging discount was a candidate explanation for oscillation at this
+original audit stage; no modified build/ablation had yet run. The subsequent
+controlled experiment at the top of this document now isolates an averaging
+effect for this fixture while preserving these release FAIL results. All source
 inspection, raw outputs, logs and commands are in
 [texas-blocker-audit.md](texas-blocker-audit.md) and
 [texas-blocker-results.json](texas-blocker-results.json).
 The audit CLI exits **1** and writes explicit FAIL reports. Regression replay
 does not constitute a passing external solve. No failing fixture was removed,
-no gate was widened, no reference algorithm was patched and production was
-unchanged. This diagnostic remains outside the passing corpus.
+no gate was widened, and no reference algorithm was patched during this original
+audit. Production remains unchanged. This diagnostic remains outside the passing corpus.
 
 Local regression verification: **40 tests**, Ruff and compileall passed. Tests
 confirm the recorded external policies still exceed the original convergence
