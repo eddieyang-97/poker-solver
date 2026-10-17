@@ -1,0 +1,10 @@
+[
+  {"id":"checkdown_known_outs","config":{"board":"2c,3d,4h,8s","oop_range":"KhKd","ip_range":"AsAd,QhJd","pot":100,"stack":100,"turn_bet_sizes":[],"river_bet_sizes":[]}},
+  {"id":"turn_shove_dry","config":{"board":"2c,3d,4h,8s","oop_range":"KhKd","ip_range":"AsAd,QhJd","pot":100,"stack":100,"turn_bet_sizes":[1.0],"river_bet_sizes":[0.5]}},
+  {"id":"two_street_dry","config":{"board":"2c,3d,4h,8s","oop_range":"KhKd","ip_range":"AsAd,QhJd:0.7","pot":100,"stack":200,"turn_bet_sizes":[0.5],"river_bet_sizes":[0.5]}},
+  {"id":"spade_draw_two_sizes","config":{"board":"Ks,9s,5h,Td","oop_range":"KdQd,AsJh:0.5","ip_range":"QsJs,9h9d:0.5","pot":100,"stack":140,"turn_bet_sizes":[0.33,0.75],"river_bet_sizes":[0.5,1.0]}},
+  {"id":"paired_short_stack","config":{"board":"Ks,9s,5h,5d","oop_range":"KdQd,AsJh:0.5","ip_range":"QsJs,9h9d:0.25","pot":100,"stack":60,"turn_bet_sizes":[0.5],"river_bet_sizes":[0.33,0.75]}},
+  {"id":"four_flush","config":{"board":"Ks,9s,5s,2s","oop_range":"AsJh,QdQs:0.5","ip_range":"JsTs,9h9d:0.5","pot":100,"stack":250,"turn_bet_sizes":[0.5,1.0],"river_bet_sizes":[0.5]}},
+  {"id":"weighted_shared_card","config":{"board":"2c,3d,4h,8s","oop_range":"KhKd,AsKs:0.3","ip_range":"AsAd,QsJs:0.5","pot":100,"stack":100,"turn_bet_sizes":[0.5],"river_bet_sizes":[0.5]}},
+  {"id":"duplicate_capped_shoves","config":{"board":"Ks,9s,5h,Td","oop_range":"KdQd,AsJh:0.5","ip_range":"QsJs,9h9d:0.5","pot":100,"stack":35,"turn_bet_sizes":[0.5,1.0],"river_bet_sizes":[0.5,1.0]}}
+]

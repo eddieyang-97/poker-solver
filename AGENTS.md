@@ -1,6 +1,6 @@
 # Repository instructions
 
-- Scope: HEADS-UP NLHE river-only constrained decision analysis. The engine is not a full GTO solver.
+- Hosted scope: HEADS-UP NLHE river-only constrained decision analysis. A separately authorized experimental local turn/river engine is allowed in `poker_spot/turn.py`; keep it out of MCP registrations and production deployment until separately validated. Neither engine is a full GTO solver.
 - Keep the core deterministic and dependency-light; separate game logic from MCP transports.
 - Never invent equilibrium frequencies or quote action EVs without computed outputs.
 - Results depend on caller-supplied river arrival ranges and simplified no-raise tree.
@@ -24,3 +24,4 @@
 - After Texas adapter changes run `python scripts/benchmark_texas.py --evidence docs/texassolver-results.json --output .artifacts/texas-replay`. Label offline replay separately from actual external execution.
 - The separate `audit_texas_blockers.py` diagnostic intentionally exits 1 for the recorded reference convergence failures. Keep its FAIL classifications and unchanged gate visible; passing replay regression tests do not establish a passing external solve. Do not add it to the passing fixture corpus or silently replace the admitted pilot.
 - `texas_averaging_experiment.py` is a separately labelled, user-authorized source-build ablation. Preserve the pinned observer baseline, single-multiplier variant, matched checkpoints and original release failures. Never present its modified output as unmodified reference acceptance or deploy it; retain reports only, not upstream source/resources/binaries.
+- After local turn changes run `python scripts/benchmark_turn.py`. Keep exact 44-per-deal chance, street-specific information sets, chip carry/refunds, scalar policy/BR and singleton minimax tests. Its oracle reads the product tree/policy; never describe it as an independently trained external turn solver. Do not register or deploy a turn MCP tool in this milestone.
