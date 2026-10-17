@@ -55,6 +55,52 @@ class TurnTests(unittest.TestCase):
         self.assertEqual(leaf.kind, 'runout')
         self.assertEqual(leaf.contrib, (100, 100))
 
+    def test_action_evs_are_invariant_to_range_weight_scaling(self):
+        fixtures = [
+            (['KhKd'], ['AsAd'], [], []),
+            (['KhKd', 'AsKs:0.3'], ['AsAd', 'QhJd:0.5'], [0.5], [0.5]),
+        ]
+
+        def scaled(tokens, factor):
+            result = []
+            for token in tokens:
+                hand, _, weight = token.partition(':')
+                result.append(f'{hand}:{float(weight or "1") * factor}')
+            return ','.join(result)
+
+        for oop, ip, turn_sizes, river_sizes in fixtures:
+            def solve(oop_scale, ip_scale):
+                return TurnSolver('2c,3d,4h,8s', scaled(oop, oop_scale), scaled(ip, ip_scale),
+                                  100, 100, turn_sizes, river_sizes).solve(60, 'KhKd', 'AsAd')
+
+            baseline = solve(1, 1)
+            if not turn_sizes:
+                root = baseline['hands']['oop']['node_strategy']['turn']
+                self.assertAlmostEqual(root['action_ev_relative_to_half_turn_pot']['check'], -500/11)
+                self.assertEqual(root['reach_probability_given_hand'], 1)
+                # As is legal for hero but impossible for this singleton opponent.
+                impossible = baseline['hands']['oop']['node_strategy']['turn/check/check/river@As']
+                self.assertEqual(impossible['reach_probability_given_hand'], 0)
+                self.assertEqual(impossible['action_ev_relative_to_half_turn_pot'], {'check': None})
+            for scales in ((1e-15, 1), (1, 1e-15), (1e-15, 1e-15)):
+                with self.subTest(oop=oop, ip=ip, scales=scales):
+                    result = solve(*scales)
+                    for key, expected in baseline['diagnostics'].items():
+                        self.assertAlmostEqual(result['diagnostics'][key], expected, delta=1e-9)
+                    for side, hand in baseline['hands'].items():
+                        actual_rows = result['hands'][side]['node_strategy']
+                        self.assertEqual(actual_rows.keys(), hand['node_strategy'].keys())
+                        for name, expected in hand['node_strategy'].items():
+                            actual = actual_rows[name]
+                            self.assertAlmostEqual(actual['reach_probability_given_hand'],
+                                                   expected['reach_probability_given_hand'], delta=1e-10)
+                            for field in ('frequency', 'action_ev_relative_to_half_turn_pot'):
+                                for action, value in expected[field].items():
+                                    if value is None:
+                                        self.assertIsNone(actual[field][action])
+                                    else:
+                                        self.assertAlmostEqual(actual[field][action], value, delta=1e-9)
+
     def test_two_street_profile_and_best_response_oracle(self):
         solver = TurnSolver('Ks,9s,5h,Td', 'KdQd,AsJh:0.5', 'QsJs,9h9d:0.5', 100, 140, [0.5], [0.5, 1.0])
         result = solver.solve(500, 'KdQd', 'QsJs', 'Ts')

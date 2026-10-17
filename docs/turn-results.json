@@ -10,7 +10,7 @@
   "iterations": 1000,
   "input_sha256_lf": {
     "benchmarks/turn-fixtures.json": "a911d1e91986a018497c1c007bbf157035311cac95530f3e2c8b4d5f75a2e2b8",
-    "poker_spot/turn.py": "f206463cdabc88ada8a174e1627a3496479916ad76296b1736879dd316950f3c",
+    "poker_spot/turn.py": "fb546353b2875dec377b2966a9c09282bb6a65617505760b1b731e0d66a7e572",
     "benchmarks/turn_policy.py": "7fbe1f0f02a5cb74fba9ea2c6b29f7b56c3eff761ecb7359dd4590024012a5e1"
   },
   "gates": {
@@ -158,7 +158,7 @@
         "nash_conv_chips": -4.440892098500626e-16
       },
       "max_numeric_delta": 4.440892098500626e-16,
-      "elapsed_seconds": 0.12467710001510568,
+      "elapsed_seconds": 0.1416410999954678,
       "failures": []
     },
     {
@@ -365,7 +365,7 @@
         "nash_conv_chips": 0.015448309482675171
       },
       "max_numeric_delta": 1.4210854715202004e-14,
-      "elapsed_seconds": 0.33667990000685677,
+      "elapsed_seconds": 0.38358180003706366,
       "failures": []
     },
     {
@@ -666,7 +666,7 @@
         "nash_conv_chips": 0.013243616387200063
       },
       "max_numeric_delta": 3.678134186113624e-14,
-      "elapsed_seconds": 0.7157078000018373,
+      "elapsed_seconds": 0.8157790999975987,
       "failures": []
     },
     {
@@ -1173,7 +1173,7 @@
         "nash_conv_chips": 0.0019320407434832987
       },
       "max_numeric_delta": 7.105427357601002e-15,
-      "elapsed_seconds": 1.6295660999894608,
+      "elapsed_seconds": 2.3701599999913014,
       "failures": []
     },
     {
@@ -1503,7 +1503,7 @@
         "nash_conv_chips": 0.031399259598984486
       },
       "max_numeric_delta": 3.552713678800501e-15,
-      "elapsed_seconds": 2.163675699994201,
+      "elapsed_seconds": 2.256367099995259,
       "failures": []
     },
     {
@@ -1927,7 +1927,7 @@
         "nash_conv_chips": 0.0009481227089409572
       },
       "max_numeric_delta": 3.947471689802473e-15,
-      "elapsed_seconds": 3.20356989998254,
+      "elapsed_seconds": 2.8981337000150234,
       "failures": []
     },
     {
@@ -2228,7 +2228,7 @@
         "nash_conv_chips": 0.002500591965834076
       },
       "max_numeric_delta": 2.36876490644633e-15,
-      "elapsed_seconds": 2.040980700025102,
+      "elapsed_seconds": 2.080115200020373,
       "failures": []
     },
     {
@@ -2439,7 +2439,7 @@
         "nash_conv_chips": 0.0005530055584870297
       },
       "max_numeric_delta": 1.5789886759209892e-14,
-      "elapsed_seconds": 0.9088426000089385,
+      "elapsed_seconds": 0.75456440000562,
       "failures": []
     }
   ],

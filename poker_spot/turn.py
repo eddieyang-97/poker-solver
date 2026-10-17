@@ -194,7 +194,9 @@ class TurnSolver:
             valid = self.river_valid if node.street else self.valid
             reach = self._product(valid, r0, r1)[side]
             ev = np.full_like(actor, np.nan)
-            np.divide(actor, reach[..., None], out=ev, where=reach[..., None] > 1e-14)
+            # Reach carries arbitrary arrival weights. Every positive opponent
+            # reach supports a conditional EV, regardless of its absolute scale.
+            np.divide(actor, reach[..., None], out=ev, where=reach[..., None] > 0)
             collect[node.name] = {'ev': ev, 'own': own, 'opponent': reach, 'chance_reach': chance_reach}
         own_value = actor.max(axis=-1) if best_response == side else mixed
         other_value = np.sum([v[1-side] for v in values], axis=0)

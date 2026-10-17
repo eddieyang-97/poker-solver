@@ -14,13 +14,27 @@ future knowledge into turn decisions. It reports centered action EVs, hand-
 conditioned reach, convergence checkpoints, zero-sum residual and NashConv.
 The separate all-in-call calculator is valid only when no future betting remains.
 
-**53 tests** passed locally, with Ruff and compileall. Eight fresh turn fixtures
+**54 tests** passed locally, with Ruff and compileall. Eight fresh turn fixtures
 passed at 1,000 iterations: largest policy/BR oracle difference about
 `3.7e-14` chips; maximum NashConv £0.03139926 in a £100 pot under the unchanged
 0.5%-pot gate. The exact singleton-range backward-minimax check also passed.
 Actual local CLI calls returned inspectable computed outputs. See
 [turn implementation](turn.md), [versioned results](turn-results.json) and
 [readable comparison](turn-results.md).
+
+PR #7 review identified an absolute `1e-14` opponent-reach cutoff that returned
+null action EVs for valid, proportionally rescaled arrival ranges. Conditional
+EV collection now divides at every positive opponent reach and reserves null
+for zero reach. A regression compares singleton checkdown and weighted two-street
+games when either or both ranges are multiplied by `1e-15`, including both
+players' node EVs, frequencies and reach; impossible blocked branches stay null.
+The reported singleton root check EV is −500/11 chips at either weight scale.
+All 54 tests and static checks passed after the fix; all eight fresh turn and ten
+river fixtures plus separate raise sensitivity passed without changing gates.
+The sandboxed suite stalled in the process-admission test; the complete rerun
+with normal Windows subprocess access passed. Turn JSON/Markdown evidence was
+regenerated with the corrected source hash; the CLI record retains its original
+source commit and remains historical acceptance evidence.
 
 The scalar oracle uses the pinned upstream exhaustive hand-rank evaluator but
 reads the product public tree and policy. It is not a separately trained turn

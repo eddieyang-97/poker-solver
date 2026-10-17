@@ -65,7 +65,9 @@ nonnegative NashConv, zero-sum residual and convergence checkpoints. EVs use
 half the **initial turn pot** as the centered baseline and include all subsequent
 contributions. Queried hands include action frequencies, conditional action EVs
 and node reach probability **given that hand**, including both players' actions
-and chance. Impossible-opponent branches return null action EVs; low/zero-reach
+and chance. Conditional EVs use every positive opponent reach, with no absolute
+arrival-weight cutoff; rescaling a range must not remove supported action EVs.
+Impossible-opponent branches return null action EVs; low/zero-reach
 strategies should not be treated as precise recommendations.
 Action EVs hold later decisions to the average continuation policy after that
 one action; they do not optimize all future deviations. A rarely reached
@@ -105,17 +107,22 @@ initial convergence gate retains the river study's **0.5% of initial pot**.
 Reference/analytical failures must remain visible, not be erased by tuning gates.
 CI runs fresh local solves and the oracle, retaining JSON and Markdown reports.
 
-### Recorded first run
+### Recorded validation
 
 The [JSON results](turn-results.json) and [readable table](turn-results.md) retain
 actual inputs/outputs at 1,000 iterations, scalar oracle values, convergence
-checkpoints, input/source hashes and elapsed time. All eight fixtures passed;
-the largest independently calculated policy/BR difference was approximately
+checkpoints, input/source hashes and elapsed time. All eight fixtures passed.
+These reports were refreshed after the PR #7 range-weight cutoff fix. Regression
+tests also compare equivalent singleton and weighted two-street games after
+scaling either or both arrival ranges by `1e-15`, preserving node EVs,
+frequencies, reach and genuinely impossible branches.
+The largest independently calculated policy/BR difference was approximately
 `3.7e-14` chips. The largest final NashConv was £0.03139926 in a £100 pot,
 below the declared £0.50 gate. Numeric agreement checks evaluation of a given
 policy; it does not validate convergence against a second turn trainer.
 The [CLI acceptance record](turn-cli-results.json) separately retains both
-actual example command inputs and returned JSON, source hashes and Python version.
+actual example command inputs and returned JSON, source hashes and Python version
+from its recorded earlier source commit; it is historical CLI acceptance evidence.
 
 The exact singleton-range backward-minimax game on `Js,Ts,2c,3d`, OOP `AsKs`,
 IP `QhQd`, P=100, S=150, half-pot sizing on each street has value
