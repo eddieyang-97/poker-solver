@@ -33,6 +33,10 @@ release rejects concrete combos, so the original single-combo fixture and
 general weighted/blocker cross-validation remain unsupported by that pilot.
 A separate [weighted-blocker audit](docs/texas-blocker-audit.md) records two
 reference convergence failures; they remain outside the passing fixture corpus.
+The [controlled averaging experiment](docs/texas-averaging-experiment.md) isolates
+an averaging effect on that weighted fixture without replacing those failures.
+See the [river milestone closeout](docs/river-milestone.md) for completed
+deliverables and the follow-ups that remain before broader use or turn support.
 
 | Tool | Returns |
 | --- | --- |

@@ -1,6 +1,6 @@
 # Distribution flow
 
-Status: **design and pilot runbook**, not yet a validated friends/public launch. Last updated 16 October 2026. The owner completed Auth0 OAuth consent and hosted SDK calls, but ChatGPT conversational result rendering has not yet passed acceptance (see [validation](validation.md)).
+Status: **design and pilot runbook**, not yet a validated friends/public launch. Last updated 17 October 2026. The owner completed Auth0 OAuth consent and actual ChatGPT calls to both tools, with inspectable computed payloads (see [validation](validation.md#direct-authenticated-connector-acceptance-after-reconnect)). Second-account and Claude acceptance remain unverified.
 
 ## Goal and scope
 
@@ -72,7 +72,7 @@ Claude documentation: [Get started with custom connectors using remote MCP](http
 
 ### Phase 1 acceptance checklist
 
-- [ ] Owner ChatGPT conversation returns inspectable `evaluate_river_call` and `solve_river` payloads (not merely Auth0 consent / SDK diagnostic).
+- [x] Owner ChatGPT conversation returns inspectable `evaluate_river_call` and `solve_river` payloads (not merely Auth0 consent / SDK diagnostic); retained actual payloads are linked in validation.
 - [ ] Friend A connects from a separate ChatGPT + Auth0 identity and executes both tools.
 - [ ] Friend B repeats onboarding with no cross-user access or credentials.
 - [ ] Claude-specific Auth0 public client registered with an independently verified callback (no reuse of the ChatGPT-only client).
