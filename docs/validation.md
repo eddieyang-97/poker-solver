@@ -1,5 +1,38 @@
 # Audit and validation — 16 October 2026
 
+## Turn decomposition and performance follow-ups — 17 October 2026
+
+After PR #7 merged at `3e3a5ae7e72240851cc3d3a4678d6f35cf27fa96`, added a
+development harness for independent river-subgame training with turn betting
+disabled, plus maximum-dimension local performance workers. Solver core,
+transports, production configuration and Auth0 are unchanged.
+
+All **59 tests**, Ruff and compileall passed locally. The existing eight turn
+fixtures and ten river fixtures plus separate raise sensitivity passed. New
+tests verify weighted chance, zero-mass runouts, explicit independent tree/hand
+mapping, fault detection, rejected tree/rounding substitutions, native memory
+measurement and timeout reporting. See [method and limitations](turn-followups.md).
+
+Four turn-disabled decomposition cases passed: 188 supported river games were
+separately trained by the pinned independent reference, with four additional
+zero-mass public cards explicitly recorded. Maximum aggregate EV difference
+between separately trained engines was £0.00134293, within its £0.00876999
+combined convergence-gap bound. Same-policy aggregate EV/gap discrepancies were
+at most about `5.5e-14` chips. Every supported subgame and each aggregate passed
+the unchanged 0.5%-of-pot convergence gate. Per-card masses, results and
+reference-profile digests are versioned in
+[decomposition evidence](turn-decomposition-results.json); full raw worker
+exports are retained separately under `.artifacts/` and by CI. This special
+case independently constructs and trains river trees, but does not validate
+strategic turn betting against a separately trained full turn engine.
+
+Six maximum-dimension subprocess measurements (24 combos/side, two sizes/street,
+2,000 iterations, all-river queries) completed in 11.79–12.16 seconds process
+wall time on Windows, maximum observed resident peak 34.66 MiB. Full measured
+configuration, source hashes, platform and diagnostics are in
+[performance evidence](turn-performance-results.json). These numbers are not
+hosted resource-limit acceptance or a universal worst-case performance bound.
+
 ## Initial local turn implementation — 17 October 2026
 
 After river prerequisite closeout merged as
