@@ -1,0 +1,554 @@
+{
+  "mode": "Actual local CLI execution",
+  "python": "3.14.8",
+  "source_commit": "ac2cb27243dd190ff3e3f40bb5f2bac349d6ebb4",
+  "source_sha256_lf": {
+    "poker_spot/turn.py": "c93f3f9f61db07ff403a177305979bf40a62c823fd03c8385193c9220d6f625a",
+    "scripts/solve_turn.py": "ec3804e4694b845068a020a02224c529d4693a4b094cd1349f1b6063cc0b41a2"
+  },
+  "calls": [
+    {
+      "command": [
+        "python",
+        "scripts/solve_turn.py",
+        "examples/turn.json"
+      ],
+      "input": {
+        "board": "Ks,9s,5h,Td",
+        "oop_range": "KdQd,AsJh:0.5",
+        "ip_range": "QsJs,9h9d:0.5",
+        "pot": 100,
+        "stack": 140,
+        "turn_bet_sizes": [
+          0.33,
+          0.75
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1.0
+        ],
+        "iterations": 1000,
+        "oop_hand": "KdQd",
+        "ip_hand": "QsJs",
+        "river_card": "Ts"
+      },
+      "exit_code": 0,
+      "result": {
+        "model": "Experimental local heads-up turn/river, no raises, no rake",
+        "board": [
+          "Ks",
+          "9s",
+          "5h",
+          "Td"
+        ],
+        "pot": 100.0,
+        "stack": 140.0,
+        "bet_sizes": {
+          "turn": [
+            0.33,
+            0.75
+          ],
+          "river": [
+            0.5,
+            1.0
+          ]
+        },
+        "effective_bets_by_public_history": {
+          "turn": [
+            33.0,
+            75.0
+          ],
+          "turn/bet_33/call/river": [
+            83.0,
+            107.0
+          ],
+          "turn/check/bet_33/call/river": [
+            83.0,
+            107.0
+          ],
+          "turn/bet_75/call/river": [
+            65.0
+          ],
+          "turn/check/bet_75/call/river": [
+            65.0
+          ],
+          "turn/check/check/river": [
+            50.0,
+            100.0
+          ]
+        },
+        "range_combos": {
+          "oop": 2,
+          "ip": 2
+        },
+        "chance": {
+          "enumerated_public_rivers": 48,
+          "legal_rivers_per_compatible_deal": 44
+        },
+        "computation": "Alternating CFR+, linear own-reach averaging, exact river enumeration",
+        "ev_baseline": "Half of the initial turn pot; cumulative turn and river contributions included",
+        "diagnostics": {
+          "iterations": 1000,
+          "oop_ev": -50.00121814774249,
+          "ip_ev": 50.001218147742485,
+          "raw_nash_conv_chips": 0.0019320407434785618,
+          "zero_sum_residual": -7.105427357601002e-15,
+          "nash_conv_chips": 0.0019320407434785618,
+          "nash_conv_pct_pot": 0.0019320407434785618
+        },
+        "checkpoints": [
+          {
+            "iterations": 250,
+            "oop_ev": -50.01943571490343,
+            "ip_ev": 50.01943571490344,
+            "raw_nash_conv_chips": 0.030820283414110843,
+            "zero_sum_residual": 7.105427357601002e-15,
+            "nash_conv_chips": 0.030820283414110843,
+            "nash_conv_pct_pot": 0.030820283414110843
+          },
+          {
+            "iterations": 500,
+            "oop_ev": -50.004867908255946,
+            "ip_ev": 50.00486790825596,
+            "raw_nash_conv_chips": 0.0077204502364780735,
+            "zero_sum_residual": 1.4210854715202004e-14,
+            "nash_conv_chips": 0.0077204502364780735,
+            "nash_conv_pct_pot": 0.0077204502364780735
+          },
+          {
+            "iterations": 1000,
+            "oop_ev": -50.00121814774249,
+            "ip_ev": 50.001218147742485,
+            "raw_nash_conv_chips": 0.0019320407434785618,
+            "zero_sum_residual": -7.105427357601002e-15,
+            "nash_conv_chips": 0.0019320407434785618,
+            "nash_conv_pct_pot": 0.0019320407434785618
+          }
+        ],
+        "hands": {
+          "oop": {
+            "combo": [
+              "Qd",
+              "Kd"
+            ],
+            "node_strategy": {
+              "turn/bet_33/call/river/check/bet_83@Ts": {
+                "frequency": {
+                  "fold": 0.9936733660969237,
+                  "call": 0.006326633903076281
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -83.0,
+                  "call": -166.0
+                },
+                "reach_probability_given_hand": 1.3291571863203188e-07
+              },
+              "turn/bet_33/call/river/check/bet_107@Ts": {
+                "frequency": {
+                  "fold": 0.9936733660969237,
+                  "call": 0.006326633903076281
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -83.0,
+                  "call": -190.0
+                },
+                "reach_probability_given_hand": 1.3291571863203188e-07
+              },
+              "turn/bet_33/call/river@Ts": {
+                "frequency": {
+                  "check": 0.8479243333703577,
+                  "bet_83": 0.09684292683636056,
+                  "bet_107": 0.05523273979328182
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": -83.40068681386147,
+                  "bet_83": -165.99987562425136,
+                  "bet_107": -189.9998636362274
+                },
+                "reach_probability_given_hand": 4.7026266401760437e-07
+              },
+              "turn/check/bet_33/call/river/check/bet_83@Ts": {
+                "frequency": {
+                  "fold": 0.5,
+                  "call": 0.5
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -83.0,
+                  "call": -166.0
+                },
+                "reach_probability_given_hand": 3.2637998540938704e-10
+              },
+              "turn/check/bet_33/call/river/check/bet_107@Ts": {
+                "frequency": {
+                  "fold": 0.5,
+                  "call": 0.5
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -83.0,
+                  "call": -190.00000000000003
+                },
+                "reach_probability_given_hand": 3.2637998540938704e-10
+              },
+              "turn/check/bet_33/call/river@Ts": {
+                "frequency": {
+                  "check": 0.028662198472054173,
+                  "bet_83": 0.7495683297407679,
+                  "bet_107": 0.22176947178717785
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": -114.6666666666667,
+                  "bet_83": -165.99935909858146,
+                  "bet_107": -189.99929732495073
+                },
+                "reach_probability_given_hand": 3.4161369623576814e-08
+              },
+              "turn/check/bet_33": {
+                "frequency": {
+                  "fold": 0.9999961272105006,
+                  "call": 3.872789499452672e-06
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -50.0,
+                  "call": -153.707695276005
+                },
+                "reach_probability_given_hand": 0.38811824491101504
+              },
+              "turn/bet_75/call/river/check/bet_65@Ts": {
+                "frequency": {
+                  "fold": 0.6125930229022242,
+                  "call": 0.38740697709777583
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -125.0,
+                  "call": -190.0
+                },
+                "reach_probability_given_hand": 4.883870369629629e-09
+              },
+              "turn/bet_75/call/river@Ts": {
+                "frequency": {
+                  "check": 0.18822719534268745,
+                  "bet_65": 0.8117728046573126
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": -137.59072675567774,
+                  "bet_65": -189.99984265718544
+                },
+                "reach_probability_given_hand": 5.189335537553995e-08
+              },
+              "turn/check/bet_75/call/river/check/bet_65@Ts": {
+                "frequency": {
+                  "fold": 0.8470758501027088,
+                  "call": 0.15292414989729125
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -125.0,
+                  "call": -190.0
+                },
+                "reach_probability_given_hand": 3.784881262554336e-09
+              },
+              "turn/check/bet_75/call/river@Ts": {
+                "frequency": {
+                  "check": 0.11186412210224102,
+                  "bet_65": 0.888135877897759
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": -129.97003487166197,
+                  "bet_65": -189.9994856601829
+                },
+                "reach_probability_given_hand": 6.766926144729494e-08
+              },
+              "turn/check/bet_75": {
+                "frequency": {
+                  "fold": 0.9999951333763665,
+                  "call": 4.866623633480727e-06
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -50.0,
+                  "call": -164.39608385790072
+                },
+                "reach_probability_given_hand": 0.6118096914659977
+              },
+              "turn/check/check/river/check/bet_50@Ts": {
+                "frequency": {
+                  "fold": 0.999999888995574,
+                  "call": 1.1100442596084866e-07
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -49.99999999999999,
+                  "call": -99.99999999999999
+                },
+                "reach_probability_given_hand": 3.718784454274454e-07
+              },
+              "turn/check/check/river/check/bet_100@Ts": {
+                "frequency": {
+                  "fold": 0.999999888995574,
+                  "call": 1.1100442596084866e-07
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -49.99999999999999,
+                  "call": -150.0
+                },
+                "reach_probability_given_hand": 3.718784454274454e-07
+              },
+              "turn/check/check/river@Ts": {
+                "frequency": {
+                  "check": 0.9999841025523662,
+                  "bet_50": 1.2535767032040633e-05,
+                  "bet_100": 3.3616806016616087e-06
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": -50.00000555022129,
+                  "bet_50": -96.94743190053399,
+                  "bet_100": -137.1008010742607
+                },
+                "reach_probability_given_hand": 1.115653072318631e-06
+              },
+              "turn": {
+                "frequency": {
+                  "check": 0.9999770251121948,
+                  "bet_33": 2.0691577887681575e-05,
+                  "bet_75": 2.2833099175526463e-06
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": -50.000281387913766,
+                  "bet_33": -85.41832439033844,
+                  "bet_75": -161.626859881199
+                },
+                "reach_probability_given_hand": 1.0
+              }
+            }
+          },
+          "ip": {
+            "combo": [
+              "Js",
+              "Qs"
+            ],
+            "node_strategy": {
+              "turn/bet_33/call/river/bet_83@Ts": {
+                "frequency": {
+                  "fold": 4.99500998502496e-07,
+                  "call": 0.9999995004990014
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -83.0,
+                  "call": 166.0
+                },
+                "reach_probability_given_hand": 4.559472053128899e-08
+              },
+              "turn/bet_33/call/river/bet_107@Ts": {
+                "frequency": {
+                  "fold": 4.99500998502496e-07,
+                  "call": 0.9999995004990014
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -83.0,
+                  "call": 190.0
+                },
+                "reach_probability_given_hand": 2.5920435665951024e-08
+              },
+              "turn/bet_33/call/river/check@Ts": {
+                "frequency": {
+                  "check": 0.3333333333333333,
+                  "bet_83": 0.3333333333333333,
+                  "bet_107": 0.3333333333333333
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": 83.0,
+                  "bet_83": 83.43405804827279,
+                  "bet_107": 83.55956880921914
+                },
+                "reach_probability_given_hand": 4.82392538690924e-07
+              },
+              "turn/bet_33": {
+                "frequency": {
+                  "fold": 9.99000999000999e-07,
+                  "call": 0.999999000999001
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -50.0,
+                  "call": 84.73072391884958
+                },
+                "reach_probability_given_hand": 2.4371962922694527e-05
+              },
+              "turn/check/bet_33/call/river/bet_83@Ts": {
+                "frequency": {
+                  "fold": 2.6134357000101396e-06,
+                  "call": 0.9999973865642999
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -83.0,
+                  "call": 166.0
+                },
+                "reach_probability_given_hand": 2.655388434178965e-08
+              },
+              "turn/check/bet_33/call/river/bet_107@Ts": {
+                "frequency": {
+                  "fold": 2.6134357000101396e-06,
+                  "call": 0.9999973865642999
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -83.0,
+                  "call": 190.0
+                },
+                "reach_probability_given_hand": 7.818936817590184e-09
+              },
+              "turn/check/bet_33/call/river/check@Ts": {
+                "frequency": {
+                  "check": 0.33333333333333337,
+                  "bet_83": 0.33333333333333337,
+                  "bet_107": 0.33333333333333337
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": 83.0,
+                  "bet_83": 124.49999999999999,
+                  "bet_107": 136.5
+                },
+                "reach_probability_given_hand": 9.643281393383503e-10
+              },
+              "turn/bet_75/call/river/bet_65@Ts": {
+                "frequency": {
+                  "fold": 4.99500998502496e-07,
+                  "call": 0.9999995004990014
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -125.0,
+                  "call": 190.0
+                },
+                "reach_probability_given_hand": 4.2140216870315396e-08
+              },
+              "turn/bet_75/call/river/check@Ts": {
+                "frequency": {
+                  "check": 0.5,
+                  "bet_65": 0.5
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": 125.0,
+                  "bet_65": 147.056889289774
+                },
+                "reach_probability_given_hand": 1.1151432375854747e-08
+              },
+              "turn/bet_75": {
+                "frequency": {
+                  "fold": 9.99000999000999e-07,
+                  "call": 0.999999000999001
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -50.0,
+                  "call": 162.82222279520587
+                },
+                "reach_probability_given_hand": 2.344834909323903e-06
+              },
+              "turn/check/bet_75/call/river/bet_65@Ts": {
+                "frequency": {
+                  "fold": 1.617339633009097e-06,
+                  "call": 0.9999983826603669
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -125.00000000000001,
+                  "call": 190.0
+                },
+                "reach_probability_given_hand": 6.3360986410603e-08
+              },
+              "turn/check/bet_75/call/river/check@Ts": {
+                "frequency": {
+                  "check": 0.5,
+                  "bet_65": 0.5
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": 125.0,
+                  "bet_65": 134.25545068904384
+                },
+                "reach_probability_given_hand": 8.207529998041502e-09
+              },
+              "turn/check/check/river/bet_50@Ts": {
+                "frequency": {
+                  "fold": 0.015973380725049998,
+                  "call": 0.98402661927495
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -50.0,
+                  "call": 100.0
+                },
+                "reach_probability_given_hand": 1.7402193740152577e-11
+              },
+              "turn/check/check/river/bet_100@Ts": {
+                "frequency": {
+                  "fold": 0.05093673825015529,
+                  "call": 0.9490632617498448
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "fold": -50.0,
+                  "call": 150.0
+                },
+                "reach_probability_given_hand": 4.6010003693233e-12
+              },
+              "turn/check/check/river/check@Ts": {
+                "frequency": {
+                  "check": 0.33333333333333337,
+                  "bet_50": 0.33333333333333337,
+                  "bet_100": 0.33333333333333337
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": 49.99999999999999,
+                  "bet_50": 50.00000555023975,
+                  "bet_100": 50.0000111004795
+                },
+                "reach_probability_given_hand": 1.4213403218239825e-06
+              },
+              "turn/check": {
+                "frequency": {
+                  "check": 6.254161321243234e-05,
+                  "bet_33": 0.3822558171211648,
+                  "bet_75": 0.6176816412656229
+                },
+                "action_ev_relative_to_half_turn_pot": {
+                  "check": 44.63269929794968,
+                  "bet_33": 50.00042713269387,
+                  "bet_75": 50.00059406858584
+                },
+                "reach_probability_given_hand": 0.999973283202168
+              }
+            }
+          }
+        },
+        "limitations": "Small fixed arrival ranges; no independent external turn-engine validation; local only"
+      }
+    },
+    {
+      "command": [
+        "python",
+        "scripts/solve_turn.py",
+        "--all-in-call",
+        "examples/turn-all-in.json"
+      ],
+      "input": {
+        "board": "2c,3d,4h,8s",
+        "hero_hand": "KhKd",
+        "villain_betting_range": "AsAd",
+        "pot": 100,
+        "bet": 100
+      },
+      "exit_code": 0,
+      "result": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "hero_hand": [
+          "Kd",
+          "Kh"
+        ],
+        "pot_before_bet": 100,
+        "all_in_call_amount": 100,
+        "equity": 0.04545454545454547,
+        "required_equity": 0.3333333333333333,
+        "ev_call_minus_fold": -86.36363636363636,
+        "best_action_given_range": "fold",
+        "legal_rivers_per_compatible_deal": 44,
+        "assumption": "Terminal effective all-in: no future betting, supplied betting range; not a general turn call EV"
+      }
+    }
+  ]
+}

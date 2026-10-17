@@ -4,7 +4,9 @@
 
 Computed heads-up NLHE **river-only, post-session study** with a Python solver and
 MCP tools. This is a restricted no-raise, no-rake river model, not a full GTO solver.
-No preflop, flop, turn, multiway, database, or web UI support.
+Hosted tools have no preflop, flop, turn, multiway, database, or web UI support.
+A separate [experimental local turn/river engine](docs/turn.md) now supports
+small two-street studies through a CLI. It is not registered with hosted MCP.
 
 **v0.2 implementation:** official-SDK stateless Streamable HTTP, OAuth resource
 metadata and JWT verification, bounded subprocess calculations, analytical
