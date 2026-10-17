@@ -15,6 +15,7 @@ from benchmarks.texas_blockers import CHIP_GATE, diagnostic_commands, load_block
 
 CPP = 'src/trainable/DiscountedCfrTrainable.cpp'
 PCFR = 'src/solver/PCfrSolver.cpp'
+SOURCE_LOOKUP_SHA256_LF = '13e0f4bd3cb99388caec49b36f98b98b70ae30407cbd740d880db65ed4db5e7b'
 
 
 def experiment_commands():
@@ -65,7 +66,9 @@ def prepare(source, output):
     if commit != SOURCE_COMMIT:
         raise ValueError('Wrong upstream revision')
     subprocess.run(['git', '-C', str(source), 'diff', '--exit-code', 'HEAD'], check=True, capture_output=True)
-    if digest(source / 'resources/compairer/card5_dic_sorted.txt') != LOOKUP_SHA256:
+    lookup = source / 'resources/compairer/card5_dic_sorted.txt'
+    if (digest(lookup) not in (LOOKUP_SHA256, SOURCE_LOOKUP_SHA256_LF)
+            or hashlib.sha256(lookup.read_bytes().replace(b'\r\n', b'\n')).hexdigest() != SOURCE_LOOKUP_SHA256_LF):
         raise ValueError('Different hand-evaluation table')
     patches = instrument((source / CPP).read_text(encoding='utf-8'), (source / PCFR).read_text(encoding='utf-8'))
     output.mkdir(parents=True, exist_ok=False)
@@ -98,7 +101,7 @@ int main(int argc, char** argv) {
         cmake.extend([f'add_executable({name} driver.cpp {name}.cpp)', f'target_link_libraries({name} PRIVATE engine)'])
     (output / 'CMakeLists.txt').write_text('\n'.join(cmake)+'\n', encoding='utf-8')
     manifest = {'source_commit': commit, 'source_clean_before_instrumentation': True,
-                'lookup_sha256': LOOKUP_SHA256,
+                'lookup_sha256': digest(lookup), 'lookup_sha256_lf': SOURCE_LOOKUP_SHA256_LF,
                 'source_sha256': {name: digest(source / name) for name in files+[CPP, PCFR]},
                 'header_sha256': {name: digest(source / name) for name in subprocess.check_output(
                     ['git', '-C', str(source), 'ls-files', 'include'], text=True).splitlines()},
@@ -112,7 +115,8 @@ int main(int argc, char** argv) {
 
 def analyze(execution):
     if (execution['build']['source_commit'] != SOURCE_COMMIT
-            or execution['build']['lookup_sha256'] != LOOKUP_SHA256
+            or execution['build']['lookup_sha256'] not in (LOOKUP_SHA256, SOURCE_LOOKUP_SHA256_LF)
+            or execution['build']['lookup_sha256_lf'] != SOURCE_LOOKUP_SHA256_LF
             or execution['fixture'] != load_blocker_fixture()):
         raise ValueError('Wrong experiment source')
     game = make_game(load_blocker_fixture())
@@ -163,6 +167,32 @@ def analyze(execution):
             'scope': 'Controlled modified reference experiment, not a replacement baseline or production change'}
 
 
+def markdown(report):
+    lines = ['# TexasSolver controlled averaging experiment', '',
+             'Independent evaluation of separately identified source-build policies. '
+             'The unmodified release failures remain recorded separately.', '',
+             '| Variant | Completed iterations | OOP average EV | Average NashConv | '
+             'Current NashConv | Source/average gap delta | Average status |',
+             '| --- | --- | --- | --- | --- | --- | --- |']
+    rows = report['analysis']['rows']
+    for row in rows:
+        if row['policy'] != 'average':
+            continue
+        current = next(r for r in rows if r['variant'] == row['variant']
+                       and r['iterations'] == row['iterations'] and r['policy'] == 'current')
+        lines.append(f'| {row["variant"]} | {row["iterations"]:,} | {row["oop_ev"]:.8f} | '
+                     f'{row["nashconv"]:.8f} | {current["nashconv"]:.8f} | '
+                     f'{row["source_vs_independent_gap_delta"]:.8f} | {row["status"]} |')
+    analysis = report['analysis']
+    lines += ['', f'Unchanged convergence gate: {CHIP_GATE:.2f} chips.', '',
+              'Maximum sampled current-policy difference between variants: '
+              f'{analysis["max_current_policy_difference_between_variants"]:.12g}.', '',
+              'Averaging effect observed with matching sampled current policies: '
+              f'{analysis["averaging_effect_observed_with_matching_current_policies"]}.', '',
+              'This is one fixture and one controlled change, not a general fix or reference acceptance.']
+    return '\n'.join(lines)+'\n'
+
+
 def run(source, prepared, build, output):
     source, prepared, build, output = map(lambda p: Path(p).resolve(), (source, prepared, build, output))
     output.mkdir(parents=True, exist_ok=False)
@@ -198,6 +228,7 @@ def run(source, prepared, build, output):
     (output / 'execution.json').write_text(json.dumps(execution, indent=2)+'\n')
     report = {'execution': execution, 'analysis': analyze(execution)}
     (output / 'experiment.json').write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
+    (output / 'experiment.md').write_text(markdown(report), encoding='utf-8')
     print(json.dumps(report['analysis'], indent=2))
     # Archive small selected raw checkpoints in logs too, without binaries/source.
     selected = json.loads(json.dumps(report))

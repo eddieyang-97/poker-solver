@@ -49,6 +49,7 @@ jobs:
           name: texas-averaging-reports
           path: |
             .artifacts/averaging-results/experiment.json
+            .artifacts/averaging-results/experiment.md
             .artifacts/averaging-results/execution.json
             .artifacts/texas-prepared/manifest.json
           retention-days: 30

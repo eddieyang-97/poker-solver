@@ -5,7 +5,7 @@ import unittest
 
 from benchmarks.texas import LOOKUP_SHA256, SOURCE_COMMIT
 from benchmarks.texas_blockers import load_blocker_fixture
-from benchmarks.texas_experiment import analyze, experiment_commands, replace_once
+from benchmarks.texas_experiment import SOURCE_LOOKUP_SHA256_LF, analyze, experiment_commands, replace_once
 
 
 class TexasExperimentTests(unittest.TestCase):
@@ -21,7 +21,8 @@ class TexasExperimentTests(unittest.TestCase):
         points = [{'iterations': n, 'exploitability_percent': 0.5,
                    'average': run['strategy'], 'current': run['strategy']}
                   for n, run in zip((4000, 40000), record['execution']['runs'], strict=True)]
-        return {'build': {'source_commit': SOURCE_COMMIT, 'lookup_sha256': LOOKUP_SHA256},
+        return {'build': {'source_commit': SOURCE_COMMIT, 'lookup_sha256': LOOKUP_SHA256,
+                          'lookup_sha256_lf': SOURCE_LOOKUP_SHA256_LF},
                 'fixture': load_blocker_fixture(),
                 'variants': {name: {'input_commands': experiment_commands(), 'checkpoints': copy.deepcopy(points)}
                              for name in ('baseline_observer', 'theta_one')}}
@@ -46,6 +47,18 @@ class TexasExperimentTests(unittest.TestCase):
                 data['checkpoints'][0]['exploitability_percent'] = float('nan')
             with self.subTest(change=change), self.assertRaises(ValueError):
                 analyze(record)
+
+    def test_changed_current_trajectory_prevents_isolated_effect_claim(self):
+        record = self.synthetic_execution()
+        baseline = record['variants']['baseline_observer']['checkpoints']
+        baseline[-1]['average'] = copy.deepcopy(baseline[0]['average'])
+        # Synthetic average-only improvement while current policies still match.
+        self.assertTrue(analyze(record)['averaging_effect_observed_with_matching_current_policies'])
+        changed = record['variants']['theta_one']['checkpoints']
+        changed[-1]['current'] = copy.deepcopy(changed[0]['current'])
+        report = analyze(record)
+        self.assertGreater(report['max_current_policy_difference_between_variants'], 0)
+        self.assertFalse(report['averaging_effect_observed_with_matching_current_policies'])
 
 
 if __name__ == '__main__':

@@ -13,6 +13,15 @@ at completed iterations 4,000, 8,000, …, 40,000. At each checkpoint, both aver
 and current strategies are exported immediately after the source exploitability
 calculation. Suit isomorphism is disabled and one training thread is used.
 
+The first Ubuntu workflow stopped at the strict table guard before compilation:
+Git's LF table has SHA256 `13e0f4bd3cb99388caec49b36f98b98b70ae30407cbd740d880db65ed4db5e7b`,
+while the Windows checkout/release uses CRLF and hash
+`4b68eee7bd91224157b125aad7429bf25cedd96370bcd228f316058d197afba2`.
+Reading the pinned Git blob independently confirmed that CRLF-to-LF conversion
+alone accounts for every byte difference. Preparation now requires the exact
+LF-normalized content hash and one of these two raw hashes; manifests retain both.
+The unmodified Windows release adapter still requires its original raw hash.
+
 Two executables share the same instrumented solver:
 
 - `baseline_observer`: original regret and averaging updates, including theta=0.9.
