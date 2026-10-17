@@ -1,0 +1,3313 @@
+{
+  "mode": "Actual standalone execution; subsequently re-evaluated offline",
+  "execution": {
+    "provenance": "Actual standalone upstream Windows v0.2.0 execution",
+    "source_tag": "v0.2.0",
+    "source_commit": "95f039c116fa7bcae7fb6c01aca56adb0f24c680",
+    "binary_sha256": "8b74cd6f687387a9ea6c567591642cfe0bfca88360a1748ff7c7db769d0c5c1a",
+    "download_zip_sha256": "0a9122fa0cd9384e6c1cbe0492e8a3b8ac7809890c649e1a53f77a59d6d50a7c",
+    "lookup_sha256": "4b68eee7bd91224157b125aad7429bf25cedd96370bcd228f316058d197afba2",
+    "input_commands": "set_pot 100\nset_effective_stack 100\nset_board 2c,3d,4h,8s,9c\nset_range_oop KK\nset_range_ip AA,QJo:0.5\nset_bet_sizes oop,river,bet,100\nset_bet_sizes ip,river,bet,100\nset_bet_sizes oop,river,raise\nset_bet_sizes ip,river,raise\nset_allin_threshold 100\nbuild_tree\nset_thread_num 1\nset_accuracy 0.001\nset_max_iteration 4000\nset_print_interval 100\nset_use_isomorphism 0\nstart_solve\nset_dump_rounds 1\ndump_result strategy.json\n",
+    "ranges": {
+      "oop": "KK",
+      "ip": "AA,QJo:0.5"
+    },
+    "fixture": {
+      "id": "texas_polarized_rank_classes",
+      "description": "Separate rank-class pilot; not the exact single-combo Issue #1 fixture",
+      "board": [
+        "2c",
+        "3d",
+        "4h",
+        "8s",
+        "9c"
+      ],
+      "pot": 100,
+      "stack": 100,
+      "bet_sizes": [
+        1
+      ],
+      "oop": [
+        {
+          "hand": "KcKd",
+          "weight": 1
+        },
+        {
+          "hand": "KcKh",
+          "weight": 1
+        },
+        {
+          "hand": "KcKs",
+          "weight": 1
+        },
+        {
+          "hand": "KdKh",
+          "weight": 1
+        },
+        {
+          "hand": "KdKs",
+          "weight": 1
+        },
+        {
+          "hand": "KhKs",
+          "weight": 1
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AcAd",
+          "weight": 1
+        },
+        {
+          "hand": "AcAh",
+          "weight": 1
+        },
+        {
+          "hand": "AcAs",
+          "weight": 1
+        },
+        {
+          "hand": "AdAh",
+          "weight": 1
+        },
+        {
+          "hand": "AdAs",
+          "weight": 1
+        },
+        {
+          "hand": "AhAs",
+          "weight": 1
+        },
+        {
+          "hand": "QcJd",
+          "weight": 0.5
+        },
+        {
+          "hand": "QcJh",
+          "weight": 0.5
+        },
+        {
+          "hand": "QcJs",
+          "weight": 0.5
+        },
+        {
+          "hand": "QdJc",
+          "weight": 0.5
+        },
+        {
+          "hand": "QdJh",
+          "weight": 0.5
+        },
+        {
+          "hand": "QdJs",
+          "weight": 0.5
+        },
+        {
+          "hand": "QhJc",
+          "weight": 0.5
+        },
+        {
+          "hand": "QhJd",
+          "weight": 0.5
+        },
+        {
+          "hand": "QhJs",
+          "weight": 0.5
+        },
+        {
+          "hand": "QsJc",
+          "weight": 0.5
+        },
+        {
+          "hand": "QsJd",
+          "weight": 0.5
+        },
+        {
+          "hand": "QsJh",
+          "weight": 0.5
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    },
+    "exit_code": 0,
+    "log_after_start": "<<<START SOLVING>>>\r\nUsing 1 threads\r\nIter: 0\r\nplayer 0 exploitability 37.50002\r\nplayer 1 exploitability 24.999998\r\nTotal exploitability 31.25001 precent\r\n-------------------\r\nIter: 101\r\nplayer 0 exploitability 25.000004\r\nplayer 1 exploitability -24.999998\r\nTotal exploitability 2.861023e-06 precent\r\ntime used: 0.001\r\n",
+    "checkpoints": [
+      {
+        "exploitibility": 2.86102294921875e-06,
+        "iteration": 100,
+        "time_ms": 1
+      }
+    ],
+    "strategy": {
+      "actions": [
+        "CHECK",
+        "BET 100.000000"
+      ],
+      "childrens": {
+        "BET 100.000000": {
+          "actions": [
+            "CALL",
+            "FOLD"
+          ],
+          "node_type": "action_node",
+          "player": 0,
+          "strategy": {
+            "actions": [
+              "CALL",
+              "FOLD"
+            ],
+            "strategy": {
+              "AdAc": [
+                1.0,
+                0.0
+              ],
+              "AhAc": [
+                1.0,
+                0.0
+              ],
+              "AhAd": [
+                1.0,
+                0.0
+              ],
+              "AsAc": [
+                1.0,
+                0.0
+              ],
+              "AsAd": [
+                1.0,
+                0.0
+              ],
+              "AsAh": [
+                1.0,
+                0.0
+              ],
+              "QcJd": [
+                0.0,
+                1.0
+              ],
+              "QcJh": [
+                0.0,
+                1.0
+              ],
+              "QcJs": [
+                0.0,
+                1.0
+              ],
+              "QdJc": [
+                0.0,
+                1.0
+              ],
+              "QdJh": [
+                0.0,
+                1.0
+              ],
+              "QdJs": [
+                0.0,
+                1.0
+              ],
+              "QhJc": [
+                0.0,
+                1.0
+              ],
+              "QhJd": [
+                0.0,
+                1.0
+              ],
+              "QhJs": [
+                0.0,
+                1.0
+              ],
+              "QsJc": [
+                0.0,
+                1.0
+              ],
+              "QsJd": [
+                0.0,
+                1.0
+              ],
+              "QsJh": [
+                0.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "CHECK": {
+          "actions": [
+            "CHECK",
+            "BET 100.000000"
+          ],
+          "childrens": {
+            "BET 100.000000": {
+              "actions": [
+                "CALL",
+                "FOLD"
+              ],
+              "node_type": "action_node",
+              "player": 1,
+              "strategy": {
+                "actions": [
+                  "CALL",
+                  "FOLD"
+                ],
+                "strategy": {
+                  "KdKc": [
+                    0.5,
+                    0.5
+                  ],
+                  "KhKc": [
+                    0.5,
+                    0.5
+                  ],
+                  "KhKd": [
+                    0.5,
+                    0.5
+                  ],
+                  "KsKc": [
+                    0.5,
+                    0.5
+                  ],
+                  "KsKd": [
+                    0.5,
+                    0.5
+                  ],
+                  "KsKh": [
+                    0.5,
+                    0.5
+                  ]
+                }
+              }
+            }
+          },
+          "node_type": "action_node",
+          "player": 0,
+          "strategy": {
+            "actions": [
+              "CHECK",
+              "BET 100.000000"
+            ],
+            "strategy": {
+              "AdAc": [
+                0.0,
+                1.0
+              ],
+              "AhAc": [
+                0.0,
+                1.0
+              ],
+              "AhAd": [
+                0.0,
+                1.0
+              ],
+              "AsAc": [
+                0.0,
+                1.0
+              ],
+              "AsAd": [
+                0.0,
+                1.0
+              ],
+              "AsAh": [
+                0.0,
+                1.0
+              ],
+              "QcJd": [
+                0.5,
+                0.5
+              ],
+              "QcJh": [
+                0.5,
+                0.5
+              ],
+              "QcJs": [
+                0.5,
+                0.5
+              ],
+              "QdJc": [
+                0.5,
+                0.5
+              ],
+              "QdJh": [
+                0.5,
+                0.5
+              ],
+              "QdJs": [
+                0.5,
+                0.5
+              ],
+              "QhJc": [
+                0.5,
+                0.5
+              ],
+              "QhJd": [
+                0.5,
+                0.5
+              ],
+              "QhJs": [
+                0.5,
+                0.5
+              ],
+              "QsJc": [
+                0.5,
+                0.5
+              ],
+              "QsJd": [
+                0.5,
+                0.5
+              ],
+              "QsJh": [
+                0.5,
+                0.5
+              ]
+            }
+          }
+        }
+      },
+      "node_type": "action_node",
+      "player": 1,
+      "strategy": {
+        "actions": [
+          "CHECK",
+          "BET 100.000000"
+        ],
+        "strategy": {
+          "KdKc": [
+            1.0,
+            0.0
+          ],
+          "KhKc": [
+            1.0,
+            0.0
+          ],
+          "KhKd": [
+            1.0,
+            0.0
+          ],
+          "KsKc": [
+            1.0,
+            0.0
+          ],
+          "KsKd": [
+            1.0,
+            0.0
+          ],
+          "KsKh": [
+            1.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "analysis": {
+    "fixture_id": "texas_polarized_rank_classes",
+    "comparison": {
+      "id": "texas_polarized_rank_classes",
+      "local_iterations": 1500,
+      "reference_iterations": 4000,
+      "local_root_ev": -25.0001,
+      "reference_root_ev": -25.000009137714734,
+      "root_ev_delta_pot": 9.086228526555828e-07,
+      "combined_gap_bound_pot": 0.0005228851146581073,
+      "local_nashconv": 0.03714712905755732,
+      "reference_nashconv": 0.015041382408253413,
+      "same_profile_max_action_ev_delta_pot": 6.394884621840901e-16,
+      "reach_weighted_strategy_l1": 0.0004936982938482759,
+      "rank_mismatches": [],
+      "local_cost": {
+        "seconds": 0.8053301000036299,
+        "python_peak_bytes": 10662
+      },
+      "reference_cost": {
+        "seconds": 6.635406199988211,
+        "python_peak_bytes": 41293
+      },
+      "reference_export": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 26688,
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 10000,
+          "bet_sizes": [
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 0,
+          "players": [
+            {
+              "hands": [
+                "KcKd",
+                "KcKh",
+                "KcKs",
+                "KdKh",
+                "KdKs",
+                "KhKs"
+              ],
+              "weights": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+              ]
+            },
+            {
+              "hands": [
+                "AcAd",
+                "AcAh",
+                "AcAs",
+                "AdAh",
+                "AdAs",
+                "AhAs",
+                "QcJd",
+                "QcJh",
+                "QcJs",
+                "QdJc",
+                "QdJh",
+                "QdJs",
+                "QhJc",
+                "QhJd",
+                "QhJs",
+                "QsJc",
+                "QsJd",
+                "QsJh"
+              ],
+              "weights": [
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5,
+                0.5
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "use_naive_eval": true,
+        "checkpoints": [
+          {
+            "iterations": 25,
+            "raw_exploitability": 135.55064442988805
+          },
+          {
+            "iterations": 50,
+            "raw_exploitability": 53.413065419702434
+          },
+          {
+            "iterations": 100,
+            "raw_exploitability": 25.398739188629406
+          },
+          {
+            "iterations": 200,
+            "raw_exploitability": 14.413389092036596
+          },
+          {
+            "iterations": 400,
+            "raw_exploitability": 8.845777507514867
+          },
+          {
+            "iterations": 800,
+            "raw_exploitability": 3.4424777605318013
+          },
+          {
+            "iterations": 1600,
+            "raw_exploitability": 2.1473036427651095
+          },
+          {
+            "iterations": 4000,
+            "raw_exploitability": 0.7520691204126706
+          }
+        ],
+        "players": [
+          {
+            "hands": [
+              "KcKd",
+              "KcKh",
+              "KcKs",
+              "KdKh",
+              "KdKs",
+              "KhKs"
+            ],
+            "weights": [
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666,
+              0.16666666666666666
+            ],
+            "profile": {
+              "root": {
+                "actions": [
+                  "c",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    0.9999994321979289,
+                    5.678020711773405e-07
+                  ],
+                  [
+                    0.9999994321979289,
+                    5.678020711773405e-07
+                  ],
+                  [
+                    0.9999994321979289,
+                    5.678020711773405e-07
+                  ],
+                  [
+                    0.9999994321979289,
+                    5.678020711773405e-07
+                  ],
+                  [
+                    0.9999994321979289,
+                    5.678020711773405e-07
+                  ],
+                  [
+                    0.9999994321979289,
+                    5.678020711773405e-07
+                  ]
+                ]
+              },
+              "c/b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.4999870975725457,
+                    0.5000129024274542
+                  ],
+                  [
+                    0.4999870975725457,
+                    0.5000129024274542
+                  ],
+                  [
+                    0.4999870975725457,
+                    0.5000129024274542
+                  ],
+                  [
+                    0.4999870975725457,
+                    0.5000129024274542
+                  ],
+                  [
+                    0.4999870975725457,
+                    0.5000129024274542
+                  ],
+                  [
+                    0.4999870975725457,
+                    0.5000129024274542
+                  ]
+                ]
+              }
+            }
+          },
+          {
+            "hands": [
+              "AcAd",
+              "AcAh",
+              "AcAs",
+              "AdAh",
+              "AdAs",
+              "AhAs",
+              "QcJd",
+              "QcJh",
+              "QcJs",
+              "JcQd",
+              "QdJh",
+              "QdJs",
+              "JcQh",
+              "JdQh",
+              "QhJs",
+              "JcQs",
+              "JdQs",
+              "JhQs"
+            ],
+            "weights": [
+              0.08333333333333333,
+              0.08333333333333333,
+              0.08333333333333333,
+              0.08333333333333333,
+              0.08333333333333333,
+              0.08333333333333333,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664,
+              0.041666666666666664
+            ],
+            "profile": {
+              "c": {
+                "actions": [
+                  "c",
+                  "b10000"
+                ],
+                "strategy": [
+                  [
+                    1.8745313671582103e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582103e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582103e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582103e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582103e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    1.8745313671582103e-07,
+                    0.9999998125468633
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ],
+                  [
+                    0.5002876413269998,
+                    0.49971235867300023
+                  ]
+                ]
+              },
+              "b10000": {
+                "actions": [
+                  "c",
+                  "f"
+                ],
+                "strategy": [
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    0.9999999375156211,
+                    6.248437890527369e-08
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ],
+                  [
+                    6.248437890527369e-08,
+                    0.9999999375156211
+                  ]
+                ]
+              }
+            }
+          }
+        ],
+        "training_cost": {
+          "seconds": 6.635406199988211,
+          "python_peak_bytes": 41293
+        }
+      },
+      "analytical": null,
+      "nodes": [
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KcKd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.4993164841051224,
+            0.5006835158948776
+          ],
+          "reference_frequency": [
+            0.4999870975725457,
+            0.5000129024274542
+          ],
+          "local_joint_reach": 0.12500405769076703,
+          "reference_joint_reach": 0.12497594330668228,
+          "rare": false,
+          "strategy_l1": 0.0013412269348466732,
+          "local_action_ev": [
+            -49.99243424796459,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -50.03834703831169,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 0.0383470383116844,
+          "local_action_regret_vs_reference_opponent": 0.01914730834563727,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KcKh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.4993164841051224,
+            0.5006835158948776
+          ],
+          "reference_frequency": [
+            0.4999870975725457,
+            0.5000129024274542
+          ],
+          "local_joint_reach": 0.12500405769076703,
+          "reference_joint_reach": 0.12497594330668228,
+          "rare": false,
+          "strategy_l1": 0.0013412269348466732,
+          "local_action_ev": [
+            -49.99243424796459,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -50.03834703831169,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 0.0383470383116844,
+          "local_action_regret_vs_reference_opponent": 0.01914730834563727,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KcKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.4993164841051224,
+            0.5006835158948776
+          ],
+          "reference_frequency": [
+            0.4999870975725457,
+            0.5000129024274542
+          ],
+          "local_joint_reach": 0.12500405769076703,
+          "reference_joint_reach": 0.12497594330668228,
+          "rare": false,
+          "strategy_l1": 0.0013412269348466732,
+          "local_action_ev": [
+            -49.99243424796459,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -50.03834703831169,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 0.0383470383116844,
+          "local_action_regret_vs_reference_opponent": 0.01914730834563727,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KdKh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.4993164841051224,
+            0.5006835158948776
+          ],
+          "reference_frequency": [
+            0.4999870975725457,
+            0.5000129024274542
+          ],
+          "local_joint_reach": 0.12500405769076703,
+          "reference_joint_reach": 0.12497594330668228,
+          "rare": false,
+          "strategy_l1": 0.0013412269348466732,
+          "local_action_ev": [
+            -49.99243424796459,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -50.03834703831169,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 0.0383470383116844,
+          "local_action_regret_vs_reference_opponent": 0.01914730834563727,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KdKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.4993164841051204,
+            0.5006835158948795
+          ],
+          "reference_frequency": [
+            0.4999870975725457,
+            0.5000129024274542
+          ],
+          "local_joint_reach": 0.12500405769076703,
+          "reference_joint_reach": 0.12497594330668228,
+          "rare": false,
+          "strategy_l1": 0.001341226934850559,
+          "local_action_ev": [
+            -49.99243424796459,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -50.03834703831169,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 0.0383470383116844,
+          "local_action_regret_vs_reference_opponent": 0.019147308345630165,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_facing_ip_bet_1",
+          "hand": "KhKs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.4993164841051204,
+            0.5006835158948795
+          ],
+          "reference_frequency": [
+            0.4999870975725457,
+            0.5000129024274542
+          ],
+          "local_joint_reach": 0.12500405769076703,
+          "reference_joint_reach": 0.12497594330668228,
+          "rare": false,
+          "strategy_l1": 0.001341226934850559,
+          "local_action_ev": [
+            -49.99243424796459,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -50.03834703831169,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 0.0383470383116844,
+          "local_action_regret_vs_reference_opponent": 0.019147308345630165,
+          "best_action_agrees": null
+        },
+        {
+          "node": "oop_first",
+          "hand": "KcKd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999959639776385,
+            4.036022361591009e-06
+          ],
+          "reference_frequency": [
+            0.9999994321979289,
+            5.678020711773405e-07
+          ],
+          "local_joint_reach": 0.16666666666666657,
+          "reference_joint_reach": 0.16666666666666657,
+          "rare": false,
+          "strategy_l1": 6.9364405808171695e-06,
+          "local_action_ev": [
+            -24.999970567499492,
+            -49.99993337774823
+          ],
+          "reference_action_ev": [
+            -24.999994942665413,
+            -49.99999062734316
+          ],
+          "reference_best_second_ev_gap": 24.999995684677746,
+          "local_action_regret_vs_reference_opponent": 0.00010090054162503748,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KcKh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999959639776385,
+            4.036022361591009e-06
+          ],
+          "reference_frequency": [
+            0.9999994321979289,
+            5.678020711773405e-07
+          ],
+          "local_joint_reach": 0.16666666666666657,
+          "reference_joint_reach": 0.16666666666666657,
+          "rare": false,
+          "strategy_l1": 6.9364405808171695e-06,
+          "local_action_ev": [
+            -24.999970567499492,
+            -49.99993337774823
+          ],
+          "reference_action_ev": [
+            -24.999994942665413,
+            -49.99999062734316
+          ],
+          "reference_best_second_ev_gap": 24.999995684677746,
+          "local_action_regret_vs_reference_opponent": 0.00010090054162503748,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KcKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999959639776385,
+            4.036022361591009e-06
+          ],
+          "reference_frequency": [
+            0.9999994321979289,
+            5.678020711773405e-07
+          ],
+          "local_joint_reach": 0.16666666666666657,
+          "reference_joint_reach": 0.16666666666666657,
+          "rare": false,
+          "strategy_l1": 6.9364405808171695e-06,
+          "local_action_ev": [
+            -24.999970567499492,
+            -49.99993337774823
+          ],
+          "reference_action_ev": [
+            -24.999994942665413,
+            -49.99999062734316
+          ],
+          "reference_best_second_ev_gap": 24.999995684677746,
+          "local_action_regret_vs_reference_opponent": 0.00010090054162503748,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KdKh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999959639776385,
+            4.036022361591009e-06
+          ],
+          "reference_frequency": [
+            0.9999994321979289,
+            5.678020711773405e-07
+          ],
+          "local_joint_reach": 0.16666666666666657,
+          "reference_joint_reach": 0.16666666666666657,
+          "rare": false,
+          "strategy_l1": 6.9364405808171695e-06,
+          "local_action_ev": [
+            -24.999970567499492,
+            -49.99993337774823
+          ],
+          "reference_action_ev": [
+            -24.999994942665413,
+            -49.99999062734316
+          ],
+          "reference_best_second_ev_gap": 24.999995684677746,
+          "local_action_regret_vs_reference_opponent": 0.00010090054162503748,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KdKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999959639776385,
+            4.036022361591009e-06
+          ],
+          "reference_frequency": [
+            0.9999994321979289,
+            5.678020711773405e-07
+          ],
+          "local_joint_reach": 0.16666666666666657,
+          "reference_joint_reach": 0.16666666666666657,
+          "rare": false,
+          "strategy_l1": 6.9364405808171695e-06,
+          "local_action_ev": [
+            -24.999970567499478,
+            -49.99993337774823
+          ],
+          "reference_action_ev": [
+            -24.999994942665413,
+            -49.99999062734316
+          ],
+          "reference_best_second_ev_gap": 24.999995684677746,
+          "local_action_regret_vs_reference_opponent": 0.00010090054162503748,
+          "best_action_agrees": true
+        },
+        {
+          "node": "oop_first",
+          "hand": "KhKs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.9999959639776385,
+            4.036022361591009e-06
+          ],
+          "reference_frequency": [
+            0.9999994321979289,
+            5.678020711773405e-07
+          ],
+          "local_joint_reach": 0.16666666666666657,
+          "reference_joint_reach": 0.16666666666666657,
+          "rare": false,
+          "strategy_l1": 6.9364405808171695e-06,
+          "local_action_ev": [
+            -24.999970567499478,
+            -49.99993337774823
+          ],
+          "reference_action_ev": [
+            -24.999994942665413,
+            -49.99999062734316
+          ],
+          "reference_best_second_ev_gap": 24.999995684677746,
+          "local_action_regret_vs_reference_opponent": 0.00010090054162503748,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AcAd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582103e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.08333299699813654,
+          "reference_joint_reach": 0.08333328601649405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            49.99999999999998,
+            99.93164841051217
+          ],
+          "reference_action_ev": [
+            50.000000000000014,
+            99.9987097572546
+          ],
+          "reference_best_second_ev_gap": 49.99870975725459,
+          "local_action_regret_vs_reference_opponent": 6.662053264960832e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AcAh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582103e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.08333299699813654,
+          "reference_joint_reach": 0.08333328601649405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            49.99999999999998,
+            99.93164841051217
+          ],
+          "reference_action_ev": [
+            50.000000000000014,
+            99.9987097572546
+          ],
+          "reference_best_second_ev_gap": 49.99870975725459,
+          "local_action_regret_vs_reference_opponent": 6.662053264960832e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AcAs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582103e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.08333299699813654,
+          "reference_joint_reach": 0.08333328601649405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            49.99999999999998,
+            99.93164841051217
+          ],
+          "reference_action_ev": [
+            50.000000000000014,
+            99.9987097572546
+          ],
+          "reference_best_second_ev_gap": 49.99870975725459,
+          "local_action_regret_vs_reference_opponent": 6.662053264960832e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AdAh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582103e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.08333299699813654,
+          "reference_joint_reach": 0.08333328601649405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            49.99999999999998,
+            99.93164841051217
+          ],
+          "reference_action_ev": [
+            50.000000000000014,
+            99.9987097572546
+          ],
+          "reference_best_second_ev_gap": 49.99870975725459,
+          "local_action_regret_vs_reference_opponent": 6.662053264960832e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AdAs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582103e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.08333299699813654,
+          "reference_joint_reach": 0.08333328601649405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            49.99999999999998,
+            99.93164841051217
+          ],
+          "reference_action_ev": [
+            50.000000000000014,
+            99.9987097572546
+          ],
+          "reference_best_second_ev_gap": 49.99870975725459,
+          "local_action_regret_vs_reference_opponent": 6.662053264960832e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "AhAs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            1.3324450366422384e-06,
+            0.9999986675549634
+          ],
+          "reference_frequency": [
+            1.8745313671582103e-07,
+            0.9999998125468633
+          ],
+          "local_joint_reach": 0.08333299699813654,
+          "reference_joint_reach": 0.08333328601649405,
+          "rare": false,
+          "strategy_l1": 2.2899837998859527e-06,
+          "local_action_ev": [
+            49.99999999999998,
+            99.93164841051217
+          ],
+          "reference_action_ev": [
+            50.000000000000014,
+            99.9987097572546
+          ],
+          "reference_best_second_ev_gap": 49.99870975725459,
+          "local_action_regret_vs_reference_opponent": 6.662053264960832e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JdQc",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JhQc",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JsQc",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JcQd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JhQd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JsQd",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JcQh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JdQh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JsQh",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JcQs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887412
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314818504,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344028312,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JdQs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887413
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314819614,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344099366,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_after_oop_check",
+          "hand": "JhQs",
+          "actions": [
+            "c",
+            "b10000"
+          ],
+          "local_frequency": [
+            0.49994392101125884,
+            0.5000560789887413
+          ],
+          "reference_frequency": [
+            0.5002876413269998,
+            0.49971235867300023
+          ],
+          "local_joint_reach": 0.04166649849906827,
+          "reference_joint_reach": 0.041666643008247024,
+          "rare": false,
+          "strategy_l1": 0.0006874406314819614,
+          "local_action_ev": [
+            -50.0,
+            -49.86329682102434
+          ],
+          "reference_action_ev": [
+            -49.99999999999999,
+            -49.997419514509154
+          ],
+          "reference_best_second_ev_gap": 0.0025804854908386687,
+          "local_action_regret_vs_reference_opponent": 0.0012900980344099366,
+          "best_action_agrees": null
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AcAd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.363351967992507e-07,
+          "reference_joint_reach": 4.7316839264778374e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            149.99999999999994,
+            -50.0
+          ],
+          "reference_action_ev": [
+            149.99999999999997,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 199.99999999999997,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AcAh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.363351967992507e-07,
+          "reference_joint_reach": 4.7316839264778374e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            149.99999999999994,
+            -50.0
+          ],
+          "reference_action_ev": [
+            149.99999999999997,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 199.99999999999997,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AcAs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.363351967992507e-07,
+          "reference_joint_reach": 4.7316839264778374e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            149.99999999999994,
+            -50.0
+          ],
+          "reference_action_ev": [
+            149.99999999999997,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 199.99999999999997,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AdAh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.363351967992507e-07,
+          "reference_joint_reach": 4.7316839264778374e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            149.99999999999994,
+            -50.0
+          ],
+          "reference_action_ev": [
+            149.99999999999997,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 199.99999999999997,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AdAs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.363351967992507e-07,
+          "reference_joint_reach": 4.7316839264778374e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            149.99999999999994,
+            -50.0
+          ],
+          "reference_action_ev": [
+            149.99999999999997,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 199.99999999999997,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "AhAs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            0.9999995558516545,
+            4.441483455474128e-07
+          ],
+          "reference_frequency": [
+            0.9999999375156211,
+            6.248437890527369e-08
+          ],
+          "local_joint_reach": 3.363351967992507e-07,
+          "reference_joint_reach": 4.7316839264778374e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            149.99999999999994,
+            -50.0
+          ],
+          "reference_action_ev": [
+            149.99999999999997,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 199.99999999999997,
+          "local_action_regret_vs_reference_opponent": 8.88296691243795e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JdQc",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JhQc",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JsQc",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JcQd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JhQd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JsQd",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JcQh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JdQh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JsQh",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JcQs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JdQs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        },
+        {
+          "node": "ip_facing_oop_bet_1",
+          "hand": "JhQs",
+          "actions": [
+            "c",
+            "f"
+          ],
+          "local_frequency": [
+            4.441483455474128e-07,
+            0.9999995558516545
+          ],
+          "reference_frequency": [
+            6.248437890527369e-08,
+            0.9999999375156211
+          ],
+          "local_joint_reach": 1.6816759839962535e-07,
+          "reference_joint_reach": 2.3658419632389187e-08,
+          "rare": true,
+          "strategy_l1": 7.633279332953176e-07,
+          "local_action_ev": [
+            -149.99999999999997,
+            -50.0
+          ],
+          "reference_action_ev": [
+            -150.0,
+            -50.00000000000001
+          ],
+          "reference_best_second_ev_gap": 100.0,
+          "local_action_regret_vs_reference_opponent": 4.4414834555084326e-05,
+          "best_action_agrees": true
+        }
+      ],
+      "failures": []
+    },
+    "texas_exported_policy_oop_ev": -25.00000000000001,
+    "texas_exported_policy_nashconv": 3.637978807091713e-14,
+    "texas_log_exploitability_percent": 2.86102294921875e-06,
+    "texas_log_normalized_nashconv": 5.7220458984375e-06,
+    "texas_root_delta_pot": {
+      "local": 9.99999999891088e-07,
+      "reference": 9.137714723550516e-08
+    },
+    "ev_provenance": "Independent evaluation of actual Texas strategy; no raw EV field in its JSON",
+    "terminal_payoffs": "Reconstructed from declared fixture; Texas JSON omits terminals",
+    "texas_selected_frequency": {
+      "qj_bet": 0.5,
+      "kk_call": 0.5,
+      "kk_check": 1.0
+    },
+    "texas_nodes": [
+      {
+        "node": "oop_facing_ip_bet_1",
+        "hand": [
+          "Kc",
+          "Kd"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.12500000000000006
+      },
+      {
+        "node": "oop_facing_ip_bet_1",
+        "hand": [
+          "Kc",
+          "Kh"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.12500000000000006
+      },
+      {
+        "node": "oop_facing_ip_bet_1",
+        "hand": [
+          "Kc",
+          "Ks"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.12500000000000006
+      },
+      {
+        "node": "oop_facing_ip_bet_1",
+        "hand": [
+          "Kd",
+          "Kh"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.12500000000000006
+      },
+      {
+        "node": "oop_facing_ip_bet_1",
+        "hand": [
+          "Kd",
+          "Ks"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.12500000000000006
+      },
+      {
+        "node": "oop_facing_ip_bet_1",
+        "hand": [
+          "Kh",
+          "Ks"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.12500000000000006
+      },
+      {
+        "node": "oop_first",
+        "hand": [
+          "Kc",
+          "Kd"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          -25.000000000000025,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.16666666666666657
+      },
+      {
+        "node": "oop_first",
+        "hand": [
+          "Kc",
+          "Kh"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          -25.000000000000025,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.16666666666666657
+      },
+      {
+        "node": "oop_first",
+        "hand": [
+          "Kc",
+          "Ks"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          -25.000000000000025,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.16666666666666657
+      },
+      {
+        "node": "oop_first",
+        "hand": [
+          "Kd",
+          "Kh"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          -25.000000000000025,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.16666666666666657
+      },
+      {
+        "node": "oop_first",
+        "hand": [
+          "Kd",
+          "Ks"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          -25.000000000000025,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.16666666666666657
+      },
+      {
+        "node": "oop_first",
+        "hand": [
+          "Kh",
+          "Ks"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          -25.000000000000025,
+          -50.00000000000001
+        ],
+        "joint_reach": 0.16666666666666657
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Ac",
+          "Ad"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          50.0,
+          100.0
+        ],
+        "joint_reach": 0.08333333333333331
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Ac",
+          "Ah"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          50.0,
+          100.0
+        ],
+        "joint_reach": 0.08333333333333331
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Ac",
+          "As"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          50.0,
+          100.0
+        ],
+        "joint_reach": 0.08333333333333331
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Ad",
+          "Ah"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          50.0,
+          100.0
+        ],
+        "joint_reach": 0.08333333333333331
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Ad",
+          "As"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          50.0,
+          100.0
+        ],
+        "joint_reach": 0.08333333333333331
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Ah",
+          "As"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          50.0,
+          100.0
+        ],
+        "joint_reach": 0.08333333333333331
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jd",
+          "Qc"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jh",
+          "Qc"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Js",
+          "Qc"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jc",
+          "Qd"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jh",
+          "Qd"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Js",
+          "Qd"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jc",
+          "Qh"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jd",
+          "Qh"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Js",
+          "Qh"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jc",
+          "Qs"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jd",
+          "Qs"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_after_oop_check",
+        "hand": [
+          "Jh",
+          "Qs"
+        ],
+        "actions": [
+          "c",
+          "b10000"
+        ],
+        "frequency": [
+          0.5,
+          0.5
+        ],
+        "independently_evaluated_action_ev": [
+          -50.0,
+          -49.99999999999999
+        ],
+        "joint_reach": 0.04166666666666666
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Ac",
+          "Ad"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Ac",
+          "Ah"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Ac",
+          "As"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Ad",
+          "Ah"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Ad",
+          "As"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Ah",
+          "As"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          1.0,
+          0.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jd",
+          "Qc"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jh",
+          "Qc"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Js",
+          "Qc"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jc",
+          "Qd"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jh",
+          "Qd"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Js",
+          "Qd"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jc",
+          "Qh"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jd",
+          "Qh"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Js",
+          "Qh"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jc",
+          "Qs"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jd",
+          "Qs"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      },
+      {
+        "node": "ip_facing_oop_bet_1",
+        "hand": [
+          "Jh",
+          "Qs"
+        ],
+        "actions": [
+          "c",
+          "f"
+        ],
+        "frequency": [
+          0.0,
+          1.0
+        ],
+        "independently_evaluated_action_ev": [
+          null,
+          null
+        ],
+        "joint_reach": 0.0
+      }
+    ],
+    "failures": []
+  },
+  "observed_date": "2026-10-17"
+}

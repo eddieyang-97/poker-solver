@@ -27,6 +27,11 @@ trees with a pinned MIT reference engine, including independently evaluated EVs,
 card removal and convergence. CI runs it offline and publishes delta reports.
 This small-corpus agreement does not establish full NLHE GTO correctness.
 
+A separate [TexasSolver compatibility pilot](docs/texassolver.md) records an
+actual standalone rank-class solve and offline evidence replay. The tested
+release rejects concrete combos, so the original single-combo fixture and
+general weighted/blocker cross-validation remain unsupported by that pilot.
+
 | Tool | Returns |
 | --- | --- |
 | `evaluate_river_call` | Exact card-removal-adjusted showdown equity, pot odds and incremental call EV against a supplied weighted **betting range** |

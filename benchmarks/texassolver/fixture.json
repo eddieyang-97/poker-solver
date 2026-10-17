@@ -1,0 +1,119 @@
+{
+  "id": "texas_polarized_rank_classes",
+  "description": "Separate rank-class pilot; not the exact single-combo Issue #1 fixture",
+  "board": [
+    "2c",
+    "3d",
+    "4h",
+    "8s",
+    "9c"
+  ],
+  "pot": 100,
+  "stack": 100,
+  "bet_sizes": [
+    1
+  ],
+  "oop": [
+    {
+      "hand": "KcKd",
+      "weight": 1
+    },
+    {
+      "hand": "KcKh",
+      "weight": 1
+    },
+    {
+      "hand": "KcKs",
+      "weight": 1
+    },
+    {
+      "hand": "KdKh",
+      "weight": 1
+    },
+    {
+      "hand": "KdKs",
+      "weight": 1
+    },
+    {
+      "hand": "KhKs",
+      "weight": 1
+    }
+  ],
+  "ip": [
+    {
+      "hand": "AcAd",
+      "weight": 1
+    },
+    {
+      "hand": "AcAh",
+      "weight": 1
+    },
+    {
+      "hand": "AcAs",
+      "weight": 1
+    },
+    {
+      "hand": "AdAh",
+      "weight": 1
+    },
+    {
+      "hand": "AdAs",
+      "weight": 1
+    },
+    {
+      "hand": "AhAs",
+      "weight": 1
+    },
+    {
+      "hand": "QcJd",
+      "weight": 0.5
+    },
+    {
+      "hand": "QcJh",
+      "weight": 0.5
+    },
+    {
+      "hand": "QcJs",
+      "weight": 0.5
+    },
+    {
+      "hand": "QdJc",
+      "weight": 0.5
+    },
+    {
+      "hand": "QdJh",
+      "weight": 0.5
+    },
+    {
+      "hand": "QdJs",
+      "weight": 0.5
+    },
+    {
+      "hand": "QhJc",
+      "weight": 0.5
+    },
+    {
+      "hand": "QhJd",
+      "weight": 0.5
+    },
+    {
+      "hand": "QhJs",
+      "weight": 0.5
+    },
+    {
+      "hand": "QsJc",
+      "weight": 0.5
+    },
+    {
+      "hand": "QsJd",
+      "weight": 0.5
+    },
+    {
+      "hand": "QsJh",
+      "weight": 0.5
+    }
+  ],
+  "rake": 0,
+  "max_raises": 0,
+  "include_all_in": false
+}

@@ -122,6 +122,50 @@ are in [benchmark-results.json](benchmark-results.json); the readable table is
 [benchmark-results.md](benchmark-results.md). This local evidence does not imply
 hosted service changes or a successful run of the incompatible upstream CLI.
 
+### TexasSolver standalone compatibility pilot — 17 October 2026
+
+Reviewed and merged PR #2 as `99a49cee5ddd169a0fd68e3a0f55ac02b40ed5a7`, after
+confirming green CI and no outstanding review requests. Then downloaded the
+upstream Windows v0.2.0 console release into ignored local artifacts and inspected
+its source tag `95f039c116fa7bcae7fb6c01aca56adb0f24c680`. No external source,
+resource tables or binaries were committed, and production configuration and
+solver behavior were unchanged.
+
+The original concrete-combo input **failed**, exit 3, with `range str AsAd len
+not valid`; no strategy dump was produced. The release accepts rank classes and
+drops weights at or below 0.005. Its default implicit all-ins and integer bet
+rounding also prevent assuming compatibility with the existing fixture corpus.
+
+A separately labelled £100 pilot used full OOP `KK` versus `AA,QJo:0.5`, with
+equal total value/bluff weight and a sole £100 shove. Its implicit all-in adds
+no size in this specific tree. The actual executable returned a complete river
+policy: QhJd bets 50%, KhKd calls 50% and checks 100%. The strict adapter checked
+all decision nodes, player mapping (Texas IP=0/OOP=1), amounts, child sets and
+card-keyed frequencies. Product and pinned noambrown CFR+ were separately run on
+the same explicit 6/18-combo rank-class fixture.
+
+Independent evaluation of Texas's actual exported policy gives OOP root EV
+−£25.00000000 and NashConv about £3.6e−14. These EVs are **reconstructed from the
+policy and declared terminal payoffs**, not returned Texas action EV fields.
+The actual log reports `2.86102294921875e-06` percent exploitability, normalizing
+to £0.00000572205 NashConv. The small log/dump difference is retained and falls
+within the unchanged £0.000051 rounding gate; its exact cause is unresolved.
+
+Actual commands, binary/lookup hashes, ordered dump, log and three-engine
+comparison: [texassolver-results.json](texassolver-results.json).
+[texassolver.md](texassolver.md) describes source inspection, failed input,
+normalization, reproduction and limits. CI replays the saved actual policy
+without downloading or executing TexasSolver; this does not establish a new
+external run. The original concrete game, general blockers/weights and all ten
+fixtures remain unverified with TexasSolver. No gold-standard claim is made.
+
+Local verification passed: **37 tests**, Ruff, compileall, all ten original
+same-tree benchmarks with the separate raise experiment, the actual standalone
+Texas pilot, and offline replay. Three new adapter regressions cover player,
+action/amount, child-set, combo and probability mismatches, along with refusal
+to silently substitute another fixture. CI explicitly runs offline replay and
+does not download or execute the external release.
+
 ## £505 checked-river acceptance study
 
 Board `Ks,9s,5h,Td,Ts`; BTN/IP `AsJh`; pot £505, effective remaining stack £450.
