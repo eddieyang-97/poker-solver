@@ -31,6 +31,8 @@ A separate [TexasSolver compatibility pilot](docs/texassolver.md) records an
 actual standalone rank-class solve and offline evidence replay. The tested
 release rejects concrete combos, so the original single-combo fixture and
 general weighted/blocker cross-validation remain unsupported by that pilot.
+A separate [weighted-blocker audit](docs/texas-blocker-audit.md) records two
+reference convergence failures; they remain outside the passing fixture corpus.
 
 | Tool | Returns |
 | --- | --- |

@@ -166,6 +166,38 @@ action/amount, child-set, combo and probability mismatches, along with refusal
 to silently substitute another fixture. CI explicitly runs offline replay and
 does not download or execute the external release.
 
+### Weighted-blocker Texas diagnostic — 17 October 2026
+
+Reviewed and merged PR #3 as `946adaa5314af00ee0d15b4b58ea3329290a302d` after
+confirming its head CI passed and no review requests were outstanding. Newer
+pinned Texas source still rejects concrete combos; no installed local C++/WSL
+build environment was found. The original exact fixture remains blocked.
+
+The next separately labelled diagnostic adds weighted IP KK to the earlier
+rank-class game. Actual unmodified Texas runs at 4,000 and 40,000 iterations
+returned policies with independently evaluated NashConv **£1.59073955** and
+**£1.13173461** in a £100 pot. Both **FAIL** the unchanged £0.50 convergence gate.
+Product/noambrown pass the same weighted game at the existing 1500/4000 budgets
+(gaps £0.03584237 / £0.01608152). Compatible-pair enumeration confirms 114 pairs,
+joint weight 75 and IP KK probability 4% after removal; an analytical policy
+has OOP EV −£25 and independently evaluated near-zero NashConv.
+
+The source conditions relative probabilities on compatible opponent weight, so
+this has not been identified as a simple missing-blocker bug. A fixed 0.9
+strategy-averaging discount is one candidate explanation for oscillation; no
+modified build/ablation was run, and root cause remains unresolved. All source
+inspection, raw outputs, logs and commands are in
+[texas-blocker-audit.md](texas-blocker-audit.md) and
+[texas-blocker-results.json](texas-blocker-results.json).
+The audit CLI exits **1** and writes explicit FAIL reports. Regression replay
+does not constitute a passing external solve. No failing fixture was removed,
+no gate was widened, no reference algorithm was patched and production was
+unchanged. This diagnostic remains outside the passing corpus.
+
+Local regression verification: **40 tests**, Ruff and compileall passed. Tests
+confirm the recorded external policies still exceed the original convergence
+gate; this green regression result does not change their FAIL classification.
+
 ## £505 checked-river acceptance study
 
 Board `Ks,9s,5h,Td,Ts`; BTN/IP `AsJh`; pot £505, effective remaining stack £450.

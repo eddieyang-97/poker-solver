@@ -13,7 +13,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Static checks
         run: |
-          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py
+          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py
           python -m compileall -q poker_spot scripts benchmarks
       - name: Run tests
         run: python -m unittest discover -s tests -v
