@@ -1,5 +1,22 @@
 # Audit and validation — 16 October 2026
 
+## Controlled reference experiment — 17 October 2026
+
+PR #4's weighted-blocker diagnostic was reviewed and merged as
+`cfd30d772d9d331e28314b109dda2311497d4c77`. Its two release-policy convergence
+failures remain unchanged. A [separate averaging experiment](texas-averaging-experiment.md)
+now prepares two identified source builds at the same pinned release revision:
+an observer baseline and one history-preserving averaging variant. Matched
+current/average policy snapshots will distinguish an averaging effect from a
+changed training trajectory. Guarded preparation succeeded on the actual clean
+source checkout locally; this Windows environment has no Qt/C++ toolchain.
+Compilation and numerical execution are pending the dedicated ephemeral Ubuntu
+PR workflow. No experiment output is yet claimed as measured evidence.
+
+Local preflight: **43 tests**, Ruff and compileall pass. Tests reject mismatched
+checkpoint iterations, changed fixture/commands and nonfinite source metrics;
+identical policies cannot be labelled an observed averaging improvement.
+
 ## Implementation audit
 
 Audited repository baseline `ef174d8`: README, AGENTS, Python core, stdio/HTTP
