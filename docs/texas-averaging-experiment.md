@@ -22,6 +22,11 @@ alone accounts for every byte difference. Preparation now requires the exact
 LF-normalized content hash and one of these two raw hashes; manifests retain both.
 The unmodified Windows release adapter still requires its original raw hash.
 
+The next build exposed missing direct `<memory>` includes in the old upstream
+headers on GCC 13. Both executables therefore force-include that standard header
+via the same recorded compiler option. No upstream header or algorithm is edited
+for this compatibility correction. Compiler warnings remain visible in CI logs.
+
 Two executables share the same instrumented solver:
 
 - `baseline_observer`: original regret and averaging updates, including theta=0.9.

@@ -92,6 +92,7 @@ int main(int argc, char** argv) {
     files += ['src/runtime/PokerSolver.cpp']
     cmake = ['cmake_minimum_required(VERSION 3.16)', 'project(texas_experiment LANGUAGES CXX)',
              'set(CMAKE_CXX_STANDARD 17)', 'set(CMAKE_POSITION_INDEPENDENT_CODE ON)',
+             'add_compile_options(-include memory)',  # Upstream headers omit <memory>; same for both builds.
              'find_package(Qt5 REQUIRED COMPONENTS Core)',
              'find_package(OpenMP REQUIRED)', 'add_library(engine STATIC solver_observer.cpp']
     cmake.extend('  "'+str(source / name).replace('\\', '/')+'"' for name in files)
