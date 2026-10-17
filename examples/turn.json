@@ -1,0 +1,13 @@
+{
+  "board": "Ks,9s,5h,Td",
+  "oop_range": "KdQd,AsJh:0.5",
+  "ip_range": "QsJs,9h9d:0.5",
+  "pot": 100,
+  "stack": 140,
+  "turn_bet_sizes": [0.33, 0.75],
+  "river_bet_sizes": [0.5, 1.0],
+  "iterations": 1000,
+  "oop_hand": "KdQd",
+  "ip_hand": "QsJs",
+  "river_card": "Ts"
+}

@@ -55,6 +55,10 @@ These are visible follow-ups, not hidden passes. They are distinct from Issue
 ## Turn implementation boundary
 
 Turn work must wait for the user's agreed prerequisite scope to be completed.
+The required private river pilot and initial benchmark acceptance criteria are
+complete; PR #6 merged their closeout as `e2417485d6e6ca246d14d974e4af657a3d432ba8`.
+The subsequent [local turn implementation](turn.md) proceeds on that basis,
+with the optional follow-ups above still open and explicitly outside its scope.
 When authorized to begin, implement and validate it separately from the accepted
 river core and hosted river tools. Deterministic river-card chance, card-removal
 conditioning, two-street pot/stack accounting and future betting decisions need
