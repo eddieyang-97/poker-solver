@@ -13,7 +13,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Static checks
         run: |
-          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py
+          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py
           python -m compileall -q poker_spot scripts benchmarks
       - name: Run tests
         run: python -m unittest discover -s tests -v
@@ -41,3 +41,14 @@ jobs:
         with:
           name: texas-evidence-replay
           path: .artifacts/texas-replay.*
+      - name: Replay controlled averaging evidence (no external build)
+        timeout-minutes: 2
+        run: python scripts/texas_averaging_experiment.py replay --evidence docs/texas-averaging-results.json --output .artifacts/texas-averaging-replay
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain controlled averaging replay report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: texas-averaging-replay
+          path: .artifacts/texas-averaging-replay.*

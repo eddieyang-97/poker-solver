@@ -1,0 +1,55 @@
+name: Texas averaging experiment
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/texas-experiment.yml'
+      - 'benchmarks/texas_experiment.py'
+      - 'scripts/texas_averaging_experiment.py'
+permissions:
+  contents: read
+concurrency:
+  group: texas-experiment-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  experiment:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: bupticybee/TexasSolver
+          ref: 95f039c116fa7bcae7fb6c01aca56adb0f24c680
+          path: .artifacts/texas-source
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt
+      - name: Install build dependencies on ephemeral runner
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends qtbase5-dev cmake g++
+      - name: Prepare guarded instrumentation
+        run: python scripts/texas_averaging_experiment.py prepare --source .artifacts/texas-source --prepared .artifacts/texas-prepared
+      - name: Build observer baseline and labelled variant
+        run: |
+          cmake -S .artifacts/texas-prepared -B .artifacts/texas-build -DCMAKE_BUILD_TYPE=Release
+          cmake --build .artifacts/texas-build --parallel 2
+      - name: Capture matching checkpoints and independently evaluate
+        run: python scripts/texas_averaging_experiment.py run --source .artifacts/texas-source --prepared .artifacts/texas-prepared --build .artifacts/texas-build --output .artifacts/averaging-results
+      - name: Retain reports only (no source, lookup tables or binaries)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: texas-averaging-reports
+          path: |
+            .artifacts/averaging-results/experiment.json
+            .artifacts/averaging-results/experiment.md
+            .artifacts/averaging-results/execution.json
+            .artifacts/texas-prepared/manifest.json
+          retention-days: 30

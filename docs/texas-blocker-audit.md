@@ -75,8 +75,11 @@ sets `theta=0.9`; its
 [`updateRegrets`](https://github.com/bupticybee/TexasSolver/blob/95f039c116fa7bcae7fb6c01aca56adb0f24c680/src/trainable/DiscountedCfrTrainable.cpp)
 multiplies accumulated strategy by theta at each update, emphasizing recent
 strategies. The logs continue to oscillate rather than meet the requested target.
-This is a **candidate explanation**, not an isolated root cause: no altered build,
-ablation, algorithm patch or output averaging was performed.
+At the time of this original audit it was a **candidate explanation**: no altered
+build or ablation had been performed. The subsequent separately labelled
+[source-build experiment](texas-averaging-experiment.md) now isolates an averaging
+effect on this fixture with matching sampled current policies. That experiment
+preserves these original release failures and does not replace the baseline.
 
 ## Reproduce and interpret the status
 
@@ -99,6 +102,7 @@ preservation of the two failures. Passing tests mean the diagnostic is reproduce
 they do not turn the reference solve into a passing comparison. The diagnostic
 is not silently folded into the green benchmark corpus.
 
-Follow-up requires isolating convergence/averaging behavior in a separately
-identified build/version or another independently verified reference. Do not
-adjust our production solver, widen the gate or relabel the outputs to agree.
+The separately identified [averaging experiment](texas-averaging-experiment.md)
+now supplies the first controlled follow-up. Broader fixtures and another
+independently verified reference remain useful subsequent work. Do not adjust
+our production solver, widen the gate or relabel the original outputs to agree.
