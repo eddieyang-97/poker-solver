@@ -101,6 +101,16 @@ def install_reference_profile(game, solver, profile):
             node.strategy_sum[location+(target,)] = profile[index, action]
 
 
+def product_evaluation(solver, diagnostics=None):
+    result = dict(solver.diagnostics() if diagnostics is None else diagnostics)
+    best0 = solver._walk(solver.root, *solver.weights, best_response=0)[0]
+    best1 = solver._walk(solver.root, *solver.weights, best_response=1)[1]
+    result.update(oop_lower_bound=-float(solver.weights[1] @ best1/solver.mass),
+                  oop_upper_bound=float(solver.weights[0] @ best0/solver.mass))
+    result['nash_conv_chips'] = result['raw_nash_conv_chips']
+    return result
+
+
 def independent_train(config, iterations):
     command = [sys.executable, '-I', str(ROOT/'benchmarks/turn_reference_worker.py'), '--iterations', str(iterations)]
     process = subprocess.run(command, input=json.dumps(config), text=True, capture_output=True, check=True, timeout=120,
@@ -134,13 +144,15 @@ def compare_fixture(fixture, iterations=2000, reference_iterations=4000):
     reference_external = game.evaluate(reference)
     transfer = product_solver(config)
     install_reference_profile(game, transfer, reference)
-    reference_product = transfer.diagnostics()
-    diagnostics = (product_external, result['diagnostics'], reference_external, reference_product, exported['checkpoints'][-1])
-    if not all(math.isfinite(row[key]) for row in diagnostics for key in ('oop_ev', 'ip_ev', 'nash_conv_chips')):
+    reference_product = product_evaluation(transfer)
+    product_internal = product_evaluation(solver, result['diagnostics'])
+    diagnostics = (product_external, product_internal, reference_external, reference_product, exported['checkpoints'][-1])
+    metrics = ('oop_ev', 'ip_ev', 'nash_conv_chips', 'oop_lower_bound', 'oop_upper_bound')
+    if not all(math.isfinite(row[key]) for row in diagnostics for key in metrics):
         raise ValueError('Nonfinite value or best-response diagnostic')
     numeric = max(abs(evaluated[key]-expected[key]) for evaluated, expected in (
-        (product_external, result['diagnostics']), (reference_external, reference_product),
-        (reference_external, exported['checkpoints'][-1])) for key in ('oop_ev', 'ip_ev', 'nash_conv_chips'))
+        (product_external, product_internal), (reference_external, reference_product),
+        (reference_external, exported['checkpoints'][-1])) for key in metrics)
     tolerance, convergence = 1e-8, config['pot']*0.005
     value_delta = abs(product_external['oop_ev']-reference_external['oop_ev'])
     bound = product_external['nash_conv_chips']+reference_external['nash_conv_chips']+tolerance
@@ -185,7 +197,8 @@ def compare_fixture(fixture, iterations=2000, reference_iterations=4000):
             failures.append('Analytical mixed-turn frequency differs beyond existing 0.04 frequency allowance')
     return {'id': fixture['id'], 'config': config, 'product_iterations': iterations,
             'reference_iterations': reference_iterations, 'product_wall_seconds': product_seconds,
-            'product_diagnostics': result['diagnostics'], 'product_policy_in_reference': product_external,
+            'product_diagnostics': result['diagnostics'], 'product_policy_in_product': product_internal,
+            'product_policy_in_reference': product_external,
             'reference_policy_in_reference': reference_external, 'reference_policy_in_product': reference_product,
             'same_policy_numeric_delta': numeric, 'trained_value_delta': value_delta, 'combined_gap_bound': bound,
             'cross_play_oop_ev': {'product_oop_vs_reference_ip': cross, 'reference_oop_vs_product_ip': reverse_cross},

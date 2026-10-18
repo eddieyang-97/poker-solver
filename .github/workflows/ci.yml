@@ -13,7 +13,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Static checks
         run: |
-          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py
+          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py
           python -m compileall -q poker_spot scripts benchmarks
       - name: Run tests
         run: python -m unittest discover -s tests -v
@@ -50,6 +50,17 @@ jobs:
           include-hidden-files: true
           if-no-files-found: error
           path: .artifacts/turn-independent.*
+      - name: Development Linux turn budgets and separate profile
+        timeout-minutes: 5
+        run: python scripts/benchmark_turn_resources.py --profile --output .artifacts/turn-resources
+      - name: Retain local resource study including failed probes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: turn-resource-study
+          include-hidden-files: true
+          if-no-files-found: error
+          path: .artifacts/turn-resources.*
       - name: Independently trained river-subgame decomposition
         timeout-minutes: 12
         run: python scripts/benchmark_turn_decomposition.py --output .artifacts/turn-decomposition
