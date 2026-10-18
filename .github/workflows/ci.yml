@@ -13,7 +13,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Static checks
         run: |
-          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py
+          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py
           python -m compileall -q poker_spot scripts benchmarks
       - name: Run tests
         run: python -m unittest discover -s tests -v
@@ -37,6 +37,19 @@ jobs:
           include-hidden-files: true
           if-no-files-found: error
           path: .artifacts/turn-benchmark.*
+      - name: Independently trained strategic turn reference
+        timeout-minutes: 4
+        run: python scripts/benchmark_turn_independent.py --output .artifacts/turn-independent
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain independent turn reference
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: turn-independent-reference
+          include-hidden-files: true
+          if-no-files-found: error
+          path: .artifacts/turn-independent.*
       - name: Independently trained river-subgame decomposition
         timeout-minutes: 12
         run: python scripts/benchmark_turn_decomposition.py --output .artifacts/turn-decomposition
