@@ -146,8 +146,10 @@ acceptance remain open.
 
 The subsequent [strategic turn reference](turn-independent.md) constructs its
 own full-state turn/river tree and trains independently in an isolated worker.
-Six small games with turn betting pass bidirectional policy/BR evaluation and
+Ten small games with turn betting pass bidirectional policy/BR evaluation and
 convergence checks, including exact singleton and hidden-hand mixed equilibria.
 This is an in-repository development reference, not an externally audited turn
 engine. The earlier scalar oracle and decomposition limitations above still
 describe those earlier methods; hosted resource and integration gates remain open.
+The [resource follow-up](turn-resource-study.md) adds broader private ranges,
+random-policy checks, exact Linux development budget probes and separate profiling.

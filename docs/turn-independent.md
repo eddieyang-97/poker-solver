@@ -3,7 +3,7 @@
 This local development milestone adds a separately implemented turn/river game
 and CFR+ trainer. Unlike the earlier scalar oracle, it constructs its own tree,
 chip ledger, chance transitions and information sets. Unlike river decomposition,
-all six differential fixtures permit strategic turn betting. It is new code in
+all ten differential fixtures permit strategic turn betting. It is new code in
 this repository, not an externally audited turn solver or a proven gold standard.
 Product solver code, hosted tools, deployment and OAuth configuration are unchanged.
 
@@ -62,7 +62,8 @@ Each fixture checks:
 
 - Product policy evaluated in the independent tree; independently trained
   reference policy evaluated in both trees; child/parent evaluation consistency.
-  Same-policy EV and raw NashConv must agree within `1e-8` chips.
+  Same-policy EV, each individual best-response bound and raw NashConv must
+  agree within `1e-8` chips.
 - Each engine's raw NashConv (sum of both best-response gains) at most 0.5% of
   initial pot. It is not divided by two or by the number of deals/runouts.
 - Separately trained root values within the sum of their convergence gaps plus
@@ -94,17 +95,21 @@ The exact profile has value `-475/22` and independently evaluated NashConv zero.
 Thus this checks hidden-hand mixing as well as singleton perfect-information
 play. It does not establish general two-range uniqueness.
 
-The [recorded outputs](turn-independent-results.json) and
+The original six cases below were established in PR #9. The
+[expanded coverage and resource study](turn-resource-study.md) adds four games
+with three or four combos per player, and 60 seeded random-policy evaluations.
+The current [recorded outputs](turn-independent-results.json) and
 [readable table](turn-independent-results.md) contain actual local solves on
-Python 3.14.8 / NumPy 2.5.4. All six cases pass: singleton minimax, weighted
-dry board, draw board with two sizes, weighted cross-range collision, paired
-board with stack caps, and terminal turn shoves. These are at most two combos
-per side. The paired fixture permits two turn sizes and is a different tree
+Python 3.14.8 / NumPy 2.5.4. All ten cases pass. The original six are singleton
+minimax, weighted dry board, draw board with two sizes, weighted cross-range
+collision, paired board with stack caps, and terminal turn shoves. Those six
+have at most two combos per side. The paired fixture permits two turn sizes and is a different tree
 from the earlier one-size `paired_short_stack` fixture.
 
 Maximum same-policy discrepancy is `6.90e-14` chips. Maximum independently
-trained value difference is £0.00022850. Largest final NashConv is £0.02218518
-in a £100 pot, below the unchanged £0.50 gate. In the mixed analytical game,
+trained value difference across the expanded corpus is £0.00251755. Largest
+final NashConv is £0.02218518 in a £100 pot, below the unchanged £0.50 gate.
+In the mixed analytical game,
 product/reference QJ shove frequencies are 0.43160770 / 0.43163558 and KK call
 frequencies 0.49979573 / 0.50015499; these are computed approximations to
 19/44 and 1/2, not invented equilibrium outputs.
@@ -112,9 +117,9 @@ frequencies 0.49979573 / 0.50015499; these are computed approximations to
 The summary versions all inputs, checkpoints, full turn policies and canonical
 reference-profile SHA-256 digests. Full product/reference profiles remain in
 ignored local artifacts and the `turn-independent-reference` CI artifact.
-The recorded local raw file is `.artifacts/turn-independent-results.profiles.json`,
-SHA-256 `2f6e10a85f6e90f822016d74cf11c8e9a574ceabad06e084f6e2d1317961f453`.
-Source hashes, raw byte hash and all six profile digests were checked against
+The recorded local raw file is `.artifacts/turn-expanded-final.profiles.json`,
+SHA-256 `4ec216d2ac63ec3cd1105149a1ee329890091a5f504dad81b9a1690193973104`.
+Source hashes, raw byte hash and all ten profile digests were checked against
 the current files. Fresh CI output has its own runtime, timings and raw hash.
 
 ## Limits and remaining gates
@@ -127,7 +132,7 @@ references. Shared assumptions or mistakes remain possible; it is not formal
 verification, an external audited turn comparison, full-range acceptance or
 evidence that the restricted tree matches richer poker strategy.
 
-The complete local suite has 67 passing tests. Fresh existing checks also pass:
+The PR #9 local suite had 67 passing tests. Existing checks also passed:
 eight turn policy fixtures, ten river fixtures plus raise sensitivity, and four
 decomposition cases with 188 independently trained river games. No numerical
 gate was relaxed. Prior measured maximum-dimension Ubuntu workloads exceed
