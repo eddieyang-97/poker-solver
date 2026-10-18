@@ -1,5 +1,36 @@
 # Audit and validation — 16 October 2026
 
+## Independently trained strategic turn reference — 18 October 2026
+
+Following merged PR #8 (`11a6271d91d82fcde5fa619e559c65edf3515720`), added a
+development-only full-state turn/river tree, chip ledger, information sets and
+CFR+ trainer independent of the product implementation. Its isolated worker
+receives only fixture configuration and records no imported product modules.
+The existing pinned exhaustive ranker is reused; no upstream turn trainer or
+externally audited solver is claimed. See [method and limits](turn-independent.md).
+
+All **67 tests**, Ruff and compileall pass locally. Six strategic turn fixtures
+pass at 2,000 product / 4,000 reference iterations. Both trees evaluate each
+other's policies and best responses within `6.90e-14` chips; maximum separately
+trained root value difference is £0.00022850. Largest final NashConv is
+£0.02218518 in a £100 pot, below the unchanged £0.50 gate. Exact singleton
+minimax and hidden-hand mixed-shove equilibria pass, including QJ's `19/44`
+shove and KK's `1/2` call. Fault injection, hidden-hand pooling, exact chip/tree
+mapping, card removal and incompatible-tree rejection are covered.
+
+[Versioned outputs](turn-independent-results.json) retain exact inputs, source
+hashes, checkpoints, turn policies and reference-profile digests. Raw profile
+byte hash and all six profile/source digests were verified locally. CI runs
+fresh training and retains complete profiles in `turn-independent-reference`;
+local checks alone do not establish that a future CI run passed. Existing eight
+turn fixtures, ten river fixtures plus sensitivity and four decomposition cases
+(188 independently trained river games) passed fresh local reruns.
+
+Production code, hosted registrations, deployment and OAuth are unchanged.
+This is small-game local validation, not an external audited turn reference or
+hosted acceptance. The earlier Ubuntu maximum-dimension measurements exceed
+the 20-second hosted budget; that resource gate remains open.
+
 ## Turn decomposition and performance follow-ups — 17 October 2026
 
 After PR #7 merged at `3e3a5ae7e72240851cc3d3a4678d6f35cf27fa96`, added a

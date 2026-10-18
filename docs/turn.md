@@ -143,3 +143,11 @@ supported river subgame with turn betting disabled and records maximum-dimension
 local performance. This strengthens the decomposable special case and measures
 two synthetic workloads; general external two-street validation and hosted
 acceptance remain open.
+
+The subsequent [strategic turn reference](turn-independent.md) constructs its
+own full-state turn/river tree and trains independently in an isolated worker.
+Six small games with turn betting pass bidirectional policy/BR evaluation and
+convergence checks, including exact singleton and hidden-hand mixed equilibria.
+This is an in-repository development reference, not an externally audited turn
+engine. The earlier scalar oracle and decomposition limitations above still
+describe those earlier methods; hosted resource and integration gates remain open.
