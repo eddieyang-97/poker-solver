@@ -137,3 +137,9 @@ hard worker limits; add strict MCP schemas and transport/authorization tests;
 perform real authenticated hosted and ChatGPT acceptance. No turn tool,
 deployment, plugin publication, paid infrastructure or security relaxation is
 included in this local milestone. No preflop, flop, multiway or web UI is added.
+
+The [follow-up validation](turn-followups.md) independently trains every
+supported river subgame with turn betting disabled and records maximum-dimension
+local performance. This strengthens the decomposable special case and measures
+two synthetic workloads; general external two-street validation and hosted
+acceptance remain open.
