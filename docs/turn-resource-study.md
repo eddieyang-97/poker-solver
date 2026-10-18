@@ -97,6 +97,38 @@ fresh Linux probes and retains full JSON/Markdown under `turn-resource-study`,
 including failed probes. Use each report's source hashes and platform; do not
 infer a Linux outcome from Windows or from a green study step alone.
 
+### Recorded Linux samples and platform discrepancy
+
+[Run 39131773211](https://github.com/eddieyang-97/poker-solver/actions/runs/39131773211)
+at source head `7bba663684a16cb36df6b28d6b524803fdb20a02` completed all six
+budget probes and the separate profile. The [retained Linux JSON](turn-resource-linux.json)
+and [readable table](turn-resource-linux.md) record actual limits and outcomes.
+Both maximum-size samples fit the applied budgets: parent wall 13.285 / 13.589
+seconds, CPU 13.266 / 13.570 seconds, peak virtual memory 109.02 / 108.29 MiB.
+All six observed-fit and convergence fields are true. These are GitHub runner
+samples, not proof of universal runtime or Render capacity. The source hashes
+match the current implementation. The downloaded resource ZIP SHA-256 is
+`43b6758b5c52885381c8adc2a6cde1d61aed6d48ec6e369957a1106ef4d6824a`.
+
+The expanded corpus also exposed cross-platform training differences. All ten
+independent reference profile digests match exactly between Windows Python
+3.14.8 and Ubuntu Python 3.12.15 (both NumPy 2.5.4). Product training differs
+on three new games: OOP EV deltas (Ubuntu minus Windows) are `+7.78032e-8`
+on four-flush, `-0.000136553` on trips, and `-1.78713e-7` on the draw game.
+An exploratory `1e-9` comparison of separately trained cross-platform values
+failed; that was never the declared same-policy or convergence gate.
+
+The [platform audit](turn-platform-results.json) retains those discrepancies,
+raw/ZIP hashes and the unchanged gate. Every CI product policy was replayed in
+both Windows trees. Same-policy root EV, individual best-response bounds and
+NashConv match CI within `5.23e-14` chips. Across platforms, trained-value
+differences fit the sum of convergence gaps and best-response intervals overlap.
+This separates training trajectory variation from a fixed-policy evaluation
+disagreement. Platform-dependent training round-off is a plausible explanation;
+the precise cause has not been isolated. No product behavior, outputs or gate
+was tuned to remove it, and bit-identical product training across these runtimes
+is not established. The original six reference profiles remain unchanged.
+
 ## Separate profiling and remaining gates
 
 The optional `--profile` run uses cProfile on the original deep 24-by-24,

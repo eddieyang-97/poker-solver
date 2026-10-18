@@ -34,6 +34,23 @@ probes, oversized-allocation regression and a separate unlimited cProfile run,
 retaining complete `turn-resource-study` artifacts. See
 [method, local profile and limits](turn-resource-study.md).
 
+Actual Ubuntu probes at source head `7bba663` in
+[run 39131773211](https://github.com/eddieyang-97/poker-solver/actions/runs/39131773211)
+complete all six cases within their applied budgets and convergence gates.
+The maximum-size pair takes 13.285 / 13.589 seconds parent wall, with peak
+virtual memory 109.02 / 108.29 MiB. [Linux evidence](turn-resource-linux.json)
+retains actual limits; its archive and source hashes were verified. These
+samples do not replace the historical slower observations or establish Render
+capacity. CI's separate unlimited instrumented profile also completes.
+
+Three larger product training runs differ between Windows and Ubuntu by up to
+0.000136553 chips in root EV. All ten independent reference-profile digests
+match exactly. Replaying every CI product policy in both Windows models agrees
+within `5.23e-14` chips, and all cross-platform trained-value differences fit
+their combined convergence gaps, with overlapping best-response intervals.
+[Platform evidence](turn-platform-results.json) records the discrepancies;
+the precise training-variation cause remains unisolated. No gate was relaxed.
+
 Production code, deployment, MCP registrations and OAuth remain unchanged.
 This does not establish full-range correctness, an audited external reference,
 portable performance bounds or authenticated hosted turn acceptance. Historical
