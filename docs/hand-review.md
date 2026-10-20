@@ -64,6 +64,10 @@ to four consecutive streets beginning preflop. Unknown fields are rejected.
   stacks, uncalled chips are refunded and all-in runouts prohibit empty-side-pot
   betting. Gross side-pot contribution layers are reported without awarding
   pots; they exclude unassigned dead money and precede rake deductions.
+  A short all-in blind uses its actual contestable wager once only one stack
+  can still act; the nominal big blind remains the bring-in while two stacks
+  can contest further chips. A player who already covers all all-ins has no
+  phantom call or empty-side-pot betting option.
 - Rake is mandatory: `{"model":"none"}`, a fixed `amount` at a named postflop
   `street`, or a percentage `rate`, `cap`, `street`, `rounding: floor_cent`.
   These are explicit **one-time deductions at the start of that street**, not a
@@ -108,8 +112,13 @@ relative posterior(h) = prior(h) × supplied P(observed action | h, history)
 ```
 
 For example, weights 1 and 0.5 with likelihoods 0.25 and 0.5 both become 0.25.
-Both tools normalize relative weights internally. Missing likelihoods, invalid
-probabilities and floating-point underflow are rejected. No action model is
+The adapter retains unnormalized products as `posterior_weights_decimal` strings
+and divides each surviving product by the largest before dispatch. `weights`
+and the tool's range string contain those normalized relative weights (1 and 1
+in this example). Decimal products preserve very small uniform likelihoods;
+common scaling must not erase conditional action EVs. Missing likelihoods,
+invalid probabilities and relative weights too small for the solver's floating
+representation are rejected without silently dropping a positive combo. No action model is
 manufactured from prose. Board blockers are removed explicitly; call evaluation
 also removes the caller's own cards. Opponent showdown cards do not remove
 alternative hands from the range or determine ex-ante weights. Changing a

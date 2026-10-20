@@ -3,6 +3,7 @@
 This module is not imported by hosted MCP and infers no preflop/flop equilibrium.
 """
 from copy import deepcopy
+from decimal import Context, Decimal
 import hashlib
 import json
 import math
@@ -30,7 +31,10 @@ def hypothesis(spec, board, dead=()):
     blocked_board = len(initial)-len(weights)
     unblocked = {h: w for h, w in weights.items() if not set(h) & set(dead)}
     blocked_hero = len(weights)-len(unblocked)
-    weights = unblocked
+    # At most 30 updates of binary64 inputs: 600 decimal digits retain their
+    # finite decimal products without an ambient decimal-context dependency.
+    arithmetic = Context(prec=600)
+    weights = {h: Decimal(str(w)) for h, w in unblocked.items()}
     ledger, gaps = [], []
     updates = spec.get('updates', [])
     if not isinstance(updates, list) or len(updates) > 30:
@@ -53,19 +57,21 @@ def hypothesis(spec, board, dead=()):
         if set(weights)-set(factors) or set(factors)-set(initial):
             raise HistoryError('Missing action likelihood or a combo absent from the supplied prior')
         for hand in list(weights):
-            new = weights[hand]*factors[hand]
-            if weights[hand] > 0 and factors[hand] > 0 and new == 0:
-                raise HistoryError('Conditioning underflow; no silent weight removal')
-            weights[hand] = new
+            weights[hand] = arithmetic.multiply(weights[hand], Decimal(str(factors[hand])))
         weights = {h: w for h, w in weights.items() if w > 0}
         ledger.append({'kind': 'supplied_likelihood_model', 'event': update['event'], 'provenance': update['provenance'],
                        'formula': 'relative posterior(h) = prior(h) * supplied P(action | h, history)',
                        'likelihoods': deepcopy(update['likelihoods'])})
     if not weights:
         raise HistoryError('Hypothesis has no supported combos after blockers/conditioning')
-    # Relative weights are sufficient for both tools; retain unnormalized products.
-    text = ','.join(''.join(h)+':'+repr(w) for h, w in weights.items())
-    return {'range': text, 'weights': {''.join(h): w for h, w in weights.items()},
+    largest = max(weights.values())
+    dispatch = {h: float(arithmetic.divide(w, largest)) for h, w in weights.items()}
+    if any(w == 0 for w in dispatch.values()):
+        raise HistoryError('Relative posterior weight cannot be represented by the solver; no silent combo removal')
+    text = ','.join(''.join(h)+':'+repr(w) for h, w in dispatch.items())
+    return {'range': text, 'weights': {''.join(h): w for h, w in dispatch.items()},
+            'posterior_weights_decimal': {''.join(h): str(w) for h, w in weights.items()},
+            'dispatch_normalization': 'Each posterior weight divided by the largest surviving posterior weight',
             'provenance': spec['provenance'], 'ledger': ledger, 'gaps': gaps,
             'removed_by_board': blocked_board, 'removed_by_hero': blocked_hero,
             'range_kind': 'supplied hypothesis, not inferred equilibrium'}

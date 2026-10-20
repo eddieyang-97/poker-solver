@@ -181,6 +181,15 @@ def reconstruct(hand):
         pot += amount
     if not all(any(kind == k for _, kind in posts) for k in ('small_blind', 'big_blind')):
         raise HistoryError('Both blind posts must be explicit', 'MISSING_DETAIL')
+
+    def contestable_actions(pending, current):
+        # A nominal blind is not backed by chips when only one stack can act.
+        # Preserve the nominal bring-in while two players can still contest it.
+        if sum(stacks[p] > 0 for p in active) < 2:
+            current = min(current, max(live[p] for p in active))
+            pending = [p for p in pending if live[p] < current]
+        return pending, current
+
     _rake(hand['rake'], 10**12)  # Validate the explicit model before any later deduction.
     if not isinstance(hand['streets'], list) or not 1 <= len(hand['streets']) <= 4:
         raise HistoryError('Provide one to four consecutive streets')
@@ -205,9 +214,8 @@ def reconstruct(hand):
         if len(stacks) == 2 and index:
             order = ['BB']+[p for p in order if p != 'BB']
         pending = [p for p in order if p in active and stacks[p] > 0]
-        if index and len(pending) < 2:
-            pending = []  # All-in runout: one remaining stack cannot bet into an empty side pot.
         current, increment = (big if index == 0 else 0), big
+        pending, current = contestable_actions(pending, current)
         acted_at = {}
         start = {'name': street['name'], 'board': list(board), 'pot_start': chips(pot),
                  'action_order': [p for p in order if p in active],
@@ -240,6 +248,8 @@ def reconstruct(hand):
                 if expected != paid:
                     raise HistoryError('Call amount does not match the amount owed / remaining stack')
             elif verb in ('bet', 'raise'):
+                if sum(stacks[p] > 0 for p in active) < 2:
+                    raise HistoryError('Cannot bet or raise when no opponent can contest additional chips')
                 if verb == 'bet':
                     if current or 'amount' not in action or 'to' in action:
                         raise HistoryError('Opening bet requires an incremental amount and no outstanding bet')
@@ -282,6 +292,7 @@ def reconstruct(hand):
             else:
                 pending = pending[1:]
             pending = [p for p in pending if p in active and stacks[p] > 0] if len(active) > 1 else []
+            pending, current = contestable_actions(pending, current)
         if pending and index != len(hand['streets'])-1:
             raise HistoryError('A street cannot advance while a player still owes an action')
         if not pending:

@@ -150,6 +150,57 @@ class HistoryTests(unittest.TestCase):
         self.assertEqual(r['decision']['actor'], 'UTG+1')
         self.assertEqual(r['decision']['to_call'], 3)
 
+    def test_short_allin_blinds_close_at_actual_contestable_wager(self):
+        for small_stack, big_stack, ante in ((100, 1, 0), (100, 1.5, 0), (0.5, 1, 0), (0.5, 100, 0), (100, 1.2, 0.2)):
+            with self.subTest(small=small_stack, big=big_stack, ante=ante):
+                hand = copy.deepcopy(HAND)
+                hand['players'] = [{'position': 'SB', 'stack': small_stack}, {'position': 'BB', 'stack': big_stack}]
+                hand['forced_posts'] = []
+                if ante:
+                    hand['forced_posts'] = [{'player': p, 'kind': 'ante', 'amount': ante} for p in ('SB', 'BB')]
+                small_post = min(1, round(small_stack-ante, 2))
+                big_post = min(2, round(big_stack-ante, 2))
+                hand['forced_posts'] += [{'player': 'SB', 'kind': 'small_blind', 'amount': small_post},
+                                         {'player': 'BB', 'kind': 'big_blind', 'amount': big_post}]
+                actions = ([{'player': 'SB', 'action': 'call', 'amount': big_post-small_post}]
+                           if big_post > small_post and small_stack > small_post+ante else [])
+                if actions:
+                    partial = copy.deepcopy(hand)
+                    partial['streets'] = [{'name': 'preflop', 'cards': [], 'actions': []}]
+                    d = reconstruct(partial)['decision']
+                    self.assertEqual(d['to_call'], big_post-small_post)
+                    self.assertAlmostEqual(d['required_equity'], (big_post-small_post)/(2*(big_post+ante)))
+                    partial['streets'][0]['actions'] = [{'player': 'SB', 'action': 'raise', 'to': 4}]
+                    with self.assertRaisesRegex(HistoryError, 'no opponent can contest'):
+                        reconstruct(partial)
+                for street in hand['streets']:
+                    street['actions'] = actions if street['name'] == 'preflop' else []
+                r = reconstruct(hand)
+                self.assertTrue(all(not s['pending'] for s in r['streets']))
+                self.assertEqual(r['decision']['to_call'], 0)
+                self.assertNotIn('required_equity', r['decision'])
+                self.assertAlmostEqual(r['decision']['pot_current'], 2*min(small_stack, big_stack))
+
+    def test_nominal_blind_is_preserved_until_only_one_stack_can_bet(self):
+        hand = copy.deepcopy(HAND)
+        hand['players'] = [{'position': 'UTG', 'stack': 100}, {'position': 'SB', 'stack': 100}, {'position': 'BB', 'stack': 1}]
+        hand['forced_posts'][1]['amount'] = 1
+        hand['streets'] = hand['streets'][:1]
+        hand['streets'][0]['actions'] = []
+        r = reconstruct(hand)
+        self.assertEqual(r['decision']['to_call'], 2)
+        hand['streets'][0]['actions'] = [{'player': 'UTG', 'action': 'fold'}]
+        r = reconstruct(hand)
+        self.assertEqual(r['decision']['actor'], None)
+        self.assertEqual(r['decision']['to_call'], 0)
+        hand['streets'][0]['actions'] = [{'player': 'UTG', 'action': 'call', 'amount': 2}]
+        self.assertEqual(reconstruct(hand)['decision']['to_call'], 1)
+        hand['streets'][0]['actions'] = [{'player': 'UTG', 'action': 'raise', 'to': 3}]
+        with self.assertRaisesRegex(HistoryError, 'Under-minimum'):
+            reconstruct(hand)
+        hand['streets'][0]['actions'] = [{'player': 'UTG', 'action': 'raise', 'to': 4}]
+        self.assertEqual(reconstruct(hand)['decision']['to_call'], 3)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,7 +1,7 @@
 {
   "measured_date": "2026-10-20",
   "scope": "Actual local disposable river workers; illustrative range assumptions, not hosted acceptance",
-  "command": "OPENBLAS_NUM_THREADS=1 python scripts/review_hand.py examples/hand-review.txt --scenarios examples/hand-review-scenarios.json --run --output .artifacts/hand-review",
+  "command": "OPENBLAS_NUM_THREADS=1 python scripts/review_hand.py examples/hand-review.txt --scenarios examples/hand-review-scenarios.json --run --output .artifacts/hand-review-fixed",
   "runtime": {
     "python": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
     "platform": "Windows-11-10.0.26300-SP0",
@@ -12,7 +12,7 @@
     "examples\\hand-review.json": "5792433796cd2c7c2ebb9c5065c6085554dc7e5696fca97974bb883b47b62736",
     "examples\\hand-review-scenarios.json": "a8f3fccf486f47e27e6a2f6d08123740372b6181818d5920476a3bfcf1998e54"
   },
-  "raw_report_sha256": "f2c242df47340e334db3041c97bb5092f2dfe827c36eee9d245e0f96028adc52",
+  "raw_report_sha256": "5dfa06728dfd40b9b2c46376ccb5a56509571de0c9f14d4cf4a3040cbb1a1f14",
   "reconstruction": {
     "pot_start_by_street": {
       "preflop": 3.0,
@@ -35,7 +35,7 @@
       "arguments": {
         "board": "Ac,Jh,3s,Tc,4c",
         "pot": 87.0,
-        "oop_range": "QdAd:0.8,KdAs:0.7,9dJd:0.4,3d7d:0.08,2c5c:0.2,QdKd:0.3,3c3h:0.5",
+        "oop_range": "QdAd:1.0,KdAs:0.875,9dJd:0.5,3d7d:0.1,2c5c:0.25,QdKd:0.375,3c3h:0.625",
         "ip_range": "QcKc:1.0,JcKc:0.7,JcQc:0.7,AdAh:0.7,JdJs:0.6,QdKd:0.8,KdAs:0.6,8c8s:0.4,9d9s:0.3,9dQd:0.3,5h6h:0.2",
         "stack": 367.0,
         "bet_sizes": [
@@ -138,17 +138,17 @@
           }
         }
       },
-      "request_sha256": "75f494ff278f3e953d4a6b0d7bed9da49c4c28dae6dde43a37a11963a9aee061",
+      "request_sha256": "13dae5e23de41c336642c8a6228bdf0682316d38f82c268a0ea65681ddf006df",
       "result_sha256": "cce0c535f8659ec7da6fbd89c6a01dd38860f77e1e399f2885c61229257e7145",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
-        "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.3720498000038788
+      "wall_seconds": 0.37946710002142936
     },
     {
       "scenario": "baseline",
@@ -189,13 +189,13 @@
       "result_sha256": "e4349269022a6c2af6c6eb57bf03f1fa915fb9821c573fca6a7dfe11e4c63d12",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
-        "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.2561930000083521
+      "wall_seconds": 0.2732575999107212
     },
     {
       "scenario": "tighter_live",
@@ -310,13 +310,13 @@
       "result_sha256": "ef61a2fe0c21d9e1f52e272d21174cea53fc4729c8fbb848b59257fb4ca4a05c",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
-        "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.35656829993240535
+      "wall_seconds": 0.36897130007855594
     },
     {
       "scenario": "tighter_live",
@@ -357,13 +357,13 @@
       "result_sha256": "1213bbe99da6fe1b528bf29511bd9c2dc3146f7eb1999d3680821525f25754a9",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
-        "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.2630593000212684
+      "wall_seconds": 0.2642505000112578
     },
     {
       "scenario": "looser_aggressive",
@@ -371,7 +371,7 @@
       "arguments": {
         "board": "Ac,Jh,3s,Tc,4c",
         "pot": 87.0,
-        "oop_range": "QdAd:0.5,KdAs:0.4,9dJd:0.8,3d7d:0.15,2c5c:0.1,QdKd:0.2,3c3h:0.25,9sQh:0.4,8h9c:0.4",
+        "oop_range": "QdAd:0.625,KdAs:0.5,9dJd:1.0,3d7d:0.1875,2c5c:0.125,QdKd:0.25,3c3h:0.3125,9sQh:0.5,8h9c:0.5",
         "ip_range": "QcKc:1.0,JcKc:0.7,JcQc:0.7,AdAh:0.7,JdJs:0.6,QdKd:0.8,KdAs:0.6,8c8s:0.4,9d9s:0.3,9dQd:0.3,5h6h:0.2",
         "stack": 367.0,
         "bet_sizes": [
@@ -474,17 +474,17 @@
           }
         }
       },
-      "request_sha256": "e0b56021b3c7355f01b41f88c50c2354dd306b50ab971d567d08c067c9415547",
+      "request_sha256": "4c049dad1dd983e175088b9eadfa2a94762c7d606be07898a181aff674567674",
       "result_sha256": "eb289040b170b6dd190de34c24cc50000b66220a97c2427a2d841008ab49bca7",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
-        "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.3599118000129238
+      "wall_seconds": 0.38786479993723333
     },
     {
       "scenario": "looser_aggressive",
@@ -525,35 +525,35 @@
       "result_sha256": "994291a5dc8667f093f53ea28da6eaeddfc1d825bb1f418a38afe5ef9e59e410",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
-        "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.2507788999937475
+      "wall_seconds": 0.2678083999780938
     }
   ],
   "hosted_acceptance": {
     "status": "computed",
     "date": "2026-10-20",
-    "transport": "Actual authenticated Poker Solver Hosted connector",
+    "transport": "Actual authenticated Poker Solver Hosted connector after review fixes",
     "endpoint": "https://poker-solver-vie0.onrender.com/mcp",
     "comparison": "All six exact request objects and every numerical/result field equal the queries retained in this file; JSON equality, no tolerance",
-    "prior_attempts": "Three authentication prompts without numerical payload; owner then verified reconnection from ChatGPT",
-    "hosted_raw_report_sha256": "33163ca60f9785cd8f00a2c37ea4f9e1945b9d00b2c6d3cd84dbc8ac5cc03f2a",
+    "prior_attempts": "First baseline solve timed out without payload; subsequent sequential retry completed all six calculations.",
+    "hosted_raw_report_sha256": "5c2798ac8ea887b9b4a877cc16bbbfabbe3ea37f64e42389a84a6fd274cf1ae1",
     "receipts": [
+      {
+        "scenario": "baseline",
+        "tool": "solve_river",
+        "request_sha256": "22f4a2d8d64956f45f0d2ec318d4c5e35bc8d76dcb7ac63c01809691185032e4",
+        "result_sha256": "4e1f463bb8a127713ef6ca94136185d60c4ff0f4874f84d6c62554d512ff8f48"
+      },
       {
         "scenario": "baseline",
         "tool": "evaluate_river_call",
         "request_sha256": "8ece6f5a2fcd49158a570a9f971717d8a91c75abac1c6d0f97e3648b4f97c492",
         "result_sha256": "b6291231b1a5be4c5365deb7008de7cdb1fc05d8a51200a442983e932f357621"
-      },
-      {
-        "scenario": "baseline",
-        "tool": "solve_river",
-        "request_sha256": "a5c0d0a57e8b3502ecd99b1a8671cec8452a97119c65470636dc52b4656b0873",
-        "result_sha256": "4e1f463bb8a127713ef6ca94136185d60c4ff0f4874f84d6c62554d512ff8f48"
       },
       {
         "scenario": "tighter_live",
@@ -570,7 +570,7 @@
       {
         "scenario": "looser_aggressive",
         "tool": "solve_river",
-        "request_sha256": "fd5770c1a039973e50314acf01fe9e5b034b2dc59d05e7c0080d4e89afe381a9",
+        "request_sha256": "8827b15833a232b6ac60fc6c1dab438a035ab05d859ab16d31c04644d01abf98",
         "result_sha256": "0939b0f9dde7f95ff65107a7cf4c9c0208a7c53b5e3b4d5b6e808cbd3b5a7c7f"
       },
       {

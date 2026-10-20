@@ -39,7 +39,8 @@ class ReviewTests(unittest.TestCase):
                 'updates': [{'event': 'known test action', 'provenance': 'External supplied frequencies',
                              'likelihoods': {'AsAd': 0.25, 'KhKd': 0.5}}]}
         r = hypothesis(spec, ['2c', '3d', '4h', '8s', '9c'])
-        self.assertEqual(set(r['weights'].values()), {0.25})
+        self.assertEqual(set(r['weights'].values()), {1.0})
+        self.assertEqual({float(w) for w in r['posterior_weights_decimal'].values()}, {0.25})
         unknown = copy.deepcopy(spec)
         unknown['updates'][0]['likelihoods'] = None
         self.assertEqual(sorted(hypothesis(unknown, [])['weights'].values()), [0.5, 1])
@@ -145,6 +146,36 @@ class ReviewTests(unittest.TestCase):
         report = prepare_review(hand, SCENARIOS)
         self.assertEqual(report['queries'], [])
         self.assertIn('positive river-start pot', render_markdown(report))
+
+    def test_uniform_likelihood_scaling_preserves_dispatch_and_action_evs(self):
+        baseline = copy.deepcopy(SCENARIOS[:1])
+        conditioned = copy.deepcopy(baseline)
+        for player, spec in conditioned[0]['arrival'].items():
+            combos = hypothesis(spec, [])['weights']
+            spec['updates'] = [{'event': f'Uniform observation {i}', 'provenance': 'Supplied regression probabilities',
+                                'likelihoods': dict.fromkeys(combos, 1e-8)} for i in range(2)]
+        expected = asyncio.run(run_review(HAND, baseline, 100))
+        actual = asyncio.run(run_review(HAND, conditioned, 100))
+        self.assertEqual(actual['status'], 'computed', actual)
+        for a, b in zip(expected['queries'], actual['queries'], strict=True):
+            self.assertEqual(a['arguments'], b['arguments'])
+            self.assertEqual(a['result'], b['result'])
+        check = actual['queries'][0]['result']['hands']['oop']['node_strategy']['oop_first']
+        self.assertIsNotNone(check['action_ev_relative_to_half_pot']['check'])
+
+    def test_uniform_conditioning_below_float_product_range_retains_support(self):
+        spec = {'range': 'AsAd:1,KhKd:0.5', 'provenance': 'Underflow regression',
+                'updates': [{'event': str(i), 'provenance': 'Supplied uniform observation',
+                             'likelihoods': {'AsAd': 1e-200, 'KhKd': 1e-200}} for i in range(3)]}
+        self.assertEqual(hypothesis(spec, [])['range'], hypothesis(dict(spec, updates=[]), [])['range'])
+        impossible = copy.deepcopy(spec)
+        for update in impossible['updates']:
+            update['likelihoods']['KhKd'] = 1
+        with self.assertRaisesRegex(HistoryError, 'no silent combo removal'):
+            hypothesis(impossible, [])
+        zero = dict(spec, updates=[{'event': 'Exclude AA', 'provenance': 'Explicit zero likelihood',
+                                   'likelihoods': {'AsAd': 0, 'KhKd': 1}}])
+        self.assertEqual(list(hypothesis(zero, [])['weights']), ['KdKh'])
 
 
 if __name__ == '__main__':
