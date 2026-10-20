@@ -1,0 +1,13 @@
+Context: post-session
+Currency: GBP
+Blinds: £1/£2
+Stacks: 200bb each
+Players: UTG, UTG+1, UTG+2, BTN, SB, BB
+Known UTG: 7♦3♦
+Revealed UTG+2: 8♠8♣
+Rake: none
+Dead money: £0
+Preflop: UTG opens to £6; UTG+1 calls £6; UTG+2 3-bets to £18; BTN folds; SB folds; BB folds; UTG calls £12; UTG+1 calls £12
+Flop A♣ J♥ 3♠: UTG checks; UTG+1 checks; UTG+2 bets £15; UTG calls £15; UTG+1 folds
+Turn T♣: UTG checks; UTG+2 checks
+River 4♣: UTG checks; UTG+2 bets £40

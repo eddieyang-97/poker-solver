@@ -24,6 +24,19 @@ jobs:
         run: python scripts/benchmark.py --output .artifacts/benchmark --sensitivity
         env:
           OPENBLAS_NUM_THREADS: '1'
+      - name: Post-session reconstruction and actual bounded river calculations
+        timeout-minutes: 2
+        run: python scripts/review_hand.py examples/hand-review.txt --scenarios examples/hand-review-scenarios.json --run --output .artifacts/hand-review
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain post-session requests and computed results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-session-hand-review
+          include-hidden-files: true
+          if-no-files-found: error
+          path: .artifacts/hand-review.*
       - name: Experimental turn policy and best-response validation
         timeout-minutes: 2
         run: python scripts/benchmark_turn.py --output .artifacts/turn-benchmark

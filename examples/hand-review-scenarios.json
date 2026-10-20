@@ -1,0 +1,119 @@
+[
+  {
+    "id": "baseline",
+    "description": "Illustrative mixed river betting range; not a solved theoretical prior",
+    "arrival": {
+      "UTG": {
+        "range": "AdQd:0.8,AsKd:0.7,Jd9d:0.4,7d3d:0.08,5c2c:0.2,KdQd:0.3,3c3h:0.5",
+        "provenance": "Manually supplied illustrative river-arrival hypothesis; not inferred from showdown",
+        "updates": [
+          {
+            "event": "preflop positions/3-bet, multiway flop bet/call and turn checks",
+            "likelihoods": null,
+            "provenance": "No calibrated action-frequency data; preserve separate scenario hypotheses"
+          }
+        ]
+      },
+      "UTG+2": {
+        "range": "KcQc:1,KcJc:0.7,QcJc:0.7,AdAh:0.7,JsJd:0.6,KdQd:0.8,AsKd:0.6,8s8c:0.4,9s9d:0.3,Qd9d:0.3,6h5h:0.2",
+        "provenance": "Manually supplied illustrative river-arrival hypothesis; not inferred from showdown",
+        "updates": [
+          {
+            "event": "preflop positions/3-bet, multiway flop bet/call and turn checks",
+            "likelihoods": null,
+            "provenance": "No calibrated action-frequency data; preserve separate scenario hypotheses"
+          }
+        ]
+      }
+    },
+    "betting": {
+      "UTG+2": {
+        "range": "KcQc:1,KcJc:0.8,QcJc:0.8,AdAh:0.6,JsJd:0.5,KdQd:0.7,AsKd:0.25,8s8c:0.15,9s9d:0.15,Qd9d:0.5,6h5h:0.3",
+        "provenance": "Separate manually supplied range conditional on the observed river bet; not an arrival posterior inferred by the engine"
+      }
+    },
+    "assumptions": [
+      "Open/call/3-bet and flop/turn lines motivate illustrative ranges qualitatively; their frequencies are unknown.",
+      "The revealed 8s8c is not used to construct the betting range; it is one of many declared combos.",
+      "UTG 7d3d is queried as its own known hand, not used as the entire OOP arrival range."
+    ]
+  },
+  {
+    "id": "tighter_live",
+    "description": "Illustrative underbluffing live opponent; same value core",
+    "arrival": {
+      "UTG": {
+        "range": "AdQd:1,AsKd:1,Jd9d:0.25,7d3d:0.02,5c2c:0.35,KdQd:0.6,3c3h:0.7",
+        "provenance": "Manually supplied illustrative river-arrival hypothesis; not inferred from showdown",
+        "updates": [
+          {
+            "event": "preflop positions/3-bet, multiway flop bet/call and turn checks",
+            "likelihoods": null,
+            "provenance": "No calibrated action-frequency data; preserve separate scenario hypotheses"
+          }
+        ]
+      },
+      "UTG+2": {
+        "range": "KcQc:1,KcJc:0.7,QcJc:0.7,AdAh:0.7,JsJd:0.6,KdQd:0.8,AsKd:0.6,8s8c:0.4,9s9d:0.3,Qd9d:0.3,6h5h:0.2",
+        "provenance": "Manually supplied illustrative river-arrival hypothesis; not inferred from showdown",
+        "updates": [
+          {
+            "event": "preflop positions/3-bet, multiway flop bet/call and turn checks",
+            "likelihoods": null,
+            "provenance": "No calibrated action-frequency data; preserve separate scenario hypotheses"
+          }
+        ]
+      }
+    },
+    "betting": {
+      "UTG+2": {
+        "range": "KcQc:1,KcJc:0.8,QcJc:0.8,AdAh:0.6,JsJd:0.5,KdQd:0.7,AsKd:0.25,8s8c:0.15,9s9d:0.15,Qd9d:0.03,6h5h:0.02",
+        "provenance": "Separate manually supplied range conditional on the observed river bet; not an arrival posterior inferred by the engine"
+      }
+    },
+    "assumptions": [
+      "Open/call/3-bet and flop/turn lines motivate illustrative ranges qualitatively; their frequencies are unknown.",
+      "The revealed 8s8c is not used to construct the betting range; it is one of many declared combos.",
+      "UTG 7d3d is queried as its own known hand, not used as the entire OOP arrival range."
+    ]
+  },
+  {
+    "id": "looser_aggressive",
+    "description": "Illustrative aggressive opponent with many missed-draw bluffs",
+    "arrival": {
+      "UTG": {
+        "range": "AdQd:0.5,AsKd:0.4,Jd9d:0.8,7d3d:0.15,5c2c:0.1,KdQd:0.2,3c3h:0.25,Qh9s:0.4,9c8h:0.4",
+        "provenance": "Manually supplied illustrative river-arrival hypothesis; not inferred from showdown",
+        "updates": [
+          {
+            "event": "preflop positions/3-bet, multiway flop bet/call and turn checks",
+            "likelihoods": null,
+            "provenance": "No calibrated action-frequency data; preserve separate scenario hypotheses"
+          }
+        ]
+      },
+      "UTG+2": {
+        "range": "KcQc:1,KcJc:0.7,QcJc:0.7,AdAh:0.7,JsJd:0.6,KdQd:0.8,AsKd:0.6,8s8c:0.4,9s9d:0.3,Qd9d:0.3,6h5h:0.2",
+        "provenance": "Manually supplied illustrative river-arrival hypothesis; not inferred from showdown",
+        "updates": [
+          {
+            "event": "preflop positions/3-bet, multiway flop bet/call and turn checks",
+            "likelihoods": null,
+            "provenance": "No calibrated action-frequency data; preserve separate scenario hypotheses"
+          }
+        ]
+      }
+    },
+    "betting": {
+      "UTG+2": {
+        "range": "KcQc:1,KcJc:0.8,QcJc:0.8,AdAh:0.6,JsJd:0.5,KdQd:0.7,AsKd:0.25,8s8c:0.15,9s9d:0.15,Qd9d:1,6h5h:1,Qs9h:1,Kd9h:1",
+        "provenance": "Separate manually supplied range conditional on the observed river bet; not an arrival posterior inferred by the engine"
+      }
+    },
+    "assumptions": [
+      "Open/call/3-bet and flop/turn lines motivate illustrative ranges qualitatively; their frequencies are unknown.",
+      "The revealed 8s8c is not used to construct the betting range; it is one of many declared combos.",
+      "UTG 7d3d is queried as its own known hand, not used as the entire OOP arrival range."
+    ]
+  }
+]

@@ -1,0 +1,170 @@
+{
+  "context": "post_session",
+  "currency": "GBP",
+  "blinds": {
+    "small": 1,
+    "big": 2
+  },
+  "players": [
+    {
+      "position": "UTG",
+      "stack": 400,
+      "hole_cards": [
+        "7d",
+        "3d"
+      ],
+      "knowledge": "hero"
+    },
+    {
+      "position": "UTG+1",
+      "stack": 400
+    },
+    {
+      "position": "UTG+2",
+      "stack": 400,
+      "hole_cards": [
+        "8s",
+        "8c"
+      ],
+      "knowledge": "showdown"
+    },
+    {
+      "position": "BTN",
+      "stack": 400
+    },
+    {
+      "position": "SB",
+      "stack": 400
+    },
+    {
+      "position": "BB",
+      "stack": 400
+    }
+  ],
+  "forced_posts": [
+    {
+      "player": "SB",
+      "kind": "small_blind",
+      "amount": 1
+    },
+    {
+      "player": "BB",
+      "kind": "big_blind",
+      "amount": 2
+    }
+  ],
+  "dead_money": 0,
+  "rake": {
+    "model": "none"
+  },
+  "streets": [
+    {
+      "name": "preflop",
+      "cards": [],
+      "actions": [
+        {
+          "player": "UTG",
+          "action": "raise",
+          "to": 6
+        },
+        {
+          "player": "UTG+1",
+          "action": "call",
+          "amount": 6
+        },
+        {
+          "player": "UTG+2",
+          "action": "raise",
+          "to": 18
+        },
+        {
+          "player": "BTN",
+          "action": "fold"
+        },
+        {
+          "player": "SB",
+          "action": "fold"
+        },
+        {
+          "player": "BB",
+          "action": "fold"
+        },
+        {
+          "player": "UTG",
+          "action": "call",
+          "amount": 12
+        },
+        {
+          "player": "UTG+1",
+          "action": "call",
+          "amount": 12
+        }
+      ]
+    },
+    {
+      "name": "flop",
+      "cards": [
+        "Ac",
+        "Jh",
+        "3s"
+      ],
+      "actions": [
+        {
+          "player": "UTG",
+          "action": "check"
+        },
+        {
+          "player": "UTG+1",
+          "action": "check"
+        },
+        {
+          "player": "UTG+2",
+          "action": "bet",
+          "amount": 15
+        },
+        {
+          "player": "UTG",
+          "action": "call",
+          "amount": 15
+        },
+        {
+          "player": "UTG+1",
+          "action": "fold"
+        }
+      ]
+    },
+    {
+      "name": "turn",
+      "cards": [
+        "Tc"
+      ],
+      "actions": [
+        {
+          "player": "UTG",
+          "action": "check"
+        },
+        {
+          "player": "UTG+2",
+          "action": "check"
+        }
+      ]
+    },
+    {
+      "name": "river",
+      "cards": [
+        "4c"
+      ],
+      "actions": [
+        {
+          "player": "UTG",
+          "action": "check"
+        },
+        {
+          "player": "UTG+2",
+          "action": "bet",
+          "amount": 40
+        }
+      ]
+    }
+  ]
+}
