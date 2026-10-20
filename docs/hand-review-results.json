@@ -12,7 +12,7 @@
     "examples\\hand-review.json": "5792433796cd2c7c2ebb9c5065c6085554dc7e5696fca97974bb883b47b62736",
     "examples\\hand-review-scenarios.json": "a8f3fccf486f47e27e6a2f6d08123740372b6181818d5920476a3bfcf1998e54"
   },
-  "raw_report_sha256": "705deda6bdf099d1ee9d4ea6cdd04b92b3bb90462ef4ae19fa7980111a3d4d45",
+  "raw_report_sha256": "f2c242df47340e334db3041c97bb5092f2dfe827c36eee9d245e0f96028adc52",
   "reconstruction": {
     "pot_start_by_street": {
       "preflop": 3.0,
@@ -142,13 +142,13 @@
       "result_sha256": "cce0c535f8659ec7da6fbd89c6a01dd38860f77e1e399f2885c61229257e7145",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "62cf3a70fbb2be806bbc0f33a8544813b13becdd550b6a533d6954fdc39efc7c",
+        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
         "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.435292899957858
+      "wall_seconds": 0.3720498000038788
     },
     {
       "scenario": "baseline",
@@ -189,13 +189,13 @@
       "result_sha256": "e4349269022a6c2af6c6eb57bf03f1fa915fb9821c573fca6a7dfe11e4c63d12",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "62cf3a70fbb2be806bbc0f33a8544813b13becdd550b6a533d6954fdc39efc7c",
+        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
         "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.27753139997366816
+      "wall_seconds": 0.2561930000083521
     },
     {
       "scenario": "tighter_live",
@@ -310,13 +310,13 @@
       "result_sha256": "ef61a2fe0c21d9e1f52e272d21174cea53fc4729c8fbb848b59257fb4ca4a05c",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "62cf3a70fbb2be806bbc0f33a8544813b13becdd550b6a533d6954fdc39efc7c",
+        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
         "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.3733870000578463
+      "wall_seconds": 0.35656829993240535
     },
     {
       "scenario": "tighter_live",
@@ -357,13 +357,13 @@
       "result_sha256": "1213bbe99da6fe1b528bf29511bd9c2dc3146f7eb1999d3680821525f25754a9",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "62cf3a70fbb2be806bbc0f33a8544813b13becdd550b6a533d6954fdc39efc7c",
+        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
         "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.3088875999674201
+      "wall_seconds": 0.2630593000212684
     },
     {
       "scenario": "looser_aggressive",
@@ -478,13 +478,13 @@
       "result_sha256": "eb289040b170b6dd190de34c24cc50000b66220a97c2427a2d841008ab49bca7",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "62cf3a70fbb2be806bbc0f33a8544813b13becdd550b6a533d6954fdc39efc7c",
+        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
         "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.38654029997996986
+      "wall_seconds": 0.3599118000129238
     },
     {
       "scenario": "looser_aggressive",
@@ -525,13 +525,13 @@
       "result_sha256": "994291a5dc8667f093f53ea28da6eaeddfc1d825bb1f418a38afe5ef9e59e410",
       "source_sha256_lf": {
         "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
-        "history.py": "62cf3a70fbb2be806bbc0f33a8544813b13becdd550b6a533d6954fdc39efc7c",
+        "history.py": "3825e15e6977f7a6b0889c87dd9847558d9ac8dc62f4266ad9fdce92b92acd2f",
         "review.py": "3c79bf659c1f1d6c922375b94240f8b2cef302cdd9dd4becec652d5cec0df326",
         "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
         "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
       },
       "evidence_label": "computed locally; range assumptions remain unverified",
-      "wall_seconds": 0.3109785000560805
+      "wall_seconds": 0.2507788999937475
     }
   ],
   "hosted_acceptance": {

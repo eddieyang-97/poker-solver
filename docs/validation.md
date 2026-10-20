@@ -28,7 +28,7 @@ Actual local execution of the documented CLI ran three 700-iteration
 arguments/results, runtime, source hashes and integrity receipts are retained in
 local `.artifacts/hand-review.json`; [versioned evidence](hand-review-results.json)
 records the six requests/results and raw-report SHA-256
-`705deda6bdf099d1ee9d4ea6cdd04b92b3bb90462ef4ae19fa7980111a3d4d45`.
+`f2c242df47340e334db3041c97bb5092f2dfe827c36eee9d245e0f96028adc52`.
 CI generates fresh full JSON/Markdown as `post-session-hand-review` artifacts.
 
 | Supplied hypothesis | 73 equity vs betting range | Call-minus-fold EV | Call/fold comparison | River CFR NashConv |

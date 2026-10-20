@@ -344,6 +344,8 @@ def parse_history(text):
             result['blinds'] = dict(zip(('small', 'big'), match.groups()))
         elif match := re.fullmatch(r'Stacks:\s*(£?[\d.]+|[\d.]+bb)\s*(?:effective|each)?', line, re.I):
             stack = match[1]
+            if re.search(r'\beffective$', line, re.I):
+                issues.append('Effective stack alone does not establish every starting stack; supply each stack in JSON or explicitly say each')
         elif match := re.fullmatch(r'Players:\s*(.+)', line, re.I):
             result['players'] = [{'position': position(p.strip())} for p in match[1].split(',')]
         elif match := re.fullmatch(r'(Known|Revealed)\s+(\S+):\s*(.+)', line, re.I):

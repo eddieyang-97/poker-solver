@@ -118,7 +118,8 @@ class HistoryTests(unittest.TestCase):
         text = (ROOT/'examples/hand-review.txt').read_text(encoding='utf-8')
         for change in (text.replace('3-bets to', '3-bets'), text.replace('Rake: none\n', ''),
                        text+'Opponent is probably weak\n', text.replace('Blinds: £1/£2\n', ''),
-                       text+'Blinds: £2/£5\n', text+'Known UTG: Ad Kd\n'):
+                       text+'Blinds: £2/£5\n', text+'Known UTG: Ad Kd\n',
+                       text.replace('200bb each', '200bb effective')):
             parsed = parse_history(change)
             self.assertEqual(parsed['status'], 'needs_clarification')
             self.assertTrue(parsed['issues'])

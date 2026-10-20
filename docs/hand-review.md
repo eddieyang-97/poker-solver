@@ -81,6 +81,8 @@ money, followed by street lines of semicolon-separated position/action phrases.
 For example, `UTG+2 3-bets to £18`, then `UTG calls £12`. Uniform `Stacks: 200bb
 each` explicitly means £400 each at £2 BB. The prose shortcut creates the two
 normal blind posts; use JSON for antes, asymmetric stacks, other posts or rake.
+An effective-stack amount alone does not establish all starting stacks and is
+returned for clarification rather than silently assigned to every seat.
 It is not a general natural-language model. Unrecognized lines/actions, repeated
 metadata and missing details are retained as clarification issues, and no tool
 is dispatched. Unlabelled narratives/pronouns should first be converted into
