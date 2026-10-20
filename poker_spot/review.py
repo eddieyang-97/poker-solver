@@ -94,6 +94,9 @@ def prepare_review(hand, scenarios, iterations=700):
     if len(start['players_start']) != 2:
         report['not_run_reason'] = 'River began multiway; this adapter requires a heads-up river from its start'
         return report
+    if start['pot_start'] <= 0:
+        report['not_run_reason'] = 'A positive river-start pot is required by the supported tools'
+        return report
     oop, ip = start['action_order']
     river_actions = hand['streets'][-1]['actions']
     simple_line = [a['action'] for a in river_actions] == ['check', 'bet'] and decision['last_bettor'] == ip
@@ -213,12 +216,16 @@ def render_markdown(report):
              '| --- | --- | --- | --- |']
     for street in history['streets']:
         lines.append(f'| {street["name"]} | {len(street["players_start"])} | {street["pot_start"]:.2f} | {street["pot_end"]:.2f} |')
+    if 'not_run_reason' in report:
+        lines += ['', 'Not run: '+report['not_run_reason']]
     decision = history['decision']
     if 'required_equity' in decision:
         lines += ['', f'Call {decision["to_call"]:.2f}; required equity **{100*decision["required_equity"]:.4f}%**.',
                   'Amounts are conditional on the supplied blinds, forced posts and rake model.']
     for item in report['scenarios']:
         lines += ['', f'## {item["id"]}', '', item['description'], '']
+        if 'solve_not_run_reason' in item:
+            lines += ['Equilibrium query not run: '+item['solve_not_run_reason'], '']
         for assumption in item['assumptions']:
             lines.append('- Assumption: '+assumption)
         for q in (q for q in report['queries'] if q['scenario'] == item['id']):

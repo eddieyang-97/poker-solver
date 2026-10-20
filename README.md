@@ -11,11 +11,13 @@ An [independently trained local reference](docs/turn-independent.md) checks six
 small strategic turn games with its own tree and chip accounting. This is an
 in-repository development reference, not an externally audited turn solver.
 
-A planned [post-session hand-history review workflow](https://github.com/eddieyang-97/poker-solver/issues/11)
-will track street-by-street pot/stack reconstruction, transparent action-conditioned
-range hypotheses and orchestration of already-supported solver calls. This is a
-separate roadmap item, **not implemented** and not a claim of full multiway flop
-solving, automatic GTO range inference or existing node-lock support.
+A local [post-session hand-history review workflow](docs/hand-review.md) reconstructs
+street-by-street pots/stacks, preserves explicit range assumptions and optionally
+executes the existing bounded river tools. It accepts structured hands or bounded
+position/action prose, reports missing details and retains exact requests/results.
+This implements Phase 1 of [the workflow roadmap](https://github.com/eddieyang-97/poker-solver/issues/11);
+richer range models and node locking remain follow-ups. Earlier multiway streets
+are accounted for, not solved. No hosted tool or plugin behavior changes.
 
 **v0.2 implementation:** official-SDK stateless Streamable HTTP, OAuth resource
 metadata and JWT verification, bounded subprocess calculations, analytical

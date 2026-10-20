@@ -1,5 +1,68 @@
 # Audit and validation — 16 October 2026
 
+## Post-session hand-review Phase 1 — 20 October 2026
+
+Added a local history normalizer/accountant, transparent range scenarios and
+bounded orchestration of the existing river tools for [Issue #11](https://github.com/eddieyang-97/poker-solver/issues/11).
+The [workflow guide](hand-review.md) documents schema, bounded prose grammar,
+corrections, rake models, known action-likelihood conditioning and explicit
+not-run states. Earlier multiway streets are accounted for, never solved.
+No solver-core, hosted transport, production configuration, Auth0 or plugin
+changes are part of this work; turn transport remains outside scope.
+
+The £1/£2, £400-per-seat no-rake regression reconstructs £57 on the flop, £87 on
+the turn/river, £367 remaining effective stack, then £40 to call into £127 and
+required equity **40/167 = 23.9520958%**. It preserves the three-player flop until
+UTG+1 folds and the £3 contributed by folded blinds.
+
+All **91 tests**, Ruff and compileall pass locally using the project venv
+(Windows, Python 3.14.8). The independent river benchmark passes **10/10** with
+tree sensitivity completed, using unchanged gates. New tests cover blinds,
+antes, dead money, seat/action order, short all-ins, reopening rights, refunds,
+effective calls, rake, ambiguity, revisions, blockers, supplied Bayesian weights,
+reveal independence, actual bounded execution, CLI output and false/failed
+computation labels. These local tests do not establish a final-head CI result.
+
+Actual local execution of the documented CLI ran three 700-iteration
+`solve_river` queries and three exact `evaluate_river_call` queries. Full validated
+arguments/results, runtime, source hashes and integrity receipts are retained in
+local `.artifacts/hand-review.json`; [versioned evidence](hand-review-results.json)
+records the six requests/results and raw-report SHA-256
+`705deda6bdf099d1ee9d4ea6cdd04b92b3bb90462ef4ae19fa7980111a3d4d45`.
+CI generates fresh full JSON/Markdown as `post-session-hand-review` artifacts.
+
+| Supplied hypothesis | 73 equity vs betting range | Call-minus-fold EV | Call/fold comparison | River CFR NashConv |
+| --- | ---: | ---: | --- | ---: |
+| Baseline | 13.9130% | −£16.7652 | Fold | £0.0015 |
+| Tighter live | 1.0000% | −£38.3300 | Fold | £0.0008 |
+| Looser/aggressive | 44.6927% | +£34.6369 | Call | £0.0010 |
+
+The CFR queries also evaluate 88's checking/betting against a full supplied OOP
+distribution, not just revealed 73. For baseline/tighter/looser OOP arrivals,
+88's check EV is −£41.1644/−£43.0561/−£17.6715 and bet EV is
+−£12.4572/−£21.8740/+£10.1781, using the half-starting-pot baseline. These sparse
+illustrative games prefer betting; their computed mixtures are not precise
+population or full-game GTO frequencies. OOP checks endogenously, not under a
+node lock. The separate looser betting hypothesis can favor a 73 call while the
+equilibrium profile folds: the two queries use different opponent assumptions.
+Earlier-action likelihoods are unknown, explicitly logged, and never fabricated.
+The earlier conversation's street-by-street commentary remains unverified.
+
+**Actual hosted acceptance:** three initial attempts through the existing
+connector returned authentication-prompt acceptance without numerical output.
+After the owner reported verification from ChatGPT, all six calculations above
+succeeded sequentially through the authenticated **Poker Solver Hosted**
+connector. Every request object and every result field exactly equals the local
+execution (JSON equality, no tolerance). The versioned evidence retains request/
+result receipts and the hosted raw-report SHA-256
+`33163ca60f9785cd8f00a2c37ea4f9e1945b9d00b2c6d3cd84dbc8ac5cc03f2a`;
+the full hosted capture is local `.artifacts/hand-review-hosted.json`. The CLI
+itself remains local; no hosted hand-history endpoint or plugin update is
+claimed. This reconnect/manual invocation does not establish automatic refresh,
+revocation or second-account acceptance. No auth checks were relaxed. Phase 2
+range exploration, true node locking and future turn/flop/multiway support
+remain open; Issue #11 must not be auto-closed.
+
 ## Independently trained strategic turn reference — 18 October 2026
 
 Following merged PR #8 (`11a6271d91d82fcde5fa619e559c65edf3515720`), added a

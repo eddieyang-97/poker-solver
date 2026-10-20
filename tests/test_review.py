@@ -139,6 +139,13 @@ class ReviewTests(unittest.TestCase):
         self.assertEqual(result['status'], 'failed')
         self.assertTrue(all(q['status'] == 'failed' for q in result['queries']))
 
+    def test_zero_pot_after_explicit_rake_is_not_dispatched(self):
+        hand = copy.deepcopy(HAND)
+        hand['rake'] = {'model': 'fixed', 'amount': 87, 'street': 'river'}
+        report = prepare_review(hand, SCENARIOS)
+        self.assertEqual(report['queries'], [])
+        self.assertIn('positive river-start pot', render_markdown(report))
+
 
 if __name__ == '__main__':
     unittest.main()
