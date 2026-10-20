@@ -149,7 +149,22 @@ separate 60-second deadline. They are neither a universal worst-case guarantee
 nor acceptance under the hosted 20-second budget; Linux measurements and actual
 applied limits belong in CI evidence.
 
+The raise benchmark step at `1c4e244` also passed on Ubuntu/Python 3.12.15
+([run 39514085589](https://github.com/eddieyang-97/poker-solver/actions/runs/39514085589)).
+Its downloaded `river-raise-validation` ZIP matches GitHub's SHA-256
+`0879ec3033d108add53da0aa5381d38cba3c842829ae4bc381a5fa54f76af033`.
+All ten source hashes, the raw-profile hash and all eight canonical reference
+profile digests verified; the latter exactly match Windows. All 48 mixed-policy
+checks pass with maximum discrepancy 1.14e-13. The two Ubuntu workloads took
+2.836/2.835 seconds parent wall, 2.777/2.776 seconds CPU and 45.73 MiB peak
+resident each; outputs were 13,497/13,480 bytes. Applied limits were 60 seconds
+wall/CPU and 384 MiB address space. The JSON retains this receipt and actual
+measurements. A passing raise step/artifact is distinct from completion of the
+whole workflow at the final documentation head; check the PR's latest CI.
+
 Hosted schema/worker/authentication/live acceptance and turn raises remain
-separately gated future work. The engines share the rank evaluator and CFR+
-algorithm family, so agreement is not proof of all poker semantics. No external
+separately gated future work. The trainers use the same CFR+ algorithm family,
+and this adapter reuses existing reference evaluation helpers; agreement is not
+proof of all poker semantics. The product ranker and pinned reference ranker are
+separate implementations. No external
 raise-capable TexasSolver acceptance is claimed. Educational post-session use only.

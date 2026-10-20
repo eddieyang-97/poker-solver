@@ -24,9 +24,13 @@ The largest conditional-Q difference is **8.7562e-9 chips**, near the unchanged
 from the reference's total-minus-blocked mass cancellation. No gate, historical
 Texas failure or reference source was changed. Rare-branch precision remains
 visible; it is not hidden by rounding displayed EVs. The reference is independent
-training, not a proven gold standard, and uses the same rank evaluator family.
-CI generates fresh `river-raise-validation` reports/profiles; local measurements
-alone do not prove a passing final-head CI or universal runtime bounds.
+training, not a proven gold standard. Both trainers use CFR+; the adapter reuses
+existing reference evaluation helpers, while the two rankers are separate.
+The raise benchmark step at `1c4e244` also passes on Ubuntu/Python 3.12.15;
+its `river-raise-validation` ZIP digest, ten source hashes, raw-profile hash
+and all eight reference-profile digests were verified. The guide/JSON retain
+the receipt and actual Linux CPU/RSS/limit measurements. A passing benchmark
+step does not establish completion of final-head CI or universal runtime bounds.
 
 ## PR #12 review corrections — 20 October 2026
 

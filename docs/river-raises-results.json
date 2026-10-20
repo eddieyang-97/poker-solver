@@ -1399,6 +1399,107 @@
     "maximum_dimension_samples": 2,
     "unchanged_river_fixtures_passed": 10,
     "river_sensitivity": "completed",
-    "ci": "pending final-head execution"
+    "ci": "Raise benchmark step/artifact verified at 1c4e244; final-head overall workflow pending"
+  },
+  "ci_benchmark_evidence": {
+    "run_id": 39514085589,
+    "url": "https://github.com/eddieyang-97/poker-solver/actions/runs/39514085589",
+    "head": "1c4e244fb5aabc00296bf93f829c1c7d7e49ef38",
+    "scope": "Raise benchmark step and retained artifact verified; overall final-head CI is separate",
+    "artifact_id": 12307661299,
+    "artifact_name": "river-raise-validation",
+    "artifact_zip_sha256": "0879ec3033d108add53da0aa5381d38cba3c842829ae4bc381a5fa54f76af033",
+    "raw_profile_sha256": "9ac15b6d216bf8eed65cd142b45357e0060992b571143dda683306c808877bea",
+    "verified_source_hashes": 10,
+    "verified_matching_reference_profile_digests": 8,
+    "failures": [],
+    "mixed_policy_count": 48,
+    "max_mixed_policy_delta": 1.1368683772161603e-13,
+    "performance": [
+      {
+        "input": {
+          "context": "post_session",
+          "board": "2c,3d,4h,8s,9c",
+          "oop_range": "2d2h:0.3,2dQs:0.4,2hTs:0.5,2s8h:0.6,3c7c:0.7,3h5s:0.8,3s4s:0.8999999999999999,3sAh:1.0,4cKs:0.3,4dKd:0.4,4sKc:0.5,5cKc:0.6,5dKd:0.7,5hKs:0.8,5sAh:0.8999999999999999,6d7c:1.0,6h8h:0.3,6sTs:0.4,7cQs:0.5,7h7s:0.6,7sJc:0.7,8cAc:0.8,8hJh:0.8999999999999999,9hTc:1.0",
+          "ip_range": "2d7d:0.3,2h5d:0.4,2s3c:0.5,2sKd:0.6,3cJs:0.7,3hTh:0.8,3s9h:0.8999999999999999,4c8d:1.0,4d7s:0.3,4s7h:0.4,5c7h:0.5,5d7s:0.6,5h8d:0.7,5s9h:0.8,6cTh:0.8999999999999999,6dJs:1.0,6hKd:0.3,7c7d:0.4,7dTc:0.5,7hQh:0.6,8c8h:0.7,8dQd:0.8,9dTd:0.8999999999999999,9hAd:1.0",
+          "pot": 100,
+          "stack": 600,
+          "minimum_bet": 2,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "raise_sizes": [
+            0.5,
+            1
+          ],
+          "iterations": 5000,
+          "oop_hand": "2d2h",
+          "ip_hand": "2d7d"
+        },
+        "parent_wall_seconds": 2.8357616409999906,
+        "metrics": {
+          "wall_seconds": 2.777348208999996,
+          "cpu_seconds": 2.777001661,
+          "initialization_seconds": 0.0027558430000027556,
+          "peak_resident_memory": {
+            "bytes": 47951872,
+            "method": "getrusage ru_maxrss, platform units converted"
+          },
+          "output_bytes": 13497,
+          "nodes": 14,
+          "limits": {
+            "wall_seconds": 60,
+            "cpu_seconds": 60,
+            "address_space_bytes": 402653184
+          },
+          "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+          "python": "3.12.15"
+        },
+        "nash_conv_chips": 0.0006
+      },
+      {
+        "input": {
+          "context": "post_session",
+          "board": "Ks,9s,5h,Td,Ts",
+          "oop_range": "2c2d:0.3,2cQh:0.4,2dTc:0.5,2h8c:0.6,2s6h:0.7,3c5c:0.8,3d4c:0.8999999999999999,3dAh:1.0,3hKh:0.3,3sKc:0.4,4cQs:0.5,4dQs:0.6,4hKc:0.7,4sKh:0.8,5cAh:0.8999999999999999,5s6h:1.0,6c8c:0.3,6dTc:0.4,6hQh:0.5,7c7d:0.6,7dTh:0.7,7hAc:0.8,8cJd:0.8999999999999999,8h9c:1.0",
+          "ip_range": "2c6s:0.3,2d4h:0.4,2h2s:0.5,2hKc:0.6,2sJh:0.7,3c9h:0.8,3d8h:0.8999999999999999,3h7s:1.0,3s7d:0.3,4c7c:0.4,4d7c:0.5,4h7d:0.6,4s7s:0.7,5c8h:0.8,5d9h:0.8999999999999999,5sJh:1.0,6cKc:0.3,6h6s:0.4,6s9c:0.5,7cQd:0.6,7h8c:0.7,7sQc:0.8,8d9d:0.8999999999999999,8hAd:1.0",
+          "pot": 100,
+          "stack": 600,
+          "minimum_bet": 2,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "raise_sizes": [
+            0.5,
+            1
+          ],
+          "iterations": 5000,
+          "oop_hand": "2c2d",
+          "ip_hand": "2c6s"
+        },
+        "parent_wall_seconds": 2.834688528000001,
+        "metrics": {
+          "wall_seconds": 2.776711782999996,
+          "cpu_seconds": 2.7761580620000004,
+          "initialization_seconds": 0.0026852969999993093,
+          "peak_resident_memory": {
+            "bytes": 47951872,
+            "method": "getrusage ru_maxrss, platform units converted"
+          },
+          "output_bytes": 13480,
+          "nodes": 14,
+          "limits": {
+            "wall_seconds": 60,
+            "cpu_seconds": 60,
+            "address_space_bytes": 402653184
+          },
+          "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+          "python": "3.12.15"
+        },
+        "nash_conv_chips": 0.0005
+      }
+    ]
   }
 }
