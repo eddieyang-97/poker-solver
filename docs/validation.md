@@ -1,5 +1,33 @@
 # Audit and validation — 16 October 2026
 
+## Experimental local river raises — 21 October 2026
+
+Issue #13 now has a separate opt-in `RaiseRiverSolver` and disposable local CLI,
+supporting check/bet/check-raise and lead/raise with at most one additional raise.
+The [game contract and commands](river-raises.md), [measured table](river-raises-results.md)
+and [exact requests, profile/source hashes and discrepancies](river-raises-results.json)
+document the admitted cent-exact tree, minimums, short all-ins and refunds.
+Existing no-raise core behavior, turn solver, hosted registrations, deployment,
+OAuth and plugin settings are unchanged. Nothing was deployed.
+
+Local Ruff/compileall and **106 tests** pass. Actual isolated training of pinned
+MIT noambrown commit `6a10442877ffc8fd28af93e16e279b9bbdd97b2a` passes **8/8**
+raise fixtures, with bidirectional policies, individual best responses, conditional
+action EVs, reach and explicit baseline/NashConv conversions. Another **48**
+fully mixed policies pass. Both **24×24-combo**, two-bet/two-raise, 5,000-iteration
+workloads complete under the separate local 60-second deadline, with actual
+CPU/peak RSS/output size retained. The existing **10/10 river regressions and
+sensitivity** still pass. These are new local calculations, not hosted acceptance.
+
+The largest conditional-Q difference is **8.7562e-9 chips**, near the unchanged
+1e-8 gate. The guide identifies its exact weighted-blocker row and reproduces it
+from the reference's total-minus-blocked mass cancellation. No gate, historical
+Texas failure or reference source was changed. Rare-branch precision remains
+visible; it is not hidden by rounding displayed EVs. The reference is independent
+training, not a proven gold standard, and uses the same rank evaluator family.
+CI generates fresh `river-raise-validation` reports/profiles; local measurements
+alone do not prove a passing final-head CI or universal runtime bounds.
+
 ## PR #12 review corrections — 20 October 2026
 
 Both P2 findings at `71bc313` were reproduced before fixes. The accounting adapter
