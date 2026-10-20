@@ -1,0 +1,593 @@
+{
+  "measured_date": "2026-10-20",
+  "scope": "Actual local disposable river workers; illustrative range assumptions, not hosted acceptance",
+  "command": "OPENBLAS_NUM_THREADS=1 python scripts/review_hand.py examples/hand-review.txt --scenarios examples/hand-review-scenarios.json --run --output .artifacts/hand-review-fixed",
+  "runtime": {
+    "python": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "execution": "Existing bounded local disposable workers; unchanged hosted settings"
+  },
+  "input_sha256_lf": {
+    "examples\\hand-review.txt": "e9a2f4cb2ac4f3da24187599b8b34dd6d630a803127040a5a828faf8eef6e1e9",
+    "examples\\hand-review.json": "5792433796cd2c7c2ebb9c5065c6085554dc7e5696fca97974bb883b47b62736",
+    "examples\\hand-review-scenarios.json": "a8f3fccf486f47e27e6a2f6d08123740372b6181818d5920476a3bfcf1998e54"
+  },
+  "raw_report_sha256": "5dfa06728dfd40b9b2c46376ccb5a56509571de0c9f14d4cf4a3040cbb1a1f14",
+  "reconstruction": {
+    "pot_start_by_street": {
+      "preflop": 3.0,
+      "flop": 57.0,
+      "turn": 87.0,
+      "river": 87.0
+    },
+    "decision": {
+      "actor": "UTG",
+      "to_call": 40.0,
+      "pot_current": 127.0,
+      "required_equity": 0.23952095808383234
+    },
+    "effective_stack": 367.0
+  },
+  "queries": [
+    {
+      "scenario": "baseline",
+      "tool": "solve_river",
+      "arguments": {
+        "board": "Ac,Jh,3s,Tc,4c",
+        "pot": 87.0,
+        "oop_range": "QdAd:1.0,KdAs:0.875,9dJd:0.5,3d7d:0.1,2c5c:0.25,QdKd:0.375,3c3h:0.625",
+        "ip_range": "QcKc:1.0,JcKc:0.7,JcQc:0.7,AdAh:0.7,JdJs:0.6,QdKd:0.8,KdAs:0.6,8c8s:0.4,9d9s:0.3,9dQd:0.3,5h6h:0.2",
+        "stack": 367.0,
+        "bet_sizes": [
+          0.45977011494252873
+        ],
+        "iterations": 700,
+        "oop_hand": "3d7d",
+        "ip_hand": "8c8s"
+      },
+      "status": "computed",
+      "meaning": "Unforced river-start restricted equilibrium approximation",
+      "transport": "local disposable worker; no hosted/ChatGPT acceptance",
+      "result": {
+        "model": "two-player zero-sum, fixed river ranges, no raises, no rake",
+        "board": [
+          "Ac",
+          "Jh",
+          "3s",
+          "Tc",
+          "4c"
+        ],
+        "pot": 87.0,
+        "stack": 367.0,
+        "bet_sizes": [
+          0.45977011494252873
+        ],
+        "iterations": 700,
+        "range_combos": {
+          "oop": 7,
+          "ip": 11
+        },
+        "effective_bet_amounts": [
+          40.0
+        ],
+        "computation": "Alternating CFR+ with nonnegative regret clipping and linear strategy averaging",
+        "root_ev_oop_relative_to_split_pot": -33.684,
+        "nash_conv_chips": 0.0015,
+        "nash_conv_pct_pot": 0.002,
+        "interpretation": "EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.",
+        "hands": {
+          "oop": {
+            "combo": [
+              "3d",
+              "7d"
+            ],
+            "node_strategy": {
+              "oop_first": {
+                "frequency": {
+                  "check": 1.0,
+                  "bet_0.45977pot": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -43.0238,
+                  "bet_0.45977pot": -54.987
+                },
+                "own_reach_probability": 1.0
+              },
+              "oop_facing_ip_bet_0.45977": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -43.5,
+                  "call": -70.3628
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          },
+          "ip": {
+            "combo": [
+              "8c",
+              "8s"
+            ],
+            "node_strategy": {
+              "ip_after_oop_check": {
+                "frequency": {
+                  "check": 0.0,
+                  "bet_0.45977pot": 1.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -41.1644,
+                  "bet_0.45977pot": -12.4572
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.45977": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -43.5,
+                  "call": -80.8705
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          }
+        }
+      },
+      "request_sha256": "13dae5e23de41c336642c8a6228bdf0682316d38f82c268a0ea65681ddf006df",
+      "result_sha256": "cce0c535f8659ec7da6fbd89c6a01dd38860f77e1e399f2885c61229257e7145",
+      "source_sha256_lf": {
+        "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+        "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
+        "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
+      },
+      "evidence_label": "computed locally; range assumptions remain unverified",
+      "wall_seconds": 0.37946710002142936
+    },
+    {
+      "scenario": "baseline",
+      "tool": "evaluate_river_call",
+      "arguments": {
+        "board": "Ac,Jh,3s,Tc,4c",
+        "pot": 87.0,
+        "hero_hand": "7d3d",
+        "villain_betting_range": "QcKc:1.0,JcKc:0.8,JcQc:0.8,AdAh:0.6,JdJs:0.5,QdKd:0.7,KdAs:0.25,8c8s:0.15,9d9s:0.15,9dQd:0.5,5h6h:0.3",
+        "bet": 40.0
+      },
+      "status": "computed",
+      "meaning": "Exact incremental call EV against supplied betting hypothesis",
+      "transport": "local disposable worker; no hosted/ChatGPT acceptance",
+      "result": {
+        "board": [
+          "Ac",
+          "Jh",
+          "3s",
+          "Tc",
+          "4c"
+        ],
+        "hero_hand": [
+          "7d",
+          "3d"
+        ],
+        "pot_before_bet": 87.0,
+        "villain_bet": 40.0,
+        "caller_pot_odds": 0.239521,
+        "hero_equity_vs_assumed_betting_range": 0.13913,
+        "ev_call_minus_fold": -16.7652,
+        "best_action_given_range": "fold",
+        "opponent_combos_after_blockers": 11,
+        "weighted_opponent_combos_after_blockers": 5.75,
+        "assumption": "Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium."
+      },
+      "request_sha256": "aa874b58c3a8860d0ff5fa665090797a3172eb5f48c45705887b695125c36711",
+      "result_sha256": "e4349269022a6c2af6c6eb57bf03f1fa915fb9821c573fca6a7dfe11e4c63d12",
+      "source_sha256_lf": {
+        "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+        "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
+        "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
+      },
+      "evidence_label": "computed locally; range assumptions remain unverified",
+      "wall_seconds": 0.2732575999107212
+    },
+    {
+      "scenario": "tighter_live",
+      "tool": "solve_river",
+      "arguments": {
+        "board": "Ac,Jh,3s,Tc,4c",
+        "pot": 87.0,
+        "oop_range": "QdAd:1.0,KdAs:1.0,9dJd:0.25,3d7d:0.02,2c5c:0.35,QdKd:0.6,3c3h:0.7",
+        "ip_range": "QcKc:1.0,JcKc:0.7,JcQc:0.7,AdAh:0.7,JdJs:0.6,QdKd:0.8,KdAs:0.6,8c8s:0.4,9d9s:0.3,9dQd:0.3,5h6h:0.2",
+        "stack": 367.0,
+        "bet_sizes": [
+          0.45977011494252873
+        ],
+        "iterations": 700,
+        "oop_hand": "3d7d",
+        "ip_hand": "8c8s"
+      },
+      "status": "computed",
+      "meaning": "Unforced river-start restricted equilibrium approximation",
+      "transport": "local disposable worker; no hosted/ChatGPT acceptance",
+      "result": {
+        "model": "two-player zero-sum, fixed river ranges, no raises, no rake",
+        "board": [
+          "Ac",
+          "Jh",
+          "3s",
+          "Tc",
+          "4c"
+        ],
+        "pot": 87.0,
+        "stack": 367.0,
+        "bet_sizes": [
+          0.45977011494252873
+        ],
+        "iterations": 700,
+        "range_combos": {
+          "oop": 7,
+          "ip": 11
+        },
+        "effective_bet_amounts": [
+          40.0
+        ],
+        "computation": "Alternating CFR+ with nonnegative regret clipping and linear strategy averaging",
+        "root_ev_oop_relative_to_split_pot": -30.0775,
+        "nash_conv_chips": 0.0008,
+        "nash_conv_pct_pot": 0.001,
+        "interpretation": "EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.",
+        "hands": {
+          "oop": {
+            "combo": [
+              "3d",
+              "7d"
+            ],
+            "node_strategy": {
+              "oop_first": {
+                "frequency": {
+                  "check": 1.0,
+                  "bet_0.45977pot": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -43.0215,
+                  "bet_0.45977pot": -50.4978
+                },
+                "own_reach_probability": 1.0
+              },
+              "oop_facing_ip_bet_0.45977": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -43.5,
+                  "call": -70.366
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          },
+          "ip": {
+            "combo": [
+              "8c",
+              "8s"
+            ],
+            "node_strategy": {
+              "ip_after_oop_check": {
+                "frequency": {
+                  "check": 0.0,
+                  "bet_0.45977pot": 1.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -43.0561,
+                  "bet_0.45977pot": -21.874
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.45977": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -43.5,
+                  "call": -83.0612
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          }
+        }
+      },
+      "request_sha256": "2b3e90455355bec31245200bc23b98be55a76e9681b7a464bcefee71a98bd3de",
+      "result_sha256": "ef61a2fe0c21d9e1f52e272d21174cea53fc4729c8fbb848b59257fb4ca4a05c",
+      "source_sha256_lf": {
+        "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+        "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
+        "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
+      },
+      "evidence_label": "computed locally; range assumptions remain unverified",
+      "wall_seconds": 0.36897130007855594
+    },
+    {
+      "scenario": "tighter_live",
+      "tool": "evaluate_river_call",
+      "arguments": {
+        "board": "Ac,Jh,3s,Tc,4c",
+        "pot": 87.0,
+        "hero_hand": "7d3d",
+        "villain_betting_range": "QcKc:1.0,JcKc:0.8,JcQc:0.8,AdAh:0.6,JdJs:0.5,QdKd:0.7,KdAs:0.25,8c8s:0.15,9d9s:0.15,9dQd:0.03,5h6h:0.02",
+        "bet": 40.0
+      },
+      "status": "computed",
+      "meaning": "Exact incremental call EV against supplied betting hypothesis",
+      "transport": "local disposable worker; no hosted/ChatGPT acceptance",
+      "result": {
+        "board": [
+          "Ac",
+          "Jh",
+          "3s",
+          "Tc",
+          "4c"
+        ],
+        "hero_hand": [
+          "7d",
+          "3d"
+        ],
+        "pot_before_bet": 87.0,
+        "villain_bet": 40.0,
+        "caller_pot_odds": 0.239521,
+        "hero_equity_vs_assumed_betting_range": 0.01,
+        "ev_call_minus_fold": -38.33,
+        "best_action_given_range": "fold",
+        "opponent_combos_after_blockers": 11,
+        "weighted_opponent_combos_after_blockers": 5.0,
+        "assumption": "Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium."
+      },
+      "request_sha256": "9607953726ec6687aeced519bc36efaafe2676eea22a4f81e2895b6ea99fe348",
+      "result_sha256": "1213bbe99da6fe1b528bf29511bd9c2dc3146f7eb1999d3680821525f25754a9",
+      "source_sha256_lf": {
+        "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+        "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
+        "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
+      },
+      "evidence_label": "computed locally; range assumptions remain unverified",
+      "wall_seconds": 0.2642505000112578
+    },
+    {
+      "scenario": "looser_aggressive",
+      "tool": "solve_river",
+      "arguments": {
+        "board": "Ac,Jh,3s,Tc,4c",
+        "pot": 87.0,
+        "oop_range": "QdAd:0.625,KdAs:0.5,9dJd:1.0,3d7d:0.1875,2c5c:0.125,QdKd:0.25,3c3h:0.3125,9sQh:0.5,8h9c:0.5",
+        "ip_range": "QcKc:1.0,JcKc:0.7,JcQc:0.7,AdAh:0.7,JdJs:0.6,QdKd:0.8,KdAs:0.6,8c8s:0.4,9d9s:0.3,9dQd:0.3,5h6h:0.2",
+        "stack": 367.0,
+        "bet_sizes": [
+          0.45977011494252873
+        ],
+        "iterations": 700,
+        "oop_hand": "3d7d",
+        "ip_hand": "8c8s"
+      },
+      "status": "computed",
+      "meaning": "Unforced river-start restricted equilibrium approximation",
+      "transport": "local disposable worker; no hosted/ChatGPT acceptance",
+      "result": {
+        "model": "two-player zero-sum, fixed river ranges, no raises, no rake",
+        "board": [
+          "Ac",
+          "Jh",
+          "3s",
+          "Tc",
+          "4c"
+        ],
+        "pot": 87.0,
+        "stack": 367.0,
+        "bet_sizes": [
+          0.45977011494252873
+        ],
+        "iterations": 700,
+        "range_combos": {
+          "oop": 9,
+          "ip": 11
+        },
+        "effective_bet_amounts": [
+          40.0
+        ],
+        "computation": "Alternating CFR+ with nonnegative regret clipping and linear strategy averaging",
+        "root_ev_oop_relative_to_split_pot": -38.5719,
+        "nash_conv_chips": 0.001,
+        "nash_conv_pct_pot": 0.001,
+        "interpretation": "EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.",
+        "hands": {
+          "oop": {
+            "combo": [
+              "3d",
+              "7d"
+            ],
+            "node_strategy": {
+              "oop_first": {
+                "frequency": {
+                  "check": 1.0,
+                  "bet_0.45977pot": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -43.5,
+                  "bet_0.45977pot": -57.1587
+                },
+                "own_reach_probability": 1.0
+              },
+              "oop_facing_ip_bet_0.45977": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -43.5,
+                  "call": -69.3894
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          },
+          "ip": {
+            "combo": [
+              "8c",
+              "8s"
+            ],
+            "node_strategy": {
+              "ip_after_oop_check": {
+                "frequency": {
+                  "check": 0.0,
+                  "bet_0.45977pot": 1.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "check": -17.6715,
+                  "bet_0.45977pot": 10.1781
+                },
+                "own_reach_probability": 1.0
+              },
+              "ip_facing_oop_bet_0.45977": {
+                "frequency": {
+                  "fold": 1.0,
+                  "call": 0.0
+                },
+                "action_ev_relative_to_half_pot": {
+                  "fold": -43.5,
+                  "call": -59.4961
+                },
+                "own_reach_probability": 1.0
+              }
+            }
+          }
+        }
+      },
+      "request_sha256": "4c049dad1dd983e175088b9eadfa2a94762c7d606be07898a181aff674567674",
+      "result_sha256": "eb289040b170b6dd190de34c24cc50000b66220a97c2427a2d841008ab49bca7",
+      "source_sha256_lf": {
+        "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+        "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
+        "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
+      },
+      "evidence_label": "computed locally; range assumptions remain unverified",
+      "wall_seconds": 0.38786479993723333
+    },
+    {
+      "scenario": "looser_aggressive",
+      "tool": "evaluate_river_call",
+      "arguments": {
+        "board": "Ac,Jh,3s,Tc,4c",
+        "pot": 87.0,
+        "hero_hand": "7d3d",
+        "villain_betting_range": "QcKc:1.0,JcKc:0.8,JcQc:0.8,AdAh:0.6,JdJs:0.5,QdKd:0.7,KdAs:0.25,8c8s:0.15,9d9s:0.15,9dQd:1.0,5h6h:1.0,9hQs:1.0,9hKd:1.0",
+        "bet": 40.0
+      },
+      "status": "computed",
+      "meaning": "Exact incremental call EV against supplied betting hypothesis",
+      "transport": "local disposable worker; no hosted/ChatGPT acceptance",
+      "result": {
+        "board": [
+          "Ac",
+          "Jh",
+          "3s",
+          "Tc",
+          "4c"
+        ],
+        "hero_hand": [
+          "7d",
+          "3d"
+        ],
+        "pot_before_bet": 87.0,
+        "villain_bet": 40.0,
+        "caller_pot_odds": 0.239521,
+        "hero_equity_vs_assumed_betting_range": 0.446927,
+        "ev_call_minus_fold": 34.6369,
+        "best_action_given_range": "call",
+        "opponent_combos_after_blockers": 13,
+        "weighted_opponent_combos_after_blockers": 8.95,
+        "assumption": "Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium."
+      },
+      "request_sha256": "be6b7c08b5958de4d8a4485f614ef46f15dcc545eb7438ebe01178a07e0f331a",
+      "result_sha256": "994291a5dc8667f093f53ea28da6eaeddfc1d825bb1f418a38afe5ef9e59e410",
+      "source_sha256_lf": {
+        "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+        "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+        "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+        "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
+        "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
+      },
+      "evidence_label": "computed locally; range assumptions remain unverified",
+      "wall_seconds": 0.2678083999780938
+    }
+  ],
+  "hosted_acceptance": {
+    "status": "computed",
+    "date": "2026-10-20",
+    "transport": "Actual authenticated Poker Solver Hosted connector after review fixes",
+    "endpoint": "https://poker-solver-vie0.onrender.com/mcp",
+    "comparison": "All six exact request objects and every numerical/result field equal the queries retained in this file; JSON equality, no tolerance",
+    "prior_attempts": "First baseline solve timed out without payload; subsequent sequential retry completed all six calculations.",
+    "hosted_raw_report_sha256": "5c2798ac8ea887b9b4a877cc16bbbfabbe3ea37f64e42389a84a6fd274cf1ae1",
+    "receipts": [
+      {
+        "scenario": "baseline",
+        "tool": "solve_river",
+        "request_sha256": "22f4a2d8d64956f45f0d2ec318d4c5e35bc8d76dcb7ac63c01809691185032e4",
+        "result_sha256": "4e1f463bb8a127713ef6ca94136185d60c4ff0f4874f84d6c62554d512ff8f48"
+      },
+      {
+        "scenario": "baseline",
+        "tool": "evaluate_river_call",
+        "request_sha256": "8ece6f5a2fcd49158a570a9f971717d8a91c75abac1c6d0f97e3648b4f97c492",
+        "result_sha256": "b6291231b1a5be4c5365deb7008de7cdb1fc05d8a51200a442983e932f357621"
+      },
+      {
+        "scenario": "tighter_live",
+        "tool": "solve_river",
+        "request_sha256": "3d4e91afaefe5021ae05dac40d749fc24b7ce04dd75e0074c591b91b50c80b6b",
+        "result_sha256": "596d902ecea6f605b46efee8f04787e7b7cbc0573bdaf1060592f3661d60d6cf"
+      },
+      {
+        "scenario": "tighter_live",
+        "tool": "evaluate_river_call",
+        "request_sha256": "41b4d886a09da81c17e7948c6568f0144e1e57a4b7951f8372e831f33e8b7b2e",
+        "result_sha256": "027d0697187fedc8d204a5d0a35c38b6d16b22ebeb3911306dbb16b5d40a7640"
+      },
+      {
+        "scenario": "looser_aggressive",
+        "tool": "solve_river",
+        "request_sha256": "8827b15833a232b6ac60fc6c1dab438a035ab05d859ab16d31c04644d01abf98",
+        "result_sha256": "0939b0f9dde7f95ff65107a7cf4c9c0208a7c53b5e3b4d5b6e808cbd3b5a7c7f"
+      },
+      {
+        "scenario": "looser_aggressive",
+        "tool": "evaluate_river_call",
+        "request_sha256": "547e7b6fb2a9dabdde10b2e317f3273f0ce430646f49b2693e833babe31596ae",
+        "result_sha256": "2194bbc51d17b1311038eeeecfdb131e71b4541f58155ceabf4b044de23c4f1e"
+      }
+    ]
+  },
+  "limitations": [
+    "Earlier multiway streets are reconstructed, never solved.",
+    "Arrival ranges describe river start. The observed OOP check is not node-locked.",
+    "solve_river chooses the OOP checking strategy endogenously; its conditional node is not a forced observed line.",
+    "Calling EV uses a separately supplied betting-range hypothesis, not the opponent reveal.",
+    "Action EVs use the half-starting-pot baseline; call EV uses call-minus-fold.",
+    "Reported own strategic reach is not the probability of the observed line.",
+    "Solver frequencies and EVs are computed only after successful execution; population deviations are assumptions."
+  ]
+}
