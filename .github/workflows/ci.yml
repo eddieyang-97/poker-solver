@@ -24,6 +24,19 @@ jobs:
         run: python scripts/benchmark.py --output .artifacts/benchmark --sensitivity
         env:
           OPENBLAS_NUM_THREADS: '1'
+      - name: Supplied action-model sensitivity and bounded joint range enumeration
+        timeout-minutes: 2
+        run: python scripts/benchmark_range_explorer.py --output .artifacts/range-explorer
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain local action-model range exploration
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: range-explorer-validation
+          include-hidden-files: true
+          if-no-files-found: error
+          path: .artifacts/range-explorer.*
       - name: Post-session reconstruction and actual bounded river calculations
         timeout-minutes: 2
         run: python scripts/review_hand.py examples/hand-review.txt --scenarios examples/hand-review-scenarios.json --run --output .artifacts/hand-review

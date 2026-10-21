@@ -174,7 +174,11 @@ revocation and second-account testing remain separate operational gates.
 
 ## Scope left open
 
-Phase 2 of Issue #11 remains open: a richer range explorer, validated action
-models, true node locking, and separately gated future turn transport. This
+The first local Phase 2 follow-up is the separate [action-model range explorer](range-explorer.md):
+editable supplied frequencies, validated history bindings, joint card removal
+and sensitivity across participants. It never silently turns correlated posterior
+marginals into independent solver arrival ranges. The Phase 1 adapter above stays
+unchanged. Calibrated models, automatic integration, true node locking and
+separately gated future turn transport remain open in Issue #11. This
 workflow provides no verified preflop/flop or multiway strategy, no population
 calibration, no new external solver comparison, and no new hosted feature.

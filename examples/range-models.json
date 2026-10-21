@@ -1,0 +1,200 @@
+{
+  "through": {
+    "street": "flop",
+    "index": 4
+  },
+  "priors": {
+    "UTG": {
+      "range": "AsAd,KhKd",
+      "provenance": "Illustrative two-combo preflop hypothesis, not calibrated"
+    },
+    "UTG+1": {
+      "range": "QhTs,7c6c",
+      "provenance": "Illustrative folded-player latent-card sensitivity hypothesis"
+    },
+    "UTG+2": {
+      "range": "AsQc,QhJd",
+      "provenance": "Illustrative two-combo preflop hypothesis, not inferred from reveal"
+    }
+  },
+  "target_pair": [
+    "UTG",
+    "UTG+2"
+  ],
+  "profiles": [
+    {
+      "id": "baseline",
+      "description": "Illustrative hand-dependent action frequencies; unknown actions remain gaps",
+      "models": [
+        {
+          "street": "preflop",
+          "index": 0,
+          "provenance": "Illustrative opening model, not measured population data",
+          "alternatives": [
+            {
+              "id": "fold",
+              "action": "fold"
+            },
+            {
+              "id": "open6",
+              "action": "raise",
+              "to": 6
+            }
+          ],
+          "frequencies": {
+            "AsAd": {
+              "fold": 0.2,
+              "open6": 0.8
+            },
+            "KhKd": {
+              "fold": 0.8,
+              "open6": 0.2
+            }
+          }
+        },
+        {
+          "street": "flop",
+          "index": 4,
+          "provenance": "Illustrative fold model for the third participant; retain their latent cards",
+          "alternatives": [
+            {
+              "id": "fold",
+              "action": "fold"
+            },
+            {
+              "id": "call15",
+              "action": "call",
+              "amount": 15
+            }
+          ],
+          "frequencies": {
+            "QhTs": {
+              "fold": 1,
+              "call15": 0
+            },
+            "7c6c": {
+              "fold": 0.1,
+              "call15": 0.9
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "neutral_fold",
+      "description": "Hold opening model fixed; third-player folds uniformly at 50%",
+      "models": [
+        {
+          "street": "preflop",
+          "index": 0,
+          "provenance": "Illustrative opening model, not measured population data",
+          "alternatives": [
+            {
+              "id": "fold",
+              "action": "fold"
+            },
+            {
+              "id": "open6",
+              "action": "raise",
+              "to": 6
+            }
+          ],
+          "frequencies": {
+            "AsAd": {
+              "fold": 0.2,
+              "open6": 0.8
+            },
+            "KhKd": {
+              "fold": 0.8,
+              "open6": 0.2
+            }
+          }
+        },
+        {
+          "street": "flop",
+          "index": 4,
+          "provenance": "Illustrative fold model for the third participant; retain their latent cards",
+          "alternatives": [
+            {
+              "id": "fold",
+              "action": "fold"
+            },
+            {
+              "id": "call15",
+              "action": "call",
+              "amount": 15
+            }
+          ],
+          "frequencies": {
+            "QhTs": {
+              "fold": 0.5,
+              "call15": 0.5
+            },
+            "7c6c": {
+              "fold": 0.5,
+              "call15": 0.5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "reverse_fold",
+      "description": "Alternative declared third-player fold selection, opposite the baseline",
+      "models": [
+        {
+          "street": "preflop",
+          "index": 0,
+          "provenance": "Illustrative opening model, not measured population data",
+          "alternatives": [
+            {
+              "id": "fold",
+              "action": "fold"
+            },
+            {
+              "id": "open6",
+              "action": "raise",
+              "to": 6
+            }
+          ],
+          "frequencies": {
+            "AsAd": {
+              "fold": 0.2,
+              "open6": 0.8
+            },
+            "KhKd": {
+              "fold": 0.8,
+              "open6": 0.2
+            }
+          }
+        },
+        {
+          "street": "flop",
+          "index": 4,
+          "provenance": "Illustrative fold model for the third participant; retain their latent cards",
+          "alternatives": [
+            {
+              "id": "fold",
+              "action": "fold"
+            },
+            {
+              "id": "call15",
+              "action": "call",
+              "amount": 15
+            }
+          ],
+          "frequencies": {
+            "QhTs": {
+              "fold": 0.1,
+              "call15": 0.9
+            },
+            "7c6c": {
+              "fold": 1,
+              "call15": 0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
