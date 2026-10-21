@@ -414,10 +414,15 @@
   ],
   "reproducibility_source_sha256_lf": {
     "scripts/benchmark_range_explorer.py": "18e4035d5e93d31bf804918e3b1189f0c2c8fa52c1ae12cd1057217c1b173613",
-    "tests/test_range_explorer.py": "16a17d0b31cc6ec8e8fdf23d9cde327f4572cb68074c6f4a0362e3ce40da6a83",
+    "tests/test_range_explorer.py": "0104121debd4035a06d4e535f36a3d031160498e6cbbc3c96d2ac6c7f7507055",
     "examples/range-models.json": "fad70b8515d605ce5905ae41a13dc542d2ec9af6392ed985976c538bf013b7f2",
     "examples/hand-review.json": "5792433796cd2c7c2ebb9c5065c6085554dc7e5696fca97974bb883b47b62736"
   },
   "limits": "Local 60-second parent deadline; no CPU/RSS bound or hosted acceptance. Performance samples do not prove universal bounds.",
-  "failures": []
+  "failures": [],
+  "ci_initial_failure": {
+    "head": "938344b2619970b566ae79ea14ccbff2448cee0d",
+    "run_id": 39643636935,
+    "cause": "CLI test assumed an existing ignored .artifacts directory; fixed using an independent temporary directory. No benchmark ran or artifact was retained."
+  }
 }

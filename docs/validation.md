@@ -21,6 +21,12 @@ enforces a 60-second parent deadline; CPU/RSS bounds and universal runtime are
 not claimed. CI retains a separate `range-explorer-validation` artifact; this
 local snapshot does not claim final-head CI or real hosted acceptance.
 
+The first CI attempt at `938344b` failed in the new CLI test because it assumed
+the ignored `.artifacts/` directory already existed. The test now creates its
+own independent temporary directory. That attempt reached no benchmark stages
+and retained no artifacts; its subsequent missing-upload errors are not evidence
+of completed calculations. No product arithmetic or numerical gate changed.
+
 Computed range probabilities depend on uncalibrated supplied priors/frequencies;
 no action EV, equilibrium frequency or new solver call is produced. Existing
 hand-review dispatch, all solver engines, hosted registrations, deployment,

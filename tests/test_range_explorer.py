@@ -201,7 +201,7 @@ class RangeExplorerTests(unittest.TestCase):
         self.assertIn('Solver execution: not run', render_markdown(result))
         self.assertNotIn('action_ev', json.dumps(result))
         self.assertEqual(execute(HAND, MODELS, timeout=.001)['error']['code'], 'TIMEOUT')
-        with tempfile.TemporaryDirectory(dir=ROOT/'.artifacts') as tmp:
+        with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp)/'edited'
             command = [sys.executable, str(ROOT/'scripts/explore_ranges.py'), str(ROOT/'examples/hand-review.json'),
                        '--models', str(ROOT/'examples/range-models.json'), '--set', '/through/index=3',
