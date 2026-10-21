@@ -19,7 +19,7 @@ tiny scales, private decimal contexts, support-underflow rejection, impossible
 lines, input bounds, model edits and error evidence are covered. The local CLI
 enforces a 60-second parent deadline; CPU/RSS bounds and universal runtime are
 not claimed. CI retains a separate `range-explorer-validation` artifact; this
-local snapshot does not claim final-head CI or real hosted acceptance.
+local snapshot establishes no real hosted acceptance.
 
 PR #15 review reproduced two P2 failures: ambient Decimal precision 2 made
 £6.01 and £6.02 action fingerprints collide, and a supported `HJ` action alias
@@ -30,6 +30,32 @@ canonical priors. Added tests preserve the caller's precision, reject distinct
 penny/subpenny alternatives at precisions 2/6/28, and compare full canonical/alias
 reports. All nine existing benchmark profile digests remain unchanged; no numerical
 gate changed. Fresh source/raw hashes and timings are retained in the results JSON.
+
+Final reviewed source `1196b9c` passed [CI run 39648506799](https://github.com/eddieyang-97/poker-solver/actions/runs/39648506799):
+117 tests, all benchmark/replay stages and nine nonempty artifact uploads. The
+downloaded explorer ZIP, three raw reports, five worker sources, four reproduction
+sources and nine profile digests verify; the exact receipt is versioned in
+`range-explorer-results.json`. PR #15 merged at `ea1db4e`. Issue #11 now marks
+completed Phase 1 and local explorer work separately from remaining solver and
+hosting gates; [the development roadmap](development-roadmap.md) records the sequence.
+
+A separate compact synthetic 150bb limp-call/check-raise regression preserves
+the original 200bb example. It checks £33/£63/£63/£303 pots, canonical actor order,
+£275 river-start stacks, £155 final stacks and an £80 call after a raise to £120.
+It constructs a permitted local raise tree with the reconstructed board/pot/stack,
+without training or adding range-quality/EV claims. The current exact-sizing rule
+rejects binary64 `40/63`; the regression preserves that rejection and does not
+claim observed-line solver integration. The independent raise suite remains the
+numerical correctness gate; this accounting case does not enlarge its corpus.
+Fresh local follow-up checks passed **118 tests**, Ruff and compileall, plus the
+unchanged independent raise suite (**8/8 cases, 48 mixed-policy comparisons**).
+Both existing maximum-dimension workers completed (4.933/4.913 seconds parent
+wall, 28,123,136/28,225,536 bytes peak resident memory on Windows/Python 3.14.8).
+These are measured repeats, not universal limits or hosted acceptance. The
+documented 8.7562e-9-chip action-EV discrepancy remains below the unchanged 1e-8
+gate with little margin; the compact accounting test adds no numerical evidence
+about realistic arrival ranges. New follow-up CI is separate from PR #15's
+verified 117-test source-head run.
 
 The first CI attempt at `938344b` failed in the new CLI test because it assumed
 the ignored `.artifacts/` directory already existed. The test now creates its

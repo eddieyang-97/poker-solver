@@ -438,7 +438,22 @@
       "existing_river_cases": 10,
       "existing_sensitivity": "passed",
       "unchanged_profile_digests": 9,
-      "final_head_ci": "pending"
+      "final_head_ci": "Passed at 1196b9c52663e1aa38b87798ce1b3d88503ba485; run 39648506799"
+    },
+    "ci_receipt": {
+      "head": "1196b9c52663e1aa38b87798ce1b3d88503ba485",
+      "run_id": 39648506799,
+      "job_id": 119390353699,
+      "conclusion": "success",
+      "unit_tests": 117,
+      "successful_nonempty_artifact_uploads": 9,
+      "artifact_id": 12369245238,
+      "zip_sha256": "4170dda326e8aab77892179e91b4707f3d92a9c6788f6cd957f4692a8664f336",
+      "raw_hashes_verified": 3,
+      "worker_source_hashes_verified": 5,
+      "reproduction_source_hashes_verified": 4,
+      "unchanged_profile_digests_verified": 9,
+      "scope": "Local explorer validation, not hosted acceptance or calibrated range-model validation"
     },
     "source_sha256_lf": {
       "poker_spot/range_explorer.py": "e9ead024e2fd426dca15fee5b7c7cd527c02e68e89b2796fcfd0bb0c31d21514",

@@ -28,6 +28,11 @@ only and never substitutes posterior marginals into the solver. Calibrated
 population models, node locking and automatic integration remain follow-ups. Earlier multiway streets
 are accounted for, not solved. No hosted tool or plugin behavior changes.
 
+The [development roadmap](docs/development-roadmap.md) tracks local implementation,
+solver correctness, range-model quality and hosted acceptance separately. The next
+integration milestone is local hand-review support for the river raise engine;
+joint-range/node-locking and advanced hosted tools have their own acceptance gates.
+
 **v0.2 implementation:** official-SDK stateless Streamable HTTP, OAuth resource
 metadata and JWT verification, bounded subprocess calculations, analytical
 regressions and official-client integration tests. Real provider setup, deployment
