@@ -1,0 +1,1505 @@
+{
+  "scope": "Actual independent finite-tree river raise validation, local only; not full-game GTO or hosted acceptance",
+  "cases": [
+    {
+      "input": {
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "KhKd:1",
+        "ip_range": "AsAd:1,QhJd:1",
+        "pot": 100,
+        "stack": 150,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5
+        ],
+        "raise_sizes": [
+          0.5
+        ]
+      },
+      "product_root_ev": -16.666744543295255,
+      "reference_root_ev": -16.666686822629153,
+      "product_nashconv": 0.011850718697345997,
+      "reference_nashconv": 0.008517443656310207,
+      "product_best_response_ev": [
+        -16.657919970976707,
+        16.669770689674053
+      ],
+      "reference_best_response_ev": [
+        -16.66270635421055,
+        16.671223797866872
+      ],
+      "reference_policy_product_gap": 0.008517443656312906,
+      "same_policy_max_delta": 2.842170943040401e-14,
+      "trained_ev_delta": 5.772066610276738e-05,
+      "convergence_gate_chips": 0.5,
+      "failures": [],
+      "product_seconds": 0.5432009999640286,
+      "reference_profile_sha256": "68ddac13d996364335999727fcbd620703f3289d89baabd68de46aded8a91bfa",
+      "reference_metadata": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 15000,
+          "bet_sizes": [
+            0.5
+          ],
+          "raise_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 2,
+          "players": [
+            {
+              "hands": [
+                "KhKd"
+              ],
+              "weights": [
+                1.0
+              ]
+            },
+            {
+              "hands": [
+                "AsAd",
+                "QhJd"
+              ],
+              "weights": [
+                1.0,
+                1.0
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "seconds": 0.22060030000284314,
+        "checkpoints": [
+          {
+            "iterations": 100,
+            "raw_average_exploitability_cents": 13.053718657512945
+          },
+          {
+            "iterations": 500,
+            "raw_average_exploitability_cents": 1.6157773939285107
+          },
+          {
+            "iterations": 1000,
+            "raw_average_exploitability_cents": 1.7988669357109757
+          },
+          {
+            "iterations": 4000,
+            "raw_average_exploitability_cents": 0.4258721828155103
+          }
+        ]
+      },
+      "id": "polarized_half",
+      "description": "Analytical nuts/air with an optional dominated check-raise",
+      "random_policy_checks": {
+        "seed": 1300,
+        "policies": 6,
+        "maximum_delta": 2.842170943040401e-14
+      },
+      "analytical_root_ev": -16.666666666666668
+    },
+    {
+      "input": {
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "AsAd:0.5,KhKd:1,QhJd:0.5",
+        "ip_range": "AhAc:0.5,KsKc:1,QdJh:0.5",
+        "pot": 100,
+        "stack": 200,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5
+        ],
+        "raise_sizes": [
+          0.5
+        ]
+      },
+      "product_root_ev": -4.928026265993424e-05,
+      "reference_root_ev": -1.222606323203479e-05,
+      "product_nashconv": 0.0006774233360644644,
+      "reference_nashconv": 0.00012725567888992372,
+      "product_best_response_ev": [
+        0.0001818478529447276,
+        0.0004955754831197368
+      ],
+      "reference_best_response_ev": [
+        8.271474960963587e-06,
+        0.000118984203936634
+      ],
+      "reference_policy_product_gap": 0.00012725567889404488,
+      "same_policy_max_delta": 2.842170943040401e-14,
+      "trained_ev_delta": 3.705419942789945e-05,
+      "convergence_gate_chips": 0.5,
+      "failures": [],
+      "product_seconds": 0.4846382999094203,
+      "reference_profile_sha256": "7b9fd39cab4df00904c6057c2c52310d0f2d0ecf1e32a48d9fa231c65f014967",
+      "reference_metadata": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 20000,
+          "bet_sizes": [
+            0.5
+          ],
+          "raise_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 2,
+          "players": [
+            {
+              "hands": [
+                "AsAd",
+                "KhKd",
+                "QhJd"
+              ],
+              "weights": [
+                0.5,
+                1.0,
+                0.5
+              ]
+            },
+            {
+              "hands": [
+                "AhAc",
+                "KsKc",
+                "QdJh"
+              ],
+              "weights": [
+                0.5,
+                1.0,
+                0.5
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "seconds": 0.35034130001440644,
+        "checkpoints": [
+          {
+            "iterations": 100,
+            "raw_average_exploitability_cents": 2.1012251461606866
+          },
+          {
+            "iterations": 500,
+            "raw_average_exploitability_cents": 0.1430539417797263
+          },
+          {
+            "iterations": 1000,
+            "raw_average_exploitability_cents": 0.07657511994148081
+          },
+          {
+            "iterations": 4000,
+            "raw_average_exploitability_cents": 0.0063627839444961865
+          }
+        ]
+      },
+      "id": "symmetric_value_air",
+      "description": "Both lead/raise and check-raise lines with symmetric weighted strengths",
+      "random_policy_checks": {
+        "seed": 1301,
+        "policies": 6,
+        "maximum_delta": 5.684341886080802e-14
+      }
+    },
+    {
+      "input": {
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "AsAd:1,KhKd:0.2,QhJd:0.7,AhKc:0.4",
+        "ip_range": "AsAc:0.3,KsKh:0.8,QdJh:1,AdKc:0.25",
+        "pot": 100,
+        "stack": 200,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5
+        ],
+        "raise_sizes": [
+          0.5
+        ]
+      },
+      "product_root_ev": 15.546208639660787,
+      "reference_root_ev": 15.546201057754692,
+      "product_nashconv": 0.002342540985186048,
+      "reference_nashconv": 0.0021308594354923116,
+      "product_best_response_ev": [
+        15.546617234091471,
+        -15.544274693106285
+      ],
+      "reference_best_response_ev": [
+        15.547362320852073,
+        -15.545231461416591
+      ],
+      "reference_policy_product_gap": 0.0021308594355051724,
+      "same_policy_max_delta": 8.756188663028297e-09,
+      "query_recommendations": {
+        "product": [
+          {
+            "side": 0,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "node": "c/b5000",
+            "joint_node_reach": 0.18183737185820667,
+            "joint_queried_hand_reach": 0.014432840632602322,
+            "actions": {
+              "fold": {
+                "frequency": 6.606110579730856e-07,
+                "ev": -50.00000000000001,
+                "regret": 171.49198997699233
+              },
+              "call": {
+                "frequency": 8.251589420986139e-07,
+                "ev": 100.00000000000001,
+                "regret": 21.491989976992315
+              },
+              "raise_to_150.00": {
+                "frequency": 0.9999985142299999,
+                "ev": 121.49198997699233,
+                "regret": 0.0
+              }
+            },
+            "mixture_conditional_regret": 0.00013102381264561968
+          }
+        ],
+        "reference": [
+          {
+            "side": 0,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "node": "c/b5000",
+            "joint_node_reach": 0.1818700042694889,
+            "joint_queried_hand_reach": 0.014435556036080257,
+            "actions": {
+              "fold": {
+                "frequency": 1.6520031355449217e-07,
+                "ev": -50.0,
+                "regret": 171.49187626568187
+              },
+              "call": {
+                "frequency": 2.0634912831346882e-07,
+                "ev": 100.0,
+                "regret": 21.49187626568188
+              },
+              "raise_to_150.00": {
+                "frequency": 0.9999996284505581,
+                "ev": 121.49187626568188,
+                "regret": 0.0
+              }
+            },
+            "mixture_conditional_regret": 3.27653416643832e-05
+          }
+        ]
+      },
+      "trained_ev_delta": 7.5819060949555706e-06,
+      "convergence_gate_chips": 0.5,
+      "failures": [],
+      "product_seconds": 0.4813736999640241,
+      "reference_profile_sha256": "4c25ffa30bc7de3215390084bf9f6235292955a7a3e19586f17d7e95aba92e9a",
+      "reference_metadata": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 20000,
+          "bet_sizes": [
+            0.5
+          ],
+          "raise_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 2,
+          "players": [
+            {
+              "hands": [
+                "AsAd",
+                "KhKd",
+                "QhJd",
+                "AhKc"
+              ],
+              "weights": [
+                1.0,
+                0.2,
+                0.7,
+                0.4
+              ]
+            },
+            {
+              "hands": [
+                "AsAc",
+                "KsKh",
+                "QdJh",
+                "AdKc"
+              ],
+              "weights": [
+                0.3,
+                0.8,
+                1.0,
+                0.25
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "seconds": 0.406554099987261,
+        "checkpoints": [
+          {
+            "iterations": 100,
+            "raw_average_exploitability_cents": 8.918098946895952
+          },
+          {
+            "iterations": 500,
+            "raw_average_exploitability_cents": 0.5204275063042587
+          },
+          {
+            "iterations": 1000,
+            "raw_average_exploitability_cents": 0.43680261610734306
+          },
+          {
+            "iterations": 4000,
+            "raw_average_exploitability_cents": 0.10654297177461558
+          }
+        ]
+      },
+      "id": "weighted_blockers",
+      "description": "Overlapping weighted concrete ranges and nonuniform card removal",
+      "random_policy_checks": {
+        "seed": 1302,
+        "policies": 6,
+        "maximum_delta": 5.684341886080802e-14
+      }
+    },
+    {
+      "input": {
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "AsAd:0.5,KhKd:1,QhJd:0.5",
+        "ip_range": "AhAc:0.5,KsKc:1,QdJh:0.5",
+        "pot": 100,
+        "stack": 75,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5
+        ],
+        "raise_sizes": [
+          0.5
+        ]
+      },
+      "product_root_ev": -1.1719091428518809,
+      "reference_root_ev": -1.1718835552884492,
+      "product_nashconv": 0.00043526850767960923,
+      "reference_nashconv": 0.00017704279562167358,
+      "product_best_response_ev": [
+        -1.1716252066884465,
+        1.172060475196126
+      ],
+      "reference_best_response_ev": [
+        -1.1717834894326558,
+        1.171960532228269
+      ],
+      "reference_policy_product_gap": 0.00017704279561314706,
+      "same_policy_max_delta": 3.552713678800501e-14,
+      "trained_ev_delta": 2.558756343162827e-05,
+      "convergence_gate_chips": 0.5,
+      "failures": [],
+      "product_seconds": 1.1566508000250906,
+      "reference_profile_sha256": "6cccd02124870a9d9e146cbd5c7a502eeda566c8060458f7b4f8dfa53257d45b",
+      "reference_metadata": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 7500,
+          "bet_sizes": [
+            0.5
+          ],
+          "raise_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 2,
+          "players": [
+            {
+              "hands": [
+                "AsAd",
+                "KhKd",
+                "QhJd"
+              ],
+              "weights": [
+                0.5,
+                1.0,
+                0.5
+              ]
+            },
+            {
+              "hands": [
+                "AhAc",
+                "KsKc",
+                "QdJh"
+              ],
+              "weights": [
+                0.5,
+                1.0,
+                0.5
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "seconds": 0.3423519000643864,
+        "checkpoints": [
+          {
+            "iterations": 100,
+            "raw_average_exploitability_cents": 2.615827403865296
+          },
+          {
+            "iterations": 500,
+            "raw_average_exploitability_cents": 0.1384072182154341
+          },
+          {
+            "iterations": 1000,
+            "raw_average_exploitability_cents": 0.049960610433117836
+          },
+          {
+            "iterations": 4000,
+            "raw_average_exploitability_cents": 0.008852139781083679
+          }
+        ]
+      },
+      "id": "short_allin_raise",
+      "description": "A legal stack-capped raise smaller than the previous bet",
+      "random_policy_checks": {
+        "seed": 1303,
+        "policies": 6,
+        "maximum_delta": 2.842170943040401e-14
+      }
+    },
+    {
+      "input": {
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "AsAd:0.5,KhKd:1,QhJd:0.5",
+        "ip_range": "AhAc:0.5,KsKc:1,QdJh:0.5",
+        "pot": 100,
+        "stack": 600,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5,
+          1
+        ],
+        "raise_sizes": [
+          0.5,
+          1
+        ]
+      },
+      "product_root_ev": -2.3437374183594244,
+      "reference_root_ev": -2.3437473725598146,
+      "product_nashconv": 0.0030440144007446435,
+      "reference_nashconv": 0.0022760352908153436,
+      "product_best_response_ev": [
+        -2.3424098004712324,
+        2.345453814871977
+      ],
+      "reference_best_response_ev": [
+        -2.3419237725885367,
+        2.344199807879349
+      ],
+      "reference_policy_product_gap": 0.002276035290831757,
+      "same_policy_max_delta": 1.1368683772161603e-13,
+      "trained_ev_delta": 9.954200390183132e-06,
+      "convergence_gate_chips": 0.5,
+      "failures": [],
+      "product_seconds": 2.688448999891989,
+      "reference_profile_sha256": "0e3962d8946fda4f6c1b44cd00d5a053c700de3fca6e7cf8761ee4bea247629c",
+      "reference_metadata": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 60000,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "raise_sizes": [
+            0.5,
+            1
+          ],
+          "include_all_in": false,
+          "max_raises": 2,
+          "players": [
+            {
+              "hands": [
+                "AsAd",
+                "KhKd",
+                "QhJd"
+              ],
+              "weights": [
+                0.5,
+                1.0,
+                0.5
+              ]
+            },
+            {
+              "hands": [
+                "AhAc",
+                "KsKc",
+                "QdJh"
+              ],
+              "weights": [
+                0.5,
+                1.0,
+                0.5
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "seconds": 0.8269922999897972,
+        "checkpoints": [
+          {
+            "iterations": 100,
+            "raw_average_exploitability_cents": 16.00589687752108
+          },
+          {
+            "iterations": 500,
+            "raw_average_exploitability_cents": 1.1077060285588232
+          },
+          {
+            "iterations": 1000,
+            "raw_average_exploitability_cents": 0.39371120066334697
+          },
+          {
+            "iterations": 4000,
+            "raw_average_exploitability_cents": 0.11380176454076718
+          }
+        ]
+      },
+      "id": "two_sizes",
+      "description": "Two opening sizes and two uncollapsed raise increments",
+      "random_policy_checks": {
+        "seed": 1304,
+        "policies": 6,
+        "maximum_delta": 1.1368683772161603e-13
+      }
+    },
+    {
+      "input": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "oop_range": "KdQd:1,9h9c:0.5,AsJh:0.4",
+        "ip_range": "KhQc:0.6,5s5c:1,AhJd:0.8",
+        "pot": 100,
+        "stack": 300,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5
+        ],
+        "raise_sizes": [
+          0.5
+        ]
+      },
+      "product_root_ev": 6.998641427072394,
+      "reference_root_ev": 6.99851578183465,
+      "product_nashconv": 0.008783759837386995,
+      "reference_nashconv": 0.005311928442279168,
+      "product_best_response_ev": [
+        7.001843756620714,
+        -6.993059996783327
+      ],
+      "reference_best_response_ev": [
+        7.000524472616128,
+        -6.995212544173846
+      ],
+      "reference_policy_product_gap": 0.0053119284422837865,
+      "same_policy_max_delta": 4.263256414560601e-14,
+      "trained_ev_delta": 0.00012564523774383218,
+      "convergence_gate_chips": 0.5,
+      "failures": [],
+      "product_seconds": 1.160005799960345,
+      "reference_profile_sha256": "21a790339d4499dce550b186bf8c6515bec606e6edaf6fdf4abbe95041c1be68",
+      "reference_metadata": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "Ks",
+            "9s",
+            "5h",
+            "Td",
+            "Ts"
+          ],
+          "pot": 10000,
+          "stack": 30000,
+          "bet_sizes": [
+            0.5
+          ],
+          "raise_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 2,
+          "players": [
+            {
+              "hands": [
+                "KdQd",
+                "9h9c",
+                "AsJh"
+              ],
+              "weights": [
+                1.0,
+                0.5,
+                0.4
+              ]
+            },
+            {
+              "hands": [
+                "KhQc",
+                "5s5c",
+                "AhJd"
+              ],
+              "weights": [
+                0.6,
+                1.0,
+                0.8
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "seconds": 0.3277064000722021,
+        "checkpoints": [
+          {
+            "iterations": 100,
+            "raw_average_exploitability_cents": 9.238406695938465
+          },
+          {
+            "iterations": 500,
+            "raw_average_exploitability_cents": 1.5303279278341506
+          },
+          {
+            "iterations": 1000,
+            "raw_average_exploitability_cents": 0.963138712953878
+          },
+          {
+            "iterations": 4000,
+            "raw_average_exploitability_cents": 0.2655964221139584
+          }
+        ]
+      },
+      "id": "paired_board",
+      "description": "Paired public cards with distinct full houses and missed draws",
+      "random_policy_checks": {
+        "seed": 1305,
+        "policies": 6,
+        "maximum_delta": 4.263256414560601e-14
+      }
+    },
+    {
+      "input": {
+        "board": "As,Js,8s,4d,2c",
+        "oop_range": "KsQs:0.6,AhAd:1,KdQc:0.4",
+        "ip_range": "Ts9s:1,AcKh:0.5,QdTc:0.6",
+        "pot": 100,
+        "stack": 250,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5
+        ],
+        "raise_sizes": [
+          0.5
+        ]
+      },
+      "product_root_ev": 15.151539278147863,
+      "reference_root_ev": 15.151514810344795,
+      "product_nashconv": 0.016080872841961025,
+      "reference_nashconv": 0.005616235376619443,
+      "product_best_response_ev": [
+        15.158723981221558,
+        -15.142643108379596
+      ],
+      "reference_best_response_ev": [
+        15.155301004577808,
+        -15.149684769201173
+      ],
+      "reference_policy_product_gap": 0.0056162353766477935,
+      "same_policy_max_delta": 2.842170943040401e-14,
+      "trained_ev_delta": 2.446780306897267e-05,
+      "convergence_gate_chips": 0.5,
+      "failures": [],
+      "product_seconds": 1.406743000028655,
+      "reference_profile_sha256": "c24d22c94b419b6e94c519156f335271735a02fa26a40218fb69aa6d4fbb8986",
+      "reference_metadata": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "As",
+            "Js",
+            "8s",
+            "4d",
+            "2c"
+          ],
+          "pot": 10000,
+          "stack": 25000,
+          "bet_sizes": [
+            0.5
+          ],
+          "raise_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 2,
+          "players": [
+            {
+              "hands": [
+                "KsQs",
+                "AhAd",
+                "KdQc"
+              ],
+              "weights": [
+                0.6,
+                1.0,
+                0.4
+              ]
+            },
+            {
+              "hands": [
+                "Ts9s",
+                "AcKh",
+                "QdTc"
+              ],
+              "weights": [
+                1.0,
+                0.5,
+                0.6
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "seconds": 0.32256670005153865,
+        "checkpoints": [
+          {
+            "iterations": 100,
+            "raw_average_exploitability_cents": 10.029652893072125
+          },
+          {
+            "iterations": 500,
+            "raw_average_exploitability_cents": 1.7045587444390549
+          },
+          {
+            "iterations": 1000,
+            "raw_average_exploitability_cents": 0.5327753220662999
+          },
+          {
+            "iterations": 4000,
+            "raw_average_exploitability_cents": 0.28081176883097214
+          }
+        ]
+      },
+      "id": "flush_board",
+      "description": "Flush blockers, ties and range weighting",
+      "random_policy_checks": {
+        "seed": 1306,
+        "policies": 6,
+        "maximum_delta": 5.684341886080802e-14
+      }
+    },
+    {
+      "input": {
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "AsAd:0.5,KhKd:1,QhJd:0.5",
+        "ip_range": "AhAc:0.5,KsKc:1,QdJh:0.5",
+        "pot": 100,
+        "stack": 50,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5
+        ],
+        "raise_sizes": [
+          0.5
+        ]
+      },
+      "product_root_ev": -1.3781376821953017e-06,
+      "reference_root_ev": -3.5741871187155994e-06,
+      "product_nashconv": 0.0006267923249616558,
+      "reference_nashconv": 0.00031423726002685723,
+      "product_best_response_ev": [
+        0.00021822683403804888,
+        0.00040856549092360694
+      ],
+      "reference_best_response_ev": [
+        0.00024700355447748734,
+        6.723370555050678e-05
+      ],
+      "reference_policy_product_gap": 0.00031423726002621777,
+      "same_policy_max_delta": 1.4637163009423304e-14,
+      "trained_ev_delta": 2.1960494365202976e-06,
+      "convergence_gate_chips": 0.5,
+      "failures": [],
+      "product_seconds": 0.8633087000343949,
+      "reference_profile_sha256": "369e0e6ebfb031734ddf0ab44952796f94ec54c4dbd1b68b1a1d508192c27a92",
+      "reference_metadata": {
+        "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "product_modules_loaded": false,
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 10000,
+          "stack": 5000,
+          "bet_sizes": [
+            0.5
+          ],
+          "raise_sizes": [
+            0.5
+          ],
+          "include_all_in": false,
+          "max_raises": 2,
+          "players": [
+            {
+              "hands": [
+                "AsAd",
+                "KhKd",
+                "QhJd"
+              ],
+              "weights": [
+                0.5,
+                1.0,
+                0.5
+              ]
+            },
+            {
+              "hands": [
+                "AhAc",
+                "KsKc",
+                "QdJh"
+              ],
+              "weights": [
+                0.5,
+                1.0,
+                0.5
+              ]
+            }
+          ]
+        },
+        "iterations": 4000,
+        "seconds": 0.2034187000244856,
+        "checkpoints": [
+          {
+            "iterations": 100,
+            "raw_average_exploitability_cents": 1.2640964152496963
+          },
+          {
+            "iterations": 500,
+            "raw_average_exploitability_cents": 0.15332230120930035
+          },
+          {
+            "iterations": 1000,
+            "raw_average_exploitability_cents": 0.07466545972874883
+          },
+          {
+            "iterations": 4000,
+            "raw_average_exploitability_cents": 0.015711863001342863
+          }
+        ]
+      },
+      "id": "allin_opening",
+      "description": "An explicit capped opening all-in leaves only call/fold",
+      "random_policy_checks": {
+        "seed": 1307,
+        "policies": 6,
+        "maximum_delta": 4.263256414560601e-14
+      }
+    }
+  ],
+  "failures": [],
+  "performance": [
+    {
+      "status": "computed",
+      "metrics": {
+        "wall_seconds": 3.481239899992943,
+        "cpu_seconds": 3.4375,
+        "initialization_seconds": 0.0037836000556126237,
+        "peak_resident_memory": {
+          "bytes": 28315648,
+          "method": "Windows PeakWorkingSetSize"
+        },
+        "output_bytes": 13495,
+        "nodes": 14,
+        "limits": {
+          "wall_seconds": 60,
+          "cpu_seconds": null,
+          "address_space_bytes": null
+        },
+        "platform": "Windows-11-10.0.26300-SP0",
+        "python": "3.14.8"
+      },
+      "parent_wall_seconds": 3.822132600005716,
+      "input": {
+        "context": "post_session",
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "2d2h:0.3,2dQs:0.4,2hTs:0.5,2s8h:0.6,3c7c:0.7,3h5s:0.8,3s4s:0.8999999999999999,3sAh:1.0,4cKs:0.3,4dKd:0.4,4sKc:0.5,5cKc:0.6,5dKd:0.7,5hKs:0.8,5sAh:0.8999999999999999,6d7c:1.0,6h8h:0.3,6sTs:0.4,7cQs:0.5,7h7s:0.6,7sJc:0.7,8cAc:0.8,8hJh:0.8999999999999999,9hTc:1.0",
+        "ip_range": "2d7d:0.3,2h5d:0.4,2s3c:0.5,2sKd:0.6,3cJs:0.7,3hTh:0.8,3s9h:0.8999999999999999,4c8d:1.0,4d7s:0.3,4s7h:0.4,5c7h:0.5,5d7s:0.6,5h8d:0.7,5s9h:0.8,6cTh:0.8999999999999999,6dJs:1.0,6hKd:0.3,7c7d:0.4,7dTc:0.5,7hQh:0.6,8c8h:0.7,8dQd:0.8,9dTd:0.8999999999999999,9hAd:1.0",
+        "pot": 100,
+        "stack": 600,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5,
+          1
+        ],
+        "raise_sizes": [
+          0.5,
+          1
+        ],
+        "iterations": 5000,
+        "oop_hand": "2d2h",
+        "ip_hand": "2d7d"
+      },
+      "result_summary": {
+        "iterations": 5000,
+        "range_combos": {
+          "oop": 24,
+          "ip": 24
+        },
+        "effective_bet_amounts": [
+          50.0,
+          100.0
+        ],
+        "root_ev_oop_relative_to_split_pot": -4.2394,
+        "nash_conv_chips": 0.0006,
+        "nash_conv_pct_pot": 0.001,
+        "limits": {
+          "combos_per_side": 24,
+          "bet_sizes": 2,
+          "raise_sizes": 2,
+          "iterations": 5000
+        }
+      }
+    },
+    {
+      "status": "computed",
+      "metrics": {
+        "wall_seconds": 3.362528200028464,
+        "cpu_seconds": 3.34375,
+        "initialization_seconds": 0.0036342000821605325,
+        "peak_resident_memory": {
+          "bytes": 27906048,
+          "method": "Windows PeakWorkingSetSize"
+        },
+        "output_bytes": 13477,
+        "nodes": 14,
+        "limits": {
+          "wall_seconds": 60,
+          "cpu_seconds": null,
+          "address_space_bytes": null
+        },
+        "platform": "Windows-11-10.0.26300-SP0",
+        "python": "3.14.8"
+      },
+      "parent_wall_seconds": 3.7052891000639647,
+      "input": {
+        "context": "post_session",
+        "board": "Ks,9s,5h,Td,Ts",
+        "oop_range": "2c2d:0.3,2cQh:0.4,2dTc:0.5,2h8c:0.6,2s6h:0.7,3c5c:0.8,3d4c:0.8999999999999999,3dAh:1.0,3hKh:0.3,3sKc:0.4,4cQs:0.5,4dQs:0.6,4hKc:0.7,4sKh:0.8,5cAh:0.8999999999999999,5s6h:1.0,6c8c:0.3,6dTc:0.4,6hQh:0.5,7c7d:0.6,7dTh:0.7,7hAc:0.8,8cJd:0.8999999999999999,8h9c:1.0",
+        "ip_range": "2c6s:0.3,2d4h:0.4,2h2s:0.5,2hKc:0.6,2sJh:0.7,3c9h:0.8,3d8h:0.8999999999999999,3h7s:1.0,3s7d:0.3,4c7c:0.4,4d7c:0.5,4h7d:0.6,4s7s:0.7,5c8h:0.8,5d9h:0.8999999999999999,5sJh:1.0,6cKc:0.3,6h6s:0.4,6s9c:0.5,7cQd:0.6,7h8c:0.7,7sQc:0.8,8d9d:0.8999999999999999,8hAd:1.0",
+        "pot": 100,
+        "stack": 600,
+        "minimum_bet": 2,
+        "bet_sizes": [
+          0.5,
+          1
+        ],
+        "raise_sizes": [
+          0.5,
+          1
+        ],
+        "iterations": 5000,
+        "oop_hand": "2c2d",
+        "ip_hand": "2c6s"
+      },
+      "result_summary": {
+        "iterations": 5000,
+        "range_combos": {
+          "oop": 24,
+          "ip": 24
+        },
+        "effective_bet_amounts": [
+          50.0,
+          100.0
+        ],
+        "root_ev_oop_relative_to_split_pot": 8.0438,
+        "nash_conv_chips": 0.0005,
+        "nash_conv_pct_pot": 0.001,
+        "limits": {
+          "combos_per_side": 24,
+          "bet_sizes": 2,
+          "raise_sizes": 2,
+          "iterations": 5000
+        }
+      }
+    }
+  ],
+  "source_sha256_lf": {
+    "benchmarks/raise-fixtures.json": "91f28fc0e10a59d4758f0b2742093fafd60cd06563426f2866d8f202628a920c",
+    "benchmarks/raises.py": "669511f1244c328a6f0839e1a82ab3f2587cb2b3314276dbe3b130920fb69212",
+    "benchmarks/raise_reference_worker.py": "76519208a836487678097d3335e5561d7d261a1a32df8e32ecb0797a4331e74f",
+    "benchmarks/harness.py": "28ee971822a87fdfb7f3bdfdd7e2a1b55074ababa2070619f12d002ed849370d",
+    "benchmarks/reference_worker.py": "e6e96eb272212b40428b6bb25bdbe64a91aa850d85323130b61ae214862d748b",
+    "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+    "poker_spot/raises.py": "d99b293f1e8bb457209cdd481661fb59cb20f4b9dd6886a98037dc5a01b922dc",
+    "poker_spot/raise_worker.py": "90a8e431a995b78cf9ef1697fb830fc7a12b79e1a2ee98d615096a99ea782499",
+    "scripts/solve_river_raises.py": "c948fb291ae1ee7245e60f39b39f1b27d3ac4413b3ab789e9cf8987e9d704683",
+    "scripts/benchmark_river_raises.py": "292830c05dbee98e608c01b638aeeafca6495de4cdbdc554b053cbf107d121b6"
+  },
+  "raw_profile_sha256": "0dfda3c79e510205472e837effe177d529d71323a1ad143ce53df1cd8f478434",
+  "measured_date": "2026-10-21",
+  "source_commit": "8b9ab3a",
+  "reference_repository": "https://github.com/noambrown/poker_solver",
+  "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+  "raw_report_sha256": "3b4b357068453e23f4560f2e9869c361718aacc7e666249af3e1c6db567fe1af",
+  "same_policy_precision_diagnostic": {
+    "policy": "reference",
+    "side": 0,
+    "node": "b5000/r10000",
+    "hand": [
+      "Ad",
+      "As"
+    ],
+    "action": "call",
+    "delta": 8.756188663028297e-09,
+    "product_q": 200.0,
+    "reference_q": 200.0000000087562,
+    "opponent_reach": 2.3472582284234655e-07,
+    "joint_node_reach": 0.023731496857680803,
+    "reference_total_minus_blocked_mass": 2.3472582283412535e-07,
+    "explicit_compatible_mass": 2.3472582284234655e-07,
+    "reconstructed_reference_q": 200.0000000087562,
+    "analytical_call_q": 200.0
+  },
+  "local_example": {
+    "input": {
+      "context": "post_session",
+      "board": "2c,3d,4h,8s,9c",
+      "oop_range": "AsAd:1,KhKd:0.2,QhJd:0.7,AhKc:0.4",
+      "ip_range": "AsAc:0.3,KsKh:0.8,QdJh:1,AdKc:0.25",
+      "pot": 100,
+      "stack": 200,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5
+      ],
+      "raise_sizes": [
+        0.5
+      ],
+      "iterations": 2000,
+      "oop_hand": "AsAd",
+      "ip_hand": "KsKh"
+    },
+    "status": "computed",
+    "hands": {
+      "oop": {
+        "combo": [
+          "Ad",
+          "As"
+        ],
+        "node_strategy": {
+          "c/b5000": {
+            "frequency": {
+              "fold": 0.0,
+              "call": 0.0,
+              "raise_to_150.00": 1.0
+            },
+            "action_ev_relative_to_half_pot": {
+              "fold": -50.0,
+              "call": 100.0,
+              "raise_to_150.00": 121.492
+            },
+            "own_reach_probability": 0.1261
+          },
+          "b5000/r10000": {
+            "frequency": {
+              "fold": 0.0,
+              "call": 1.0
+            },
+            "action_ev_relative_to_half_pot": {
+              "fold": -100.0,
+              "call": 200.0
+            },
+            "own_reach_probability": 0.8739
+          },
+          "root": {
+            "frequency": {
+              "check": 0.1261,
+              "bet_to_50.00": 0.8739
+            },
+            "action_ev_relative_to_half_pot": {
+              "check": 70.8913,
+              "bet_to_50.00": 70.8939
+            },
+            "own_reach_probability": 1.0
+          }
+        }
+      },
+      "ip": {
+        "combo": [
+          "Kh",
+          "Ks"
+        ],
+        "node_strategy": {
+          "c/b5000/r10000": {
+            "frequency": {
+              "fold": 0.6462,
+              "call": 0.3538
+            },
+            "action_ev_relative_to_half_pot": {
+              "fold": -100.0,
+              "call": -100.0733
+            },
+            "own_reach_probability": 0.3994
+          },
+          "c": {
+            "frequency": {
+              "check": 0.6006,
+              "bet_to_50.00": 0.3994
+            },
+            "action_ev_relative_to_half_pot": {
+              "check": 36.5111,
+              "bet_to_50.00": 36.5177
+            },
+            "own_reach_probability": 1.0
+          },
+          "b5000": {
+            "frequency": {
+              "fold": 0.0598,
+              "call": 0.9402,
+              "raise_to_150.00": 0.0
+            },
+            "action_ev_relative_to_half_pot": {
+              "fold": -50.0,
+              "call": -49.9917,
+              "raise_to_150.00": -124.9874
+            },
+            "own_reach_probability": 1.0
+          }
+        }
+      }
+    },
+    "nodes": {
+      "c/b5000/r10000": {
+        "actor": 1,
+        "contributions_cents": [
+          15000,
+          5000
+        ],
+        "actions": [
+          {
+            "kind": "fold",
+            "total_to_cents": 0
+          },
+          {
+            "kind": "call",
+            "total_to_cents": 15000,
+            "paid_cents": 10000
+          }
+        ],
+        "additional_raises_used": 1,
+        "joint_reach_probability": 0.02198033346806526
+      },
+      "c/b5000": {
+        "actor": 0,
+        "contributions_cents": [
+          0,
+          5000
+        ],
+        "actions": [
+          {
+            "kind": "fold",
+            "total_to_cents": 0
+          },
+          {
+            "kind": "call",
+            "total_to_cents": 5000,
+            "paid_cents": 5000
+          },
+          {
+            "kind": "raise",
+            "total_to_cents": 15000,
+            "paid_cents": 15000,
+            "increment_cents": 10000,
+            "fraction_of_pot_after_call": 0.5,
+            "full_raise": true,
+            "all_in": false
+          }
+        ],
+        "additional_raises_used": 0,
+        "joint_reach_probability": 0.18183737185820667
+      },
+      "c": {
+        "actor": 1,
+        "contributions_cents": [
+          0,
+          0
+        ],
+        "actions": [
+          {
+            "kind": "check",
+            "total_to_cents": 0
+          },
+          {
+            "kind": "bet",
+            "total_to_cents": 5000,
+            "paid_cents": 5000,
+            "all_in": false
+          }
+        ],
+        "additional_raises_used": 0,
+        "joint_reach_probability": 0.5086455132418692
+      },
+      "b5000/r10000": {
+        "actor": 0,
+        "contributions_cents": [
+          5000,
+          15000
+        ],
+        "actions": [
+          {
+            "kind": "fold",
+            "total_to_cents": 0
+          },
+          {
+            "kind": "call",
+            "total_to_cents": 15000,
+            "paid_cents": 10000
+          }
+        ],
+        "additional_raises_used": 1,
+        "joint_reach_probability": 0.02373505123903752
+      },
+      "b5000": {
+        "actor": 1,
+        "contributions_cents": [
+          5000,
+          0
+        ],
+        "actions": [
+          {
+            "kind": "fold",
+            "total_to_cents": 0
+          },
+          {
+            "kind": "call",
+            "total_to_cents": 5000,
+            "paid_cents": 5000
+          },
+          {
+            "kind": "raise",
+            "total_to_cents": 15000,
+            "paid_cents": 15000,
+            "increment_cents": 10000,
+            "fraction_of_pot_after_call": 0.5,
+            "full_raise": true,
+            "all_in": false
+          }
+        ],
+        "additional_raises_used": 0,
+        "joint_reach_probability": 0.4913544867581307
+      },
+      "root": {
+        "actor": 0,
+        "contributions_cents": [
+          0,
+          0
+        ],
+        "actions": [
+          {
+            "kind": "check",
+            "total_to_cents": 0
+          },
+          {
+            "kind": "bet",
+            "total_to_cents": 5000,
+            "paid_cents": 5000,
+            "all_in": false
+          }
+        ],
+        "additional_raises_used": 0,
+        "joint_reach_probability": 1.0
+      }
+    },
+    "nash_conv_chips": 0.0023,
+    "metrics": {
+      "wall_seconds": 0.4876733999699354,
+      "cpu_seconds": 0.484375,
+      "initialization_seconds": 0.005128399934619665,
+      "peak_resident_memory": {
+        "bytes": 27922432,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "output_bytes": 5598,
+      "nodes": 6,
+      "limits": {
+        "wall_seconds": 60,
+        "cpu_seconds": null,
+        "address_space_bytes": null
+      },
+      "platform": "Windows-11-10.0.26300-SP0",
+      "python": "3.14.8"
+    },
+    "raw_result_sha256": "8c75efae39e8002f2c0b69ad730c4b403bc943ef1e7c2131cb672ab40cc9c731"
+  },
+  "checks": {
+    "unit_tests": 106,
+    "ruff": "passed",
+    "compileall": "passed",
+    "raise_fixtures_passed": 8,
+    "fully_mixed_policies": 48,
+    "maximum_dimension_samples": 2,
+    "unchanged_river_fixtures_passed": 10,
+    "river_sensitivity": "completed",
+    "ci": "Raise benchmark step/artifact verified at 1c4e244; final-head overall workflow pending"
+  },
+  "ci_benchmark_evidence": {
+    "run_id": 39514085589,
+    "url": "https://github.com/eddieyang-97/poker-solver/actions/runs/39514085589",
+    "head": "1c4e244fb5aabc00296bf93f829c1c7d7e49ef38",
+    "scope": "Raise benchmark step and retained artifact verified; overall final-head CI is separate",
+    "artifact_id": 12307661299,
+    "artifact_name": "river-raise-validation",
+    "artifact_zip_sha256": "0879ec3033d108add53da0aa5381d38cba3c842829ae4bc381a5fa54f76af033",
+    "raw_profile_sha256": "9ac15b6d216bf8eed65cd142b45357e0060992b571143dda683306c808877bea",
+    "verified_source_hashes": 10,
+    "verified_matching_reference_profile_digests": 8,
+    "failures": [],
+    "mixed_policy_count": 48,
+    "max_mixed_policy_delta": 1.1368683772161603e-13,
+    "performance": [
+      {
+        "input": {
+          "context": "post_session",
+          "board": "2c,3d,4h,8s,9c",
+          "oop_range": "2d2h:0.3,2dQs:0.4,2hTs:0.5,2s8h:0.6,3c7c:0.7,3h5s:0.8,3s4s:0.8999999999999999,3sAh:1.0,4cKs:0.3,4dKd:0.4,4sKc:0.5,5cKc:0.6,5dKd:0.7,5hKs:0.8,5sAh:0.8999999999999999,6d7c:1.0,6h8h:0.3,6sTs:0.4,7cQs:0.5,7h7s:0.6,7sJc:0.7,8cAc:0.8,8hJh:0.8999999999999999,9hTc:1.0",
+          "ip_range": "2d7d:0.3,2h5d:0.4,2s3c:0.5,2sKd:0.6,3cJs:0.7,3hTh:0.8,3s9h:0.8999999999999999,4c8d:1.0,4d7s:0.3,4s7h:0.4,5c7h:0.5,5d7s:0.6,5h8d:0.7,5s9h:0.8,6cTh:0.8999999999999999,6dJs:1.0,6hKd:0.3,7c7d:0.4,7dTc:0.5,7hQh:0.6,8c8h:0.7,8dQd:0.8,9dTd:0.8999999999999999,9hAd:1.0",
+          "pot": 100,
+          "stack": 600,
+          "minimum_bet": 2,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "raise_sizes": [
+            0.5,
+            1
+          ],
+          "iterations": 5000,
+          "oop_hand": "2d2h",
+          "ip_hand": "2d7d"
+        },
+        "parent_wall_seconds": 2.8357616409999906,
+        "metrics": {
+          "wall_seconds": 2.777348208999996,
+          "cpu_seconds": 2.777001661,
+          "initialization_seconds": 0.0027558430000027556,
+          "peak_resident_memory": {
+            "bytes": 47951872,
+            "method": "getrusage ru_maxrss, platform units converted"
+          },
+          "output_bytes": 13497,
+          "nodes": 14,
+          "limits": {
+            "wall_seconds": 60,
+            "cpu_seconds": 60,
+            "address_space_bytes": 402653184
+          },
+          "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+          "python": "3.12.15"
+        },
+        "nash_conv_chips": 0.0006
+      },
+      {
+        "input": {
+          "context": "post_session",
+          "board": "Ks,9s,5h,Td,Ts",
+          "oop_range": "2c2d:0.3,2cQh:0.4,2dTc:0.5,2h8c:0.6,2s6h:0.7,3c5c:0.8,3d4c:0.8999999999999999,3dAh:1.0,3hKh:0.3,3sKc:0.4,4cQs:0.5,4dQs:0.6,4hKc:0.7,4sKh:0.8,5cAh:0.8999999999999999,5s6h:1.0,6c8c:0.3,6dTc:0.4,6hQh:0.5,7c7d:0.6,7dTh:0.7,7hAc:0.8,8cJd:0.8999999999999999,8h9c:1.0",
+          "ip_range": "2c6s:0.3,2d4h:0.4,2h2s:0.5,2hKc:0.6,2sJh:0.7,3c9h:0.8,3d8h:0.8999999999999999,3h7s:1.0,3s7d:0.3,4c7c:0.4,4d7c:0.5,4h7d:0.6,4s7s:0.7,5c8h:0.8,5d9h:0.8999999999999999,5sJh:1.0,6cKc:0.3,6h6s:0.4,6s9c:0.5,7cQd:0.6,7h8c:0.7,7sQc:0.8,8d9d:0.8999999999999999,8hAd:1.0",
+          "pot": 100,
+          "stack": 600,
+          "minimum_bet": 2,
+          "bet_sizes": [
+            0.5,
+            1
+          ],
+          "raise_sizes": [
+            0.5,
+            1
+          ],
+          "iterations": 5000,
+          "oop_hand": "2c2d",
+          "ip_hand": "2c6s"
+        },
+        "parent_wall_seconds": 2.834688528000001,
+        "metrics": {
+          "wall_seconds": 2.776711782999996,
+          "cpu_seconds": 2.7761580620000004,
+          "initialization_seconds": 0.0026852969999993093,
+          "peak_resident_memory": {
+            "bytes": 47951872,
+            "method": "getrusage ru_maxrss, platform units converted"
+          },
+          "output_bytes": 13480,
+          "nodes": 14,
+          "limits": {
+            "wall_seconds": 60,
+            "cpu_seconds": 60,
+            "address_space_bytes": 402653184
+          },
+          "platform": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+          "python": "3.12.15"
+        },
+        "nash_conv_chips": 0.0005
+      }
+    ]
+  }
+}

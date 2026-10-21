@@ -11,6 +11,11 @@ An [independently trained local reference](docs/turn-independent.md) checks six
 small strategic turn games with its own tree and chip accounting. This is an
 in-repository development reference, not an externally audited turn solver.
 
+An opt-in [local river raise/check-raise solver](docs/river-raises.md) supports one
+additional raise after a bet, explicit finite sizes and cent-exact accounting.
+Its separate independent validation corpus is not part of the no-raise benchmark
+score. It is not registered with MCP or deployed; hosted tools remain no-raise.
+
 A local [post-session hand-history review workflow](docs/hand-review.md) reconstructs
 street-by-street pots/stacks, preserves explicit range assumptions and optionally
 executes the existing bounded river tools. It accepts structured hands or bounded
