@@ -8,7 +8,7 @@
     "random_fraction_cross_checks": 20,
     "existing_river_cases": 10,
     "existing_sensitivity": "passed",
-    "final_head_ci": "pending"
+    "final_head_ci": "Passed at pre-review head 4c764bae6acc3263d58c6e9a1801da897d10e62d; run 39644126795"
   },
   "cases": [
     {
@@ -424,5 +424,124 @@
     "head": "938344b2619970b566ae79ea14ccbff2448cee0d",
     "run_id": 39643636935,
     "cause": "CLI test assumed an existing ignored .artifacts directory; fixed using an independent temporary directory. No benchmark ran or artifact was retained."
+  },
+  "review_fix_validation": {
+    "measured_date": "2026-10-21",
+    "fixes": [
+      "Private-context history reconstruction and cent-exact action fingerprints",
+      "Canonical position aliases across history, priors and target pair; duplicate identities rejected"
+    ],
+    "checks": {
+      "unit_tests": 117,
+      "ruff": "passed",
+      "compileall": "passed",
+      "existing_river_cases": 10,
+      "existing_sensitivity": "passed",
+      "unchanged_profile_digests": 9,
+      "final_head_ci": "pending"
+    },
+    "source_sha256_lf": {
+      "poker_spot/range_explorer.py": "e9ead024e2fd426dca15fee5b7c7cd527c02e68e89b2796fcfd0bb0c31d21514",
+      "poker_spot/history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+      "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+      "poker_spot/review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+      "scripts/explore_ranges.py": "4eb46a1e4b628f6cdec86f0e4003a3a5493b64b17a887f5cfb45c985ebca3303"
+    },
+    "reproducibility_source_sha256_lf": {
+      "scripts/benchmark_range_explorer.py": "18e4035d5e93d31bf804918e3b1189f0c2c8fa52c1ae12cd1057217c1b173613",
+      "tests/test_range_explorer.py": "db733a67fb2fc265a1e4df58d8371825bd088e438a99f9ed66d8a07cd5ec824d",
+      "examples/range-models.json": "fad70b8515d605ce5905ae41a13dc542d2ec9af6392ed985976c538bf013b7f2",
+      "examples/hand-review.json": "5792433796cd2c7c2ebb9c5065c6085554dc7e5696fca97974bb883b47b62736"
+    },
+    "cases": [
+      {
+        "id": "example",
+        "status": "computed",
+        "path": ".artifacts\\pr15-review-fix-explorer.example.json",
+        "raw_report_sha256": "5b02d4f9d0daab14d55d65c29e3ea1c78778086f0c4f29149abfeb5f6e827796",
+        "output_bytes": 53388,
+        "parent_wall_seconds": 0.39190529996994883,
+        "worker_metrics": {
+          "wall_seconds": 0.00817079993430525,
+          "cpu_seconds": 0.015625,
+          "wall_deadline_seconds": 60,
+          "python": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-11-10.0.26300-SP0"
+        },
+        "profiles": [
+          {
+            "id": "baseline",
+            "profile_sha256": "bfee75008b45e9dabf4f45e2476ba350a365c1eadd5eaee68be023e678f2edd3"
+          },
+          {
+            "id": "neutral_fold",
+            "profile_sha256": "717672591013bb0e0fb265a5f0b1ec46f544900f82af11e3363da9cf922dacb1"
+          },
+          {
+            "id": "reverse_fold",
+            "profile_sha256": "b9f42d0c94371588c4f26d41b4230155168065935115ee74e67a61ecd1a770c2"
+          }
+        ]
+      },
+      {
+        "id": "maximum_false",
+        "status": "computed",
+        "path": ".artifacts\\pr15-review-fix-explorer.maximum_false.json",
+        "raw_report_sha256": "822f9064680f69dada77cd191d06f93f1e1ad288b08c001bac1ba4a626ae1733",
+        "output_bytes": 1546276,
+        "parent_wall_seconds": 1.3427302000345662,
+        "worker_metrics": {
+          "wall_seconds": 0.9450952999759465,
+          "cpu_seconds": 0.9375,
+          "wall_deadline_seconds": 60,
+          "python": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-11-10.0.26300-SP0"
+        },
+        "profiles": [
+          {
+            "id": "sample0",
+            "profile_sha256": "3459066164a706b4156395a01d9b842382dfe7e0c27a5e1d8b9f3a1b7f09758b"
+          },
+          {
+            "id": "sample1",
+            "profile_sha256": "e0e78a5381ff394378e0bffebbfd9e258feec6411d5553067d1d6ce781df67d6"
+          },
+          {
+            "id": "sample2",
+            "profile_sha256": "6985b3d50464d90a5655c501c7bf35d26d3723988f0b16d94076ad98c10ac605"
+          }
+        ]
+      },
+      {
+        "id": "maximum_true",
+        "status": "computed",
+        "path": ".artifacts\\pr15-review-fix-explorer.maximum_true.json",
+        "raw_report_sha256": "5e8934ce956e398d5a517346361d01090ee969e6aa8680616ffddd3c3169f8c8",
+        "output_bytes": 1593302,
+        "parent_wall_seconds": 0.9794138999423012,
+        "worker_metrics": {
+          "wall_seconds": 0.5963814000133425,
+          "cpu_seconds": 0.59375,
+          "wall_deadline_seconds": 60,
+          "python": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+          "platform": "Windows-11-10.0.26300-SP0"
+        },
+        "profiles": [
+          {
+            "id": "sample0",
+            "profile_sha256": "bd7900539a29633437c8d0cab54bdd63cf69c2e65555ac2d2e81cdfd85626cba"
+          },
+          {
+            "id": "sample1",
+            "profile_sha256": "3b28d2851e1877d1d8ce021f37a6022ceed3ad86dd2074b191e8a23b29fba7cf"
+          },
+          {
+            "id": "sample2",
+            "profile_sha256": "3a98689e929c3558042791d5b4f4c4232bed880a6f1966458480899c79cda7d4"
+          }
+        ]
+      }
+    ],
+    "limitations": "Local 60-second parent deadline; no CPU/RSS bound or hosted acceptance. Performance samples do not prove universal bounds."
   }
 }

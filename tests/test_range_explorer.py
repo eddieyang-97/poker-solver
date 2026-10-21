@@ -163,6 +163,53 @@ class RangeExplorerTests(unittest.TestCase):
         self.assertNotIn('marginals_decimal', result['profiles'][0])
         self.assertIn('zero probability', render_markdown(result))
 
+    def test_cent_exact_action_binding_ignores_ambient_decimal_context(self):
+        hand, spec = copy.deepcopy(HAND), copy.deepcopy(MODELS)
+        hand['streets'][0]['actions'][0]['to'] = '6.01'
+        spec['through'] = {'street': 'preflop', 'index': 0}
+        spec['profiles'] = [spec['profiles'][0]]
+        spec['profiles'][0]['models'] = spec['profiles'][0]['models'][:1]
+        alternative = spec['profiles'][0]['models'][0]['alternatives'][1]
+        alternative['to'] = '6.01'
+        expected = explore(hand, spec)
+        for precision in (2, 6, 28):
+            alternative['to'] = '6.01'
+            with self.subTest(precision=precision), localcontext() as ctx:
+                ctx.prec = precision
+                self.assertEqual(expected, explore(hand, spec))
+                self.assertEqual(ctx.prec, precision)
+                alternative['to'] = '6.02'
+                with self.assertRaisesRegex(HistoryError, 'match the actual observed action and amount'):
+                    explore(hand, spec)
+                alternative['to'] = '6.011'
+                with self.assertRaisesRegex(HistoryError, 'exact to a penny'):
+                    explore(hand, spec)
+
+    def test_position_aliases_in_actions_seats_priors_and_target_pair(self):
+        expected = explore(HAND, MODELS)
+        aliases = {'UTG+1': 'HJ', 'UTG+2': 'CO'}
+        # Exercise both modeled and unknown actions, including the later actor-index lookup.
+        hand = copy.deepcopy(HAND)
+        hand['streets'][1]['actions'][4]['player'] = 'HJ'
+        self.assertEqual(expected, explore(hand, MODELS))
+        for player in hand['players']:
+            player['position'] = aliases.get(player['position'], player['position'])
+        for street in hand['streets']:
+            for action in street['actions']:
+                action['player'] = aliases.get(action['player'], action['player'])
+        spec = copy.deepcopy(MODELS)
+        spec['priors'] = {aliases.get(p, p): prior for p, prior in spec['priors'].items()}
+        spec['target_pair'] = [aliases.get(p, p) for p in spec['target_pair']]
+        self.assertEqual(expected, explore(hand, spec))
+        del spec['priors']['UTG']
+        spec['priors']['UTG+1'] = spec['priors']['HJ']
+        with self.assertRaisesRegex(HistoryError, 'Duplicate prior position'):
+            explore(hand, spec)
+        spec = copy.deepcopy(MODELS)
+        spec['target_pair'] = ['UTG+1', 'HJ']
+        with self.assertRaisesRegex(HistoryError, 'two distinct modeled players'):
+            explore(hand, spec)
+
     def test_model_binding_legal_alternatives_rows_and_dimension_rejection(self):
         variants = []
         for field, value in [('index', True), ('index', 99), ('provenance', ''),

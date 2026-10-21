@@ -1,14 +1,20 @@
 """Bounded joint range conditioning under supplied action models; no solver dispatch."""
 from copy import deepcopy
-from decimal import Context, Decimal, InvalidOperation
+from decimal import Context, Decimal, InvalidOperation, localcontext
 import itertools
 
 from .core import combo_key, expand_range
-from .history import HistoryError, STREETS, card_text, exact_keys, reconstruct
+from .history import HistoryError, STREETS, card_text, exact_keys, position, reconstruct
 from .review import digest
 
 ARITHMETIC = Context(prec=600)
 ROW_ARITHMETIC = Context(prec=1200)
+
+
+def replay(hand):
+    # The accountant's Decimal money/rake arithmetic must not inherit caller precision.
+    with localcontext(ARITHMETIC):
+        return reconstruct(hand)
 
 
 def total(values):
@@ -57,7 +63,15 @@ def prefix(hand, through):
     # A rake deduction on a later street is not part of the selected prefix.
     if isinstance(cut.get('rake'), dict) and cut['rake'].get('street') in STREETS[stop+1:]:
         cut['rake'] = {'model': 'none'}
-    reconstruct(cut)
+    replay(cut)
+    # Canonicalize every identity once, before model binding, inference and reporting.
+    for player in cut['players']:
+        player['position'] = position(player['position'])
+    for post in cut['forced_posts']:
+        post['player'] = position(post['player'])
+    for street in cut['streets']:
+        for action in street['actions']:
+            action['player'] = position(action['player'])
     return cut
 
 
@@ -67,7 +81,7 @@ def action_event(hand, street_index, index, alternative=None):
     cut['streets'][-1]['actions'] = cut['streets'][-1]['actions'][:index+1]
     if alternative is not None:
         cut['streets'][-1]['actions'][-1] = alternative
-    result = reconstruct(cut)
+    result = replay(cut)
     row = next(r for r in result['ledger'] if r.get('street') == STREETS[street_index] and r.get('index') == index)
     return tuple(row[k] for k in ('player', 'action', 'paid', 'total_street'))
 
@@ -213,6 +227,16 @@ def explore(hand, spec):
     hand = prefix(hand, spec['through'])
     if not isinstance(spec['priors'], dict) or not 2 <= len(spec['priors']) <= 3:
         raise HistoryError('Model two or three seated participants')
+    spec = deepcopy(spec)
+    canonical_priors = {}
+    for player, prior in spec['priors'].items():
+        name = position(player)
+        if name in canonical_priors:
+            raise HistoryError('Duplicate prior position after alias normalization')
+        canonical_priors[name] = prior
+    spec['priors'] = canonical_priors
+    if isinstance(spec['target_pair'], list):
+        spec['target_pair'] = [position(p) for p in spec['target_pair']]
     seated = {p['position'] for p in hand['players']}
     if set(spec['priors'])-seated:
         raise HistoryError('Prior player is absent from the hand')
@@ -261,7 +285,7 @@ def explore(hand, spec):
             'computation': 'Joint range conditioning under explicitly supplied action-frequency assumptions',
             'solver_execution': 'not_run', 'request_sha256': digest({'hand_prefix_without_hole_cards': hand, 'models': spec}),
             'through': deepcopy(spec['through']), 'hand_prefix': hand, 'input_models': deepcopy(spec),
-            'board': reconstruct(hand)['board'], 'priors': deepcopy(spec['priors']),
+            'board': replay(hand)['board'], 'priors': deepcopy(spec['priors']),
             'modeled_players': list(priors), 'omitted_players': sorted(seated-set(priors)), 'target_pair': pair,
             'profiles': results, 'limits': {'players': 3, 'combos_per_player': 24, 'candidate_deals': 24**3,
                                            'profiles': 3, 'models_per_profile': 24},

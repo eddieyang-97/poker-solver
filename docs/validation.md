@@ -11,7 +11,7 @@ unknown-likelihood gaps and latent cards of modeled folded players. Future
 actions/cards and all hole-card claims are excluded from inference. Posterior
 marginals are not silently substituted into the independent-range solver.
 
-Actual local checks pass: **115 tests**, Ruff/compileall, **20 randomized exact
+Actual local checks pass: **117 tests**, Ruff/compileall, **20 randomized exact
 Fraction cross-checks**, three-profile analytical sensitivity and two maximum
 worker samples (24³ candidate deals, three profiles, 24 models/profile), plus
 the existing **10/10 river cases and sensitivity**. Actual timeout termination,
@@ -20,6 +20,16 @@ lines, input bounds, model edits and error evidence are covered. The local CLI
 enforces a 60-second parent deadline; CPU/RSS bounds and universal runtime are
 not claimed. CI retains a separate `range-explorer-validation` artifact; this
 local snapshot does not claim final-head CI or real hosted acceptance.
+
+PR #15 review reproduced two P2 failures: ambient Decimal precision 2 made
+£6.01 and £6.02 action fingerprints collide, and a supported `HJ` action alias
+failed lookup against canonical priors. Every explorer history replay now uses
+the private Decimal context. Seats, posts, actions, prior keys and target pairs
+normalize supported aliases before binding/inference/reporting, rejecting duplicate
+canonical priors. Added tests preserve the caller's precision, reject distinct
+penny/subpenny alternatives at precisions 2/6/28, and compare full canonical/alias
+reports. All nine existing benchmark profile digests remain unchanged; no numerical
+gate changed. Fresh source/raw hashes and timings are retained in the results JSON.
 
 The first CI attempt at `938344b` failed in the new CLI test because it assumed
 the ignored `.artifacts/` directory already existed. The test now creates its

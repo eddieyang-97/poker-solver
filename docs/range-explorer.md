@@ -17,6 +17,9 @@ The document contains two or three `priors` keyed by seated position, a
 the first preflop action**, not river arrivals to be conditioned twice. Each
 expanded prior has at most 24 positive concrete combos. Participants outside
 the model are explicitly omitted, including their latent-card/selection effects.
+Supported history aliases `HJ`/`CO` normalize to `UTG+1`/`UTG+2` in seats,
+posts, actions, prior keys and the target pair. Reports and request digests use
+canonical positions; duplicate canonical prior identities are rejected.
 Priors use the existing range parser's binary64 weights, rank-class expansion
 and last-token override convention. Positive tokens that underflow during that
 parsing are rejected; they are never silently treated as zero. Decimal product
@@ -47,7 +50,9 @@ the supplied probability for the actor's hand. A modeled folded player remains
 in the deal as latent dead cards; folding does not put their cards back. A
 zero-probability observed line is reported as impossible, not ignored.
 
-Arithmetic uses a private 600-digit Decimal context. Relative per-deal products
+Arithmetic uses a private 600-digit Decimal context, including every history
+reconstruction and action fingerprint. Caller Decimal precision cannot round
+distinct penny amounts into an observed-action match. Relative per-deal products
 are retained between updates, subject to that precision; sums/divisions use it
 as well. Authoritative
 probabilities and masses are decimal strings; float display values can underflow
@@ -125,9 +130,11 @@ with independent analytical checks for the example's three posterior values.
 CI retains full requests/results and source hashes in `range-explorer-validation`.
 The [21 October measured snapshot](range-explorer-results.md) and
 [inputs/source/raw/profile digests and decimal results](range-explorer-results.json)
-record actual local execution. All **115 tests**, Ruff and compileall passed;
+record actual local execution. After the two review fixes, all **117 tests**,
+Ruff and compileall passed, including distinct £6.01/£6.02 action binding at
+ambient precisions 2/6/28 and canonical/alias history equivalence;
 the existing **10 river cases plus sensitivity** also pass. The example and
-both maximum-dimension workers completed. The latter took about 1.249/0.917
+both maximum-dimension workers completed. The latter took about 1.343/0.979
 seconds parent wall on Windows 11/Python 3.14.8; these are measured samples, not
 universal bounds. The disjoint-card probe enumerates all 13,824 compatible deals,
 with 24 action models for each of three profiles. Full raw outputs remain in
