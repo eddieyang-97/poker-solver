@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import platform
 import subprocess
 import sys
 import time
@@ -64,7 +65,7 @@ def worker():
         sources = ['poker_spot/range_explorer.py', 'poker_spot/history.py', 'poker_spot/core.py', 'poker_spot/review.py', 'scripts/explore_ranges.py']
         result['source_sha256_lf'] = {p: hashlib.sha256((ROOT/p).read_bytes().replace(b'\r\n', b'\n')).hexdigest() for p in sources}
         result['worker_metrics'] = {'wall_seconds': time.perf_counter()-started, 'cpu_seconds': time.process_time()-cpu,
-                                    'wall_deadline_seconds': 60, 'python': sys.version}
+                                    'wall_deadline_seconds': 60, 'python': sys.version, 'platform': platform.platform()}
     except (ValueError, TypeError, KeyError, RecursionError) as error:
         result = {'status': 'not_run', 'solver_execution': 'not_run', 'error': {'code': 'INVALID_INPUT', 'message': str(error)}}
     print(json.dumps(result, allow_nan=False))

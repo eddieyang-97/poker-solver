@@ -220,7 +220,17 @@ def explore(hand, spec):
     for player, prior in spec['priors'].items():
         exact_keys(prior, ('range', 'provenance'))
         text(prior['provenance'], 'Prior provenance')
-        weights = expand_range(text(prior['range'], 'Prior range', 8000), ())
+        prior_text = text(prior['range'], 'Prior range', 8000)
+        for token in prior_text.split(','):
+            _, separator, raw = token.partition(':')
+            if separator:
+                try:
+                    weight = Decimal(raw.strip())
+                except InvalidOperation:
+                    raise HistoryError('Invalid prior weight') from None
+                if not weight.is_finite() or not 0 <= weight <= 1 or weight > 0 and float(weight) == 0:
+                    raise HistoryError('Prior weights must be in [0,1] and positive support must survive binary64 parsing')
+        weights = expand_range(prior_text, ())
         if len(weights) > 24:
             raise HistoryError('Each prior is limited to 24 positive expanded combos before board removal')
         priors[player] = {h: Decimal(str(w)) for h, w in weights.items()}

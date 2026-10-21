@@ -17,6 +17,10 @@ The document contains two or three `priors` keyed by seated position, a
 the first preflop action**, not river arrivals to be conditioned twice. Each
 expanded prior has at most 24 positive concrete combos. Participants outside
 the model are explicitly omitted, including their latent-card/selection effects.
+Priors use the existing range parser's binary64 weights, rank-class expansion
+and last-token override convention. Positive tokens that underflow during that
+parsing are rejected; they are never silently treated as zero. Decimal product
+arithmetic begins from the parsed weights, not arbitrary-precision original text.
 
 Each profile contains models keyed by an actual `(street, index)`, with
 `provenance`, a finite list of alternative legal action objects (each with an
@@ -119,8 +123,25 @@ binding, malformed rows, bounds, actual worker execution and deadline recovery.
 The development benchmark runs the example and two maximum-dimension workers,
 with independent analytical checks for the example's three posterior values.
 CI retains full requests/results and source hashes in `range-explorer-validation`.
-Measured evidence and final-head CI status must be recorded separately; the
-presence of a benchmark command alone proves no successful execution.
+The [21 October measured snapshot](range-explorer-results.md) and
+[inputs/source/raw/profile digests and decimal results](range-explorer-results.json)
+record actual local execution. All **115 tests**, Ruff and compileall passed;
+the existing **10 river cases plus sensitivity** also pass. The example and
+both maximum-dimension workers completed. The latter took about 1.249/0.917
+seconds parent wall on Windows 11/Python 3.14.8; these are measured samples, not
+universal bounds. The disjoint-card probe enumerates all 13,824 compatible deals,
+with 24 action models for each of three profiles. Full raw outputs remain in
+local/CI artifacts, with source and profile digests verified against this code.
+
+The illustrative example's UTG AA posterior is **0.25**, **4/7** and **40/61**
+under baseline/neutral/reversed third-player fold selection. These are computed
+conditional probabilities under the declared models, not poker action
+frequencies. The example's eleven unknown action likelihoods remain gaps.
+Treating the baseline target-pair marginals as independent arrival weights gives
+total variation distance about **0.220519** from the actual joint posterior even
+after applying pairwise blockers. This demonstrates why no solver export is
+performed. Local checks do not establish a final-head CI pass; consult the PR's
+current run and retained artifact separately.
 
 The existing hand-review CLI and all solver/transport registrations are unchanged.
 True node locking, calibrated frequency models, automatic solver integration and

@@ -229,7 +229,7 @@ class RangeExplorerTests(unittest.TestCase):
         self.assertTrue(all(len(p['trace']) == 24 for p in result['profiles']))
         self.assertTrue(all(len(rows) == 24 for p in result['profiles'] for rows in p['marginals_decimal'].values()))
         self.assertTrue(all(float(p['independent_marginal_export_tv_decimal']) < 1e-14 for p in result['profiles']))
-        for change in ('duplicate_combo', 'duplicate_action', 'too_many_models', 'too_many_profiles', 'too_many_players', 'no_deal'):
+        for change in ('duplicate_combo', 'duplicate_action', 'too_many_models', 'too_many_profiles', 'too_many_players', 'underflow', 'no_deal'):
             spec = copy.deepcopy(MODELS)
             model = spec['profiles'][0]['models'][0]
             if change == 'duplicate_combo':
@@ -242,12 +242,16 @@ class RangeExplorerTests(unittest.TestCase):
                 spec['profiles'] *= 2
             elif change == 'too_many_players':
                 spec['priors']['BTN'] = spec['priors']['UTG']
+            elif change == 'underflow':
+                spec['priors']['UTG']['range'] = 'AsAd:1e-324,KhKd'
             else:
                 for prior in spec['priors'].values():
                     prior['range'] = 'AsAd'
                 spec['profiles'] = [dict(id='no_deal', description='Incompatible private priors', models=[])]
             with self.subTest(change=change), self.assertRaises(HistoryError):
                 explore(HAND, spec)
+        with self.assertRaises(HistoryError):
+            explore(dict(HAND, context='live'), MODELS)
 
 
 if __name__ == '__main__':

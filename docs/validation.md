@@ -1,5 +1,32 @@
 # Audit and validation — 16 October 2026
 
+## Local supplied-action range exploration — 21 October 2026
+
+The next Issue #11 follow-up adds a separate local action-frequency/range
+explorer, not a strategic solver or hosted endpoint. [Contract and commands](range-explorer.md),
+[measured results](range-explorer-results.md) and [decimal outputs/source/profile hashes](range-explorer-results.json)
+retain the admitted scope: two/three modeled participants, chronological board
+filtering, history-bound legal alternatives, complete supplied frequency rows,
+unknown-likelihood gaps and latent cards of modeled folded players. Future
+actions/cards and all hole-card claims are excluded from inference. Posterior
+marginals are not silently substituted into the independent-range solver.
+
+Actual local checks pass: **115 tests**, Ruff/compileall, **20 randomized exact
+Fraction cross-checks**, three-profile analytical sensitivity and two maximum
+worker samples (24³ candidate deals, three profiles, 24 models/profile), plus
+the existing **10/10 river cases and sensitivity**. Actual timeout termination,
+tiny scales, private decimal contexts, support-underflow rejection, impossible
+lines, input bounds, model edits and error evidence are covered. The local CLI
+enforces a 60-second parent deadline; CPU/RSS bounds and universal runtime are
+not claimed. CI retains a separate `range-explorer-validation` artifact; this
+local snapshot does not claim final-head CI or real hosted acceptance.
+
+Computed range probabilities depend on uncalibrated supplied priors/frequencies;
+no action EV, equilibrium frequency or new solver call is produced. Existing
+hand-review dispatch, all solver engines, hosted registrations, deployment,
+OAuth and plugin settings are unchanged. True node locking, calibrated models,
+automatic solver integration and future turn transport remain separate work.
+
 ## Experimental local river raises — 21 October 2026
 
 Issue #13 now has a separate opt-in `RaiseRiverSolver` and disposable local CLI,
