@@ -13,7 +13,7 @@ not validate the realism of arrival ranges or action-likelihood assumptions.
 | Hand-review Phase 1, PR #12 | Accounting, bounded prose, explicit scenarios and supported river dispatch completed | Declared likelihoods only; unknowns remain gaps | Local workflow; existing hosted interface unchanged |
 | Action-model explorer, PR #15 | Merged; final source `1196b9c`, 117 tests and full CI passed; nine profiles verified | Joint conditioning under supplied hypotheses, including folded-player cards; no calibration | Local CLI only; no solver dispatch or marginal substitution |
 | River raises, PR #14 and Issue #17 | Local one-raise engine; fractional/exact-cent inputs and opt-in review; existing independent suite plus one exact-tree check | Supplied independent arrival ranges; no forced observed line | No MCP registration or hosted acceptance |
-| Turn engine | Local two-street implementation and small independent corpus | Supplied ranges; larger games remain less validated | No MCP registration; PR #10 resource/reconciliation work remains open |
+| Turn engine | Local two-street implementation; PR #10 expanded independent coverage and retained resource failures | Supplied ranges; larger games remain less validated | No MCP registration; feasibility is tracked separately in Issue #21 |
 
 Evidence: [validation](validation.md), [river closeout](river-milestone.md),
 [hand review](hand-review.md), [range exploration](range-explorer.md),
@@ -94,9 +94,10 @@ authenticated ChatGPT acceptance, expose a separate raise-enabled tool. Preserve
 the validated no-raise interface. Local 60-second raise-worker measurements do not
 change the hosted 20-second budgets or justify an automatic increase.
 
-Reconcile the still-open [PR #10](https://github.com/eddieyang-97/poker-solver/pull/10)
-against current main in its own review. Preserve its measured maximum-workload
-timeouts and platform discrepancies. Establish turn safety and performance
+[PR #10](https://github.com/eddieyang-97/poker-solver/pull/10) has merged at
+`cc5c70d`. Preserve its measured maximum-workload timeouts and platform
+discrepancies; [Issue #21](https://github.com/eddieyang-97/poker-solver/issues/21)
+tracks feasibility under current budgets. Establish turn safety and performance
 separately; neither a green resource-study command nor a faster individual run
 establishes portable hosted capacity. Keep production and OAuth changes gated by
 their actual acceptance evidence and existing user authorization.
