@@ -1,5 +1,7 @@
 """Development-only exact-tree and bidirectional policy validation for raises."""
 import hashlib
+from decimal import Context, Decimal, localcontext
+from fractions import Fraction
 import json
 import math
 import os
@@ -32,8 +34,28 @@ def upstream_config(config):
             hands.append(hand)
             weights.append(float(weight) if separator else 1.0)
         players.append({'hands': hands, 'weights': weights})
+    bets, raises = config.get('bet_sizes'), config.get('raise_sizes')
+    if 'bet_amounts_cents' in config or 'raise_to_cents' in config:
+        if bets is not None or raises is not None or len(config['bet_amounts_cents']) != 1:
+            raise ValueError('Exact reference comparison supports one opening amount; no mixed sizing or tree adaptation')
+        with localcontext(Context(prec=600)):
+            pot, stack = [Decimal(str(config[k]))*100 for k in ('pot', 'stack')]
+        if any(v != v.to_integral_value() for v in (pot, stack)):
+            raise ValueError('Exact reference pot/stack must be cent-exact')
+        pot, stack = int(pot), int(stack)
+        bet = config['bet_amounts_cents'][0]
+        targets = config['raise_to_cents']
+        if (type(bet) is not int or not 0 < bet < stack or not isinstance(targets, list)
+                or not 1 <= len(targets) <= 2 or targets != sorted(set(targets))
+                or any(type(t) is not int or not bet < t <= stack or t-bet < bet and t != stack for t in targets)):
+            raise ValueError('Invalid exact reference bet/raise totals')
+        def encoded(numerator, denominator):
+            value = Fraction(numerator, denominator)
+            return {'numerator': value.numerator, 'denominator': value.denominator}
+        bets = [encoded(bet, pot)]
+        raises = [encoded(t-bet, pot+2*bet) for t in targets]
     return {'board': config['board'].split(','), 'pot': round(config['pot']*100), 'stack': round(config['stack']*100),
-            'bet_sizes': config['bet_sizes'], 'raise_sizes': config['raise_sizes'],
+            'bet_sizes': bets, 'raise_sizes': raises,
             'include_all_in': False, 'max_raises': 2, 'players': players}
 
 
@@ -41,17 +63,28 @@ def reference_game(config):
     verify_reference()
     u = upstream_config(config)
     game = RiverHoldemGame(RiverHoldemConfig(
-        board=u['board'], pot=u['pot'], stacks=(u['stack'],)*2, bet_sizes=u['bet_sizes'],
-        oop_first_raises=u['raise_sizes'], ip_first_raises=u['raise_sizes'], include_all_in=False, max_raises=2,
+        board=u['board'], pot=u['pot'], stacks=(u['stack'],)*2, bet_sizes=reference_sizes(u['bet_sizes']),
+        oop_first_raises=reference_sizes(u['raise_sizes']), ip_first_raises=reference_sizes(u['raise_sizes']), include_all_in=False, max_raises=2,
         ranges=tuple(p['hands'] for p in u['players']), range_weights=tuple(p['weights'] for p in u['players'])))
     return game, u
 
 
+def reference_sizes(values):
+    return [Fraction(v['numerator'], v['denominator']) if isinstance(v, dict) else v for v in values]
+
+
 def check_tree(solver, game):
     seen = set()
+    bets, raises = solver.sizes, solver.raise_sizes
+    if solver.exact_sizing:
+        if len(solver.bet_cents) != 1:
+            raise ValueError('Exact reference comparison supports one opening amount')
+        bet = solver.bet_cents[0]
+        bets = [Fraction(bet, solver.pot_cents)]
+        raises = [Fraction(t-bet, solver.pot_cents+2*bet) for t in solver.raise_to_cents]
     if (game.base_pot != solver.pot_cents or game.stacks != (solver.stack_cents,)*2
             or set(game.config.board) != set(solver.board) or game.include_all_in is not False or game.max_raises != 2
-            or game.bet_sizes != solver.sizes or game.oop_first_raises != solver.raise_sizes or game.ip_first_raises != solver.raise_sizes):
+            or game.bet_sizes != bets or game.oop_first_raises != raises or game.ip_first_raises != raises):
         raise ValueError('Declared board/pot/stacks/sizing/raise cap differ')
     for p in (0, 1):
         hands = solver.h0 if p == 0 else solver.h1
