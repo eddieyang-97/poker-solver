@@ -8,6 +8,10 @@
   supersession cancellation. Never skip gates by path or treat study failures
   as hosted acceptance. Run the isolated CI gate/contract tests after DAG edits;
   retain measured timing, runner-cost estimates and all eleven artifact groups.
+  Decomposition may use at most two independent reference subprocesses; retain
+  serial CLI default, all 188 games and ordered evaluation/aggregation. Keep
+  strict cross-run policy/resource discrepancies visible; replay of different
+  valid policies is not proof of identical frequencies or low-reach action EVs.
 
 - Treat GitHub issues as the source of truth for milestone scope,
   dependencies, deliverables, acceptance criteria, and exclusions.

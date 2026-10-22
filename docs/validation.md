@@ -13,7 +13,14 @@ cancelled, timed-out or missing dependency and require nonzero exit.
 Local checks: Ruff/compileall passed; 143 tests ran, 142 passed and one Linux-only
 check skipped on Windows. The first DAG-only PR CI passed in 764 seconds; all 11 ZIPs/20 JSON files were
 compared with retained last-bit differences and two actual resource timeouts.
-Two-worker scheduling CI and repeated optimized timings remain pending at this snapshot. No solver, hosted registration,
+The first two-worker implementation CI passed in 425 seconds (7m05s), with all
+eleven groups verified. Strict comparison retains differing product strategies:
+largest probability difference 0.34670755; largest same-model root EV difference
+0.000136553 chips. Both saved policies pass the unchanged ten-fixture convergence,
+same-policy and cross-play gates; largest fixed-policy numeric delta 5.2246e-14.
+Largest frequency shifts have own reach around 1e-7; conditional action EVs there
+are not stable. All 208 recorded reference-profile digest fields match (including repeated fields). Repeated
+optimized measurements remain pending at this snapshot. No solver, hosted registration,
 provider/protection setting, merge or deployment change is included. Actual
 post-merge/main and Render acceptance remain separate owner-gated evidence.
 

@@ -70,8 +70,47 @@ and raw-output hashes, worker receipts and every JSON leaf. Only explicitly
 listed timing, memory, PID, profiler and verified raw-file digest metadata is
 separated; numerical outputs, strategies, status/failure classifications and
 limits use exact comparisons, with no newly introduced numeric tolerance.
+The two reviewed scheduling-source hashes and reported worker count are explicit
+execution metadata; source bytes are verified against each Git revision.
 Readable Markdown is retained alongside its authoritative JSON. The complete
 diff remains local; concise verified counts and any discrepancies are versioned.
+
+The first optimized CI run passed in 425 seconds (7m05s), versus the sequential
+median of 890 seconds: 52.2% less wall time. Its summed job time was 903 seconds;
+rounding each job gives 17 runner-minute estimates versus the baseline median
+15. This is a latency/cost tradeoff, not a proven per-run compute saving. Removing
+the duplicate feature push reduces redundant full-suite work per PR update.
+Repeated optimized measurements are needed before claiming a stable median.
+
+The strict optimized comparison exits 1: 19,451 non-metadata differences remain,
+including strategy probabilities. None is hidden by loosening a threshold.
+All reference-profile digests are unchanged; the largest product probability
+shift is 0.34670755, not a chip EV discrepancy. Replaying both saved turn policies
+in the same independent/product models passes all original same-policy,
+convergence and cross-play bounds: maximum numeric mismatch 5.2246e-14 chips,
+maximum root-value difference 0.000136553 chips. Largest probability shifts in
+`trips_3x4` and `draw_4x4_two_sizes` occur at own reaches around 8e-8–3e-7.
+Conditional action EVs there also differ materially. A small root NashConv does
+not certify low-reach continuations, and no cross-run frequency precision is
+claimed. The exact cross-run arithmetic/CPU cause has not been established.
+
+Reproduce the diagnostic after downloading the two public artifact sets:
+
+```powershell
+.venv/Scripts/python scripts/compare_ci_evidence.py --baseline .artifacts/issue28/baseline-artifacts --candidate .artifacts/issue28/optimized1-artifacts --baseline-manifest .artifacts/issue28/baseline-artifacts-manifest.json --candidate-manifest .artifacts/issue28/optimized1-artifacts-manifest.json --baseline-revision 502ed40 --candidate-revision 45be65a --audit-turn-policies --output .artifacts/issue28/optimized1-comparison.json
+```
+
+This reports strict differences rather than zero-difference acceptance. Its
+optional audit replays existing policies, without training, changing solver
+behavior or replacing the independent reference. Two maximum resource probes
+also timed out under unchanged budgets; the other four completed. Expected
+study failures remain explicit and establish no hosted acceptance.
+
+A paired same-host Windows/Python 3.14.8 singleton measurement (2,000/4,000
+iterations) took 36.781s with one worker and 21.783s with two: 40.8% less wall
+time. Maximum active child calls were 1/2 and all 44 reference-profile digests,
+root diagnostics and aggregate values matched exactly. These are measured
+samples, not universal bounds or Linux release acceptance.
 
 In the fast sequential baseline, 188 distinct reference workers spent a summed
 338.715 seconds training against the 351-second decomposition step. Training is

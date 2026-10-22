@@ -9,6 +9,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import sys
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -159,6 +160,73 @@ def compare(baseline, candidate):
             'comparison': 'Every JSON leaf checked exactly; only enumerated timing/memory/PID/profile-hash metadata separated'}
 
 
+def audit_turn_policies(baseline, candidate):
+    """Replay different saved policies in identical models, without new training.
+
+    Frequency equality is not an existing general equilibrium gate. Keep the
+    strict diff above; this diagnoses whether changed policies still meet the
+    original same-policy, convergence and cross-play security requirements.
+    """
+    import numpy as np
+    from benchmarks.turn_reference import IndependentTurnGame
+    from benchmarks.turn_independent import product_solver, install_reference_profile, product_evaluation, history_location
+
+    group = 'turn-independent-reference'
+    left = json.loads(baseline[group]['turn-independent.profiles.json'])
+    right = json.loads(candidate[group]['turn-independent.profiles.json'])
+    cases = json.loads(baseline[group]['turn-independent.json'])['cases']
+    other = {c['id']: c for c in json.loads(candidate[group]['turn-independent.json'])['cases']}
+    if set(left) != set(right) or set(left) != set(other) or len(cases) != len(other):
+        raise ValueError('Policy audit fixture sets differ')
+    rows = []
+    for case in cases:
+        identity, config, gate = case['id'], case['config'], case['gates']
+        if config != other[identity]['config'] or gate != other[identity]['gates']:
+            raise ValueError('Policy audit configuration/gates differ')
+        game = IndependentTurnGame(config)
+        policies = {name: game.import_profile(raw[identity]['product_profile'])
+                    for name, raw in (('baseline', left), ('candidate', right))}
+        delta = np.abs(policies['baseline']-policies['candidate'])
+        info = game.infos[np.unravel_index(delta.argmax(), delta.shape)[0]]
+        row = {'id': identity, 'diagnostics': {}, 'max_probability_delta': float(delta.max()),
+               'largest_difference': info, 'conditional_rows': {}}
+        for name, policy in policies.items():
+            evaluated = game.evaluate(policy)
+            solver = product_solver(config)
+            install_reference_profile(game, solver, policy)
+            product = product_evaluation(solver)
+            mismatch = max(abs(product[k]-evaluated[k]) for k in
+                           ('oop_ev', 'ip_ev', 'nash_conv_chips', 'oop_lower_bound', 'oop_upper_bound'))
+            if mismatch > gate['same_policy_numeric_chips'] or evaluated['nash_conv_chips'] > gate['convergence_chips']:
+                raise ValueError('Saved policy violates original numeric/convergence gate')
+            row['diagnostics'][name] = dict(evaluated, same_policy_numeric_delta=mismatch)
+            collected = {}
+            solver._walk(solver.root, *solver.weights, collect=collected)
+            location, river = history_location(info['history'])
+            node = solver.nodes[location]
+            hand = next(i for i, h in enumerate(solver.hands[node.player]) if set(h) == set(info['hand']))
+            ix = (hand,) if river is None else (solver.rivers.index(river), hand)
+            values = collected[location]
+            row['conditional_rows'][name] = {
+                'actions': list(node.actions), 'frequency': node.average()[ix].tolist(),
+                'action_evs': [float(v) if np.isfinite(v) else None for v in values['ev'][ix]],
+                'own_strategic_reach_given_hand': float(values['own'][ix]/solver.weights[node.player][hand]),
+                'opponent_reach_mass': float(values['opponent'][ix]), 'chance_reach': values['chance_reach']}
+        a, b = row['diagnostics']['baseline'], row['diagnostics']['candidate']
+        cross, reverse = policies['baseline'].copy(), policies['baseline'].copy()
+        cross[game.info_player == 1] = policies['candidate'][game.info_player == 1]
+        reverse[game.info_player == 0] = policies['candidate'][game.info_player == 0]
+        x, y = game.evaluate(cross)['oop_ev'], game.evaluate(reverse)['oop_ev']
+        tol = gate['same_policy_numeric_chips']
+        if not (a['oop_lower_bound']-tol <= x <= b['oop_upper_bound']+tol
+                and b['oop_lower_bound']-tol <= y <= a['oop_upper_bound']+tol
+                and abs(a['oop_ev']-b['oop_ev']) <= a['nash_conv_chips']+b['nash_conv_chips']+tol):
+            raise ValueError('Saved policies violate original security/combined-gap bounds')
+        row.update(cross_play_oop_ev=x, reverse_cross_play_oop_ev=y, root_ev_delta=abs(a['oop_ev']-b['oop_ev']))
+        rows.append(row)
+    return rows
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('baseline', 'candidate'):
@@ -166,10 +234,14 @@ def main():
         parser.add_argument('--'+name+'-manifest', type=Path, required=True)
         parser.add_argument('--'+name+'-revision', help='Git revision for source receipts; default current files')
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--audit-turn-policies', action='store_true', help='Replay both saved policies in identical models; no training')
     args = parser.parse_args()
     baseline, a = load_artifacts(args.baseline, json.loads(args.baseline_manifest.read_text()), args.baseline_revision)
     candidate, b = load_artifacts(args.candidate, json.loads(args.candidate_manifest.read_text()), args.candidate_revision)
     report = dict(compare(baseline, candidate), verified_baseline=a, verified_candidate=b)
+    if args.audit_turn_policies:
+        sys.path.insert(0, str(ROOT))
+        report['turn_policy_audit'] = audit_turn_policies(baseline, candidate)
     args.output.write_text(json.dumps(report, indent=2, allow_nan=False)+'\n', encoding='utf-8')
     print(f'{len(report["groups"])} artifact groups; {len(report["material_differences"])} material differences')
     return bool(report['material_differences'])

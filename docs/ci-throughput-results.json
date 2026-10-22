@@ -1272,12 +1272,469 @@
       ],
       "total_artifact_bytes": 862381,
       "configuration": "Four concurrent jobs; original single-worker decomposition"
+    },
+    {
+      "run_id": 39870188032,
+      "head_sha": "45be65a54472c9a52d14cd27915e614e2c92d90e",
+      "event": "pull_request",
+      "url": "https://github.com/eddieyang-97/poker-solver/actions/runs/39870188032",
+      "created_at": "2026-10-22T23:11:56Z",
+      "first_job_start": "2026-10-22T23:11:58Z",
+      "last_job_end": "2026-10-22T23:19:03Z",
+      "initial_queue_seconds": 2.0,
+      "critical_path_seconds": 425.0,
+      "created_to_green_seconds": 427.0,
+      "total_job_seconds": 903.0,
+      "rounded_runner_minutes_estimate": 17,
+      "billing_caveat": "Job wall-time estimate, not account billing; aggregate dependency wait is excluded from job duration",
+      "jobs": [
+        {
+          "id": 120142387354,
+          "name": "decomposition",
+          "runner_name": "GitHub Actions 1000000350",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:11:58Z",
+          "completed_at": "2026-10-22T23:18:55Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 2.0,
+          "seconds": 417.0,
+          "setup_install_seconds": 12.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run pip install -r requirements-dev.txt",
+              "conclusion": "success",
+              "seconds": 9.0
+            },
+            {
+              "name": "Independently trained river-subgame decomposition",
+              "conclusion": "success",
+              "seconds": 354.0
+            },
+            {
+              "name": "Maximum-dimension local turn performance",
+              "conclusion": "success",
+              "seconds": 45.0
+            },
+            {
+              "name": "Retain turn follow-up reports",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        },
+        {
+          "id": 120142387617,
+          "name": "river",
+          "runner_name": "GitHub Actions 1000000351",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:11:58Z",
+          "completed_at": "2026-10-22T23:15:15Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 2.0,
+          "seconds": 197.0,
+          "setup_install_seconds": 10.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run pip install -r requirements-dev.txt",
+              "conclusion": "success",
+              "seconds": 8.0
+            },
+            {
+              "name": "Static checks",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run tests",
+              "conclusion": "success",
+              "seconds": 43.0
+            },
+            {
+              "name": "Independent same-tree river benchmark",
+              "conclusion": "success",
+              "seconds": 86.0
+            },
+            {
+              "name": "Supplied action-model sensitivity and bounded joint range enumeration",
+              "conclusion": "success",
+              "seconds": 4.0
+            },
+            {
+              "name": "Retain local action-model range exploration",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Post-session reconstruction and actual bounded river calculations",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Retain post-session requests and computed results",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Independently trained local river raises and maximum workloads",
+              "conclusion": "success",
+              "seconds": 24.0
+            },
+            {
+              "name": "Retain local river raise validation",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Exact-size local hand review and independent matching raise tree",
+              "conclusion": "success",
+              "seconds": 3.0
+            },
+            {
+              "name": "Retain exact-size local raise review",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Retain differential report",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Replay recorded TexasSolver policy (no external executable)",
+              "conclusion": "success",
+              "seconds": 14.0
+            },
+            {
+              "name": "Retain TexasSolver replay report",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Replay controlled averaging evidence (no external build)",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Retain controlled averaging replay report",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        },
+        {
+          "id": 120142387638,
+          "name": "resources",
+          "runner_name": "GitHub Actions 1000000352",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:11:58Z",
+          "completed_at": "2026-10-22T23:13:58Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 2.0,
+          "seconds": 120.0,
+          "setup_install_seconds": 13.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run pip install -r requirements-dev.txt",
+              "conclusion": "success",
+              "seconds": 11.0
+            },
+            {
+              "name": "Development Linux turn budgets and separate profile",
+              "conclusion": "success",
+              "seconds": 103.0
+            },
+            {
+              "name": "Retain local resource study including failed probes",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        },
+        {
+          "id": 120142387728,
+          "name": "turn",
+          "runner_name": "GitHub Actions 1000000353",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:11:59Z",
+          "completed_at": "2026-10-22T23:14:42Z",
+          "queue_seconds": 3.0,
+          "created_to_start_seconds": 3.0,
+          "seconds": 163.0,
+          "setup_install_seconds": 14.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run pip install -r requirements-dev.txt",
+              "conclusion": "success",
+              "seconds": 12.0
+            },
+            {
+              "name": "Experimental turn policy and best-response validation",
+              "conclusion": "success",
+              "seconds": 14.0
+            },
+            {
+              "name": "Retain experimental turn validation",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Independently trained strategic turn reference",
+              "conclusion": "success",
+              "seconds": 127.0
+            },
+            {
+              "name": "Retain independent turn reference",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        },
+        {
+          "id": 120144967589,
+          "name": "test",
+          "runner_name": "GitHub Actions 1000000354",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:18:57Z",
+          "completed_at": "2026-10-22T23:19:03Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 421.0,
+          "seconds": 6.0,
+          "setup_install_seconds": 2.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Require every gate to succeed",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 12466825255,
+          "name": "turn-decomposition-performance",
+          "size_in_bytes": 38670,
+          "digest": "sha256:42a158d416c84fa7a5dd3e5c3af9ecd43889ac241707210ae72dc8a5c7238d42"
+        },
+        {
+          "id": 12466420246,
+          "name": "river-benchmark",
+          "size_in_bytes": 33653,
+          "digest": "sha256:c83d5d955c1c523024f7cbb25ed6522d98002787afec0f6f21ce9d5d67325754"
+        },
+        {
+          "id": 12466250952,
+          "name": "turn-policy-validation",
+          "size_in_bytes": 11261,
+          "digest": "sha256:89cd2e4008c42b801ce87cb2ce3c740b4dd625312707431f4cd71c6ef0d86989"
+        },
+        {
+          "id": 12466061222,
+          "name": "turn-resource-study",
+          "size_in_bytes": 5255,
+          "digest": "sha256:051c9747e2a7afadf8e0d79e4f55034b90a2ef729f7159df383cd7456c67c0f6"
+        },
+        {
+          "id": 12466051453,
+          "name": "exact-size-raise-review",
+          "size_in_bytes": 15078,
+          "digest": "sha256:4f0cc6c6aa94cef4d3adaba58c0868956369160e2004c48173dce97b42c6e5d0"
+        },
+        {
+          "id": 12465986671,
+          "name": "range-explorer-validation",
+          "size_in_bytes": 279861,
+          "digest": "sha256:a06fd64cf7cb5e8a8316e1fcd37726a9e5d384c4519c0a6bd2b1025e80b7c4c1"
+        },
+        {
+          "id": 12465702550,
+          "name": "post-session-hand-review",
+          "size_in_bytes": 7908,
+          "digest": "sha256:247c03758e84d273eb365a8ab01122989205567118feff01191843373cd92d59"
+        },
+        {
+          "id": 12465374715,
+          "name": "turn-independent-reference",
+          "size_in_bytes": 403054,
+          "digest": "sha256:14671ca808a0271016e6c6f73fde736039b0e4f92c08595333c48c546bbde855"
+        },
+        {
+          "id": 12465093986,
+          "name": "texas-averaging-replay",
+          "size_in_bytes": 20817,
+          "digest": "sha256:e2303e822d68dcbd604c914f4712f046ca2775483b15ee073f3b29ad3d2b7c7f"
+        },
+        {
+          "id": 12465009260,
+          "name": "river-raise-validation",
+          "size_in_bytes": 40030,
+          "digest": "sha256:c6beede590b238272a670d41987ddc47e5841c10468e7c96099bb9e18747a581"
+        },
+        {
+          "id": 12464824661,
+          "name": "texas-evidence-replay",
+          "size_in_bytes": 6967,
+          "digest": "sha256:6f5d4a1e20aa57153cc889ad35ba3a58065bc1e2623e90c6f291257088803b03"
+        }
+      ],
+      "total_artifact_bytes": 862554,
+      "configuration": "Four concurrent jobs; bounded two-worker independent decomposition"
     }
   ],
   "acceptance": {
-    "latest_head_ci": "First DAG-only source 808bd8c passed; two-worker scheduling source pending; final check tracked on PR #29",
-    "exhaustive_matched_artifacts": "First run all 11 ZIPs/20 JSON files compared; exact differences retained above; optimized run pending",
-    "repeated_timings": "pending",
+    "latest_head_ci": "Optimized implementation 45be65a passed run 39870188032; final documentation/source head checks tracked on PR #29",
+    "exhaustive_matched_artifacts": "All 11 groups/20 JSON files compared; strict differences and ten-policy replay audit retained",
+    "repeated_timings": "One optimized CI sample plus same-host paired measurement; repeats pending",
     "post_merge_main": "Requires separate owner-approved merge; no merge/deploy performed",
     "render_provider_acceptance": "Separate Issue 23"
   },
@@ -1386,5 +1843,1107 @@
     "reduction_vs_baseline_median_pct": 14.157303370786517,
     "target_met": false,
     "next": "Bounded two-worker independent reference scheduling"
+  },
+  "optimized_matched_comparison": {
+    "baseline_run": 39865456688,
+    "candidate_run": 39870188032,
+    "verified_baseline": {
+      "zip_hashes": 11,
+      "source_hashes": 176,
+      "raw_hashes": 7,
+      "worker_receipts": 1,
+      "result_hashes": 7
+    },
+    "verified_candidate": {
+      "zip_hashes": 11,
+      "source_hashes": 176,
+      "raw_hashes": 7,
+      "worker_receipts": 1,
+      "result_hashes": 7
+    },
+    "groups": [
+      {
+        "artifact": "river-benchmark",
+        "metadata_changes": 41,
+        "material_changes": 862
+      },
+      {
+        "artifact": "turn-independent-reference",
+        "metadata_changes": 71,
+        "material_changes": 18215
+      },
+      {
+        "artifact": "texas-averaging-replay",
+        "metadata_changes": 0,
+        "material_changes": 16
+      },
+      {
+        "artifact": "river-raise-validation",
+        "metadata_changes": 37,
+        "material_changes": 123
+      },
+      {
+        "artifact": "exact-size-raise-review",
+        "metadata_changes": 9,
+        "material_changes": 131
+      },
+      {
+        "artifact": "post-session-hand-review",
+        "metadata_changes": 6,
+        "material_changes": 0
+      },
+      {
+        "artifact": "range-explorer-validation",
+        "metadata_changes": 24,
+        "material_changes": 0
+      },
+      {
+        "artifact": "texas-evidence-replay",
+        "metadata_changes": 4,
+        "material_changes": 0
+      },
+      {
+        "artifact": "turn-decomposition-performance",
+        "metadata_changes": 404,
+        "material_changes": 62
+      },
+      {
+        "artifact": "turn-resource-study",
+        "metadata_changes": 210,
+        "material_changes": 31
+      },
+      {
+        "artifact": "turn-policy-validation",
+        "metadata_changes": 8,
+        "material_changes": 11
+      }
+    ],
+    "unchanged_reference_profile_digests": 208,
+    "strict_comparator_exit": 1,
+    "strict_non_metadata_differences": 19451,
+    "maximum_strategy_probability_difference": 0.346707554983076,
+    "maximum_same_policy_replay_numeric_delta": 5.224553428773149e-14,
+    "maximum_root_ev_difference": 0.0001365529047916425,
+    "original_convergence_and_cross_play_gates": "All ten saved policy pairs passed in identical models",
+    "exact_arithmetic_cpu_cause": "Not established; unchanged product source. Do not claim all frequencies/conditional EVs identical.",
+    "policy_audit": [
+      {
+        "id": "singleton_minimax",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": -27.2730174967352,
+            "ip_ev": 27.2730174967352,
+            "nash_conv_chips": 0.0004495238377231203,
+            "oop_lower_bound": -27.273076353745154,
+            "oop_upper_bound": -27.27262682990743,
+            "same_policy_numeric_delta": 1.4210854715202004e-14
+          },
+          "candidate": {
+            "oop_ev": -27.2730174967352,
+            "ip_ev": 27.2730174967352,
+            "nash_conv_chips": 0.0004495238377231203,
+            "oop_lower_bound": -27.273076353745154,
+            "oop_upper_bound": -27.27262682990743,
+            "same_policy_numeric_delta": 1.4210854715202004e-14
+          }
+        },
+        "max_probability_delta": 0.0,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "As",
+            "Ks"
+          ],
+          "history": [],
+          "actions": [
+            "X",
+            "B:5000"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "check",
+              "bet_50"
+            ],
+            "frequency": [
+              0.4140271570577463,
+              0.5859728429422537
+            ],
+            "action_evs": [
+              -27.27329770151306,
+              -27.27281951420245
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.0,
+            "chance_reach": 1.0
+          },
+          "candidate": {
+            "actions": [
+              "check",
+              "bet_50"
+            ],
+            "frequency": [
+              0.4140271570577463,
+              0.5859728429422537
+            ],
+            "action_evs": [
+              -27.27329770151306,
+              -27.27281951420245
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.0,
+            "chance_reach": 1.0
+          }
+        },
+        "cross_play_oop_ev": -27.2730174967352,
+        "reverse_cross_play_oop_ev": -27.2730174967352,
+        "root_ev_delta": 0.0
+      },
+      {
+        "id": "weighted_dry",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": -48.633231987601356,
+            "ip_ev": 48.633231987601356,
+            "nash_conv_chips": 0.00527674821110935,
+            "oop_lower_bound": -48.63493535000765,
+            "oop_upper_bound": -48.62965860179654,
+            "same_policy_numeric_delta": 5.224553428773149e-14
+          },
+          "candidate": {
+            "oop_ev": -48.633231987601356,
+            "ip_ev": 48.633231987601356,
+            "nash_conv_chips": 0.00527674821110935,
+            "oop_lower_bound": -48.63493535000765,
+            "oop_upper_bound": -48.62965860179654,
+            "same_policy_numeric_delta": 5.224553428773149e-14
+          }
+        },
+        "max_probability_delta": 0.0,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "Kd",
+            "Kh"
+          ],
+          "history": [],
+          "actions": [
+            "X",
+            "B:5000"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "check",
+              "bet_50"
+            ],
+            "frequency": [
+              0.9999942125658532,
+              5.787434146802904e-06
+            ],
+            "action_evs": [
+              -48.63316464931546,
+              -60.26842203683998
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.7,
+            "chance_reach": 1.0
+          },
+          "candidate": {
+            "actions": [
+              "check",
+              "bet_50"
+            ],
+            "frequency": [
+              0.9999942125658532,
+              5.787434146802904e-06
+            ],
+            "action_evs": [
+              -48.63316464931546,
+              -60.26842203683998
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.7,
+            "chance_reach": 1.0
+          }
+        },
+        "cross_play_oop_ev": -48.633231987601356,
+        "reverse_cross_play_oop_ev": -48.633231987601356,
+        "root_ev_delta": 0.0
+      },
+      {
+        "id": "draw_two_sizes",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": -50.000304686305626,
+            "ip_ev": 50.000304686305626,
+            "nash_conv_chips": 0.0004832515702801743,
+            "oop_lower_bound": -50.00040235461285,
+            "oop_upper_bound": -49.99991910304257,
+            "same_policy_numeric_delta": 1.4210854715202004e-14
+          },
+          "candidate": {
+            "oop_ev": -50.000304686305626,
+            "ip_ev": 50.000304686305626,
+            "nash_conv_chips": 0.0004832515702801743,
+            "oop_lower_bound": -50.00040235461285,
+            "oop_upper_bound": -49.99991910304257,
+            "same_policy_numeric_delta": 1.4210854715202004e-14
+          }
+        },
+        "max_probability_delta": 0.0,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "Kd",
+            "Qd"
+          ],
+          "history": [],
+          "actions": [
+            "X",
+            "B:3300",
+            "B:7500"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "check",
+              "bet_33",
+              "bet_75"
+            ],
+            "frequency": [
+              0.9999942534076229,
+              5.175479626579024e-06,
+              5.711127504923036e-07
+            ],
+            "action_evs": [
+              -50.00007037767275,
+              -85.41840259253316,
+              -161.62710656153334
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.5,
+            "chance_reach": 1.0
+          },
+          "candidate": {
+            "actions": [
+              "check",
+              "bet_33",
+              "bet_75"
+            ],
+            "frequency": [
+              0.9999942534076229,
+              5.175479626579024e-06,
+              5.711127504923036e-07
+            ],
+            "action_evs": [
+              -50.00007037767275,
+              -85.41840259253316,
+              -161.62710656153334
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.5,
+            "chance_reach": 1.0
+          }
+        },
+        "cross_play_oop_ev": -50.000304686305626,
+        "reverse_cross_play_oop_ev": -50.000304686305626,
+        "root_ev_delta": 0.0
+      },
+      {
+        "id": "weighted_collision",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": -37.47935622881271,
+            "ip_ev": 37.47935622881271,
+            "nash_conv_chips": 0.0004767565754377756,
+            "oop_lower_bound": -37.47959719552469,
+            "oop_upper_bound": -37.47912043894925,
+            "same_policy_numeric_delta": 2.842170943040401e-14
+          },
+          "candidate": {
+            "oop_ev": -37.47935622881271,
+            "ip_ev": 37.47935622881271,
+            "nash_conv_chips": 0.0004767565754377756,
+            "oop_lower_bound": -37.47959719552469,
+            "oop_upper_bound": -37.47912043894925,
+            "same_policy_numeric_delta": 2.842170943040401e-14
+          }
+        },
+        "max_probability_delta": 0.0,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "Kd",
+            "Kh"
+          ],
+          "history": [],
+          "actions": [
+            "X",
+            "B:5000"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "check",
+              "bet_50"
+            ],
+            "frequency": [
+              0.9999964471159699,
+              3.552884030110332e-06
+            ],
+            "action_evs": [
+              -49.99996897556883,
+              -63.6342044981241
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.5,
+            "chance_reach": 1.0
+          },
+          "candidate": {
+            "actions": [
+              "check",
+              "bet_50"
+            ],
+            "frequency": [
+              0.9999964471159699,
+              3.552884030110332e-06
+            ],
+            "action_evs": [
+              -49.99996897556883,
+              -63.6342044981241
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.5,
+            "chance_reach": 1.0
+          }
+        },
+        "cross_play_oop_ev": -37.47935622881271,
+        "reverse_cross_play_oop_ev": -37.47935622881271,
+        "root_ev_delta": 0.0
+      },
+      {
+        "id": "paired_capped",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": 19.33325383164194,
+            "ip_ev": -19.33325383164194,
+            "nash_conv_chips": 0.00010760749890081911,
+            "oop_lower_bound": 19.33323338866968,
+            "oop_upper_bound": 19.33334099616858,
+            "same_policy_numeric_delta": 7.105427357601002e-15
+          },
+          "candidate": {
+            "oop_ev": 19.33325383164195,
+            "ip_ev": -19.33325383164195,
+            "nash_conv_chips": 0.00010760749890792454,
+            "oop_lower_bound": 19.33323338866968,
+            "oop_upper_bound": 19.333340996168587,
+            "same_policy_numeric_delta": 5.447492500490481e-15
+          }
+        },
+        "max_probability_delta": 6.94919677357575e-11,
+        "largest_difference": {
+          "player": 1,
+          "hand": [
+            "9d",
+            "9h"
+          ],
+          "history": [
+            "X",
+            "B:5000",
+            "C",
+            "R:2c",
+            "B:1000"
+          ],
+          "actions": [
+            "F",
+            "C"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "fold",
+              "call"
+            ],
+            "frequency": [
+              0.5,
+              0.5
+            ],
+            "action_evs": [
+              -100.0,
+              110.0
+            ],
+            "own_strategic_reach_given_hand": 4.997501249375312e-07,
+            "opponent_reach_mass": 1.8253958311427182e-06,
+            "chance_reach": 0.022727272727272728
+          },
+          "candidate": {
+            "actions": [
+              "fold",
+              "call"
+            ],
+            "frequency": [
+              0.49999999993050803,
+              0.500000000069492
+            ],
+            "action_evs": [
+              -100.0,
+              110.0
+            ],
+            "own_strategic_reach_given_hand": 4.997501250069888e-07,
+            "opponent_reach_mass": 1.8253958311427174e-06,
+            "chance_reach": 0.022727272727272728
+          }
+        },
+        "cross_play_oop_ev": 19.33325383164195,
+        "reverse_cross_play_oop_ev": 19.33325383164194,
+        "root_ev_delta": 1.0658141036401503e-14
+      },
+      {
+        "id": "turn_allin",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": -21.59093993282089,
+            "ip_ev": 21.59093993282089,
+            "nash_conv_chips": 0.02218518031445882,
+            "oop_lower_bound": -21.60256845577016,
+            "oop_upper_bound": -21.580383275455702,
+            "same_policy_numeric_delta": 7.105427357601002e-15
+          },
+          "candidate": {
+            "oop_ev": -21.59093993282089,
+            "ip_ev": 21.59093993282089,
+            "nash_conv_chips": 0.02218518031445882,
+            "oop_lower_bound": -21.60256845577016,
+            "oop_upper_bound": -21.580383275455702,
+            "same_policy_numeric_delta": 7.105427357601002e-15
+          }
+        },
+        "max_probability_delta": 0.0,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "Kd",
+            "Kh"
+          ],
+          "history": [],
+          "actions": [
+            "X",
+            "B:10000"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "check",
+              "bet_100"
+            ],
+            "frequency": [
+              0.9999975441663678,
+              2.4558336322217726e-06
+            ],
+            "action_evs": [
+              -21.590886909173587,
+              -43.18178240425243
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 2.0,
+            "chance_reach": 1.0
+          },
+          "candidate": {
+            "actions": [
+              "check",
+              "bet_100"
+            ],
+            "frequency": [
+              0.9999975441663678,
+              2.4558336322217726e-06
+            ],
+            "action_evs": [
+              -21.590886909173587,
+              -43.18178240425243
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 2.0,
+            "chance_reach": 1.0
+          }
+        },
+        "cross_play_oop_ev": -21.59093993282089,
+        "reverse_cross_play_oop_ev": -21.59093993282089,
+        "root_ev_delta": 0.0
+      },
+      {
+        "id": "weighted_4x4_collision",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": -26.788801719402603,
+            "ip_ev": 26.788801719402603,
+            "nash_conv_chips": 0.003825276614765727,
+            "oop_lower_bound": -26.789315027230117,
+            "oop_upper_bound": -26.78548975061535,
+            "same_policy_numeric_delta": 1.529418952594952e-14
+          },
+          "candidate": {
+            "oop_ev": -26.788801719402603,
+            "ip_ev": 26.788801719402603,
+            "nash_conv_chips": 0.003825276614765727,
+            "oop_lower_bound": -26.789315027230117,
+            "oop_upper_bound": -26.78548975061535,
+            "same_policy_numeric_delta": 1.529418952594952e-14
+          }
+        },
+        "max_probability_delta": 0.0,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "Kd",
+            "Kh"
+          ],
+          "history": [],
+          "actions": [
+            "X",
+            "B:5000"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "check",
+              "bet_50"
+            ],
+            "frequency": [
+              0.9999903527317916,
+              9.647268208354434e-06
+            ],
+            "action_evs": [
+              -49.99928565957327,
+              -60.04915299583587
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.65,
+            "chance_reach": 1.0
+          },
+          "candidate": {
+            "actions": [
+              "check",
+              "bet_50"
+            ],
+            "frequency": [
+              0.9999903527317916,
+              9.647268208354434e-06
+            ],
+            "action_evs": [
+              -49.99928565957327,
+              -60.04915299583587
+            ],
+            "own_strategic_reach_given_hand": 1.0,
+            "opponent_reach_mass": 1.65,
+            "chance_reach": 1.0
+          }
+        },
+        "cross_play_oop_ev": -26.788801719402603,
+        "reverse_cross_play_oop_ev": -26.788801719402603,
+        "root_ev_delta": 0.0
+      },
+      {
+        "id": "four_flush_4x4",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": 21.812607903105448,
+            "ip_ev": -21.812607903105448,
+            "nash_conv_chips": 0.0016485499459548691,
+            "oop_lower_bound": 21.81224521859943,
+            "oop_upper_bound": 21.813893768545384,
+            "same_policy_numeric_delta": 2.903948782828625e-14
+          },
+          "candidate": {
+            "oop_ev": 21.812607825302244,
+            "ip_ev": -21.812607825302244,
+            "nash_conv_chips": 0.001670460043431632,
+            "oop_lower_bound": 21.81223435073262,
+            "oop_upper_bound": 21.81390481077605,
+            "same_policy_numeric_delta": 1.4210854715202004e-14
+          }
+        },
+        "max_probability_delta": 0.001903879045901724,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "Qd",
+            "Qs"
+          ],
+          "history": [
+            "X",
+            "X",
+            "R:Ts",
+            "X",
+            "B:10000"
+          ],
+          "actions": [
+            "F",
+            "C"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "fold",
+              "call"
+            ],
+            "frequency": [
+              0.7285580146391937,
+              0.2714419853608064
+            ],
+            "action_evs": [
+              -50.0,
+              -14.176485937329618
+            ],
+            "own_strategic_reach_given_hand": 0.9999306572465738,
+            "opponent_reach_mass": 1.3946604569843872e-05,
+            "chance_reach": 0.022727272727272728
+          },
+          "candidate": {
+            "actions": [
+              "fold",
+              "call"
+            ],
+            "frequency": [
+              0.726654135593292,
+              0.273345864406708
+            ],
+            "action_evs": [
+              -50.0,
+              -11.73399967544424
+            ],
+            "own_strategic_reach_given_hand": 0.9999306572465738,
+            "opponent_reach_mass": 1.4209385370510602e-05,
+            "chance_reach": 0.022727272727272728
+          }
+        },
+        "cross_play_oop_ev": 21.812607839308818,
+        "reverse_cross_play_oop_ev": 21.812607885048763,
+        "root_ev_delta": 7.780320387951178e-08
+      },
+      {
+        "id": "trips_3x4",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": 35.026295709041854,
+            "ip_ev": -35.026295709041854,
+            "nash_conv_chips": 0.009614949654540794,
+            "oop_lower_bound": 35.02467438116044,
+            "oop_upper_bound": 35.03428933081498,
+            "same_policy_numeric_delta": 7.105427357601002e-15
+          },
+          "candidate": {
+            "oop_ev": 35.026432261946645,
+            "ip_ev": -35.026432261946645,
+            "nash_conv_chips": 0.009496949745233962,
+            "oop_lower_bound": 35.0247592543548,
+            "oop_upper_bound": 35.03425620410003,
+            "same_policy_numeric_delta": 7.105427357601002e-15
+          }
+        },
+        "max_probability_delta": 0.346707554983076,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "2d",
+            "2h"
+          ],
+          "history": [
+            "X",
+            "B:5000",
+            "C",
+            "R:Qc",
+            "X",
+            "B:3000"
+          ],
+          "actions": [
+            "F",
+            "C"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "fold",
+              "call"
+            ],
+            "frequency": [
+              0.44127112287891257,
+              0.5587288771210874
+            ],
+            "action_evs": [
+              -99.99999999999999,
+              -129.7285638144872
+            ],
+            "own_strategic_reach_given_hand": 7.909466741245932e-08,
+            "opponent_reach_mass": 0.1627259051037812,
+            "chance_reach": 0.022727272727272728
+          },
+          "candidate": {
+            "actions": [
+              "fold",
+              "call"
+            ],
+            "frequency": [
+              0.7879786778619885,
+              0.21202132213801145
+            ],
+            "action_evs": [
+              -100.0,
+              -129.74065104102732
+            ],
+            "own_strategic_reach_given_hand": 2.084341058889035e-07,
+            "opponent_reach_mass": 0.1627125390112195,
+            "chance_reach": 0.022727272727272728
+          }
+        },
+        "cross_play_oop_ev": 35.02629152380509,
+        "reverse_cross_play_oop_ev": 35.026436462529865,
+        "root_ev_delta": 0.0001365529047916425
+      },
+      {
+        "id": "draw_4x4_two_sizes",
+        "diagnostics": {
+          "baseline": {
+            "oop_ev": 47.92304681177562,
+            "ip_ev": -47.92304681177562,
+            "nash_conv_chips": 0.0012683895369960396,
+            "oop_lower_bound": 47.922384529295826,
+            "oop_upper_bound": 47.92365291883282,
+            "same_policy_numeric_delta": 1.8456156741786245e-14
+          },
+          "candidate": {
+            "oop_ev": 47.923046990488956,
+            "ip_ev": -47.923046990488956,
+            "nash_conv_chips": 0.001448178668013611,
+            "oop_lower_bound": 47.92215085324509,
+            "oop_upper_bound": 47.923599031913106,
+            "same_policy_numeric_delta": 1.1946823738617773e-14
+          }
+        },
+        "max_probability_delta": 0.3025984503963689,
+        "largest_difference": {
+          "player": 0,
+          "hand": [
+            "As",
+            "Ks"
+          ],
+          "history": [
+            "X",
+            "B:5000",
+            "C",
+            "R:Td",
+            "X",
+            "B:10000"
+          ],
+          "actions": [
+            "F",
+            "C"
+          ]
+        },
+        "conditional_rows": {
+          "baseline": {
+            "actions": [
+              "fold",
+              "call"
+            ],
+            "frequency": [
+              0.17645807338522113,
+              0.8235419266147788
+            ],
+            "action_evs": [
+              -100.0,
+              -173.79120531536225
+            ],
+            "own_strategic_reach_given_hand": 1.7692464543647509e-07,
+            "opponent_reach_mass": 0.00244297642951137,
+            "chance_reach": 0.022727272727272728
+          },
+          "candidate": {
+            "actions": [
+              "fold",
+              "call"
+            ],
+            "frequency": [
+              0.47905652378159,
+              0.5209434762184101
+            ],
+            "action_evs": [
+              -100.0,
+              -115.10320096016312
+            ],
+            "own_strategic_reach_given_hand": 2.7969418952336253e-07,
+            "opponent_reach_mass": 0.002904669664120418,
+            "chance_reach": 0.022727272727272728
+          }
+        },
+        "cross_play_oop_ev": 47.92304589811981,
+        "reverse_cross_play_oop_ev": 47.92304805478359,
+        "root_ev_delta": 1.7871333568564296e-07
+      }
+    ],
+    "resource_changes": {
+      "budgets_and_configs_unchanged": true,
+      "baseline": "All six probes completed",
+      "candidate": "Both 24x24/two-size maximum probes WALL_TIMEOUT; other four completed",
+      "scope": "Successful study harness reports failed resource probes; no hosted acceptance"
+    },
+    "raw_diff_sha256": "379e452eca46715033d4f99af08c4e940f61c26ceedc672a12f79df9ba963f3c",
+    "reproduction": "scripts/compare_ci_evidence.py --baseline ... --candidate ... --baseline-revision 502ed40 --candidate-revision 45be65a --audit-turn-policies --output ...",
+    "digest_count_includes_repeated_fields": true
+  },
+  "paired_same_host_scheduling": {
+    "scope": "Paired local development scheduling measurement; same fixture/host, not hosted or universal bound",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.14.8",
+    "iterations": 2000,
+    "reference_iterations": 4000,
+    "reduction_pct": 40.777022511252916,
+    "all_44_reference_profile_digests_identical": true,
+    "fixture_id": "singleton_zero_mass_runouts",
+    "rows": [
+      {
+        "workers": 1,
+        "wall_seconds": 36.78120980004314,
+        "maximum_active_reference_calls": 1,
+        "distinct_child_pids": 44,
+        "failures": []
+      },
+      {
+        "workers": 2,
+        "wall_seconds": 21.78292759996839,
+        "maximum_active_reference_calls": 2,
+        "distinct_child_pids": 44,
+        "failures": []
+      }
+    ]
+  },
+  "artifact_manifests": {
+    "baseline": [
+      {
+        "id": 12464675811,
+        "name": "river-benchmark",
+        "digest": "sha256:6313a11cfe2b494408e9e4f6ead6d65600723e08daa4b49d08dbaa71609a9086",
+        "size_in_bytes": 33685
+      },
+      {
+        "id": 12464555049,
+        "name": "turn-independent-reference",
+        "digest": "sha256:9ef7c05a10a0ad6612cb0633b84a8ac98cc2e625609fb8505e404e2f9881b8ee",
+        "size_in_bytes": 403026
+      },
+      {
+        "id": 12464212690,
+        "name": "texas-averaging-replay",
+        "digest": "sha256:4c427bfcca5e5cdd702e01ec21b4757b67d819b1beab2957b4f3d9a3130f0fb0",
+        "size_in_bytes": 20816
+      },
+      {
+        "id": 12464071205,
+        "name": "river-raise-validation",
+        "digest": "sha256:829e4896b7fb2ac8810da29bb5b1d70570f1253ad38beb05e1482a7057ef3ea8",
+        "size_in_bytes": 40016
+      },
+      {
+        "id": 12463986420,
+        "name": "exact-size-raise-review",
+        "digest": "sha256:a85ab78d8021f8b79498626b4123b558969f573148d7caddd76f0cc7feffb660",
+        "size_in_bytes": 15036
+      },
+      {
+        "id": 12463986368,
+        "name": "post-session-hand-review",
+        "digest": "sha256:c4bef90c67db01066fdf917a4ef206d1958d3a3179233c23898f5bd2183cbc16",
+        "size_in_bytes": 7908
+      },
+      {
+        "id": 12463986363,
+        "name": "range-explorer-validation",
+        "digest": "sha256:e19e513d4794f38d272f4152208d351f9ab416f31ad2ce1bc4a35f303d6dc80c",
+        "size_in_bytes": 279866
+      },
+      {
+        "id": 12463674214,
+        "name": "texas-evidence-replay",
+        "digest": "sha256:1ffddeaacaca63d0935b85f283282f8f9407fe42bc1ebcd2c6d0885fe26b084b",
+        "size_in_bytes": 6969
+      },
+      {
+        "id": 12463549459,
+        "name": "turn-decomposition-performance",
+        "digest": "sha256:a25e9e1ab600a1e710e2439690dfec5e684d7f66f18d787b45e9f1f4000862fb",
+        "size_in_bytes": 38727
+      },
+      {
+        "id": 12463144030,
+        "name": "turn-resource-study",
+        "digest": "sha256:90a551edca627e420b00277c92d9054221281617c36134ad030487e7f21db952",
+        "size_in_bytes": 5443
+      },
+      {
+        "id": 12462624893,
+        "name": "turn-policy-validation",
+        "digest": "sha256:6d63063c2530c53d01d5d1f1272f5b03675c76b6e63fd94ee3905d53e4e128f5",
+        "size_in_bytes": 11243
+      }
+    ],
+    "first": [
+      {
+        "id": 12466145656,
+        "name": "turn-decomposition-performance",
+        "digest": "sha256:7a17c73163f8992fa138203702672aeeecdc5c6d4e43535d82dc5c3ff6c768f8",
+        "size_in_bytes": 38598
+      },
+      {
+        "id": 12465715541,
+        "name": "river-benchmark",
+        "digest": "sha256:d8e014d79620a588a3edfcd990a215af8f27506fd4cfdd19333e61c400debd31",
+        "size_in_bytes": 33662
+      },
+      {
+        "id": 12465167466,
+        "name": "texas-averaging-replay",
+        "digest": "sha256:8d1d68974165b882c749a5609526c60793751b555fd78c724f381892fac8e205",
+        "size_in_bytes": 20816
+      },
+      {
+        "id": 12465091824,
+        "name": "river-raise-validation",
+        "digest": "sha256:5d2f7cf2a5d9a13bf9adf55405eb597c5baa2cfc8cbbc2d78722c708e64e129c",
+        "size_in_bytes": 40012
+      },
+      {
+        "id": 12464907252,
+        "name": "post-session-hand-review",
+        "digest": "sha256:fa43a59ab39ab58d47ac61b62fbb51fc92ec28703d778722b7be5c09cca694da",
+        "size_in_bytes": 7907
+      },
+      {
+        "id": 12464822377,
+        "name": "turn-resource-study",
+        "digest": "sha256:cf4ec6bf9c0f4dadb19e557cc5b44464340640d03c38429aeac9ae88c6020afe",
+        "size_in_bytes": 5255
+      },
+      {
+        "id": 12464753334,
+        "name": "turn-independent-reference",
+        "digest": "sha256:e473729bb90defd297faedf32ed1852ded464cf104394725354335055edd5e36",
+        "size_in_bytes": 403028
+      },
+      {
+        "id": 12464718440,
+        "name": "range-explorer-validation",
+        "digest": "sha256:2ca0a3fe2b190466a6ec3639c5707178c209d327b19feb8fceefb84ea18468a7",
+        "size_in_bytes": 279852
+      },
+      {
+        "id": 12464409956,
+        "name": "texas-evidence-replay",
+        "digest": "sha256:ba6f57262abbb2f9ca724edf0facbf41f422e79ebd4304f5cdbfd61b817f6a0c",
+        "size_in_bytes": 6968
+      },
+      {
+        "id": 12464139457,
+        "name": "exact-size-raise-review",
+        "digest": "sha256:af0362d4cc08307b018ee2e2dbecddbc94463c09cf91daaaebfed3faf9cbe01c",
+        "size_in_bytes": 15037
+      },
+      {
+        "id": 12464064260,
+        "name": "turn-policy-validation",
+        "digest": "sha256:c2b00e91e81e03e74f6ff311b89c1098235fb32075949e849b0bbf5241e7ab95",
+        "size_in_bytes": 11246
+      }
+    ],
+    "optimized1": [
+      {
+        "id": 12466825255,
+        "name": "turn-decomposition-performance",
+        "digest": "sha256:42a158d416c84fa7a5dd3e5c3af9ecd43889ac241707210ae72dc8a5c7238d42",
+        "size_in_bytes": 38670
+      },
+      {
+        "id": 12466420246,
+        "name": "river-benchmark",
+        "digest": "sha256:c83d5d955c1c523024f7cbb25ed6522d98002787afec0f6f21ce9d5d67325754",
+        "size_in_bytes": 33653
+      },
+      {
+        "id": 12466250952,
+        "name": "turn-policy-validation",
+        "digest": "sha256:89cd2e4008c42b801ce87cb2ce3c740b4dd625312707431f4cd71c6ef0d86989",
+        "size_in_bytes": 11261
+      },
+      {
+        "id": 12466061222,
+        "name": "turn-resource-study",
+        "digest": "sha256:051c9747e2a7afadf8e0d79e4f55034b90a2ef729f7159df383cd7456c67c0f6",
+        "size_in_bytes": 5255
+      },
+      {
+        "id": 12466051453,
+        "name": "exact-size-raise-review",
+        "digest": "sha256:4f0cc6c6aa94cef4d3adaba58c0868956369160e2004c48173dce97b42c6e5d0",
+        "size_in_bytes": 15078
+      },
+      {
+        "id": 12465986671,
+        "name": "range-explorer-validation",
+        "digest": "sha256:a06fd64cf7cb5e8a8316e1fcd37726a9e5d384c4519c0a6bd2b1025e80b7c4c1",
+        "size_in_bytes": 279861
+      },
+      {
+        "id": 12465702550,
+        "name": "post-session-hand-review",
+        "digest": "sha256:247c03758e84d273eb365a8ab01122989205567118feff01191843373cd92d59",
+        "size_in_bytes": 7908
+      },
+      {
+        "id": 12465374715,
+        "name": "turn-independent-reference",
+        "digest": "sha256:14671ca808a0271016e6c6f73fde736039b0e4f92c08595333c48c546bbde855",
+        "size_in_bytes": 403054
+      },
+      {
+        "id": 12465093986,
+        "name": "texas-averaging-replay",
+        "digest": "sha256:e2303e822d68dcbd604c914f4712f046ca2775483b15ee073f3b29ad3d2b7c7f",
+        "size_in_bytes": 20817
+      },
+      {
+        "id": 12465009260,
+        "name": "river-raise-validation",
+        "digest": "sha256:c6beede590b238272a670d41987ddc47e5841c10468e7c96099bb9e18747a581",
+        "size_in_bytes": 40030
+      },
+      {
+        "id": 12464824661,
+        "name": "texas-evidence-replay",
+        "digest": "sha256:6f5d4a1e20aa57153cc889ad35ba3a58065bc1e2623e90c6f291257088803b03",
+        "size_in_bytes": 6967
+      }
+    ]
+  },
+  "optimized_target_assessment": {
+    "samples": 1,
+    "critical_path_seconds": 425,
+    "reduction_vs_baseline_median_pct": 52.24719101123596,
+    "baseline_median_rounded_runner_minutes": 15,
+    "optimized_rounded_runner_minutes": 17,
+    "baseline_median_job_seconds": 890,
+    "optimized_job_seconds": 903,
+    "target_latency_met_in_this_sample": true,
+    "per_run_compute_cost_reduction_established": false,
+    "duplicate_work": "Feature push removed; one full suite rather than push plus PR per feature update",
+    "repeatability": "Need repeated optimized observations; no stable p90 claimed"
   }
 }

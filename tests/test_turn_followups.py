@@ -22,8 +22,8 @@ class TurnDecompositionTests(unittest.TestCase):
             self.assertEqual(len(result['runouts']), 48)
             exports = [r['reference_export'] for r in result['runouts'] if r['mass']]
             self.assertEqual(len(exports), 44)
-            self.assertEqual(len({e['pid'] for e in exports}), 44)
             for export in exports:
+                self.assertIsInstance(export['pid'], int)  # OS process identifiers may be reused after exit.
                 self.assertFalse(export['product_modules_loaded'])
                 del export['pid']
                 del export['training_cost']
