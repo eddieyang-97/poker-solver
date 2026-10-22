@@ -12,7 +12,7 @@ not validate the realism of arrival ranges or action-likelihood assumptions.
 | No-raise river tools | River milestone accepted; analytical and independent same-tree checks | Caller-supplied assumptions; sensitivity required | Private owner ChatGPT pilot verified; cold starts and OAuth lifecycle gates remain |
 | Hand-review Phase 1, PR #12 | Accounting, bounded prose, explicit scenarios and supported river dispatch completed | Declared likelihoods only; unknowns remain gaps | Local workflow; existing hosted interface unchanged |
 | Action-model explorer, PR #15 | Merged; final source `1196b9c`, 117 tests and full CI passed; nine profiles verified | Joint conditioning under supplied hypotheses, including folded-player cards; no calibration | Local CLI only; no solver dispatch or marginal substitution |
-| River raises, PR #14 | Local one-raise engine; existing independent eight-case suite | Supplied independent arrival ranges; no forced observed line | No MCP registration or hosted acceptance |
+| River raises, PR #14 and Issue #17 | Local one-raise engine; fractional/exact-cent inputs and opt-in review; existing independent suite plus one exact-tree check | Supplied independent arrival ranges; no forced observed line | No MCP registration or hosted acceptance |
 | Turn engine | Local two-street implementation and small independent corpus | Supplied ranges; larger games remain less validated | No MCP registration; PR #10 resource/reconciliation work remains open |
 
 Evidence: [validation](validation.md), [river closeout](river-milestone.md),
@@ -46,13 +46,19 @@ canary hands are test plumbing, not inferred opponent ranges. It performs no
 training or EV comparison and creates no additional strategic benchmark fixture.
 Reuse the existing independent raise suite for numerical correctness.
 
-The existing fraction-only tree API rejects the observed £40 bet into £63:
-binary64 `40/63` is not cent-exact under its strict Decimal sizing rule. The test
-preserves this rejection and separately checks a permitted half-pot tree. It does
-**not** claim that the full observed £40/£120 line is already solver-integrated.
-Exact observed-amount mapping belongs to milestone 2; never round silently.
+The fractional API still rejects binary64 `40/63`, rather than rounding it.
+Issue #17 adds a separate exact integer-cent mode and the compact accounting
+test now also verifies the observed `c/b4000/r8000` branch, while preserving the
+old fractional rejection. Its [separate strategic check](raise-review-results.md)
+uses explicit range hypotheses and an independently trained matching reference.
+Neither the accounting test nor that agreement validates those range assumptions.
 
 ## 2. Integrate the local hand reviewer with river raises
+
+Issue #17 implements this local opt-in path; acceptance remains subject to its
+PR review/merge. [Contract and commands](hand-review.md#opt-in-local-exact-size-river-raises)
+and [measured evidence](raise-review-results.md) describe exact sizing, retained
+inputs/results and observed-but-unlocked semantics. No deployment follows.
 
 Construct supported explicit trees from the reconstructed decision point.
 Address exact amount representation before claiming support for the £40/£120

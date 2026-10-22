@@ -34,6 +34,9 @@ The [development roadmap](docs/development-roadmap.md) tracks local implementati
 solver correctness, range-model quality and hosted acceptance separately. The next
 integration milestone is local hand-review support for the river raise engine;
 joint-range/node-locking and advanced hosted tools have their own acceptance gates.
+An opt-in [exact-size local raise review](docs/hand-review.md#opt-in-local-exact-size-river-raises)
+now prepares and runs the existing one-raise worker from reconstructed river
+amounts, with explicitly supplied ranges and no node locking or hosted changes.
 
 **v0.2 implementation:** official-SDK stateless Streamable HTTP, OAuth resource
 metadata and JWT verification, bounded subprocess calculations, analytical

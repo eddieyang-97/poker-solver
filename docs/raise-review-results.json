@@ -1,0 +1,356 @@
+{
+  "measured_date": "2026-10-22",
+  "issue": 17,
+  "implementation_commit": "4e6d4a2ef6724d6384f2fc1d2b8367e4075ee4f1",
+  "scope": "Actual local exact-size review and independent same-tree training; no locks or hosted acceptance",
+  "base_commit": "959af0c",
+  "checks": {
+    "ruff": "passed",
+    "compileall": "passed",
+    "unit_tests_run": 132,
+    "unit_tests_passed": 131,
+    "skipped": "One Linux-only allocation test on Windows",
+    "existing_raise_cases": 8,
+    "existing_mixed_policy_checks": 48,
+    "existing_river_cases": 10,
+    "existing_sensitivity": "passed",
+    "final_head_ci": "pending"
+  },
+  "commands": [
+    "python -m ruff check poker_spot tests scripts benchmarks/raises.py benchmarks/raise_reference_worker.py",
+    "python -m compileall -q poker_spot scripts benchmarks",
+    "OPENBLAS_NUM_THREADS=1 python -m unittest discover -s tests -v",
+    "python scripts/benchmark_raise_review.py --output .artifacts/issue17-review",
+    "python scripts/benchmark_river_raises.py --performance --output .artifacts/issue17-final-raises",
+    "python scripts/benchmark.py --sensitivity --output .artifacts/issue17-final-river"
+  ],
+  "accounting_pots": [
+    33.0,
+    63.0,
+    63.0,
+    303.0
+  ],
+  "arguments": {
+    "context": "post_session",
+    "board": "Ac,Jh,3s,Tc,4c",
+    "oop_range": "3d7d:1.0,JdAh:0.35,QcKc:0.25,8d9d:0.2",
+    "ip_range": "8c8s:0.5,QcKc:0.4,QdQs:1.0,KdAd:0.7",
+    "pot": 63.0,
+    "stack": 275.0,
+    "minimum_bet": 2.0,
+    "bet_amounts_cents": [
+      4000
+    ],
+    "raise_to_cents": [
+      12000,
+      27500
+    ],
+    "iterations": 2000,
+    "oop_hand": "7d3d",
+    "ip_hand": "8s8c"
+  },
+  "target_node": "c/b4000",
+  "observed_mapping": [
+    {
+      "node": "root",
+      "player": "UTG+1",
+      "action": "check",
+      "paid_cents": 0,
+      "total_to_cents": 0
+    },
+    {
+      "node": "c",
+      "player": "BTN",
+      "action": "bet_to_40.00",
+      "paid_cents": 4000,
+      "total_to_cents": 4000
+    }
+  ],
+  "target_tree_actions": [
+    {
+      "kind": "fold",
+      "total_to_cents": 0
+    },
+    {
+      "kind": "call",
+      "total_to_cents": 4000,
+      "paid_cents": 4000
+    },
+    {
+      "kind": "raise",
+      "total_to_cents": 12000,
+      "paid_cents": 12000,
+      "increment_cents": 8000,
+      "fraction_of_pot_after_call": null,
+      "full_raise": true,
+      "all_in": false
+    },
+    {
+      "kind": "raise",
+      "total_to_cents": 27500,
+      "paid_cents": 27500,
+      "increment_cents": 23500,
+      "fraction_of_pot_after_call": null,
+      "full_raise": true,
+      "all_in": true
+    }
+  ],
+  "queried_oop_target": {
+    "frequency": {
+      "fold": 1.0,
+      "call": 0.0,
+      "raise_to_120.00": 0.0,
+      "raise_to_275.00": 0.0
+    },
+    "action_ev_relative_to_half_pot": {
+      "fold": -31.5,
+      "call": -71.5,
+      "raise_to_120.00": -139.6278,
+      "raise_to_275.00": -140.8151
+    },
+    "own_reach_probability": 0.8058
+  },
+  "runtime": {
+    "wall_seconds": 0.6567400000058115,
+    "cpu_seconds": 0.65625,
+    "initialization_seconds": 0.0032398999901488423,
+    "peak_resident_memory": {
+      "bytes": 28094464,
+      "method": "Windows PeakWorkingSetSize"
+    },
+    "output_bytes": 7693,
+    "nodes": 8,
+    "limits": {
+      "wall_seconds": 60,
+      "cpu_seconds": null,
+      "address_space_bytes": null
+    },
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.14.8"
+  },
+  "query_wall_seconds": 1.0263551999814808,
+  "request_sha256": "8ebf6e7608bec71b619c0030c1800ff5885268237033974cc4697406ef17da00",
+  "result_sha256": "2af054678c12a59232ed1fc48eee0cef2470d6eb3e67e34e11719378a415c318",
+  "raw_profiles_sha256": "6635f12f93c149722d3fda1535577d3af555f661019ebc4d5854229e6ab55cc2",
+  "reference_profile_sha256": "b3ff4f7731c973e6b0e18d80947c99a41c2b5fed76e0ba9a1669fd6ba2f044ec",
+  "reference_metadata": {
+    "reference_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+    "product_modules_loaded": false,
+    "config": {
+      "board": [
+        "Ac",
+        "Jh",
+        "3s",
+        "Tc",
+        "4c"
+      ],
+      "pot": 6300,
+      "stack": 27500,
+      "bet_sizes": [
+        {
+          "numerator": 40,
+          "denominator": 63
+        }
+      ],
+      "raise_sizes": [
+        {
+          "numerator": 80,
+          "denominator": 143
+        },
+        {
+          "numerator": 235,
+          "denominator": 143
+        }
+      ],
+      "include_all_in": false,
+      "max_raises": 2,
+      "players": [
+        {
+          "hands": [
+            "3d7d",
+            "JdAh",
+            "QcKc",
+            "8d9d"
+          ],
+          "weights": [
+            1.0,
+            0.35,
+            0.25,
+            0.2
+          ]
+        },
+        {
+          "hands": [
+            "8c8s",
+            "QcKc",
+            "QdQs",
+            "KdAd"
+          ],
+          "weights": [
+            0.5,
+            0.4,
+            1.0,
+            0.7
+          ]
+        }
+      ]
+    },
+    "iterations": 4000,
+    "seconds": 0.5629322999157012,
+    "checkpoints": [
+      {
+        "iterations": 100,
+        "raw_average_exploitability_cents": 14.163740844548556
+      },
+      {
+        "iterations": 500,
+        "raw_average_exploitability_cents": 1.2871115466468837
+      },
+      {
+        "iterations": 1000,
+        "raw_average_exploitability_cents": 0.44045900055061793
+      },
+      {
+        "iterations": 4000,
+        "raw_average_exploitability_cents": 0.19375079324663602
+      }
+    ]
+  },
+  "comparison": {
+    "product_root_ev": -9.269708041617442,
+    "reference_root_ev": -9.269683720335022,
+    "product_nashconv": 0.007234736490262961,
+    "reference_nashconv": 0.0038750158649327204,
+    "product_best_response_ev": [
+      -9.265150451380464,
+      9.272385187870727
+    ],
+    "reference_best_response_ev": [
+      -9.268646348001798,
+      9.27252136386673
+    ],
+    "same_policy_max_delta": 1.7053025658242404e-13,
+    "trained_ev_delta": 2.4321282419137447e-05,
+    "convergence_gate_chips": 0.315,
+    "failures": []
+  },
+  "legacy_canonical_json_compatibility": [
+    {
+      "id": "polarized_half",
+      "unchanged": true,
+      "baseline_sha256": "fb808d20cf1c81bf8e2b111edbbf417d81878dc132f0296c6889bb9c895a1962"
+    },
+    {
+      "id": "symmetric_value_air",
+      "unchanged": true,
+      "baseline_sha256": "426591f26e22c6962f15a70c3ea266f5da4688a4ffa87b217b5d533e4bd460a3"
+    },
+    {
+      "id": "weighted_blockers",
+      "unchanged": true,
+      "baseline_sha256": "3c10454e91039a623f800d0064322fc0adaed70647694132c4f23a1fcd7bdd66"
+    },
+    {
+      "id": "short_allin_raise",
+      "unchanged": true,
+      "baseline_sha256": "ca39656d84a8b735c6407c2fb33bb878f49b82bc045c042183f27dc829ef50f3"
+    },
+    {
+      "id": "two_sizes",
+      "unchanged": true,
+      "baseline_sha256": "4c716ca51ea9bb4f854d0916d60ff9db599e711d8e60e6113cd534dc5b9318a0"
+    },
+    {
+      "id": "paired_board",
+      "unchanged": true,
+      "baseline_sha256": "24e7d9911d4e2e8faf5093ec2376e1a54331186437b5e61ad0e5d8aabe83ff00"
+    },
+    {
+      "id": "flush_board",
+      "unchanged": true,
+      "baseline_sha256": "5250ef28086876c65c5e277e655e1d7504d89efd7435d1c68bd4ad55d58e5697"
+    },
+    {
+      "id": "allin_opening",
+      "unchanged": true,
+      "baseline_sha256": "6e73f35e8c9b5b50ac7e3328ffe1eb6de5dfdfa6ec9104c08776a85e454a8a00"
+    }
+  ],
+  "known_existing_raise_max_discrepancy": 8.756188663028297e-09,
+  "maximum_workload_samples": [
+    {
+      "status": "computed",
+      "metrics": {
+        "wall_seconds": 3.159638399956748,
+        "cpu_seconds": 3.15625,
+        "initialization_seconds": 0.0038693000096827745,
+        "peak_resident_memory": {
+          "bytes": 28057600,
+          "method": "Windows PeakWorkingSetSize"
+        },
+        "output_bytes": 13495,
+        "nodes": 14,
+        "limits": {
+          "wall_seconds": 60,
+          "cpu_seconds": null,
+          "address_space_bytes": null
+        },
+        "platform": "Windows-11-10.0.26300-SP0",
+        "python": "3.14.8"
+      },
+      "parent_wall_seconds": 3.508466799976304
+    },
+    {
+      "status": "computed",
+      "metrics": {
+        "wall_seconds": 3.136093500070274,
+        "cpu_seconds": 3.125,
+        "initialization_seconds": 0.0040336999809369445,
+        "peak_resident_memory": {
+          "bytes": 28295168,
+          "method": "Windows PeakWorkingSetSize"
+        },
+        "output_bytes": 13477,
+        "nodes": 14,
+        "limits": {
+          "wall_seconds": 60,
+          "cpu_seconds": null,
+          "address_space_bytes": null
+        },
+        "platform": "Windows-11-10.0.26300-SP0",
+        "python": "3.14.8"
+      },
+      "parent_wall_seconds": 3.381845699972473
+    }
+  ],
+  "source_sha256_lf": {
+    "poker_spot/raises.py": "ec97af6dd94e89afde9cf26851a7bb74bd016addab8e7030578242b0fd16c313",
+    "poker_spot/raise_worker.py": "90a8e431a995b78cf9ef1697fb830fc7a12b79e1a2ee98d615096a99ea782499",
+    "poker_spot/raise_review.py": "b1a8c5cf7963677a1f08431ed7bb39494c5b65f3ec641da36dc882b150a48596",
+    "poker_spot/history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+    "poker_spot/review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+    "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+    "scripts/review_hand.py": "b070ea1ea6416a9c15422d396ebd8d8aed31bf0ad4fb5164524eb07ff375d93c",
+    "scripts/solve_river_raises.py": "c948fb291ae1ee7245e60f39b39f1b27d3ac4413b3ab789e9cf8987e9d704683",
+    "scripts/benchmark_raise_review.py": "0dc0f389232fb277de2c20dc5956b3382181b9c790705343cc736b6d5b1dffa5",
+    "benchmarks/raises.py": "a1407839281c00640b07aebae0751efbe7da175a0743962808e60f643f03ca13",
+    "benchmarks/raise_reference_worker.py": "32259b1fb8fcd93b8bcbe9ea0aa0c99d2d09b524e28782381411b4db84f2639e",
+    "examples/hand-review-raises.txt": "9168057ac541dff39c401cd527a552ba05858d8ef05c42af6eaf8818239f11a1",
+    "examples/hand-review-raise-scenarios.json": "cff89731d58524679b0e5d6457502d6706dd1bddda499b5b051dca099e91fe41"
+  },
+  "test_and_ci_sha256_lf": {
+    "tests/test_raise_review.py": "68994f0489424cca8d55abe1965521ff90112bb14bc615f6eaa304525785395f",
+    "tests/test_history.py": "cd80b7c6f29d9587cee658695eab87660f832342c8cd22b9a404f2d8b105cb91",
+    ".github/workflows/ci.yml": "24476d1fe1846d33c9f611de69c30df12d7b8c14cce27889ea462699375e268e"
+  },
+  "limitations": [
+    "Earlier multiway streets are reconstructed, not solved.",
+    "Observed actions are mapped, NOT LOCKED; checks and bets remain endogenous.",
+    "Conditional node EVs are against the computed opponent continuation, not a forced observed betting range.",
+    "Own strategic reach and equilibrium joint node reach are not observed-line probabilities.",
+    "EVs share the half-river-starting-pot baseline; compare actions within the same node.",
+    "Ranges and supplied likelihood updates are hypotheses, not calibrated population estimates.",
+    "No joint-range substitution, node locking, turn solving, MCP or hosted acceptance."
+  ],
+  "failures": []
+}

@@ -10,10 +10,11 @@ plugin package and deployed solver are unchanged.
 The original 200bb three-bet example remains intact. A compact synthetic 150bb
 limp-call/check-raise test in `tests/test_history.py` separately checks £33/£63/£63/£303
 pots, canonical actor order, £275 river-start stacks and BTN's extra £80 call
-after a raise to £120. It checks local tree construction with permitted sizes,
-not a strategy or EV calculation. Exact £40/£63 fraction sizing is currently
-rejected rather than rounded; [integration and validation gates](development-roadmap.md)
-track that boundary. This does not add raise dispatch to the reviewer.
+after a raise to £120. The same compact input now lives in
+`examples/hand-review-raises.txt` and the accounting test reuses it. This basic
+case has no hole cards, range inference, EV assertion or strategic corpus entry.
+Fractional £40/£63 sizing is still rejected rather than rounded; the opt-in exact
+cent mode below represents the observed amounts separately.
 
 ## Reproduce a review
 
@@ -44,6 +45,60 @@ Correct an existing field without rewriting the history:
 The second correction intentionally fails until the later calls are corrected
 too. Corrections use existing JSON-pointer paths, preserve the original object
 and rerun validation; they never silently repair inconsistent amounts.
+
+## Opt-in local exact-size river raises
+
+Issue #17 adds `--local-raises`, using the separate experimental one-raise engine
+and its existing 60-second disposable worker. Default no-raise review and hosted
+tools are unchanged. The new mode reconstructs board, river-start pot/remaining
+effective stack and observed actions; ranges must still be supplied explicitly.
+
+```powershell
+.venv/Scripts/python.exe scripts/review_hand.py examples/hand-review-raises.txt --local-raises --river-through 1 --raise-to-cents 12000 27500 --scenarios examples/hand-review-raise-scenarios.json --output .artifacts/raise-plan
+.venv/Scripts/python.exe scripts/review_hand.py examples/hand-review-raises.txt --local-raises --river-through 1 --raise-to-cents 12000 27500 --scenarios examples/hand-review-raise-scenarios.json --run --iterations 2000 --output .artifacts/raise-review
+.venv/Scripts/python.exe scripts/benchmark_raise_review.py --output .artifacts/raise-review-validation
+```
+
+`--river-through` is the last included zero-based river action. Index 1 selects
+the pending HJ decision after check/BTN bet £40; index 2 selects BTN's decision
+after the raise to £120. It truncates that public action prefix rather than
+silently analyzing a completed hand as a pending decision. A completed line
+without a selected prefix remains `not_run`. Earlier streets must reconstruct
+legally, and the river must begin heads-up with explicit zero rake.
+
+`--raise-to-cents` lists one/two exact total river contributions; it never adds an
+unrequested jam. If omitted, a raise already inside the selected observed prefix
+supplies its exact total; before any observed raise the list is required.
+All observed actions must map to the admitted exact tree. Unsupported amounts,
+re-raises, multiway starts, invalid ranges and illegal minimums remain `not_run`
+or input errors. Worker failures/timeouts remain failed, without computed labels.
+
+Local-raise scenario objects require unique `id`, `description` and `arrival`
+hypotheses keyed by the two players, with optional `assumptions` and
+`query_hands`. HJ/CO aliases normalize. Arrival objects reuse the explicit
+`range`/`provenance`/optional likelihood-update contract; no range is learned from
+the hand ledger, hole-card claims or a showdown reveal. `query_hands` selects
+own-hand output rows within declared ranges; it does not replace those ranges.
+This separate schema does not accept the old adapter's `betting` field: conditional
+EVs here use the computed continuation of both declared arrival ranges.
+
+The illustrative range file is separate from the compact accounting fixture and
+is not calibrated. Complete requests/results, accepted node/action/cent mapping,
+runtime/resource metrics, source hashes and integrity receipts are retained.
+Only an actual worker result matching the prepared board/pot/stack/tree receives
+`computed`; plans are `not_run`. These receipts are not signed execution proofs.
+
+Checking and betting remain **endogenous, not locked**. A conditional value at
+`c/b4000` is a computed equilibrium-continuation value for that node, not an EV
+conditional on a forced real-world £40 bet with an independently observed betting
+range. Fold/call/raise alternatives share the half-starting-pot baseline within
+that node; checking belongs to the earlier root node. Outputs include own reach,
+joint node reach, null EV for zero opponent reach and reported NashConv for the
+supplied finite game. Frequencies/EVs are rounded to four decimals; inspect the
+gap and assumptions rather than treating them as precise full-game GTO.
+
+True node locking (#19), correlated arrival deals (#18), and hosted raises (#20)
+remain separate issues. See [exact-size validation](raise-review-results.md).
 
 ## Explicit history input
 
