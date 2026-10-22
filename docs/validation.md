@@ -19,8 +19,10 @@ largest probability difference 0.34670755; largest same-model root EV difference
 0.000136553 chips. Both saved policies pass the unchanged ten-fixture convergence,
 same-policy and cross-play gates; largest fixed-policy numeric delta 5.2246e-14.
 Largest frequency shifts have own reach around 1e-7; conditional action EVs there
-are not stable. All 208 recorded reference-profile digest fields match (including repeated fields). Repeated
-optimized measurements remain pending at this snapshot. No solver, hosted registration,
+are not stable. All 208 recorded reference-profile digest fields match (including repeated fields). Two optimized
+CI samples passed in 425/423 seconds (median 424, 52.4% below baseline), with
+17/16 rounded runner-minute estimates versus baseline median 15; per-run cost
+savings are not established. Final documentation-head CI/repeat receipt is on PR #29. No solver, hosted registration,
 provider/protection setting, merge or deployment change is included. Actual
 post-merge/main and Render acceptance remain separate owner-gated evidence.
 

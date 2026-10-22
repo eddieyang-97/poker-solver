@@ -1729,14 +1729,473 @@
       ],
       "total_artifact_bytes": 862554,
       "configuration": "Four concurrent jobs; bounded two-worker independent decomposition"
+    },
+    {
+      "run_id": 39871882360,
+      "head_sha": "d08038642a64dd389d25ff2c111660ab0c1d33f0",
+      "event": "pull_request",
+      "url": "https://github.com/eddieyang-97/poker-solver/actions/runs/39871882360",
+      "created_at": "2026-10-22T23:27:18Z",
+      "first_job_start": "2026-10-22T23:27:21Z",
+      "last_job_end": "2026-10-22T23:34:24Z",
+      "initial_queue_seconds": 3.0,
+      "critical_path_seconds": 423.0,
+      "created_to_green_seconds": 426.0,
+      "total_job_seconds": 844.0,
+      "rounded_runner_minutes_estimate": 16,
+      "billing_caveat": "Job wall-time estimate, not account billing; aggregate dependency wait is excluded from job duration",
+      "jobs": [
+        {
+          "id": 120148009081,
+          "name": "resources",
+          "runner_name": "GitHub Actions 1000000355",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:27:21Z",
+          "completed_at": "2026-10-22T23:29:21Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 3.0,
+          "seconds": 120.0,
+          "setup_install_seconds": 11.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run pip install -r requirements-dev.txt",
+              "conclusion": "success",
+              "seconds": 9.0
+            },
+            {
+              "name": "Development Linux turn budgets and separate profile",
+              "conclusion": "success",
+              "seconds": 104.0
+            },
+            {
+              "name": "Retain local resource study including failed probes",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        },
+        {
+          "id": 120148009434,
+          "name": "river",
+          "runner_name": "GitHub Actions 1000000356",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:27:21Z",
+          "completed_at": "2026-10-22T23:29:43Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 3.0,
+          "seconds": 142.0,
+          "setup_install_seconds": 10.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run pip install -r requirements-dev.txt",
+              "conclusion": "success",
+              "seconds": 7.0
+            },
+            {
+              "name": "Static checks",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run tests",
+              "conclusion": "success",
+              "seconds": 30.0
+            },
+            {
+              "name": "Independent same-tree river benchmark",
+              "conclusion": "success",
+              "seconds": 60.0
+            },
+            {
+              "name": "Supplied action-model sensitivity and bounded joint range enumeration",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Retain local action-model range exploration",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Post-session reconstruction and actual bounded river calculations",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Retain post-session requests and computed results",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Independently trained local river raises and maximum workloads",
+              "conclusion": "success",
+              "seconds": 16.0
+            },
+            {
+              "name": "Retain local river raise validation",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Exact-size local hand review and independent matching raise tree",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Retain exact-size local raise review",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Retain differential report",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Replay recorded TexasSolver policy (no external executable)",
+              "conclusion": "success",
+              "seconds": 9.0
+            },
+            {
+              "name": "Retain TexasSolver replay report",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Replay controlled averaging evidence (no external build)",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Retain controlled averaging replay report",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        },
+        {
+          "id": 120148009555,
+          "name": "turn",
+          "runner_name": "GitHub Actions 1000000358",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:27:21Z",
+          "completed_at": "2026-10-22T23:30:02Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 3.0,
+          "seconds": 161.0,
+          "setup_install_seconds": 13.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run pip install -r requirements-dev.txt",
+              "conclusion": "success",
+              "seconds": 11.0
+            },
+            {
+              "name": "Experimental turn policy and best-response validation",
+              "conclusion": "success",
+              "seconds": 14.0
+            },
+            {
+              "name": "Retain experimental turn validation",
+              "conclusion": "success",
+              "seconds": 2.0
+            },
+            {
+              "name": "Independently trained strategic turn reference",
+              "conclusion": "success",
+              "seconds": 127.0
+            },
+            {
+              "name": "Retain independent turn reference",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        },
+        {
+          "id": 120148009569,
+          "name": "decomposition",
+          "runner_name": "GitHub Actions 1000000357",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:27:21Z",
+          "completed_at": "2026-10-22T23:34:17Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 3.0,
+          "seconds": 416.0,
+          "setup_install_seconds": 12.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run pip install -r requirements-dev.txt",
+              "conclusion": "success",
+              "seconds": 10.0
+            },
+            {
+              "name": "Independently trained river-subgame decomposition",
+              "conclusion": "success",
+              "seconds": 357.0
+            },
+            {
+              "name": "Maximum-dimension local turn performance",
+              "conclusion": "success",
+              "seconds": 44.0
+            },
+            {
+              "name": "Retain turn follow-up reports",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Post Run actions/setup-python@v5",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        },
+        {
+          "id": 120150593017,
+          "name": "test",
+          "runner_name": "GitHub Actions 1000000359",
+          "labels": [
+            "ubuntu-latest"
+          ],
+          "started_at": "2026-10-22T23:34:19Z",
+          "completed_at": "2026-10-22T23:34:24Z",
+          "queue_seconds": 2.0,
+          "created_to_start_seconds": 421.0,
+          "seconds": 5.0,
+          "setup_install_seconds": 1.0,
+          "steps": [
+            {
+              "name": "Set up job",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 1.0
+            },
+            {
+              "name": "Require every gate to succeed",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "conclusion": "success",
+              "seconds": 0.0
+            },
+            {
+              "name": "Complete job",
+              "conclusion": "success",
+              "seconds": 0.0
+            }
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "id": 12467370044,
+          "name": "exact-size-raise-review",
+          "size_in_bytes": 15028,
+          "digest": "sha256:a65f987eb045bc3ecd27f8166ee51e0a674fef784d3dcce206a62173eaa80bd5"
+        },
+        {
+          "id": 12467320259,
+          "name": "range-explorer-validation",
+          "size_in_bytes": 279855,
+          "digest": "sha256:d9cd538a3ef9266e930105934e6ef95159e40b3f4700486a82d62425b1a2eb28"
+        },
+        {
+          "id": 12467126517,
+          "name": "texas-averaging-replay",
+          "size_in_bytes": 20816,
+          "digest": "sha256:236932f5823100a4f1da1ca377d68149f2099d14a9c86d5fd7a577ddbfe4146a"
+        },
+        {
+          "id": 12467070937,
+          "name": "turn-resource-study",
+          "size_in_bytes": 5312,
+          "digest": "sha256:93b1fead270e5417ba4bd0c048be5da5f0600900f84fc77181c5659e5af4e920"
+        },
+        {
+          "id": 12466991624,
+          "name": "turn-policy-validation",
+          "size_in_bytes": 11256,
+          "digest": "sha256:cdfa2ea0b1195176fd264acc728cdf831050111f8f60bd785dc4362fb1a590a6"
+        },
+        {
+          "id": 12466976853,
+          "name": "river-benchmark",
+          "size_in_bytes": 33678,
+          "digest": "sha256:04f69b6ee9977c6a5ba5f1554569f99f5b545dc9827312a5ad650d5597f79c1e"
+        },
+        {
+          "id": 12466847106,
+          "name": "river-raise-validation",
+          "size_in_bytes": 40015,
+          "digest": "sha256:39d2c8355bf649520bca27e9d37ff7b44049cb18c0aa2068cf125e70183ebab2"
+        },
+        {
+          "id": 12466692436,
+          "name": "texas-evidence-replay",
+          "size_in_bytes": 6968,
+          "digest": "sha256:b8fce7f2fb729a756439373a593e392f575cb54f35a36724be39295c4afcdaf2"
+        },
+        {
+          "id": 12466552482,
+          "name": "post-session-hand-review",
+          "size_in_bytes": 7900,
+          "digest": "sha256:c0ed7368bdd0dbbaf1f40b9dee0a397dd2b31df9b44ba056a5b7cc3c80036892"
+        },
+        {
+          "id": 12466284483,
+          "name": "turn-decomposition-performance",
+          "size_in_bytes": 38659,
+          "digest": "sha256:3f1ddeecfa7717018b0febd19835008457f059091ca26e418ae10cbb32a71059"
+        },
+        {
+          "id": 12466079512,
+          "name": "turn-independent-reference",
+          "size_in_bytes": 403039,
+          "digest": "sha256:38c419ea9f6a52f39ec6ed9c1e4e926b6819897e050df4bfe884648bcd695b7d"
+        }
+      ],
+      "total_artifact_bytes": 862526,
+      "configuration": "Four concurrent jobs; bounded two-worker independent decomposition"
     }
   ],
   "acceptance": {
-    "latest_head_ci": "Optimized implementation 45be65a passed run 39870188032; final documentation/source head checks tracked on PR #29",
+    "latest_head_ci": "Scientific implementation d080386 passed run 39871882360. Authoritative final documentation-head CI and repeat receipt are on PR #29; no circular evidence commit.",
     "exhaustive_matched_artifacts": "All 11 groups/20 JSON files compared; strict differences and ten-policy replay audit retained",
-    "repeated_timings": "One optimized CI sample plus same-host paired measurement; repeats pending",
+    "repeated_timings": "Two optimized CI runs recorded here plus paired same-host experiment; final doc-head repeat on PR",
     "post_merge_main": "Requires separate owner-approved merge; no merge/deploy performed",
-    "render_provider_acceptance": "Separate Issue 23"
+    "render_provider_acceptance": "Separate Issue 23",
+    "strict_output_identity": "NOT established: exact comparator exits 1; policy/resource variations and original-gate replay are retained",
+    "owner_review": "Required; PR is not an accepted merge"
   },
   "decomposition_profile": {
     "run_id": 39865456688,
@@ -2931,19 +3390,200 @@
         "digest": "sha256:6f5d4a1e20aa57153cc889ad35ba3a58065bc1e2623e90c6f291257088803b03",
         "size_in_bytes": 6967
       }
+    ],
+    "optimized2": [
+      {
+        "id": 12467370044,
+        "name": "exact-size-raise-review",
+        "digest": "sha256:a65f987eb045bc3ecd27f8166ee51e0a674fef784d3dcce206a62173eaa80bd5",
+        "size_in_bytes": 15028
+      },
+      {
+        "id": 12467320259,
+        "name": "range-explorer-validation",
+        "digest": "sha256:d9cd538a3ef9266e930105934e6ef95159e40b3f4700486a82d62425b1a2eb28",
+        "size_in_bytes": 279855
+      },
+      {
+        "id": 12467126517,
+        "name": "texas-averaging-replay",
+        "digest": "sha256:236932f5823100a4f1da1ca377d68149f2099d14a9c86d5fd7a577ddbfe4146a",
+        "size_in_bytes": 20816
+      },
+      {
+        "id": 12467070937,
+        "name": "turn-resource-study",
+        "digest": "sha256:93b1fead270e5417ba4bd0c048be5da5f0600900f84fc77181c5659e5af4e920",
+        "size_in_bytes": 5312
+      },
+      {
+        "id": 12466991624,
+        "name": "turn-policy-validation",
+        "digest": "sha256:cdfa2ea0b1195176fd264acc728cdf831050111f8f60bd785dc4362fb1a590a6",
+        "size_in_bytes": 11256
+      },
+      {
+        "id": 12466976853,
+        "name": "river-benchmark",
+        "digest": "sha256:04f69b6ee9977c6a5ba5f1554569f99f5b545dc9827312a5ad650d5597f79c1e",
+        "size_in_bytes": 33678
+      },
+      {
+        "id": 12466847106,
+        "name": "river-raise-validation",
+        "digest": "sha256:39d2c8355bf649520bca27e9d37ff7b44049cb18c0aa2068cf125e70183ebab2",
+        "size_in_bytes": 40015
+      },
+      {
+        "id": 12466692436,
+        "name": "texas-evidence-replay",
+        "digest": "sha256:b8fce7f2fb729a756439373a593e392f575cb54f35a36724be39295c4afcdaf2",
+        "size_in_bytes": 6968
+      },
+      {
+        "id": 12466552482,
+        "name": "post-session-hand-review",
+        "digest": "sha256:c0ed7368bdd0dbbaf1f40b9dee0a397dd2b31df9b44ba056a5b7cc3c80036892",
+        "size_in_bytes": 7900
+      },
+      {
+        "id": 12466284483,
+        "name": "turn-decomposition-performance",
+        "digest": "sha256:3f1ddeecfa7717018b0febd19835008457f059091ca26e418ae10cbb32a71059",
+        "size_in_bytes": 38659
+      },
+      {
+        "id": 12466079512,
+        "name": "turn-independent-reference",
+        "digest": "sha256:38c419ea9f6a52f39ec6ed9c1e4e926b6819897e050df4bfe884648bcd695b7d",
+        "size_in_bytes": 403039
+      }
     ]
   },
   "optimized_target_assessment": {
-    "samples": 1,
-    "critical_path_seconds": 425,
-    "reduction_vs_baseline_median_pct": 52.24719101123596,
+    "samples": 2,
+    "critical_path_seconds": [
+      425.0,
+      423.0
+    ],
+    "median_critical_path_seconds": 424.0,
+    "reduction_vs_baseline_median_pct": 52.359550561797754,
     "baseline_median_rounded_runner_minutes": 15,
-    "optimized_rounded_runner_minutes": 17,
+    "optimized_rounded_runner_minutes": [
+      17,
+      16
+    ],
+    "optimized_median_rounded_runner_minutes": 16.5,
     "baseline_median_job_seconds": 890,
-    "optimized_job_seconds": 903,
-    "target_latency_met_in_this_sample": true,
+    "optimized_job_seconds": [
+      903.0,
+      844.0
+    ],
+    "target_latency_met_in_these_samples": true,
     "per_run_compute_cost_reduction_established": false,
-    "duplicate_work": "Feature push removed; one full suite rather than push plus PR per feature update",
-    "repeatability": "Need repeated optimized observations; no stable p90 claimed"
+    "duplicate_work": "One PR suite instead of feature push plus PR; exact SHA 45be65a has one public pull_request run",
+    "repeatability": "Two optimized receipts here; final doc-head repeat on PR. No stable p90 or runtime bound."
+  },
+  "second_optimized_matched_comparison": {
+    "baseline_run": 39865456688,
+    "candidate_run": 39871882360,
+    "verified_baseline": {
+      "zip_hashes": 11,
+      "source_hashes": 176,
+      "raw_hashes": 7,
+      "worker_receipts": 1,
+      "result_hashes": 7
+    },
+    "verified_candidate": {
+      "zip_hashes": 11,
+      "source_hashes": 176,
+      "raw_hashes": 7,
+      "worker_receipts": 1,
+      "result_hashes": 7
+    },
+    "groups": [
+      {
+        "artifact": "river-benchmark",
+        "metadata_changes": 40,
+        "material_changes": 0
+      },
+      {
+        "artifact": "turn-independent-reference",
+        "metadata_changes": 71,
+        "material_changes": 18215
+      },
+      {
+        "artifact": "texas-averaging-replay",
+        "metadata_changes": 0,
+        "material_changes": 0
+      },
+      {
+        "artifact": "river-raise-validation",
+        "metadata_changes": 35,
+        "material_changes": 0
+      },
+      {
+        "artifact": "exact-size-raise-review",
+        "metadata_changes": 9,
+        "material_changes": 0
+      },
+      {
+        "artifact": "post-session-hand-review",
+        "metadata_changes": 6,
+        "material_changes": 0
+      },
+      {
+        "artifact": "range-explorer-validation",
+        "metadata_changes": 23,
+        "material_changes": 0
+      },
+      {
+        "artifact": "texas-evidence-replay",
+        "metadata_changes": 4,
+        "material_changes": 0
+      },
+      {
+        "artifact": "turn-decomposition-performance",
+        "metadata_changes": 404,
+        "material_changes": 62
+      },
+      {
+        "artifact": "turn-resource-study",
+        "metadata_changes": 204,
+        "material_changes": 31
+      },
+      {
+        "artifact": "turn-policy-validation",
+        "metadata_changes": 8,
+        "material_changes": 11
+      }
+    ],
+    "strict_comparator_exit": 1,
+    "strict_non_metadata_differences": 18319,
+    "no_reference_profile_digest_differences": true,
+    "maximum_strategy_probability_difference": 0.346707554983076,
+    "maximum_same_policy_replay_numeric_delta": 5.224553428773149e-14,
+    "maximum_root_ev_difference": 0.0001365529047916425,
+    "original_convergence_and_cross_play_gates": "All ten saved policy pairs passed in identical models",
+    "raw_diff_sha256": "0f1498ac874474bffe675be8fa17205f670afce80a3f7cf077fe3da017e67d73"
+  },
+  "observed_event_deduplication": {
+    "head_sha": "45be65a54472c9a52d14cd27915e614e2c92d90e",
+    "run_count": 1,
+    "events": [
+      "pull_request"
+    ]
+  },
+  "validated_source_sha256_lf": {
+    ".github/workflows/ci.yml": "5e86de471a1c8331ddf0799f734de4c042240b002854eedf150d2b7880fba834",
+    "requirements-dev.txt": "c30abc516b1362184ec9ed5050eec5c0e9b825594bcdb6b7dbc2be9a93ae1dbc",
+    "scripts/ci_gate.py": "9ebf03e934ea26d3e7d652b8ad75f5b9e58ec2e8af05412f1465785bc01bc217",
+    "scripts/profile_ci.py": "8f2b3aa2e8c9ac398ec4c28e18f68e3bbcc25fc33ef4159fa0f0f95f62410c13",
+    "scripts/compare_ci_evidence.py": "1f6338399ee6a5800f4a8caefcd01e0c732309eaf21594af6419134bf7aa8dce",
+    "benchmarks/turn_decomposition.py": "05a61504ee5f19edb18afb698120c5c69410a246bf0adc039dd9c352d6be378c",
+    "scripts/benchmark_turn_decomposition.py": "a28c18bfc2f7425e99076aa01fcd90988abdedd34563ac85dd0323cbdc37bf66",
+    "tests/test_ci_gate.py": "b0206ebf67d9194fd86e389be68a5db344b67ef44f3bc5ed19ec4d925f29abe3",
+    "tests/test_turn_followups.py": "0719450fffc5ce54156eda216c6c1ae02adea71f9e60621b8f5886380ac2b86c",
+    "tests/fixtures/ci-gates.json": "33fc3c95eda81141ae2734469cfa0aecc3dda85ceb828d17a3235492d2cb9b67"
   }
 }

@@ -80,10 +80,17 @@ median of 890 seconds: 52.2% less wall time. Its summed job time was 903 seconds
 rounding each job gives 17 runner-minute estimates versus the baseline median
 15. This is a latency/cost tradeoff, not a proven per-run compute saving. Removing
 the duplicate feature push reduces redundant full-suite work per PR update.
-Repeated optimized measurements are needed before claiming a stable median.
+A second run passed in 423 seconds (7m03s), with 16 rounded runner minutes.
+The two-sample median is 424 seconds, 52.4% below baseline; rounded runner-minute
+median is 16.5 versus 15. This does not establish per-run compute savings or a
+stable p90. Both runs retain eleven complete artifact groups. Final doc-head CI
+and its additional timing receipt are linked on PR #29 to avoid recursive
+evidence-only CI commits.
 
 The strict optimized comparison exits 1: 19,451 non-metadata differences remain,
-including strategy probabilities. None is hidden by loosening a threshold.
+including strategy probabilities. The second run has 18,319 strict differences
+and the same maximum probability/root-value/replay deltas. None is hidden by
+loosening a threshold.
 All reference-profile digests are unchanged; the largest product probability
 shift is 0.34670755, not a chip EV discrepancy. Replaying both saved turn policies
 in the same independent/product models passes all original same-policy,
