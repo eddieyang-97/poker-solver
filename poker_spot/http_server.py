@@ -3,6 +3,8 @@ import copy
 import asyncio
 import json
 import logging
+import os
+import re
 from contextlib import asynccontextmanager
 from time import monotonic
 from urllib.parse import urlsplit
@@ -23,6 +25,12 @@ from .mcp_server import CALL_TOOL, TOOL
 
 logger = logging.getLogger(__name__)
 MAX_BODY_BYTES = 16_384
+
+
+def deployment_commit():
+    """Expose only Render's full public Git commit; never arbitrary environment values."""
+    value = os.getenv('RENDER_GIT_COMMIT', '')
+    return value if re.fullmatch(r'[0-9a-f]{40}', value) else None
 
 
 def create_app(settings: Settings | None = None, runner: Runner | None = None):
@@ -102,7 +110,8 @@ def create_app(settings: Settings | None = None, runner: Runner | None = None):
 
     async def health(request):
         return JSONResponse({'status': 'ok', 'auth_configured': settings.configured,
-                             'engine': 'river-only', 'version': '0.2.0'})
+                             'engine': 'river-only', 'version': '0.2.0',
+                             'deployment': {'commit': deployment_commit()}})
 
     async def ready(request):
         return JSONResponse({'status': 'ready' if settings.configured else 'unconfigured'},

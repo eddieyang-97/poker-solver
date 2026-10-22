@@ -39,9 +39,13 @@
   work explicitly.
 
 - Keep local implementation, solver correctness, range-model quality,
-  and hosted acceptance as separate milestones. Deployment, OAuth,
-  plugin permissions, or paid-resource changes require separate
-  explicit authorization.
+  and hosted acceptance as separate milestones. Until an owner-approved
+  CI-gated release policy is activated, production deployments require
+  separate authorization. Once activated, an owner-reviewed merge to
+  protected main with required latest-head CI permits routine deployment
+  of existing hosted-compatible application code; it does not authorize
+  adding hosted tools, changing OAuth/allowlists, lifting resource limits,
+  changing plugin permissions, or using paid resources.
 
 - Hosted scope: HEADS-UP NLHE river-only constrained decision analysis. A separately authorized experimental local turn/river engine is allowed in `poker_spot/turn.py`; keep it out of MCP registrations and production deployment until separately validated. Neither engine is a full GTO solver.
 - Keep the core deterministic and dependency-light; separate game logic from MCP transports.
