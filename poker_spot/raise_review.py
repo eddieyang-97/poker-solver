@@ -8,6 +8,7 @@ from time import perf_counter
 from .core import Node
 from .history import HistoryError, exact_keys, money, position, reconstruct
 from .raises import RaiseRiverSolver
+from .raise_worker import accepted_configuration, canonical_digest
 from .review import digest, hypothesis
 
 
@@ -133,6 +134,8 @@ def _prepare(hand, scenarios, iterations, raise_to_cents, river_through):
                         raise HistoryError('Queried own hand is absent from its supplied arrival range')
             report['queries'].append({'scenario': scenario['id'], 'tool': 'local_raise_river',
                                       'arguments': config, 'tree': tree, 'status': 'not_run',
+                                      'accepted_configuration': accepted_configuration(solver, iterations, **{
+                                          k: config[k] for k in ('oop_hand', 'ip_hand') if k in config}),
                                       'meaning': 'Unforced local river-start one-raise equilibrium approximation'})
         except (ValueError, TypeError) as error:
             item['not_run_reason'] = str(error)
@@ -146,7 +149,18 @@ def evidence_label(query):
             or query.get('request_sha256') != digest({'tool': query['tool'], 'arguments': query['arguments']})
             or query.get('result_sha256') != digest(query['result'])):
         raise HistoryError('Computed raise claim lacks request/result/source evidence')
+    verify_receipt(query['receipt'], query['accepted_configuration'], query['result'])
     return 'computed locally; supplied ranges remain assumptions'
+
+
+def verify_receipt(receipt, expected, result):
+    if (receipt['configuration'] != expected
+            or receipt['configuration_sha256'] != canonical_digest(expected)
+            or receipt['result_sha256'] != canonical_digest(result)
+            or result['iterations'] != expected['iterations']
+            or {side: row['combo'] for side, row in result['hands'].items()}
+            != {side: hand for side, hand in expected['query_hands'].items() if hand is not None}):
+        raise HistoryError('Worker accepted configuration or bound result differs from prepared request')
 
 
 def run_raise_review(hand, scenarios, iterations=700, **options):
@@ -166,6 +180,7 @@ def run_raise_review(hand, scenarios, iterations=700, **options):
         else:
             try:
                 value, config = response['result'], query['arguments']
+                verify_receipt(response['receipt'], query['accepted_configuration'], value)
                 if (value['board'] != report['reconstruction']['board'] or value['pot'] != config['pot']
                         or value['stack'] != config['stack'] or value['sizing_mode'] != 'exact_integer_cents'
                         or value['bet_amounts_cents'] != config['bet_amounts_cents']
@@ -175,6 +190,7 @@ def run_raise_review(hand, scenarios, iterations=700, **options):
                                for n, row in query['tree']['nodes'].items())):
                     raise HistoryError('Returned board, amounts or action tree differ from request')
                 query.update(status='computed', result=value, metrics=response['metrics'],
+                             receipt=response['receipt'],
                              source_sha256_lf=source_hashes,
                              request_sha256=digest({'tool': query['tool'], 'arguments': config}), result_sha256=digest(value))
                 query['evidence_label'] = evidence_label(query)

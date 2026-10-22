@@ -14,7 +14,13 @@
     "existing_mixed_policy_checks": 48,
     "existing_river_cases": 10,
     "existing_sensitivity": "passed",
-    "final_head_ci": "pending"
+    "final_head_ci": {
+      "head": "f539b41c0ca23299327903325c5f972effc16b88",
+      "run_id": 39828199656,
+      "conclusion": "success",
+      "url": "https://github.com/eddieyang-97/poker-solver/actions/runs/39828199656",
+      "scope": "Original pre-review-fix head; not evidence for the later receipt fix"
+    }
   },
   "commands": [
     "python -m ruff check poker_spot tests scripts benchmarks/raises.py benchmarks/raise_reference_worker.py",
@@ -352,5 +358,246 @@
     "Ranges and supplied likelihood updates are hypotheses, not calibrated population estimates.",
     "No joint-range substitution, node locking, turn solving, MCP or hosted acceptance."
   ],
-  "failures": []
+  "failures": [],
+  "review_fix_validation": {
+    "reviewed_head": "f539b41c0ca23299327903325c5f972effc16b88",
+    "finding": "Misrouted same-tree results accepted despite different ranges, iterations or queried hands",
+    "before_fix": "All five actual alternate-worker response substitutions incorrectly computed",
+    "after_fix": "Five substitutions plus missing/edited receipts and edited result return RESULT_MISMATCH",
+    "checks": {
+      "ruff": "passed",
+      "compileall": "passed",
+      "unit_tests_run": 133,
+      "unit_tests_passed": 132,
+      "skipped": "Linux-only allocation test on Windows",
+      "raise_cases": 8,
+      "mixed_policies": 48,
+      "maximum_workers": 2,
+      "river_cases": 10,
+      "sensitivity": "passed",
+      "fix_head_ci": "See PR for subsequent fix-head run"
+    },
+    "commands": [
+      "python -m ruff check poker_spot tests scripts benchmarks/raises.py benchmarks/raise_reference_worker.py",
+      "python -m compileall -q poker_spot scripts benchmarks",
+      "OPENBLAS_NUM_THREADS=1 python -m unittest discover -s tests -v",
+      "python scripts/benchmark_raise_review.py --output .artifacts/pr22-fix-review",
+      "python scripts/benchmark_river_raises.py --performance --output .artifacts/pr22-fix-raises",
+      "python scripts/benchmark.py --sensitivity --output .artifacts/pr22-fix-river"
+    ],
+    "accepted_worker_receipt": {
+      "configuration": {
+        "version": 1,
+        "context": "post_session",
+        "board": [
+          "Ac",
+          "Jh",
+          "3s",
+          "Tc",
+          "4c"
+        ],
+        "pot_cents": 6300,
+        "stack_cents": 27500,
+        "minimum_bet_cents": 200,
+        "ranges": {
+          "oop": [
+            {
+              "combo": [
+                "3d",
+                "7d"
+              ],
+              "arrival_weight_hex": "0x1.0000000000000p+0",
+              "training_weight_hex": "0x1.1c71c71c71c72p-1"
+            },
+            {
+              "combo": [
+                "Jd",
+                "Ah"
+              ],
+              "arrival_weight_hex": "0x1.6666666666666p-2",
+              "training_weight_hex": "0x1.8e38e38e38e38p-3"
+            },
+            {
+              "combo": [
+                "Qc",
+                "Kc"
+              ],
+              "arrival_weight_hex": "0x1.0000000000000p-2",
+              "training_weight_hex": "0x1.1c71c71c71c72p-3"
+            },
+            {
+              "combo": [
+                "8d",
+                "9d"
+              ],
+              "arrival_weight_hex": "0x1.999999999999ap-3",
+              "training_weight_hex": "0x1.c71c71c71c71dp-4"
+            }
+          ],
+          "ip": [
+            {
+              "combo": [
+                "8c",
+                "8s"
+              ],
+              "arrival_weight_hex": "0x1.0000000000000p-1",
+              "training_weight_hex": "0x1.89d89d89d89dap-3"
+            },
+            {
+              "combo": [
+                "Qc",
+                "Kc"
+              ],
+              "arrival_weight_hex": "0x1.999999999999ap-2",
+              "training_weight_hex": "0x1.3b13b13b13b15p-3"
+            },
+            {
+              "combo": [
+                "Qd",
+                "Qs"
+              ],
+              "arrival_weight_hex": "0x1.0000000000000p+0",
+              "training_weight_hex": "0x1.89d89d89d89dap-2"
+            },
+            {
+              "combo": [
+                "Kd",
+                "Ad"
+              ],
+              "arrival_weight_hex": "0x1.6666666666666p-1",
+              "training_weight_hex": "0x1.13b13b13b13b2p-2"
+            }
+          ]
+        },
+        "iterations": 2000,
+        "query_hands": {
+          "oop": [
+            "3d",
+            "7d"
+          ],
+          "ip": [
+            "8c",
+            "8s"
+          ]
+        },
+        "sizing_mode": "exact_integer_cents",
+        "bet_amounts_cents": [
+          4000
+        ],
+        "bet_sizes": null,
+        "raise_to_cents": [
+          12000,
+          27500
+        ],
+        "raise_sizes": null
+      },
+      "configuration_sha256": "3c027a2d17cd85246774bd646e900c6d72a35acb50d90efbfcfb90d9ba5ab821",
+      "result_sha256": "2af054678c12a59232ed1fc48eee0cef2470d6eb3e67e34e11719378a415c318"
+    },
+    "request_sha256": "8ebf6e7608bec71b619c0030c1800ff5885268237033974cc4697406ef17da00",
+    "result_sha256": "2af054678c12a59232ed1fc48eee0cef2470d6eb3e67e34e11719378a415c318",
+    "runtime": {
+      "wall_seconds": 0.6485886999871582,
+      "cpu_seconds": 0.640625,
+      "initialization_seconds": 0.0030532999662682414,
+      "peak_resident_memory": {
+        "bytes": 29962240,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "output_bytes": 7693,
+      "nodes": 8,
+      "limits": {
+        "wall_seconds": 60,
+        "cpu_seconds": null,
+        "address_space_bytes": null
+      },
+      "platform": "Windows-11-10.0.26300-SP0",
+      "python": "3.14.8"
+    },
+    "source_sha256_lf": {
+      "poker_spot/raises.py": "ec97af6dd94e89afde9cf26851a7bb74bd016addab8e7030578242b0fd16c313",
+      "poker_spot/raise_worker.py": "db64f6728f44d29407dd1dc29addee292c309bf92e6a0a141b8aeab482dd76ce",
+      "poker_spot/raise_review.py": "8f9b4d4428d9d322e755d66be6a0580a5b2c7aabdd196d1bc3ce497b3f3c8b36",
+      "poker_spot/history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+      "poker_spot/review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+      "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+      "scripts/review_hand.py": "b070ea1ea6416a9c15422d396ebd8d8aed31bf0ad4fb5164524eb07ff375d93c",
+      "scripts/solve_river_raises.py": "c948fb291ae1ee7245e60f39b39f1b27d3ac4413b3ab789e9cf8987e9d704683",
+      "scripts/benchmark_raise_review.py": "0dc0f389232fb277de2c20dc5956b3382181b9c790705343cc736b6d5b1dffa5",
+      "benchmarks/raises.py": "a1407839281c00640b07aebae0751efbe7da175a0743962808e60f643f03ca13",
+      "benchmarks/raise_reference_worker.py": "32259b1fb8fcd93b8bcbe9ea0aa0c99d2d09b524e28782381411b4db84f2639e",
+      "examples/hand-review-raises.txt": "9168057ac541dff39c401cd527a552ba05858d8ef05c42af6eaf8818239f11a1",
+      "examples/hand-review-raise-scenarios.json": "cff89731d58524679b0e5d6457502d6706dd1bddda499b5b051dca099e91fe41"
+    },
+    "test_sha256_lf": "f74471db4783da3aa5d7f0d89b548573e88c8c5db21f4b439a1c263be0cc7231",
+    "raw_profiles_sha256": "ed6862c638f613d8641f61ffee4979249275c8488ac32c7af0d993e84ef15b44",
+    "reference_profile_sha256": "b3ff4f7731c973e6b0e18d80947c99a41c2b5fed76e0ba9a1669fd6ba2f044ec",
+    "comparison": {
+      "product_root_ev": -9.269708041617442,
+      "reference_root_ev": -9.269683720335022,
+      "product_nashconv": 0.007234736490262961,
+      "reference_nashconv": 0.0038750158649327204,
+      "product_best_response_ev": [
+        -9.265150451380464,
+        9.272385187870727
+      ],
+      "reference_best_response_ev": [
+        -9.268646348001798,
+        9.27252136386673
+      ],
+      "same_policy_max_delta": 1.7053025658242404e-13,
+      "trained_ev_delta": 2.4321282419137447e-05,
+      "convergence_gate_chips": 0.315,
+      "failures": []
+    },
+    "known_existing_raise_max_discrepancy": 8.756188663028297e-09,
+    "maximum_workload_samples": [
+      {
+        "status": "computed",
+        "metrics": {
+          "wall_seconds": 3.2339390999404714,
+          "cpu_seconds": 3.234375,
+          "initialization_seconds": 0.004063199972733855,
+          "peak_resident_memory": {
+            "bytes": 30064640,
+            "method": "Windows PeakWorkingSetSize"
+          },
+          "output_bytes": 13495,
+          "nodes": 14,
+          "limits": {
+            "wall_seconds": 60,
+            "cpu_seconds": null,
+            "address_space_bytes": null
+          },
+          "platform": "Windows-11-10.0.26300-SP0",
+          "python": "3.14.8"
+        },
+        "parent_wall_seconds": 3.54827559995465
+      },
+      {
+        "status": "computed",
+        "metrics": {
+          "wall_seconds": 3.535963600035757,
+          "cpu_seconds": 3.53125,
+          "initialization_seconds": 0.004721600096672773,
+          "peak_resident_memory": {
+            "bytes": 30048256,
+            "method": "Windows PeakWorkingSetSize"
+          },
+          "output_bytes": 13477,
+          "nodes": 14,
+          "limits": {
+            "wall_seconds": 60,
+            "cpu_seconds": null,
+            "address_space_bytes": null
+          },
+          "platform": "Windows-11-10.0.26300-SP0",
+          "python": "3.14.8"
+        },
+        "parent_wall_seconds": 3.9150634000543505
+      }
+    ],
+    "failures": [],
+    "scope": "Local integrity binding, not signed execution proof or hosted acceptance"
+  }
 }

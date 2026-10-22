@@ -99,6 +99,10 @@ class ExactRaiseReviewTests(unittest.TestCase):
         corrupted['result']['pot'] = 64
         with self.assertRaises(ValueError):
             evidence_label(corrupted)
+        corrupted = copy.deepcopy(q)
+        corrupted['receipt']['configuration']['iterations'] += 1
+        with self.assertRaises(ValueError):
+            evidence_label(corrupted)
         for response in ({'status': 'computed', 'result': {}},
                          {'status': 'failed', 'error': {'code': 'TIMEOUT'}},
                          {'status': 'not_run', 'error': {'code': 'INVALID_INPUT'}}):
@@ -122,6 +126,40 @@ class ExactRaiseReviewTests(unittest.TestCase):
                                     str(ROOT/'examples/hand-review-raises.txt')], capture_output=True, timeout=20)
             self.assertEqual(child.returncode, 0, child.stderr)
             self.assertEqual(json.loads(child.stdout)['queries'], [])
+
+    def test_misrouted_valid_worker_results_are_rejected(self):
+        from scripts.solve_river_raises import execute
+
+        options = dict(river_through=1, raise_to_cents=[12000, 27500])
+        config = prepare_raise_review(HAND, SCENARIOS, 100, **options)['queries'][0]['arguments']
+        changes = ({'iterations': 101}, {'oop_hand': 'AhJd'}, {'ip_hand': 'QsQd'},
+                   {'oop_range': config['oop_range'].replace(':1.0', ':0.5')},
+                   {'ip_range': config['ip_range'].replace(':0.5', ':0.25')})
+        for change in changes:
+            with self.subTest(change=change):
+                response = execute(dict(config, **change))
+                self.assertEqual(response['status'], 'computed', response)
+                with patch('scripts.solve_river_raises.execute', return_value=response):
+                    rejected = run_raise_review(HAND, SCENARIOS, 100, **options)
+                query = rejected['queries'][0]
+                self.assertEqual(query['status'], 'failed')
+                self.assertEqual(query['error']['code'], 'RESULT_MISMATCH')
+                self.assertNotIn('result', query)
+                self.assertEqual(evidence_label(query), 'not solver-verified')
+        matching = execute(config)
+        self.assertEqual(matching['status'], 'computed')
+        for change in ('missing_receipt', 'changed_receipt', 'changed_result'):
+            response = copy.deepcopy(matching)
+            if change == 'missing_receipt':
+                del response['receipt']
+            elif change == 'changed_receipt':
+                response['receipt']['configuration_sha256'] = '0'*64
+            else:
+                response['result']['root_ev_oop_relative_to_split_pot'] += 1
+            with self.subTest(change=change), patch('scripts.solve_river_raises.execute', return_value=response):
+                rejected = run_raise_review(HAND, SCENARIOS, 100, **options)
+            self.assertEqual(rejected['queries'][0]['error']['code'], 'RESULT_MISMATCH')
+            self.assertNotIn('result', rejected['queries'][0])
 
 
 if __name__ == '__main__':

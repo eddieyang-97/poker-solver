@@ -1,8 +1,39 @@
 """Disposable local study worker. No MCP entry point or operator credentials."""
 import json
+import hashlib
 import platform
 import sys
 import time
+
+
+def canonical_digest(value):
+    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()).hexdigest()
+
+
+def accepted_configuration(solver, iterations=2000, oop_hand=None, ip_hand=None):
+    """Receipt from the instantiated game and solve arguments, not request text.
+
+    Ordered combos and binary64 hex weights preserve the actual trainer inputs,
+    including pre-normalization arrival weights and card removal. No policy or
+    execution authenticity is implied by this deterministic integrity receipt.
+    """
+    from .core import cards, combo_key
+
+    ranges = {}
+    for side, hands, raw, weights in (('oop', solver.h0, solver.r0, solver.w0),
+                                      ('ip', solver.h1, solver.r1, solver.w1)):
+        ranges[side] = [{'combo': list(h), 'arrival_weight_hex': float(raw[h]).hex(),
+                         'training_weight_hex': float(w).hex()} for h, w in zip(hands, weights, strict=True)]
+    return {'version': 1, 'context': 'post_session', 'board': list(solver.board),
+            'pot_cents': solver.pot_cents, 'stack_cents': solver.stack_cents,
+            'minimum_bet_cents': solver.minimum_cents, 'ranges': ranges, 'iterations': iterations,
+            'query_hands': {side: list(combo_key(*cards(hand, 2))) if hand is not None else None
+                            for side, hand in (('oop', oop_hand), ('ip', ip_hand))},
+            'sizing_mode': 'exact_integer_cents' if solver.exact_sizing else 'fractional',
+            'bet_amounts_cents': list(solver.bet_cents),
+            'bet_sizes': None if solver.exact_sizing else list(solver.sizes),
+            'raise_to_cents': list(solver.raise_to_cents) if solver.exact_sizing else None,
+            'raise_sizes': solver.raise_sizes}
 
 
 def peak_rss():
@@ -45,8 +76,11 @@ def run(config):
     solver = RaiseRiverSolver(**config)
     initialized = time.perf_counter()
     result = solver.solve(**solve_args)
+    accepted = accepted_configuration(solver, **solve_args)
     encoded = json.dumps(result, allow_nan=False).encode()
     return {'status': 'computed', 'result': result,
+            'receipt': {'configuration': accepted, 'configuration_sha256': canonical_digest(accepted),
+                        'result_sha256': canonical_digest(result)},
             'metrics': {'wall_seconds': time.perf_counter()-started, 'cpu_seconds': time.process_time()-cpu,
                         'initialization_seconds': initialized-started, 'peak_resident_memory': peak_rss(),
                         'output_bytes': len(encoded), 'nodes': len(solver.nodes), 'limits': limits,

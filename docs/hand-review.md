@@ -85,8 +85,15 @@ EVs here use the computed continuation of both declared arrival ranges.
 The illustrative range file is separate from the compact accounting fixture and
 is not calibrated. Complete requests/results, accepted node/action/cent mapping,
 runtime/resource metrics, source hashes and integrity receipts are retained.
-Only an actual worker result matching the prepared board/pot/stack/tree receives
-`computed`; plans are `not_run`. These receipts are not signed execution proofs.
+Only an actual worker result matching the prepared board/pot/stack/tree and
+complete accepted configuration receives `computed`; plans are `not_run`.
+The worker echoes its instantiated configuration: ordered board-unblocked
+combos, original and normalized binary64 weights (hex), iterations, queried
+hands, exact amounts/minimum bet and sizing mode. A canonical SHA-256 binds
+this configuration, and the same receipt binds the returned result digest.
+The reviewer verifies both against its prepared configuration before marking
+the query computed. Missing, stale or mismatched receipts produce
+`RESULT_MISMATCH`. These are integrity checks, not signed execution proofs.
 
 Checking and betting remain **endogenous, not locked**. A conditional value at
 `c/b4000` is a computed equilibrium-continuation value for that node, not an EV

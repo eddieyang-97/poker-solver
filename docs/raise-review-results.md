@@ -53,5 +53,23 @@ rounding rejection and all-in/minimum/refund behavior remain intact.
 Reproduction commands and exact measured hashes are in
 [raise-review-results.json](raise-review-results.json). CI adds a separate
 `exact-size-raise-review` artifact with full sanitized inputs/results and raw
-profiles. Final-head CI was pending when this local snapshot was recorded.
+profiles. The original final-head CI subsequently passed at `f539b41c`:
+[run 39828199656](https://github.com/eddieyang-97/poker-solver/actions/runs/39828199656).
 No deployment, MCP registration, OAuth, plugin, paid-resource or turn changes.
+
+## PR #22 receipt-binding correction
+
+The review reproduced five valid but misrouted same-tree worker responses:
+different iteration count, either queried hand, or either player's range weights.
+All were incorrectly labelled computed before the fix. The worker now returns
+its accepted configuration and paired result digest; the reviewer checks both
+before assigning `computed`. All five substitutions, missing/edited receipts
+and an edited result now fail with `RESULT_MISMATCH`. Actual matching worker
+execution still passes. No training or game semantics changed.
+
+Fresh Windows validation: Ruff/compileall passed; 133 tests ran, 132 passed and
+one Linux-only allocation check was skipped. Fresh independent exact-size,
+8-case/48-policy raise and 10-case river/sensitivity results and source/receipt
+hashes are retained separately under `review_fix_validation` in the JSON record.
+The original measurements above remain historical evidence. CI for the fix is
+recorded on the PR after pushing; the original green run does not validate it.

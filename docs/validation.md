@@ -26,7 +26,18 @@ two maximum worker samples and **10/10 no-raise cases plus sensitivity** passed.
 All eight legacy 2,000-iteration outputs match pre-change canonical JSON bytes on
 this machine. The known 8.7562e-9-chip raise discrepancy is retained. Historical
 evidence below is preserved; source receipts identify each measured version.
-New final-head CI is pending at this snapshot; it is not substituted by older CI.
+Original final-head CI passed at `f539b41c`:
+[run 39828199656](https://github.com/eddieyang-97/poker-solver/actions/runs/39828199656).
+
+PR #22's review then reproduced misrouted same-tree results with different
+ranges/weights, iterations or queried hands being marked computed. The fix
+binds the worker's instantiated configuration and result with canonical digests
+and verifies them against preparation before assigning that status. Five actual
+alternate-worker responses plus missing/edited receipts and an edited result
+now return `RESULT_MISMATCH`. Fresh Windows checks ran 133 tests (132 passed,
+one Linux-only skip), Ruff/compileall and the required exact-size, raise and
+river/sensitivity benchmarks. Fresh receipts/source hashes are separate in
+`review_fix_validation`; final fix-head CI is linked on the PR when available.
 
 Plans/unsupported inputs remain `not_run`; worker failures/timeouts never receive
 a computed label. Verified computations retain exact configurations, accepted
