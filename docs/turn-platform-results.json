@@ -1,0 +1,92 @@
+{
+  "mode": "Actual CI product-profile replay in both Windows models; independent reference digests verified",
+  "ci_run": "https://github.com/eddieyang-97/poker-solver/actions/runs/39131773211",
+  "ci_source_head": "7bba663684a16cb36df6b28d6b524803fdb20a02",
+  "ci_reference_zip_sha256": "5ba2c63525421b65e8e88c38b49690adfd45288d87d51f220ea302b5c1e0098f",
+  "ci_raw_profiles_sha256": "95c573c9a6181386712f46fc047b9e9dc4891d6b5969fc284f5bb8e41dc38b2e",
+  "windows_raw_profiles_sha256": "4ec216d2ac63ec3cd1105149a1ee329890091a5f504dad81b9a1690193973104",
+  "source_sha256_lf": {
+    "benchmarks/turn-independent-fixtures.json": "8f5f31221e7c97349ae1c176be98c5e83d24d4f51c2d9d49a3620ff275d01635",
+    "benchmarks/turn_reference.py": "712739f94113a13e40c8692b5ae38309b95ce6f9c09821265a8841724381e4a6",
+    "benchmarks/turn_reference_worker.py": "e61c38f5ce9cfa2b8f9779eebc267659becb09c3cfcd70d9f8a2e531289d43b9",
+    "benchmarks/turn_independent.py": "086c43ea7b49921d63d898dfb52fc1c5733c869f26da052a779c3c4aca853074",
+    "scripts/benchmark_turn_independent.py": "fb1bf631aab6242ffd06fb0a893b5d943e7ecebcb256693ef750fa80a3ead37a",
+    "poker_spot/turn.py": "fb546353b2875dec377b2966a9c09282bb6a65617505760b1b731e0d66a7e572",
+    "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9"
+  },
+  "reference_profile_digests_matching": 10,
+  "same_policy_numeric_gate_chips": 1e-08,
+  "cases": [
+    {
+      "fixture": "singleton_minimax",
+      "ci_vs_windows_product_ev_delta": 0.0,
+      "combined_gap_bound": 0.0008990576754462407,
+      "ci_policy_replay_numeric_delta": 1.4210854715202004e-14,
+      "root_first_hand_max_frequency_delta": 0.0
+    },
+    {
+      "fixture": "weighted_dry",
+      "ci_vs_windows_product_ev_delta": 0.0,
+      "combined_gap_bound": 0.0105535064222187,
+      "ci_policy_replay_numeric_delta": 5.224553428773149e-14,
+      "root_first_hand_max_frequency_delta": 0.0
+    },
+    {
+      "fixture": "draw_two_sizes",
+      "ci_vs_windows_product_ev_delta": 0.0,
+      "combined_gap_bound": 0.0009665131405603486,
+      "ci_policy_replay_numeric_delta": 1.4210854715202004e-14,
+      "root_first_hand_max_frequency_delta": 0.0
+    },
+    {
+      "fixture": "weighted_collision",
+      "ci_vs_windows_product_ev_delta": 0.0,
+      "combined_gap_bound": 0.0009535231508755513,
+      "ci_policy_replay_numeric_delta": 2.842170943040401e-14,
+      "root_first_hand_max_frequency_delta": 0.0
+    },
+    {
+      "fixture": "paired_capped",
+      "ci_vs_windows_product_ev_delta": -1.0658141036401503e-14,
+      "combined_gap_bound": 0.00021522499780874364,
+      "ci_policy_replay_numeric_delta": 7.105427357601002e-15,
+      "root_first_hand_max_frequency_delta": 1.0164395367051604e-20
+    },
+    {
+      "fixture": "turn_allin",
+      "ci_vs_windows_product_ev_delta": 0.0,
+      "combined_gap_bound": 0.04437037062891764,
+      "ci_policy_replay_numeric_delta": 7.105427357601002e-15,
+      "root_first_hand_max_frequency_delta": 0.0
+    },
+    {
+      "fixture": "weighted_4x4_collision",
+      "ci_vs_windows_product_ev_delta": 0.0,
+      "combined_gap_bound": 0.007650563229531454,
+      "ci_policy_replay_numeric_delta": 1.529418952594952e-14,
+      "root_first_hand_max_frequency_delta": 0.0
+    },
+    {
+      "fixture": "four_flush_4x4",
+      "ci_vs_windows_product_ev_delta": 7.780320387951178e-08,
+      "combined_gap_bound": 0.003319019989386501,
+      "ci_policy_replay_numeric_delta": 2.903948782828625e-14,
+      "root_first_hand_max_frequency_delta": 8.948106423434243e-05
+    },
+    {
+      "fixture": "trips_3x4",
+      "ci_vs_windows_product_ev_delta": -0.0001365529047916425,
+      "combined_gap_bound": 0.01911190939977476,
+      "ci_policy_replay_numeric_delta": 7.105427357601002e-15,
+      "root_first_hand_max_frequency_delta": 0.00032802459751613
+    },
+    {
+      "fixture": "draw_4x4_two_sizes",
+      "ci_vs_windows_product_ev_delta": -1.7871333568564296e-07,
+      "combined_gap_bound": 0.0027165782050096506,
+      "ci_policy_replay_numeric_delta": 1.8456156741786245e-14,
+      "root_first_hand_max_frequency_delta": 1.0276954409693673e-07
+    }
+  ],
+  "limitation": "Same-policy evaluation and convergence bounds pass. Platform-dependent training round-off is a plausible explanation, not an isolated cause; no numerical gate was relaxed."
+}

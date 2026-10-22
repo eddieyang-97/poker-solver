@@ -38,7 +38,7 @@
       },
       "product_iterations": 2000,
       "reference_iterations": 4000,
-      "product_wall_seconds": 1.5684751000371762,
+      "product_wall_seconds": 1.357302599994,
       "product_diagnostics": {
         "iterations": 2000,
         "oop_ev": -27.273017496735203,
@@ -47,6 +47,17 @@
         "zero_sum_residual": 3.552713678800501e-15,
         "nash_conv_chips": 0.00044952383773377846,
         "nash_conv_pct_pot": 0.00044952383773377846
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": -27.273017496735203,
+        "ip_ev": 27.273017496735207,
+        "raw_nash_conv_chips": 0.00044952383773377846,
+        "zero_sum_residual": 3.552713678800501e-15,
+        "nash_conv_chips": 0.00044952383773377846,
+        "nash_conv_pct_pot": 0.00044952383773377846,
+        "oop_lower_bound": -27.273076353745157,
+        "oop_upper_bound": -27.272626829907423
       },
       "product_policy_in_reference": {
         "oop_ev": -27.2730174967352,
@@ -69,7 +80,9 @@
         "raw_nash_conv_chips": 0.00011240904765230653,
         "zero_sum_residual": -7.105427357601002e-15,
         "nash_conv_chips": 0.00011240904765230653,
-        "nash_conv_pct_pot": 0.00011240904765230653
+        "nash_conv_pct_pot": 0.00011240904765230653,
+        "oop_lower_bound": -27.272814564793855,
+        "oop_upper_bound": -27.272702155746202
       },
       "same_policy_numeric_delta": 1.4210854715202004e-14,
       "trained_value_delta": 0.0002176497401151778,
@@ -90,7 +103,7 @@
         "implementation": "In-repository independently constructed full-state CFR+ development reference",
         "limitation": "Not an external audited turn solver or proven gold standard",
         "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
-        "pid": 33612,
+        "pid": 41648,
         "product_modules_loaded": [],
         "runtime": {
           "python": "3.14.8",
@@ -171,8 +184,8 @@
           }
         ],
         "cost": {
-          "wall_seconds": 1.38238150003599,
-          "cpu_seconds": 1.34375
+          "wall_seconds": 1.3990959000075236,
+          "cpu_seconds": 1.25
         }
       },
       "turn_policies": {
@@ -363,7 +376,7 @@
       },
       "product_iterations": 2000,
       "reference_iterations": 4000,
-      "product_wall_seconds": 3.9383660999592394,
+      "product_wall_seconds": 2.2118926999974065,
       "product_diagnostics": {
         "iterations": 2000,
         "oop_ev": -48.633231987601356,
@@ -372,6 +385,17 @@
         "zero_sum_residual": 2.1316282072803006e-14,
         "nash_conv_chips": 0.005276748211178315,
         "nash_conv_pct_pot": 0.005276748211178315
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": -48.633231987601356,
+        "ip_ev": 48.63323198760138,
+        "raw_nash_conv_chips": 0.005276748211178315,
+        "zero_sum_residual": 2.1316282072803006e-14,
+        "nash_conv_chips": 0.005276748211178315,
+        "nash_conv_pct_pot": 0.005276748211178315,
+        "oop_lower_bound": -48.634935350007694,
+        "oop_upper_bound": -48.629658601796514
       },
       "product_policy_in_reference": {
         "oop_ev": -48.633231987601356,
@@ -394,7 +418,9 @@
         "raw_nash_conv_chips": 0.0026777541951616968,
         "zero_sum_residual": 5.684341886080802e-14,
         "nash_conv_chips": 0.0026777541951616968,
-        "nash_conv_pct_pot": 0.0026777541951616968
+        "nash_conv_pct_pot": 0.0026777541951616968,
+        "oop_lower_bound": -48.63392697769802,
+        "oop_upper_bound": -48.631249223502856
       },
       "same_policy_numeric_delta": 6.896479914919595e-14,
       "trained_value_delta": 0.00012020893491637707,
@@ -415,7 +441,7 @@
         "implementation": "In-repository independently constructed full-state CFR+ development reference",
         "limitation": "Not an external audited turn solver or proven gold standard",
         "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
-        "pid": 27176,
+        "pid": 9672,
         "product_modules_loaded": [],
         "runtime": {
           "python": "3.14.8",
@@ -500,8 +526,8 @@
           }
         ],
         "cost": {
-          "wall_seconds": 1.734590100008063,
-          "cpu_seconds": 1.671875
+          "wall_seconds": 1.7609597999835387,
+          "cpu_seconds": 1.609375
         }
       },
       "turn_policies": {
@@ -770,7 +796,7 @@
       },
       "product_iterations": 2000,
       "reference_iterations": 4000,
-      "product_wall_seconds": 7.569621499977075,
+      "product_wall_seconds": 5.434201899974141,
       "product_diagnostics": {
         "iterations": 2000,
         "oop_ev": -50.00030468630562,
@@ -779,6 +805,17 @@
         "zero_sum_residual": -7.105427357601002e-15,
         "nash_conv_chips": 0.0004832515702699109,
         "nash_conv_pct_pot": 0.0004832515702699109
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": -50.00030468630562,
+        "ip_ev": 50.00030468630561,
+        "raw_nash_conv_chips": 0.0004832515702699109,
+        "zero_sum_residual": -7.105427357601002e-15,
+        "nash_conv_chips": 0.0004832515702699109,
+        "nash_conv_pct_pot": 0.0004832515702699109,
+        "oop_lower_bound": -50.00040235461285,
+        "oop_upper_bound": -49.99991910304258
       },
       "product_policy_in_reference": {
         "oop_ev": -50.000304686305626,
@@ -801,7 +838,9 @@
         "raw_nash_conv_chips": 0.00012084308824948191,
         "zero_sum_residual": 0.0,
         "nash_conv_chips": 0.00012084308824948191,
-        "nash_conv_pct_pot": 0.0001208430882494819
+        "nash_conv_pct_pot": 0.0001208430882494819,
+        "oop_lower_bound": -50.0001006137941,
+        "oop_upper_bound": -49.99997977070585
       },
       "same_policy_numeric_delta": 1.4210854715202004e-14,
       "trained_value_delta": 0.00022849586763129537,
@@ -822,7 +861,7 @@
         "implementation": "In-repository independently constructed full-state CFR+ development reference",
         "limitation": "Not an external audited turn solver or proven gold standard",
         "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
-        "pid": 40628,
+        "pid": 13444,
         "product_modules_loaded": [],
         "runtime": {
           "python": "3.14.8",
@@ -913,8 +952,8 @@
           }
         ],
         "cost": {
-          "wall_seconds": 8.276167300005909,
-          "cpu_seconds": 8.1875
+          "wall_seconds": 6.7157852000091225,
+          "cpu_seconds": 6.59375
         }
       },
       "turn_policies": {
@@ -1415,7 +1454,7 @@
       },
       "product_iterations": 2000,
       "reference_iterations": 4000,
-      "product_wall_seconds": 4.069272100052331,
+      "product_wall_seconds": 2.6617639000178315,
       "product_diagnostics": {
         "iterations": 2000,
         "oop_ev": -37.479356228812726,
@@ -1424,6 +1463,17 @@
         "zero_sum_residual": 0.0,
         "nash_conv_chips": 0.0004767565754394982,
         "nash_conv_pct_pot": 0.00047675657543949814
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": -37.479356228812726,
+        "ip_ev": 37.479356228812726,
+        "raw_nash_conv_chips": 0.0004767565754394982,
+        "zero_sum_residual": 0.0,
+        "nash_conv_chips": 0.0004767565754394982,
+        "nash_conv_pct_pot": 0.00047675657543949814,
+        "oop_lower_bound": -37.47959719552469,
+        "oop_upper_bound": -37.47912043894925
       },
       "product_policy_in_reference": {
         "oop_ev": -37.47935622881271,
@@ -1446,7 +1496,9 @@
         "raw_nash_conv_chips": 0.00020343749788118907,
         "zero_sum_residual": 7.105427357601002e-15,
         "nash_conv_chips": 0.00020343749788118907,
-        "nash_conv_pct_pot": 0.00020343749788118907
+        "nash_conv_pct_pot": 0.00020343749788118907,
+        "oop_lower_bound": -37.479450290161104,
+        "oop_upper_bound": -37.47924685266322
       },
       "same_policy_numeric_delta": 1.4210854715202004e-14,
       "trained_value_delta": 1.3028214233656854e-05,
@@ -1467,7 +1519,7 @@
         "implementation": "In-repository independently constructed full-state CFR+ development reference",
         "limitation": "Not an external audited turn solver or proven gold standard",
         "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
-        "pid": 39460,
+        "pid": 1040,
         "product_modules_loaded": [],
         "runtime": {
           "python": "3.14.8",
@@ -1556,8 +1608,8 @@
           }
         ],
         "cost": {
-          "wall_seconds": 2.13262869999744,
-          "cpu_seconds": 2.09375
+          "wall_seconds": 2.307336099969689,
+          "cpu_seconds": 2.15625
         }
       },
       "turn_policies": {
@@ -1896,7 +1948,7 @@
       },
       "product_iterations": 2000,
       "reference_iterations": 4000,
-      "product_wall_seconds": 4.917807599995285,
+      "product_wall_seconds": 3.784853200020734,
       "product_diagnostics": {
         "iterations": 2000,
         "oop_ev": 19.333253831641954,
@@ -1905,6 +1957,17 @@
         "zero_sum_residual": 0.0,
         "nash_conv_chips": 0.00010760749890247704,
         "nash_conv_pct_pot": 0.00010760749890247704
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": 19.333253831641954,
+        "ip_ev": -19.333253831641954,
+        "raw_nash_conv_chips": 0.00010760749890247704,
+        "zero_sum_residual": 0.0,
+        "nash_conv_chips": 0.00010760749890247704,
+        "nash_conv_pct_pot": 0.00010760749890247704,
+        "oop_lower_bound": 19.33323338866968,
+        "oop_upper_bound": 19.333340996168584
       },
       "product_policy_in_reference": {
         "oop_ev": 19.33325383164195,
@@ -1927,7 +1990,9 @@
         "raw_nash_conv_chips": 2.6908598522368264e-05,
         "zero_sum_residual": 1.0658141036401503e-14,
         "nash_conv_chips": 2.6908598522368264e-05,
-        "nash_conv_pct_pot": 2.6908598522368264e-05
+        "nash_conv_pct_pot": 2.6908598522368264e-05,
+        "oop_lower_bound": 19.333308340922436,
+        "oop_upper_bound": 19.33333524952096
       },
       "same_policy_numeric_delta": 1.563193883146949e-14,
       "trained_value_delta": 5.962119328017934e-05,
@@ -1948,7 +2013,7 @@
         "implementation": "In-repository independently constructed full-state CFR+ development reference",
         "limitation": "Not an external audited turn solver or proven gold standard",
         "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
-        "pid": 42584,
+        "pid": 16340,
         "product_modules_loaded": [],
         "runtime": {
           "python": "3.14.8",
@@ -2039,8 +2104,8 @@
           }
         ],
         "cost": {
-          "wall_seconds": 2.950844499981031,
-          "cpu_seconds": 2.90625
+          "wall_seconds": 4.670564999978524,
+          "cpu_seconds": 4.4375
         }
       },
       "turn_policies": {
@@ -2535,7 +2600,7 @@
       },
       "product_iterations": 2000,
       "reference_iterations": 4000,
-      "product_wall_seconds": 1.1352203999995254,
+      "product_wall_seconds": 0.7150561999878846,
       "product_diagnostics": {
         "iterations": 2000,
         "oop_ev": -21.59093993282089,
@@ -2544,6 +2609,17 @@
         "zero_sum_residual": 0.0,
         "nash_conv_chips": 0.022185180314451713,
         "nash_conv_pct_pot": 0.022185180314451713
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": -21.59093993282089,
+        "ip_ev": 21.59093993282089,
+        "raw_nash_conv_chips": 0.022185180314451713,
+        "zero_sum_residual": 0.0,
+        "nash_conv_chips": 0.022185180314451713,
+        "nash_conv_pct_pot": 0.022185180314451713,
+        "oop_lower_bound": -21.602568455770157,
+        "oop_upper_bound": -21.580383275455706
       },
       "product_policy_in_reference": {
         "oop_ev": -21.59093993282089,
@@ -2566,9 +2642,11 @@
         "raw_nash_conv_chips": 0.015836232083774604,
         "zero_sum_residual": 3.552713678800501e-15,
         "nash_conv_chips": 0.015836232083774604,
-        "nash_conv_pct_pot": 0.015836232083774604
+        "nash_conv_pct_pot": 0.015836232083774604,
+        "oop_lower_bound": -21.59761501705944,
+        "oop_upper_bound": -21.581778784975665
       },
-      "same_policy_numeric_delta": 7.105427357601002e-15,
+      "same_policy_numeric_delta": 1.0658141036401503e-14,
       "trained_value_delta": 1.9227204237637352e-05,
       "combined_gap_bound": 0.03802142239822987,
       "cross_play_oop_ev": {
@@ -2651,7 +2729,7 @@
         "implementation": "In-repository independently constructed full-state CFR+ development reference",
         "limitation": "Not an external audited turn solver or proven gold standard",
         "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
-        "pid": 43920,
+        "pid": 9252,
         "product_modules_loaded": [],
         "runtime": {
           "python": "3.14.8",
@@ -2734,8 +2812,8 @@
           }
         ],
         "cost": {
-          "wall_seconds": 0.7916404000134207,
-          "cpu_seconds": 0.765625
+          "wall_seconds": 1.072306899994146,
+          "cpu_seconds": 0.90625
         }
       },
       "turn_policies": {
@@ -2958,20 +3036,3798 @@
           }
         ]
       }
+    },
+    {
+      "id": "weighted_4x4_collision",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 150,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "AsKs",
+            "weight": 0.3
+          },
+          {
+            "hand": "QhQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "Ah5h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJs",
+            "weight": 0.5
+          },
+          {
+            "hand": "AhKh",
+            "weight": 0.4
+          },
+          {
+            "hand": "6h5d",
+            "weight": 0.15
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "product_iterations": 2000,
+      "reference_iterations": 4000,
+      "product_wall_seconds": 3.408001500007231,
+      "product_diagnostics": {
+        "iterations": 2000,
+        "oop_ev": -26.78880171940258,
+        "ip_ev": 26.788801719402592,
+        "raw_nash_conv_chips": 0.0038252766147729585,
+        "zero_sum_residual": 1.0658141036401503e-14,
+        "nash_conv_chips": 0.0038252766147729585,
+        "nash_conv_pct_pot": 0.003825276614772959
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": -26.78880171940258,
+        "ip_ev": 26.788801719402592,
+        "raw_nash_conv_chips": 0.0038252766147729585,
+        "zero_sum_residual": 1.0658141036401503e-14,
+        "nash_conv_chips": 0.0038252766147729585,
+        "nash_conv_pct_pot": 0.003825276614772959,
+        "oop_lower_bound": -26.78931502723012,
+        "oop_upper_bound": -26.785489750615348
+      },
+      "product_policy_in_reference": {
+        "oop_ev": -26.788801719402603,
+        "ip_ev": 26.788801719402603,
+        "nash_conv_chips": 0.003825276614765727,
+        "oop_lower_bound": -26.789315027230117,
+        "oop_upper_bound": -26.78548975061535
+      },
+      "reference_policy_in_reference": {
+        "oop_ev": -26.788634806894027,
+        "ip_ev": 26.788634806894027,
+        "nash_conv_chips": 0.00163083453699997,
+        "oop_lower_bound": -26.788855859726038,
+        "oop_upper_bound": -26.787225025189038
+      },
+      "reference_policy_in_product": {
+        "iterations": 0,
+        "oop_ev": -26.788634806894017,
+        "ip_ev": 26.78863480689401,
+        "raw_nash_conv_chips": 0.0016308345369913779,
+        "zero_sum_residual": -7.105427357601002e-15,
+        "nash_conv_chips": 0.0016308345369913779,
+        "nash_conv_pct_pot": 0.001630834536991378,
+        "oop_lower_bound": -26.78885585972603,
+        "oop_upper_bound": -26.787225025189038
+      },
+      "same_policy_numeric_delta": 2.1316282072803006e-14,
+      "trained_value_delta": 0.00016691250857547857,
+      "combined_gap_bound": 0.005456121151765697,
+      "cross_play_oop_ev": {
+        "product_oop_vs_reference_ip": -26.788881321162222,
+        "reference_oop_vs_product_ip": -26.788555185997613
+      },
+      "gates": {
+        "same_policy_numeric_chips": 1e-08,
+        "convergence_chips": 0.5
+      },
+      "analytic_oop_ev": null,
+      "analytical_frequency_checks": [],
+      "failures": [],
+      "reference_profile_sha256": "120082fe66c714ee15c864faf40b7fb578338b683bf745ab3bebbe2bef0c91b1",
+      "reference_metadata": {
+        "implementation": "In-repository independently constructed full-state CFR+ development reference",
+        "limitation": "Not an external audited turn solver or proven gold standard",
+        "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 7740,
+        "product_modules_loaded": [],
+        "runtime": {
+          "python": "3.14.8",
+          "numpy": "2.5.4",
+          "platform": "Windows-11-10.0.26300-SP0"
+        },
+        "config": {
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s"
+          ],
+          "pot": 100,
+          "stack": 150,
+          "turn_bet_sizes": [
+            0.5
+          ],
+          "river_bet_sizes": [
+            0.5,
+            1
+          ],
+          "oop": [
+            {
+              "hand": "KhKd",
+              "weight": 1
+            },
+            {
+              "hand": "AsKs",
+              "weight": 0.3
+            },
+            {
+              "hand": "QhQd",
+              "weight": 0.6
+            },
+            {
+              "hand": "Ah5h",
+              "weight": 0.2
+            }
+          ],
+          "ip": [
+            {
+              "hand": "AsAd",
+              "weight": 1
+            },
+            {
+              "hand": "QsJs",
+              "weight": 0.5
+            },
+            {
+              "hand": "AhKh",
+              "weight": 0.4
+            },
+            {
+              "hand": "6h5d",
+              "weight": 0.15
+            }
+          ],
+          "rake": 0,
+          "max_raises": 0,
+          "include_all_in": false
+        },
+        "iterations": 4000,
+        "source_sha256_lf": {
+          "benchmarks/turn_reference.py": "712739f94113a13e40c8692b5ae38309b95ce6f9c09821265a8841724381e4a6",
+          "benchmarks/turn_reference_worker.py": "e61c38f5ce9cfa2b8f9779eebc267659becb09c3cfcd70d9f8a2e531289d43b9",
+          "benchmarks/reference_worker.py": "e6e96eb272212b40428b6bb25bdbe64a91aa850d85323130b61ae214862d748b"
+        },
+        "tree": {
+          "concrete_nodes": 18994,
+          "information_sets": 2592,
+          "compatible_deals": 13,
+          "initial_joint_mass": 3.525,
+          "river_cards_per_deal": [
+            44
+          ],
+          "coalesced_public_histories": 192
+        },
+        "checkpoints": [
+          {
+            "iterations": 1000,
+            "oop_ev": -26.789469464760586,
+            "ip_ev": 26.789469464760586,
+            "nash_conv_chips": 0.008595698123322393,
+            "oop_lower_bound": -26.790569363429668,
+            "oop_upper_bound": -26.781973665306346
+          },
+          {
+            "iterations": 2000,
+            "oop_ev": -26.788801719402592,
+            "ip_ev": 26.788801719402592,
+            "nash_conv_chips": 0.0038252766147195416,
+            "oop_lower_bound": -26.78931502723013,
+            "oop_upper_bound": -26.78548975061541
+          },
+          {
+            "iterations": 4000,
+            "oop_ev": -26.788634806894027,
+            "ip_ev": 26.788634806894027,
+            "nash_conv_chips": 0.00163083453699997,
+            "oop_lower_bound": -26.788855859726038,
+            "oop_upper_bound": -26.787225025189038
+          }
+        ],
+        "cost": {
+          "wall_seconds": 11.328025199996773,
+          "cpu_seconds": 11.09375
+        }
+      },
+      "turn_policies": {
+        "product": [
+          {
+            "player": 0,
+            "hand": [
+              "Kd",
+              "Kh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999903527317916,
+              9.647268208354434e-06
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999794872612204,
+              2.0512738779551684e-05
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999830985223221,
+              1.6901477677830243e-05
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "5h",
+              "Ah"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999644196538725,
+              3.5580346127418646e-05
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              1.4983433657382536e-05,
+              0.9999850165663426
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              2.498750624687656e-07,
+              0.9999997501249376
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              1.2159839775089038e-05,
+              0.9999878401602249
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.7764934630425404,
+              0.2235065369574596
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "5d",
+              "6h"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              8.849291892255188e-06,
+              0.9999911507081076
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "5d",
+              "6h"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              2.498750624687656e-07,
+              0.9999997501249375
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Kh"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              1.2107076961003806e-05,
+              0.999987892923039
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Kh"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              4.021631337824178e-06,
+              0.9999959783686622
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Kd",
+              "Kh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.7500221989253721,
+              0.24997780107462778
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              7.815044711170861e-07,
+              0.999999218495529
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.3754765567189147,
+              0.6245234432810853
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "5h",
+              "Ah"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              1.2494197671316013e-07,
+              0.9999998750580233
+            ]
+          }
+        ],
+        "reference": [
+          {
+            "player": 0,
+            "hand": [
+              "Kd",
+              "Kh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999975875801443,
+              2.4124198556507395e-06
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999948705335794,
+              5.129466420630209e-06
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999957735745023,
+              4.226425497792835e-06
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "5h",
+              "Ah"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999911026902524,
+              8.897309747683672e-06
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              3.7467946448915787e-06,
+              0.9999962532053551
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              6.248437890527369e-08,
+              0.9999999375156211
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              3.040719743806507e-06,
+              0.9999969592802562
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.7764983723854765,
+              0.22350162761452352
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "5d",
+              "6h"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              2.2128759155714305e-06,
+              0.9999977871240845
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "5d",
+              "6h"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              6.248437890527366e-08,
+              0.9999999375156211
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Kh"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              3.027525743435211e-06,
+              0.9999969724742566
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Kh"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              1.0056591235923725e-06,
+              0.9999989943408765
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Kd",
+              "Kh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.7500116626177898,
+              0.2499883373822102
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              1.954219433101149e-07,
+              0.9999998045780567
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.37516206112283584,
+              0.6248379388771642
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "5h",
+              "Ah"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              3.124246742654682e-08,
+              0.9999999687575326
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "four_flush_4x4",
+      "config": {
+        "board": [
+          "Ks",
+          "9s",
+          "5s",
+          "2s"
+        ],
+        "pot": 100,
+        "stack": 120,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsQh",
+            "weight": 1
+          },
+          {
+            "hand": "QsQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          },
+          {
+            "hand": "8s8h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 0.5
+          },
+          {
+            "hand": "QsJd",
+            "weight": 0.8
+          },
+          {
+            "hand": "TsTh",
+            "weight": 0.4
+          },
+          {
+            "hand": "7h7d",
+            "weight": 0.25
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "product_iterations": 2000,
+      "reference_iterations": 4000,
+      "product_wall_seconds": 3.9774426000076346,
+      "product_diagnostics": {
+        "iterations": 2000,
+        "oop_ev": 21.81260782530226,
+        "ip_ev": -21.81260782530226,
+        "raw_nash_conv_chips": 0.0016704600434324043,
+        "zero_sum_residual": 0.0,
+        "nash_conv_chips": 0.0016704600434324043,
+        "nash_conv_pct_pot": 0.0016704600434324045
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": 21.81260782530226,
+        "ip_ev": -21.81260782530226,
+        "raw_nash_conv_chips": 0.0016704600434324043,
+        "zero_sum_residual": 0.0,
+        "nash_conv_chips": 0.0016704600434324043,
+        "nash_conv_pct_pot": 0.0016704600434324045,
+        "oop_lower_bound": 21.812234350732613,
+        "oop_upper_bound": 21.813904810776044
+      },
+      "product_policy_in_reference": {
+        "oop_ev": 21.812607825302244,
+        "ip_ev": -21.812607825302244,
+        "nash_conv_chips": 0.001670460043431632,
+        "oop_lower_bound": 21.81223435073262,
+        "oop_upper_bound": 21.81390481077605
+      },
+      "reference_policy_in_reference": {
+        "oop_ev": 21.812583753608827,
+        "ip_ev": -21.812583753608827,
+        "nash_conv_chips": 0.0005006473343200923,
+        "oop_lower_bound": 21.81242907939638,
+        "oop_upper_bound": 21.8129297267307
+      },
+      "reference_policy_in_product": {
+        "iterations": 0,
+        "oop_ev": 21.812583753608802,
+        "ip_ev": -21.81258375360882,
+        "raw_nash_conv_chips": 0.0005006473343200923,
+        "zero_sum_residual": -1.7763568394002505e-14,
+        "nash_conv_chips": 0.0005006473343200923,
+        "nash_conv_pct_pot": 0.0005006473343200923,
+        "oop_lower_bound": 21.812429079396384,
+        "oop_upper_bound": 21.812929726730705
+      },
+      "same_policy_numeric_delta": 2.4868995751603507e-14,
+      "trained_value_delta": 2.4071693417226925e-05,
+      "combined_gap_bound": 0.002171117377751724,
+      "cross_play_oop_ev": {
+        "product_oop_vs_reference_ip": 21.812496817825252,
+        "reference_oop_vs_product_ip": 21.81269683520185
+      },
+      "gates": {
+        "same_policy_numeric_chips": 1e-08,
+        "convergence_chips": 0.5
+      },
+      "analytic_oop_ev": null,
+      "analytical_frequency_checks": [],
+      "failures": [],
+      "reference_profile_sha256": "2479895c7eebe8a1c53c805d68d164e988f1cb22b2e19c5092a1ef193bd89008",
+      "reference_metadata": {
+        "implementation": "In-repository independently constructed full-state CFR+ development reference",
+        "limitation": "Not an external audited turn solver or proven gold standard",
+        "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 32308,
+        "product_modules_loaded": [],
+        "runtime": {
+          "python": "3.14.8",
+          "numpy": "2.5.4",
+          "platform": "Windows-11-10.0.26300-SP0"
+        },
+        "config": {
+          "board": [
+            "Ks",
+            "9s",
+            "5s",
+            "2s"
+          ],
+          "pot": 100,
+          "stack": 120,
+          "turn_bet_sizes": [
+            0.5
+          ],
+          "river_bet_sizes": [
+            0.5,
+            1
+          ],
+          "oop": [
+            {
+              "hand": "AsQh",
+              "weight": 1
+            },
+            {
+              "hand": "QsQd",
+              "weight": 0.6
+            },
+            {
+              "hand": "JhJd",
+              "weight": 0.3
+            },
+            {
+              "hand": "8s8h",
+              "weight": 0.2
+            }
+          ],
+          "ip": [
+            {
+              "hand": "AsAd",
+              "weight": 0.5
+            },
+            {
+              "hand": "QsJd",
+              "weight": 0.8
+            },
+            {
+              "hand": "TsTh",
+              "weight": 0.4
+            },
+            {
+              "hand": "7h7d",
+              "weight": 0.25
+            }
+          ],
+          "rake": 0,
+          "max_raises": 0,
+          "include_all_in": false
+        },
+        "iterations": 4000,
+        "source_sha256_lf": {
+          "benchmarks/turn_reference.py": "712739f94113a13e40c8692b5ae38309b95ce6f9c09821265a8841724381e4a6",
+          "benchmarks/turn_reference_worker.py": "e61c38f5ce9cfa2b8f9779eebc267659becb09c3cfcd70d9f8a2e531289d43b9",
+          "benchmarks/reference_worker.py": "e6e96eb272212b40428b6bb25bdbe64a91aa850d85323130b61ae214862d748b"
+        },
+        "tree": {
+          "concrete_nodes": 18994,
+          "information_sets": 2592,
+          "compatible_deals": 13,
+          "initial_joint_mass": 2.875,
+          "river_cards_per_deal": [
+            44
+          ],
+          "coalesced_public_histories": 192
+        },
+        "checkpoints": [
+          {
+            "iterations": 1000,
+            "oop_ev": 21.812663226791184,
+            "ip_ev": -21.812663226791184,
+            "nash_conv_chips": 0.004747013410419498,
+            "oop_lower_bound": 21.811490868993488,
+            "oop_upper_bound": 21.816237882403907
+          },
+          {
+            "iterations": 2000,
+            "oop_ev": 21.812607505821163,
+            "ip_ev": -21.812607505821163,
+            "nash_conv_chips": 0.0015869709930882436,
+            "oop_lower_bound": 21.81222917722073,
+            "oop_upper_bound": 21.813816148213817
+          },
+          {
+            "iterations": 4000,
+            "oop_ev": 21.812583753608827,
+            "ip_ev": -21.812583753608827,
+            "nash_conv_chips": 0.0005006473343200923,
+            "oop_lower_bound": 21.81242907939638,
+            "oop_upper_bound": 21.8129297267307
+          }
+        ],
+        "cost": {
+          "wall_seconds": 11.078514299995732,
+          "cpu_seconds": 10.8125
+        }
+      },
+      "turn_policies": {
+        "product": [
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Qh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.45009319575738355,
+              0.5499068042426164
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qs"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999589080429678,
+              4.1091957032231116e-05
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Jd",
+              "Jh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999405457001366,
+              5.9454299863408135e-05
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8h",
+              "8s"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              3.241204164609268e-05,
+              0.9999675879583538
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jd",
+              "Qs"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999992503748126,
+              7.496251874062969e-07
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jd",
+              "Qs"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9952038794922715,
+              0.004796120507728521
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Th",
+              "Ts"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999246558248096,
+              7.534417519049967e-05
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Th",
+              "Ts"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.57209616229904,
+              0.42790383770095997
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "7d",
+              "7h"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9996889213188321,
+              0.00031107868116790453
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "7d",
+              "7h"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9999931942990173,
+              6.805700982707246e-06
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9997496253504783,
+              0.00025037464952173516
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              2.498750624687656e-07,
+              0.9999997501249376
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Qh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              2.775814707088543e-07,
+              0.9999997224185293
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qs"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.26937815061800224,
+              0.7306218493819977
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Jd",
+              "Jh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9650622118182448,
+              0.03493778818175523
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8h",
+              "8s"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.6433397665782261,
+              0.35666023342177383
+            ]
+          }
+        ],
+        "reference": [
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Qh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.44943078849684587,
+              0.5505692115031542
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qs"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999897244431365,
+              1.0275556863471366e-05
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Jd",
+              "Jh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999851327100692,
+              1.486728993077042e-05
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8h",
+              "8s"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              8.105035657814523e-06,
+              0.9999918949643422
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jd",
+              "Qs"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999998125468633,
+              1.8745313671582103e-07
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jd",
+              "Qs"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9950691744246566,
+              0.004930825575343448
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Th",
+              "Ts"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.999981148099968,
+              1.885190003206991e-05
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Th",
+              "Ts"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.572367584896884,
+              0.4276324151031161
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "7d",
+              "7h"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.999922180018278,
+              7.781998172200559e-05
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "7d",
+              "7h"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9999982981495044,
+              1.7018504956757219e-06
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000"
+            ],
+            "probabilities": [
+              0.9999374056573073,
+              6.259434269280553e-05
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              6.248437890527369e-08,
+              0.9999999375156211
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Qh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              6.951501822367047e-08,
+              0.9999999304849817
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qs"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.26745934532798415,
+              0.7325406546720158
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Jd",
+              "Jh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9677075845736627,
+              0.03229241542633738
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8h",
+              "8s"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.6433397665782259,
+              0.356660233421774
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "trips_3x4",
+      "config": {
+        "board": [
+          "Kc",
+          "Kd",
+          "Kh",
+          "2s"
+        ],
+        "pot": 100,
+        "stack": 80,
+        "turn_bet_sizes": [
+          0.5,
+          1
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJs",
+            "weight": 0.4
+          },
+          {
+            "hand": "2h2d",
+            "weight": 0.25
+          }
+        ],
+        "ip": [
+          {
+            "hand": "KsQh",
+            "weight": 0.15
+          },
+          {
+            "hand": "AhQd",
+            "weight": 0.7
+          },
+          {
+            "hand": "JcTd",
+            "weight": 0.6
+          },
+          {
+            "hand": "2c2d",
+            "weight": 0.3
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "product_iterations": 2000,
+      "reference_iterations": 4000,
+      "product_wall_seconds": 3.924251499993261,
+      "product_diagnostics": {
+        "iterations": 2000,
+        "oop_ev": 35.026432261946645,
+        "ip_ev": -35.02643226194665,
+        "raw_nash_conv_chips": 0.00949694974523886,
+        "zero_sum_residual": -7.105427357601002e-15,
+        "nash_conv_chips": 0.00949694974523886,
+        "nash_conv_pct_pot": 0.00949694974523886
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": 35.026432261946645,
+        "ip_ev": -35.02643226194665,
+        "raw_nash_conv_chips": 0.00949694974523886,
+        "zero_sum_residual": -7.105427357601002e-15,
+        "nash_conv_chips": 0.00949694974523886,
+        "nash_conv_pct_pot": 0.00949694974523886,
+        "oop_lower_bound": 35.024759254354805,
+        "oop_upper_bound": 35.034256204100046
+      },
+      "product_policy_in_reference": {
+        "oop_ev": 35.026432261946645,
+        "ip_ev": -35.026432261946645,
+        "nash_conv_chips": 0.009496949745233962,
+        "oop_lower_bound": 35.0247592543548,
+        "oop_upper_bound": 35.03425620410003
+      },
+      "reference_policy_in_reference": {
+        "oop_ev": 35.02894980703205,
+        "ip_ev": -35.02894980703205,
+        "nash_conv_chips": 0.003716579497123007,
+        "oop_lower_bound": 35.02829270451328,
+        "oop_upper_bound": 35.0320092840104
+      },
+      "reference_policy_in_product": {
+        "iterations": 0,
+        "oop_ev": 35.02894980703205,
+        "ip_ev": -35.02894980703205,
+        "raw_nash_conv_chips": 0.003716579497116376,
+        "zero_sum_residual": 0.0,
+        "nash_conv_chips": 0.003716579497116376,
+        "nash_conv_pct_pot": 0.003716579497116376,
+        "oop_lower_bound": 35.028292704513284,
+        "oop_upper_bound": 35.0320092840104
+      },
+      "same_policy_numeric_delta": 1.4210854715202004e-14,
+      "trained_value_delta": 0.002517545085403583,
+      "combined_gap_bound": 0.01321353924235697,
+      "cross_play_oop_ev": {
+        "product_oop_vs_reference_ip": 35.02611507235043,
+        "reference_oop_vs_product_ip": 35.029199547760776
+      },
+      "gates": {
+        "same_policy_numeric_chips": 1e-08,
+        "convergence_chips": 0.5
+      },
+      "analytic_oop_ev": null,
+      "analytical_frequency_checks": [],
+      "failures": [],
+      "reference_profile_sha256": "6e8c806f95ece126bc83228b3e611fb86d710d01187cdfe39750ab400ede75e1",
+      "reference_metadata": {
+        "implementation": "In-repository independently constructed full-state CFR+ development reference",
+        "limitation": "Not an external audited turn solver or proven gold standard",
+        "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 32172,
+        "product_modules_loaded": [],
+        "runtime": {
+          "python": "3.14.8",
+          "numpy": "2.5.4",
+          "platform": "Windows-11-10.0.26300-SP0"
+        },
+        "config": {
+          "board": [
+            "Kc",
+            "Kd",
+            "Kh",
+            "2s"
+          ],
+          "pot": 100,
+          "stack": 80,
+          "turn_bet_sizes": [
+            0.5,
+            1
+          ],
+          "river_bet_sizes": [
+            0.5
+          ],
+          "oop": [
+            {
+              "hand": "AsAd",
+              "weight": 1
+            },
+            {
+              "hand": "QsJs",
+              "weight": 0.4
+            },
+            {
+              "hand": "2h2d",
+              "weight": 0.25
+            }
+          ],
+          "ip": [
+            {
+              "hand": "KsQh",
+              "weight": 0.15
+            },
+            {
+              "hand": "AhQd",
+              "weight": 0.7
+            },
+            {
+              "hand": "JcTd",
+              "weight": 0.6
+            },
+            {
+              "hand": "2c2d",
+              "weight": 0.3
+            }
+          ],
+          "rake": 0,
+          "max_raises": 0,
+          "include_all_in": false
+        },
+        "iterations": 4000,
+        "source_sha256_lf": {
+          "benchmarks/turn_reference.py": "712739f94113a13e40c8692b5ae38309b95ce6f9c09821265a8841724381e4a6",
+          "benchmarks/turn_reference_worker.py": "e61c38f5ce9cfa2b8f9779eebc267659becb09c3cfcd70d9f8a2e531289d43b9",
+          "benchmarks/reference_worker.py": "e6e96eb272212b40428b6bb25bdbe64a91aa850d85323130b61ae214862d748b"
+        },
+        "tree": {
+          "concrete_nodes": 14202,
+          "information_sets": 1953,
+          "compatible_deals": 11,
+          "initial_joint_mass": 2.8125,
+          "river_cards_per_deal": [
+            44
+          ],
+          "coalesced_public_histories": 0
+        },
+        "checkpoints": [
+          {
+            "iterations": 1000,
+            "oop_ev": 35.02188205356628,
+            "ip_ev": -35.02188205356628,
+            "nash_conv_chips": 0.022179809615018087,
+            "oop_lower_bound": 35.0176143793671,
+            "oop_upper_bound": 35.03979418898212
+          },
+          {
+            "iterations": 2000,
+            "oop_ev": 35.026260889702044,
+            "ip_ev": -35.026260889702044,
+            "nash_conv_chips": 0.009796630484899538,
+            "oop_lower_bound": 35.02444523691708,
+            "oop_upper_bound": 35.03424186740198
+          },
+          {
+            "iterations": 4000,
+            "oop_ev": 35.02894980703205,
+            "ip_ev": -35.02894980703205,
+            "nash_conv_chips": 0.003716579497123007,
+            "oop_lower_bound": 35.02829270451328,
+            "oop_upper_bound": 35.0320092840104
+          }
+        ],
+        "cost": {
+          "wall_seconds": 7.352934500027914,
+          "cpu_seconds": 7.15625
+        }
+      },
+      "turn_policies": {
+        "product": [
+          {
+            "player": 0,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.12994130713191476,
+              0.8687674641075883,
+              0.0012912287604970036
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.00038045285883918335,
+              0.9979602487612401,
+              0.0016592983799206683
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "2d",
+              "2h"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.00015422297856746607,
+              0.9993665378872613,
+              0.0004792391341713084
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ks",
+              "Qh"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              3.3552709087622495e-05,
+              0.9998117172199985,
+              0.00015473007091394724
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ks",
+              "Qh"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              2.498750624687656e-07,
+              0.9999997501249375
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ks",
+              "Qh"
+            ],
+            "history": [
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              2.498750624687656e-07,
+              0.9999997501249375
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Qd"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.9286146879290214,
+              0.07137882003282753,
+              6.492038151216503e-06
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Qd"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.972031591702064,
+              0.027968408297935975
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Qd"
+            ],
+            "history": [
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9706365409097663,
+              0.029363459090233787
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jc",
+              "Td"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.9989389019254463,
+              0.001050014991624064,
+              1.1083082929554215e-05
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jc",
+              "Td"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9850741851585308,
+              0.014925814841469145
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jc",
+              "Td"
+            ],
+            "history": [
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9999997501249375,
+              2.498750624687656e-07
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "2c",
+              "2d"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.9093773501986678,
+              0.09061846857190742,
+              4.18122942478683e-06
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "2c",
+              "2d"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9488730185280685,
+              0.05112698147193165
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "2c",
+              "2d"
+            ],
+            "history": [
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.990464934370567,
+              0.00953506562943296
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.3299921792449685,
+              0.6700078207550315
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "X",
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.38200191188120997,
+              0.61799808811879
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9789634689332585,
+              0.02103653106674163
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [
+              "X",
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9501060695507617,
+              0.04989393044923838
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "2d",
+              "2h"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9747666125989283,
+              0.025233387401071648
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "2d",
+              "2h"
+            ],
+            "history": [
+              "X",
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9132556263978759,
+              0.08674437360212404
+            ]
+          }
+        ],
+        "reference": [
+          {
+            "player": 0,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.05976166863859741,
+              0.9398249627271315,
+              0.0004133686342712188
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.0001318524253433269,
+              0.9993344057961349,
+              0.0005337417785218579
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "2d",
+              "2h"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              6.613374008955405e-05,
+              0.9998161456388962,
+              0.00011772062101418386
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ks",
+              "Qh"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              1.0749733014290166e-05,
+              0.9999427970198197,
+              4.6453247166011464e-05
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ks",
+              "Qh"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              6.248437890527366e-08,
+              0.9999999375156211
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ks",
+              "Qh"
+            ],
+            "history": [
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              6.248437890527366e-08,
+              0.9999999375156211
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Qd"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.9317077543797644,
+              0.06828848218898544,
+              3.7634312501021944e-06
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Qd"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9720685011953628,
+              0.02793149880463715
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ah",
+              "Qd"
+            ],
+            "history": [
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9701159666274132,
+              0.029884033372586865
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jc",
+              "Td"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.9994313452516179,
+              0.0005631430322921559,
+              5.511716089785697e-06
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jc",
+              "Td"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9909022115449642,
+              0.009097788455035945
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Jc",
+              "Td"
+            ],
+            "history": [
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9999999375156211,
+              6.248437890527366e-08
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "2c",
+              "2d"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:8000"
+            ],
+            "probabilities": [
+              0.9010148686936367,
+              0.09898227686751072,
+              2.854438852574106e-06
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "2c",
+              "2d"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9358784752329301,
+              0.06412152476706993
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "2c",
+              "2d"
+            ],
+            "history": [
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9916129638188589,
+              0.008387036181141266
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.3301454440233012,
+              0.6698545559766989
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ad",
+              "As"
+            ],
+            "history": [
+              "X",
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.3747154217421778,
+              0.6252845782578221
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9869473749286917,
+              0.013052625071308381
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Js",
+              "Qs"
+            ],
+            "history": [
+              "X",
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9592139824545092,
+              0.04078601754549092
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "2d",
+              "2h"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.9904276849175105,
+              0.009572315082489489
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "2d",
+              "2h"
+            ],
+            "history": [
+              "X",
+              "B:8000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.8986319845009387,
+              0.10136801549906126
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "draw_4x4_two_sizes",
+      "config": {
+        "board": [
+          "Js",
+          "Ts",
+          "2c",
+          "3d"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5,
+          1
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsKs",
+            "weight": 1
+          },
+          {
+            "hand": "QhQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "9s8s",
+            "weight": 0.3
+          },
+          {
+            "hand": "AhJd",
+            "weight": 0.5
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AcKc",
+            "weight": 0.4
+          },
+          {
+            "hand": "Qh9h",
+            "weight": 0.7
+          },
+          {
+            "hand": "9s9d",
+            "weight": 0.3
+          },
+          {
+            "hand": "AdTd",
+            "weight": 0.8
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "product_iterations": 2000,
+      "reference_iterations": 4000,
+      "product_wall_seconds": 7.511790200020187,
+      "product_diagnostics": {
+        "iterations": 2000,
+        "oop_ev": 47.92304699048895,
+        "ip_ev": -47.92304699048894,
+        "raw_nash_conv_chips": 0.001448178668037415,
+        "zero_sum_residual": 7.105427357601002e-15,
+        "nash_conv_chips": 0.001448178668037415,
+        "nash_conv_pct_pot": 0.001448178668037415
+      },
+      "product_policy_in_product": {
+        "iterations": 2000,
+        "oop_ev": 47.92304699048895,
+        "ip_ev": -47.92304699048894,
+        "raw_nash_conv_chips": 0.001448178668037415,
+        "zero_sum_residual": 7.105427357601002e-15,
+        "nash_conv_chips": 0.001448178668037415,
+        "nash_conv_pct_pot": 0.001448178668037415,
+        "oop_lower_bound": 47.922150853245064,
+        "oop_upper_bound": 47.9235990319131
+      },
+      "product_policy_in_reference": {
+        "oop_ev": 47.923046990488956,
+        "ip_ev": -47.923046990488956,
+        "nash_conv_chips": 0.001448178668013611,
+        "oop_lower_bound": 47.92215085324509,
+        "oop_upper_bound": 47.923599031913106
+      },
+      "reference_policy_in_reference": {
+        "oop_ev": 47.92320534494038,
+        "ip_ev": -47.92320534494038,
+        "nash_conv_chips": 0.0005721441648773862,
+        "oop_lower_bound": 47.92283330295513,
+        "oop_upper_bound": 47.923405447120004
+      },
+      "reference_policy_in_product": {
+        "iterations": 0,
+        "oop_ev": 47.923205344940385,
+        "ip_ev": -47.92320534494037,
+        "raw_nash_conv_chips": 0.0005721441648962446,
+        "zero_sum_residual": 1.4210854715202004e-14,
+        "nash_conv_chips": 0.0005721441648962446,
+        "nash_conv_pct_pot": 0.0005721441648962446,
+        "oop_lower_bound": 47.922833302955105,
+        "oop_upper_bound": 47.92340544712
+      },
+      "same_policy_numeric_delta": 2.842170943040401e-14,
+      "trained_value_delta": 0.00015835445142187154,
+      "combined_gap_bound": 0.002020332832890997,
+      "cross_play_oop_ev": {
+        "product_oop_vs_reference_ip": 47.923010918460335,
+        "reference_oop_vs_product_ip": 47.92324235133954
+      },
+      "gates": {
+        "same_policy_numeric_chips": 1e-08,
+        "convergence_chips": 0.5
+      },
+      "analytic_oop_ev": null,
+      "analytical_frequency_checks": [],
+      "failures": [],
+      "reference_profile_sha256": "7771712270f1a5728b767aae9a6cf6233a1cf430e21bb653f2cdb5fa9bed9579",
+      "reference_metadata": {
+        "implementation": "In-repository independently constructed full-state CFR+ development reference",
+        "limitation": "Not an external audited turn solver or proven gold standard",
+        "ranker_commit": "6a10442877ffc8fd28af93e16e279b9bbdd97b2a",
+        "pid": 41692,
+        "product_modules_loaded": [],
+        "runtime": {
+          "python": "3.14.8",
+          "numpy": "2.5.4",
+          "platform": "Windows-11-10.0.26300-SP0"
+        },
+        "config": {
+          "board": [
+            "Js",
+            "Ts",
+            "2c",
+            "3d"
+          ],
+          "pot": 100,
+          "stack": 200,
+          "turn_bet_sizes": [
+            0.5,
+            1
+          ],
+          "river_bet_sizes": [
+            0.5,
+            1
+          ],
+          "oop": [
+            {
+              "hand": "AsKs",
+              "weight": 1
+            },
+            {
+              "hand": "QhQd",
+              "weight": 0.6
+            },
+            {
+              "hand": "9s8s",
+              "weight": 0.3
+            },
+            {
+              "hand": "AhJd",
+              "weight": 0.5
+            }
+          ],
+          "ip": [
+            {
+              "hand": "AcKc",
+              "weight": 0.4
+            },
+            {
+              "hand": "Qh9h",
+              "weight": 0.7
+            },
+            {
+              "hand": "9s9d",
+              "weight": 0.3
+            },
+            {
+              "hand": "AdTd",
+              "weight": 0.8
+            }
+          ],
+          "rake": 0,
+          "max_raises": 0,
+          "include_all_in": false
+        },
+        "iterations": 4000,
+        "source_sha256_lf": {
+          "benchmarks/turn_reference.py": "712739f94113a13e40c8692b5ae38309b95ce6f9c09821265a8841724381e4a6",
+          "benchmarks/turn_reference_worker.py": "e61c38f5ce9cfa2b8f9779eebc267659becb09c3cfcd70d9f8a2e531289d43b9",
+          "benchmarks/reference_worker.py": "e6e96eb272212b40428b6bb25bdbe64a91aa850d85323130b61ae214862d748b"
+        },
+        "tree": {
+          "concrete_nodes": 39019,
+          "information_sets": 4808,
+          "compatible_deals": 14,
+          "initial_joint_mass": 4.77,
+          "river_cards_per_deal": [
+            44
+          ],
+          "coalesced_public_histories": 192
+        },
+        "checkpoints": [
+          {
+            "iterations": 1000,
+            "oop_ev": 47.922426484573805,
+            "ip_ev": -47.922426484573805,
+            "nash_conv_chips": 0.0037728888103956137,
+            "oop_lower_bound": 47.92062687567327,
+            "oop_upper_bound": 47.92439976448367
+          },
+          {
+            "iterations": 2000,
+            "oop_ev": 47.92304951871197,
+            "ip_ev": -47.92304951871197,
+            "nash_conv_chips": 0.0013807517219603938,
+            "oop_lower_bound": 47.92226076138532,
+            "oop_upper_bound": 47.92364151310728
+          },
+          {
+            "iterations": 4000,
+            "oop_ev": 47.92320534494038,
+            "ip_ev": -47.92320534494038,
+            "nash_conv_chips": 0.0005721441648773862,
+            "oop_lower_bound": 47.92283330295513,
+            "oop_upper_bound": 47.923405447120004
+          }
+        ],
+        "cost": {
+          "wall_seconds": 22.330296999949496,
+          "cpu_seconds": 21.953125
+        }
+      },
+      "turn_policies": {
+        "product": [
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              2.436236758064608e-06,
+              2.054824857362703e-05,
+              0.9999770155146683
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              2.674270249831687e-06,
+              1.98965330057164e-05,
+              0.9999774291967444
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8s",
+              "9s"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              7.821377398348398e-07,
+              1.602324577796611e-05,
+              0.9999831946164823
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ah",
+              "Jd"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              2.6360974549364956e-06,
+              1.711041449667303e-05,
+              0.9999802534880483
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ac",
+              "Kc"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              0.9410430169689801,
+              0.005546536372767374,
+              0.05341044665825257
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ac",
+              "Kc"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.4885712954075631,
+              0.511428704592437
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ac",
+              "Kc"
+            ],
+            "history": [
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.5859541775899348,
+              0.41404582241006527
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9h",
+              "Qh"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              0.9446505911792452,
+              0.03443977764847751,
+              0.02090963117227738
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9h",
+              "Qh"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.4559787548773372,
+              0.5440212451226628
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9h",
+              "Qh"
+            ],
+            "history": [
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.8521151647227201,
+              0.14788483527727997
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9d",
+              "9s"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              0.8336463047500151,
+              0.06810676316871715,
+              0.09824693208126781
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9d",
+              "9s"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.46576004484605626,
+              0.5342399551539438
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9d",
+              "9s"
+            ],
+            "history": [
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.8854063458194237,
+              0.1145936541805764
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "Td"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              0.7271787071755705,
+              0.17167482811723786,
+              0.10114646470719156
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "Td"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.0014945811333474575,
+              0.9985054188666524
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "Td"
+            ],
+            "history": [
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              1.2341864889172534e-05,
+              0.9999876581351108
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.0692740077427332,
+              0.9307259922572667
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [
+              "X",
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.16745245347912646,
+              0.8325475465208735
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.031145576066903005,
+              0.968854423933097
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [
+              "X",
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.031145576066903005,
+              0.968854423933097
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8s",
+              "9s"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.10649235198288327,
+              0.8935076480171167
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8s",
+              "9s"
+            ],
+            "history": [
+              "X",
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.2560603721045666,
+              0.7439396278954333
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ah",
+              "Jd"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.03159658886419852,
+              0.9684034111358014
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ah",
+              "Jd"
+            ],
+            "history": [
+              "X",
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.03159658886419852,
+              0.9684034111358014
+            ]
+          }
+        ],
+        "reference": [
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              5.924260120886338e-07,
+              5.117304513167616e-06,
+              0.9999942902694748
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              6.687192150489043e-07,
+              4.977050350238733e-06,
+              0.9999943542304347
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8s",
+              "9s"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              1.9730652344078573e-07,
+              4.003711285194506e-06,
+              0.9999957989821914
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ah",
+              "Jd"
+            ],
+            "history": [],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              6.591910403421463e-07,
+              4.272996832298016e-06,
+              0.9999950678121273
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ac",
+              "Kc"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              0.9409056208615804,
+              0.005690767566771699,
+              0.05340361157164787
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ac",
+              "Kc"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.48912592042278746,
+              0.5108740795772125
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ac",
+              "Kc"
+            ],
+            "history": [
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.5859567083021449,
+              0.41404329169785503
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9h",
+              "Qh"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              0.9440116323288987,
+              0.034940901169263155,
+              0.021047466501838242
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9h",
+              "Qh"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.4544539513362893,
+              0.5455460486637107
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9h",
+              "Qh"
+            ],
+            "history": [
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.8521211081917072,
+              0.14787889180829286
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9d",
+              "9s"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              0.8335531010503973,
+              0.0681470595041266,
+              0.09829983944547616
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9d",
+              "9s"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.4674856943169559,
+              0.5325143056830441
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "9d",
+              "9s"
+            ],
+            "history": [
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.8854024807505612,
+              0.11459751924943892
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "Td"
+            ],
+            "history": [
+              "X"
+            ],
+            "actions": [
+              "X",
+              "B:5000",
+              "B:10000"
+            ],
+            "probabilities": [
+              0.727227739106311,
+              0.1716880259754963,
+              0.1010842349181927
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "Td"
+            ],
+            "history": [
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.006225761083827301,
+              0.9937742389161727
+            ]
+          },
+          {
+            "player": 1,
+            "hand": [
+              "Ad",
+              "Td"
+            ],
+            "history": [
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              3.0871591653249462e-06,
+              0.9999969128408347
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.07125546945875523,
+              0.9287445305412447
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "As",
+              "Ks"
+            ],
+            "history": [
+              "X",
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.17267861646602203,
+              0.827321383533978
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.03114629553486767,
+              0.9688537044651323
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Qd",
+              "Qh"
+            ],
+            "history": [
+              "X",
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.03114629553486767,
+              0.9688537044651323
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8s",
+              "9s"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.10556227913066792,
+              0.894437720869332
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "8s",
+              "9s"
+            ],
+            "history": [
+              "X",
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.25416867860011383,
+              0.7458313213998862
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ah",
+              "Jd"
+            ],
+            "history": [
+              "X",
+              "B:5000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.03159649483546873,
+              0.9684035051645312
+            ]
+          },
+          {
+            "player": 0,
+            "hand": [
+              "Ah",
+              "Jd"
+            ],
+            "history": [
+              "X",
+              "B:10000"
+            ],
+            "actions": [
+              "F",
+              "C"
+            ],
+            "probabilities": [
+              0.03159649483546873,
+              0.9684035051645312
+            ]
+          }
+        ]
+      }
     }
   ],
   "failures": [],
   "source_sha256_lf": {
-    "benchmarks/turn-independent-fixtures.json": "be78593d0f142de112633414d97f09de033f09186da8be0688c185e757ebad23",
+    "benchmarks/turn-independent-fixtures.json": "8f5f31221e7c97349ae1c176be98c5e83d24d4f51c2d9d49a3620ff275d01635",
     "benchmarks/turn_reference.py": "712739f94113a13e40c8692b5ae38309b95ce6f9c09821265a8841724381e4a6",
     "benchmarks/turn_reference_worker.py": "e61c38f5ce9cfa2b8f9779eebc267659becb09c3cfcd70d9f8a2e531289d43b9",
-    "benchmarks/turn_independent.py": "74b86758b9082f7b7cd0a2906f4294ddbb0019db403cf3815bb207d9070246a7",
+    "benchmarks/turn_independent.py": "086c43ea7b49921d63d898dfb52fc1c5733c869f26da052a779c3c4aca853074",
     "scripts/benchmark_turn_independent.py": "fb1bf631aab6242ffd06fb0a893b5d943e7ecebcb256693ef750fa80a3ead37a",
     "poker_spot/turn.py": "fb546353b2875dec377b2966a9c09282bb6a65617505760b1b731e0d66a7e572",
     "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9"
   },
   "raw_profiles": {
-    "path": ".artifacts/turn-independent-results.profiles.json",
-    "sha256": "2f6e10a85f6e90f822016d74cf11c8e9a574ceabad06e084f6e2d1317961f453"
+    "path": ".artifacts/turn-expanded-final.profiles.json",
+    "sha256": "4ec216d2ac63ec3cd1105149a1ee329890091a5f504dad81b9a1690193973104"
   }
 }

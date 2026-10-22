@@ -193,6 +193,64 @@ revocation or second-account acceptance. No auth checks were relaxed. Phase 2
 range exploration, true node locking and future turn/flop/multiway support
 remain open; Issue #11 must not be auto-closed.
 
+## Expanded turn coverage and development resource study — 18 October 2026
+
+Following merged PR #9 (`dd9249297300bc859101859e324de5d9de554599`), expanded
+the independent strategic-turn corpus from six to ten cases. New games use
+three/four concrete combos per side, weighted collisions, four-flush and trips
+boards, and draw-heavy two-size trees. Bidirectional evaluation additionally
+checks each player's individual best-response bound; 60 seeded fully mixed
+policies test those bounds without relying on convergence. Neither trainer,
+product solver behavior nor existing numerical/convergence gates changed.
+
+All ten trained cases pass. Maximum same-policy EV/individual-BR/NashConv
+discrepancy is `6.90e-14` chips; largest separately trained root-value difference
+is 0.00251755 chips. Largest final NashConv remains 0.02218518 chips in a
+100-chip pot under the unchanged 0.50-chip gate. Actual inputs, outputs, source
+hashes and all ten reference-profile digests are
+[versioned](turn-independent-results.json); raw profiles and hashes were verified.
+
+The local suite runs **75 tests**, with the real Linux allocation test
+explicitly skipped on Windows. Ruff and compileall pass. Fresh existing eight
+turn fixtures, ten river fixtures plus sensitivity, and all 188 river
+decomposition games pass. Six fresh uninstrumented maximum-dimension runs
+complete in 12.03–13.35 seconds on Windows, maximum resident peak 34.82 MiB;
+[measurements](turn-performance-coverage.json) retain configurations and sources.
+
+A separate development worker applies exact Linux 20-second CPU / 384 MiB
+address-space limits before NumPy/product import and a parent 20-second wall
+deadline. Six configurations vary combos, sizes and iterations, retaining the
+original maximum workloads. Failure and unsupported statuses remain visible;
+study success is not hosted acceptance. This Windows machine has no installed
+Linux runtime and records six `UNSUPPORTED` probes. CI executes the real Linux
+probes, oversized-allocation regression and a separate unlimited cProfile run,
+retaining complete `turn-resource-study` artifacts. See
+[method, local profile and limits](turn-resource-study.md).
+
+Actual Ubuntu probes at source head `7bba663` in
+[run 39131773211](https://github.com/eddieyang-97/poker-solver/actions/runs/39131773211)
+complete all six cases within their applied budgets and convergence gates.
+The maximum-size pair takes 13.285 / 13.589 seconds parent wall, with peak
+virtual memory 109.02 / 108.29 MiB. [Linux evidence](turn-resource-linux.json)
+retains actual limits; its archive and source hashes were verified. These
+samples do not replace the historical slower observations or establish Render
+capacity. CI's separate unlimited instrumented profile also completes.
+
+Three larger product training runs differ between Windows and Ubuntu by up to
+0.000136553 chips in root EV. All ten independent reference-profile digests
+match exactly. Replaying every CI product policy in both Windows models agrees
+within `5.23e-14` chips, and all cross-platform trained-value differences fit
+their combined convergence gaps, with overlapping best-response intervals.
+[Platform evidence](turn-platform-results.json) records the discrepancies;
+the precise training-variation cause remains unisolated. No gate was relaxed.
+
+Production code, deployment, MCP registrations and OAuth remain unchanged.
+This does not establish full-range correctness, an audited external reference,
+portable performance bounds or authenticated hosted turn acceptance. Historical
+Ubuntu samples over 22 seconds remain evidence; later faster samples cannot
+erase the unresolved resource/integration gates.
+
+
 ## Independently trained strategic turn reference — 18 October 2026
 
 Following merged PR #8 (`11a6271d91d82fcde5fa619e559c65edf3515720`), added a

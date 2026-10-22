@@ -7,9 +7,11 @@ MCP tools. This is a restricted no-raise, no-rake river model, not a full GTO so
 Hosted tools have no preflop, flop, turn, multiway, database, or web UI support.
 A separate [experimental local turn/river engine](docs/turn.md) now supports
 small two-street studies through a CLI. It is not registered with hosted MCP.
-An [independently trained local reference](docs/turn-independent.md) checks six
-small strategic turn games with its own tree and chip accounting. This is an
-in-repository development reference, not an externally audited turn solver.
+An [independently trained local reference](docs/turn-independent.md) checks ten
+small strategic turn games with its own tree and chip accounting. A separate
+[local resource study](docs/turn-resource-study.md) probes Linux budgets and
+profiles larger workloads. The reference is developed in this repository and
+has not been externally audited.
 
 An opt-in [local river raise/check-raise solver](docs/river-raises.md) supports one
 additional raise after a bet, explicit finite sizes and cent-exact accounting.

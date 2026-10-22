@@ -1,8 +1,512 @@
 [
-  {"id":"singleton_minimax","analytic_oop_ev":-27.272727272727273,"config":{"board":["Js","Ts","2c","3d"],"pot":100,"stack":150,"turn_bet_sizes":[0.5],"river_bet_sizes":[0.5],"oop":[{"hand":"AsKs","weight":1}],"ip":[{"hand":"QhQd","weight":1}],"rake":0,"max_raises":0,"include_all_in":false}},
-  {"id":"weighted_dry","config":{"board":["2c","3d","4h","8s"],"pot":100,"stack":200,"turn_bet_sizes":[0.5],"river_bet_sizes":[0.5],"oop":[{"hand":"KhKd","weight":1}],"ip":[{"hand":"AsAd","weight":1},{"hand":"QhJd","weight":0.7}],"rake":0,"max_raises":0,"include_all_in":false}},
-  {"id":"draw_two_sizes","config":{"board":["Ks","9s","5h","Td"],"pot":100,"stack":140,"turn_bet_sizes":[0.33,0.75],"river_bet_sizes":[0.5,1],"oop":[{"hand":"KdQd","weight":1},{"hand":"AsJh","weight":0.5}],"ip":[{"hand":"QsJs","weight":1},{"hand":"9h9d","weight":0.5}],"rake":0,"max_raises":0,"include_all_in":false}},
-  {"id":"weighted_collision","config":{"board":["2c","3d","4h","8s"],"pot":100,"stack":100,"turn_bet_sizes":[0.5],"river_bet_sizes":[0.5],"oop":[{"hand":"KhKd","weight":1},{"hand":"AsKs","weight":0.3}],"ip":[{"hand":"AsAd","weight":1},{"hand":"QsJs","weight":0.5}],"rake":0,"max_raises":0,"include_all_in":false}},
-  {"id":"paired_capped","config":{"board":["Ks","9s","5h","5d"],"pot":100,"stack":60,"turn_bet_sizes":[0.5,1],"river_bet_sizes":[0.33,0.75],"oop":[{"hand":"KdQd","weight":1},{"hand":"AsJh","weight":0.5}],"ip":[{"hand":"QsJs","weight":1},{"hand":"9h9d","weight":0.25}],"rake":0,"max_raises":0,"include_all_in":false}},
-  {"id":"turn_allin","analytic_oop_ev":-21.59090909090909,"analytic_turn_frequencies":[{"player":0,"hand":"KhKd","history":[],"action":"X","frequency":1},{"player":1,"hand":"AsAd","history":["X"],"action":"B:10000","frequency":1},{"player":1,"hand":"QhJd","history":["X"],"action":"B:10000","frequency":0.4318181818181818},{"player":0,"hand":"KhKd","history":["X","B:10000"],"action":"C","frequency":0.5}],"config":{"board":["2c","3d","4h","8s"],"pot":100,"stack":100,"turn_bet_sizes":[1],"river_bet_sizes":[],"oop":[{"hand":"KhKd","weight":1}],"ip":[{"hand":"AsAd","weight":1},{"hand":"QhJd","weight":1}],"rake":0,"max_raises":0,"include_all_in":false}}
+  {
+    "id": "singleton_minimax",
+    "analytic_oop_ev": -27.272727272727273,
+    "config": {
+      "board": [
+        "Js",
+        "Ts",
+        "2c",
+        "3d"
+      ],
+      "pot": 100,
+      "stack": 150,
+      "turn_bet_sizes": [
+        0.5
+      ],
+      "river_bet_sizes": [
+        0.5
+      ],
+      "oop": [
+        {
+          "hand": "AsKs",
+          "weight": 1
+        }
+      ],
+      "ip": [
+        {
+          "hand": "QhQd",
+          "weight": 1
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "weighted_dry",
+    "config": {
+      "board": [
+        "2c",
+        "3d",
+        "4h",
+        "8s"
+      ],
+      "pot": 100,
+      "stack": 200,
+      "turn_bet_sizes": [
+        0.5
+      ],
+      "river_bet_sizes": [
+        0.5
+      ],
+      "oop": [
+        {
+          "hand": "KhKd",
+          "weight": 1
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AsAd",
+          "weight": 1
+        },
+        {
+          "hand": "QhJd",
+          "weight": 0.7
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "draw_two_sizes",
+    "config": {
+      "board": [
+        "Ks",
+        "9s",
+        "5h",
+        "Td"
+      ],
+      "pot": 100,
+      "stack": 140,
+      "turn_bet_sizes": [
+        0.33,
+        0.75
+      ],
+      "river_bet_sizes": [
+        0.5,
+        1
+      ],
+      "oop": [
+        {
+          "hand": "KdQd",
+          "weight": 1
+        },
+        {
+          "hand": "AsJh",
+          "weight": 0.5
+        }
+      ],
+      "ip": [
+        {
+          "hand": "QsJs",
+          "weight": 1
+        },
+        {
+          "hand": "9h9d",
+          "weight": 0.5
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "weighted_collision",
+    "config": {
+      "board": [
+        "2c",
+        "3d",
+        "4h",
+        "8s"
+      ],
+      "pot": 100,
+      "stack": 100,
+      "turn_bet_sizes": [
+        0.5
+      ],
+      "river_bet_sizes": [
+        0.5
+      ],
+      "oop": [
+        {
+          "hand": "KhKd",
+          "weight": 1
+        },
+        {
+          "hand": "AsKs",
+          "weight": 0.3
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AsAd",
+          "weight": 1
+        },
+        {
+          "hand": "QsJs",
+          "weight": 0.5
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "paired_capped",
+    "config": {
+      "board": [
+        "Ks",
+        "9s",
+        "5h",
+        "5d"
+      ],
+      "pot": 100,
+      "stack": 60,
+      "turn_bet_sizes": [
+        0.5,
+        1
+      ],
+      "river_bet_sizes": [
+        0.33,
+        0.75
+      ],
+      "oop": [
+        {
+          "hand": "KdQd",
+          "weight": 1
+        },
+        {
+          "hand": "AsJh",
+          "weight": 0.5
+        }
+      ],
+      "ip": [
+        {
+          "hand": "QsJs",
+          "weight": 1
+        },
+        {
+          "hand": "9h9d",
+          "weight": 0.25
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "turn_allin",
+    "analytic_oop_ev": -21.59090909090909,
+    "analytic_turn_frequencies": [
+      {
+        "player": 0,
+        "hand": "KhKd",
+        "history": [],
+        "action": "X",
+        "frequency": 1
+      },
+      {
+        "player": 1,
+        "hand": "AsAd",
+        "history": [
+          "X"
+        ],
+        "action": "B:10000",
+        "frequency": 1
+      },
+      {
+        "player": 1,
+        "hand": "QhJd",
+        "history": [
+          "X"
+        ],
+        "action": "B:10000",
+        "frequency": 0.4318181818181818
+      },
+      {
+        "player": 0,
+        "hand": "KhKd",
+        "history": [
+          "X",
+          "B:10000"
+        ],
+        "action": "C",
+        "frequency": 0.5
+      }
+    ],
+    "config": {
+      "board": [
+        "2c",
+        "3d",
+        "4h",
+        "8s"
+      ],
+      "pot": 100,
+      "stack": 100,
+      "turn_bet_sizes": [
+        1
+      ],
+      "river_bet_sizes": [],
+      "oop": [
+        {
+          "hand": "KhKd",
+          "weight": 1
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AsAd",
+          "weight": 1
+        },
+        {
+          "hand": "QhJd",
+          "weight": 1
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "weighted_4x4_collision",
+    "config": {
+      "board": [
+        "2c",
+        "3d",
+        "4h",
+        "8s"
+      ],
+      "pot": 100,
+      "stack": 150,
+      "turn_bet_sizes": [
+        0.5
+      ],
+      "river_bet_sizes": [
+        0.5,
+        1
+      ],
+      "oop": [
+        {
+          "hand": "KhKd",
+          "weight": 1
+        },
+        {
+          "hand": "AsKs",
+          "weight": 0.3
+        },
+        {
+          "hand": "QhQd",
+          "weight": 0.6
+        },
+        {
+          "hand": "Ah5h",
+          "weight": 0.2
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AsAd",
+          "weight": 1
+        },
+        {
+          "hand": "QsJs",
+          "weight": 0.5
+        },
+        {
+          "hand": "AhKh",
+          "weight": 0.4
+        },
+        {
+          "hand": "6h5d",
+          "weight": 0.15
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "four_flush_4x4",
+    "config": {
+      "board": [
+        "Ks",
+        "9s",
+        "5s",
+        "2s"
+      ],
+      "pot": 100,
+      "stack": 120,
+      "turn_bet_sizes": [
+        0.5
+      ],
+      "river_bet_sizes": [
+        0.5,
+        1
+      ],
+      "oop": [
+        {
+          "hand": "AsQh",
+          "weight": 1
+        },
+        {
+          "hand": "QsQd",
+          "weight": 0.6
+        },
+        {
+          "hand": "JhJd",
+          "weight": 0.3
+        },
+        {
+          "hand": "8s8h",
+          "weight": 0.2
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AsAd",
+          "weight": 0.5
+        },
+        {
+          "hand": "QsJd",
+          "weight": 0.8
+        },
+        {
+          "hand": "TsTh",
+          "weight": 0.4
+        },
+        {
+          "hand": "7h7d",
+          "weight": 0.25
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "trips_3x4",
+    "config": {
+      "board": [
+        "Kc",
+        "Kd",
+        "Kh",
+        "2s"
+      ],
+      "pot": 100,
+      "stack": 80,
+      "turn_bet_sizes": [
+        0.5,
+        1
+      ],
+      "river_bet_sizes": [
+        0.5
+      ],
+      "oop": [
+        {
+          "hand": "AsAd",
+          "weight": 1
+        },
+        {
+          "hand": "QsJs",
+          "weight": 0.4
+        },
+        {
+          "hand": "2h2d",
+          "weight": 0.25
+        }
+      ],
+      "ip": [
+        {
+          "hand": "KsQh",
+          "weight": 0.15
+        },
+        {
+          "hand": "AhQd",
+          "weight": 0.7
+        },
+        {
+          "hand": "JcTd",
+          "weight": 0.6
+        },
+        {
+          "hand": "2c2d",
+          "weight": 0.3
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  {
+    "id": "draw_4x4_two_sizes",
+    "config": {
+      "board": [
+        "Js",
+        "Ts",
+        "2c",
+        "3d"
+      ],
+      "pot": 100,
+      "stack": 200,
+      "turn_bet_sizes": [
+        0.5,
+        1
+      ],
+      "river_bet_sizes": [
+        0.5,
+        1
+      ],
+      "oop": [
+        {
+          "hand": "AsKs",
+          "weight": 1
+        },
+        {
+          "hand": "QhQd",
+          "weight": 0.6
+        },
+        {
+          "hand": "9s8s",
+          "weight": 0.3
+        },
+        {
+          "hand": "AhJd",
+          "weight": 0.5
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AcKc",
+          "weight": 0.4
+        },
+        {
+          "hand": "Qh9h",
+          "weight": 0.7
+        },
+        {
+          "hand": "9s9d",
+          "weight": 0.3
+        },
+        {
+          "hand": "AdTd",
+          "weight": 0.8
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  }
 ]

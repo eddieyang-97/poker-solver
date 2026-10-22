@@ -11,7 +11,7 @@ from unittest.mock import patch
 import numpy as np
 
 from benchmarks.turn_independent import (
-    compare_fixture, independent_train, install_reference_profile, mapping, product_profile, product_solver,
+    compare_fixture, independent_train, install_reference_profile, mapping, product_evaluation, product_profile, product_solver,
 )
 from benchmarks.turn_reference import IndependentCFR, IndependentTurnGame, State
 
@@ -20,6 +20,20 @@ FIXTURES = json.loads((Path(__file__).resolve().parents[1]/'benchmarks/turn-inde
 
 
 class IndependentTurnTests(unittest.TestCase):
+    def test_sixty_random_policies_in_larger_private_information_games(self):
+        rng = np.random.default_rng(1379)
+        for fixture in FIXTURES[6:]:
+            game = IndependentTurnGame(fixture['config'])
+            solver = product_solver(fixture['config'])
+            for sample in range(15):
+                profile = rng.exponential(size=game.uniform.shape)*game.allowed
+                profile /= profile.sum(axis=1, keepdims=True)
+                install_reference_profile(game, solver, profile)
+                expected, actual = game.evaluate(profile), product_evaluation(solver)
+                with self.subTest(fixture=fixture['id'], sample=sample):
+                    for key in expected:
+                        self.assertAlmostEqual(actual[key], expected[key], delta=1e-8, msg=key)
+
     def test_known_outs_and_concrete_deal_chance(self):
         config = copy.deepcopy(FIXTURES[5]['config'])
         config.update(turn_bet_sizes=[], river_bet_sizes=[])

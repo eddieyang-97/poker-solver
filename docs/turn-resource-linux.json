@@ -1,0 +1,1080 @@
+{
+  "mode": "Development Linux budget probes of unchanged solver; separate instrumented profile",
+  "limitations": "Synthetic samples, not a portable runtime bound, Render capacity or authenticated hosted acceptance. Windows probes are unsupported. Instrumented profile is unlimited and not resource acceptance.",
+  "budgets": {
+    "parent_wall_seconds": 20,
+    "cpu_seconds": 20,
+    "address_space_bytes": 402653184
+  },
+  "source_sha256_lf": {
+    "benchmarks/turn-performance-fixtures.json": "31aa7cf5734e6354536d6df485d8d31a32b945c8575fbb284ae12d9487121e94",
+    "benchmarks/turn_resources.py": "6866c5a418151f02ebcec8513f8d328c64aa4512a1563ad2bb7cd4e170e2925d",
+    "benchmarks/turn_performance.py": "9c56595a5d91905686b4a343eaafc933684dff177f11504d99bb18004ce4fb9f",
+    "scripts/benchmark_turn_resources.py": "50fd2ed1177af3ca8135d33cc1372f890cdf7e79a3a3473f67ebb6cdf2c7934f",
+    "poker_spot/turn.py": "fb546353b2875dec377b2966a9c09282bb6a65617505760b1b731e0d66a7e572",
+    "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9"
+  },
+  "cases": [
+    {
+      "id": "deep_dry_24x24",
+      "config": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+        "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+        "pot": 100,
+        "stack": 1000,
+        "turn_bet_sizes": [
+          0.5,
+          1.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1.5
+        ]
+      },
+      "iterations": 2000,
+      "result": {
+        "mode": "limits",
+        "pid": 2278,
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "python": "3.12.15",
+        "limits": {
+          "cpu_seconds": [
+            20,
+            20
+          ],
+          "address_space_bytes": [
+            402653184,
+            402653184
+          ]
+        },
+        "whole_process_cpu_seconds": 13.265833,
+        "status": "COMPLETED",
+        "measurement": {
+          "iterations": 2000,
+          "range_combos": {
+            "oop": 24,
+            "ip": 24
+          },
+          "decision_node_templates": 36,
+          "river_decision_templates": 30,
+          "public_rivers": 48,
+          "effective_bets": {
+            "turn": [
+              50.0,
+              150.0
+            ],
+            "turn/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/check/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/check/river": [
+              50.0,
+              150.0
+            ]
+          },
+          "initialization_seconds": 0.026655637000004617,
+          "solve_and_query_seconds": 13.170209118000002,
+          "serialization_seconds": 0.003675981000014872,
+          "total_seconds": 13.200551485999995,
+          "cpu_seconds": 13.197128653,
+          "peak_resident_memory": {
+            "bytes": 37466112,
+            "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+          },
+          "output_bytes": 372939,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": 49.99937552038751,
+            "ip_ev": -49.99937552038747,
+            "raw_nash_conv_chips": 0.0009480595816433105,
+            "zero_sum_residual": 4.263256414560601e-14,
+            "nash_conv_chips": 0.0009480595816433105,
+            "nash_conv_pct_pot": 0.0009480595816433105
+          },
+          "python": "3.12.15",
+          "numpy": "2.5.4",
+          "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+          "processor": "x86_64",
+          "pid": 2278,
+          "blas_threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1"
+          }
+        },
+        "linux_memory": {
+          "method": "/proc/self/status; kB converted to bytes",
+          "VmPeak_bytes": 114315264,
+          "VmSize_bytes": 113057792,
+          "VmHWM_bytes": 37466112,
+          "VmRSS_bytes": 36347904
+        },
+        "worker_wall_seconds": 13.238394561000007,
+        "process_wall_seconds": 13.284751806000003,
+        "deadline_seconds": 20,
+        "within_observed_budgets": true,
+        "convergence_gate_passed": true
+      }
+    },
+    {
+      "id": "four_flush_weighted_24x24",
+      "config": {
+        "board": "Ks,9s,5s,2s",
+        "oop_range": "AcAd:0.2,AcAh:0.4,AcAs:0.6,AdAh:0.8,AdAs:1.0,AhAs:0.2,QcQd:0.4,QcQh:0.6,QcQs:0.8,QdQh:1.0,QdQs:0.2,QhQs:0.4,JcJd:0.6,JcJh:0.8,JcJs:1.0,JdJh:0.2,JdJs:0.4,JhJs:0.6,TcTd:0.8,TcTh:1.0,TcTs:0.2,TdTh:0.4,TdTs:0.6,ThTs:0.8",
+        "ip_range": "AcAd:0.2,AcAh:0.4,AcAs:0.6,AdAh:0.8,AdAs:1.0,AhAs:0.2,QcQd:0.4,QcQh:0.6,QcQs:0.8,QdQh:1.0,QdQs:0.2,QhQs:0.4,JcJd:0.6,JcJh:0.8,JcJs:1.0,JdJh:0.2,JdJs:0.4,JhJs:0.6,TcTd:0.8,TcTh:1.0,TcTs:0.2,TdTh:0.4,TdTs:0.6,ThTs:0.8",
+        "pot": 100,
+        "stack": 1000,
+        "turn_bet_sizes": [
+          0.5,
+          1.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1.5
+        ]
+      },
+      "iterations": 2000,
+      "result": {
+        "mode": "limits",
+        "pid": 2302,
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "python": "3.12.15",
+        "limits": {
+          "cpu_seconds": [
+            20,
+            20
+          ],
+          "address_space_bytes": [
+            402653184,
+            402653184
+          ]
+        },
+        "whole_process_cpu_seconds": 13.570404,
+        "status": "COMPLETED",
+        "measurement": {
+          "iterations": 2000,
+          "range_combos": {
+            "oop": 24,
+            "ip": 24
+          },
+          "decision_node_templates": 36,
+          "river_decision_templates": 30,
+          "public_rivers": 48,
+          "effective_bets": {
+            "turn": [
+              50.0,
+              150.0
+            ],
+            "turn/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/check/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/check/river": [
+              50.0,
+              150.0
+            ]
+          },
+          "initialization_seconds": 0.015250454000010905,
+          "solve_and_query_seconds": 13.484319828999986,
+          "serialization_seconds": 0.004422546000000693,
+          "total_seconds": 13.504004976000004,
+          "cpu_seconds": 13.50198685,
+          "peak_resident_memory": {
+            "bytes": 37457920,
+            "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+          },
+          "output_bytes": 395516,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -1.7552156880236773,
+            "ip_ev": 1.7552156880236807,
+            "raw_nash_conv_chips": 0.00653338338607965,
+            "zero_sum_residual": 3.3306690738754696e-15,
+            "nash_conv_chips": 0.00653338338607965,
+            "nash_conv_pct_pot": 0.00653338338607965
+          },
+          "python": "3.12.15",
+          "numpy": "2.5.4",
+          "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+          "processor": "x86_64",
+          "pid": 2302,
+          "blas_threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1"
+          }
+        },
+        "linux_memory": {
+          "method": "/proc/self/status; kB converted to bytes",
+          "VmPeak_bytes": 113553408,
+          "VmSize_bytes": 110321664,
+          "VmHWM_bytes": 37457920,
+          "VmRSS_bytes": 34340864
+        },
+        "worker_wall_seconds": 13.542093555000008,
+        "process_wall_seconds": 13.588829560000022,
+        "deadline_seconds": 20,
+        "within_observed_budgets": true,
+        "convergence_gate_passed": true
+      }
+    },
+    {
+      "id": "deep_4x4_two_sizes",
+      "config": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1",
+        "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1",
+        "pot": 100,
+        "stack": 1000,
+        "turn_bet_sizes": [
+          0.5,
+          1.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1.5
+        ]
+      },
+      "iterations": 2000,
+      "result": {
+        "mode": "limits",
+        "pid": 2307,
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "python": "3.12.15",
+        "limits": {
+          "cpu_seconds": [
+            20,
+            20
+          ],
+          "address_space_bytes": [
+            402653184,
+            402653184
+          ]
+        },
+        "whole_process_cpu_seconds": 5.130609,
+        "status": "COMPLETED",
+        "measurement": {
+          "iterations": 2000,
+          "range_combos": {
+            "oop": 4,
+            "ip": 4
+          },
+          "decision_node_templates": 36,
+          "river_decision_templates": 30,
+          "public_rivers": 48,
+          "effective_bets": {
+            "turn": [
+              50.0,
+              150.0
+            ],
+            "turn/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/check/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/check/river": [
+              50.0,
+              150.0
+            ]
+          },
+          "initialization_seconds": 0.005187239000008503,
+          "solve_and_query_seconds": 5.053422436000005,
+          "serialization_seconds": 0.0039675579999993715,
+          "total_seconds": 5.062589615999997,
+          "cpu_seconds": 5.062409315,
+          "peak_resident_memory": {
+            "bytes": 34586624,
+            "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+          },
+          "output_bytes": 361037,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": 49.99855995091757,
+            "ip_ev": -49.99855995091757,
+            "raw_nash_conv_chips": 0.001704382961868589,
+            "zero_sum_residual": 0.0,
+            "nash_conv_chips": 0.001704382961868589,
+            "nash_conv_pct_pot": 0.0017043829618685888
+          },
+          "python": "3.12.15",
+          "numpy": "2.5.4",
+          "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+          "processor": "x86_64",
+          "pid": 2307,
+          "blas_threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1"
+          }
+        },
+        "linux_memory": {
+          "method": "/proc/self/status; kB converted to bytes",
+          "VmPeak_bytes": 111001600,
+          "VmSize_bytes": 110272512,
+          "VmHWM_bytes": 34586624,
+          "VmRSS_bytes": 33931264
+        },
+        "worker_wall_seconds": 5.100581202000001,
+        "process_wall_seconds": 5.147441280999999,
+        "deadline_seconds": 20,
+        "within_observed_budgets": true,
+        "convergence_gate_passed": true
+      }
+    },
+    {
+      "id": "deep_12x12_two_sizes",
+      "config": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1",
+        "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1",
+        "pot": 100,
+        "stack": 1000,
+        "turn_bet_sizes": [
+          0.5,
+          1.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1.5
+        ]
+      },
+      "iterations": 2000,
+      "result": {
+        "mode": "limits",
+        "pid": 2309,
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "python": "3.12.15",
+        "limits": {
+          "cpu_seconds": [
+            20,
+            20
+          ],
+          "address_space_bytes": [
+            402653184,
+            402653184
+          ]
+        },
+        "whole_process_cpu_seconds": 8.074321,
+        "status": "COMPLETED",
+        "measurement": {
+          "iterations": 2000,
+          "range_combos": {
+            "oop": 12,
+            "ip": 12
+          },
+          "decision_node_templates": 36,
+          "river_decision_templates": 30,
+          "public_rivers": 48,
+          "effective_bets": {
+            "turn": [
+              50.0,
+              150.0
+            ],
+            "turn/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/check/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/check/river": [
+              50.0,
+              150.0
+            ]
+          },
+          "initialization_seconds": 0.014132210000013856,
+          "solve_and_query_seconds": 7.98905344100001,
+          "serialization_seconds": 0.0037814629999957106,
+          "total_seconds": 8.006981448000005,
+          "cpu_seconds": 8.006035731,
+          "peak_resident_memory": {
+            "bytes": 35299328,
+            "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+          },
+          "output_bytes": 362858,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": 49.99911894998352,
+            "ip_ev": -49.99911894998353,
+            "raw_nash_conv_chips": 0.001140959845618757,
+            "zero_sum_residual": -1.4210854715202004e-14,
+            "nash_conv_chips": 0.001140959845618757,
+            "nash_conv_pct_pot": 0.001140959845618757
+          },
+          "python": "3.12.15",
+          "numpy": "2.5.4",
+          "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+          "processor": "x86_64",
+          "pid": 2309,
+          "blas_threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1"
+          }
+        },
+        "linux_memory": {
+          "method": "/proc/self/status; kB converted to bytes",
+          "VmPeak_bytes": 111611904,
+          "VmSize_bytes": 111247360,
+          "VmHWM_bytes": 35299328,
+          "VmRSS_bytes": 35016704
+        },
+        "worker_wall_seconds": 8.044884695999997,
+        "process_wall_seconds": 8.091107471000015,
+        "deadline_seconds": 20,
+        "within_observed_budgets": true,
+        "convergence_gate_passed": true
+      }
+    },
+    {
+      "id": "deep_24x24_one_size",
+      "config": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+        "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+        "pot": 100,
+        "stack": 1000,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ]
+      },
+      "iterations": 2000,
+      "result": {
+        "mode": "limits",
+        "pid": 2312,
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "python": "3.12.15",
+        "limits": {
+          "cpu_seconds": [
+            20,
+            20
+          ],
+          "address_space_bytes": [
+            402653184,
+            402653184
+          ]
+        },
+        "whole_process_cpu_seconds": 5.189983,
+        "status": "COMPLETED",
+        "measurement": {
+          "iterations": 2000,
+          "range_combos": {
+            "oop": 24,
+            "ip": 24
+          },
+          "decision_node_templates": 16,
+          "river_decision_templates": 12,
+          "public_rivers": 48,
+          "effective_bets": {
+            "turn": [
+              50.0
+            ],
+            "turn/bet_50/call/river": [
+              100.0
+            ],
+            "turn/check/bet_50/call/river": [
+              100.0
+            ],
+            "turn/check/check/river": [
+              50.0
+            ]
+          },
+          "initialization_seconds": 0.0263157050000018,
+          "solve_and_query_seconds": 5.095677205000015,
+          "serialization_seconds": 0.00153397799999766,
+          "total_seconds": 5.123535809000003,
+          "cpu_seconds": 5.123457717,
+          "peak_resident_memory": {
+            "bytes": 34594816,
+            "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+          },
+          "output_bytes": 135622,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": 49.9999513282315,
+            "ip_ev": -49.9999513282315,
+            "raw_nash_conv_chips": 0.00018432127158770788,
+            "zero_sum_residual": 0.0,
+            "nash_conv_chips": 0.00018432127158770788,
+            "nash_conv_pct_pot": 0.00018432127158770788
+          },
+          "python": "3.12.15",
+          "numpy": "2.5.4",
+          "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+          "processor": "x86_64",
+          "pid": 2312,
+          "blas_threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1"
+          }
+        },
+        "linux_memory": {
+          "method": "/proc/self/status; kB converted to bytes",
+          "VmPeak_bytes": 111120384,
+          "VmSize_bytes": 110895104,
+          "VmHWM_bytes": 34594816,
+          "VmRSS_bytes": 34422784
+        },
+        "worker_wall_seconds": 5.160630849,
+        "process_wall_seconds": 5.2073871659999895,
+        "deadline_seconds": 20,
+        "within_observed_budgets": true,
+        "convergence_gate_passed": true
+      }
+    },
+    {
+      "id": "deep_24x24_500_iterations",
+      "config": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+        "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+        "pot": 100,
+        "stack": 1000,
+        "turn_bet_sizes": [
+          0.5,
+          1.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1.5
+        ]
+      },
+      "iterations": 500,
+      "result": {
+        "mode": "limits",
+        "pid": 2314,
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "python": "3.12.15",
+        "limits": {
+          "cpu_seconds": [
+            20,
+            20
+          ],
+          "address_space_bytes": [
+            402653184,
+            402653184
+          ]
+        },
+        "whole_process_cpu_seconds": 3.460317,
+        "status": "COMPLETED",
+        "measurement": {
+          "iterations": 500,
+          "range_combos": {
+            "oop": 24,
+            "ip": 24
+          },
+          "decision_node_templates": 36,
+          "river_decision_templates": 30,
+          "public_rivers": 48,
+          "effective_bets": {
+            "turn": [
+              50.0,
+              150.0
+            ],
+            "turn/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/check/bet_50/call/river": [
+              100.0,
+              300.0
+            ],
+            "turn/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/bet_150/call/river": [
+              200.0,
+              600.0
+            ],
+            "turn/check/check/river": [
+              50.0,
+              150.0
+            ]
+          },
+          "initialization_seconds": 0.026828657000010026,
+          "solve_and_query_seconds": 3.3614119089999974,
+          "serialization_seconds": 0.004065916999991259,
+          "total_seconds": 3.3923192080000035,
+          "cpu_seconds": 3.392467367,
+          "peak_resident_memory": {
+            "bytes": 37330944,
+            "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+          },
+          "output_bytes": 372389,
+          "diagnostics": {
+            "iterations": 500,
+            "oop_ev": 49.99003505702154,
+            "ip_ev": -49.99003505702155,
+            "raw_nash_conv_chips": 0.015146245292480815,
+            "zero_sum_residual": -1.4210854715202004e-14,
+            "nash_conv_chips": 0.015146245292480815,
+            "nash_conv_pct_pot": 0.015146245292480815
+          },
+          "python": "3.12.15",
+          "numpy": "2.5.4",
+          "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+          "processor": "x86_64",
+          "pid": 2314,
+          "blas_threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1"
+          }
+        },
+        "linux_memory": {
+          "method": "/proc/self/status; kB converted to bytes",
+          "VmPeak_bytes": 113287168,
+          "VmSize_bytes": 112009216,
+          "VmHWM_bytes": 37330944,
+          "VmRSS_bytes": 36208640
+        },
+        "worker_wall_seconds": 3.430567916000001,
+        "process_wall_seconds": 3.4768408920000127,
+        "deadline_seconds": 20,
+        "within_observed_budgets": true,
+        "convergence_gate_passed": true
+      }
+    }
+  ],
+  "resource_failures": [],
+  "harness_failures": [],
+  "instrumented_profile": {
+    "id": "deep_dry_24x24",
+    "config": {
+      "board": "2c,3d,4h,8s",
+      "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+      "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+      "pot": 100,
+      "stack": 1000,
+      "turn_bet_sizes": [
+        0.5,
+        1.5
+      ],
+      "river_bet_sizes": [
+        0.5,
+        1.5
+      ]
+    },
+    "iterations": 2000,
+    "result": {
+      "mode": "profile",
+      "pid": 2316,
+      "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+      "python": "3.12.15",
+      "limits": null,
+      "hotspots": {
+        "self_seconds": [
+          {
+            "function": "~:0:<method 'reduce' of 'numpy.ufunc' objects>",
+            "primitive_calls": 473327,
+            "total_calls": 473327,
+            "self_seconds": 4.230311038,
+            "cumulative_seconds": 4.230311038
+          },
+          {
+            "function": "~:0:<built-in method numpy._core._multiarray_umath.c_einsum>",
+            "primitive_calls": 360960,
+            "total_calls": 360960,
+            "self_seconds": 3.482097662,
+            "cumulative_seconds": 3.482097662
+          },
+          {
+            "function": "poker_spot/turn.py:169:_walk",
+            "primitive_calls": 4010,
+            "total_calls": 360900,
+            "self_seconds": 2.8499993540000004,
+            "cumulative_seconds": 11.409178201000001
+          },
+          {
+            "function": "poker_spot/turn.py:47:update_strategy",
+            "primitive_calls": 144000,
+            "total_calls": 144000,
+            "self_seconds": 1.7932789530000002,
+            "cumulative_seconds": 3.8606197630000003
+          },
+          {
+            "function": "shape_base.py:378:stack",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.574995668,
+            "cumulative_seconds": 0.6605236990000001
+          },
+          {
+            "function": "poker_spot/turn.py:151:_product",
+            "primitive_calls": 196526,
+            "total_calls": 196526,
+            "self_seconds": 0.48916260400000006,
+            "cumulative_seconds": 4.234253215
+          },
+          {
+            "function": "poker_spot/turn.py:157:_terminal",
+            "primitive_calls": 196490,
+            "total_calls": 196490,
+            "self_seconds": 0.469744798,
+            "cumulative_seconds": 4.703331976
+          },
+          {
+            "function": "fromnumeric.py:66:_wrapreduction",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.20246396400000002,
+            "cumulative_seconds": 0.718479451
+          },
+          {
+            "function": "einsumfunc.py:1234:_einsum_dispatcher",
+            "primitive_calls": 1804800,
+            "total_calls": 1804800,
+            "self_seconds": 0.16675450800000002,
+            "cumulative_seconds": 0.16675450800000002
+          },
+          {
+            "function": "~:0:<method 'fill' of 'numpy.ndarray' objects>",
+            "primitive_calls": 144000,
+            "total_calls": 144000,
+            "self_seconds": 0.12433729500000001,
+            "cumulative_seconds": 0.12433729500000001
+          },
+          {
+            "function": "fromnumeric.py:2342:sum",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.12318129100000001,
+            "cumulative_seconds": 0.8645382300000001
+          },
+          {
+            "function": "~:0:<method 'sum' of 'numpy.ndarray' objects>",
+            "primitive_calls": 328858,
+            "total_calls": 328858,
+            "self_seconds": 0.11219388200000001,
+            "cumulative_seconds": 4.003019097
+          },
+          {
+            "function": "einsumfunc.py:1242:einsum",
+            "primitive_calls": 360960,
+            "total_calls": 360960,
+            "self_seconds": 0.09623844100000001,
+            "cumulative_seconds": 3.5783361030000003
+          },
+          {
+            "function": "~:0:<built-in method builtins.isinstance>",
+            "primitive_calls": 675602,
+            "total_calls": 675602,
+            "self_seconds": 0.084832246,
+            "cumulative_seconds": 0.084832246
+          },
+          {
+            "function": "~:0:<built-in method builtins.getattr>",
+            "primitive_calls": 148131,
+            "total_calls": 148131,
+            "self_seconds": 0.077632557,
+            "cumulative_seconds": 0.077632557
+          },
+          {
+            "function": "_methods.py:47:_sum",
+            "primitive_calls": 328858,
+            "total_calls": 328858,
+            "self_seconds": 0.075700135,
+            "cumulative_seconds": 3.8908252150000004
+          },
+          {
+            "function": "poker_spot/turn.py:216:solve",
+            "primitive_calls": 1,
+            "total_calls": 1,
+            "self_seconds": 0.073731641,
+            "cumulative_seconds": 15.346233557000001
+          },
+          {
+            "function": "~:0:<method 'append' of 'list' objects>",
+            "primitive_calls": 339384,
+            "total_calls": 339384,
+            "self_seconds": 0.054863168000000004,
+            "cumulative_seconds": 0.054863168000000004
+          },
+          {
+            "function": "shape_base.py:206:_arrays_for_stack_dispatcher",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.049267212000000005,
+            "cumulative_seconds": 0.07607862600000001
+          },
+          {
+            "function": "shape_base.py:368:_stack_dispatcher",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.040682219000000006,
+            "cumulative_seconds": 0.116760845
+          }
+        ],
+        "cumulative_seconds": [
+          {
+            "function": "benchmarks/turn_performance.py:44:measure",
+            "primitive_calls": 1,
+            "total_calls": 1,
+            "self_seconds": 0.000152306,
+            "cumulative_seconds": 15.410519063
+          },
+          {
+            "function": "poker_spot/turn.py:216:solve",
+            "primitive_calls": 1,
+            "total_calls": 1,
+            "self_seconds": 0.073731641,
+            "cumulative_seconds": 15.346233557000001
+          },
+          {
+            "function": "poker_spot/turn.py:169:_walk",
+            "primitive_calls": 4010,
+            "total_calls": 360900,
+            "self_seconds": 2.8499993540000004,
+            "cumulative_seconds": 11.409178201000001
+          },
+          {
+            "function": "poker_spot/turn.py:157:_terminal",
+            "primitive_calls": 196490,
+            "total_calls": 196490,
+            "self_seconds": 0.469744798,
+            "cumulative_seconds": 4.703331976
+          },
+          {
+            "function": "poker_spot/turn.py:151:_product",
+            "primitive_calls": 196526,
+            "total_calls": 196526,
+            "self_seconds": 0.48916260400000006,
+            "cumulative_seconds": 4.234253215
+          },
+          {
+            "function": "~:0:<method 'reduce' of 'numpy.ufunc' objects>",
+            "primitive_calls": 473327,
+            "total_calls": 473327,
+            "self_seconds": 4.230311038,
+            "cumulative_seconds": 4.230311038
+          },
+          {
+            "function": "~:0:<method 'sum' of 'numpy.ndarray' objects>",
+            "primitive_calls": 328858,
+            "total_calls": 328858,
+            "self_seconds": 0.11219388200000001,
+            "cumulative_seconds": 4.003019097
+          },
+          {
+            "function": "_methods.py:47:_sum",
+            "primitive_calls": 328858,
+            "total_calls": 328858,
+            "self_seconds": 0.075700135,
+            "cumulative_seconds": 3.8908252150000004
+          },
+          {
+            "function": "poker_spot/turn.py:47:update_strategy",
+            "primitive_calls": 144000,
+            "total_calls": 144000,
+            "self_seconds": 1.7932789530000002,
+            "cumulative_seconds": 3.8606197630000003
+          },
+          {
+            "function": "einsumfunc.py:1242:einsum",
+            "primitive_calls": 360960,
+            "total_calls": 360960,
+            "self_seconds": 0.09623844100000001,
+            "cumulative_seconds": 3.5783361030000003
+          },
+          {
+            "function": "~:0:<built-in method numpy._core._multiarray_umath.c_einsum>",
+            "primitive_calls": 360960,
+            "total_calls": 360960,
+            "self_seconds": 3.482097662,
+            "cumulative_seconds": 3.482097662
+          },
+          {
+            "function": "fromnumeric.py:2342:sum",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.12318129100000001,
+            "cumulative_seconds": 0.8645382300000001
+          },
+          {
+            "function": "fromnumeric.py:66:_wrapreduction",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.20246396400000002,
+            "cumulative_seconds": 0.718479451
+          },
+          {
+            "function": "shape_base.py:378:stack",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.574995668,
+            "cumulative_seconds": 0.6605236990000001
+          },
+          {
+            "function": "einsumfunc.py:1234:_einsum_dispatcher",
+            "primitive_calls": 1804800,
+            "total_calls": 1804800,
+            "self_seconds": 0.16675450800000002,
+            "cumulative_seconds": 0.16675450800000002
+          },
+          {
+            "function": "~:0:<method 'fill' of 'numpy.ndarray' objects>",
+            "primitive_calls": 144000,
+            "total_calls": 144000,
+            "self_seconds": 0.12433729500000001,
+            "cumulative_seconds": 0.12433729500000001
+          },
+          {
+            "function": "shape_base.py:368:_stack_dispatcher",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.040682219000000006,
+            "cumulative_seconds": 0.116760845
+          },
+          {
+            "function": "~:0:<built-in method builtins.isinstance>",
+            "primitive_calls": 675602,
+            "total_calls": 675602,
+            "self_seconds": 0.084832246,
+            "cumulative_seconds": 0.084832246
+          },
+          {
+            "function": "~:0:<built-in method builtins.getattr>",
+            "primitive_calls": 148131,
+            "total_calls": 148131,
+            "self_seconds": 0.077632557,
+            "cumulative_seconds": 0.077632557
+          },
+          {
+            "function": "shape_base.py:206:_arrays_for_stack_dispatcher",
+            "primitive_calls": 144360,
+            "total_calls": 144360,
+            "self_seconds": 0.049267212000000005,
+            "cumulative_seconds": 0.07607862600000001
+          }
+        ]
+      },
+      "whole_process_cpu_seconds": 15.526971999999999,
+      "status": "COMPLETED",
+      "measurement": {
+        "iterations": 2000,
+        "range_combos": {
+          "oop": 24,
+          "ip": 24
+        },
+        "decision_node_templates": 36,
+        "river_decision_templates": 30,
+        "public_rivers": 48,
+        "effective_bets": {
+          "turn": [
+            50.0,
+            150.0
+          ],
+          "turn/bet_50/call/river": [
+            100.0,
+            300.0
+          ],
+          "turn/check/bet_50/call/river": [
+            100.0,
+            300.0
+          ],
+          "turn/bet_150/call/river": [
+            200.0,
+            600.0
+          ],
+          "turn/check/bet_150/call/river": [
+            200.0,
+            600.0
+          ],
+          "turn/check/check/river": [
+            50.0,
+            150.0
+          ]
+        },
+        "initialization_seconds": 0.059819620000013174,
+        "solve_and_query_seconds": 15.346263496000006,
+        "serialization_seconds": 0.003926510999974653,
+        "total_seconds": 15.410040505000012,
+        "cpu_seconds": 15.408086576999999,
+        "peak_resident_memory": {
+          "bytes": 38580224,
+          "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+        },
+        "output_bytes": 372939,
+        "diagnostics": {
+          "iterations": 2000,
+          "oop_ev": 49.99937552038751,
+          "ip_ev": -49.99937552038747,
+          "raw_nash_conv_chips": 0.0009480595816433105,
+          "zero_sum_residual": 4.263256414560601e-14,
+          "nash_conv_chips": 0.0009480595816433105,
+          "nash_conv_pct_pot": 0.0009480595816433105
+        },
+        "python": "3.12.15",
+        "numpy": "2.5.4",
+        "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+        "processor": "x86_64",
+        "pid": 2316,
+        "blas_threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1"
+        }
+      },
+      "linux_memory": {
+        "method": "/proc/self/status; kB converted to bytes",
+        "VmPeak_bytes": 114978816,
+        "VmSize_bytes": 114626560,
+        "VmHWM_bytes": 38580224,
+        "VmRSS_bytes": 38346752
+      },
+      "worker_wall_seconds": 15.497475451000014,
+      "process_wall_seconds": 15.546437349999962,
+      "deadline_seconds": 180
+    }
+  }
+}
