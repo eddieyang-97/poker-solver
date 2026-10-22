@@ -1,5 +1,4 @@
 """Isolated release gate tests: never contact Render or request credentials."""
-import json
 import unittest
 
 import httpx
