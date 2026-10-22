@@ -13,7 +13,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Static checks
         run: |
-          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py
+          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py benchmarks/raises.py benchmarks/raise_reference_worker.py
           python -m compileall -q poker_spot scripts benchmarks
       - name: Run tests
         run: python -m unittest discover -s tests -v
@@ -24,6 +24,45 @@ jobs:
         run: python scripts/benchmark.py --output .artifacts/benchmark --sensitivity
         env:
           OPENBLAS_NUM_THREADS: '1'
+      - name: Supplied action-model sensitivity and bounded joint range enumeration
+        timeout-minutes: 2
+        run: python scripts/benchmark_range_explorer.py --output .artifacts/range-explorer
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain local action-model range exploration
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: range-explorer-validation
+          include-hidden-files: true
+          if-no-files-found: error
+          path: .artifacts/range-explorer.*
+      - name: Post-session reconstruction and actual bounded river calculations
+        timeout-minutes: 2
+        run: python scripts/review_hand.py examples/hand-review.txt --scenarios examples/hand-review-scenarios.json --run --output .artifacts/hand-review
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain post-session requests and computed results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-session-hand-review
+          include-hidden-files: true
+          if-no-files-found: error
+          path: .artifacts/hand-review.*
+      - name: Independently trained local river raises and maximum workloads
+        timeout-minutes: 6
+        run: python scripts/benchmark_river_raises.py --performance --output .artifacts/river-raises
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain local river raise validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: river-raise-validation
+          include-hidden-files: true
+          if-no-files-found: error
+          path: .artifacts/river-raises.*
       - name: Experimental turn policy and best-response validation
         timeout-minutes: 2
         run: python scripts/benchmark_turn.py --output .artifacts/turn-benchmark

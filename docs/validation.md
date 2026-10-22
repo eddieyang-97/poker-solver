@@ -1,5 +1,198 @@
 # Audit and validation — 16 October 2026
 
+## Local supplied-action range exploration — 21 October 2026
+
+The next Issue #11 follow-up adds a separate local action-frequency/range
+explorer, not a strategic solver or hosted endpoint. [Contract and commands](range-explorer.md),
+[measured results](range-explorer-results.md) and [decimal outputs/source/profile hashes](range-explorer-results.json)
+retain the admitted scope: two/three modeled participants, chronological board
+filtering, history-bound legal alternatives, complete supplied frequency rows,
+unknown-likelihood gaps and latent cards of modeled folded players. Future
+actions/cards and all hole-card claims are excluded from inference. Posterior
+marginals are not silently substituted into the independent-range solver.
+
+Actual local checks pass: **117 tests**, Ruff/compileall, **20 randomized exact
+Fraction cross-checks**, three-profile analytical sensitivity and two maximum
+worker samples (24³ candidate deals, three profiles, 24 models/profile), plus
+the existing **10/10 river cases and sensitivity**. Actual timeout termination,
+tiny scales, private decimal contexts, support-underflow rejection, impossible
+lines, input bounds, model edits and error evidence are covered. The local CLI
+enforces a 60-second parent deadline; CPU/RSS bounds and universal runtime are
+not claimed. CI retains a separate `range-explorer-validation` artifact; this
+local snapshot establishes no real hosted acceptance.
+
+PR #15 review reproduced two P2 failures: ambient Decimal precision 2 made
+£6.01 and £6.02 action fingerprints collide, and a supported `HJ` action alias
+failed lookup against canonical priors. Every explorer history replay now uses
+the private Decimal context. Seats, posts, actions, prior keys and target pairs
+normalize supported aliases before binding/inference/reporting, rejecting duplicate
+canonical priors. Added tests preserve the caller's precision, reject distinct
+penny/subpenny alternatives at precisions 2/6/28, and compare full canonical/alias
+reports. All nine existing benchmark profile digests remain unchanged; no numerical
+gate changed. Fresh source/raw hashes and timings are retained in the results JSON.
+
+Final reviewed source `1196b9c` passed [CI run 39648506799](https://github.com/eddieyang-97/poker-solver/actions/runs/39648506799):
+117 tests, all benchmark/replay stages and nine nonempty artifact uploads. The
+downloaded explorer ZIP, three raw reports, five worker sources, four reproduction
+sources and nine profile digests verify; the exact receipt is versioned in
+`range-explorer-results.json`. PR #15 merged at `ea1db4e`. Issue #11 now marks
+completed Phase 1 and local explorer work separately from remaining solver and
+hosting gates; [the development roadmap](development-roadmap.md) records the sequence.
+
+A separate compact synthetic 150bb limp-call/check-raise regression preserves
+the original 200bb example. It checks £33/£63/£63/£303 pots, canonical actor order,
+£275 river-start stacks, £155 final stacks and an £80 call after a raise to £120.
+It constructs a permitted local raise tree with the reconstructed board/pot/stack,
+without training or adding range-quality/EV claims. The current exact-sizing rule
+rejects binary64 `40/63`; the regression preserves that rejection and does not
+claim observed-line solver integration. The independent raise suite remains the
+numerical correctness gate; this accounting case does not enlarge its corpus.
+Fresh local follow-up checks passed **118 tests**, Ruff and compileall, plus the
+unchanged independent raise suite (**8/8 cases, 48 mixed-policy comparisons**).
+Both existing maximum-dimension workers completed (4.933/4.913 seconds parent
+wall, 28,123,136/28,225,536 bytes peak resident memory on Windows/Python 3.14.8).
+These are measured repeats, not universal limits or hosted acceptance. The
+documented 8.7562e-9-chip action-EV discrepancy remains below the unchanged 1e-8
+gate with little margin; the compact accounting test adds no numerical evidence
+about realistic arrival ranges. New follow-up CI is separate from PR #15's
+verified 117-test source-head run.
+
+The first CI attempt at `938344b` failed in the new CLI test because it assumed
+the ignored `.artifacts/` directory already existed. The test now creates its
+own independent temporary directory. That attempt reached no benchmark stages
+and retained no artifacts; its subsequent missing-upload errors are not evidence
+of completed calculations. No product arithmetic or numerical gate changed.
+
+Computed range probabilities depend on uncalibrated supplied priors/frequencies;
+no action EV, equilibrium frequency or new solver call is produced. Existing
+hand-review dispatch, all solver engines, hosted registrations, deployment,
+OAuth and plugin settings are unchanged. True node locking, calibrated models,
+automatic solver integration and future turn transport remain separate work.
+
+## Experimental local river raises — 21 October 2026
+
+Issue #13 now has a separate opt-in `RaiseRiverSolver` and disposable local CLI,
+supporting check/bet/check-raise and lead/raise with at most one additional raise.
+The [game contract and commands](river-raises.md), [measured table](river-raises-results.md)
+and [exact requests, profile/source hashes and discrepancies](river-raises-results.json)
+document the admitted cent-exact tree, minimums, short all-ins and refunds.
+Existing no-raise core behavior, turn solver, hosted registrations, deployment,
+OAuth and plugin settings are unchanged. Nothing was deployed.
+
+Local Ruff/compileall and **106 tests** pass. Actual isolated training of pinned
+MIT noambrown commit `6a10442877ffc8fd28af93e16e279b9bbdd97b2a` passes **8/8**
+raise fixtures, with bidirectional policies, individual best responses, conditional
+action EVs, reach and explicit baseline/NashConv conversions. Another **48**
+fully mixed policies pass. Both **24×24-combo**, two-bet/two-raise, 5,000-iteration
+workloads complete under the separate local 60-second deadline, with actual
+CPU/peak RSS/output size retained. The existing **10/10 river regressions and
+sensitivity** still pass. These are new local calculations, not hosted acceptance.
+
+The largest conditional-Q difference is **8.7562e-9 chips**, near the unchanged
+1e-8 gate. The guide identifies its exact weighted-blocker row and reproduces it
+from the reference's total-minus-blocked mass cancellation. No gate, historical
+Texas failure or reference source was changed. Rare-branch precision remains
+visible; it is not hidden by rounding displayed EVs. The reference is independent
+training, not a proven gold standard. Both trainers use CFR+; the adapter reuses
+existing reference evaluation helpers, while the two rankers are separate.
+The raise benchmark step at `1c4e244` also passes on Ubuntu/Python 3.12.15;
+its `river-raise-validation` ZIP digest, ten source hashes, raw-profile hash
+and all eight reference-profile digests were verified. The guide/JSON retain
+the receipt and actual Linux CPU/RSS/limit measurements. A passing benchmark
+step does not establish completion of final-head CI or universal runtime bounds.
+
+## PR #12 review corrections — 20 October 2026
+
+Both P2 findings at `71bc313` were reproduced before fixes. The accounting adapter
+now uses the actual contestable wager when fewer than two players have chips
+left, including after a fold. With £1/£2 blinds, SB £100 and BB £1 all-in, the
+pot is £2, no call or equity threshold is invented, and the entire forced runout
+is accepted. Two stacks still able to bet preserve the nominal £2 bring-in and
+£2 minimum raise increment. Regressions cover unequal short blinds, both blinds
+all-in, antes, refunds and prohibition of betting into an empty side pot.
+
+Range conditioning now retains decimal posterior products and max-normalizes
+dispatch weights, avoiding the river core's absolute reach threshold for a
+globally scaled range. Two uniform `1e-8` updates on both baseline arrivals give
+exactly identical validated requests and complete results to the unconditioned
+100-iteration calculation; root check EV remains **−£43.0281**, not `null`.
+Three uniform `1e-200` updates preserve support as well. A genuinely unrepresentable
+relative weight is rejected rather than silently removed; explicit zero
+likelihoods still remove combos. [Measured reproductions](hand-review-fixes.json)
+retain inputs, output rows and source hashes.
+
+All **95 tests**, Ruff and compileall pass locally, and the unchanged river
+benchmark passes **10/10 plus sensitivity**. Fresh six-query local/hosted evidence
+below has been regenerated: all six numerical results remain identical to the
+pre-review outputs; two arrival request strings change by common normalization.
+The first hosted retry timed out without a payload, then all six calls completed
+sequentially and exactly matched the updated local requests/results. The solver
+core, turn engine, transports, deployment and auth configuration remain unchanged.
+The prior 91-test CI at `71bc313` is historical; review-fix CI must pass separately.
+
+## Post-session hand-review Phase 1 — 20 October 2026
+
+Added a local history normalizer/accountant, transparent range scenarios and
+bounded orchestration of the existing river tools for [Issue #11](https://github.com/eddieyang-97/poker-solver/issues/11).
+The [workflow guide](hand-review.md) documents schema, bounded prose grammar,
+corrections, rake models, known action-likelihood conditioning and explicit
+not-run states. Earlier multiway streets are accounted for, never solved.
+No solver-core, hosted transport, production configuration, Auth0 or plugin
+changes are part of this work; turn transport remains outside scope.
+
+The £1/£2, £400-per-seat no-rake regression reconstructs £57 on the flop, £87 on
+the turn/river, £367 remaining effective stack, then £40 to call into £127 and
+required equity **40/167 = 23.9520958%**. It preserves the three-player flop until
+UTG+1 folds and the £3 contributed by folded blinds.
+
+All **95 tests**, Ruff and compileall pass locally using the project venv
+(Windows, Python 3.14.8). The independent river benchmark passes **10/10** with
+tree sensitivity completed, using unchanged gates. New tests cover blinds,
+antes, dead money, seat/action order, short all-ins, reopening rights, refunds,
+effective calls, rake, ambiguity, revisions, blockers, supplied Bayesian weights,
+reveal independence, actual bounded execution, CLI output and false/failed
+computation labels. These local tests do not establish a final-head CI result.
+
+Actual local execution of the documented CLI ran three 700-iteration
+`solve_river` queries and three exact `evaluate_river_call` queries. Full validated
+arguments/results, runtime, source hashes and integrity receipts are retained in
+local `.artifacts/hand-review-fixed.json`; [versioned evidence](hand-review-results.json)
+records the six requests/results and raw-report SHA-256
+`5dfa06728dfd40b9b2c46376ccb5a56509571de0c9f14d4cf4a3040cbb1a1f14`.
+CI generates fresh full JSON/Markdown as `post-session-hand-review` artifacts.
+
+| Supplied hypothesis | 73 equity vs betting range | Call-minus-fold EV | Call/fold comparison | River CFR NashConv |
+| --- | ---: | ---: | --- | ---: |
+| Baseline | 13.9130% | −£16.7652 | Fold | £0.0015 |
+| Tighter live | 1.0000% | −£38.3300 | Fold | £0.0008 |
+| Looser/aggressive | 44.6927% | +£34.6369 | Call | £0.0010 |
+
+The CFR queries also evaluate 88's checking/betting against a full supplied OOP
+distribution, not just revealed 73. For baseline/tighter/looser OOP arrivals,
+88's check EV is −£41.1644/−£43.0561/−£17.6715 and bet EV is
+−£12.4572/−£21.8740/+£10.1781, using the half-starting-pot baseline. These sparse
+illustrative games prefer betting; their computed mixtures are not precise
+population or full-game GTO frequencies. OOP checks endogenously, not under a
+node lock. The separate looser betting hypothesis can favor a 73 call while the
+equilibrium profile folds: the two queries use different opponent assumptions.
+Earlier-action likelihoods are unknown, explicitly logged, and never fabricated.
+The earlier conversation's street-by-street commentary remains unverified.
+
+**Actual hosted acceptance:** three initial attempts through the existing
+connector returned authentication-prompt acceptance without numerical output.
+After the owner reported verification from ChatGPT, all six calculations above
+succeeded sequentially through the authenticated **Poker Solver Hosted**
+connector. Every request object and every result field exactly equals the local
+execution (JSON equality, no tolerance). The versioned evidence retains request/
+result receipts and the hosted raw-report SHA-256
+`5c2798ac8ea887b9b4a877cc16bbbfabbe3ea37f64e42389a84a6fd274cf1ae1`;
+the full hosted capture is local `.artifacts/hand-review-fixed-hosted.json`. The CLI
+itself remains local; no hosted hand-history endpoint or plugin update is
+claimed. This reconnect/manual invocation does not establish automatic refresh,
+revocation or second-account acceptance. No auth checks were relaxed. Phase 2
+range exploration, true node locking and future turn/flop/multiway support
+remain open; Issue #11 must not be auto-closed.
+
 ## Expanded turn coverage and development resource study — 18 October 2026
 
 Following merged PR #9 (`dd9249297300bc859101859e324de5d9de554599`), expanded
@@ -56,6 +249,7 @@ This does not establish full-range correctness, an audited external reference,
 portable performance bounds or authenticated hosted turn acceptance. Historical
 Ubuntu samples over 22 seconds remain evidence; later faster samples cannot
 erase the unresolved resource/integration gates.
+
 
 ## Independently trained strategic turn reference — 18 October 2026
 

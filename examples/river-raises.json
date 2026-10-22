@@ -1,0 +1,14 @@
+{
+  "context": "post_session",
+  "board": "2c,3d,4h,8s,9c",
+  "oop_range": "AsAd:1,KhKd:0.2,QhJd:0.7,AhKc:0.4",
+  "ip_range": "AsAc:0.3,KsKh:0.8,QdJh:1,AdKc:0.25",
+  "pot": 100,
+  "stack": 200,
+  "minimum_bet": 2,
+  "bet_sizes": [0.5],
+  "raise_sizes": [0.5],
+  "iterations": 2000,
+  "oop_hand": "AsAd",
+  "ip_hand": "KsKh"
+}

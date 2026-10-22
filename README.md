@@ -13,6 +13,28 @@ small strategic turn games with its own tree and chip accounting. A separate
 profiles larger workloads. The reference is developed in this repository and
 has not been externally audited.
 
+An opt-in [local river raise/check-raise solver](docs/river-raises.md) supports one
+additional raise after a bet, explicit finite sizes and cent-exact accounting.
+Its separate independent validation corpus is not part of the no-raise benchmark
+score. It is not registered with MCP or deployed; hosted tools remain no-raise.
+
+A local [post-session hand-history review workflow](docs/hand-review.md) reconstructs
+street-by-street pots/stacks, preserves explicit range assumptions and optionally
+executes the existing bounded river tools. It accepts structured hands or bounded
+position/action prose, reports missing details and retains exact requests/results.
+This implements Phase 1 of [the workflow roadmap](https://github.com/eddieyang-97/poker-solver/issues/11).
+An opt-in [local action-model range explorer](docs/range-explorer.md) now evaluates
+editable frequency hypotheses, joint card removal across up to three participants
+and sensitivity, retaining folded players' latent cards. It computes conditioning
+only and never substitutes posterior marginals into the solver. Calibrated
+population models, node locking and automatic integration remain follow-ups. Earlier multiway streets
+are accounted for, not solved. No hosted tool or plugin behavior changes.
+
+The [development roadmap](docs/development-roadmap.md) tracks local implementation,
+solver correctness, range-model quality and hosted acceptance separately. The next
+integration milestone is local hand-review support for the river raise engine;
+joint-range/node-locking and advanced hosted tools have their own acceptance gates.
+
 **v0.2 implementation:** official-SDK stateless Streamable HTTP, OAuth resource
 metadata and JWT verification, bounded subprocess calculations, analytical
 regressions and official-client integration tests. Real provider setup, deployment

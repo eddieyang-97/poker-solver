@@ -1,0 +1,149 @@
+[
+  {
+    "id": "polarized_half",
+    "description": "Analytical nuts/air with an optional dominated check-raise",
+    "config": {
+      "board": "2c,3d,4h,8s,9c",
+      "oop_range": "KhKd:1",
+      "ip_range": "AsAd:1,QhJd:1",
+      "pot": 100,
+      "stack": 150,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5
+      ],
+      "raise_sizes": [
+        0.5
+      ]
+    },
+    "analytical_root_ev": -16.666666666666668
+  },
+  {
+    "id": "symmetric_value_air",
+    "description": "Both lead/raise and check-raise lines with symmetric weighted strengths",
+    "config": {
+      "board": "2c,3d,4h,8s,9c",
+      "oop_range": "AsAd:0.5,KhKd:1,QhJd:0.5",
+      "ip_range": "AhAc:0.5,KsKc:1,QdJh:0.5",
+      "pot": 100,
+      "stack": 200,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5
+      ],
+      "raise_sizes": [
+        0.5
+      ]
+    }
+  },
+  {
+    "id": "weighted_blockers",
+    "description": "Overlapping weighted concrete ranges and nonuniform card removal",
+    "config": {
+      "board": "2c,3d,4h,8s,9c",
+      "oop_range": "AsAd:1,KhKd:0.2,QhJd:0.7,AhKc:0.4",
+      "ip_range": "AsAc:0.3,KsKh:0.8,QdJh:1,AdKc:0.25",
+      "pot": 100,
+      "stack": 200,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5
+      ],
+      "raise_sizes": [
+        0.5
+      ]
+    }
+  },
+  {
+    "id": "short_allin_raise",
+    "description": "A legal stack-capped raise smaller than the previous bet",
+    "config": {
+      "board": "2c,3d,4h,8s,9c",
+      "oop_range": "AsAd:0.5,KhKd:1,QhJd:0.5",
+      "ip_range": "AhAc:0.5,KsKc:1,QdJh:0.5",
+      "pot": 100,
+      "stack": 75,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5
+      ],
+      "raise_sizes": [
+        0.5
+      ]
+    }
+  },
+  {
+    "id": "two_sizes",
+    "description": "Two opening sizes and two uncollapsed raise increments",
+    "config": {
+      "board": "2c,3d,4h,8s,9c",
+      "oop_range": "AsAd:0.5,KhKd:1,QhJd:0.5",
+      "ip_range": "AhAc:0.5,KsKc:1,QdJh:0.5",
+      "pot": 100,
+      "stack": 600,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5,
+        1
+      ],
+      "raise_sizes": [
+        0.5,
+        1
+      ]
+    }
+  },
+  {
+    "id": "paired_board",
+    "description": "Paired public cards with distinct full houses and missed draws",
+    "config": {
+      "board": "Ks,9s,5h,Td,Ts",
+      "oop_range": "KdQd:1,9h9c:0.5,AsJh:0.4",
+      "ip_range": "KhQc:0.6,5s5c:1,AhJd:0.8",
+      "pot": 100,
+      "stack": 300,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5
+      ],
+      "raise_sizes": [
+        0.5
+      ]
+    }
+  },
+  {
+    "id": "flush_board",
+    "description": "Flush blockers, ties and range weighting",
+    "config": {
+      "board": "As,Js,8s,4d,2c",
+      "oop_range": "KsQs:0.6,AhAd:1,KdQc:0.4",
+      "ip_range": "Ts9s:1,AcKh:0.5,QdTc:0.6",
+      "pot": 100,
+      "stack": 250,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5
+      ],
+      "raise_sizes": [
+        0.5
+      ]
+    }
+  },
+  {
+    "id": "allin_opening",
+    "description": "An explicit capped opening all-in leaves only call/fold",
+    "config": {
+      "board": "2c,3d,4h,8s,9c",
+      "oop_range": "AsAd:0.5,KhKd:1,QhJd:0.5",
+      "ip_range": "AhAc:0.5,KsKc:1,QdJh:0.5",
+      "pot": 100,
+      "stack": 50,
+      "minimum_bet": 2,
+      "bet_sizes": [
+        0.5
+      ],
+      "raise_sizes": [
+        0.5
+      ]
+    }
+  }
+]

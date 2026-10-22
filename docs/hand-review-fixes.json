@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-20",
+  "scope": "Actual local regressions for both P2 findings on PR #12; solver core unchanged",
+  "short_blind": {
+    "input": {
+      "context": "post_session",
+      "currency": "GBP",
+      "blinds": {
+        "small": 1,
+        "big": 2
+      },
+      "players": [
+        {
+          "position": "SB",
+          "stack": 100
+        },
+        {
+          "position": "BB",
+          "stack": 1
+        }
+      ],
+      "forced_posts": [
+        {
+          "player": "SB",
+          "kind": "small_blind",
+          "amount": 1
+        },
+        {
+          "player": "BB",
+          "kind": "big_blind",
+          "amount": 1
+        }
+      ],
+      "dead_money": 0,
+      "rake": {
+        "model": "none"
+      },
+      "streets": [
+        {
+          "name": "preflop",
+          "cards": [],
+          "actions": []
+        },
+        {
+          "name": "flop",
+          "cards": [
+            "Ac",
+            "Jh",
+            "3s"
+          ],
+          "actions": []
+        },
+        {
+          "name": "turn",
+          "cards": [
+            "Tc"
+          ],
+          "actions": []
+        },
+        {
+          "name": "river",
+          "cards": [
+            "4c"
+          ],
+          "actions": []
+        }
+      ]
+    },
+    "preflop_decision": {
+      "street": "preflop",
+      "actor": null,
+      "players": [
+        "SB",
+        "BB"
+      ],
+      "last_bettor": null,
+      "outstanding_wager": 0.0,
+      "to_call": 0.0,
+      "uncalled_excess_if_call": 0.0,
+      "pot_contested_if_call": 2.0,
+      "pot_current": 2.0,
+      "street_start": {
+        "name": "preflop",
+        "board": [],
+        "pot_start": 2.0,
+        "action_order": [
+          "SB",
+          "BB"
+        ],
+        "players_start": [
+          "SB",
+          "BB"
+        ],
+        "stacks_start": {
+          "SB": 99.0,
+          "BB": 0.0
+        },
+        "effective_stack_heads_up": 0.0,
+        "spr_heads_up": 0.0,
+        "pot_end": 2.0,
+        "players_end": [
+          "SB",
+          "BB"
+        ],
+        "pending": [],
+        "contributions": {
+          "SB": 1.0,
+          "BB": 1.0
+        },
+        "stacks_end": {
+          "SB": 99.0,
+          "BB": 0.0
+        }
+      }
+    },
+    "runout_decision": {
+      "street": "river",
+      "actor": null,
+      "players": [
+        "SB",
+        "BB"
+      ],
+      "last_bettor": null,
+      "outstanding_wager": 0.0,
+      "to_call": 0.0,
+      "uncalled_excess_if_call": 0.0,
+      "pot_contested_if_call": 2.0,
+      "pot_current": 2.0,
+      "street_start": {
+        "name": "river",
+        "board": [
+          "Ac",
+          "Jh",
+          "3s",
+          "Tc",
+          "4c"
+        ],
+        "pot_start": 2.0,
+        "action_order": [
+          "BB",
+          "SB"
+        ],
+        "players_start": [
+          "SB",
+          "BB"
+        ],
+        "stacks_start": {
+          "SB": 99.0,
+          "BB": 0.0
+        },
+        "effective_stack_heads_up": 0.0,
+        "spr_heads_up": 0.0,
+        "pot_end": 2.0,
+        "players_end": [
+          "SB",
+          "BB"
+        ],
+        "pending": [],
+        "contributions": {
+          "SB": 0.0,
+          "BB": 0.0
+        },
+        "stacks_end": {
+          "SB": 99.0,
+          "BB": 0.0
+        }
+      }
+    },
+    "street_pots": [
+      2.0,
+      2.0,
+      2.0,
+      2.0
+    ]
+  },
+  "uniform_conditioning": {
+    "iterations": 100,
+    "likelihood": 1e-08,
+    "updates_per_range": 2,
+    "normalized_requests_equal": true,
+    "all_results_equal": true,
+    "root_strategy": {
+      "frequency": {
+        "check": 0.9991,
+        "bet_0.45977pot": 0.0009
+      },
+      "action_ev_relative_to_half_pot": {
+        "check": -43.0281,
+        "bet_0.45977pot": -54.9914
+      },
+      "own_reach_probability": 1.0
+    },
+    "source_sha256_lf": {
+      "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+      "history.py": "cd2fb6c70792851b6b4cd484f4cc5498be27ff9d4f5c4aa8a10a012af7635fb8",
+      "review.py": "cd6ad154381648fbc80d7205aa41295c2390d3ad6f4351acf46939cca2e3a6ef",
+      "execution.py": "9362454694c565c8714cb471b64dcf153a9d63f7635c38ac79b756e2115bc83c",
+      "validation.py": "c108c4b96dceb3867021d365c128af4e9e221ca0c248c2f466ffce0969e7dac4"
+    }
+  }
+}
