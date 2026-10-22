@@ -1,6 +1,14 @@
 # CI-gated release preparation and activation
 
-Status (22 October 2026): **preparation only; automatic deployment OFF**. Tracks [operations #23](https://github.com/eddieyang-97/poker-solver/issues/23). Follow the real staged evidence in [hosting](hosting.md) and [validation](validation.md). `AGENTS.md` remains authoritative for solver boundaries and approvals.
+Status (22 October 2026): preparation merged; Issue #23 records owner-applied
+`checksPass` activation, while automatic-release ordering and failed-CI
+nondeployment acceptance remain open. Earlier off-state observations below are
+historical. Follow [operations #23](https://github.com/eddieyang-97/poker-solver/issues/23)
+for applied-state evidence. `AGENTS.md` remains authoritative for approvals.
+
+Issue #28's [concurrent CI design and measurements](ci-throughput.md) retain
+the exact required `test` check as a fail-closed aggregate of every numerical
+and artifact job. No branch protection or Render setting is changed by that PR.
 
 ## Read-back baseline, not assumed platform state
 
