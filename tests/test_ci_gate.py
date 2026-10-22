@@ -11,11 +11,26 @@ import yaml
 
 from scripts.ci_gate import REQUIRED_JOBS, require_success
 from scripts.profile_ci import summarize
+from scripts.compare_ci_evidence import compare
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class CIGateTests(unittest.TestCase):
+    def test_evidence_comparison_rejects_semantic_and_limit_changes(self):
+        value = {'strategy': [0.3, 0.7], 'ev': 1.25, 'status': 'computed',
+                 'metrics': {'wall_seconds': 4, 'limits': {'cpu_seconds': 20}}}
+        groups = lambda v: {'fixture': {'report.json': json.dumps(v).encode()}}
+        self.assertEqual(compare(groups(value), groups(value))['material_differences'], [])
+        for key, changed in (('strategy', [0.4, 0.6]), ('ev', 1.250000000001), ('status', 'failed')):
+            with self.subTest(key=key):
+                self.assertTrue(compare(groups(value), groups(dict(value, **{key: changed})))['material_differences'])
+        measured = deepcopy(value)
+        measured['metrics']['wall_seconds'] = 8
+        self.assertEqual(compare(groups(value), groups(measured))['material_differences'], [])
+        measured['metrics']['limits']['cpu_seconds'] = 40
+        self.assertTrue(compare(groups(value), groups(measured))['material_differences'])
+
     def test_timing_report_separates_critical_path_and_runner_work(self):
         run = dict(id=1, head_sha='a'*40, event='pull_request', html_url='https://example.test',
                    status='completed', conclusion='success', created_at='2026-10-22T12:00:00Z')
@@ -81,7 +96,11 @@ class CIGateTests(unittest.TestCase):
                 if step.get('uses') == 'actions/upload-artifact@v4':
                     self.assertEqual(step['if'], 'always()')
                     artifacts.append(step)
-        self.assertCountEqual(found, contract['checks'])
+        expected = deepcopy(contract['checks'])
+        for step in expected:
+            if step['name'] == 'Independently trained river-subgame decomposition':
+                step['run'] = step['run'].replace(' --output', ' --reference-workers 2 --output')
+        self.assertCountEqual(found, expected)
         self.assertCountEqual(artifacts, contract['artifacts'])
         # No path filters, feature pushes or main cancellation; latest PR supersedes only its own PR.
         events = workflow.get('on', workflow.get(True))  # YAML 1.1 compatibility

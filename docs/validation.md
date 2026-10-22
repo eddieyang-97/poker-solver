@@ -6,12 +6,14 @@ The [CI study](ci-throughput.md) and [timing receipts](ci-throughput-results.jso
 record three successful sequential baselines (637/890/1,199 seconds), the new
 four-job DAG and exact required `test` aggregate. Every original benchmark
 command, timeout, environment and artifact upload is checked against a baseline
-contract. Isolated tests execute the aggregate CLI with each failed, skipped,
+contract; the sole explicit command addition is two independent reference workers
+for decomposition, with unchanged training, output order and numerical gates. Isolated tests execute the aggregate CLI with each failed, skipped,
 cancelled, timed-out or missing dependency and require nonzero exit.
 
-Local checks: Ruff/compileall passed; 140 tests ran, 139 passed and one Linux-only
-check skipped on Windows. Fresh PR CI, exhaustive matched artifacts and repeated
-timings are pending at implementation snapshot. No solver, hosted registration,
+Local checks: Ruff/compileall passed; 143 tests ran, 142 passed and one Linux-only
+check skipped on Windows. The first DAG-only PR CI passed in 764 seconds; all 11 ZIPs/20 JSON files were
+compared with retained last-bit differences and two actual resource timeouts.
+Two-worker scheduling CI and repeated optimized timings remain pending at this snapshot. No solver, hosted registration,
 provider/protection setting, merge or deployment change is included. Actual
 post-merge/main and Render acceptance remain separate owner-gated evidence.
 

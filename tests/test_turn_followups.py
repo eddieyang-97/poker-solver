@@ -6,7 +6,7 @@ import unittest
 from unittest.mock import patch
 
 from benchmarks.harness import evaluate_profile, make_game
-from benchmarks.turn_decomposition import partition, turn_river_profile
+from benchmarks.turn_decomposition import compare_decomposition, partition, turn_river_profile
 from scripts.benchmark_turn_performance import run_worker
 
 
@@ -15,6 +15,26 @@ FIXTURES = json.loads((ROOT/'benchmarks/turn-decomposition-fixtures.json').read_
 
 
 class TurnDecompositionTests(unittest.TestCase):
+    def test_bounded_parallel_reference_preserves_order_profiles_and_failures(self):
+        serial = compare_decomposition(FIXTURES[0], 20, 20, reference_workers=1)
+        parallel = compare_decomposition(FIXTURES[0], 20, 20, reference_workers=2)
+        for result in (serial, parallel):
+            self.assertEqual(len(result['runouts']), 48)
+            exports = [r['reference_export'] for r in result['runouts'] if r['mass']]
+            self.assertEqual(len(exports), 44)
+            self.assertEqual(len({e['pid'] for e in exports}), 44)
+            for export in exports:
+                self.assertFalse(export['product_modules_loaded'])
+                del export['pid']
+                del export['training_cost']
+        self.assertEqual(serial, parallel)
+        for workers in (0, 3, True):
+            with self.subTest(workers=workers), self.assertRaises(ValueError):
+                compare_decomposition(FIXTURES[0], 20, 20, reference_workers=workers)
+        with patch('benchmarks.turn_decomposition.run_reference', side_effect=ValueError('worker fault')):
+            with self.assertRaisesRegex(ValueError, 'worker fault'):
+                compare_decomposition(FIXTURES[0], 20, 20, reference_workers=2)
+
     def test_weighted_chance_and_zero_mass_cards(self):
         _, mass, rivers = partition(FIXTURES[0])
         self.assertEqual(mass, 1)

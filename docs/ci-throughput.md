@@ -14,8 +14,10 @@ dependencies with `if: always()`. `scripts/ci_gate.py` accepts only the exact jo
 set with every result `success`. Failure, cancellation, skip, timeout, missing or
 unknown results and malformed input fail closed. Upload failures fail their job.
 There is no path filtering, conditional benchmark admission or continue-on-error.
-All eleven artifact names, commands, iterations, limits and numerical gates are
-retained; `tests/fixtures/ci-gates.json` records the sequential baseline contract.
+All eleven artifact names, iterations, limits and numerical gates are retained;
+`tests/fixtures/ci-gates.json` records the original command/upload contract.
+The sole command change is the explicit `--reference-workers 2` scheduling
+option, admitted separately by the contract test. Serial remains the CLI default.
 
 Feature branches run on `pull_request` only; main runs on `push`, with identical
 numerical coverage. Concurrency keys separate PR numbers from unique main run
@@ -52,11 +54,28 @@ Runner variance is substantial; measurements are not deterministic bounds.
 
 Decomposition trains 188 independent river games over all 48 candidate runouts
 per fixture, preserving zero-mass cards and 44 legal rivers per compatible deal.
-Start with DAG parallelism; no cached reference substitution, worker fan-out,
-fixture trimming, reduced iterations or algorithm changes. Its unchanged
-12-minute timeout remains gating. Further optimization needs profiling evidence.
+The first DAG-only run took 764 seconds (12m44s) and retained all eleven groups;
+that missed the target. CI now bounds independent reference training to two
+concurrent disposable subprocesses on the same standard runner. Every runout is
+still trained independently; parent evaluation, aggregation and serialization
+stay in original card order. No cached reference substitution, trimmed fixture,
+reduced iterations, tolerance or trainer/solver change is used. The unchanged
+12-minute step timeout and 120-second reference subprocess timeout remain gating.
 
 ## Failure injection and release boundary
+
+`scripts/compare_ci_evidence.py` consumes baseline/candidate ZIP directories and
+public artifact manifests. It checks all eleven ZIP digests, file sets, source
+and raw-output hashes, worker receipts and every JSON leaf. Only explicitly
+listed timing, memory, PID, profiler and verified raw-file digest metadata is
+separated; numerical outputs, strategies, status/failure classifications and
+limits use exact comparisons, with no newly introduced numeric tolerance.
+Readable Markdown is retained alongside its authoritative JSON. The complete
+diff remains local; concise verified counts and any discrepancies are versioned.
+
+In the fast sequential baseline, 188 distinct reference workers spent a summed
+338.715 seconds training against the 351-second decomposition step. Training is
+about 96.5% of that sample; worker startup is not the dominant measured cost.
 
 `python -m unittest discover -s tests -p test_ci_gate.py -v` runs the actual
 aggregate CLI with isolated results for each failed/skipped/cancelled/timed-out

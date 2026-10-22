@@ -21,7 +21,14 @@ def summarize(run, jobs, artifacts):
             raise ValueError('Every measured job must succeed')
         rows.append({'id': job['id'], 'name': job['name'], 'runner_name': job['runner_name'],
                      'labels': job['labels'], 'started_at': job['started_at'], 'completed_at': job['completed_at'],
+                     'queue_seconds': seconds(job.get('created_at', run['created_at']), job['started_at']),
+                     'created_to_start_seconds': seconds(run['created_at'], job['started_at']),
                      'seconds': seconds(job['started_at'], job['completed_at']),
+                     'setup_install_seconds': sum(seconds(s['started_at'], s['completed_at']) for s in job['steps']
+                                                 if s['name'] in ('Set up job', 'Run actions/checkout@v4',
+                                                                  'Run actions/setup-python@v5',
+                                                                  'Run pip install -r requirements-dev.txt')
+                                                 and s.get('started_at') and s.get('completed_at')),
                      'steps': [{'name': s['name'], 'conclusion': s['conclusion'],
                                 'seconds': seconds(s['started_at'], s['completed_at'])}
                                for s in job['steps'] if s.get('started_at') and s.get('completed_at')]})

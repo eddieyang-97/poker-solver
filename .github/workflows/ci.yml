@@ -161,7 +161,7 @@ jobs:
     - run: pip install -r requirements-dev.txt
     - name: Independently trained river-subgame decomposition
       timeout-minutes: 12
-      run: python scripts/benchmark_turn_decomposition.py --output .artifacts/turn-decomposition
+      run: python scripts/benchmark_turn_decomposition.py --reference-workers 2 --output .artifacts/turn-decomposition
       env:
         OPENBLAS_NUM_THREADS: '1'
     - name: Maximum-dimension local turn performance

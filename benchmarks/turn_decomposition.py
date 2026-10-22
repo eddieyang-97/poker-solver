@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import math
+from concurrent.futures import ThreadPoolExecutor
 
 import numpy as np
 
@@ -105,37 +106,48 @@ def turn_river_profile(solver, card, fixture, game):
     return profile
 
 
-def compare_decomposition(fixture, iterations=2000, reference_iterations=4000, progress=None):
+def compare_decomposition(fixture, iterations=2000, reference_iterations=4000, progress=None, reference_workers=1):
+    if type(reference_workers) is not int or reference_workers not in (1, 2):
+        raise ValueError('Use one or two independent reference workers')
     solver, mass, runouts = partition(fixture)
     result = solver.solve(iterations)
     weighted = {'product_ev': 0.0, 'product_gap': 0.0, 'reference_ev': 0.0, 'reference_gap': 0.0}
     cases, failures = [], []
     allowance = 1e-8
     convergence = 0.005*fixture['pot']
-    for number, runout in enumerate(runouts, 1):
-        row = {key: runout[key] for key in ('card', 'mass', 'probability')}
+
+    def train(runout):
         if runout['mass']:
-            river = runout['fixture']
-            game = make_game(river)
-            product = evaluate_profile(game, turn_river_profile(solver, runout['card'], river, game))
-            exported = run_reference(reference_config(river), reference_iterations)
-            reference = evaluate_profile(game, import_reference(game, exported))
-            row.update(product_ev=product['root'][0], product_gap=product['gap'],
-                       reference_ev=reference['root'][0], reference_gap=reference['gap'],
-                       reference_export=exported)
-            for name in weighted:
-                weighted[name] += row['probability']*row[name]
-            if abs(product['root'][0]-reference['root'][0]) > product['gap']+reference['gap']+allowance:
-                failures.append(f'{runout["card"]}: root difference exceeds combined gaps')
-            if max(product['gap'], reference['gap']) > convergence:
-                failures.append(f'{runout["card"]}: subgame convergence exceeds 0.5% initial pot')
-            if abs(reference['gap']-2*exported['checkpoints'][-1]['raw_exploitability']/SCALE) > allowance:
-                failures.append(f'{runout["card"]}: reference normalization mismatch')
-        else:
-            row['skipped'] = 'No compatible positive-weight deal; probability zero'
-        cases.append(row)
-        if progress:
-            progress(number, row)
+            return run_reference(reference_config(runout['fixture']), reference_iterations)
+        return None
+
+    # Only independent child processes train concurrently. Parent policy/BR
+    # evaluation and accumulation remain in the original public-card order.
+    with ThreadPoolExecutor(max_workers=reference_workers) as pool:
+        exports = pool.map(train, runouts)
+        for number, (runout, exported) in enumerate(zip(runouts, exports, strict=True), 1):
+            row = {key: runout[key] for key in ('card', 'mass', 'probability')}
+            if runout['mass']:
+                river = runout['fixture']
+                game = make_game(river)
+                product = evaluate_profile(game, turn_river_profile(solver, runout['card'], river, game))
+                reference = evaluate_profile(game, import_reference(game, exported))
+                row.update(product_ev=product['root'][0], product_gap=product['gap'],
+                           reference_ev=reference['root'][0], reference_gap=reference['gap'],
+                           reference_export=exported)
+                for name in weighted:
+                    weighted[name] += row['probability']*row[name]
+                if abs(product['root'][0]-reference['root'][0]) > product['gap']+reference['gap']+allowance:
+                    failures.append(f'{runout["card"]}: root difference exceeds combined gaps')
+                if max(product['gap'], reference['gap']) > convergence:
+                    failures.append(f'{runout["card"]}: subgame convergence exceeds 0.5% initial pot')
+                if abs(reference['gap']-2*exported['checkpoints'][-1]['raw_exploitability']/SCALE) > allowance:
+                    failures.append(f'{runout["card"]}: reference normalization mismatch')
+            else:
+                row['skipped'] = 'No compatible positive-weight deal; probability zero'
+            cases.append(row)
+            if progress:
+                progress(number, row)
     probability = math.fsum(row['probability'] for row in cases)
     ev_delta = abs(result['diagnostics']['oop_ev']-weighted['product_ev'])
     gap_delta = abs(result['diagnostics']['nash_conv_chips']-weighted['product_gap'])
