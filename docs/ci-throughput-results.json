@@ -796,8 +796,8 @@
     }
   ],
   "local_checks": {
-    "unit_tests_run": 140,
-    "passed": 139,
+    "unit_tests_run": 141,
+    "passed": 140,
     "skipped": "One Linux-only test on Windows",
     "ruff": "passed",
     "compileall": "passed"
@@ -809,5 +809,12 @@
     "repeated_timings": "pending",
     "post_merge_main": "Requires separate owner-approved merge; no merge/deploy performed",
     "render_provider_acceptance": "Separate Issue 23"
+  },
+  "decomposition_profile": {
+    "run_id": 39865456688,
+    "reference_workers": 188,
+    "training_seconds_sum": 338.7146016240016,
+    "decomposition_step_seconds": 351,
+    "interpretation": "Independent training accounts for approximately 96.5% of measured step time; no cached reuse or trainer changes made"
   }
 }

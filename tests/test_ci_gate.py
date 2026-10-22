@@ -10,11 +10,29 @@ import unittest
 import yaml
 
 from scripts.ci_gate import REQUIRED_JOBS, require_success
+from scripts.profile_ci import summarize
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class CIGateTests(unittest.TestCase):
+    def test_timing_report_separates_critical_path_and_runner_work(self):
+        run = dict(id=1, head_sha='a'*40, event='pull_request', html_url='https://example.test',
+                   status='completed', conclusion='success', created_at='2026-10-22T12:00:00Z')
+        jobs = [dict(id=1, name='one', runner_name='fixture', labels=['ubuntu-latest'], conclusion='success',
+                     started_at='2026-10-22T12:00:03Z', completed_at='2026-10-22T12:01:03Z', steps=[]),
+                dict(id=2, name='two', runner_name='fixture', labels=['ubuntu-latest'], conclusion='success',
+                     started_at='2026-10-22T12:00:03Z', completed_at='2026-10-22T12:02:04Z', steps=[])]
+        report = summarize(run, jobs, [dict(id=1, name='fixture', size_in_bytes=123)])
+        self.assertEqual(report['initial_queue_seconds'], 3)
+        self.assertEqual(report['critical_path_seconds'], 121)
+        self.assertEqual(report['created_to_green_seconds'], 124)
+        self.assertEqual(report['total_job_seconds'], 181)
+        self.assertEqual(report['rounded_runner_minutes_estimate'], 4)
+        self.assertEqual(report['total_artifact_bytes'], 123)
+        with self.assertRaises(ValueError):
+            summarize(dict(run, conclusion='failure'), jobs, [])
+
     def test_actual_cli_fails_closed_for_every_required_job_and_result(self):
         good = {name: {'result': 'success'} for name in REQUIRED_JOBS}
         require_success(good)
