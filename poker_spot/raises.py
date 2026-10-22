@@ -1,6 +1,6 @@
 """Opt-in local river CFR+ with one additional raise. Never registered with MCP."""
 from dataclasses import dataclass
-from decimal import Decimal, InvalidOperation
+from decimal import Context, Decimal, InvalidOperation, localcontext
 import math
 
 import numpy as np
@@ -11,7 +11,8 @@ from .core import Node, RiverSolver, cards, expand_range
 def cents(value):
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
         raise ValueError('Amounts must be finite numbers')
-    amount = Decimal(str(value))*100
+    with localcontext(Context(prec=600)):
+        amount = Decimal(str(value))*100
     if not 0 < amount <= 100_000_000 or amount != amount.to_integral_value():
         raise ValueError('Amounts must be positive, cent-exact and at most 1,000,000 chips')
     return int(amount)
@@ -39,6 +40,14 @@ def label(kind, total):
     return f'{kind}_to_{total//100}.{total%100:02d}'
 
 
+def exact_sizes(values, stack):
+    if (not isinstance(values, list) or not 1 <= len(values) <= 2
+            or any(type(v) is not int or not 0 < v <= stack for v in values)
+            or values != sorted(set(values))):
+        raise ValueError('Exact sizes require one or two ascending distinct integer cents within stack; no capping')
+    return values.copy()
+
+
 @dataclass(frozen=True)
 class Terminal:
     contributions: tuple[int, int]
@@ -61,10 +70,21 @@ class RaiseRiverSolver(RiverSolver):
     Raise fractions multiply pot after calling, giving the increment beyond call.
     """
 
-    def __init__(self, board, oop_range, ip_range, pot, stack, bet_sizes, raise_sizes, minimum_bet):
+    def __init__(self, board, oop_range, ip_range, pot, stack, bet_sizes=None, raise_sizes=None, minimum_bet=None,
+                 *, bet_amounts_cents=None, raise_to_cents=None):
         self.pot_cents, self.stack_cents, self.minimum_cents = map(cents, (pot, stack, minimum_bet))
-        self.raise_sizes = fractions(raise_sizes)
-        bet_sizes = fractions(bet_sizes)
+        self.exact_sizing = bet_amounts_cents is not None or raise_to_cents is not None
+        if self.exact_sizing:
+            if bet_sizes is not None or raise_sizes is not None:
+                raise ValueError('Use fractional sizes or exact cent sizes, never both')
+            exact_bets = exact_sizes(bet_amounts_cents, self.stack_cents)
+            self.raise_to_cents = exact_sizes(raise_to_cents, self.stack_cents)
+            self.raise_sizes = None
+            # Base initialization supplies cards/payoff matrices only; its tree is replaced below.
+            bet_sizes = [1]
+        else:
+            self.raise_sizes = fractions(raise_sizes)
+            bet_sizes = fractions(bet_sizes)
         parsed_board = cards(board, 5)
         for text in (oop_range, ip_range):
             if not isinstance(text, str) or len(text) > 8000 or len(expand_range(text, parsed_board)) > 24:
@@ -76,7 +96,11 @@ class RaiseRiverSolver(RiverSolver):
         if not self.prob > 0:
             raise ValueError('Compatible deal mass is not representable')
         self.nodes, self.locations, self.terminals = {}, {}, {}
-        self.bet_cents = [sized(self.pot_cents, f, self.stack_cents) for f in bet_sizes]
+        self.bet_cents = exact_bets if self.exact_sizing else [sized(self.pot_cents, f, self.stack_cents) for f in bet_sizes]
+        if self.exact_sizing:
+            for bet in self.bet_cents:
+                if any(target <= bet or target-bet < bet and target != self.stack_cents for target in self.raise_to_cents):
+                    raise ValueError('Exact raise-to must exceed every opening bet and meet the minimum unless all-in')
         if len(set(self.bet_cents)) != len(self.bet_cents):
             raise ValueError('Opening sizes collapse after stack capping')
         if any(b < self.minimum_cents and b != self.stack_cents for b in self.bet_cents):
@@ -105,8 +129,11 @@ class RaiseRiverSolver(RiverSolver):
             add('call', terminal('c', matched), 'call', matched[actor], paid_cents=owed)
             if raises == 0 and max(contribution) < self.stack_cents:
                 used = set()
-                for fraction in self.raise_sizes:
-                    extra = sized(self.pot_cents+2*max(contribution), fraction, self.stack_cents-max(contribution))
+                sizes = self.raise_to_cents if self.exact_sizing else self.raise_sizes
+                for size in sizes:
+                    fraction = None if self.exact_sizing else size
+                    extra = size-max(contribution) if self.exact_sizing else sized(
+                        self.pot_cents+2*max(contribution), fraction, self.stack_cents-max(contribution))
                     target = max(contribution)+extra
                     if target in used:
                         raise ValueError('Raise sizes collapse after stack capping')
@@ -179,4 +206,8 @@ class RaiseRiverSolver(RiverSolver):
                    limits={'combos_per_side': 24, 'bet_sizes': 2, 'raise_sizes': 2, 'iterations': 5000},
                    interpretation='Computed finite-tree approximation under supplied arrival ranges. EV baseline: half starting pot. '
                                   'Own reach is not joint node reach; null action EV means zero opponent reach. No hosted acceptance.')
+        if self.exact_sizing:
+            out.update(bet_sizes=None, sizing_mode='exact_integer_cents',
+                       bet_amounts_cents=self.bet_cents, raise_to_cents=self.raise_to_cents,
+                       raise_size_semantics='Exact total street contribution in integer cents; no rounding or capping')
         return out

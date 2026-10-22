@@ -1,5 +1,51 @@
 # Audit and validation — 16 October 2026
 
+## Exact-size local river-raise hand review — 22 October 2026
+
+Issue #17 adds a backward-compatible exact integer-cent path and opt-in
+`--local-raises` hand review through the existing disposable worker. The compact
+150bb case reconstructs £33/£63/£63/£303, a £275 river-start effective stack,
+and BTN's extra £80 after a raise to £120. Its public prefix maps to an exact
+`c/b4000/r8000` node. A separate explicitly requested jam-to-£275 branch is
+present; it is not added implicitly. The old fractional rejection of binary64
+40/63 remains; exact mode bypasses the representation problem without rounding.
+
+[Contract](hand-review.md#opt-in-local-exact-size-river-raises),
+[measurements](raise-review-results.md) and [requests/receipts](raise-review-results.json)
+record actual local execution and an independently trained same-tree reference,
+using rational 40/63, 80/143 and 235/143 sizing. At 2,000/4,000 iterations,
+product/reference root EVs are -9.26970804/-9.26968372 chips; gaps are
+0.00723474/0.00387502, below the unchanged 0.315-chip gate. Largest same-policy
+discrepancy is 1.7053e-13 chips against the unchanged 1e-8 gate. These are outputs
+under the separate illustrative range file, not inferred population frequencies
+or an externally audited GTO solution. Checks and bets remain endogenous, not locked.
+
+Local checks: **132 tests run, 131 passed, one Linux-only check skipped on
+Windows**, Ruff and compileall; existing **8/8 raise cases / 48 mixed policies**,
+two maximum worker samples and **10/10 no-raise cases plus sensitivity** passed.
+All eight legacy 2,000-iteration outputs match pre-change canonical JSON bytes on
+this machine. The known 8.7562e-9-chip raise discrepancy is retained. Historical
+evidence below is preserved; source receipts identify each measured version.
+Original final-head CI passed at `f539b41c`:
+[run 39828199656](https://github.com/eddieyang-97/poker-solver/actions/runs/39828199656).
+
+PR #22's review then reproduced misrouted same-tree results with different
+ranges/weights, iterations or queried hands being marked computed. The fix
+binds the worker's instantiated configuration and result with canonical digests
+and verifies them against preparation before assigning that status. Five actual
+alternate-worker responses plus missing/edited receipts and an edited result
+now return `RESULT_MISMATCH`. Fresh Windows checks ran 133 tests (132 passed,
+one Linux-only skip), Ruff/compileall and the required exact-size, raise and
+river/sensitivity benchmarks. Fresh receipts/source hashes are separate in
+`review_fix_validation`; final fix-head CI is linked on the PR when available.
+
+Plans/unsupported inputs remain `not_run`; worker failures/timeouts never receive
+a computed label. Verified computations retain exact configurations, accepted
+tree, node/own reach, action EV baseline, metrics and source/request/result hashes.
+Correlated arrivals (#18), locks (#19), hosted raises (#20) and turn feasibility
+(#21) remain separate. Existing no-raise solver/dispatch/MCP/security/deployment
+are unchanged, and no hosted call or configuration change occurred.
+
 ## Local supplied-action range exploration — 21 October 2026
 
 The next Issue #11 follow-up adds a separate local action-frequency/range

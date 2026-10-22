@@ -16,6 +16,47 @@ Both check/bet/check-raise and bet/raise lines are present. Exactly one addition
 raise is allowed after the opening bet; its recipient can fold/call only.
 Checking remains endogenous. There is no node lock or turn/multiway solving.
 
+## Exact integer-cent sizing (Issue #17)
+
+The existing fractional constructor and output are preserved. Alternatively pass
+both `bet_amounts_cents` and `raise_to_cents`, omitting `bet_sizes` and
+`raise_sizes`. Each exact list contains one/two ascending distinct positive
+**integers**, within the effective stack. Booleans, floats, subpenny values,
+duplicates, mixed fractional/exact modes and over-stack requests are rejected.
+There is no rounding, capping or implicit extra all-in in exact mode. Opening
+bets meet the minimum unless all-in; every raise-to must exceed each opening
+bet and satisfy its minimum raise unless it consumes the remaining stack.
+An all-in opening with no legal additional raise is not admitted in this exact
+one-raise contract; existing fractional all-in trees remain supported.
+
+```python
+RaiseRiverSolver(
+    board='Ac,Jh,3s,Tc,4c', oop_range='KhKd', ip_range='QsQd',
+    pot=63, stack=275, minimum_bet=2,
+    bet_amounts_cents=[4000], raise_to_cents=[12000, 27500],
+)
+```
+
+Amounts other than the two new lists remain chips, as before. A raise-to 12000
+cents after a 4000-cent bet adds 8000 cents beyond the call; BTN then owes 8000
+cents. Histories include `c/b4000/r8000` and the explicitly requested jam branch
+`c/b4000/r23500`. Exact totals apply to each player at every eligible opening-bet
+branch; this is not a per-player sizing override or node lock. The result reports
+`sizing_mode: exact_integer_cents`, exact lists and accepted action/terminal
+ledgers. Fraction fields are `null`, not approximate representations of money.
+
+For matching independent validation, the development adapter currently supports
+one exact opening amount. It passes reduced rational fractions to the unchanged
+pinned reference: 40/63 for the opening, 80/143 for raise-to-120, and 235/143 for
+jam-to-275. The isolated reference worker uses Python `Fraction`, not an adjusted
+binary float or modified vendor source. Every concrete action and chip ledger is
+still checked. Multiple exact opening amounts are explicitly rejected by this
+adapter rather than translated into a different reference tree. Historical
+fractional comparisons, minimums, short all-ins, refunds and gates remain intact.
+
+The [local hand-review integration](hand-review.md#opt-in-local-exact-size-river-raises)
+uses the existing disposable worker. This adds no MCP tool or hosted acceptance.
+
 All accounting is integer cents. Fractions that produce a non-cent effective
 action are rejected. Requested amounts cap at the effective stack; duplicate
 actions after capping are rejected. No implicit all-in size is added. An opening

@@ -8,6 +8,9 @@ GitHub `main` at `959af0c633b2a98775a751a08d98e62521145553` was **unprotected** 
 
 The actual Render account's **existing** `poker-solver` service (`main`, Frankfurt, Free, one Uvicorn worker) reported `autoDeployTrigger: off`. Its latest live **manual** deployment was commit `a4ba8e750582899642e468ba6c55d82bcc787d2f` from 16 October, not the latest `main`. Source `render.yaml` also says `off`. Neither a green repository test nor the YAML proves a newer version has reached Render. The Render connector's service read does **not** establish the Blueprint Auto Sync setting; inspect that in Render's Blueprint settings before any activation.
 
+
+Subsequently, [PR #22](https://github.com/eddieyang-97/poker-solver/pull/22) merged on 22 October at `50f439b0b23b7bfa9693b9547266fc75c7469569`; the ops PR was updated to incorporate it without removing Issue #17's added `AGENTS.md` instructions. GitHub now reports `main` as `protected:true`, but this integration lacks read access to detailed protection rules (403), so strict CI, bypass and review settings still need independent verification. The new main CI was initially in progress. Render auto-deploy remains off.
+
 **Do not change the active service or synchronize the Blueprint as part of this preparation PR.** Experimental turn/raise/range work merged to main is not thereby authorized for hosted MCP registration. No authorization/credentials or paid service change is included.
 
 ## Public read-only smoke (only after an approved deployment)

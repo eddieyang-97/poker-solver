@@ -1,0 +1,11 @@
+Context: post-session
+Currency: GBP
+Blinds: 1/2
+Stacks: 300 each
+Players: UTG, HJ, CO, BTN, SB, BB
+Rake: none
+Dead money: 0
+Preflop: UTG folds; HJ calls to 2; CO calls to 2; BTN raises to 10; SB folds; BB folds; HJ calls to 10; CO calls to 10
+Flop Ac Jh 3s: HJ checks; CO checks; BTN bets 15; HJ calls; CO folds
+Turn Tc: HJ checks; BTN checks
+River 4c: HJ checks; BTN bets 40; HJ raises to 120; BTN calls
