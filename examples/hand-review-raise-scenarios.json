@@ -1,0 +1,12 @@
+[
+  {
+    "id": "illustrative_independent_arrivals",
+    "description": "Separate solver scenario with uncalibrated river-start hypotheses; not inferred from the accounting fixture or a showdown reveal",
+    "arrival": {
+      "HJ": {"range": "7d3d:1,AhJd:0.35,KcQc:0.25,9d8d:0.2", "provenance": "Caller-supplied illustrative OOP arrival weights; earlier-action likelihoods unknown"},
+      "BTN": {"range": "8s8c:0.5,KcQc:0.4,QsQd:1,AdKd:0.7", "provenance": "Caller-supplied illustrative IP arrival weights; not a revealed-hand singleton"}
+    },
+    "query_hands": {"HJ": "7d3d", "BTN": "8s8c"},
+    "assumptions": ["Independent river arrivals with card removal; no joint-posterior substitution", "Observed check and bet remain endogenous, not locked", "Exact 300 starting stacks and zero rake are synthetic test assumptions"]
+  }
+]

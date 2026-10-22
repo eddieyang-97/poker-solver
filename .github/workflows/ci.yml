@@ -63,6 +63,19 @@ jobs:
           include-hidden-files: true
           if-no-files-found: error
           path: .artifacts/river-raises.*
+      - name: Exact-size local hand review and independent matching raise tree
+        timeout-minutes: 3
+        run: python scripts/benchmark_raise_review.py --output .artifacts/raise-review
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+      - name: Retain exact-size local raise review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: exact-size-raise-review
+          include-hidden-files: true
+          if-no-files-found: error
+          path: .artifacts/raise-review.*
       - name: Experimental turn policy and best-response validation
         timeout-minutes: 2
         run: python scripts/benchmark_turn.py --output .artifacts/turn-benchmark

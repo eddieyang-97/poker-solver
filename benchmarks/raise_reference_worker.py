@@ -1,5 +1,6 @@
 """Pinned upstream raise trainer, isolated from every product module/policy."""
 import argparse
+from fractions import Fraction
 import json
 from pathlib import Path
 import sys
@@ -7,6 +8,19 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from reference_worker import COMMIT, VENDOR, verify_reference
+
+
+def decoded_sizes(values):
+    """Optional exact rational configuration, interpreted without product imports."""
+    out = []
+    for value in values:
+        if isinstance(value, dict):
+            if (set(value) != {'numerator', 'denominator'}
+                    or any(type(v) is not int or not 0 < v <= 100_000_000 for v in value.values())):
+                raise ValueError('Invalid exact reference fraction')
+            value = Fraction(value['numerator'], value['denominator'])
+        out.append(value)
+    return out
 
 
 def run(config, iterations):
@@ -22,7 +36,8 @@ def run(config, iterations):
     players = config['players']
     game = RiverHoldemGame(RiverHoldemConfig(
         board=config['board'], pot=config['pot'], stacks=(config['stack'],)*2,
-        bet_sizes=config['bet_sizes'], oop_first_raises=config['raise_sizes'], ip_first_raises=config['raise_sizes'],
+        bet_sizes=decoded_sizes(config['bet_sizes']), oop_first_raises=decoded_sizes(config['raise_sizes']),
+        ip_first_raises=decoded_sizes(config['raise_sizes']),
         include_all_in=False, max_raises=2,
         ranges=tuple(p['hands'] for p in players), range_weights=tuple(p['weights'] for p in players)))
     trainer = VectorCFRTrainer(game, VectorCFRConfig(use_plus=True, linear_weighting=True, alternating=True, use_naive_eval=True))
