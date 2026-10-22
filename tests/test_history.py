@@ -13,18 +13,7 @@ HAND = json.loads((ROOT/'examples/hand-review.json').read_text())
 class HistoryTests(unittest.TestCase):
     def test_limp_call_check_raise_accounting_and_local_tree_boundary(self):
         # Synthetic 150bb accounting case; stacks/rake are test assumptions.
-        parsed = parse_history('''Context: post-session
-Currency: GBP
-Blinds: 1/2
-Stacks: 300 each
-Players: UTG, HJ, CO, BTN, SB, BB
-Rake: none
-Dead money: 0
-Preflop: UTG folds; HJ calls to 2; CO calls to 2; BTN raises to 10; SB folds; BB folds; HJ calls to 10; CO calls to 10
-Flop Ac Jh 3s: HJ checks; CO checks; BTN bets 15; HJ calls; CO folds
-Turn Tc: HJ checks; BTN checks
-River 4c: HJ checks; BTN bets 40; HJ raises to 120; BTN calls
-''')
+        parsed = parse_history((ROOT/'examples/hand-review-raises.txt').read_text())
         self.assertEqual(parsed['issues'], [])
         hand = parsed['hand']
         result = reconstruct(hand)
@@ -51,6 +40,11 @@ River 4c: HJ checks; BTN bets 40; HJ raises to 120; BTN calls
         # Keep its rounding rejection; exact observed sizing belongs to integration work.
         with self.assertRaisesRegex(ValueError, 'cent-exact'):
             RaiseRiverSolver(**dict(config, bet_sizes=[40/63]))
+        exact = {k: v for k, v in config.items() if k not in ('bet_sizes', 'raise_sizes')}
+        exact.update(bet_amounts_cents=[4000], raise_to_cents=[12000, 27500])
+        solver = RaiseRiverSolver(**exact)
+        self.assertEqual(solver.nodes['c/b4000'].actions, ('fold', 'call', 'raise_to_120.00', 'raise_to_275.00'))
+        self.assertEqual(solver.locations['c/b4000/r8000']['actions'][1]['paid_cents'], 8000)
 
     def test_motivating_hand_and_prose(self):
         parsed = parse_history((ROOT/'examples/hand-review.txt').read_text(encoding='utf-8'))
