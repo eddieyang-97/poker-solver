@@ -46,6 +46,19 @@ class HTTPTests(unittest.TestCase):
             self.assertEqual(client.post('/mcp').status_code, 401)
             self.assertIn('resource_metadata=', client.post('/mcp').headers['WWW-Authenticate'])
 
+    def test_health_exposes_only_a_valid_public_render_commit(self):
+        commit = 'a'*40
+        with patch.dict(os.environ, {'RENDER_GIT_COMMIT': commit,
+                                     'POKER_ALLOWED_SUBJECTS': 'private-test-subject'}):
+            response = self.client.get('/health')
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(response.json()['deployment'], {'commit': commit})
+            self.assertNotIn('private-test-subject', json.dumps(response.json()))
+            self.assertEqual(self.client.get('/ready').status_code, 200)
+        for bad in ('', 'a'*39, 'a'*41, 'A'*40, 'not-a-sha', 'a'*40+'SECRET'):
+            with self.subTest(bad=bad), patch.dict(os.environ, {'RENDER_GIT_COMMIT': bad}):
+                self.assertIsNone(self.client.get('/health').json()['deployment']['commit'])
+
     def test_auth_all_methods_and_origin_host_protection(self):
         for method in ('get', 'post', 'delete'):
             r = getattr(self.client, method)('/mcp')
