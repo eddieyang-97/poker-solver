@@ -1,5 +1,48 @@
 # Repository instructions
 
+## Issue-driven development workflow
+
+- Treat GitHub issues as the source of truth for milestone scope,
+  dependencies, deliverables, acceptance criteria, and exclusions.
+  Issue #11 is the parent roadmap; child issues define individual work.
+
+- Before starting, read AGENTS.md, the assigned issue, linked
+  documentation, relevant prior PRs, and current main.
+  Check dependencies and avoid duplicating completed work.
+
+- Work on one scoped issue per PR unless combining issues is explicitly
+  justified. Reference the issue in the PR and explain any deviations
+  from its requirements.
+
+- Do not expand scope, weaken numerical gates, change solver semantics,
+  or modify production integrations merely to complete a milestone.
+  Record material blockers and propose separate follow-up issues.
+
+- Preserve existing behavior and regression evidence. Add focused tests
+  for new functionality rather than unnecessarily duplicating fixtures.
+
+- Before requesting review, run relevant tests, static checks,
+  independent benchmarks, and reproducible examples.
+  Record exact commands, results, failures, source SHA, and CI evidence.
+  Never describe unrun tests or pending CI as passing.
+
+- PRs must summarize implementation, acceptance-criteria coverage,
+  validation evidence, remaining limitations, and any security,
+  resource, or deployment implications.
+
+- Address review findings with focused fixes and fresh validation.
+  Do not merge automatically. Wait for explicit owner authorization.
+
+- After an accepted merge, update the corresponding issue checklist
+  and milestone documentation. Close an issue only when its stated
+  acceptance criteria are satisfied; otherwise retain outstanding
+  work explicitly.
+
+- Keep local implementation, solver correctness, range-model quality,
+  and hosted acceptance as separate milestones. Deployment, OAuth,
+  plugin permissions, or paid-resource changes require separate
+  explicit authorization.
+
 - Hosted scope: HEADS-UP NLHE river-only constrained decision analysis. A separately authorized experimental local turn/river engine is allowed in `poker_spot/turn.py`; keep it out of MCP registrations and production deployment until separately validated. Neither engine is a full GTO solver.
 - Keep the core deterministic and dependency-light; separate game logic from MCP transports.
 - Never invent equilibrium frequencies or quote action EVs without computed outputs.
