@@ -4,12 +4,54 @@ from pathlib import Path
 import unittest
 
 from poker_spot.history import HistoryError, parse_history, reconstruct, revise_hand
+from poker_spot.raises import RaiseRiverSolver
 
 ROOT = Path(__file__).resolve().parents[1]
 HAND = json.loads((ROOT/'examples/hand-review.json').read_text())
 
 
 class HistoryTests(unittest.TestCase):
+    def test_limp_call_check_raise_accounting_and_local_tree_boundary(self):
+        # Synthetic 150bb accounting case; stacks/rake are test assumptions.
+        parsed = parse_history('''Context: post-session
+Currency: GBP
+Blinds: 1/2
+Stacks: 300 each
+Players: UTG, HJ, CO, BTN, SB, BB
+Rake: none
+Dead money: 0
+Preflop: UTG folds; HJ calls to 2; CO calls to 2; BTN raises to 10; SB folds; BB folds; HJ calls to 10; CO calls to 10
+Flop Ac Jh 3s: HJ checks; CO checks; BTN bets 15; HJ calls; CO folds
+Turn Tc: HJ checks; BTN checks
+River 4c: HJ checks; BTN bets 40; HJ raises to 120; BTN calls
+''')
+        self.assertEqual(parsed['issues'], [])
+        hand = parsed['hand']
+        result = reconstruct(hand)
+        self.assertEqual([s['pot_end'] for s in result['streets']], [33, 63, 63, 303])
+        self.assertEqual(result['streets'][1]['action_order'], ['UTG+1', 'UTG+2', 'BTN'])
+        river = result['streets'][-1]
+        self.assertEqual(river['action_order'], ['UTG+1', 'BTN'])
+        self.assertEqual(river['stacks_start'], {'UTG+1': 275, 'BTN': 275})
+        self.assertEqual({p: river['stacks_end'][p] for p in river['players_end']}, {'UTG+1': 155, 'BTN': 155})
+        pending = copy.deepcopy(hand)
+        pending['streets'][-1]['actions'].pop()
+        self.assertEqual(reconstruct(pending)['decision']['actor'], 'BTN')
+        self.assertEqual(reconstruct(pending)['decision']['to_call'], 80)
+        self.assertEqual(result['ledger'][-1]['paid'], 80)
+        self.assertIsNone(result['decision']['actor'])
+        # Constructor canaries only: these hands are not inferred arrival ranges.
+        config = dict(board=result['board'], oop_range='KhKd', ip_range='QsQd',
+                      pot=river['pot_start'], stack=river['effective_stack_heads_up'],
+                      minimum_bet=2, bet_sizes=[0.5], raise_sizes=[0.5])
+        solver = RaiseRiverSolver(**config)
+        self.assertEqual((solver.pot_cents, solver.stack_cents), (6300, 27500))
+        self.assertIn('raise_to_94.50', solver.nodes['c/b3150'].actions)
+        # The current fraction-only API cannot encode the observed 40/63 exactly.
+        # Keep its rounding rejection; exact observed sizing belongs to integration work.
+        with self.assertRaisesRegex(ValueError, 'cent-exact'):
+            RaiseRiverSolver(**dict(config, bet_sizes=[40/63]))
+
     def test_motivating_hand_and_prose(self):
         parsed = parse_history((ROOT/'examples/hand-review.txt').read_text(encoding='utf-8'))
         self.assertEqual(parsed['issues'], [])

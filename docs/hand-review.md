@@ -7,6 +7,14 @@ range hypotheses and optionally runs the existing bounded river tools. It does
 not solve the earlier multiway streets. The hosted service, OAuth configuration,
 plugin package and deployed solver are unchanged.
 
+The original 200bb three-bet example remains intact. A compact synthetic 150bb
+limp-call/check-raise test in `tests/test_history.py` separately checks £33/£63/£63/£303
+pots, canonical actor order, £275 river-start stacks and BTN's extra £80 call
+after a raise to £120. It checks local tree construction with permitted sizes,
+not a strategy or EV calculation. Exact £40/£63 fraction sizing is currently
+rejected rather than rounded; [integration and validation gates](development-roadmap.md)
+track that boundary. This does not add raise dispatch to the reviewer.
+
 ## Reproduce a review
 
 Use the project virtual environment and set `OPENBLAS_NUM_THREADS=1`. In PowerShell:

@@ -27,5 +27,10 @@ digests below match the original evidence exactly; no numerical gates changed.
 
 Same Windows/Python environment and local-only limits. The JSON's
 `review_fix_validation` retains fresh source/raw/profile hashes. The pre-review
-CI at `4c764ba` passed in run `39644126795`; review-fix final-head CI is pending
-at this snapshot. These local checks establish no new hosted acceptance.
+CI at `4c764ba` passed in run `39644126795`. Review-fix final-head
+[CI at `1196b9c`](https://github.com/eddieyang-97/poker-solver/actions/runs/39648506799)
+also passed: 117 tests, all benchmark/replay stages and nine retained artifact
+groups. The explorer artifact `12369245238` ZIP checksum, three raw hashes, five
+worker-source hashes, four reproduction-source hashes and all nine unchanged
+profile digests verify. The JSON retains its exact CI receipt and ZIP hash.
+These local checks establish no new hosted acceptance or model calibration.
