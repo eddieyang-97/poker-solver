@@ -74,6 +74,7 @@ def audit_record(record, config, iterations, fixture_id):
     collected = {}
     solver._walk(solver.root, *solver.weights, collect=collected)
     ev_delta = 0.0
+    reach_delta = 0.0
     for name, data in collected.items():
         previous = np.asarray(record['nodes'][name]['ev'], dtype=float)
         if not np.array_equal(np.isfinite(previous), np.isfinite(data['ev'])):
@@ -81,10 +82,12 @@ def audit_record(record, config, iterations, fixture_id):
         finite = np.isfinite(previous)
         if finite.any():
             ev_delta = max(ev_delta, float(np.abs(previous[finite]-data['ev'][finite]).max()))
-    if max(numeric, diagnostic_delta, ev_delta) > 1e-8:
-        raise ValueError(f'Unchanged fixed-policy gate failed: {numeric}, {diagnostic_delta}, {ev_delta}')
+        for key in ('own', 'opponent'):
+            reach_delta = max(reach_delta, float(np.abs(np.asarray(record['nodes'][name][key])-data[key]).max()))
+    if max(numeric, diagnostic_delta, ev_delta, reach_delta) > 1e-8:
+        raise ValueError(f'Unchanged fixed-policy gate failed: {numeric}, {diagnostic_delta}, {ev_delta}, {reach_delta}')
     return {'same_policy_independent_max_delta': numeric, 'stored_diagnostics_max_delta': diagnostic_delta,
-            'stored_action_ev_max_delta': ev_delta, 'gate_chips': 1e-8,
+            'stored_action_ev_max_delta': ev_delta, 'stored_reach_max_delta': reach_delta, 'gate_chips': 1e-8,
             'scope': 'Independent tree fixed-policy replay; separate training remains the ten-game CI gate'}
 
 
@@ -117,8 +120,10 @@ def coverage(cases, catalog):
             config['oop_range'] = config['oop_range'].split(',', 1)[1]
         queries.append(row)
     for row in queries:
+        started = time.perf_counter()
         key = digest(identity(TurnSolver(**row['config']), row['iterations']))
         row.update(key=key, status='exact_hit' if key in catalog else 'not_found',
+                   key_validation_seconds=time.perf_counter()-started,
                    miss_cost='No fallback executed; new independent validation/offline training or bounded live admission needed')
     repeated = [q for q in queries if q['kind'] == 'repeated_game_view']
     held = [q for q in queries if q['kind'] == 'held_out_changed_game']
@@ -200,6 +205,8 @@ def main():
     report['catalog_storage_bytes'] = catalog_bytes
     report['catalog_full_json_bytes'] = catalog_json_bytes
     report['catalog_games'] = len(catalog)
+    report['offline_training_parent_seconds'] = sum(c['runs'][0]['parent_wall_seconds'] for c in report['cases']
+                                                    if c['runs'] and c['runs'][0]['status'] == 'COMPLETED')
     report['decision'] = {'bounded_live': 'candidate_for_separate_Render_validation' if any(c.get('observed_candidate') for c in report['cases']) else 'not_established',
                           'general_turn': 'no_go', 'library': 'defer: no demonstrated organic exact-repeat coverage',
                           'next': 'No hosted release. Consider only the measured small subset in #26; #25 needs independent demand evidence.'}

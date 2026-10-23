@@ -8,10 +8,11 @@ independently checked turn games retain full strategy/action-EV tensors and
 strict game/source/configuration identities; every stored policy is replayed in
 both models at the unchanged 1e-8-chip gate. No operational cache is shipped.
 
-Initial Windows validation: Ruff/compileall passed; **144 tests ran, 143 passed
+Initial Windows validation: Ruff/compileall passed; **145 tests ran, 144 passed
 and the existing Linux-only allocation test skipped**. Existing ten-game
 independent turn, eight-game scalar turn and ten-game river/sensitivity suites
-passed. Full 188-river decomposition reproduction is still running; fresh Linux
+passed. All four decomposition cases and **188 independent river games** passed;
+all ten strategic reference digests match the retained baseline. Fresh Linux
 feasibility/CI evidence is pending, not claimed here.
 
 Unlimited local samples completed all eight 2,000-iteration studies and stored

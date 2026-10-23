@@ -108,6 +108,14 @@ constructed reuse, **not measured organic user coverage**. On miss no solve is
 executed; its cost is rejection plus a later independently admitted live solve
 or new offline training/validation. All query configurations remain in the report.
 
+The Windows unlimited sample stores four games in 200,465 compressed bytes
+(1,563,486 JSON bytes); eight full training runs complete without a harness
+failure. All-hands/all-rivers projected JSON is much larger: **505,167–1,310,307
+bytes per game**. Full process lookup, including three complete projections,
+takes approximately 0.7–1.9 seconds locally. These measurements include validation
+and decoding, not a claim of sub-millisecond hosted lookup. A future MCP contract
+must bound views; compression alone does not solve response-size limits.
+
 ## Decision and future release gate
 
 General hosted turn solving: **no-go** under the admitted local limits and

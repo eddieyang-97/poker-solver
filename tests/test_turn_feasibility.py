@@ -53,6 +53,16 @@ class TurnFeasibilityTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_record(record, self.solver, 200)
 
+    def test_multiple_hands_views_keep_indices_and_future_cards_separate(self):
+        config = games()[0]['config']
+        for index in (0, 1):
+            solver = TurnSolver(**config)
+            hands = [''.join(side[index]) for side in solver.hands]
+            direct = solver.solve(100, *hands)
+            record = full_record(solver, direct)
+            for side, label in enumerate(('oop', 'ip')):
+                self.assertEqual(view(record, solver, side, hands[side]), direct['hands'][label])
+
     def test_keys_bind_complete_games_not_views_or_partial_marginals(self):
         original = digest(identity(self.solver, 200))
         for key, value in (('pot', 101), ('stack', 151), ('oop_range', 'AsKs:0.5'),
