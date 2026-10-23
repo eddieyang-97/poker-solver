@@ -14,9 +14,10 @@ CI measurements again retain both maximum timeouts. A successful profiling
 command does not mean its individual probes passed. This rules out admitting
 the full local dimensions merely because a faster sample exists.
 
-The existing six Linux probes remain in CI, unchanged. This study adds four
+The existing six Linux probes remain in CI, unchanged. This study adds five
 existing independently checked strategic games: weighted dry-board collisions,
-a four-flush, trips/full-house runouts, and a draw-heavy two-size game. Complete
+a four-flush, trips/full-house runouts, a one-size two-combo blocker game, and a
+draw-heavy two-size game. Complete
 boards, exact expanded weights, pots/stacks, sizes and iterations are retained
 in each report. They are deliberately narrow questions about selected combos,
 not realistic full-width ranges or general turn support.
@@ -47,7 +48,7 @@ in-process decoding. No service, keepalive, queue or cache daemon is added.
 
 ## Provisional admission and convergence
 
-The deliberately conservative *input candidate* is at most **four combos each,
+The deliberately conservative *input candidate* is at most **two combos each,
 one size per street and exactly 2,000 iterations**, within the existing no-raise,
 no-rake model. Larger/different classes are measured or rejected, not relabelled
 as safe. To count as an observed candidate, both independent-process Linux
@@ -100,21 +101,22 @@ conditioning the turn on a future card. Regression tests compare frequencies,
 EVs, nulls and reach with the direct solver for both players/all runouts. Lookup
 measures all range hands; changing ranges or tree is a different game.
 
-The declared sensitivity set has **20 synthetic queries**: three output views
-of each of four catalog games, then eight held-out changes to board, weight,
-pot, stack, turn size, river size, iterations or combo support. With all four
-verified entries it yields **12/20 exact hits, 0/8 held-out hits**. That 60% is
+The declared sensitivity set has **23 synthetic queries**: three output views
+of each of five catalog games, then eight held-out changes to board, weight,
+pot, stack, turn size, river size, iterations or combo support. With all five
+verified entries it yields **15/23 exact hits, 0/8 held-out hits**. That 65.2% is
 constructed reuse, **not measured organic user coverage**. On miss no solve is
 executed; its cost is rejection plus a later independently admitted live solve
 or new offline training/validation. All query configurations remain in the report.
 
-The Windows unlimited sample stores four games in 200,465 compressed bytes
-(1,563,486 JSON bytes); eight full training runs complete without a harness
-failure. All-hands/all-rivers projected JSON is much larger: **505,167–1,310,307
-bytes per game**. Full process lookup, including three complete projections,
-takes approximately 0.7–1.9 seconds locally. These measurements include validation
-and decoding, not a claim of sub-millisecond hosted lookup. A future MCP contract
-must bound views; compression alone does not solve response-size limits.
+The initial four-game Windows sample stores 200,465 compressed bytes
+(1,563,486 JSON bytes). Its all-hands/all-rivers projected JSON is much larger:
+**505,167–1,310,307 bytes per game**. Full process lookup, including three complete
+projections, takes approximately 0.7–1.9 seconds locally. These measurements include
+validation and decoding, not a claim of sub-millisecond hosted lookup. A future
+MCP contract must bound views; compression alone does not solve response-size
+limits. The final evidence separately includes the added one-size candidate;
+the initial wider trees never qualified for the conservative input envelope.
 
 ## Decision and future release gate
 

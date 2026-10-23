@@ -76,6 +76,7 @@ class TurnFeasibilityTests(unittest.TestCase):
     def test_candidate_envelope_rejects_unvalidated_classes(self):
         self.assertTrue(candidate_input(self.solver, 2000))
         self.assertFalse(candidate_input(self.solver, 500))
+        self.assertFalse(candidate_input(TurnSolver(**dict(self.config, oop_range='AsKs,AhKh,AcKc')), 2000))
         self.assertFalse(candidate_input(TurnSolver(**dict(self.config, turn_bet_sizes=[0.5, 1])), 2000))
         wide = TurnSolver(**dict(self.config, oop_range='AA'))
         self.assertGreater(len(wide.hands[0]), 4)
@@ -89,7 +90,7 @@ class TurnFeasibilityTests(unittest.TestCase):
         cases = games()
         catalog = {digest(identity(TurnSolver(**c['config']), c['iterations'])) for c in cases}
         result = coverage(cases, catalog)
-        self.assertEqual((result['synthetic_hits'], result['total'], result['held_out_hits']), (12, 20, 0))
+        self.assertEqual((result['synthetic_hits'], result['total'], result['held_out_hits']), (15, 23, 0))
         self.assertTrue(all(q['status'] == 'not_found' for q in result['queries'] if q['kind'].startswith('held_out')))
         self.assertIn('not measured user demand', result['warning'])
 

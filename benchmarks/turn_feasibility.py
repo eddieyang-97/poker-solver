@@ -41,7 +41,7 @@ def identity(solver, iterations):
 
 def candidate_input(solver, iterations):
     """Provisional study envelope only; admission never establishes convergence."""
-    return (iterations == 2000 and max(map(len, solver.hands)) <= 4
+    return (iterations == 2000 and max(map(len, solver.hands)) <= 2
             and all(len(side) <= 1 for side in solver.sizes))
 
 
@@ -148,10 +148,11 @@ def view(record, solver, side, hand, river=None):
 
 def games():
     fixtures = json.loads((ROOT/'benchmarks/turn-independent-fixtures.json').read_text())
-    selected = ('weighted_4x4_collision', 'four_flush_4x4', 'trips_3x4', 'draw_4x4_two_sizes')
+    selected = ('weighted_4x4_collision', 'four_flush_4x4', 'trips_3x4', 'weighted_collision', 'draw_4x4_two_sizes')
     questions = ('Overpairs versus weighted draws on a dry turn',
                  'Flush blockers on a four-flush turn',
                  'Trips versus draws with full-house runouts',
+                 'One-size blocker-sensitive two-combo study',
                  'Double-barrel choices with two bet sizes')
     rows = []
     for name, question in zip(selected, questions, strict=True):

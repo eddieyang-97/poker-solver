@@ -15,15 +15,23 @@ passed. All four decomposition cases and **188 independent river games** passed;
 all ten strategic reference digests match the retained baseline. Fresh Linux
 feasibility/CI evidence is pending, not claimed here.
 
-Unlimited local samples completed all eight 2,000-iteration studies and stored
-four distinct compressed records totaling **200,465 bytes** (1,563,486 bytes
-uncompressed JSON). The 20-iteration draw counterexample completed quickly but
+The initial four-game unlimited local samples completed all eight 2,000-iteration
+studies and stored four compressed records totaling **200,465 bytes** (1,563,486
+JSON bytes). The final matrix adds an existing one-size two-combo game and
+narrows the provisional candidate to two combos per player. Its declared reuse
+set becomes **15/23 repeated-game hits and 0/8 changed-game holdouts**; no organic
+coverage is inferred. The 20-iteration draw counterexample completed quickly but
 had **4.6426%-of-pot NashConv**, above the unchanged 0.5% gate, and is excluded.
 The actual tight parent timeout kills/reaps the worker; a subsequent process
-completes. Scripted coverage is 12/20 repeated-game views, **0/8 changed-game
-holdouts**; this is not an estimate of organic user demand. Linux budgets,
-Render startup, authenticated turn MCP and a useful production catalog remain
-unverified. No merge, deployment or hosted registration is performed.
+completes. Initial Linux broad-tree solves at `75dc816` completed in 2.85–5.67s
+with 110–113 MiB peak AS, but are outside the conservative one-size envelope.
+The downloaded resource ZIP digest is
+`b34784f2fa1ba876b1f9f928842c8ce9489e0b3b3752b97e22f3a8c00a25de9d`.
+Replaying all four saved Linux policies on Windows passes the unchanged fixed-
+policy gates. Cross-runtime trained probabilities differ by up to **0.34670755**
+and root EV by **0.000136553 chips**; identical frequencies/conditional EVs are
+not claimed. Render startup, authenticated turn MCP and a useful production
+catalog remain unverified. No merge, deployment or hosted registration is performed.
 
 ## Exact-size local river-raise hand review — 22 October 2026
 
