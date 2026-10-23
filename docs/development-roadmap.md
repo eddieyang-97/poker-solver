@@ -21,8 +21,11 @@ small-game candidate and defers a production catalog without demand evidence;
 neither outcome authorizes a hosted tool or establishes Render capacity.
 Owner-merged PR #30 records that feasibility decision. Issue #26 now implements
 a separately opted-in [local MCP turn pilot](turn-pilot.md), choosing live-only
-and retaining a [separate release gate](turn-pilot-release.md). No production
-tool registration follows; local delivery and hosted acceptance remain distinct.
+and retaining a [separate release gate](turn-pilot-release.md). Stage A merged in
+PR #31 at `d0eb869`; that exact river-only baseline is live. The owner authorized
+Stage B on 23 October: a separate hosted factory and acceptance harness are
+prepared for review, without changing the default entry point or production
+settings. Actual hosted turn acceptance remains open.
 
 Evidence: [validation](validation.md), [river closeout](river-milestone.md),
 [hand review](hand-review.md), [range exploration](range-explorer.md),

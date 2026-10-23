@@ -1,0 +1,186 @@
+{
+  "kind": "Pre-activation baseline, not hosted turn acceptance",
+  "observed_utc": "2026-10-23 20:05:18 UTC",
+  "release": {
+    "commit": "d0eb8699a7c7924cbbc3b2a562bb1a8554a231a9",
+    "main_ci": 39984504602,
+    "render_deploy": "dep-dbdogaflot8c738sol00",
+    "public_smoke": {
+      "health": 200,
+      "ready": 200,
+      "mcp_unauthenticated": 401,
+      "engine": "river-only"
+    },
+    "service": "srv-db934j67bikc73bppelg",
+    "plan": "free",
+    "instances": 1,
+    "uvicorn_workers": 1,
+    "auto_deploy_trigger": "checksPass",
+    "render_reported_cpu_limit": 0.15,
+    "render_reported_memory_limit_bytes": 536870900
+  },
+  "legacy_chatgpt_connector_calls": [
+    {
+      "tool": "evaluate_river_call",
+      "request": {
+        "board": "Ks,9s,5h,Td,Ts",
+        "hero_hand": "KdQd",
+        "villain_betting_range": "AsJh",
+        "pot": 505,
+        "bet": 450
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"board\": [\"Ks\", \"9s\", \"5h\", \"Td\", \"Ts\"], \"hero_hand\": [\"Kd\", \"Qd\"], \"pot_before_bet\": 505.0, \"villain_bet\": 450.0, \"caller_pot_odds\": 0.320285, \"hero_equity_vs_assumed_betting_range\": 1.0, \"ev_call_minus_fold\": 955.0, \"best_action_given_range\": \"call\", \"opponent_combos_after_blockers\": 1, \"weighted_opponent_combos_after_blockers\": 1.0, \"assumption\": \"Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium.\"}"
+          }
+        ],
+        "structuredContent": {
+          "board": [
+            "Ks",
+            "9s",
+            "5h",
+            "Td",
+            "Ts"
+          ],
+          "hero_hand": [
+            "Kd",
+            "Qd"
+          ],
+          "pot_before_bet": 505,
+          "villain_bet": 450,
+          "caller_pot_odds": 0.320285,
+          "hero_equity_vs_assumed_betting_range": 1,
+          "ev_call_minus_fold": 955,
+          "best_action_given_range": "call",
+          "opponent_combos_after_blockers": 1,
+          "weighted_opponent_combos_after_blockers": 1,
+          "assumption": "Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium."
+        },
+        "isError": false
+      }
+    },
+    {
+      "tool": "solve_river",
+      "request": {
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "KhKd",
+        "ip_range": "AsAd,QhJd",
+        "pot": 100,
+        "stack": 100,
+        "bet_sizes": [
+          1
+        ],
+        "iterations": 1500,
+        "ip_hand": "QhJd",
+        "oop_hand": "KhKd"
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"model\": \"two-player zero-sum, fixed river ranges, no raises, no rake\", \"board\": [\"2c\", \"3d\", \"4h\", \"8s\", \"9c\"], \"pot\": 100.0, \"stack\": 100.0, \"bet_sizes\": [1.0], \"iterations\": 1500, \"range_combos\": {\"oop\": 1, \"ip\": 2}, \"effective_bet_amounts\": [100.0], \"computation\": \"Alternating CFR+ with nonnegative regret clipping and linear strategy averaging\", \"root_ev_oop_relative_to_split_pot\": -25.0001, \"nash_conv_chips\": 0.0371, \"nash_conv_pct_pot\": 0.037, \"interpretation\": \"EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.\", \"hands\": {\"oop\": {\"combo\": [\"Kd\", \"Kh\"], \"node_strategy\": {\"oop_first\": {\"frequency\": {\"check\": 1.0, \"bet_1pot\": 0.0}, \"action_ev_relative_to_half_pot\": {\"check\": -25.0, \"bet_1pot\": -49.9999}, \"own_reach_probability\": 1.0}, \"oop_facing_ip_bet_1\": {\"frequency\": {\"fold\": 0.5007, \"call\": 0.4993}, \"action_ev_relative_to_half_pot\": {\"fold\": -50.0, \"call\": -49.9924}, \"own_reach_probability\": 1.0}}}, \"ip\": {\"combo\": [\"Jd\", \"Qh\"], \"node_strategy\": {\"ip_after_oop_check\": {\"frequency\": {\"check\": 0.4999, \"bet_1pot\": 0.5001}, \"action_ev_relative_to_half_pot\": {\"check\": -50.0, \"bet_1pot\": -49.8633}, \"own_reach_probability\": 1.0}, \"ip_facing_oop_bet_1\": {\"frequency\": {\"fold\": 1.0, \"call\": 0.0}, \"action_ev_relative_to_half_pot\": {\"fold\": -50.0, \"call\": -150.0}, \"own_reach_probability\": 1.0}}}}}"
+          }
+        ],
+        "structuredContent": {
+          "model": "two-player zero-sum, fixed river ranges, no raises, no rake",
+          "board": [
+            "2c",
+            "3d",
+            "4h",
+            "8s",
+            "9c"
+          ],
+          "pot": 100,
+          "stack": 100,
+          "bet_sizes": [
+            1
+          ],
+          "iterations": 1500,
+          "range_combos": {
+            "oop": 1,
+            "ip": 2
+          },
+          "effective_bet_amounts": [
+            100
+          ],
+          "computation": "Alternating CFR+ with nonnegative regret clipping and linear strategy averaging",
+          "root_ev_oop_relative_to_split_pot": -25.0001,
+          "nash_conv_chips": 0.0371,
+          "nash_conv_pct_pot": 0.037,
+          "interpretation": "EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.",
+          "hands": {
+            "oop": {
+              "combo": [
+                "Kd",
+                "Kh"
+              ],
+              "node_strategy": {
+                "oop_first": {
+                  "frequency": {
+                    "check": 1,
+                    "bet_1pot": 0
+                  },
+                  "action_ev_relative_to_half_pot": {
+                    "check": -25,
+                    "bet_1pot": -49.9999
+                  },
+                  "own_reach_probability": 1
+                },
+                "oop_facing_ip_bet_1": {
+                  "frequency": {
+                    "fold": 0.5007,
+                    "call": 0.4993
+                  },
+                  "action_ev_relative_to_half_pot": {
+                    "fold": -50,
+                    "call": -49.9924
+                  },
+                  "own_reach_probability": 1
+                }
+              }
+            },
+            "ip": {
+              "combo": [
+                "Jd",
+                "Qh"
+              ],
+              "node_strategy": {
+                "ip_after_oop_check": {
+                  "frequency": {
+                    "check": 0.4999,
+                    "bet_1pot": 0.5001
+                  },
+                  "action_ev_relative_to_half_pot": {
+                    "check": -50,
+                    "bet_1pot": -49.8633
+                  },
+                  "own_reach_probability": 1
+                },
+                "ip_facing_oop_bet_1": {
+                  "frequency": {
+                    "fold": 1,
+                    "call": 0
+                  },
+                  "action_ev_relative_to_half_pot": {
+                    "fold": -50,
+                    "call": -150
+                  },
+                  "own_reach_probability": 1
+                }
+              }
+            }
+          }
+        },
+        "isError": false
+      }
+    }
+  ],
+  "limitations": [
+    "Connector outputs do not themselves attest the deployment SHA; SHA was separately read from Render and public health.",
+    "Call evaluation requested and accepted reauthentication, then computed on retry. This is not refresh/revocation lifecycle proof.",
+    "An earlier health request was unavailable and a subsequent probe passed. No measured idle cold-start acceptance follows.",
+    "No solve_turn_v1 deployed or invoked in this receipt."
+  ]
+}

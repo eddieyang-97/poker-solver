@@ -1,4 +1,4 @@
-"""Issue #26 Stage A: opt-in local MCP contract, never enabled by deployment env."""
+"""Issue #26 bounded MCP contract; activation requires a separate app factory."""
 from decimal import Context, Decimal, localcontext
 import hashlib
 import json
@@ -52,14 +52,15 @@ class TurnInputs(StrictModel):
 TOOL = {
     'name': NAME,
     'description': (
-        'Experimental LOCAL post-session heads-up turn/river CFR+ study. Complete explicit '
+        'Experimental post-session heads-up turn/river CFR+ study. Complete explicit '
         'weighted arrival ranges, at most TWO concrete combos per player, one size per street, '
         '2000 iterations. No raises/rake, range inference, node locking or GTO claim. '
         'Money is integer cents; sizes are fractions of the pot at that street, capped at '
         'remaining stack, disclosed exactly. Up to four output-only hand/node/river views; '
-        'a river view never conditions turn training on a future card. Return computed_on_demand '
+        'a river view never conditions turn training on a future card. Strategies are returned '
         'only if the unchanged 0.5%-pot root NashConv gate passes; low-reach action EVs '
-        'may remain inaccurate. This Stage A tool is not deployed or ChatGPT-accepted.'),
+        'may remain inaccurate. A timeout or insufficient convergence returns no strategy. '
+        'Tiny pedagogical ranges do not represent realistic full-width poker arrivals.'),
     'inputSchema': TurnInputs.model_json_schema(),
     'annotations': {'readOnlyHint': True, 'destructiveHint': False, 'openWorldHint': False},
 }
@@ -241,7 +242,7 @@ def calculate(arguments):
               'ev_baseline': output['ev_baseline'], 'action_ev_interpretation': output['action_ev_interpretation'],
               'limitations': 'Experimental tiny independent arrival ranges, no raises/rake/locking; '
                              'root convergence does not establish low-reach EV precision, realistic ranges or full GTO. '
-                             'Local Stage A only; no Render or authenticated ChatGPT turn acceptance.'}
+                             'An individual result does not establish release or client acceptance.'}
     d = result['diagnostics']
     values = [v for checkpoint in output['checkpoints'] for v in checkpoint.values()]
     if (not all(math.isfinite(v) for v in values) or abs(d['zero_sum_residual']) > 1e-8

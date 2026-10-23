@@ -5,6 +5,7 @@ import json
 import logging
 import os
 import re
+import sys
 from contextlib import asynccontextmanager
 from time import monotonic
 from urllib.parse import urlsplit
@@ -35,18 +36,33 @@ def deployment_commit():
 
 def create_app(settings: Settings | None = None, runner: Runner | None = None, *, turn_pilot: bool = False):
     if turn_pilot and 'RENDER' in os.environ:
-        raise ValueError('Issue #26 Stage A turn pilot is local only; release requires owner approval')
+        raise ValueError('Local turn opt-in is local only; use the separately approved hosted factory')
+    return _create_app(settings, runner, pilot_mode='local' if turn_pilot else None)
+
+
+def create_hosted_turn_pilot_app():
+    """Owner-approved #26 Stage B entry point; never selected by the default app."""
+    settings = Settings.from_env()
+    if (os.getenv('RENDER') != 'true' or sys.platform != 'linux'
+            or os.getenv('POKER_MODE') != 'hosted' or not settings.configured
+            or settings.local_token):
+        raise ValueError('Hosted turn pilot requires Render Linux and configured owner OAuth in hosted mode')
+    return _create_app(settings, pilot_mode='hosted')
+
+
+def _create_app(settings=None, runner=None, *, pilot_mode=None):
+    turn_pilot = pilot_mode is not None
     settings = settings or Settings.from_env()
     verifier = Verifier(settings)
     runner = runner or Runner(turn_pilot=turn_pilot)
     if bool(getattr(runner, 'turn_pilot', False)) != turn_pilot:
         raise ValueError('Runner and MCP turn opt-in must agree')
     server = Server('poker-spot-study', version='0.2.0', instructions=(
-        ('Post-session heads-up turn/river local study. ' if turn_pilot else
+        ('Post-session heads-up turn/river experimental study. ' if turn_pilot else
          'Post-session heads-up river study only. ') + 'Supply both complete weighted arrival ranges. '
         'Computed CFR results use a no-raise, no-rake restricted tree. Report NashConv and '
         'assumptions; never claim full GTO. For a checked river, inspect ip_after_oop_check.'
-        + (' Local opt-in solve_turn_v1 is a separate tiny-range two-street experiment; '
+        + (' solve_turn_v1 is a separate tiny-range two-street experiment; '
            'a future river filter is output-only, and root convergence does not certify low-reach EVs.'
            if turn_pilot else '')))
 
@@ -122,7 +138,8 @@ def create_app(settings: Settings | None = None, runner: Runner | None = None, *
 
     async def health(request):
         return JSONResponse({'status': 'ok', 'auth_configured': settings.configured,
-                             'engine': 'local-turn-pilot' if turn_pilot else 'river-only', 'version': '0.2.0',
+                             'engine': ('turn-pilot-v1' if pilot_mode == 'hosted' else
+                                        'local-turn-pilot' if turn_pilot else 'river-only'), 'version': '0.2.0',
                              'deployment': {'commit': deployment_commit()}})
 
     async def ready(request):

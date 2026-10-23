@@ -10,14 +10,14 @@ SHA = 'a'*40
 ORIGIN = 'https://poker.example'
 
 
-def response_for(request, *, commit=SHA, health=200, ready=200, mcp=401,
+def response_for(request, *, commit=SHA, health=200, ready=200, mcp=401, engine='river-only',
                  redirect=False, auth='Bearer resource_metadata="https://poker.example/.well-known/oauth-protected-resource"'):
     path = request.url.path
     if path == '/health':
         if redirect:
             return httpx.Response(302, headers={'Location': 'https://other.example/'})
         return httpx.Response(health, json={'status': 'ok', 'auth_configured': True,
-                                           'engine': 'river-only', 'version': '0.2.0',
+                                           'engine': engine, 'version': '0.2.0',
                                            'deployment': {'commit': commit}})
     if path == '/ready':
         return httpx.Response(ready, json={'status': 'ready' if ready == 200 else 'unconfigured'})
@@ -64,6 +64,19 @@ class ReleaseSmokeTests(unittest.TestCase):
                 client, _ = self.make_client(**params)
                 with client, self.assertRaises(ReleaseSmokeError):
                     smoke_release(ORIGIN, SHA, client=client)
+
+    def test_turn_release_engine_must_be_explicit_and_exact(self):
+        client, _ = self.make_client(engine='turn-pilot-v1')
+        with client:
+            with self.assertRaises(ReleaseSmokeError):
+                smoke_release(ORIGIN, SHA, client=client)
+            self.assertEqual(smoke_release(ORIGIN, SHA, client=client,
+                             expected_engine='turn-pilot-v1')['engine'], 'turn-pilot-v1')
+        client, _ = self.make_client()
+        with client, self.assertRaises(ReleaseSmokeError):
+            smoke_release(ORIGIN, SHA, client=client, expected_engine='turn-pilot-v1')
+        with self.assertRaises(ReleaseSmokeError):
+            smoke_release(ORIGIN, SHA, expected_engine='local-turn-pilot')
 
     def test_no_response_body_or_private_data_in_error(self):
         def handler(request):

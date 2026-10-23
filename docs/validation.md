@@ -1,5 +1,47 @@
 # Audit and validation — 16 October 2026
 
+## Issue #26 Stage B — authorized activation preparation, 23 October 2026
+
+PR #31 merged at `d0eb8699a7c7924cbbc3b2a562bb1a8554a231a9` and is deployed
+river-only. Its exact main [CI 39984504602](https://github.com/eddieyang-97/poker-solver/actions/runs/39984504602)
+passed all five jobs, retaining all eleven artifacts. The owner then explicitly
+authorized Stage B. Current [release status and rollback](turn-pilot-release.md)
+record the separate hosted factory, reviewed-merge prerequisite and unchanged
+Free service/auth/resource limits. Default HTTP/stdio remain river-only; the
+local opt-in still rejects Render. No live start command, OAuth setting or
+published plugin metadata has changed in this preparation.
+
+Fresh public exact-SHA smoke passed 200/200/401. Both existing authenticated
+connector tools returned computed baseline outputs; [raw requests/responses](turn-pilot-stage-b-baseline.json)
+are retained. The call tool accepted a reauthentication prompt then computed on
+retry. Render reports one instance, `checksPass`, approximately 512 MiB memory
+and a 0.15 CPU limit. An earlier health request was unavailable and a later one
+passed; idle cold-start latency and new turn worker capacity remain unmeasured.
+
+The acceptance harness pins deployed SHA before using a token, verifies exact
+game/source/runtime/request/result identities, cent tree/action/view mapping,
+unchanged root gap and Linux resource receipts, and retains full SDK results.
+It labels SDK calls separately from actual ChatGPT calls and aborts on missing
+headroom instead of relaxing budgets. New tests use isolated JWTs, mock HTTP/SDK
+sessions and explicitly synthetic Linux receipt fields; these are not hosted
+or Linux-limit acceptance. The existing actual Linux worker tests remain in CI.
+
+Local venv Ruff and compileall passed. Full unittest: **178 run, 176 passed,
+two Linux-only skipped**. Hosted factory tests verify Linux/Render/hosted mode,
+owner OAuth/no static token, default two-tool rollback, all six claim/signature
+denials before admission and identical solver-only permissions. Acceptance
+tests cover receipts, bounds, nonconvergence/no strategy, secret suppression,
+legacy smoke logic and deployment identity before credential use. Required
+pilot study passed **8/8 fresh local worker samples**, all five invalid-input
+classes and actual tight timeout/reap/recovery. Windows receipts explicitly do
+not enforce Linux CPU/AS limits. The unchanged river benchmark passed **10/10**
+and sensitivity completed; turn benchmark passed **8/8**. Commands (venv,
+`OPENBLAS_NUM_THREADS=1`): `scripts/benchmark_turn_pilot.py`,
+`scripts/benchmark.py --sensitivity`, `scripts/benchmark_turn.py`; raw outputs
+are in ignored `.artifacts/stage-b/`. Final-head CI evidence is recorded on the
+activation PR after observation. No `solve_turn_v1` Render/ChatGPT invocation
+or Stage B completion is claimed.
+
 ## PR #31 cent/history representation review fix
 
 The local pilot now derives public identifiers from the validated exact-cent
