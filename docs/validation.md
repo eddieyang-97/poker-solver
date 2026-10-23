@@ -3,17 +3,32 @@
 ## Turn delivery feasibility — Issue #21, 23 October 2026
 
 The [development-only experiment](turn-feasibility.md) leaves solver, transport,
-production configuration and both hosted river tools unchanged. Four existing
+production configuration and both hosted river tools unchanged. Five existing
 independently checked turn games retain full strategy/action-EV tensors and
 strict game/source/configuration identities; every stored policy is replayed in
 both models at the unchanged 1e-8-chip gate. No operational cache is shipped.
 
-Initial Windows validation: Ruff/compileall passed; **145 tests ran, 144 passed
+Final synced Windows validation: Ruff/compileall passed; **150 tests ran, 149 passed
 and the existing Linux-only allocation test skipped**. Existing ten-game
 independent turn, eight-game scalar turn and ten-game river/sensitivity suites
 passed. All four decomposition cases and **188 independent river games** passed;
-all ten strategic reference digests match the retained baseline. Fresh Linux
-feasibility/CI evidence is pending, not claimed here.
+all ten strategic reference digests match the retained baseline. Integrated
+[CI run 39924945683](https://github.com/eddieyang-97/poker-solver/actions/runs/39924945683)
+passed on **5032915ffcadc3396adab7519813b639cb27b656**: **150/150 Linux tests**, all
+unchanged numerical/replay gates and all eleven retained artifact groups. The
+downloaded independent/decomposition ZIPs and raw hashes verify; all ten
+strategic plus 188 river reference digests match. [Measured receipts](turn-feasibility-results.json)
+also retain source/game/policy hashes, full requests and actual Linux limits.
+
+All ten full-output probes completed under 20s/384 MiB. The one-size 2-by-2
+candidate took **3.400/3.478s**, used **110.06 MiB peak AS**, and retained
+**0.00047676%-of-pot NashConv**. Broader two-size games are measured, not admitted
+to that conservative envelope. Both original maximum workloads **WALL_TIMEOUT**;
+those failures remain explicit. Five exact records use **202,431 compressed
+bytes**; full lookup/projection processes take **0.416–2.115s**. These are CI
+samples, not Render capacity or a universal bound. The decision is a narrow
+live-only investigation for #26, general turn no-go, and #25 deferred absent
+organic exact-repeat demand. No new hosted tool is authorized.
 
 The initial four-game unlimited local samples completed all eight 2,000-iteration
 studies and stored four compressed records totaling **200,465 bytes** (1,563,486

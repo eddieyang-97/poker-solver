@@ -118,6 +118,57 @@ MCP contract must bound views; compression alone does not solve response-size
 limits. The final evidence separately includes the added one-size candidate;
 the initial wider trees never qualified for the conservative input envelope.
 
+## Measured Linux outcome
+
+[CI run 39924945683](https://github.com/eddieyang-97/poker-solver/actions/runs/39924945683)
+passed on source **5032915ffcadc3396adab7519813b639cb27b656**, after syncing
+accepted main `d58f73d`. All **150 Linux tests** passed without skips, every
+existing numerical/replay gate ran, and all eleven artifact groups were retained.
+The [versioned receipts](turn-feasibility-results.json) preserve full requests,
+stage timings, limits, key/source/policy hashes, lookup costs and earlier samples;
+full policies remain in the `turn-resource-study` CI ZIP.
+
+| Existing independently checked game | Parent solve seconds, two processes | Maximum CPU seconds | Peak AS MiB | Final gap, % pot | In provisional input envelope |
+| --- | --- | ---: | ---: | ---: | --- |
+| Weighted 4-by-4 collisions | 4.704 / 4.579 | 4.682 | 110.75 | 0.00382528 | No; two river sizes |
+| Four-flush 4-by-4 | 4.704 / 4.543 | 4.684 | 110.73 | 0.00167046 | No; two river sizes |
+| Trips 3-by-4 | 4.186 / 4.225 | 4.208 | 110.42 | 0.00949695 | No; two turn sizes |
+| One-size blocker 2-by-2 | **3.400 / 3.478** | **3.460** | **110.06** | **0.00047676** | **Observed candidate only** |
+| Draw 4-by-4, two sizes each street | 8.479 / 8.419 | 8.459 | 112.87 | 0.00144818 | No; larger/two-size game |
+
+All ten full-policy probes and their ten separate lookup processes completed
+within actual Linux limits. Largest stored-policy/diagnostic/action-EV replay
+discrepancy was **1.43e-13 chips**, below the unchanged 1e-8 gate. The existing
+ten separately trained strategic profiles and all 188 river reference digests
+match retained evidence. This does not independently certify every conditional
+EV or arbitrary two-combo game. The initial cross-runtime audit retains up to
+0.34670755 trained-probability difference and 0.000136553-chip root-value
+difference; replaying each same saved policy still passes. Exact training
+trajectory causes remain unisolated, not fixed or rounded away.
+
+The **original two 24-by-24 maximum probes both hit the 20s parent deadline**
+on this run. The four smaller/ablated original probes completed in 5.79–14.69s.
+Those are retained resource-study failures inside a successful evidence harness;
+earlier 13–17s maximum samples are still recorded. No universal bound follows.
+
+For the same five games, one offline full solve each cost **25.474 parent
+seconds** on this runner. Their complete records total **202,431 gzip bytes**
+(1,702,588 JSON bytes), excluding interpreter/dependencies; that is the proposed
+catalog's incremental data footprint, not an infrastructure purchase. Full
+lookup processes, each performing three full projections, took **0.416–2.115s**;
+first read/verify/decode stages took **5.7–25.0ms**, subsequent ones about
+5.6–20.7ms. Startup/tree validation and JSON projection dominate some cases.
+The two-combo game still projects **281,773 JSON bytes** for all hands/rivers.
+Its repeated-view benefit is real; usefulness and response bounds remain separate.
+Changed-game identity validation took **1.2–7.7ms** in the warm study parent,
+then returned a miss without fallback. A future process/transport adds startup
+overhead; unmeasured different-game solve latency is not estimated as a cache hit.
+
+The 20-iteration negative run completed in **0.301s** but retained a
+**4.6426%-of-pot gap**, so it is excluded. The real tight timeout reaped its
+worker, followed by successful recovery. Artifact ZIP SHA-256:
+`820fde8ac4f491855d1a5723b373d3e226dd00a51a3cdf0796f815eb5a804ccc`.
+
 ## Decision and future release gate
 
 General hosted turn solving: **no-go** under the admitted local limits and
