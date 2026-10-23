@@ -2,6 +2,14 @@
 
 ## Issue-driven development workflow
 
+- Issue #21 is a development-only turn feasibility experiment. Keep full-policy
+  storage/lookup under benchmarks and ignored/CI artifacts, not product imports
+  or a shipped cache. After changes run benchmark_turn_feasibility.py, retaining
+  actual Linux 20s/384 MiB probes, timeout/nonconvergence states, strict full-game
+  identities, fixed-policy replay gates and explicit unlimited Windows labels.
+  Synthetic repeated-view hits are not measured user demand or hosted acceptance.
+  Preserve the original six resource probes and independent numerical corpora.
+
 - Treat GitHub issues as the source of truth for milestone scope,
   dependencies, deliverables, acceptance criteria, and exclusions.
   Issue #11 is the parent roadmap; child issues define individual work.

@@ -1,5 +1,29 @@
 # Audit and validation — 16 October 2026
 
+## Turn delivery feasibility — Issue #21, 23 October 2026
+
+The [development-only experiment](turn-feasibility.md) leaves solver, transport,
+production configuration and both hosted river tools unchanged. Four existing
+independently checked turn games retain full strategy/action-EV tensors and
+strict game/source/configuration identities; every stored policy is replayed in
+both models at the unchanged 1e-8-chip gate. No operational cache is shipped.
+
+Initial Windows validation: Ruff/compileall passed; **144 tests ran, 143 passed
+and the existing Linux-only allocation test skipped**. Existing ten-game
+independent turn, eight-game scalar turn and ten-game river/sensitivity suites
+passed. Full 188-river decomposition reproduction is still running; fresh Linux
+feasibility/CI evidence is pending, not claimed here.
+
+Unlimited local samples completed all eight 2,000-iteration studies and stored
+four distinct compressed records totaling **200,465 bytes** (1,563,486 bytes
+uncompressed JSON). The 20-iteration draw counterexample completed quickly but
+had **4.6426%-of-pot NashConv**, above the unchanged 0.5% gate, and is excluded.
+The actual tight parent timeout kills/reaps the worker; a subsequent process
+completes. Scripted coverage is 12/20 repeated-game views, **0/8 changed-game
+holdouts**; this is not an estimate of organic user demand. Linux budgets,
+Render startup, authenticated turn MCP and a useful production catalog remain
+unverified. No merge, deployment or hosted registration is performed.
+
 ## Exact-size local river-raise hand review — 22 October 2026
 
 Issue #17 adds a backward-compatible exact integer-cent path and opt-in
