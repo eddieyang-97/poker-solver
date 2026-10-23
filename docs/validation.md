@@ -1,5 +1,95 @@
 # Audit and validation — 16 October 2026
 
+## PR #31 cent/history representation review fix
+
+The local pilot now derives public identifiers from the validated exact-cent
+tree before mapping onto the unchanged numerical engine. The £30.10 turn bet
+and called £45.15 river bet expose `bet_30.1` / `bet_45.15`, including complete
+view paths and effective-bet metadata; binary64 repr artifacts are rejected as
+input aliases. Mapping verifies action counts, cent/float agreement and unique
+labels/histories before applying any renaming. It rejects topology changes such
+as a nominal turn all-in that leaves a tiny numerical river branch, instead of
+altering that game or presenting a zero bet. Fractional-cent rejection remains.
+The regression checks actual-tree names, actor and river views, unchanged full
+terminal ledgers, training tensors, fixed-policy EV/reach rows and diagnostics,
+plus ambient decimal precision, collisions, empty streets and capped all-ins.
+Earlier source-specific evidence below remains historical and unmodified;
+fresh review-fix source/CI receipts are recorded on PR #31.
+Local Ruff/compileall passed; **166 tests ran, 164 passed and two Linux-only
+checks skipped**. The canonical £45.15 view also passed through the signed-token
+SDK/actual-worker path. All eight pilot worker samples, ten river cases plus
+sensitivity and eight turn cases passed. Existing pilot diagnostics, checkpoints,
+BR bounds, views and effective amounts remain identical to the earlier local
+samples; only source/provenance receipts change for those unaffected fixtures.
+
+## Issue #26 Stage A — local opt-in turn MCP, 23 October 2026
+
+Following owner-merged PR #30 (`20129d8`), the [local pilot](turn-pilot.md)
+chooses bounded **live-only**, deferring the exact library without demand
+evidence. This is a separate `solve_turn_v1` schema, not a deployed tool:
+default HTTP/stdio still expose only the existing river tools; Render opt-in
+construction is explicitly blocked. [Stage B release gates](turn-pilot-release.md)
+remain open, including separate owner approval and real hosted/client acceptance.
+
+The integration shares one worker/no queue and the existing rate/body allowance.
+An isolated direct-script child installs Linux 20s CPU/384 MiB AS before imports;
+the parent bounds startup through serialization/reap, including cancellation
+during spawn. Two explicit combos/player, one size/street, 2000 iterations,
+exact-cent amounts and at most four views bound computation/output. The unchanged
+0.5%-pot convergence gate suppresses strategies on insufficient convergence.
+Full game/source/request/result receipts and per-player best-response bounds
+accompany computed results. No production auth, settings, registrations, solver
+core, numerical gate, plugin or paid resource changes.
+
+Local regression run: **164 tests, 162 passed, two Linux-only checks skipped**;
+Ruff/compileall and CI contract tests passed. Actual local official-client
+roundtrip verified signed owner tokens, denied wrong signature/issuer/audience/
+scope/subject/expiry, bounded body/output, unchanged two river calculations and
+the opt-in tool. Real worker timeout/cancellation/oversize/exit/recovery and
+credential-stripped environments passed. Zero-opponent river support keeps null
+EVs; projected values/frequencies/reach match the unchanged direct solver.
+Insufficient-convergence boundary tests are explicitly injected; the real
+20-iteration failure remains in #21, not mislabeled as a 2000-iteration failure.
+
+Existing numerical suites: **10/10 river plus sensitivity**, **8/8 turn**, and
+**10/10 independent strategic turn** passed locally. Their largest same-policy
+EV/BR/NashConv difference remains **6.90e-14 chips**. Existing 188-game
+decomposition and all eleven artifact groups remain unconditional CI gates.
+No Linux pilot or deployed acceptance is claimed from these Windows runs;
+source-specific CI evidence follows.
+
+[CI 39936495563](https://github.com/eddieyang-97/poker-solver/actions/runs/39936495563)
+passed on **a9ade2460a13c3f7f7f5a337f0024f5685fbfa48**: **164/164 Linux tests,
+no skips**, all five jobs and eleven artifact groups. Exact required `test`,
+GitHub Actions app 15368, source SHA and dependency completion order verify.
+[Versioned measurements](turn-pilot-results.json) pin requests, root/BR values,
+limits, stage/output measurements, source/request/result hashes and ZIP digests.
+
+| Existing synthetic game | Two Linux parent wall seconds | Max CPU seconds | Peak AS MiB | Max SDK bytes |
+| --- | --- | ---: | ---: | ---: |
+| Singleton draw/overpair | 3.177 / 3.190 | 3.155 | 119.69 | 10,591 |
+| Weighted dry | 3.344 / 3.442 | 3.414 | 119.69 | 10,720 |
+| Weighted collisions | 3.489 / 3.548 | 3.520 | 119.82 | 10,837 |
+| Terminal turn all-in | 1.147 / 1.151 | 1.126 | 119.69 | 10,332 |
+
+All eight actual limited workers met the predeclared observed <=10s CPU/wall,
+<=192 MiB AS headroom and output gates; all root convergence gates passed.
+Actual timeout/reap/recovery and five rejected classes retained expected states.
+Resource ZIP SHA-256: `cf9e30691a6450ac7e49ae29b28336f83f7c20ca7212729a70664a08c6e4966d`.
+The independent/decomposition ZIPs, sources/raw hashes and all **10 + 188**
+reference-profile digests verify. Same saved-policy comparisons pass unchanged;
+separately trained large-game probabilities still differ from the prior CI
+sample by up to **0.34670755**, with **0.30259845** in the two-size draw game.
+No trajectory cause or low-reach EV/frequency precision is newly established.
+
+The original two maximum resource probes **both WALL_TIMEOUT** again; remaining
+four completed. Those failures remain data, not passing hosted workloads.
+Measured CI critical path **374s**, initial queue 3s and **18 estimated runner
+minutes** (not billing or a general cost/runtime guarantee). Full raw exports
+and timing receipts remain in CI/ignored artifacts. Actual Render capacity,
+external OAuth lifecycle and authenticated ChatGPT turn acceptance are still
+unverified. The evidence commit changes documentation only, not measured code.
+
 ## PR #30 retrieval-coverage review fix — 23 October 2026
 
 The feasibility study now separates verified identity-only records from usable
