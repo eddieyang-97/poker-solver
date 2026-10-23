@@ -4,6 +4,10 @@ Status (22 October 2026): **manual release accepted; existing service now set to
 
 ## Read-back baseline, not assumed platform state
 
+Issue #28's [concurrent CI design and measurements](ci-throughput.md) preserve
+the exact required `test` context as a fail-closed aggregate of every numerical
+and artifact job. That PR changes no branch protection or Render setting.
+
 GitHub `main` at `959af0c633b2a98775a751a08d98e62521145553` was **unprotected** (`protected:false`, no active rulesets), although the `test` workflow was green. The existing unconditionally running GitHub Actions job `test` covers Ruff, compilation, tests, the independent river and raise suites, turn resources and historical replay gates; some resource studies retain explicitly failed/time-out *subcases* and must not be misreported as hosted acceptance.
 
 At the initial preparation baseline, the actual Render account's **existing** `poker-solver` service (`main`, Frankfurt, Free, one Uvicorn worker) reported `autoDeployTrigger: off`. Its latest live **manual** deployment *at that time* was commit `a4ba8e750582899642e468ba6c55d82bcc787d2f` from 16 October, not the latest `main`. Source `render.yaml` also says `off`. Neither a green repository test nor the YAML proves a newer version has reached Render. The owner subsequently confirmed this service has **no Render Blueprint**; Blueprint Auto Sync is not applicable.

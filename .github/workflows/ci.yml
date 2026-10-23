@@ -1,175 +1,221 @@
 name: CI
-on:
+'on':
   push:
-  pull_request:
+    branches:
+    - main
+  pull_request: null
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
-  test:
+  river:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: pip install -r requirements-dev.txt
-      - name: Static checks
-        run: |
-          python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py benchmarks/raises.py benchmarks/raise_reference_worker.py benchmarks/turn_feasibility.py benchmarks/turn_feasibility_worker.py
-          python -m compileall -q poker_spot scripts benchmarks
-      - name: Run tests
-        run: python -m unittest discover -s tests -v
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Independent same-tree river benchmark
-        timeout-minutes: 5
-        run: python scripts/benchmark.py --output .artifacts/benchmark --sensitivity
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Supplied action-model sensitivity and bounded joint range enumeration
-        timeout-minutes: 2
-        run: python scripts/benchmark_range_explorer.py --output .artifacts/range-explorer
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain local action-model range exploration
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: range-explorer-validation
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/range-explorer.*
-      - name: Post-session reconstruction and actual bounded river calculations
-        timeout-minutes: 2
-        run: python scripts/review_hand.py examples/hand-review.txt --scenarios examples/hand-review-scenarios.json --run --output .artifacts/hand-review
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain post-session requests and computed results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: post-session-hand-review
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/hand-review.*
-      - name: Independently trained local river raises and maximum workloads
-        timeout-minutes: 6
-        run: python scripts/benchmark_river_raises.py --performance --output .artifacts/river-raises
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain local river raise validation
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: river-raise-validation
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/river-raises.*
-      - name: Exact-size local hand review and independent matching raise tree
-        timeout-minutes: 3
-        run: python scripts/benchmark_raise_review.py --output .artifacts/raise-review
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain exact-size local raise review
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: exact-size-raise-review
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/raise-review.*
-      - name: Experimental turn policy and best-response validation
-        timeout-minutes: 2
-        run: python scripts/benchmark_turn.py --output .artifacts/turn-benchmark
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain experimental turn validation
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: turn-policy-validation
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/turn-benchmark.*
-      - name: Independently trained strategic turn reference
-        timeout-minutes: 4
-        run: python scripts/benchmark_turn_independent.py --output .artifacts/turn-independent
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain independent turn reference
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: turn-independent-reference
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/turn-independent.*
-      - name: Development Linux turn budgets and separate profile
-        timeout-minutes: 5
-        run: python scripts/benchmark_turn_resources.py --profile --output .artifacts/turn-resources
-      - name: Full-policy turn feasibility and exact-reuse experiment
-        timeout-minutes: 3
-        run: python scripts/benchmark_turn_feasibility.py --output .artifacts/turn-feasibility
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain local resource study including failed probes
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: turn-resource-study
-          include-hidden-files: true
-          if-no-files-found: error
-          path: |
-            .artifacts/turn-resources.*
-            .artifacts/turn-feasibility.*
-            .artifacts/turn-feasibility-policies/
-      - name: Independently trained river-subgame decomposition
-        timeout-minutes: 12
-        run: python scripts/benchmark_turn_decomposition.py --output .artifacts/turn-decomposition
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Maximum-dimension local turn performance
-        timeout-minutes: 5
-        run: python scripts/benchmark_turn_performance.py --repeats 1 --output .artifacts/turn-performance
-      - name: Retain turn follow-up reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: turn-decomposition-performance
-          include-hidden-files: true
-          if-no-files-found: error
-          path: |
-            .artifacts/turn-decomposition.*
-            .artifacts/turn-performance.*
-      - name: Retain differential report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: river-benchmark
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/benchmark.*
-      - name: Replay recorded TexasSolver policy (no external executable)
-        timeout-minutes: 5
-        run: python scripts/benchmark_texas.py --evidence docs/texassolver-results.json --output .artifacts/texas-replay
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain TexasSolver replay report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: texas-evidence-replay
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/texas-replay.*
-      - name: Replay controlled averaging evidence (no external build)
-        timeout-minutes: 2
-        run: python scripts/texas_averaging_experiment.py replay --evidence docs/texas-averaging-results.json --output .artifacts/texas-averaging-replay
-        env:
-          OPENBLAS_NUM_THREADS: '1'
-      - name: Retain controlled averaging replay report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: texas-averaging-replay
-          include-hidden-files: true
-          if-no-files-found: error
-          path: .artifacts/texas-averaging-replay.*
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - run: pip install -r requirements-dev.txt
+    - name: Static checks
+      run: |
+        python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py benchmarks/raises.py benchmarks/raise_reference_worker.py benchmarks/turn_feasibility.py benchmarks/turn_feasibility_worker.py
+        python -m compileall -q poker_spot scripts benchmarks
+    - name: Run tests
+      run: python -m unittest discover -s tests -v
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Independent same-tree river benchmark
+      timeout-minutes: 5
+      run: python scripts/benchmark.py --output .artifacts/benchmark --sensitivity
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Supplied action-model sensitivity and bounded joint range enumeration
+      timeout-minutes: 2
+      run: python scripts/benchmark_range_explorer.py --output .artifacts/range-explorer
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain local action-model range exploration
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: range-explorer-validation
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/range-explorer.*
+    - name: Post-session reconstruction and actual bounded river calculations
+      timeout-minutes: 2
+      run: python scripts/review_hand.py examples/hand-review.txt --scenarios examples/hand-review-scenarios.json --run --output .artifacts/hand-review
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain post-session requests and computed results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: post-session-hand-review
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/hand-review.*
+    - name: Independently trained local river raises and maximum workloads
+      timeout-minutes: 6
+      run: python scripts/benchmark_river_raises.py --performance --output .artifacts/river-raises
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain local river raise validation
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: river-raise-validation
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/river-raises.*
+    - name: Exact-size local hand review and independent matching raise tree
+      timeout-minutes: 3
+      run: python scripts/benchmark_raise_review.py --output .artifacts/raise-review
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain exact-size local raise review
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: exact-size-raise-review
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/raise-review.*
+    - name: Retain differential report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: river-benchmark
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/benchmark.*
+    - name: Replay recorded TexasSolver policy (no external executable)
+      timeout-minutes: 5
+      run: python scripts/benchmark_texas.py --evidence docs/texassolver-results.json --output .artifacts/texas-replay
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain TexasSolver replay report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: texas-evidence-replay
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/texas-replay.*
+    - name: Replay controlled averaging evidence (no external build)
+      timeout-minutes: 2
+      run: python scripts/texas_averaging_experiment.py replay --evidence docs/texas-averaging-results.json --output .artifacts/texas-averaging-replay
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain controlled averaging replay report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: texas-averaging-replay
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/texas-averaging-replay.*
+  turn:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - run: pip install -r requirements-dev.txt
+    - name: Experimental turn policy and best-response validation
+      timeout-minutes: 2
+      run: python scripts/benchmark_turn.py --output .artifacts/turn-benchmark
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain experimental turn validation
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: turn-policy-validation
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/turn-benchmark.*
+    - name: Independently trained strategic turn reference
+      timeout-minutes: 4
+      run: python scripts/benchmark_turn_independent.py --output .artifacts/turn-independent
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain independent turn reference
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: turn-independent-reference
+        include-hidden-files: true
+        if-no-files-found: error
+        path: .artifacts/turn-independent.*
+  decomposition:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - run: pip install -r requirements-dev.txt
+    - name: Independently trained river-subgame decomposition
+      timeout-minutes: 12
+      run: python scripts/benchmark_turn_decomposition.py --reference-workers 2 --output .artifacts/turn-decomposition
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Maximum-dimension local turn performance
+      timeout-minutes: 5
+      run: python scripts/benchmark_turn_performance.py --repeats 1 --output .artifacts/turn-performance
+    - name: Retain turn follow-up reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: turn-decomposition-performance
+        include-hidden-files: true
+        if-no-files-found: error
+        path: |
+          .artifacts/turn-decomposition.*
+          .artifacts/turn-performance.*
+  resources:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - run: pip install -r requirements-dev.txt
+    - name: Development Linux turn budgets and separate profile
+      timeout-minutes: 5
+      run: python scripts/benchmark_turn_resources.py --profile --output .artifacts/turn-resources
+    - name: Full-policy turn feasibility and exact-reuse experiment
+      timeout-minutes: 3
+      run: python scripts/benchmark_turn_feasibility.py --output .artifacts/turn-feasibility
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+    - name: Retain local resource study including failed probes
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: turn-resource-study
+        include-hidden-files: true
+        if-no-files-found: error
+        path: |
+          .artifacts/turn-resources.*
+          .artifacts/turn-feasibility.*
+          .artifacts/turn-feasibility-policies/
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    needs:
+    - river
+    - turn
+    - decomposition
+    - resources
+    if: ${{ always() }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Require every gate to succeed
+      run: python scripts/ci_gate.py
+      env:
+        NEEDS_JSON: ${{ toJSON(needs) }}

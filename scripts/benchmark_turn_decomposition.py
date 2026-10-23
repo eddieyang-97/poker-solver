@@ -17,6 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--iterations', type=int, default=2000)
     parser.add_argument('--reference-iterations', type=int, default=4000)
+    parser.add_argument('--reference-workers', type=int, choices=(1, 2), default=1)
     parser.add_argument('--output', type=Path, default=Path('.artifacts/turn-decomposition'))
     args = parser.parse_args()
     if not 20 <= args.iterations <= 2000 or not 20 <= args.reference_iterations <= 100000:
@@ -28,6 +29,7 @@ def main():
     report = {'mode': 'Turn betting disabled; independent river CFR+ training and policy evaluation',
               'limitation': 'A decomposable special case, not general two-street external training',
               'python': platform.python_version(), 'reference_commit': REFERENCE_COMMIT,
+              'reference_workers': args.reference_workers,
               'source_sha256_lf': {p: hashlib.sha256((root/p).read_bytes().replace(b'\r\n', b'\n')).hexdigest()
                                    for p in paths}, 'cases': [], 'failures': []}
     lines = ['# Turn-disabled independent river decomposition', '',
@@ -43,7 +45,8 @@ def main():
                 print(f'{fixture["id"]}: {number}/48 public cards evaluated', flush=True)
 
         try:
-            result = compare_decomposition(fixture, args.iterations, args.reference_iterations, progress)
+            result = compare_decomposition(fixture, args.iterations, args.reference_iterations, progress,
+                                           reference_workers=args.reference_workers)
             result['elapsed_seconds'] = time.perf_counter()-started
             raw_exports[fixture['id']] = {}
             for row in result['runouts']:

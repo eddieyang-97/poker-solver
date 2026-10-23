@@ -10,6 +10,17 @@
   Synthetic repeated-view hits are not measured user demand or hosted acceptance.
   Preserve the original six resource probes and independent numerical corpora.
 
+- Issue #28 preserves the exact required GitHub Actions `test` context as an
+  unconditional aggregate of all numerical/artifact jobs. Keep its exact
+  dependency set, fail-closed result checks, main push validation and PR-only
+  supersession cancellation. Never skip gates by path or treat study failures
+  as hosted acceptance. Run the isolated CI gate/contract tests after DAG edits;
+  retain measured timing, runner-cost estimates and all eleven artifact groups.
+  Decomposition may use at most two independent reference subprocesses; retain
+  serial CLI default, all 188 games and ordered evaluation/aggregation. Keep
+  strict cross-run policy/resource discrepancies visible; replay of different
+  valid policies is not proof of identical frequencies or low-reach action EVs.
+
 - Treat GitHub issues as the source of truth for milestone scope,
   dependencies, deliverables, acceptance criteria, and exclusions.
   Issue #11 is the parent roadmap; child issues define individual work.
