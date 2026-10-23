@@ -12,6 +12,7 @@ from unittest.mock import patch
 
 import httpx
 import jwt
+import numpy as np
 from cryptography.hazmat.primitives.asymmetric import ec
 from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
@@ -20,9 +21,9 @@ from starlette.testclient import TestClient
 from poker_spot.auth import Settings
 from poker_spot.execution import CalculationError, Runner
 from poker_spot.http_server import MAX_BODY_BYTES, create_app
-from poker_spot.turn import TurnSolver
+from poker_spot.turn import Chance, Terminal, TurnSolver
 from poker_spot.turn_pilot import (MAX_RESULT_BYTES, NAME, TOOL, calculate, digest, prepare,
-                                   project, solver_config, validated_solver)
+                                   project, solver_config, validated_solver, _canonicalize_tree)
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUEST = {
@@ -80,6 +81,90 @@ class ContractTests(unittest.TestCase):
                      dict(player='oop', hand='KhKd', node='turn/check/check/river', river_card='2c')]:
             with self.subTest(view=view), self.assertRaises(ValueError):
                 validated_solver(prepare(dict(REQUEST, views=[view])))
+
+    def test_cent_canonical_called_river_history_preserves_numerical_game(self):
+        river_root = 'turn/bet_30.1/call/river'
+        view = dict(player='oop', hand='KhKd', node=river_root+'/check/bet_45.15', river_card='9c')
+        request = dict(REQUEST, pot_cents=3010, turn_bet_sizes=[1.0], river_bet_sizes=[0.5],
+                       views=[view, dict(player='ip', hand='QhJd', node=river_root+'/check', river_card='9c')])
+        args = prepare(request)
+        original = TurnSolver(**solver_config(args))
+        raw_path = river_root+'/check/bet_45.150000000000006'
+        self.assertIn(raw_path, original.nodes)  # Actual float repr reproducer, not a fabricated tree.
+        solver = validated_solver(args)
+        self.assertIn(view['node'], solver.nodes)
+        self.assertNotIn(raw_path, solver.nodes)
+        self.assertEqual(solver.nodes[view['node']].player, 0)
+        self.assertEqual(solver.nodes[river_root+'/check'].actions, ('check', 'bet_45.15'))
+        self.assertEqual(solver.effective_bets[river_root], [45.15])
+        self.assertEqual(solver.effective_bets['turn/check/bet_30.1/call/river'], [45.15])
+        self.assertEqual(solver.effective_bets['turn/check/check/river'], [15.05])
+        self.assertEqual(solver.effective_bets['turn'], [30.1])
+
+        def ledger(node):
+            if isinstance(node, Terminal):
+                return (node.kind, node.contrib, node.street, node.winner)
+            if isinstance(node, Chance):
+                return ('chance', ledger(node.child))
+            return (node.player, node.street, tuple(ledger(child) for child in node.children))
+
+        self.assertEqual(ledger(solver.root), ledger(original.root))
+        expected = original.solve(2000, oop_hand='KhKd', ip_hand='QhJd', river_card='9c')
+        actual = solver.solve(2000)
+        self.assertEqual(actual['diagnostics'], expected['diagnostics'])
+        self.assertEqual(actual['effective_bets_by_public_history'][river_root], [45.15])
+        # Relabeling preserves order, all training tensors and every fixed-policy EV/reach row.
+        old_rows, new_rows = {}, {}
+        original._walk(original.root, *original.weights, collect=old_rows)
+        solver._walk(solver.root, *solver.weights, collect=new_rows)
+        for before, after in zip(original.nodes.values(), solver.nodes.values(), strict=True):
+            for field in ('regret', 'strategy_sum', 'strategy'):
+                np.testing.assert_array_equal(getattr(before, field), getattr(after, field))
+            for field in ('ev', 'own', 'opponent'):
+                np.testing.assert_array_equal(old_rows[before.name][field], new_rows[after.name][field])
+        rows = project(solver, args['views'])
+        for row in rows:
+            key = row['node'].replace('/bet_45.15', '/bet_45.150000000000006')+'@9c'
+            baseline = expected['hands'][row['player']]['node_strategy'][key]
+            self.assertEqual(row['reach_probability_given_hand'], baseline['reach_probability_given_hand'])
+            for field in ('frequency', 'action_ev_relative_to_half_turn_pot'):
+                self.assertEqual(list(row[field].values()), list(baseline[field].values()))
+                self.assertNotIn('bet_45.150000000000006', row[field])
+        self.assertEqual(rows[0]['node'], view['node'])
+        self.assertEqual(set(rows[1]['frequency']), {'check', 'bet_45.15'})
+        # Future views are projections of the same trained policy, with unchanged root diagnostics.
+        other = project(solver, [dict(args['views'][0], river_card='9d')])[0]
+        self.assertEqual(other['node'], view['node'])
+        self.assertEqual(solver.diagnostics(), actual['diagnostics'])
+        for precision in (2, 28, 80):
+            with localcontext() as context:
+                context.prec = precision
+                self.assertEqual(validated_solver(prepare(request)).effective_bets, solver.effective_bets)
+        with self.assertRaises(ValueError):
+            validated_solver(prepare(dict(request, views=[dict(view, node=raw_path)])))
+        with self.assertRaisesRegex(ValueError, 'exact integer cents'):
+            prepare(dict(request, pot_cents=3011))
+
+    def test_cent_mapping_rejects_collisions_and_topology_changes(self):
+        args = prepare(dict(REQUEST, views=[]))
+        solver = TurnSolver(**solver_config(args))
+        keys = list(solver.nodes)
+        # A float-spelling alias must never overwrite a different public node.
+        alias = 'turn/bet_50.0'
+        solver.nodes[alias] = deepcopy(solver.nodes['turn/bet_50'])
+        solver.nodes[alias].name = alias
+        solver.nodes['turn'].actions = ('check', 'bet_50', 'bet_50.0')
+        solver.effective_bets['turn'] = [50.0, 50.0]
+        with patch('poker_spot.turn_pilot._cent_tree', return_value={**solver.effective_bets, 'turn': [5000, 5000]}):
+            with self.assertRaisesRegex(ValueError, 'collide'):
+                _canonicalize_tree(solver, args)
+        self.assertEqual(list(solver.nodes), keys+[alias])  # No partial relabeling after failure.
+        # Exact all-in versus binary64 residual: reject a spurious extra river, never create bet_0.
+        args = prepare(dict(REQUEST, pot_cents=1000, stack_cents=1130, turn_bet_sizes=[1.13], views=[]))
+        with self.assertRaisesRegex(ValueError, 'exact-cent histories'):
+            validated_solver(args)
+        for turn_sizes, river_sizes in (([], []), ([], [0.5]), ([1.0], [])):
+            validated_solver(prepare(dict(REQUEST, turn_bet_sizes=turn_sizes, river_bet_sizes=river_sizes, views=[])))
 
     def test_zero_opponent_river_support_keeps_null_evs(self):
         args = prepare(dict(REQUEST, ip_range=[{'hand': 'AsAd', 'weight': 1}],
@@ -257,9 +342,16 @@ class AdmissionTests(unittest.IsolatedAsyncioTestCase):
                     tools = (await session.list_tools()).tools
                     self.assertEqual({t.name for t in tools}, {NAME, 'solve_river', 'evaluate_river_call'})
                     self.assertTrue(all(t.model_extra['securitySchemes'][0]['scopes'] == ['poker:solve'] for t in tools))
-                    result = await session.call_tool(NAME, REQUEST)
+                    cent_path = 'turn/bet_30.1/call/river/check/bet_45.15'
+                    cent_request = dict(REQUEST, pot_cents=3010, turn_bet_sizes=[1.0],
+                                        views=[dict(player='oop', hand='KhKd', node=cent_path, river_card='9c')])
+                    result = await session.call_tool(NAME, cent_request)
                     self.assertFalse(result.isError, result)
                     self.assertEqual(result.structuredContent['status'], 'computed')
+                    self.assertEqual(result.structuredContent['views'][0]['node'], cent_path)
+                    self.assertEqual(set(result.structuredContent['views'][0]['frequency']), {'fold', 'call'})
+                    self.assertEqual(result.structuredContent['effective_bets_by_public_history'][
+                        'turn/bet_30.1/call/river'], [45.15])
                     self.assertLess(len(result.model_dump_json().encode()), 65_536)
                     with patch.object(app.state.runner, 'run', return_value={
                             'source': 'computed_on_demand', 'status': 'insufficient_convergence', 'views': []}):

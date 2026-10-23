@@ -1,5 +1,5 @@
 """Issue #26 Stage A: opt-in local MCP contract, never enabled by deployment env."""
-from decimal import Decimal, localcontext
+from decimal import Context, Decimal, localcontext
 import hashlib
 import json
 import math
@@ -70,6 +70,33 @@ def digest(value):
                                      allow_nan=False).encode()).hexdigest()
 
 
+def _bet_label(cents):
+    whole, fraction = divmod(cents, 100)
+    amount = f'{whole}.{fraction:02d}'.rstrip('0') if fraction else str(whole)
+    return 'bet_'+amount
+
+
+def _cent_tree(args):
+    """Exact public street roots and amounts; never round fractional-cent input."""
+    with localcontext(Context(prec=80)):
+        pot, stack = Decimal(args['pot_cents']), Decimal(args['stack_cents'])
+
+        def bets(street, matched):
+            values = [min(stack-matched, (pot+2*matched)*Decimal(str(f)))
+                      for f in args[street+'_bet_sizes']]
+            if any(b != b.to_integral_value() for b in values):
+                raise ValueError('All normalized bets must be exact integer cents; no rounding')
+            return [int(b) for b in values]
+
+        tree = {'turn': bets('turn', Decimal(0))}
+        for amount in tree['turn']:
+            if amount < stack:
+                for prefix in ('turn/', 'turn/check/'):
+                    tree[prefix+_bet_label(amount)+'/call/river'] = bets('river', Decimal(amount))
+        tree['turn/check/check/river'] = bets('river', Decimal(0))
+        return tree
+
+
 def prepare(arguments):
     """Cheap admission before acquiring the single shared worker slot; repeat in child."""
     args = TurnInputs.model_validate(arguments).model_dump()
@@ -88,18 +115,7 @@ def prepare(arguments):
     for side in (0, 1):
         if any(not any(not set(a) & set(b) for b in hands[1-side]) for a in hands[side]):
             raise ValueError('Every supplied combo must have a compatible opponent')
-    # Never round a fractional cent or silently adapt a requested tree.
-    with localcontext() as context:
-        context.prec = 80
-        pot, stack = Decimal(args['pot_cents']), Decimal(args['stack_cents'])
-        turn_bets = [min(stack, pot*Decimal(str(f))) for f in args['turn_bet_sizes']]
-        bets = turn_bets[:]
-        for matched in [Decimal(0), *turn_bets]:
-            if matched < stack:
-                bets += [min(stack-matched, (pot+2*matched)*Decimal(str(f)))
-                         for f in args['river_bet_sizes']]
-        if any(b != b.to_integral_value() for b in bets):
-            raise ValueError('All normalized bets must be exact integer cents; no rounding')
+    _cent_tree(args)
     for view in args['views']:
         hand = combo_key(*cards(view['hand'], 2))
         if hand not in hands[0 if view['player'] == 'oop' else 1]:
@@ -119,8 +135,59 @@ def solver_config(args):
                 turn_bet_sizes=args['turn_bet_sizes'], river_bet_sizes=args['river_bet_sizes'])
 
 
+def _canonicalize_tree(solver, args):
+    """Relabel the pilot instance only; leave numerical leaves/tensors/order intact."""
+    exact = _cent_tree(args)
+    actions, effective = {}, {}
+
+    def street_root(path):
+        return path.split('/river', 1)[0]+'/river' if '/river' in path else 'turn'
+
+    def public_path(path):
+        parts = path.split('/')
+        return '/'.join(actions[street_root('/'.join(parts[:i]))][token]
+                        if token.startswith('bet_') else token for i, token in enumerate(parts))
+
+    # Turn action mapping must exist before mapping called-turn river histories.
+    for raw in sorted(solver.effective_bets, key=lambda name: name.count('/')):
+        public = public_path(raw)
+        if public not in exact or public in effective:
+            raise ValueError('Float tree differs from exact-cent histories or labels collide')
+        amounts = solver.effective_bets[raw]
+        labels = solver.nodes[raw].actions[1:]
+        cents = exact[public]
+        if len(amounts) != len(cents) or len(labels) != len(cents):
+            raise ValueError('Float tree differs from exact-cent actions')
+        # This only checks an already exact-cent request against binary64 arithmetic.
+        # It never admits a near-cent request or changes a numerical contribution.
+        allowance = 8*math.ulp(max(solver.pot, solver.stack))
+        if any(not math.isfinite(b) or abs(b-c/100) > allowance for b, c in zip(amounts, cents, strict=True)):
+            raise ValueError('Float bet differs from validated exact cents')
+        public_labels = [_bet_label(c) for c in cents]
+        if len(set(labels)) != len(labels) or len(set(public_labels)) != len(public_labels):
+            raise ValueError('Public action labels collide')
+        actions[raw] = dict(zip(labels, public_labels, strict=True))
+        effective[public] = [c/100 for c in cents]
+    if set(effective) != set(exact):
+        raise ValueError('Float tree is missing exact-cent histories')
+    renamed, plans = {}, []
+    for raw, node in solver.nodes.items():
+        public = public_path(raw)
+        labels = tuple(actions[street_root(raw)][a] if a.startswith('bet_') else a for a in node.actions)
+        if raw != node.name or public in renamed or len(set(labels)) != len(labels):
+            raise ValueError('Public node/action labels collide or tree names disagree')
+        renamed[public] = node
+        plans.append((node, public, labels))
+    # Apply only after the entire mapping has passed, preserving dictionary order.
+    for node, public, labels in plans:
+        node.name, node.actions = public, labels
+    solver.nodes = renamed
+    solver.effective_bets = effective
+
+
 def validated_solver(args):
     solver = TurnSolver(**solver_config(args))
+    _canonicalize_tree(solver, args)
     for view in args['views']:
         node = solver.nodes.get(view['node'])
         if (node is None or node.player != (0 if view['player'] == 'oop' else 1)

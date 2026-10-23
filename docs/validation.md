@@ -1,5 +1,27 @@
 # Audit and validation — 16 October 2026
 
+## PR #31 cent/history representation review fix
+
+The local pilot now derives public identifiers from the validated exact-cent
+tree before mapping onto the unchanged numerical engine. The £30.10 turn bet
+and called £45.15 river bet expose `bet_30.1` / `bet_45.15`, including complete
+view paths and effective-bet metadata; binary64 repr artifacts are rejected as
+input aliases. Mapping verifies action counts, cent/float agreement and unique
+labels/histories before applying any renaming. It rejects topology changes such
+as a nominal turn all-in that leaves a tiny numerical river branch, instead of
+altering that game or presenting a zero bet. Fractional-cent rejection remains.
+The regression checks actual-tree names, actor and river views, unchanged full
+terminal ledgers, training tensors, fixed-policy EV/reach rows and diagnostics,
+plus ambient decimal precision, collisions, empty streets and capped all-ins.
+Earlier source-specific evidence below remains historical and unmodified;
+fresh review-fix source/CI receipts are recorded on PR #31.
+Local Ruff/compileall passed; **166 tests ran, 164 passed and two Linux-only
+checks skipped**. The canonical £45.15 view also passed through the signed-token
+SDK/actual-worker path. All eight pilot worker samples, ten river cases plus
+sensitivity and eight turn cases passed. Existing pilot diagnostics, checkpoints,
+BR bounds, views and effective amounts remain identical to the earlier local
+samples; only source/provenance receipts change for those unaffected fixtures.
+
 ## Issue #26 Stage A — local opt-in turn MCP, 23 October 2026
 
 Following owner-merged PR #30 (`20129d8`), the [local pilot](turn-pilot.md)

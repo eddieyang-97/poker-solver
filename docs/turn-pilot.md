@@ -64,8 +64,16 @@ Tool `solve_turn_v1`, schema/result version `turn-pilot-v1`:
 
 [Example request](../examples/turn-pilot.json). `turn` is OOP's initial node;
 `turn/check` is IP after an endogenous OOP check. A called turn bet continues at
-`turn/bet_50/call/river` for a £50 bet; the tree's amount labels are exact solver
-labels, not free-form observed actions. An unsupported label rejects **before
+`turn/bet_50/call/river` for a £50 bet. Public bet labels use exact cents with
+unnecessary trailing zeros removed: £30.10 is `bet_30.1`, £45.15 is `bet_45.15`.
+The pilot maps these identifiers onto the existing numerical tree; float repr
+artifacts are not public aliases. Node/action labels and disclosed effective-bet
+histories/amounts share this convention. Terminal contributions, training order,
+policies and EV calculations are unchanged. Label collisions or a float tree
+whose topology differs from the exact-cent tree reject before training (including
+an exact turn all-in that leaves a spurious binary64 residual river). The tiny
+internal float/cent consistency allowance never admits fractional-cent inputs.
+These are tree identifiers, not free-form observed actions. An unsupported label rejects **before
 training**, rather than mapping to the closest amount or forcing an action.
 Future-card filters affect output alone, never the turn information set.
 
