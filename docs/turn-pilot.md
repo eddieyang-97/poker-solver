@@ -1,6 +1,6 @@
-# Issue #26 — local turn MCP pilot, Stage A
+# Issue #26 — bounded turn MCP pilot
 
-**Local implementation, no production release.** The owner merged feasibility
+**Stage A merged; Stage B activation prepared, not yet deployed.** The owner merged feasibility
 PR #30 at `20129d8f0e31298857e0e73e1b834b6f180b3dd9`. Its slower Linux samples
 retain both 24-combo timeouts, despite faster successful runs. The measured
 two-combo/one-size game has headroom; it does not establish a universal bound.
@@ -19,9 +19,14 @@ validates their realism. General hosted turn remains no-go.
 The existing `poker_spot.http_server:app` and stdio adapter still list exactly
 `solve_river` and `evaluate_river_call`. No environment flag activates turn.
 Tests use `create_app(settings, turn_pilot=True)`; the constructor refuses this
-opt-in whenever `RENDER` is set. A separately reviewed Stage B code change is
-necessary before hosting. No Render start command, provider/client, subject,
-scope, published plugin or account configuration changes in this milestone.
+opt-in whenever `RENDER` is set. After explicit owner authorization for Stage B,
+a separate `poker_spot.http_server:create_hosted_turn_pilot_app` factory permits
+the same bounded surface only on Render Linux, in `POKER_MODE=hosted`, with
+configured owner OAuth and no static token. No environment variable changes the
+default app's two-tool registration. The reviewed code must be owner-merged before
+switching the live start command; the old entry point remains the rollback path.
+No provider/client, subject, scope, published plugin or paid resource changes.
+See [release status, exact command and acceptance](turn-pilot-release.md).
 
 To serve the local prototype, configure the existing **local development**
 authentication (`POKER_MODE=local`, a private `POKER_MCP_TOKEN` of at least 32

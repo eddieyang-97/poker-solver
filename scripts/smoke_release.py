@@ -15,7 +15,9 @@ class ReleaseSmokeError(ValueError):
     """A sanitized release verification failure; never include remote response data."""
 
 
-def smoke_release(origin, expected_sha, client=None):
+def smoke_release(origin, expected_sha, client=None, *, expected_engine='river-only'):
+    if expected_engine not in ('river-only', 'turn-pilot-v1'):
+        raise ReleaseSmokeError('Expected engine must be river-only or turn-pilot-v1')
     if not isinstance(origin, str):
         raise ReleaseSmokeError('Specify an HTTPS service origin')
     try:
@@ -51,7 +53,7 @@ def smoke_release(origin, expected_sha, client=None):
         except (ValueError, UnicodeDecodeError):
             raise ReleaseSmokeError('Health response is not JSON') from None
         if (not isinstance(status, dict) or status.get('status') != 'ok'
-                or status.get('engine') != 'river-only'
+                or status.get('engine') != expected_engine
                 or status.get('auth_configured') is not True
                 or not isinstance(status.get('deployment'), dict)
                 or status['deployment'].get('commit') != expected_sha):
@@ -73,16 +75,17 @@ def smoke_release(origin, expected_sha, client=None):
             raise ReleaseSmokeError('Unauthenticated MCP authorization boundary changed')
 
     return {'commit': expected_sha, 'health': 200, 'ready': 200,
-            'mcp_unauthenticated': 401, 'engine': 'river-only'}
+            'mcp_unauthenticated': 401, 'engine': expected_engine}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('origin', help='HTTPS service origin, without trailing slash')
     parser.add_argument('expected_sha', help='Full git commit SHA authorized for release')
+    parser.add_argument('--engine', choices=('river-only', 'turn-pilot-v1'), default='river-only')
     args = parser.parse_args()
     try:
-        result = smoke_release(args.origin, args.expected_sha)
+        result = smoke_release(args.origin, args.expected_sha, expected_engine=args.engine)
     except ReleaseSmokeError as exc:
         print('Release smoke failed: ' + str(exc))
         return 1

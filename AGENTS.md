@@ -2,16 +2,20 @@
 
 ## Issue-driven development workflow
 
-- Issue #26 Stage A permits an explicitly opted-in local `solve_turn_v1` surface,
-  not production registration. Default HTTP/stdio tool lists stay river-only;
-  reject pilot app construction on Render. Preserve two explicit combos/player,
+- Issue #26 Stage A is merged; the owner authorized Stage B on 23 October 2026.
+  Default HTTP/stdio tool lists stay river-only; local pilot construction still
+  rejects Render. Only the separate `create_hosted_turn_pilot_app` factory may
+  enable `solve_turn_v1` on Render Linux with configured owner OAuth. Review and
+  owner merge must precede switching the live start command; preserve rollback
+  to `poker_spot.http_server:app`. Preserve two explicit combos/player,
   one size/street, exactly 2000 iterations, cent-exact money, four output views,
   unchanged 0.5%-pot convergence gate and shared worker/rate/body limits.
   Run benchmark_turn_pilot.py after contract/worker/runner changes; retain real
   Linux pre-import 20s CPU/384 MiB AS limits and deadline through serialization/
   reap, result/source receipts, negatives and bounded SDK bytes. No product cache
-  or benchmark imports. Stage B needs separate owner approval and actual Render/
-  authenticated ChatGPT acceptance; local SDK success is not that acceptance.
+  or benchmark imports. Stage B needs actual Render/authenticated ChatGPT
+  acceptance; local SDK success is not that acceptance. Keep Issue #26 open
+  until its remaining release/client gates have actual evidence.
 
 - Issue #21 is a development-only turn feasibility experiment. Keep full-policy
   storage/lookup under benchmarks and ignored/CI artifacts, not product imports
@@ -77,7 +81,7 @@
   adding hosted tools, changing OAuth/allowlists, lifting resource limits,
   changing plugin permissions, or using paid resources.
 
-- Hosted scope: HEADS-UP NLHE river-only constrained decision analysis. A separately authorized experimental local turn/river engine is allowed in `poker_spot/turn.py`; keep it out of MCP registrations and production deployment until separately validated. Neither engine is a full GTO solver.
+- Hosted scope: HEADS-UP NLHE river constrained decision analysis, plus only the separately owner-approved Issue #26 bounded turn pilot after its release gates. The broader experimental `poker_spot/turn.py` engine is local only. Neither engine is a full GTO solver.
 - Keep the core deterministic and dependency-light; separate game logic from MCP transports.
 - Never invent equilibrium frequencies or quote action EVs without computed outputs.
 - Results depend on caller-supplied river arrival ranges and simplified no-raise tree.
