@@ -100,8 +100,19 @@ class CIGateTests(unittest.TestCase):
         for step in expected:
             if step['name'] == 'Independently trained river-subgame decomposition':
                 step['run'] = step['run'].replace(' --output', ' --reference-workers 2 --output')
+            if step['name'] == 'Static checks':
+                step['run'] = step['run'].replace('benchmarks/raise_reference_worker.py\n',
+                    'benchmarks/raise_reference_worker.py benchmarks/turn_feasibility.py benchmarks/turn_feasibility_worker.py\n')
+        expected.append({'name': 'Full-policy turn feasibility and exact-reuse experiment', 'timeout-minutes': 3,
+                         'run': 'python scripts/benchmark_turn_feasibility.py --output .artifacts/turn-feasibility',
+                         'env': {'OPENBLAS_NUM_THREADS': '1'}})
         self.assertCountEqual(found, expected)
-        self.assertCountEqual(artifacts, contract['artifacts'])
+        expected_artifacts = deepcopy(contract['artifacts'])
+        for step in expected_artifacts:
+            if step['with']['name'] == 'turn-resource-study':
+                step['with']['path'] = ('.artifacts/turn-resources.*\n.artifacts/turn-feasibility.*\n'
+                                        '.artifacts/turn-feasibility-policies/\n')
+        self.assertCountEqual(artifacts, expected_artifacts)
         # No path filters, feature pushes or main cancellation; latest PR supersedes only its own PR.
         events = workflow.get('on', workflow.get(True))  # YAML 1.1 compatibility
         self.assertEqual(events, {'push': {'branches': ['main']}, 'pull_request': None})

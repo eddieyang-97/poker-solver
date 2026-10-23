@@ -20,7 +20,7 @@ jobs:
     - run: pip install -r requirements-dev.txt
     - name: Static checks
       run: |
-        python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py benchmarks/raises.py benchmarks/raise_reference_worker.py
+        python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py benchmarks/raises.py benchmarks/raise_reference_worker.py benchmarks/turn_feasibility.py benchmarks/turn_feasibility_worker.py
         python -m compileall -q poker_spot scripts benchmarks
     - name: Run tests
       run: python -m unittest discover -s tests -v
@@ -188,6 +188,11 @@ jobs:
     - name: Development Linux turn budgets and separate profile
       timeout-minutes: 5
       run: python scripts/benchmark_turn_resources.py --profile --output .artifacts/turn-resources
+    - name: Full-policy turn feasibility and exact-reuse experiment
+      timeout-minutes: 3
+      run: python scripts/benchmark_turn_feasibility.py --output .artifacts/turn-feasibility
+      env:
+        OPENBLAS_NUM_THREADS: '1'
     - name: Retain local resource study including failed probes
       if: always()
       uses: actions/upload-artifact@v4
@@ -195,7 +200,10 @@ jobs:
         name: turn-resource-study
         include-hidden-files: true
         if-no-files-found: error
-        path: .artifacts/turn-resources.*
+        path: |
+          .artifacts/turn-resources.*
+          .artifacts/turn-feasibility.*
+          .artifacts/turn-feasibility-policies/
   test:
     name: test
     runs-on: ubuntu-latest

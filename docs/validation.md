@@ -1,5 +1,69 @@
 # Audit and validation — 16 October 2026
 
+## PR #30 retrieval-coverage review fix — 23 October 2026
+
+The feasibility study now separates verified identity-only records from usable
+retrievals. Usable hits require `COMPLETED` and, on limited Linux runs, an exact
+true budget receipt. Failed lookups retain explicit unavailable reasons, do not
+enter successful coverage, and make the study exit nonzero. The regression runs
+an actual successful solve then kills/reaps a lookup at its tight deadline:
+three identity matches remain, with zero usable hits and a failing study result.
+Boundary fixtures also cover each unavailable status and false/missing budget
+receipts. Original snapshots below remain pinned historical evidence; all their
+lookups completed, so their hit counts and latency measurements remain valid.
+Fresh local Ruff/compileall passed; **152 tests ran, 151 passed and the existing
+Linux-only test skipped**. The complete unlimited five-game study retained ten
+usable lookups and 15/23 usable hits; river 10/10 plus sensitivity also passed.
+No solver, hosted interface, budget, numerical gate or production change.
+
+## Turn delivery feasibility — Issue #21, 23 October 2026
+
+The [development-only experiment](turn-feasibility.md) leaves solver, transport,
+production configuration and both hosted river tools unchanged. Five existing
+independently checked turn games retain full strategy/action-EV tensors and
+strict game/source/configuration identities; every stored policy is replayed in
+both models at the unchanged 1e-8-chip gate. No operational cache is shipped.
+
+Final synced Windows validation: Ruff/compileall passed; **150 tests ran, 149 passed
+and the existing Linux-only allocation test skipped**. Existing ten-game
+independent turn, eight-game scalar turn and ten-game river/sensitivity suites
+passed. All four decomposition cases and **188 independent river games** passed;
+all ten strategic reference digests match the retained baseline. Integrated
+[CI run 39924945683](https://github.com/eddieyang-97/poker-solver/actions/runs/39924945683)
+passed on **5032915ffcadc3396adab7519813b639cb27b656**: **150/150 Linux tests**, all
+unchanged numerical/replay gates and all eleven retained artifact groups. The
+downloaded independent/decomposition ZIPs and raw hashes verify; all ten
+strategic plus 188 river reference digests match. [Measured receipts](turn-feasibility-results.json)
+also retain source/game/policy hashes, full requests and actual Linux limits.
+
+All ten full-output probes completed under 20s/384 MiB. The one-size 2-by-2
+candidate took **3.400/3.478s**, used **110.06 MiB peak AS**, and retained
+**0.00047676%-of-pot NashConv**. Broader two-size games are measured, not admitted
+to that conservative envelope. Both original maximum workloads **WALL_TIMEOUT**;
+those failures remain explicit. Five exact records use **202,431 compressed
+bytes**; full lookup/projection processes take **0.416–2.115s**. These are CI
+samples, not Render capacity or a universal bound. The decision is a narrow
+live-only investigation for #26, general turn no-go, and #25 deferred absent
+organic exact-repeat demand. No new hosted tool is authorized.
+
+The initial four-game unlimited local samples completed all eight 2,000-iteration
+studies and stored four compressed records totaling **200,465 bytes** (1,563,486
+JSON bytes). The final matrix adds an existing one-size two-combo game and
+narrows the provisional candidate to two combos per player. Its declared reuse
+set becomes **15/23 repeated-game hits and 0/8 changed-game holdouts**; no organic
+coverage is inferred. The 20-iteration draw counterexample completed quickly but
+had **4.6426%-of-pot NashConv**, above the unchanged 0.5% gate, and is excluded.
+The actual tight parent timeout kills/reaps the worker; a subsequent process
+completes. Initial Linux broad-tree solves at `75dc816` completed in 2.85–5.67s
+with 110–113 MiB peak AS, but are outside the conservative one-size envelope.
+The downloaded resource ZIP digest is
+`b34784f2fa1ba876b1f9f928842c8ce9489e0b3b3752b97e22f3a8c00a25de9d`.
+Replaying all four saved Linux policies on Windows passes the unchanged fixed-
+policy gates. Cross-runtime trained probabilities differ by up to **0.34670755**
+and root EV by **0.000136553 chips**; identical frequencies/conditional EVs are
+not claimed. Render startup, authenticated turn MCP and a useful production
+catalog remain unverified. No merge, deployment or hosted registration is performed.
+
 ## Concurrent CI with unchanged release gates — Issue #28
 
 The [CI study](ci-throughput.md) and [timing receipts](ci-throughput-results.json)

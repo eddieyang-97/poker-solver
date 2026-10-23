@@ -32,6 +32,8 @@ are accounted for, not solved. No hosted tool or plugin behavior changes.
 
 The [development roadmap](docs/development-roadmap.md) tracks local implementation,
 solver correctness, range-model quality and hosted acceptance separately.
+The local [turn feasibility experiment](docs/turn-feasibility.md) measures full
+policies, resource failures and strict exact-game reuse without exposing a tool.
 Joint-range/node-locking and advanced hosted tools have their own acceptance gates.
 An opt-in [exact-size local raise review](docs/hand-review.md#opt-in-local-exact-size-river-raises)
 now prepares and runs the existing one-raise worker from reconstructed river

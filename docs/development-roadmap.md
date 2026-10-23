@@ -15,6 +15,11 @@ not validate the realism of arrival ranges or action-likelihood assumptions.
 | River raises, PR #14 and Issue #17 | Local one-raise engine; fractional/exact-cent inputs and opt-in review; existing independent suite plus one exact-tree check | Supplied independent arrival ranges; no forced observed line | No MCP registration or hosted acceptance |
 | Turn engine | Local two-street implementation; PR #10 expanded independent coverage and retained resource failures | Supplied ranges; larger games remain less validated | No MCP registration; feasibility is tracked separately in Issue #21 |
 
+Issue #21's [turn delivery feasibility study](turn-feasibility.md) compares full
+on-demand output costs with exact-game reuse. It proposes a conservative measured
+small-game candidate and defers a production catalog without demand evidence;
+neither outcome authorizes a hosted tool or establishes Render capacity.
+
 Evidence: [validation](validation.md), [river closeout](river-milestone.md),
 [hand review](hand-review.md), [range exploration](range-explorer.md),
 [river raises](river-raises.md), and [turn reference](turn-independent.md).
