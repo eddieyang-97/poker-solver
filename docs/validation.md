@@ -1,5 +1,31 @@
 # Audit and validation — 16 October 2026
 
+## Concurrent CI with unchanged release gates — Issue #28
+
+The [CI study](ci-throughput.md) and [timing receipts](ci-throughput-results.json)
+record three successful sequential baselines (637/890/1,199 seconds), the new
+four-job DAG and exact required `test` aggregate. Every original benchmark
+command, timeout, environment and artifact upload is checked against a baseline
+contract; the sole explicit command addition is two independent reference workers
+for decomposition, with unchanged training, output order and numerical gates. Isolated tests execute the aggregate CLI with each failed, skipped,
+cancelled, timed-out or missing dependency and require nonzero exit.
+
+Local checks: Ruff/compileall passed; 143 tests ran, 142 passed and one Linux-only
+check skipped on Windows. The first DAG-only PR CI passed in 764 seconds; all 11 ZIPs/20 JSON files were
+compared with retained last-bit differences and two actual resource timeouts.
+The first two-worker implementation CI passed in 425 seconds (7m05s), with all
+eleven groups verified. Strict comparison retains differing product strategies:
+largest probability difference 0.34670755; largest same-model root EV difference
+0.000136553 chips. Both saved policies pass the unchanged ten-fixture convergence,
+same-policy and cross-play gates; largest fixed-policy numeric delta 5.2246e-14.
+Largest frequency shifts have own reach around 1e-7; conditional action EVs there
+are not stable. All 208 recorded reference-profile digest fields match (including repeated fields). Two optimized
+CI samples passed in 425/423 seconds (median 424, 52.4% below baseline), with
+17/16 rounded runner-minute estimates versus baseline median 15; per-run cost
+savings are not established. Final documentation-head CI/repeat receipt is on PR #29. No solver, hosted registration,
+provider/protection setting, merge or deployment change is included. Actual
+post-merge/main and Render acceptance remain separate owner-gated evidence.
+
 ## Exact-size local river-raise hand review — 22 October 2026
 
 Issue #17 adds a backward-compatible exact integer-cent path and opt-in
