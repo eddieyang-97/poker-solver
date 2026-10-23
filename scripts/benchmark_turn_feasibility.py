@@ -91,9 +91,11 @@ def audit_record(record, config, iterations, fixture_id):
             'scope': 'Independent tree fixed-policy replay; separate training remains the ten-game CI gate'}
 
 
-def coverage(cases, catalog):
+def coverage(cases, catalog, identity_catalog=None, unavailable=None):
     """Declared synthetic workload: repeated views plus adversarial different games."""
     from poker_spot.turn import TurnSolver
+    identity_catalog = catalog if identity_catalog is None else identity_catalog
+    unavailable = {} if unavailable is None else unavailable
     queries = []
     for case in cases:
         for purpose in ('initial study', 'other hero hand', 'river output filter'):
@@ -122,12 +124,18 @@ def coverage(cases, catalog):
     for row in queries:
         started = time.perf_counter()
         key = digest(identity(TurnSolver(**row['config']), row['iterations']))
-        row.update(key=key, status='exact_hit' if key in catalog else 'not_found',
+        matched = key in identity_catalog
+        row.update(key=key, identity_match=matched,
+                   status='exact_hit' if key in catalog else 'lookup_unavailable' if matched else 'not_found',
                    key_validation_seconds=time.perf_counter()-started,
                    miss_cost='No fallback executed; new independent validation/offline training or bounded live admission needed')
+        if matched and key not in catalog:
+            row['lookup_failures'] = unavailable.get(key, [])
     repeated = [q for q in queries if q['kind'] == 'repeated_game_view']
     held = [q for q in queries if q['kind'] == 'held_out_changed_game']
     return {'queries': queries, 'synthetic_hits': sum(q['status'] == 'exact_hit' for q in queries),
+            'identity_matches': sum(q['identity_match'] for q in queries),
+            'unavailable_matches': sum(q['status'] == 'lookup_unavailable' for q in queries),
             'total': len(queries), 'repeated_view_hits': sum(q['status'] == 'exact_hit' for q in repeated),
             'held_out_hits': sum(q['status'] == 'exact_hit' for q in held),
             'warning': 'Constructed reuse sensitivity, not measured user demand or population exact-hit coverage'}
@@ -147,13 +155,15 @@ def main():
              'benchmarks/turn_resources.py', 'benchmarks/turn_reference.py', 'benchmarks/turn_independent.py',
              'poker_spot/turn.py', 'poker_spot/core.py']
     report = {'mode': 'unlimited_local' if args.unlimited else 'linux_limits', 'cases': [], 'failures': [],
+              'lookup_failures': [],
               'source_sha256_lf': sources(paths), 'python': platform.python_version(), 'platform': platform.platform(),
               'budgets': {'wall_seconds': 20, 'cpu_seconds': 20, 'address_space_bytes': ADDRESS_BYTES},
               'provisional_headroom': {'wall_seconds': 10, 'cpu_seconds': 10, 'address_space_bytes': ADDRESS_BYTES//2},
               'cold_warm_definition': 'New disposable process each solve/lookup; repeated OS-cache samples, not Render cold starts',
               'limitations': 'No production code, hosted integration, database or operational cache; no universal performance bound.'}
-    catalog = set()
+    catalog, identity_catalog, unavailable = set(), set(), {}
     catalog_bytes, catalog_json_bytes = 0, 0
+    identity_bytes = 0
     from poker_spot.turn import TurnSolver
     for case in games():
         row = dict(case, runs=[], audits=[])
@@ -172,12 +182,22 @@ def main():
                     continue  # Never admit unconverged records to the experiment catalog.
                 record = unpack(path.read_bytes(), result['artifact_sha256'], solver, case['iterations'])
                 row['audits'].append(audit_record(record, case['config'], case['iterations'], case['id']))
+                if record['key'] not in identity_catalog:
+                    identity_bytes += result['artifact_bytes']
+                identity_catalog.add(record['key'])
                 views = [{'side': side, 'hand': ''.join(hand)} for side in (0, 1) for hand in solver.hands[side]]
                 lookup = probe(dict(request, sha256=result['artifact_sha256'], views=views),
                                unlimited=args.unlimited, lookup=True)
                 result['lookup'] = lookup
-                if lookup['status'] not in ('COMPLETED', 'UNSUPPORTED', 'WALL_TIMEOUT', 'MEMORY_ERROR', 'SIGNAL'):
-                    report['failures'].append(f'{case["id"]}: lookup {lookup}')
+                usable = lookup['status'] == 'COMPLETED' and (args.unlimited or lookup.get('budget_fit') is True)
+                result['usable_lookup'] = usable
+                if not usable:
+                    failure = {'game': case['id'], 'repeat': repeat, 'status': lookup['status'],
+                               'reason': 'budget_not_verified' if lookup['status'] == 'COMPLETED' else lookup['status']}
+                    report['lookup_failures'].append(failure)
+                    unavailable.setdefault(record['key'], []).append(failure)
+                    report['failures'].append(f'{case["id"]}: lookup unavailable: {failure["reason"]}')
+                    continue
                 if record['key'] not in catalog:
                     catalog_bytes += result['artifact_bytes']
                     catalog_json_bytes += result['full_json_bytes']
@@ -189,7 +209,7 @@ def main():
             report['failures'].append(f'{case["id"]}: {type(error).__name__}: {error}')
         report['cases'].append(row)
         print(f'{case["id"]}: {[r["status"] for r in row["runs"]]}, candidate={row.get("observed_candidate", False)}', flush=True)
-    report['coverage'] = coverage(games(), catalog)
+    report['coverage'] = coverage(games(), catalog, identity_catalog, unavailable)
     # Real timeout then recovery, without touching production; original six probes remain separate CI gates.
     request = dict(config=games()[0]['config'], iterations=2000, artifact=str((artifacts/'timeout.json.gz').resolve()))
     report['negative_timeout'] = probe(request, unlimited=args.unlimited, wall=0.001)
@@ -205,22 +225,29 @@ def main():
     report['catalog_storage_bytes'] = catalog_bytes
     report['catalog_full_json_bytes'] = catalog_json_bytes
     report['catalog_games'] = len(catalog)
+    report['identity_catalog_games'] = len(identity_catalog)
+    report['identity_catalog_storage_bytes'] = identity_bytes
     report['offline_training_parent_seconds'] = sum(c['runs'][0]['parent_wall_seconds'] for c in report['cases']
                                                     if c['runs'] and c['runs'][0]['status'] == 'COMPLETED')
     report['decision'] = {'bounded_live': 'candidate_for_separate_Render_validation' if any(c.get('observed_candidate') for c in report['cases']) else 'not_established',
                           'general_turn': 'no_go', 'library': 'defer: no demonstrated organic exact-repeat coverage',
                           'next': 'No hosted release. Consider only the measured small subset in #26; #25 needs independent demand evidence.'}
     lines = ['# Local turn feasibility', '', report['limitations'], '',
-             '| Game | Solve status | Parent wall seconds | Gap % pot | Compressed bytes | Candidate |',
-             '| --- | --- | --- | --- | --- | --- |']
+             '| Game | Solve status | Lookup status | Parent wall seconds | Gap % pot | Compressed bytes | Candidate |',
+             '| --- | --- | --- | --- | --- | --- | --- |']
     for case in report['cases']:
         for run in case['runs']:
-            lines.append(f'| {case["id"]} | {run["status"]} | {run["parent_wall_seconds"]:.3f} | '
+            lines.append(f'| {case["id"]} | {run["status"]} | {run.get("lookup", {}).get("status", "NOT_RUN")} | '
+                         f'{run["parent_wall_seconds"]:.3f} | '
                          f'{run.get("diagnostics", {}).get("nash_conv_pct_pot", "—")} | '
                          f'{run.get("artifact_bytes", "—")} | {case.get("observed_candidate", False)} |')
     lines += ['', '## Decision', '', json.dumps(report['decision'], indent=2), '', report['coverage']['warning'],
-              '', f'Scripted exact hits: {report["coverage"]["synthetic_hits"]}/{report["coverage"]["total"]}; '
-              f'held-out changed games: {report["coverage"]["held_out_hits"]}/8.', '', '## Harness failures', '']
+              '', f'Scripted usable exact hits: {report["coverage"]["synthetic_hits"]}/{report["coverage"]["total"]}; '
+              f'identity matches: {report["coverage"]["identity_matches"]}; '
+              f'unavailable retrieval matches: {report["coverage"]["unavailable_matches"]}; '
+              f'held-out changed games: {report["coverage"]["held_out_hits"]}/8.',
+              '', 'Unavailable lookup attempts fail the study; their raw status/budget evidence remains in the report.',
+              '', '## Study failures', '']
     lines += report['failures'] or ['None. Study success does not establish resource or hosted acceptance.']
     args.output.with_suffix('.json').write_text(json.dumps(report, indent=2, allow_nan=False)+'\n', encoding='utf-8')
     args.output.with_suffix('.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')

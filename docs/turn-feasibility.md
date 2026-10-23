@@ -101,6 +101,18 @@ conditioning the turn on a future card. Regression tests compare frequencies,
 EVs, nulls and reach with the direct solver for both players/all runouts. Lookup
 measures all range hands; changing ranges or tree is a different game.
 
+Coverage distinguishes **identity matches** from **usable exact hits**. A key
+enters the usable catalog only after a `COMPLETED` lookup; limited Linux samples
+also require `budget_fit` to be exactly true. Unlimited local samples remain
+labelled separately. A verified stored record with no qualifying retrieval is
+`lookup_unavailable`, with its timeout/error/budget reason retained. Any failed
+lookup attempt makes the study exit nonzero, even if another attempt succeeds;
+identity-only files and their storage are counted separately from usable entries.
+The regression executes a successful solve followed by a real killed/reaped
+lookup timeout and verifies zero usable hits despite three matching-view keys.
+Other cases cover memory errors, signals, unsupported execution, errors and
+completed lookups with missing/false Linux budget receipts.
+
 The declared sensitivity set has **23 synthetic queries**: three output views
 of each of five catalog games, then eight held-out changes to board, weight,
 pot, stack, turn size, river size, iterations or combo support. With all five
@@ -108,6 +120,8 @@ verified entries it yields **15/23 exact hits, 0/8 held-out hits**. That 65.2% i
 constructed reuse, **not measured organic user coverage**. On miss no solve is
 executed; its cost is rejection plus a later independently admitted live solve
 or new offline training/validation. All query configurations remain in the report.
+All ten recorded lookups completed within their measured budgets, so the review
+fix does not invalidate those historical hit counts or latency measurements.
 
 The initial four-game Windows sample stores 200,465 compressed bytes
 (1,563,486 JSON bytes). Its all-hands/all-rivers projected JSON is much larger:

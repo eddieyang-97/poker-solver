@@ -1,5 +1,21 @@
 # Audit and validation — 16 October 2026
 
+## PR #30 retrieval-coverage review fix — 23 October 2026
+
+The feasibility study now separates verified identity-only records from usable
+retrievals. Usable hits require `COMPLETED` and, on limited Linux runs, an exact
+true budget receipt. Failed lookups retain explicit unavailable reasons, do not
+enter successful coverage, and make the study exit nonzero. The regression runs
+an actual successful solve then kills/reaps a lookup at its tight deadline:
+three identity matches remain, with zero usable hits and a failing study result.
+Boundary fixtures also cover each unavailable status and false/missing budget
+receipts. Original snapshots below remain pinned historical evidence; all their
+lookups completed, so their hit counts and latency measurements remain valid.
+Fresh local Ruff/compileall passed; **152 tests ran, 151 passed and the existing
+Linux-only test skipped**. The complete unlimited five-game study retained ten
+usable lookups and 15/23 usable hits; river 10/10 plus sensitivity also passed.
+No solver, hosted interface, budget, numerical gate or production change.
+
 ## Turn delivery feasibility — Issue #21, 23 October 2026
 
 The [development-only experiment](turn-feasibility.md) leaves solver, transport,

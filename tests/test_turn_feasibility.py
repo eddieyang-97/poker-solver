@@ -1,8 +1,13 @@
 import copy
+from contextlib import redirect_stdout
 import hashlib
+import io
+import json
 from pathlib import Path
+import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import numpy as np
 
@@ -10,7 +15,7 @@ from benchmarks.turn_feasibility import (
     candidate_input, digest, full_record, games, identity, pack, unpack, validate_record, view,
 )
 from poker_spot.turn import TurnSolver
-from scripts.benchmark_turn_feasibility import coverage, probe
+from scripts.benchmark_turn_feasibility import coverage, main, probe
 
 
 class TurnFeasibilityTests(unittest.TestCase):
@@ -118,6 +123,64 @@ class TurnFeasibilityTests(unittest.TestCase):
         for wall in (0, 21):
             with self.assertRaises(ValueError):
                 probe({}, wall=wall)
+
+    def run_lookup_fixture(self, lookup_probe, *, unlimited):
+        # Real small, converged solve and record validation; replace only retrieval behavior.
+        case = copy.deepcopy(next(case for case in games() if case['id'] == 'weighted_collision'))
+        case['iterations'] = 200
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder)/'study'
+            argv = ['benchmark_turn_feasibility.py', '--repeats', '1', '--output', str(output)]
+            if unlimited:
+                argv.append('--unlimited')
+
+            def run(request, **options):
+                if options.get('lookup'):
+                    return lookup_probe(request, options)
+                # Fixture computations are explicitly unlimited, even when checking the
+                # Linux admission branch with synthetic lookup budget receipts.
+                return probe(request, **dict(options, unlimited=True))
+
+            with patch.object(sys, 'argv', argv), patch('scripts.benchmark_turn_feasibility.games', return_value=[case]), \
+                    patch('scripts.benchmark_turn_feasibility.probe', side_effect=run), redirect_stdout(io.StringIO()):
+                exit_code = main()
+            return exit_code, json.loads(output.with_suffix('.json').read_text())
+
+    def test_real_lookup_timeout_after_successful_solve_is_not_usable_coverage(self):
+        exit_code, report = self.run_lookup_fixture(
+            lambda request, options: probe(request, **dict(options, wall=0.001)), unlimited=True)
+        result = report['cases'][0]['runs'][0]
+        self.assertEqual(result['status'], 'COMPLETED')
+        self.assertEqual(result['lookup']['status'], 'WALL_TIMEOUT')
+        self.assertTrue(result['lookup']['killed_and_reaped'])
+        self.assertFalse(result['usable_lookup'])
+        self.assertTrue(exit_code)
+        self.assertTrue(report['failures'])
+        self.assertEqual(report['identity_catalog_games'], 1)
+        self.assertGreater(report['identity_catalog_storage_bytes'], 0)
+        self.assertEqual((report['catalog_games'], report['catalog_storage_bytes']), (0, 0))
+        self.assertEqual((report['coverage']['identity_matches'], report['coverage']['synthetic_hits'],
+                          report['coverage']['unavailable_matches']), (3, 0, 3))
+        matches = [q for q in report['coverage']['queries'] if q['identity_match']]
+        self.assertTrue(all(q['status'] == 'lookup_unavailable' for q in matches))
+        self.assertTrue(all(q['lookup_failures'][0]['status'] == 'WALL_TIMEOUT' for q in matches))
+
+    def test_usable_coverage_requires_completed_lookup_and_exact_linux_budget_receipt(self):
+        for lookup, unlimited, usable in (
+                ({'status': 'COMPLETED', 'budget_fit': True}, False, True),
+                ({'status': 'COMPLETED', 'budget_fit': False}, False, False),
+                ({'status': 'COMPLETED'}, False, False),
+                ({'status': 'COMPLETED'}, True, True),
+                *[({'status': status}, False, False)
+                  for status in ('WALL_TIMEOUT', 'MEMORY_ERROR', 'SIGNAL', 'UNSUPPORTED', 'ERROR')]):
+            with self.subTest(lookup=lookup, unlimited=unlimited):
+                exit_code, report = self.run_lookup_fixture(lambda request, options: lookup, unlimited=unlimited)
+                self.assertEqual(report['catalog_games'], int(usable))
+                self.assertEqual(report['coverage']['identity_matches'], 3)
+                self.assertEqual(report['coverage']['synthetic_hits'], 3 if usable else 0)
+                self.assertEqual(report['coverage']['unavailable_matches'], 0 if usable else 3)
+                self.assertEqual(bool(exit_code), not usable)
+                self.assertEqual(bool(report['lookup_failures']), not usable)
 
 
 if __name__ == '__main__':
