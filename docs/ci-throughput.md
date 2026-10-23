@@ -132,8 +132,12 @@ not deliberately failed production builds or proof of Render provider behavior.
 No branch-rule, Render, OAuth, hosted-tool or application change is included.
 The existing protected `test` context remains, so no protection rename is
 requested. It cannot succeed before every numerical/artifact job succeeds.
-Issue #23 separately tracks actual `checksPass` deployment ordering and failed-CI
-nondeployment. This PR does not authorize merge/deploy.
+Issue #23 was closed after the successful green-main → automatic Render
+`checksPass` deployment, exact-SHA public smoke and authenticated tool checks.
+The failed-required-CI → **no deployment** negative case remains **unverified**
+and is now tracked in open Issue #28. The isolated aggregate gate tests here
+do not prove Render's negative-case behavior. This PR does not authorize
+merge/deploy.
 
 Rollback: owner-reviewed revert restoring the sequential `test` and full
 coverage. Never bypass protection or enable commit-triggered deployment.

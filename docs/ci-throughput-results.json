@@ -2193,7 +2193,7 @@
     "exhaustive_matched_artifacts": "All 11 groups/20 JSON files compared; strict differences and ten-policy replay audit retained",
     "repeated_timings": "Two optimized CI runs recorded here plus paired same-host experiment; final doc-head repeat on PR",
     "post_merge_main": "Requires separate owner-approved merge; no merge/deploy performed",
-    "render_provider_acceptance": "Separate Issue 23",
+    "render_provider_acceptance": "Positive checksPass deployment ordering and public/authenticated smoke verified in closed Issue #23. Failed-required-CI nondeployment remains unverified and is tracked in open Issue #28 for separate safe platform/nonproduction evidence.",
     "strict_output_identity": "NOT established: exact comparator exits 1; policy/resource variations and original-gate replay are retained",
     "owner_review": "Required; PR is not an accepted merge"
   },
