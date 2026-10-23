@@ -12,6 +12,13 @@ faster subsequent samples do not erase them. [Contract](turn-pilot.md).
 
 ## Evidence required before owner release decision
 
+Stage A source `a9ade24` passed Linux [CI 39936495563](https://github.com/eddieyang-97/poker-solver/actions/runs/39936495563):
+164/164 tests, all five jobs, eleven artifacts; eight measured worker samples
+meet conservative headroom and bounded-output gates. Sources, result hashes
+and all 10 strategic + 188 river reference digests verify. These are **local
+release-preparation results only**; [receipts](turn-pilot-results.json) preserve
+the original two maximum-workload timeouts and known policy variance.
+
 - Reviewed PR head, exact accepted merge SHA and latest **main** `test` CI with
   all required jobs/eleven artifacts. PR CI does not establish deployed state.
 - Retain isolated actual Linux 20s CPU/wall, 384 MiB AS, admission/rate/body/output

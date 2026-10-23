@@ -1,0 +1,1830 @@
+{
+  "schema": "issue26-stage-a-evidence-v1",
+  "measured_source_commit": "a9ade2460a13c3f7f7f5a337f0024f5685fbfa48",
+  "decision": "Local live-only pilot; no production release or Render/ChatGPT turn acceptance",
+  "coverage": "Four predeclared synthetic tiny-range questions; not organic usage or a full-width solver",
+  "ci": {
+    "run_id": 39936495563,
+    "url": "https://github.com/eddieyang-97/poker-solver/actions/runs/39936495563",
+    "head_sha": "a9ade2460a13c3f7f7f5a337f0024f5685fbfa48",
+    "conclusion": "success",
+    "tests_passed": 164,
+    "tests_skipped": 0,
+    "required_check": "test",
+    "actions_app_id": 15368,
+    "dependency_order_verified": true,
+    "artifact_groups": [
+      {
+        "id": 12494660651,
+        "name": "river-raise-validation",
+        "size_in_bytes": 40015,
+        "digest": "sha256:93bef7a81dc7c2d6e5399be6053d311653eb14b0be9098c5b39cebfdb3404464"
+      },
+      {
+        "id": 12494620528,
+        "name": "turn-resource-study",
+        "size_in_bytes": 522346,
+        "digest": "sha256:cf9e30691a6450ac7e49ae29b28336f83f7c20ca7212729a70664a08c6e4966d"
+      },
+      {
+        "id": 12494561185,
+        "name": "texas-evidence-replay",
+        "size_in_bytes": 6968,
+        "digest": "sha256:eff6f4653e97766ee744327566c1d058eba8294de9ffa58513aa38aba935e24f"
+      },
+      {
+        "id": 12494271903,
+        "name": "turn-independent-reference",
+        "size_in_bytes": 402996,
+        "digest": "sha256:e8fb753a36ea526f3feecb4ca227a4a24f4c66e0368a37ee73f773cf057836b3"
+      },
+      {
+        "id": 12493937995,
+        "name": "post-session-hand-review",
+        "size_in_bytes": 7905,
+        "digest": "sha256:2a0ac850ea55df1ca7fef49056034f6f9db24520eb786bf1a683e834fdd84154"
+      },
+      {
+        "id": 12493713586,
+        "name": "range-explorer-validation",
+        "size_in_bytes": 279849,
+        "digest": "sha256:c53ff855136c6c387a270c7e93961fb85d24994fbaf64ea282982beda24e2fc4"
+      },
+      {
+        "id": 12493604035,
+        "name": "river-benchmark",
+        "size_in_bytes": 33664,
+        "digest": "sha256:5c61b5ddb0d2fd5513b280dcca6853ec3a9dcd7d7dce39cd61e9aff106da103c"
+      },
+      {
+        "id": 12493598987,
+        "name": "texas-averaging-replay",
+        "size_in_bytes": 20816,
+        "digest": "sha256:92687663dfe7d513305ec4b48cdb75bc2161f4a977a859f386e5448bb1195f6e"
+      },
+      {
+        "id": 12493484436,
+        "name": "exact-size-raise-review",
+        "size_in_bytes": 15032,
+        "digest": "sha256:7e940100e0b9c8246d33adb91f26ccd09237a3ba0fb9a4b6477b2fc2781cf992"
+      },
+      {
+        "id": 12493209420,
+        "name": "turn-decomposition-performance",
+        "size_in_bytes": 38606,
+        "digest": "sha256:e88b444f558f7b678a60ab2d01eb9bf6ba42fc59d4d5b572a54b49e8de59e021"
+      },
+      {
+        "id": 12492849557,
+        "name": "turn-policy-validation",
+        "size_in_bytes": 11249,
+        "digest": "sha256:d7f33a511c77ca763257a1ae2262d370d46ef1789551a073c81a5fe3e1051f9f"
+      }
+    ],
+    "critical_path_seconds": 374.0,
+    "initial_queue_seconds": 3.0,
+    "rounded_runner_minutes_estimate": 18,
+    "billing_caveat": "Job wall-time estimate, not account billing; aggregate dependency wait is excluded from job duration"
+  },
+  "verified_zip_sha256": {
+    "resources": "cf9e30691a6450ac7e49ae29b28336f83f7c20ca7212729a70664a08c6e4966d",
+    "independent": "e8fb753a36ea526f3feecb4ca227a4a24f4c66e0368a37ee73f773cf057836b3",
+    "decomposition": "e88b444f558f7b678a60ab2d01eb9bf6ba42fc59d4d5b572a54b49e8de59e021"
+  },
+  "regression": {
+    "river_with_sensitivity": "10/10",
+    "turn": "8/8",
+    "independently_trained_turn": "10/10",
+    "retained_strategic_reference_digests_matched": 10,
+    "decomposition": "4/4",
+    "retained_river_reference_digests_matched": 188,
+    "local_tests": {
+      "run": 164,
+      "passed": 162,
+      "linux_only_skipped": 2
+    }
+  },
+  "original_six_resource_probes": [
+    {
+      "id": "deep_dry_24x24",
+      "status": "WALL_TIMEOUT"
+    },
+    {
+      "id": "four_flush_weighted_24x24",
+      "status": "WALL_TIMEOUT"
+    },
+    {
+      "id": "deep_4x4_two_sizes",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "deep_12x12_two_sizes",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "deep_24x24_one_size",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "deep_24x24_500_iterations",
+      "status": "COMPLETED"
+    }
+  ],
+  "resource_failures": [
+    "deep_dry_24x24",
+    "four_flush_weighted_24x24"
+  ],
+  "strict_trained_policy_comparison": {
+    "baseline_run": 39926153825,
+    "candidate_run": 39936495563,
+    "comparison": "Separately trained product policies; exact differences retained, not a same-policy correctness test",
+    "cases": [
+      {
+        "id": "singleton_minimax",
+        "maximum_trained_probability_difference": 0.0
+      },
+      {
+        "id": "weighted_dry",
+        "maximum_trained_probability_difference": 0.0
+      },
+      {
+        "id": "draw_two_sizes",
+        "maximum_trained_probability_difference": 0.0
+      },
+      {
+        "id": "weighted_collision",
+        "maximum_trained_probability_difference": 0.0
+      },
+      {
+        "id": "paired_capped",
+        "maximum_trained_probability_difference": 6.94919677357575e-11
+      },
+      {
+        "id": "turn_allin",
+        "maximum_trained_probability_difference": 0.0
+      },
+      {
+        "id": "weighted_4x4_collision",
+        "maximum_trained_probability_difference": 0.0
+      },
+      {
+        "id": "four_flush_4x4",
+        "maximum_trained_probability_difference": 0.001903879045901724
+      },
+      {
+        "id": "trips_3x4",
+        "maximum_trained_probability_difference": 0.346707554983076
+      },
+      {
+        "id": "draw_4x4_two_sizes",
+        "maximum_trained_probability_difference": 0.3025984503963689
+      }
+    ]
+  },
+  "linux": {
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.12.15",
+    "linux_limits_expected": true,
+    "sources_sha256_lf": {
+      "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+      "poker_spot/turn.py": "fb546353b2875dec377b2966a9c09282bb6a65617505760b1b731e0d66a7e572",
+      "poker_spot/turn_pilot.py": "17f6ff1504759ade9e20ec84b4175b7ebe5e989590aed6633810fd738a534051",
+      "poker_spot/turn_worker.py": "3337683af5b50d788f9e171266f8b8960a2be8203fefeacf055ffb9fe4f5152e",
+      "poker_spot/execution.py": "30fdddbff40a034a70f0327d2dbc957a3b13980ef04829c4e66d0bcf5a2af0ce",
+      "poker_spot/http_server.py": "fe2ff5083e4d2732b62f24b7ab99e6379d57b5d55e4b49a371280206a6f5ed22",
+      "poker_spot/auth.py": "9fdd3433f86893912966a2becc06fc3d8743fe66148313721f5534ab466fa653",
+      "scripts/benchmark_turn_pilot.py": "8fec2a5f05af549471af49aa1a0f0f669ce3e0a151f709a6a0c8fbd32d8c5b1f",
+      "tests/test_turn_pilot.py": "4508cff53d227aa9394740bb768d0d7ac5b2b7bd63f0dd2562b589fe45a64ce0"
+    },
+    "cases": [
+      {
+        "id": "singleton_minimax",
+        "question": "Inspect a flush draw versus a known overpair in a toy game",
+        "request": {
+          "board": "Js,Ts,2c,3d",
+          "oop_range": [
+            {
+              "hand": "AsKs",
+              "weight": 1
+            }
+          ],
+          "ip_range": [
+            {
+              "hand": "QhQd",
+              "weight": 1
+            }
+          ],
+          "pot_cents": 10000,
+          "stack_cents": 15000,
+          "turn_bet_sizes": [
+            0.5
+          ],
+          "river_bet_sizes": [
+            0.5
+          ],
+          "iterations": 2000,
+          "views": [
+            {
+              "player": "oop",
+              "hand": "AsKs",
+              "node": "turn"
+            },
+            {
+              "player": "ip",
+              "hand": "QhQd",
+              "node": "turn/check"
+            },
+            {
+              "player": "oop",
+              "hand": "AsKs",
+              "node": "turn/check/check/river",
+              "river_card": "2d"
+            }
+          ]
+        },
+        "first_sample_views": [
+          {
+            "player": "oop",
+            "hand": "KsAs",
+            "node": "turn",
+            "river_card": null,
+            "frequency": {
+              "check": 0.4140271570577463,
+              "bet_50": 0.5859728429422537
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -27.273297701513062,
+              "bet_50": -27.27281951420245
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 1.0,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 1.0
+          },
+          {
+            "player": "ip",
+            "hand": "QdQh",
+            "node": "turn/check",
+            "river_card": null,
+            "frequency": {
+              "check": 2.390335755379264e-06,
+              "bet_50": 0.9999976096642446
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 8.530763585271602,
+              "bet_50": 27.2733425025696
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 0.4140271570577463,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 0.4140271570577463
+          },
+          {
+            "player": "oop",
+            "hand": "KsAs",
+            "node": "turn/check/check/river",
+            "river_card": "2d",
+            "frequency": {
+              "check": 0.8877063512803353,
+              "bet_50": 0.11229364871966485
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -50.00000424917656,
+              "bet_50": -76.47950128807248
+            },
+            "own_reach_given_hand": 0.4140271570577463,
+            "compatible_opponent_reach": 2.390335755379264e-06,
+            "chance_reach": 0.022727272727272728,
+            "reach_probability_given_hand": 2.2492361754844482e-08
+          }
+        ],
+        "samples": [
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -27.273017496735203,
+              "ip_ev": 27.273017496735207,
+              "raw_nash_conv_chips": 0.00044952383773377846,
+              "zero_sum_residual": 3.552713678800501e-15,
+              "nash_conv_chips": 0.00044952383773377846,
+              "nash_conv_pct_pot": 0.00044952383773377846
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -27.272626829907423,
+              "ip_best_response_ev": 27.273076353745157,
+              "raw_nash_conv_chips": 0.00044952383773377846
+            },
+            "game_identity_sha256": "93816a774a27e740e2ac8481917ccb713b7ed5fbc203ba27a257d6fa6589c11b",
+            "request_sha256": "bd67f12558775e8f46fdf7aade3944e4d9a2dcfd82340ca55b0ab7d9526c4bc9",
+            "result_sha256": "893d2bac09f581bd656d63cacb910ac22fe41a192d50ab110e4cd443380fe016",
+            "execution": {
+              "platform": "linux",
+              "limits": {
+                "cpu_seconds": [
+                  20,
+                  20
+                ],
+                "address_space_bytes": [
+                  402653184,
+                  402653184
+                ]
+              },
+              "worker_wall_seconds": 3.1267151539999816,
+              "budget_enforced": true,
+              "stage_seconds": {
+                "bootstrap_imports": 0.17169304600000146,
+                "read_parse": 3.890299998943192e-05,
+                "validate_solve_br_project_receipt": 2.954912613999994,
+                "result_serialization": 6.914900001220303e-05
+              },
+              "worker_cpu_seconds": 3.148788,
+              "memory_bytes": {
+                "VmPeak": 125501440,
+                "VmHWM": 45535232
+              },
+              "parent_wall_seconds": 3.176955148000019
+            },
+            "sdk_result_bytes": 10591,
+            "observed_headroom": true
+          },
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -27.273017496735203,
+              "ip_ev": 27.273017496735207,
+              "raw_nash_conv_chips": 0.00044952383773377846,
+              "zero_sum_residual": 3.552713678800501e-15,
+              "nash_conv_chips": 0.00044952383773377846,
+              "nash_conv_pct_pot": 0.00044952383773377846
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -27.272626829907423,
+              "ip_best_response_ev": 27.273076353745157,
+              "raw_nash_conv_chips": 0.00044952383773377846
+            },
+            "game_identity_sha256": "93816a774a27e740e2ac8481917ccb713b7ed5fbc203ba27a257d6fa6589c11b",
+            "request_sha256": "bd67f12558775e8f46fdf7aade3944e4d9a2dcfd82340ca55b0ab7d9526c4bc9",
+            "result_sha256": "893d2bac09f581bd656d63cacb910ac22fe41a192d50ab110e4cd443380fe016",
+            "execution": {
+              "platform": "linux",
+              "limits": {
+                "cpu_seconds": [
+                  20,
+                  20
+                ],
+                "address_space_bytes": [
+                  402653184,
+                  402653184
+                ]
+              },
+              "worker_wall_seconds": 3.1320604809999963,
+              "budget_enforced": true,
+              "stage_seconds": {
+                "bootstrap_imports": 0.1703945900000008,
+                "read_parse": 3.8451999984090435e-05,
+                "validate_solve_br_project_receipt": 2.961558119000017,
+                "result_serialization": 6.71359999842025e-05
+              },
+              "worker_cpu_seconds": 3.154859,
+              "memory_bytes": {
+                "VmPeak": 125501440,
+                "VmHWM": 45592576
+              },
+              "parent_wall_seconds": 3.190248370000006
+            },
+            "sdk_result_bytes": 10589,
+            "observed_headroom": true
+          }
+        ]
+      },
+      {
+        "id": "weighted_dry",
+        "question": "Compare value and missed-high-card continuations under supplied weights",
+        "request": {
+          "board": "2c,3d,4h,8s",
+          "oop_range": [
+            {
+              "hand": "KhKd",
+              "weight": 1
+            }
+          ],
+          "ip_range": [
+            {
+              "hand": "AsAd",
+              "weight": 1
+            },
+            {
+              "hand": "QhJd",
+              "weight": 0.7
+            }
+          ],
+          "pot_cents": 10000,
+          "stack_cents": 20000,
+          "turn_bet_sizes": [
+            0.5
+          ],
+          "river_bet_sizes": [
+            0.5
+          ],
+          "iterations": 2000,
+          "views": [
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn"
+            },
+            {
+              "player": "ip",
+              "hand": "AsAd",
+              "node": "turn/check"
+            },
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn/check/check/river",
+              "river_card": "2d"
+            }
+          ]
+        },
+        "first_sample_views": [
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn",
+            "river_card": null,
+            "frequency": {
+              "check": 0.9999942125658532,
+              "bet_50": 5.787434146802904e-06
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -48.63316464931544,
+              "bet_50": -60.26842203683995
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 1.7,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 1.0
+          },
+          {
+            "player": "ip",
+            "hand": "AdAs",
+            "node": "turn/check",
+            "river_card": null,
+            "frequency": {
+              "check": 5.657257828911663e-06,
+              "bet_50": 0.999994342742171
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 81.04855943946393,
+              "bet_50": 117.6469184187934
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 0.9999942125658532,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 0.9999942125658532
+          },
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn/check/check/river",
+            "river_card": "2d",
+            "frequency": {
+              "check": 0.6571920999164543,
+              "bet_50": 0.34280790008354567
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 49.98142844468949,
+              "bet_50": 49.9663410999904
+            },
+            "own_reach_given_hand": 0.9999942125658532,
+            "compatible_opponent_reach": 0.023151331275817484,
+            "chance_reach": 0.022727272727272728,
+            "reach_probability_given_hand": 0.0003095079851472235
+          }
+        ],
+        "samples": [
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -48.633231987601356,
+              "ip_ev": 48.63323198760138,
+              "raw_nash_conv_chips": 0.005276748211178315,
+              "zero_sum_residual": 2.1316282072803006e-14,
+              "nash_conv_chips": 0.005276748211178315,
+              "nash_conv_pct_pot": 0.005276748211178315
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -48.629658601796514,
+              "ip_best_response_ev": 48.634935350007694,
+              "raw_nash_conv_chips": 0.005276748211180404
+            },
+            "game_identity_sha256": "19f5af9d75bff8f7888d08ac3045e045f06f0416cb1ca5e78f782ea645ee28d2",
+            "request_sha256": "8f584a20e047e437e943c8968ee1b2c660c4952211555d63178d939ee8c4aa98",
+            "result_sha256": "e1d07e90fdf7c5f62c5a7aa20ffebaa86d22884d9046959d9ea97f5e4e2ced9c",
+            "execution": {
+              "platform": "linux",
+              "limits": {
+                "cpu_seconds": [
+                  20,
+                  20
+                ],
+                "address_space_bytes": [
+                  402653184,
+                  402653184
+                ]
+              },
+              "worker_wall_seconds": 3.2946926120000057,
+              "budget_enforced": true,
+              "stage_seconds": {
+                "bootstrap_imports": 0.17284427100000244,
+                "read_parse": 4.123699997649055e-05,
+                "validate_solve_br_project_receipt": 3.121736963000018,
+                "result_serialization": 6.875799999761512e-05
+              },
+              "worker_cpu_seconds": 3.317335,
+              "memory_bytes": {
+                "VmPeak": 125501440,
+                "VmHWM": 45760512
+              },
+              "parent_wall_seconds": 3.3438820359999966
+            },
+            "sdk_result_bytes": 10720,
+            "observed_headroom": true
+          },
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -48.633231987601356,
+              "ip_ev": 48.63323198760138,
+              "raw_nash_conv_chips": 0.005276748211178315,
+              "zero_sum_residual": 2.1316282072803006e-14,
+              "nash_conv_chips": 0.005276748211178315,
+              "nash_conv_pct_pot": 0.005276748211178315
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -48.629658601796514,
+              "ip_best_response_ev": 48.634935350007694,
+              "raw_nash_conv_chips": 0.005276748211180404
+            },
+            "game_identity_sha256": "19f5af9d75bff8f7888d08ac3045e045f06f0416cb1ca5e78f782ea645ee28d2",
+            "request_sha256": "8f584a20e047e437e943c8968ee1b2c660c4952211555d63178d939ee8c4aa98",
+            "result_sha256": "e1d07e90fdf7c5f62c5a7aa20ffebaa86d22884d9046959d9ea97f5e4e2ced9c",
+            "execution": {
+              "platform": "linux",
+              "limits": {
+                "cpu_seconds": [
+                  20,
+                  20
+                ],
+                "address_space_bytes": [
+                  402653184,
+                  402653184
+                ]
+              },
+              "worker_wall_seconds": 3.3943373959999974,
+              "budget_enforced": true,
+              "stage_seconds": {
+                "bootstrap_imports": 0.17398161699998127,
+                "read_parse": 4.171800000563053e-05,
+                "validate_solve_br_project_receipt": 3.220243528999987,
+                "result_serialization": 6.8929000008211e-05
+              },
+              "worker_cpu_seconds": 3.414482,
+              "memory_bytes": {
+                "VmPeak": 125501440,
+                "VmHWM": 46436352
+              },
+              "parent_wall_seconds": 3.441842342000001
+            },
+            "sdk_result_bytes": 10714,
+            "observed_headroom": true
+          }
+        ]
+      },
+      {
+        "id": "weighted_collision",
+        "question": "Inspect blocker-sensitive turn betting and one future river view",
+        "request": {
+          "board": "2c,3d,4h,8s",
+          "oop_range": [
+            {
+              "hand": "KhKd",
+              "weight": 1
+            },
+            {
+              "hand": "AsKs",
+              "weight": 0.3
+            }
+          ],
+          "ip_range": [
+            {
+              "hand": "AsAd",
+              "weight": 1
+            },
+            {
+              "hand": "QsJs",
+              "weight": 0.5
+            }
+          ],
+          "pot_cents": 10000,
+          "stack_cents": 10000,
+          "turn_bet_sizes": [
+            0.5
+          ],
+          "river_bet_sizes": [
+            0.5
+          ],
+          "iterations": 2000,
+          "views": [
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn"
+            },
+            {
+              "player": "ip",
+              "hand": "AsAd",
+              "node": "turn/check"
+            },
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn/check/check/river",
+              "river_card": "2d"
+            }
+          ]
+        },
+        "first_sample_views": [
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn",
+            "river_card": null,
+            "frequency": {
+              "check": 0.9999964471159699,
+              "bet_50": 3.552884030110332e-06
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -49.99996897556881,
+              "bet_50": -63.6342044981241
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 1.5,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 1.0
+          },
+          {
+            "player": "ip",
+            "hand": "AdAs",
+            "node": "turn/check",
+            "river_card": null,
+            "frequency": {
+              "check": 1.326897036675062e-05,
+              "bet_50": 0.9999867310296333
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 50.38431518922333,
+              "bet_50": 53.5849779404286
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 0.9999964471159699,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 0.9999964471159699
+          },
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn/check/check/river",
+            "river_card": "2d",
+            "frequency": {
+              "check": 0.9999850752974867,
+              "bet_50": 1.4924702513227138e-05
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -40.361959431838166,
+              "bet_50": -61.73621796868509
+            },
+            "own_reach_given_hand": 0.9999964471159699,
+            "compatible_opponent_reach": 1.722586808561901e-05,
+            "chance_reach": 0.022727272727272728,
+            "reach_probability_given_hand": 2.609970740016271e-07
+          }
+        ],
+        "samples": [
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -37.479356228812726,
+              "ip_ev": 37.479356228812726,
+              "raw_nash_conv_chips": 0.0004767565754394982,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.0004767565754394982,
+              "nash_conv_pct_pot": 0.00047675657543949814
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -37.47912043894925,
+              "ip_best_response_ev": 37.47959719552469,
+              "raw_nash_conv_chips": 0.0004767565754377756
+            },
+            "game_identity_sha256": "93861197452d2d408132b661d2f690b54ae0d790a9092cb76f58fcc728c6cb32",
+            "request_sha256": "7ff2b6352fe4a15f95e2430ae7bf0d1293a91f8f064278cd0a210d4b20408319",
+            "result_sha256": "40f0fb76a394fddb5ddb631b89c703d525041376cfa572cd18346ca42ad4c308",
+            "execution": {
+              "platform": "linux",
+              "limits": {
+                "cpu_seconds": [
+                  20,
+                  20
+                ],
+                "address_space_bytes": [
+                  402653184,
+                  402653184
+                ]
+              },
+              "worker_wall_seconds": 3.437495471999995,
+              "budget_enforced": true,
+              "stage_seconds": {
+                "bootstrap_imports": 0.1749380839999901,
+                "read_parse": 3.917300000466639e-05,
+                "validate_solve_br_project_receipt": 3.2624456089999967,
+                "result_serialization": 7.069200000842102e-05
+              },
+              "worker_cpu_seconds": 3.4607319999999997,
+              "memory_bytes": {
+                "VmPeak": 125640704,
+                "VmHWM": 45658112
+              },
+              "parent_wall_seconds": 3.4894176439999853
+            },
+            "sdk_result_bytes": 10837,
+            "observed_headroom": true
+          },
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -37.479356228812726,
+              "ip_ev": 37.479356228812726,
+              "raw_nash_conv_chips": 0.0004767565754394982,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.0004767565754394982,
+              "nash_conv_pct_pot": 0.00047675657543949814
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -37.47912043894925,
+              "ip_best_response_ev": 37.47959719552469,
+              "raw_nash_conv_chips": 0.0004767565754377756
+            },
+            "game_identity_sha256": "93861197452d2d408132b661d2f690b54ae0d790a9092cb76f58fcc728c6cb32",
+            "request_sha256": "7ff2b6352fe4a15f95e2430ae7bf0d1293a91f8f064278cd0a210d4b20408319",
+            "result_sha256": "40f0fb76a394fddb5ddb631b89c703d525041376cfa572cd18346ca42ad4c308",
+            "execution": {
+              "platform": "linux",
+              "limits": {
+                "cpu_seconds": [
+                  20,
+                  20
+                ],
+                "address_space_bytes": [
+                  402653184,
+                  402653184
+                ]
+              },
+              "worker_wall_seconds": 3.4974363230000165,
+              "budget_enforced": true,
+              "stage_seconds": {
+                "bootstrap_imports": 0.1739315920000024,
+                "read_parse": 3.972400000407106e-05,
+                "validate_solve_br_project_receipt": 3.3233851079999965,
+                "result_serialization": 7.779500000992812e-05
+              },
+              "worker_cpu_seconds": 3.520095,
+              "memory_bytes": {
+                "VmPeak": 125640704,
+                "VmHWM": 45674496
+              },
+              "parent_wall_seconds": 3.54761259
+            },
+            "sdk_result_bytes": 10803,
+            "observed_headroom": true
+          }
+        ]
+      },
+      {
+        "id": "turn_allin",
+        "question": "Inspect a terminal turn shove versus a two-combo arrival hypothesis",
+        "request": {
+          "board": "2c,3d,4h,8s",
+          "oop_range": [
+            {
+              "hand": "KhKd",
+              "weight": 1
+            }
+          ],
+          "ip_range": [
+            {
+              "hand": "AsAd",
+              "weight": 1
+            },
+            {
+              "hand": "QhJd",
+              "weight": 1
+            }
+          ],
+          "pot_cents": 10000,
+          "stack_cents": 10000,
+          "turn_bet_sizes": [
+            1
+          ],
+          "river_bet_sizes": [],
+          "iterations": 2000,
+          "views": [
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn"
+            },
+            {
+              "player": "ip",
+              "hand": "AsAd",
+              "node": "turn/check"
+            },
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn/check/check/river",
+              "river_card": "2d"
+            }
+          ]
+        },
+        "first_sample_views": [
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn",
+            "river_card": null,
+            "frequency": {
+              "check": 0.9999975441663678,
+              "bet_100": 2.4558336322217726e-06
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -21.590886909173587,
+              "bet_100": -43.18178240425243
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 2.0,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 1.0
+          },
+          {
+            "player": "ip",
+            "hand": "AdAs",
+            "node": "turn/check",
+            "river_card": null,
+            "frequency": {
+              "check": 7.496251874062968e-07,
+              "bet_100": 0.9999992503748126
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 45.45454545454544,
+              "bet_100": 93.164176499899
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 0.9999975441663678,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 0.9999975441663678
+          },
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn/check/check/river",
+            "river_card": "2d",
+            "frequency": {
+              "check": 1.0
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 49.99986811499765
+            },
+            "own_reach_given_hand": 0.9999975441663678,
+            "compatible_opponent_reach": 0.5683930500422011,
+            "chance_reach": 0.022727272727272728,
+            "reach_probability_given_hand": 0.006458996070039006
+          }
+        ],
+        "samples": [
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -21.59093993282089,
+              "ip_ev": 21.59093993282089,
+              "raw_nash_conv_chips": 0.022185180314451713,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.022185180314451713,
+              "nash_conv_pct_pot": 0.022185180314451713
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -21.580383275455706,
+              "ip_best_response_ev": 21.602568455770157,
+              "raw_nash_conv_chips": 0.022185180314451713
+            },
+            "game_identity_sha256": "4f7e929083c82ae6accaad4c5ade91eb26c2833e52ef1e6254315342b804400f",
+            "request_sha256": "b6906a0b3fc4753cc679002e7e3af950184d9f177002dfe6d4266270725e64df",
+            "result_sha256": "2911fcd9367e1d87d06697b0ffbc742d2c79cbef029e02e86acf69671073188d",
+            "execution": {
+              "platform": "linux",
+              "limits": {
+                "cpu_seconds": [
+                  20,
+                  20
+                ],
+                "address_space_bytes": [
+                  402653184,
+                  402653184
+                ]
+              },
+              "worker_wall_seconds": 1.0984782950000067,
+              "budget_enforced": true,
+              "stage_seconds": {
+                "bootstrap_imports": 0.16646216400002345,
+                "read_parse": 3.5956999994368744e-05,
+                "validate_solve_br_project_receipt": 0.9319194409999909,
+                "result_serialization": 5.780800000820818e-05
+              },
+              "worker_cpu_seconds": 1.121269,
+              "memory_bytes": {
+                "VmPeak": 125501440,
+                "VmHWM": 45674496
+              },
+              "parent_wall_seconds": 1.147179952000016
+            },
+            "sdk_result_bytes": 10332,
+            "observed_headroom": true
+          },
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -21.59093993282089,
+              "ip_ev": 21.59093993282089,
+              "raw_nash_conv_chips": 0.022185180314451713,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.022185180314451713,
+              "nash_conv_pct_pot": 0.022185180314451713
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -21.580383275455706,
+              "ip_best_response_ev": 21.602568455770157,
+              "raw_nash_conv_chips": 0.022185180314451713
+            },
+            "game_identity_sha256": "4f7e929083c82ae6accaad4c5ade91eb26c2833e52ef1e6254315342b804400f",
+            "request_sha256": "b6906a0b3fc4753cc679002e7e3af950184d9f177002dfe6d4266270725e64df",
+            "result_sha256": "2911fcd9367e1d87d06697b0ffbc742d2c79cbef029e02e86acf69671073188d",
+            "execution": {
+              "platform": "linux",
+              "limits": {
+                "cpu_seconds": [
+                  20,
+                  20
+                ],
+                "address_space_bytes": [
+                  402653184,
+                  402653184
+                ]
+              },
+              "worker_wall_seconds": 1.1033664699999974,
+              "budget_enforced": true,
+              "stage_seconds": {
+                "bootstrap_imports": 0.17107751800000415,
+                "read_parse": 3.851200000326571e-05,
+                "validate_solve_br_project_receipt": 0.9321526470000094,
+                "result_serialization": 9.402599999930317e-05
+              },
+              "worker_cpu_seconds": 1.126407,
+              "memory_bytes": {
+                "VmPeak": 125501440,
+                "VmHWM": 45551616
+              },
+              "parent_wall_seconds": 1.1513296119999836
+            },
+            "sdk_result_bytes": 10332,
+            "observed_headroom": true
+          }
+        ]
+      }
+    ],
+    "negatives": [
+      {
+        "id": "third_combo",
+        "status": "invalid_input"
+      },
+      {
+        "id": "two_sizes",
+        "status": "invalid_input"
+      },
+      {
+        "id": "fractional_cent",
+        "status": "invalid_input"
+      },
+      {
+        "id": "too_few_iterations",
+        "status": "invalid_input"
+      },
+      {
+        "id": "invalid_view",
+        "status": "invalid_input"
+      },
+      {
+        "id": "real_timeout",
+        "status": "timeout",
+        "slot_released": true
+      },
+      {
+        "id": "recovery_after_timeout",
+        "status": "computed"
+      }
+    ],
+    "failures": [],
+    "insufficient_convergence": "Boundary rejection covered by injected regression; actual 20-iteration nonconvergence retained in Issue #21; no failing 2000-iteration sample claimed"
+  },
+  "windows_unlimited": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.14.8",
+    "linux_limits_expected": false,
+    "sources_sha256_lf": {
+      "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+      "poker_spot/turn.py": "fb546353b2875dec377b2966a9c09282bb6a65617505760b1b731e0d66a7e572",
+      "poker_spot/turn_pilot.py": "17f6ff1504759ade9e20ec84b4175b7ebe5e989590aed6633810fd738a534051",
+      "poker_spot/turn_worker.py": "3337683af5b50d788f9e171266f8b8960a2be8203fefeacf055ffb9fe4f5152e",
+      "poker_spot/execution.py": "30fdddbff40a034a70f0327d2dbc957a3b13980ef04829c4e66d0bcf5a2af0ce",
+      "poker_spot/http_server.py": "fe2ff5083e4d2732b62f24b7ab99e6379d57b5d55e4b49a371280206a6f5ed22",
+      "poker_spot/auth.py": "9fdd3433f86893912966a2becc06fc3d8743fe66148313721f5534ab466fa653",
+      "scripts/benchmark_turn_pilot.py": "8fec2a5f05af549471af49aa1a0f0f669ce3e0a151f709a6a0c8fbd32d8c5b1f",
+      "tests/test_turn_pilot.py": "4508cff53d227aa9394740bb768d0d7ac5b2b7bd63f0dd2562b589fe45a64ce0"
+    },
+    "cases": [
+      {
+        "id": "singleton_minimax",
+        "question": "Inspect a flush draw versus a known overpair in a toy game",
+        "request": {
+          "board": "Js,Ts,2c,3d",
+          "oop_range": [
+            {
+              "hand": "AsKs",
+              "weight": 1
+            }
+          ],
+          "ip_range": [
+            {
+              "hand": "QhQd",
+              "weight": 1
+            }
+          ],
+          "pot_cents": 10000,
+          "stack_cents": 15000,
+          "turn_bet_sizes": [
+            0.5
+          ],
+          "river_bet_sizes": [
+            0.5
+          ],
+          "iterations": 2000,
+          "views": [
+            {
+              "player": "oop",
+              "hand": "AsKs",
+              "node": "turn"
+            },
+            {
+              "player": "ip",
+              "hand": "QhQd",
+              "node": "turn/check"
+            },
+            {
+              "player": "oop",
+              "hand": "AsKs",
+              "node": "turn/check/check/river",
+              "river_card": "2d"
+            }
+          ]
+        },
+        "first_sample_views": [
+          {
+            "player": "oop",
+            "hand": "KsAs",
+            "node": "turn",
+            "river_card": null,
+            "frequency": {
+              "check": 0.4140271570577463,
+              "bet_50": 0.5859728429422537
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -27.273297701513062,
+              "bet_50": -27.27281951420245
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 1.0,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 1.0
+          },
+          {
+            "player": "ip",
+            "hand": "QdQh",
+            "node": "turn/check",
+            "river_card": null,
+            "frequency": {
+              "check": 2.390335755379264e-06,
+              "bet_50": 0.9999976096642446
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 8.530763585271602,
+              "bet_50": 27.2733425025696
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 0.4140271570577463,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 0.4140271570577463
+          },
+          {
+            "player": "oop",
+            "hand": "KsAs",
+            "node": "turn/check/check/river",
+            "river_card": "2d",
+            "frequency": {
+              "check": 0.8877063512803353,
+              "bet_50": 0.11229364871966485
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -50.00000424917656,
+              "bet_50": -76.47950128807248
+            },
+            "own_reach_given_hand": 0.4140271570577463,
+            "compatible_opponent_reach": 2.390335755379264e-06,
+            "chance_reach": 0.022727272727272728,
+            "reach_probability_given_hand": 2.2492361754844482e-08
+          }
+        ],
+        "samples": [
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -27.273017496735203,
+              "ip_ev": 27.273017496735207,
+              "raw_nash_conv_chips": 0.00044952383773377846,
+              "zero_sum_residual": 3.552713678800501e-15,
+              "nash_conv_chips": 0.00044952383773377846,
+              "nash_conv_pct_pot": 0.00044952383773377846
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -27.272626829907423,
+              "ip_best_response_ev": 27.273076353745157,
+              "raw_nash_conv_chips": 0.00044952383773377846
+            },
+            "game_identity_sha256": "7d04bc46b999d89d59fe1fee8951f18e678213d13b03cb21bba14b2775d32a3b",
+            "request_sha256": "bd67f12558775e8f46fdf7aade3944e4d9a2dcfd82340ca55b0ab7d9526c4bc9",
+            "result_sha256": "8b305ef4b2c67e364f8aa8c440cc56ef545af1f4972125fee8b0b010488114cb",
+            "execution": {
+              "platform": "win32",
+              "limits": null,
+              "worker_wall_seconds": 1.5743302000919357,
+              "budget_enforced": false,
+              "stage_seconds": {
+                "bootstrap_imports": 0.19511810003314167,
+                "read_parse": 6.0699996538460255e-05,
+                "validate_solve_br_project_receipt": 1.3791117999935523,
+                "result_serialization": 3.860006108880043e-05
+              },
+              "parent_wall_seconds": 1.64385669992771
+            },
+            "sdk_result_bytes": 10277,
+            "observed_headroom": false
+          },
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -27.273017496735203,
+              "ip_ev": 27.273017496735207,
+              "raw_nash_conv_chips": 0.00044952383773377846,
+              "zero_sum_residual": 3.552713678800501e-15,
+              "nash_conv_chips": 0.00044952383773377846,
+              "nash_conv_pct_pot": 0.00044952383773377846
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -27.272626829907423,
+              "ip_best_response_ev": 27.273076353745157,
+              "raw_nash_conv_chips": 0.00044952383773377846
+            },
+            "game_identity_sha256": "7d04bc46b999d89d59fe1fee8951f18e678213d13b03cb21bba14b2775d32a3b",
+            "request_sha256": "bd67f12558775e8f46fdf7aade3944e4d9a2dcfd82340ca55b0ab7d9526c4bc9",
+            "result_sha256": "8b305ef4b2c67e364f8aa8c440cc56ef545af1f4972125fee8b0b010488114cb",
+            "execution": {
+              "platform": "win32",
+              "limits": null,
+              "worker_wall_seconds": 1.5829659000737593,
+              "budget_enforced": false,
+              "stage_seconds": {
+                "bootstrap_imports": 0.19804569997359067,
+                "read_parse": 5.0200033001601696e-05,
+                "validate_solve_br_project_receipt": 1.3848314000060782,
+                "result_serialization": 3.7400051951408386e-05
+              },
+              "parent_wall_seconds": 1.654926700051874
+            },
+            "sdk_result_bytes": 10281,
+            "observed_headroom": false
+          }
+        ]
+      },
+      {
+        "id": "weighted_dry",
+        "question": "Compare value and missed-high-card continuations under supplied weights",
+        "request": {
+          "board": "2c,3d,4h,8s",
+          "oop_range": [
+            {
+              "hand": "KhKd",
+              "weight": 1
+            }
+          ],
+          "ip_range": [
+            {
+              "hand": "AsAd",
+              "weight": 1
+            },
+            {
+              "hand": "QhJd",
+              "weight": 0.7
+            }
+          ],
+          "pot_cents": 10000,
+          "stack_cents": 20000,
+          "turn_bet_sizes": [
+            0.5
+          ],
+          "river_bet_sizes": [
+            0.5
+          ],
+          "iterations": 2000,
+          "views": [
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn"
+            },
+            {
+              "player": "ip",
+              "hand": "AsAd",
+              "node": "turn/check"
+            },
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn/check/check/river",
+              "river_card": "2d"
+            }
+          ]
+        },
+        "first_sample_views": [
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn",
+            "river_card": null,
+            "frequency": {
+              "check": 0.9999942125658532,
+              "bet_50": 5.787434146802904e-06
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -48.63316464931544,
+              "bet_50": -60.26842203683995
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 1.7,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 1.0
+          },
+          {
+            "player": "ip",
+            "hand": "AdAs",
+            "node": "turn/check",
+            "river_card": null,
+            "frequency": {
+              "check": 5.657257828911663e-06,
+              "bet_50": 0.999994342742171
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 81.04855943946393,
+              "bet_50": 117.6469184187934
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 0.9999942125658532,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 0.9999942125658532
+          },
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn/check/check/river",
+            "river_card": "2d",
+            "frequency": {
+              "check": 0.6571920999164543,
+              "bet_50": 0.34280790008354567
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 49.98142844468949,
+              "bet_50": 49.9663410999904
+            },
+            "own_reach_given_hand": 0.9999942125658532,
+            "compatible_opponent_reach": 0.023151331275817484,
+            "chance_reach": 0.022727272727272728,
+            "reach_probability_given_hand": 0.0003095079851472235
+          }
+        ],
+        "samples": [
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -48.633231987601356,
+              "ip_ev": 48.63323198760138,
+              "raw_nash_conv_chips": 0.005276748211178315,
+              "zero_sum_residual": 2.1316282072803006e-14,
+              "nash_conv_chips": 0.005276748211178315,
+              "nash_conv_pct_pot": 0.005276748211178315
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -48.629658601796514,
+              "ip_best_response_ev": 48.634935350007694,
+              "raw_nash_conv_chips": 0.005276748211180404
+            },
+            "game_identity_sha256": "918b481bf5152e8096a78994ead55ae58d998daa8f858d2a27dc3e6c9649b4f0",
+            "request_sha256": "8f584a20e047e437e943c8968ee1b2c660c4952211555d63178d939ee8c4aa98",
+            "result_sha256": "ed3bcd1945338ea0a580d23ab73174d1b99c8104cdfda659540f371b3c658b9d",
+            "execution": {
+              "platform": "win32",
+              "limits": null,
+              "worker_wall_seconds": 1.6575392000377178,
+              "budget_enforced": false,
+              "stage_seconds": {
+                "bootstrap_imports": 0.1941145999589935,
+                "read_parse": 5.610007792711258e-05,
+                "validate_solve_br_project_receipt": 1.463328899932094,
+                "result_serialization": 3.850006032735109e-05
+              },
+              "parent_wall_seconds": 1.7314035000745207
+            },
+            "sdk_result_bytes": 10402,
+            "observed_headroom": false
+          },
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -48.633231987601356,
+              "ip_ev": 48.63323198760138,
+              "raw_nash_conv_chips": 0.005276748211178315,
+              "zero_sum_residual": 2.1316282072803006e-14,
+              "nash_conv_chips": 0.005276748211178315,
+              "nash_conv_pct_pot": 0.005276748211178315
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -48.629658601796514,
+              "ip_best_response_ev": 48.634935350007694,
+              "raw_nash_conv_chips": 0.005276748211180404
+            },
+            "game_identity_sha256": "918b481bf5152e8096a78994ead55ae58d998daa8f858d2a27dc3e6c9649b4f0",
+            "request_sha256": "8f584a20e047e437e943c8968ee1b2c660c4952211555d63178d939ee8c4aa98",
+            "result_sha256": "ed3bcd1945338ea0a580d23ab73174d1b99c8104cdfda659540f371b3c658b9d",
+            "execution": {
+              "platform": "win32",
+              "limits": null,
+              "worker_wall_seconds": 1.6469660000875592,
+              "budget_enforced": false,
+              "stage_seconds": {
+                "bootstrap_imports": 0.19579460006207228,
+                "read_parse": 5.0699920393526554e-05,
+                "validate_solve_br_project_receipt": 1.4510808000341058,
+                "result_serialization": 3.8800062611699104e-05
+              },
+              "parent_wall_seconds": 1.7161646001040936
+            },
+            "sdk_result_bytes": 10410,
+            "observed_headroom": false
+          }
+        ]
+      },
+      {
+        "id": "weighted_collision",
+        "question": "Inspect blocker-sensitive turn betting and one future river view",
+        "request": {
+          "board": "2c,3d,4h,8s",
+          "oop_range": [
+            {
+              "hand": "KhKd",
+              "weight": 1
+            },
+            {
+              "hand": "AsKs",
+              "weight": 0.3
+            }
+          ],
+          "ip_range": [
+            {
+              "hand": "AsAd",
+              "weight": 1
+            },
+            {
+              "hand": "QsJs",
+              "weight": 0.5
+            }
+          ],
+          "pot_cents": 10000,
+          "stack_cents": 10000,
+          "turn_bet_sizes": [
+            0.5
+          ],
+          "river_bet_sizes": [
+            0.5
+          ],
+          "iterations": 2000,
+          "views": [
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn"
+            },
+            {
+              "player": "ip",
+              "hand": "AsAd",
+              "node": "turn/check"
+            },
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn/check/check/river",
+              "river_card": "2d"
+            }
+          ]
+        },
+        "first_sample_views": [
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn",
+            "river_card": null,
+            "frequency": {
+              "check": 0.9999964471159699,
+              "bet_50": 3.552884030110332e-06
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -49.99996897556881,
+              "bet_50": -63.6342044981241
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 1.5,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 1.0
+          },
+          {
+            "player": "ip",
+            "hand": "AdAs",
+            "node": "turn/check",
+            "river_card": null,
+            "frequency": {
+              "check": 1.326897036675062e-05,
+              "bet_50": 0.9999867310296333
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 50.38431518922333,
+              "bet_50": 53.5849779404286
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 0.9999964471159699,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 0.9999964471159699
+          },
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn/check/check/river",
+            "river_card": "2d",
+            "frequency": {
+              "check": 0.9999850752974867,
+              "bet_50": 1.4924702513227138e-05
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -40.361959431838166,
+              "bet_50": -61.73621796868509
+            },
+            "own_reach_given_hand": 0.9999964471159699,
+            "compatible_opponent_reach": 1.722586808561901e-05,
+            "chance_reach": 0.022727272727272728,
+            "reach_probability_given_hand": 2.609970740016271e-07
+          }
+        ],
+        "samples": [
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -37.479356228812726,
+              "ip_ev": 37.479356228812726,
+              "raw_nash_conv_chips": 0.0004767565754394982,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.0004767565754394982,
+              "nash_conv_pct_pot": 0.00047675657543949814
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -37.47912043894925,
+              "ip_best_response_ev": 37.47959719552469,
+              "raw_nash_conv_chips": 0.0004767565754377756
+            },
+            "game_identity_sha256": "37bf16fb583c60ef80ea303d054a5741726773c3a6385b3468ea2b3a9b2e86a3",
+            "request_sha256": "7ff2b6352fe4a15f95e2430ae7bf0d1293a91f8f064278cd0a210d4b20408319",
+            "result_sha256": "ae282a738e5c6a7e0c748cd33ae117c8643720c37e2564f06581a347b4b10678",
+            "execution": {
+              "platform": "win32",
+              "limits": null,
+              "worker_wall_seconds": 1.72942139999941,
+              "budget_enforced": false,
+              "stage_seconds": {
+                "bootstrap_imports": 0.20368979999329895,
+                "read_parse": 5.2299932576715946e-05,
+                "validate_solve_br_project_receipt": 1.5256377999903634,
+                "result_serialization": 4.0400074794888496e-05
+              },
+              "parent_wall_seconds": 1.8051134999841452
+            },
+            "sdk_result_bytes": 10505,
+            "observed_headroom": false
+          },
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -37.479356228812726,
+              "ip_ev": 37.479356228812726,
+              "raw_nash_conv_chips": 0.0004767565754394982,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.0004767565754394982,
+              "nash_conv_pct_pot": 0.00047675657543949814
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -37.47912043894925,
+              "ip_best_response_ev": 37.47959719552469,
+              "raw_nash_conv_chips": 0.0004767565754377756
+            },
+            "game_identity_sha256": "37bf16fb583c60ef80ea303d054a5741726773c3a6385b3468ea2b3a9b2e86a3",
+            "request_sha256": "7ff2b6352fe4a15f95e2430ae7bf0d1293a91f8f064278cd0a210d4b20408319",
+            "result_sha256": "ae282a738e5c6a7e0c748cd33ae117c8643720c37e2564f06581a347b4b10678",
+            "execution": {
+              "platform": "win32",
+              "limits": null,
+              "worker_wall_seconds": 1.74691480002366,
+              "budget_enforced": false,
+              "stage_seconds": {
+                "bootstrap_imports": 0.19156339997425675,
+                "read_parse": 5.840009544044733e-05,
+                "validate_solve_br_project_receipt": 1.555250099976547,
+                "result_serialization": 4.169996827840805e-05
+              },
+              "parent_wall_seconds": 1.8184191000182182
+            },
+            "sdk_result_bytes": 10499,
+            "observed_headroom": false
+          }
+        ]
+      },
+      {
+        "id": "turn_allin",
+        "question": "Inspect a terminal turn shove versus a two-combo arrival hypothesis",
+        "request": {
+          "board": "2c,3d,4h,8s",
+          "oop_range": [
+            {
+              "hand": "KhKd",
+              "weight": 1
+            }
+          ],
+          "ip_range": [
+            {
+              "hand": "AsAd",
+              "weight": 1
+            },
+            {
+              "hand": "QhJd",
+              "weight": 1
+            }
+          ],
+          "pot_cents": 10000,
+          "stack_cents": 10000,
+          "turn_bet_sizes": [
+            1
+          ],
+          "river_bet_sizes": [],
+          "iterations": 2000,
+          "views": [
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn"
+            },
+            {
+              "player": "ip",
+              "hand": "AsAd",
+              "node": "turn/check"
+            },
+            {
+              "player": "oop",
+              "hand": "KhKd",
+              "node": "turn/check/check/river",
+              "river_card": "2d"
+            }
+          ]
+        },
+        "first_sample_views": [
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn",
+            "river_card": null,
+            "frequency": {
+              "check": 0.9999975441663678,
+              "bet_100": 2.4558336322217726e-06
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": -21.590886909173587,
+              "bet_100": -43.18178240425243
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 2.0,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 1.0
+          },
+          {
+            "player": "ip",
+            "hand": "AdAs",
+            "node": "turn/check",
+            "river_card": null,
+            "frequency": {
+              "check": 7.496251874062968e-07,
+              "bet_100": 0.9999992503748126
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 45.45454545454544,
+              "bet_100": 93.164176499899
+            },
+            "own_reach_given_hand": 1.0,
+            "compatible_opponent_reach": 0.9999975441663678,
+            "chance_reach": 1.0,
+            "reach_probability_given_hand": 0.9999975441663678
+          },
+          {
+            "player": "oop",
+            "hand": "KdKh",
+            "node": "turn/check/check/river",
+            "river_card": "2d",
+            "frequency": {
+              "check": 1.0
+            },
+            "action_ev_relative_to_half_turn_pot": {
+              "check": 49.99986811499765
+            },
+            "own_reach_given_hand": 0.9999975441663678,
+            "compatible_opponent_reach": 0.5683930500422011,
+            "chance_reach": 0.022727272727272728,
+            "reach_probability_given_hand": 0.006458996070039006
+          }
+        ],
+        "samples": [
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -21.59093993282089,
+              "ip_ev": 21.59093993282089,
+              "raw_nash_conv_chips": 0.022185180314451713,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.022185180314451713,
+              "nash_conv_pct_pot": 0.022185180314451713
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -21.580383275455706,
+              "ip_best_response_ev": 21.602568455770157,
+              "raw_nash_conv_chips": 0.022185180314451713
+            },
+            "game_identity_sha256": "dc8df43719cef3469f1668aa849172e135879fe1cb7fdc13f131cb0dab70c2ef",
+            "request_sha256": "b6906a0b3fc4753cc679002e7e3af950184d9f177002dfe6d4266270725e64df",
+            "result_sha256": "90cf3b2dddbc84371acf2f274c456ff82ea4fc4bb2e0f09f679c03d2691aabf3",
+            "execution": {
+              "platform": "win32",
+              "limits": null,
+              "worker_wall_seconds": 0.6228439999977127,
+              "budget_enforced": false,
+              "stage_seconds": {
+                "bootstrap_imports": 0.19989269995130599,
+                "read_parse": 6.210000719875097e-05,
+                "validate_solve_br_project_receipt": 0.4228531999979168,
+                "result_serialization": 3.490003291517496e-05
+              },
+              "parent_wall_seconds": 0.6960320000071079
+            },
+            "sdk_result_bytes": 10016,
+            "observed_headroom": false
+          },
+          {
+            "status": "computed",
+            "source": "computed_on_demand",
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": -21.59093993282089,
+              "ip_ev": 21.59093993282089,
+              "raw_nash_conv_chips": 0.022185180314451713,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.022185180314451713,
+              "nash_conv_pct_pot": 0.022185180314451713
+            },
+            "best_response_bounds": {
+              "oop_best_response_ev": -21.580383275455706,
+              "ip_best_response_ev": 21.602568455770157,
+              "raw_nash_conv_chips": 0.022185180314451713
+            },
+            "game_identity_sha256": "dc8df43719cef3469f1668aa849172e135879fe1cb7fdc13f131cb0dab70c2ef",
+            "request_sha256": "b6906a0b3fc4753cc679002e7e3af950184d9f177002dfe6d4266270725e64df",
+            "result_sha256": "90cf3b2dddbc84371acf2f274c456ff82ea4fc4bb2e0f09f679c03d2691aabf3",
+            "execution": {
+              "platform": "win32",
+              "limits": null,
+              "worker_wall_seconds": 0.6236102000111714,
+              "budget_enforced": false,
+              "stage_seconds": {
+                "bootstrap_imports": 0.20645110006444156,
+                "read_parse": 5.689996760338545e-05,
+                "validate_solve_br_project_receipt": 0.4170470000244677,
+                "result_serialization": 5.3999945521354675e-05
+              },
+              "parent_wall_seconds": 0.7065327001037076
+            },
+            "sdk_result_bytes": 10018,
+            "observed_headroom": false
+          }
+        ]
+      }
+    ],
+    "negatives": [
+      {
+        "id": "third_combo",
+        "status": "invalid_input"
+      },
+      {
+        "id": "two_sizes",
+        "status": "invalid_input"
+      },
+      {
+        "id": "fractional_cent",
+        "status": "invalid_input"
+      },
+      {
+        "id": "too_few_iterations",
+        "status": "invalid_input"
+      },
+      {
+        "id": "invalid_view",
+        "status": "invalid_input"
+      },
+      {
+        "id": "real_timeout",
+        "status": "timeout",
+        "slot_released": true
+      },
+      {
+        "id": "recovery_after_timeout",
+        "status": "computed"
+      }
+    ],
+    "failures": [],
+    "insufficient_convergence": "Boundary rejection covered by injected regression; actual 20-iteration nonconvergence retained in Issue #21; no failing 2000-iteration sample claimed"
+  }
+}

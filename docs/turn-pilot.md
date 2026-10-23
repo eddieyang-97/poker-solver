@@ -25,7 +25,7 @@ scope, published plugin or account configuration changes in this milestone.
 
 To serve the local prototype, configure the existing **local development**
 authentication (`POKER_MODE=local`, a private `POKER_MCP_TOKEN` of at least 32
-characters) in your own shell, then run:
+characters) in your own shell, then run with Python 3.11+:
 
 ```powershell
 $env:OPENBLAS_NUM_THREADS='1'
@@ -152,3 +152,10 @@ This independent reference is in-repository, not externally audited. General
 See [validation](validation.md) for observed runs, and the separate
 [release decision and pending gates](turn-pilot-release.md). Stage A does not
 complete Issue #26's hosted acceptance; keep the issue open.
+
+Source `a9ade24` passed [Linux CI 39936495563](https://github.com/eddieyang-97/poker-solver/actions/runs/39936495563):
+164 tests, all numerical gates and eleven artifacts. The eight bounded pilot
+samples took 1.147–3.548s parent wall, <=3.521s CPU, <=119.83 MiB AS, and <=10,837
+SDK bytes. [Pinned measurements and receipts](turn-pilot-results.json) retain
+every sample and the two fresh maximum-workload timeouts. This is standalone
+Linux/shared-runner evidence, not actual Render or client acceptance.

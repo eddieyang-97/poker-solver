@@ -34,7 +34,39 @@ Existing numerical suites: **10/10 river plus sensitivity**, **8/8 turn**, and
 EV/BR/NashConv difference remains **6.90e-14 chips**. Existing 188-game
 decomposition and all eleven artifact groups remain unconditional CI gates.
 No Linux pilot or deployed acceptance is claimed from these Windows runs;
-source-specific CI evidence will be recorded separately after observation.
+source-specific CI evidence follows.
+
+[CI 39936495563](https://github.com/eddieyang-97/poker-solver/actions/runs/39936495563)
+passed on **a9ade2460a13c3f7f7f5a337f0024f5685fbfa48**: **164/164 Linux tests,
+no skips**, all five jobs and eleven artifact groups. Exact required `test`,
+GitHub Actions app 15368, source SHA and dependency completion order verify.
+[Versioned measurements](turn-pilot-results.json) pin requests, root/BR values,
+limits, stage/output measurements, source/request/result hashes and ZIP digests.
+
+| Existing synthetic game | Two Linux parent wall seconds | Max CPU seconds | Peak AS MiB | Max SDK bytes |
+| --- | --- | ---: | ---: | ---: |
+| Singleton draw/overpair | 3.177 / 3.190 | 3.155 | 119.69 | 10,591 |
+| Weighted dry | 3.344 / 3.442 | 3.414 | 119.69 | 10,720 |
+| Weighted collisions | 3.489 / 3.548 | 3.520 | 119.82 | 10,837 |
+| Terminal turn all-in | 1.147 / 1.151 | 1.126 | 119.69 | 10,332 |
+
+All eight actual limited workers met the predeclared observed <=10s CPU/wall,
+<=192 MiB AS headroom and output gates; all root convergence gates passed.
+Actual timeout/reap/recovery and five rejected classes retained expected states.
+Resource ZIP SHA-256: `cf9e30691a6450ac7e49ae29b28336f83f7c20ca7212729a70664a08c6e4966d`.
+The independent/decomposition ZIPs, sources/raw hashes and all **10 + 188**
+reference-profile digests verify. Same saved-policy comparisons pass unchanged;
+separately trained large-game probabilities still differ from the prior CI
+sample by up to **0.34670755**, with **0.30259845** in the two-size draw game.
+No trajectory cause or low-reach EV/frequency precision is newly established.
+
+The original two maximum resource probes **both WALL_TIMEOUT** again; remaining
+four completed. Those failures remain data, not passing hosted workloads.
+Measured CI critical path **374s**, initial queue 3s and **18 estimated runner
+minutes** (not billing or a general cost/runtime guarantee). Full raw exports
+and timing receipts remain in CI/ignored artifacts. Actual Render capacity,
+external OAuth lifecycle and authenticated ChatGPT turn acceptance are still
+unverified. The evidence commit changes documentation only, not measured code.
 
 ## PR #30 retrieval-coverage review fix — 23 October 2026
 
