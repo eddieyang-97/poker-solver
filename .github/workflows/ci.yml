@@ -193,6 +193,11 @@ jobs:
       run: python scripts/benchmark_turn_feasibility.py --output .artifacts/turn-feasibility
       env:
         OPENBLAS_NUM_THREADS: '1'
+    - name: Local opt-in turn MCP pilot resource and output gates
+      timeout-minutes: 3
+      run: python scripts/benchmark_turn_pilot.py --output .artifacts/turn-pilot
+      env:
+        OPENBLAS_NUM_THREADS: '1'
     - name: Retain local resource study including failed probes
       if: always()
       uses: actions/upload-artifact@v4
@@ -204,6 +209,7 @@ jobs:
           .artifacts/turn-resources.*
           .artifacts/turn-feasibility.*
           .artifacts/turn-feasibility-policies/
+          .artifacts/turn-pilot.*
   test:
     name: test
     runs-on: ubuntu-latest

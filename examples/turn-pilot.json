@@ -1,0 +1,15 @@
+{
+  "board": "2c,3d,4h,8s",
+  "oop_range": [{"hand": "KhKd", "weight": 1.0}],
+  "ip_range": [{"hand": "AsAd", "weight": 1.0}, {"hand": "QhJd", "weight": 0.7}],
+  "pot_cents": 10000,
+  "stack_cents": 20000,
+  "turn_bet_sizes": [0.5],
+  "river_bet_sizes": [0.5],
+  "iterations": 2000,
+  "views": [
+    {"player": "oop", "hand": "KhKd", "node": "turn"},
+    {"player": "ip", "hand": "QhJd", "node": "turn/check"},
+    {"player": "oop", "hand": "KhKd", "node": "turn/check/check/river", "river_card": "9c"}
+  ]
+}

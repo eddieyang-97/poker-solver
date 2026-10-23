@@ -33,19 +33,30 @@ def deployment_commit():
     return value if re.fullmatch(r'[0-9a-f]{40}', value) else None
 
 
-def create_app(settings: Settings | None = None, runner: Runner | None = None):
+def create_app(settings: Settings | None = None, runner: Runner | None = None, *, turn_pilot: bool = False):
+    if turn_pilot and 'RENDER' in os.environ:
+        raise ValueError('Issue #26 Stage A turn pilot is local only; release requires owner approval')
     settings = settings or Settings.from_env()
     verifier = Verifier(settings)
-    runner = runner or Runner()
+    runner = runner or Runner(turn_pilot=turn_pilot)
+    if bool(getattr(runner, 'turn_pilot', False)) != turn_pilot:
+        raise ValueError('Runner and MCP turn opt-in must agree')
     server = Server('poker-spot-study', version='0.2.0', instructions=(
-        'Post-session heads-up river study only. Supply both complete weighted arrival ranges. '
+        ('Post-session heads-up turn/river local study. ' if turn_pilot else
+         'Post-session heads-up river study only. ') + 'Supply both complete weighted arrival ranges. '
         'Computed CFR results use a no-raise, no-rake restricted tree. Report NashConv and '
-        'assumptions; never claim full GTO. For a checked river, inspect ip_after_oop_check.'))
+        'assumptions; never claim full GTO. For a checked river, inspect ip_after_oop_check.'
+        + (' Local opt-in solve_turn_v1 is a separate tiny-range two-street experiment; '
+           'a future river filter is output-only, and root convergence does not certify low-reach EVs.'
+           if turn_pilot else '')))
 
     @server.list_tools()
     async def list_tools():
         definitions = copy.deepcopy([TOOL, CALL_TOOL])
         definitions[0]['inputSchema']['properties']['iterations']['maximum'] = 1500
+        if turn_pilot:
+            from .turn_pilot import TOOL as TURN_TOOL
+            definitions.append(copy.deepcopy(TURN_TOOL))
         for definition in definitions:
             definition['securitySchemes'] = [{'type': 'oauth2', 'scopes': [SCOPE]}]
             definition['_meta'] = {'securitySchemes': definition['securitySchemes']}
@@ -57,7 +68,8 @@ def create_app(settings: Settings | None = None, runner: Runner | None = None):
             result = await runner.run(name, arguments)
             logger.info('calculation_completed tool=%s', name)
             return CallToolResult(content=[TextContent(type='text', text=json.dumps(result))],
-                                  structuredContent=result, isError=False)
+                                  structuredContent=result,
+                                  isError=(name == 'solve_turn_v1' and result.get('status') != 'computed'))
         except CalculationError as exc:
             logger.info('calculation_failed code=%s', exc.code)
             error = {'code': exc.code, 'message': str(exc)}
@@ -110,7 +122,7 @@ def create_app(settings: Settings | None = None, runner: Runner | None = None):
 
     async def health(request):
         return JSONResponse({'status': 'ok', 'auth_configured': settings.configured,
-                             'engine': 'river-only', 'version': '0.2.0',
+                             'engine': 'local-turn-pilot' if turn_pilot else 'river-only', 'version': '0.2.0',
                              'deployment': {'commit': deployment_commit()}})
 
     async def ready(request):

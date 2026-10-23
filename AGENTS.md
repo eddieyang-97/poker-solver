@@ -2,6 +2,17 @@
 
 ## Issue-driven development workflow
 
+- Issue #26 Stage A permits an explicitly opted-in local `solve_turn_v1` surface,
+  not production registration. Default HTTP/stdio tool lists stay river-only;
+  reject pilot app construction on Render. Preserve two explicit combos/player,
+  one size/street, exactly 2000 iterations, cent-exact money, four output views,
+  unchanged 0.5%-pot convergence gate and shared worker/rate/body limits.
+  Run benchmark_turn_pilot.py after contract/worker/runner changes; retain real
+  Linux pre-import 20s CPU/384 MiB AS limits and deadline through serialization/
+  reap, result/source receipts, negatives and bounded SDK bytes. No product cache
+  or benchmark imports. Stage B needs separate owner approval and actual Render/
+  authenticated ChatGPT acceptance; local SDK success is not that acceptance.
+
 - Issue #21 is a development-only turn feasibility experiment. Keep full-policy
   storage/lookup under benchmarks and ignored/CI artifacts, not product imports
   or a shipped cache. After changes run benchmark_turn_feasibility.py, retaining

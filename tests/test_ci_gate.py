@@ -106,12 +106,15 @@ class CIGateTests(unittest.TestCase):
         expected.append({'name': 'Full-policy turn feasibility and exact-reuse experiment', 'timeout-minutes': 3,
                          'run': 'python scripts/benchmark_turn_feasibility.py --output .artifacts/turn-feasibility',
                          'env': {'OPENBLAS_NUM_THREADS': '1'}})
+        expected.append({'name': 'Local opt-in turn MCP pilot resource and output gates', 'timeout-minutes': 3,
+                         'run': 'python scripts/benchmark_turn_pilot.py --output .artifacts/turn-pilot',
+                         'env': {'OPENBLAS_NUM_THREADS': '1'}})
         self.assertCountEqual(found, expected)
         expected_artifacts = deepcopy(contract['artifacts'])
         for step in expected_artifacts:
             if step['with']['name'] == 'turn-resource-study':
                 step['with']['path'] = ('.artifacts/turn-resources.*\n.artifacts/turn-feasibility.*\n'
-                                        '.artifacts/turn-feasibility-policies/\n')
+                                        '.artifacts/turn-feasibility-policies/\n.artifacts/turn-pilot.*\n')
         self.assertCountEqual(artifacts, expected_artifacts)
         # No path filters, feature pushes or main cancellation; latest PR supersedes only its own PR.
         events = workflow.get('on', workflow.get(True))  # YAML 1.1 compatibility

@@ -1,5 +1,41 @@
 # Audit and validation — 16 October 2026
 
+## Issue #26 Stage A — local opt-in turn MCP, 23 October 2026
+
+Following owner-merged PR #30 (`20129d8`), the [local pilot](turn-pilot.md)
+chooses bounded **live-only**, deferring the exact library without demand
+evidence. This is a separate `solve_turn_v1` schema, not a deployed tool:
+default HTTP/stdio still expose only the existing river tools; Render opt-in
+construction is explicitly blocked. [Stage B release gates](turn-pilot-release.md)
+remain open, including separate owner approval and real hosted/client acceptance.
+
+The integration shares one worker/no queue and the existing rate/body allowance.
+An isolated direct-script child installs Linux 20s CPU/384 MiB AS before imports;
+the parent bounds startup through serialization/reap, including cancellation
+during spawn. Two explicit combos/player, one size/street, 2000 iterations,
+exact-cent amounts and at most four views bound computation/output. The unchanged
+0.5%-pot convergence gate suppresses strategies on insufficient convergence.
+Full game/source/request/result receipts and per-player best-response bounds
+accompany computed results. No production auth, settings, registrations, solver
+core, numerical gate, plugin or paid resource changes.
+
+Local regression run: **164 tests, 162 passed, two Linux-only checks skipped**;
+Ruff/compileall and CI contract tests passed. Actual local official-client
+roundtrip verified signed owner tokens, denied wrong signature/issuer/audience/
+scope/subject/expiry, bounded body/output, unchanged two river calculations and
+the opt-in tool. Real worker timeout/cancellation/oversize/exit/recovery and
+credential-stripped environments passed. Zero-opponent river support keeps null
+EVs; projected values/frequencies/reach match the unchanged direct solver.
+Insufficient-convergence boundary tests are explicitly injected; the real
+20-iteration failure remains in #21, not mislabeled as a 2000-iteration failure.
+
+Existing numerical suites: **10/10 river plus sensitivity**, **8/8 turn**, and
+**10/10 independent strategic turn** passed locally. Their largest same-policy
+EV/BR/NashConv difference remains **6.90e-14 chips**. Existing 188-game
+decomposition and all eleven artifact groups remain unconditional CI gates.
+No Linux pilot or deployed acceptance is claimed from these Windows runs;
+source-specific CI evidence will be recorded separately after observation.
+
 ## PR #30 retrieval-coverage review fix — 23 October 2026
 
 The feasibility study now separates verified identity-only records from usable

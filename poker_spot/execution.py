@@ -2,6 +2,7 @@
 import asyncio
 import json
 import os
+from pathlib import Path
 import sys
 from collections import deque
 from time import monotonic
@@ -16,15 +17,20 @@ class CalculationError(Exception):
 
 
 class Runner:
-    def __init__(self, timeout: float = 20, rate: int = 30):
+    def __init__(self, timeout: float = 20, rate: int = 30, *, turn_pilot: bool = False):
         self.timeout = timeout
-        self.rate = rate
+        self.rate = min(rate, 30) if turn_pilot else rate
         self.busy = False
         self.starts = deque()
+        self.turn_pilot = turn_pilot
 
     async def run(self, name: str, arguments: dict) -> dict:
         try:
-            args = validate(name, arguments, hosted=True)
+            if name == 'solve_turn_v1' and self.turn_pilot:
+                from .turn_pilot import prepare
+                args = prepare(arguments)
+            else:
+                args = validate(name, arguments, hosted=True)
         except (ValueError, TypeError, KeyError):
             raise CalculationError('invalid_input', 'Invalid tool arguments; check schema, ranges and hosted limits') from None
         now = monotonic()
@@ -38,6 +44,8 @@ class Runner:
         self.starts.append(now)
         process = None
         try:
+            if name == 'solve_turn_v1':
+                return await self._run_turn(args)
             # Do not propagate OAuth keys or operator credentials into workers.
             env = {k: v for k, v in os.environ.items() if k.upper() in {
                 'PATH', 'SYSTEMROOT', 'WINDIR', 'TEMP', 'TMP', 'VIRTUAL_ENV', 'PYTHONPATH'}}
@@ -63,3 +71,63 @@ class Runner:
                 process.kill()
                 await process.wait()
             self.busy = False
+
+    async def _run_turn(self, args):
+        """Same admission/rate slot; isolated startup, bounded pipe, deadline through reap."""
+        process = None
+        started = monotonic()
+        try:
+            async with asyncio.timeout(min(self.timeout, 20)):
+                env = {k: v for k, v in os.environ.items() if k.upper() in {
+                    'PATH', 'SYSTEMROOT', 'WINDIR', 'TEMP', 'TMP'}}
+                env.update(OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', MKL_NUM_THREADS='1')
+                spawn = asyncio.create_task(asyncio.create_subprocess_exec(
+                    sys.executable, '-I', str(Path(__file__).with_name('turn_worker.py')),
+                    stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.DEVNULL, env=env))
+                try:
+                    process = await asyncio.shield(spawn)
+                except BaseException:
+                    # Cancellation during spawn must not orphan an unassigned child.
+                    process = await spawn
+                    raise
+                body = json.dumps(args, allow_nan=False).encode()
+                if len(body) > 16_384:
+                    raise CalculationError('invalid_input', 'Turn request exceeds body budget')
+                process.stdin.write(body)
+                await process.stdin.drain()
+                process.stdin.close()
+                # Extra byte detects oversize without accumulating unlimited stdout.
+                chunks, size = [], 0
+                while True:
+                    chunk = await process.stdout.read(26_625-size)
+                    if not chunk:
+                        break
+                    chunks.append(chunk)
+                    size += len(chunk)
+                    if size > 26_624:
+                        raise CalculationError('output_limit', 'Turn worker exceeded output budget')
+                await process.wait()
+                if process.returncode:
+                    raise CalculationError('worker_failed', 'Turn worker stopped by resource limit or internal error')
+                data = json.loads(b''.join(chunks))
+                if 'error' in data:
+                    raise CalculationError(data['error']['code'], data['error']['message'])
+                measurement = data['measurement']
+                if sys.platform == 'linux' and (
+                        measurement['limits'] != {'cpu_seconds': [20, 20], 'address_space_bytes': [384*1024**2]*2}
+                        or measurement['budget_enforced'] is not True
+                        or measurement['worker_cpu_seconds'] > 20
+                        or measurement['memory_bytes']['VmPeak'] > 384*1024**2):
+                    raise CalculationError('resource_limit', 'Turn worker budget receipt failed')
+                result = data['result']
+                result['execution'] = dict(measurement, parent_wall_seconds=monotonic()-started)
+                return result
+        except TimeoutError:
+            raise CalculationError('timeout', 'Turn calculation exceeded its wall-clock limit') from None
+        except (json.JSONDecodeError, KeyError, TypeError, BrokenPipeError, ConnectionResetError):
+            raise CalculationError('worker_failed', 'Invalid turn worker response') from None
+        finally:
+            if process is not None and process.returncode is None:
+                process.kill()
+                await process.wait()
