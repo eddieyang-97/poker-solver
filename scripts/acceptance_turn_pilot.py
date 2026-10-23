@@ -11,6 +11,7 @@ import hashlib
 import json
 import math
 import os
+from itertools import product
 from pathlib import Path
 import re
 import sys
@@ -30,6 +31,10 @@ ROOT = Path(__file__).resolve().parents[1]
 MAX_SDK_BYTES = 65_536  # Engineering bound, not a published ChatGPT byte limit.
 ALGORITHM = 'Alternating CFR+, linear own-reach averaging, exact river enumeration'
 TOOLS = {'solve_river', 'evaluate_river_call', NAME}
+MAX_WARM_CLIENT_SECONDS = 15.0  # 10s server headroom + 5s transport/SDK allowance.
+RIVER_FREQUENCY_TOLERANCE = 0.04  # Existing independently checked polarized-fixture gate.
+RIVER_ROUNDING = 0.00005  # River output rounds EVs/frequencies to four decimals.
+LEGACY_BASELINE = ROOT/'docs/turn-pilot-stage-b-baseline.json'
 
 
 class ReceiptError(ValueError):
@@ -48,6 +53,105 @@ def source_hashes(root=ROOT):
 
 def finite(value):
     return type(value) in (int, float) and math.isfinite(value)
+
+
+def legacy_baselines():
+    """Exact recorded requests, not the earlier unrecorded indifference request."""
+    rows = json.loads(LEGACY_BASELINE.read_text(encoding='utf-8'))['legacy_chatgpt_connector_calls']
+    require(len(rows) == 2 and {r['tool'] for r in rows} == {'solve_river', 'evaluate_river_call'},
+            'Legacy baseline fixture mismatch')
+    return rows
+
+
+def _river_schema(actual, expected):
+    """Require the complete pinned response shape and finite numeric leaves."""
+    if isinstance(expected, dict):
+        require(isinstance(actual, dict) and actual.keys() == expected.keys(), 'Legacy response schema mismatch')
+        for key in expected:
+            _river_schema(actual[key], expected[key])
+    elif isinstance(expected, list):
+        require(isinstance(actual, list) and len(actual) == len(expected), 'Legacy response list mismatch')
+        for value, baseline in zip(actual, expected):
+            _river_schema(value, baseline)
+    elif finite(expected):
+        require(finite(actual), 'Legacy response contains a nonfinite or nonnumeric quantity')
+    else:
+        require(type(actual) is type(expected) and actual == expected, 'Legacy response identity mismatch')
+
+
+def validate_legacy_result(name, request, data):
+    """Pinned singleton-KK / equal AA,QJ game; not a generic conditional-EV gate.
+
+    Complete schemas/identities are fixed. Call quantities are deterministic.
+    River frequencies retain the existing analytical 0.04 gate; value comparisons
+    use root gap bounds, while conditional EVs use rounded-policy chip accounting.
+    """
+    baseline = next(row for row in legacy_baselines() if row['tool'] == name)
+    require(request == baseline['request'], 'Legacy request is not comparable to the pinned baseline')
+    expected = baseline['response']['structuredContent']
+    _river_schema(data, expected)
+    if name == 'evaluate_river_call':
+        require(data == expected, 'Deterministic river call quantities changed')
+        return
+    for key in ('pot', 'stack', 'bet_sizes', 'iterations', 'range_combos', 'effective_bet_amounts'):
+        require(data[key] == expected[key], 'River game or tree identity changed')
+    pot, bet = data['pot'], data['effective_bet_amounts'][0]
+    gap = data['nash_conv_chips']
+    eps, unit = 1e-9, RIVER_ROUNDING
+    require(gap >= 0 and 0 <= data['nash_conv_pct_pot'] < 0.5
+            and abs(data['nash_conv_pct_pot']-gap/pot*100) <= 0.0005+unit/pot*100+eps,
+            'River convergence quantities disagree')
+    value = data['root_ev_oop_relative_to_split_pot']
+    require(abs(value-expected['root_ev_oop_relative_to_split_pot'])
+            <= gap+expected['nash_conv_chips']+2*unit+eps
+            and abs(value+pot/4) <= gap+unit+eps, 'River root EV disagrees with baseline/analytical bound')
+    for side in ('oop', 'ip'):
+        for node, row in data['hands'][side]['node_strategy'].items():
+            old = expected['hands'][side]['node_strategy'][node]
+            frequencies = row['frequency']
+            require(all(0 <= v <= 1 and abs(v-old['frequency'][a]) <= RIVER_FREQUENCY_TOLERANCE+eps
+                        for a, v in frequencies.items())
+                    and abs(sum(frequencies.values())-1) <= 2*unit+eps,
+                    'River strategy frequencies changed materially')
+            require(0 <= row['own_reach_probability'] <= 1, 'Invalid river own reach')
+    oop = data['hands']['oop']['node_strategy']
+    ip = data['hands']['ip']['node_strategy']
+    root, response = oop['oop_first'], oop['oop_facing_ip_bet_1']
+    after, facing = ip['ip_after_oop_check'], ip['ip_facing_oop_bet_1']
+    q = root['action_ev_relative_to_half_pot']
+    require(root['own_reach_probability'] == after['own_reach_probability'] == facing['own_reach_probability'] == 1
+            and abs(response['own_reach_probability']-root['frequency']['check']) <= 2*unit+eps,
+            'River own-reach semantics changed')
+    # Folding loses half the starting pot; QJ's sole opponent is KK.
+    for row in (response, facing):
+        require(abs(row['action_ev_relative_to_half_pot']['fold']+pot/2) <= unit+eps,
+                'River fold EV baseline changed')
+    require(abs(after['action_ev_relative_to_half_pot']['check']+pot/2) <= unit+eps
+            and abs(facing['action_ev_relative_to_half_pot']['call']+pot/2+bet) <= unit+eps,
+            'River terminal showdown EV changed')
+    call = response['frequency']['call']
+    require(abs(after['action_ev_relative_to_half_pot']['bet_1pot']-(pot/2-(pot+bet)*call))
+            <= (pot+bet)*unit+unit+eps, 'River bluff EV disagrees with returned calling policy')
+    # Rounded root average and best response must agree with the reported value/gap.
+    rounding = 2*(pot/2+bet)*unit+2*unit+eps
+    require(abs(sum(root['frequency'][a]*v for a, v in q.items())-value) <= rounding
+            and max(q.values())-value <= gap+rounding, 'River root action EVs disagree with value/gap')
+    qj_call = facing['frequency']['call']
+    require(-bet/2+bet*qj_call/2-bet*unit/2-unit-eps <= q['bet_1pot']
+            <= pot/2+bet*qj_call/2+bet*unit/2+unit+eps, 'River opening-bet EV violates chip accounting')
+    # The unqueried AA betting frequency is inferred as an INTERVAL from the
+    # checked EV and rounded QJ/KK policies. Do not assume AA always bets or use
+    # root NashConv as a conditional-action precision certificate.
+    bluff = after['frequency']['bet_1pot']
+    possible_aa = [(-checked-pot*b/2+(pot+bet)*b*c/2)/(bet*c/2)
+                   for checked, b, c in product((q['check']-unit, q['check']+unit),
+                                               (bluff-unit, bluff+unit), (call-unit, call+unit))]
+    lo, hi = max(0, min(possible_aa)-eps), min(1, max(possible_aa)+eps)
+    require(lo <= hi, 'River checked EV implies an impossible value betting policy')
+    possible_ev = [(pot/2+bet)*(b-a)/(a+b)
+                   for a, b in product((lo, hi), (bluff-unit, bluff+unit))]
+    require(min(possible_ev)-unit-eps <= response['action_ev_relative_to_half_pot']['call']
+            <= max(possible_ev)+unit+eps, 'River calling EV disagrees with checked continuation accounting')
 
 
 def validate_turn_result(request, result, *, expected_sources, is_error, sdk_bytes=None):
@@ -134,9 +238,12 @@ def validate_turn_result(request, result, *, expected_sources, is_error, sdk_byt
         raise ReceiptError('Malformed receipt or request') from None
 
 
-async def collect(session, request, expected_sources, repeats=2):
+async def collect(session, request, expected_sources, repeats=2, *, clock=monotonic):
     """Session injection keeps acceptance logic testable without live network/auth."""
     report = {'mode': 'hosted SDK, not ChatGPT', 'cases': [], 'failures': [],
+              'warm_latency_gate': {'maximum_client_seconds': MAX_WARM_CLIENT_SECONDS,
+                  'basis': '10s worker headroom plus 5s transport/SDK allowance; engineering target, not a verified ChatGPT deadline',
+                  'scope': 'Every admitted example after public probes, initialization and tool discovery; no idle cold-start claim'},
               'limitations': ['Repeated calls do not independently establish a cold idle wakeup.',
                               'No refresh/revocation/second-account or actual ChatGPT acceptance.',
                               'No admitted 2000-iteration nonconvergence or timeout is fabricated.']}
@@ -157,9 +264,9 @@ async def collect(session, request, expected_sources, repeats=2):
         row = {'id': label, 'tool': name, 'request': deepcopy(arguments)}
         report['cases'].append(row)
         try:
-            started = monotonic()
+            started = clock()
             response = await session.call_tool(name, arguments)
-            row.update(client_wall_seconds=monotonic()-started,
+            row.update(client_wall_seconds=clock()-started,
                        raw_sdk_result=response.model_dump(mode='json', by_alias=True),
                        sdk_result_bytes=len(response.model_dump_json(by_alias=True).encode()))
             require(row['sdk_result_bytes'] <= MAX_SDK_BYTES, 'SDK output exceeds bound')
@@ -172,6 +279,11 @@ async def collect(session, request, expected_sources, repeats=2):
     for repeat in range(repeats):
         response, row = await call('turn_example_'+str(repeat+1), NAME, request)
         if response is not None:
+            row['latency_class'] = 'warm_after_discovery'
+            elapsed = row['client_wall_seconds']
+            if not (finite(elapsed) and 0 <= elapsed <= MAX_WARM_CLIENT_SECONDS):
+                row['latency_failure'] = 'Warm client latency exceeds 15s acceptance target or clock is invalid'
+                report['failures'].append(row['id']+': '+row['latency_failure'])
             try:
                 require(len(response.content) == 1 and response.content[0].type == 'text'
                         and json.loads(response.content[0].text) == response.structuredContent,
@@ -191,20 +303,22 @@ async def collect(session, request, expected_sources, repeats=2):
     if response is not None and not (response.isError and isinstance(response.structuredContent, dict)
                                     and response.structuredContent.get('error', {}).get('code') == 'invalid_input'):
         report['failures'].append('Unsupported request was not rejected as invalid_input')
-    legacy = [
-        ('river_call', 'evaluate_river_call', {'board': 'Ks,9s,5h,Td,Ts', 'hero_hand': 'KdQd',
-            'villain_betting_range': 'AsJs,AsJh:0.5', 'pot': 100, 'bet': 100}),
-        ('river_solve', 'solve_river', {'board': '2c,3d,4h,8s,9c', 'oop_range': 'KhKd',
-            'ip_range': 'AsAd,QhJd', 'pot': 100, 'stack': 100, 'bet_sizes': [1.0], 'iterations': 1500,
-            'ip_hand': 'QhJd', 'oop_hand': 'KhKd'})]
-    for label, name, arguments in legacy:
-        response, _ = await call(label, name, arguments)
+    report['legacy_baseline_sha256_lf'] = hashlib.sha256(LEGACY_BASELINE.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+    for baseline in legacy_baselines():
+        name, arguments = baseline['tool'], baseline['request']
+        label = 'river_call' if name == 'evaluate_river_call' else 'river_solve'
+        response, row = await call(label, name, arguments)
         if response is not None:
-            data = response.structuredContent or {}
-            passed = (data.get('best_action_given_range') == 'indifferent' if label == 'river_call'
-                      else finite(data.get('nash_conv_pct_pot')) and data['nash_conv_pct_pot'] < 0.5)
-            if response.isError or not passed:
-                report['failures'].append(label+': legacy smoke regression failed')
+            try:
+                require(not response.isError and len(response.content) == 1 and response.content[0].type == 'text'
+                        and json.loads(response.content[0].text) == response.structuredContent,
+                        'Legacy SDK response is an error or disagrees with structured result')
+                validate_legacy_result(name, arguments, response.structuredContent)
+            except ReceiptError as error:
+                row['legacy_failure'] = str(error)
+                report['failures'].append(label+': '+str(error))
+            except (ValueError, TypeError, AttributeError, KeyError):
+                report['failures'].append(label+': malformed legacy SDK result')
     return report
 
 
@@ -216,7 +330,9 @@ async def hosted(url, token, expected_sha, request, expected_sources):
     require(bool(re.fullmatch('[0-9a-f]{40}', expected_sha)), 'A full expected deployed SHA is required')
     async with httpx.AsyncClient(timeout=60, follow_redirects=False, trust_env=False) as client:
         base = url.rsplit('/mcp', 1)[0]
+        first_probe = monotonic()
         health = await client.get(base+'/health')
+        first_probe_seconds = monotonic()-first_probe
         ready = await client.get(base+'/ready')
         require(health.status_code == ready.status_code == 200, 'Public release probes failed')
         require(health.json().get('deployment', {}).get('commit') == expected_sha
@@ -229,7 +345,9 @@ async def hosted(url, token, expected_sha, request, expected_sources):
                 initialized = await session.initialize()
                 report = await collect(session, request, expected_sources)
                 report.update(expected_deployed_sha=expected_sha, public_health=health.json(),
-                              public_ready=ready.json(), initialized=initialized.model_dump(mode='json', by_alias=True))
+                              public_ready=ready.json(), initialized=initialized.model_dump(mode='json', by_alias=True),
+                              first_public_probe={'wall_seconds': first_probe_seconds,
+                                  'classification': 'unclassified priming request; no independently verified idle interval'})
                 return report
 
 

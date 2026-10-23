@@ -1,5 +1,37 @@
 # Audit and validation — 16 October 2026
 
+## PR #32 acceptance-gate review fixes
+
+Both P2 comments concern the development acceptance harness, not the solver or
+live service. Legacy calls now reuse the exact recorded baseline requests and
+require complete output schemas, deterministic call odds/equity/EV, fixed game
+and hand/action maps, bounded CFR frequency differences, root value/gap bounds
+and conditional-EV chip/policy consistency. Regressions inject broken/missing
+quantities while leaving the previously checked fields nominal; positive checks
+also execute both local river calculations and admit four independently
+hand-derived coherent policies with different frequencies/action EVs.
+
+Each admitted warm turn example now fails acceptance above a **15s decoded-SDK
+client wall target**, independently of worker receipts. This is the existing 10s
+worker-headroom target plus 5s transport/SDK allowance, not a verified ChatGPT
+deadline. Injected-clock tests cover a 40s slow second response with a valid fast
+worker receipt, the exact boundary, modest times and invalid clock values; raw
+computed results remain inspectable on latency failure. Health/readiness and
+discovery prime the service first. The first public probe is recorded separately
+as unclassified, without inventing idle cold-start evidence.
+
+The focused **12 acceptance tests** pass locally, using mock SDK/clock and
+explicit synthetic Linux receipt fields. Final local Ruff/compileall/diff checks
+passed; full unittest **182 run, 180 passed, two Linux-only skips**. The unchanged
+independent river benchmark passed **10/10** with sensitivity completed. Commands:
+`python -m ruff check poker_spot tests scripts`,
+`python -m compileall -q poker_spot scripts benchmarks`,
+`OPENBLAS_NUM_THREADS=1 python -m unittest discover -s tests -v`, and
+`python scripts/benchmark.py --sensitivity` (project venv). Final-head CI is
+recorded on [PR #32](https://github.com/eddieyang-97/poker-solver/pull/32) after
+observation. No product behavior, live settings, numerical/resource gate or
+hosted turn acceptance changes follow from these fixes.
+
 ## Issue #26 Stage B — authorized activation preparation, 23 October 2026
 
 PR #31 merged at `d0eb8699a7c7924cbbc3b2a562bb1a8554a231a9` and is deployed

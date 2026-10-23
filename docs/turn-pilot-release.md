@@ -99,6 +99,13 @@ the original two maximum-workload timeouts and known policy variance.
    stage timings, two example runs, unsupported iteration rejection and both
    river smokes. Failed provenance, root convergence, 20s/384 MiB budget, 64 KiB
    SDK engineering bound or observed 10s/192 MiB headroom abort acceptance.
+   Every admitted example must also deliver its decoded SDK response within
+   **15 seconds client wall time**, including network, scheduling and MCP/SDK
+   handling. This warm engineering target allocates 10s for the existing worker
+   headroom plus 5s for transport/delivery; it is not a verified ChatGPT deadline.
+   It does not replace the separate worker 20s hard budget or 10s headroom gate.
+   Slow computed responses are retained with a latency failure, not passed or
+   relabeled as failed computation.
    SDK evidence is separate; no timeout or insufficient-convergence observation
    is manufactured if these admitted examples converge.
 5. Refresh the existing private ChatGPT connection's tools and invoke
@@ -112,6 +119,27 @@ the original two maximum-workload timeouts and known policy variance.
    timeout/claim-tampering evidence honestly where no safe real hosted case exists;
    leave corresponding hosted gates open. Never add production fault hooks,
    flood the shared rate limit or weaken authentication to manufacture evidence.
+
+The harness's admitted example calls are **warm**: public health/readiness,
+initialization and discovery precede them, including the first example. Its first
+public-probe duration is recorded as unclassified priming time, not evidence of
+an idle wakeup. A true cold test needs an independently established idle interval
+and Render event/log evidence, then timing of the first unprimed request. Report
+that separately; do not apply the warm target or label a primed tool call cold.
+
+Legacy smoke requests are now the **exact two recorded requests** in
+[the baseline](turn-pilot-stage-b-baseline.json), whose LF SHA is retained in
+each SDK report. The earlier £100 mixed-range indifference call is a different
+request and is not compared with the recorded £505 single-combo call. The
+complete schemas, board/hands, money/tree, iterations and node/action maps must
+match; own reach must follow the returned policy. Deterministic call quantities, including rounded odds, equity
+and EV, require exact equality. The polarized river fixture retains its existing
+0.04 absolute frequency gate and <0.5%-pot convergence gate; root EV is checked
+against the baseline's combined-gap bound and the analytical -£25 equilibrium.
+Conditional action EVs are checked through terminal chip ledgers, rounded-policy
+identities and an interval for the unqueried AA policy. No exact cross-runtime
+frequencies or blanket conditional-EV precision is inferred from root NashConv.
+These specialized checks apply to this pinned pedagogical fixture only.
 
 `validate_turn_result()` also checks captured structured ChatGPT results against
 the pinned release sources. Receipts prove consistency, not signed execution

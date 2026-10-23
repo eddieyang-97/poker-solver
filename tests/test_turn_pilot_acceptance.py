@@ -37,6 +37,7 @@ class AcceptanceTests(unittest.TestCase):
             'stage_seconds': {'bootstrap_imports': 0.1, 'read_parse': 0.01,
                               'validate_solve_br_project_receipt': 2.7, 'result_serialization': 0.01}}
         cls.sources = acceptance.source_hashes()
+        cls.legacy = {r['tool']: r for r in acceptance.legacy_baselines()}
 
     def validate(self, result=None, **kwargs):
         return acceptance.validate_turn_result(self.request, result or self.result,
@@ -112,8 +113,8 @@ class AcceptanceTests(unittest.TestCase):
             if name == 'solve_turn_v1':
                 return (envelope({'error': {'code': 'invalid_input'}}, True) if request['iterations'] == 1999
                         else envelope(deepcopy(self.result)))
-            return envelope({'best_action_given_range': 'indifferent'} if name == 'evaluate_river_call'
-                            else {'nash_conv_pct_pot': 0.01})
+            self.assertEqual(request, self.legacy[name]['request'])
+            return envelope(deepcopy(self.legacy[name]['response']['structuredContent']))
         return SimpleNamespace(list_tools=AsyncMock(return_value=SimpleNamespace(tools=tools)),
                                call_tool=AsyncMock(side_effect=call))
 
@@ -126,6 +127,96 @@ class AcceptanceTests(unittest.TestCase):
         self.assertEqual(report['cases'][0]['request'], self.request)
         self.assertEqual(report['cases'][0]['raw_sdk_result']['structuredContent'], self.result)
         self.assertEqual(session.call_tool.await_count, 5)
+
+    def test_legacy_incomplete_or_economically_broken_outputs_fail_collection(self):
+        mutations = [
+            ('evaluate_river_call', lambda d: d.update(ev_call_minus_fold=0)),
+            ('evaluate_river_call', lambda d: d.update(ev_call_minus_fold=954.9999)),
+            ('evaluate_river_call', lambda d: d.update(caller_pot_odds=0.1)),
+            ('evaluate_river_call', lambda d: d.update(caller_pot_odds=0.320286)),
+            ('evaluate_river_call', lambda d: d.update(hero_equity_vs_assumed_betting_range=0.5)),
+            ('evaluate_river_call', lambda d: d.pop('pot_before_bet')),
+            ('solve_river', lambda d: d.update(root_ev_oop_relative_to_split_pot=0)),
+            ('solve_river', lambda d: d['hands']['oop'].pop('node_strategy')),
+            ('solve_river', lambda d: d['hands']['ip']['node_strategy']['ip_after_oop_check']['frequency'].update(
+                check=1, bet_1pot=0)),
+            ('solve_river', lambda d: d['hands']['ip']['node_strategy']['ip_after_oop_check'][
+                'action_ev_relative_to_half_pot'].update(bet_1pot=0)),
+            ('solve_river', lambda d: d['hands']['oop']['node_strategy']['oop_facing_ip_bet_1'][
+                'action_ev_relative_to_half_pot'].update(call=0)),
+            ('solve_river', lambda d: d['hands']['oop']['node_strategy']['oop_facing_ip_bet_1'].update(
+                own_reach_probability=0.5)),
+            ('solve_river', lambda d: d.update(nash_conv_chips=0.4)),
+            ('solve_river', lambda d: d.update(hands={})),
+        ]
+        for name, mutate in mutations:
+            session = self.session()
+            original = session.call_tool.side_effect
+            async def broken(tool, request):
+                result = await original(tool, request)
+                if tool == name:
+                    data = deepcopy(result.structuredContent)
+                    mutate(data)
+                    return envelope(data)
+                return result
+            session.call_tool.side_effect = broken
+            with self.subTest(tool=name, mutation=mutate):
+                report = asyncio.run(acceptance.collect(session, self.request, self.sources))
+                self.assertTrue(any(f.startswith('river_') for f in report['failures']), report['failures'])
+        for name, minimal in (('evaluate_river_call', {'best_action_given_range': 'indifferent'}),
+                              ('solve_river', {'nash_conv_pct_pot': 0.01})):
+            with self.subTest(minimal=name), self.assertRaises(acceptance.ReceiptError):
+                acceptance.validate_legacy_result(name, self.legacy[name]['request'], minimal)
+
+    def test_legacy_requests_are_pinned_and_actual_local_outputs_pass(self):
+        from poker_spot.validation import calculate as river_calculate
+        for name, baseline in self.legacy.items():
+            actual = river_calculate(name, baseline['request'])
+            acceptance.validate_legacy_result(name, baseline['request'], actual)
+            changed = dict(baseline['request'], pot=99)
+            with self.assertRaisesRegex(acceptance.ReceiptError, 'not comparable'):
+                acceptance.validate_legacy_result(name, changed, actual)
+
+    def test_legacy_allows_coherent_different_policies_without_exact_frequency_or_conditional_ev_match(self):
+        baseline = self.legacy['solve_river']
+        # Hand-derived policies: QJ bluffs half and folds to a bet;
+        # KK always checks and calls c. At c=.5 this is exact equilibrium. At
+        # c=.495 IP gains .25 by always bluffing QJ, so NashConv is .25 chips.
+        # AA betting .999 with c=.5 yields OOP BR=-24.95 and IP BR=25,
+        # NashConv=.05, protecting inference without assuming AA always bets.
+        # OOP betting .01 with the equilibrium continuations gives -.25 extra
+        # chips of loss / NashConv .25; its later own reach must become .99.
+        for call, gap, aa_bet, root_bet in ((0.5, 0.0, 1, 0), (0.495, 0.25, 1, 0),
+                                           (0.5, 0.05, 0.999, 0), (0.5, 0.25, 1, 0.01)):
+            data = deepcopy(baseline['response']['structuredContent'])
+            checked = round(-50*aa_bet*call-25+50*call, 4)
+            value = round((1-root_bet)*checked-50*root_bet, 4)
+            data.update(root_ev_oop_relative_to_split_pot=value, nash_conv_chips=gap, nash_conv_pct_pot=gap)
+            oop, ip = data['hands']['oop']['node_strategy'], data['hands']['ip']['node_strategy']
+            oop['oop_first']['frequency'].update(check=1-root_bet, bet_1pot=root_bet)
+            oop['oop_first']['action_ev_relative_to_half_pot'].update(check=checked, bet_1pot=-50)
+            oop['oop_facing_ip_bet_1']['own_reach_probability'] = 1-root_bet
+            oop['oop_facing_ip_bet_1']['frequency'].update(call=call, fold=1-call)
+            oop['oop_facing_ip_bet_1']['action_ev_relative_to_half_pot']['call'] = round(150*(0.5-aa_bet)/(0.5+aa_bet), 4)
+            ip['ip_after_oop_check']['frequency'].update(check=0.5, bet_1pot=0.5)
+            ip['ip_after_oop_check']['action_ev_relative_to_half_pot']['bet_1pot'] = 50-200*call
+            acceptance.validate_legacy_result('solve_river', baseline['request'], data)
+
+    def test_warm_client_latency_gate_checks_every_repeat_and_retains_slow_result(self):
+        for durations, passes in (([3, 4], True), ([15, 15], True), ([15.0001, 3], False),
+                                  ([3, 40], False), ([-1, 3], False), ([float('inf'), 3], False)):
+            # Two admitted turns, one invalid turn and both legacy calls. No sleeps/network.
+            clock = iter([v for duration in [*durations, 0, 0, 0] for v in (0, duration)]).__next__
+            with self.subTest(durations=durations):
+                report = asyncio.run(acceptance.collect(self.session(), self.request, self.sources, clock=clock))
+                self.assertEqual(not report['failures'], passes)
+                self.assertEqual(report['warm_latency_gate']['maximum_client_seconds'], 15)
+                rows = report['cases'][:2]
+                self.assertTrue(all(r['latency_class'] == 'warm_after_discovery' for r in rows))
+                self.assertTrue(all(r['receipt']['observed_headroom'] for r in rows))
+                self.assertTrue(all('raw_sdk_result' in r for r in rows))
+                if not passes:
+                    self.assertTrue(any('Warm client latency' in f for f in report['failures']))
 
     def test_permission_mismatch_stops_calls_and_errors_are_sanitized(self):
         session = self.session()
