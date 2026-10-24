@@ -37,9 +37,10 @@ policies, resource failures and strict exact-game reuse without exposing a tool.
 Joint-range/node-locking and advanced hosted tools have their own acceptance gates.
 A separately opted-in [turn MCP pilot](docs/turn-pilot.md) implements Issue #26
 with two explicit combos/player, bounded views and shared authorization/resource
-limits. Stage A is merged; Stage B activation is owner-authorized and prepared
-through a separate hosted factory. The deployed default remains river-only until
-the reviewed activation is merged and the Render start command is switched.
+limits. Stage A and activation PR #32 are merged. The owner enabled the separate
+hosted factory, but the pinned game timed out on the Free service; **Stage B is
+not accepted**. [Timeout investigation and go/no-go](docs/turn-hosted-timeout.md)
+records the capacity and startup failures. The default app remains river-only.
 [Release status and acceptance gates](docs/turn-pilot-release.md) distinguish
 implementation from actual Render/ChatGPT turn acceptance.
 An opt-in [exact-size local raise review](docs/hand-review.md#opt-in-local-exact-size-river-raises)

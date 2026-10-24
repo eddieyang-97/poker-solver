@@ -1,6 +1,7 @@
 """Bounded admission and a wall-clock timeout that kills the computation."""
 import asyncio
 import json
+import logging
 import os
 from pathlib import Path
 import sys
@@ -8,6 +9,50 @@ from collections import deque
 from time import monotonic
 
 from .validation import validate
+
+logger = logging.getLogger(__name__)
+
+
+def _turn_timeout_snapshot(pid):
+    """Best-effort numeric child counters before kill; never read cmdline/env.
+
+    Missing/exited processes and unsupported platforms remain unknown, not zero.
+    These are diagnostic samples, not successful execution/resource receipts.
+    """
+    result = {'cpu_seconds': None, 'vm_peak_bytes': None, 'vm_hwm_bytes': None}
+    if sys.platform != 'linux' or type(pid) is not int or pid <= 0:
+        return result
+
+    def bounded_read(name, limit):
+        with (Path('/proc')/str(pid)/name).open('rb') as stream:
+            data = stream.read(limit+1)
+        if len(data) > limit:
+            raise ValueError('Oversized proc record')
+        return data.decode('ascii')
+
+    try:
+        # comm may itself contain spaces or parentheses. The last ')' ends it.
+        tail = bounded_read('stat', 4096).rpartition(') ')[2].split()
+        ticks = int(tail[11])+int(tail[12])  # fields 14/15, after pid and comm
+        rate = os.sysconf('SC_CLK_TCK')
+        if ticks >= 0 and rate > 0:
+            result['cpu_seconds'] = ticks/rate
+    except (OSError, ValueError, IndexError, OverflowError):
+        pass
+    try:
+        fields = {}
+        for line in bounded_read('status', 16384).splitlines():
+            key, _, value = line.partition(':')
+            if key in ('VmPeak', 'VmHWM'):
+                count, unit = value.split()
+                if unit != 'kB' or not count.isdigit():
+                    raise ValueError('Invalid memory counter')
+                fields[key] = int(count)*1024
+        result['vm_peak_bytes'] = fields.get('VmPeak')
+        result['vm_hwm_bytes'] = fields.get('VmHWM')
+    except (OSError, ValueError, OverflowError):
+        pass
+    return result
 
 
 class CalculationError(Exception):
@@ -75,6 +120,7 @@ class Runner:
     async def _run_turn(self, args):
         """Same admission/rate slot; isolated startup, bounded pipe, deadline through reap."""
         process = None
+        timeout_snapshot = None
         started = monotonic()
         try:
             async with asyncio.timeout(min(self.timeout, 20)):
@@ -124,6 +170,7 @@ class Runner:
                 result['execution'] = dict(measurement, parent_wall_seconds=monotonic()-started)
                 return result
         except TimeoutError:
+            timeout_snapshot = _turn_timeout_snapshot(process.pid if process is not None else None)
             raise CalculationError('timeout', 'Turn calculation exceeded its wall-clock limit') from None
         except (json.JSONDecodeError, KeyError, TypeError, BrokenPipeError, ConnectionResetError):
             raise CalculationError('worker_failed', 'Invalid turn worker response') from None
@@ -131,3 +178,10 @@ class Runner:
             if process is not None and process.returncode is None:
                 process.kill()
                 await process.wait()
+            if timeout_snapshot is not None:
+                # WARNING is visible with the documented default Uvicorn logging.
+                # Log only after reap; never log arguments, tokens or proc text.
+                logger.warning('turn_timeout parent_wall_seconds=%.6f child_cpu_seconds=%s '
+                               'child_vm_peak_bytes=%s child_vm_hwm_bytes=%s',
+                               monotonic()-started, timeout_snapshot['cpu_seconds'],
+                               timeout_snapshot['vm_peak_bytes'], timeout_snapshot['vm_hwm_bytes'])

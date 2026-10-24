@@ -1,5 +1,44 @@
 # Audit and validation — 16 October 2026
 
+## Issue #26 Stage B timeout investigation — 24 October 2026
+
+PR #32 is owner-merged and the explicit hosted factory is Live at
+`3f3aeb093c75c62dbb2665122f8d1fbe58c5a0e4`. **Stage B remains no-go:** the pinned
+turn game returned a real worker timeout again (21.631s client). A separate
+startup-related connector failure took 20.273s; startup completed after it
+returned. The simpler existing all-in diagnostic computed in 9.554s parent wall
+with 1.396 CPU seconds, 115.277 MiB peak AS and valid source/game/result/limit
+receipts. Its 0.15028 CPU/worker-wall ratio strongly supports limited CPU
+availability; direct throttling counters for the failed child remain unavailable.
+The river call baseline recovered in 2.254s. Full evidence, uncertainty, options
+and rollback recommendation: [investigation](turn-hosted-timeout.md),
+[raw hosted evidence](turn-timeout-hosted-evidence.json).
+
+The unmerged candidate removes unused opponent-value work during alternating
+training and redundant unchanged-strategy refreshes, retaining the old two-player
+walker for diagnostics/BR/action EVs. Exact update/full-schedule parity covers
+all training arrays and all-node EV/reach, including blockers, tiny weights,
+all-ins and general local trees. A pinned-deployed-source comparison passed
+15/15 paired samples; [raw local measurements](turn-training-results.json)
+show a 1.80–1.86x median improvement with substantial absolute timing variation.
+This is same-runtime regression evidence, not independent solver or hosted proof.
+
+Timeout logging now samples bounded Linux proc numeric CPU/peak memory before
+kill and emits one WARNING after reap. Unknown counters stay unknown; no game,
+credential, raw proc text or fabricated solution receipt is exposed. The timeout
+response, 20s/384 MiB limits, auth, shared admission and convergence gates stay
+unchanged. Tests cover malformed/missing/oversize proc input and actual
+timeout/reap/river recovery. No production setting, deployment or plan changed.
+
+Local project-venv checks (`OPENBLAS_NUM_THREADS=1`): Ruff on
+`poker_spot tests scripts`, compileall on `poker_spot scripts benchmarks`,
+diff check; **191 tests run, 188 passed, three Linux-only skips**; river
+`benchmark.py --sensitivity` **10/10 plus sensitivity**; `benchmark_turn.py`
+**8/8**; `benchmark_turn_pilot.py` **8/8** fresh workers plus invalid classes
+and actual timeout/recovery. Windows worker timings enforce no Linux limits.
+Independent training and final-head Linux CI evidence are recorded on the
+candidate PR after observation; no pending run is counted as passing.
+
 ## PR #32 acceptance-gate review fixes
 
 Both P2 comments concern the development acceptance harness, not the solver or

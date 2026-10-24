@@ -1,0 +1,594 @@
+{
+  "baseline_commit": "3f3aeb093c75c62dbb2665122f8d1fbe58c5a0e4",
+  "baseline_turn_sha256_lf": "fb546353b2875dec377b2966a9c09282bb6a65617505760b1b731e0d66a7e572",
+  "shared_core_sha256_lf": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.8",
+  "numpy": "2.5.4",
+  "mode": "Local sequential same-runtime training comparison, no kernel limits or hosted acceptance",
+  "timing_scope": "Build/train/checkpoints/all-node evaluation/projection; excludes imports and transport",
+  "candidate_sources_sha256_lf": {
+    "poker_spot/turn.py": "3d2685e3d62911ca3769be09ff9eb9490d9947ed76d034ddce475030aaad5185",
+    "poker_spot/turn_pilot.py": "bf49a154248ffbed6193732479f7bcbdfd1913615d53ff051ca304dd47631944",
+    "scripts/benchmark_turn_training.py": "135d5be9fca0339ced485085f8916e0bfacee8fe39cb9b7a1c139ee1dbe36bfd"
+  },
+  "cases": [
+    {
+      "id": "pinned_example",
+      "request": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": [
+          {
+            "hand": "KhKd",
+            "weight": 1.0
+          }
+        ],
+        "ip_range": [
+          {
+            "hand": "AsAd",
+            "weight": 1.0
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "pot_cents": 10000,
+        "stack_cents": 20000,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "iterations": 2000,
+        "views": [
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn"
+          },
+          {
+            "player": "ip",
+            "hand": "QhJd",
+            "node": "turn/check"
+          },
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn/check/check/river",
+            "river_card": "9c"
+          }
+        ]
+      },
+      "samples": [
+        {
+          "baseline": {
+            "wall_seconds": 1.4132913000648841,
+            "cpu_seconds": 1.421875
+          },
+          "candidate": {
+            "wall_seconds": 0.9548966999864206,
+            "cpu_seconds": 0.953125
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -48.633231987601356,
+            "ip_ev": 48.63323198760138,
+            "raw_nash_conv_chips": 0.005276748211178315,
+            "zero_sum_residual": 2.1316282072803006e-14,
+            "nash_conv_chips": 0.005276748211178315,
+            "nash_conv_pct_pot": 0.005276748211178315
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 8.157158500049263,
+            "cpu_seconds": 8.078125
+          },
+          "candidate": {
+            "wall_seconds": 4.375194099964574,
+            "cpu_seconds": 4.34375
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -48.633231987601356,
+            "ip_ev": 48.63323198760138,
+            "raw_nash_conv_chips": 0.005276748211178315,
+            "zero_sum_residual": 2.1316282072803006e-14,
+            "nash_conv_chips": 0.005276748211178315,
+            "nash_conv_pct_pot": 0.005276748211178315
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 8.047975599998608,
+            "cpu_seconds": 8.0
+          },
+          "candidate": {
+            "wall_seconds": 4.363311700057238,
+            "cpu_seconds": 4.3125
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -48.633231987601356,
+            "ip_ev": 48.63323198760138,
+            "raw_nash_conv_chips": 0.005276748211178315,
+            "zero_sum_residual": 2.1316282072803006e-14,
+            "nash_conv_chips": 0.005276748211178315,
+            "nash_conv_pct_pot": 0.005276748211178315
+          }
+        }
+      ],
+      "median_wall_seconds": {
+        "baseline": 8.047975599998608,
+        "candidate": 4.363311700057238
+      }
+    },
+    {
+      "id": "singleton_minimax",
+      "question": "Inspect a flush draw versus a known overpair in a toy game",
+      "request": {
+        "board": "Js,Ts,2c,3d",
+        "oop_range": [
+          {
+            "hand": "AsKs",
+            "weight": 1
+          }
+        ],
+        "ip_range": [
+          {
+            "hand": "QhQd",
+            "weight": 1
+          }
+        ],
+        "pot_cents": 10000,
+        "stack_cents": 15000,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "iterations": 2000,
+        "views": [
+          {
+            "player": "oop",
+            "hand": "AsKs",
+            "node": "turn"
+          },
+          {
+            "player": "ip",
+            "hand": "QhQd",
+            "node": "turn/check"
+          },
+          {
+            "player": "oop",
+            "hand": "AsKs",
+            "node": "turn/check/check/river",
+            "river_card": "2d"
+          }
+        ]
+      },
+      "samples": [
+        {
+          "baseline": {
+            "wall_seconds": 7.673552100080997,
+            "cpu_seconds": 7.578125
+          },
+          "candidate": {
+            "wall_seconds": 4.124673099955544,
+            "cpu_seconds": 4.046875
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -27.273017496735203,
+            "ip_ev": 27.273017496735207,
+            "raw_nash_conv_chips": 0.00044952383773377846,
+            "zero_sum_residual": 3.552713678800501e-15,
+            "nash_conv_chips": 0.00044952383773377846,
+            "nash_conv_pct_pot": 0.00044952383773377846
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 7.628967800061218,
+            "cpu_seconds": 7.5
+          },
+          "candidate": {
+            "wall_seconds": 4.10678419994656,
+            "cpu_seconds": 4.046875
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -27.273017496735203,
+            "ip_ev": 27.273017496735207,
+            "raw_nash_conv_chips": 0.00044952383773377846,
+            "zero_sum_residual": 3.552713678800501e-15,
+            "nash_conv_chips": 0.00044952383773377846,
+            "nash_conv_pct_pot": 0.00044952383773377846
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 7.552935599931516,
+            "cpu_seconds": 7.40625
+          },
+          "candidate": {
+            "wall_seconds": 4.187242500018328,
+            "cpu_seconds": 4.140625
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -27.273017496735203,
+            "ip_ev": 27.273017496735207,
+            "raw_nash_conv_chips": 0.00044952383773377846,
+            "zero_sum_residual": 3.552713678800501e-15,
+            "nash_conv_chips": 0.00044952383773377846,
+            "nash_conv_pct_pot": 0.00044952383773377846
+          }
+        }
+      ],
+      "median_wall_seconds": {
+        "baseline": 7.628967800061218,
+        "candidate": 4.124673099955544
+      }
+    },
+    {
+      "id": "weighted_dry",
+      "question": "Compare value and missed-high-card continuations under supplied weights",
+      "request": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip_range": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "pot_cents": 10000,
+        "stack_cents": 20000,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "iterations": 2000,
+        "views": [
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn"
+          },
+          {
+            "player": "ip",
+            "hand": "AsAd",
+            "node": "turn/check"
+          },
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn/check/check/river",
+            "river_card": "2d"
+          }
+        ]
+      },
+      "samples": [
+        {
+          "baseline": {
+            "wall_seconds": 8.015322600025684,
+            "cpu_seconds": 7.859375
+          },
+          "candidate": {
+            "wall_seconds": 4.32827289996203,
+            "cpu_seconds": 4.296875
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -48.633231987601356,
+            "ip_ev": 48.63323198760138,
+            "raw_nash_conv_chips": 0.005276748211178315,
+            "zero_sum_residual": 2.1316282072803006e-14,
+            "nash_conv_chips": 0.005276748211178315,
+            "nash_conv_pct_pot": 0.005276748211178315
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 8.04386610002257,
+            "cpu_seconds": 8.0
+          },
+          "candidate": {
+            "wall_seconds": 4.300463899970055,
+            "cpu_seconds": 4.25
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -48.633231987601356,
+            "ip_ev": 48.63323198760138,
+            "raw_nash_conv_chips": 0.005276748211178315,
+            "zero_sum_residual": 2.1316282072803006e-14,
+            "nash_conv_chips": 0.005276748211178315,
+            "nash_conv_pct_pot": 0.005276748211178315
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 7.96157529996708,
+            "cpu_seconds": 7.890625
+          },
+          "candidate": {
+            "wall_seconds": 4.2549494000850245,
+            "cpu_seconds": 4.15625
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -48.633231987601356,
+            "ip_ev": 48.63323198760138,
+            "raw_nash_conv_chips": 0.005276748211178315,
+            "zero_sum_residual": 2.1316282072803006e-14,
+            "nash_conv_chips": 0.005276748211178315,
+            "nash_conv_pct_pot": 0.005276748211178315
+          }
+        }
+      ],
+      "median_wall_seconds": {
+        "baseline": 8.015322600025684,
+        "candidate": 4.300463899970055
+      }
+    },
+    {
+      "id": "weighted_collision",
+      "question": "Inspect blocker-sensitive turn betting and one future river view",
+      "request": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "AsKs",
+            "weight": 0.3
+          }
+        ],
+        "ip_range": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJs",
+            "weight": 0.5
+          }
+        ],
+        "pot_cents": 10000,
+        "stack_cents": 10000,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "iterations": 2000,
+        "views": [
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn"
+          },
+          {
+            "player": "ip",
+            "hand": "AsAd",
+            "node": "turn/check"
+          },
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn/check/check/river",
+            "river_card": "2d"
+          }
+        ]
+      },
+      "samples": [
+        {
+          "baseline": {
+            "wall_seconds": 8.315612499951385,
+            "cpu_seconds": 8.203125
+          },
+          "candidate": {
+            "wall_seconds": 4.547660899930634,
+            "cpu_seconds": 4.4375
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -37.479356228812726,
+            "ip_ev": 37.479356228812726,
+            "raw_nash_conv_chips": 0.0004767565754394982,
+            "zero_sum_residual": 0.0,
+            "nash_conv_chips": 0.0004767565754394982,
+            "nash_conv_pct_pot": 0.00047675657543949814
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 8.250715400092304,
+            "cpu_seconds": 8.203125
+          },
+          "candidate": {
+            "wall_seconds": 4.562514099990949,
+            "cpu_seconds": 4.46875
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -37.479356228812726,
+            "ip_ev": 37.479356228812726,
+            "raw_nash_conv_chips": 0.0004767565754394982,
+            "zero_sum_residual": 0.0,
+            "nash_conv_chips": 0.0004767565754394982,
+            "nash_conv_pct_pot": 0.00047675657543949814
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 8.348383000004105,
+            "cpu_seconds": 8.25
+          },
+          "candidate": {
+            "wall_seconds": 4.574655199889094,
+            "cpu_seconds": 4.5
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -37.479356228812726,
+            "ip_ev": 37.479356228812726,
+            "raw_nash_conv_chips": 0.0004767565754394982,
+            "zero_sum_residual": 0.0,
+            "nash_conv_chips": 0.0004767565754394982,
+            "nash_conv_pct_pot": 0.00047675657543949814
+          }
+        }
+      ],
+      "median_wall_seconds": {
+        "baseline": 8.315612499951385,
+        "candidate": 4.562514099990949
+      }
+    },
+    {
+      "id": "turn_allin",
+      "question": "Inspect a terminal turn shove versus a two-combo arrival hypothesis",
+      "request": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip_range": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 1
+          }
+        ],
+        "pot_cents": 10000,
+        "stack_cents": 10000,
+        "turn_bet_sizes": [
+          1
+        ],
+        "river_bet_sizes": [],
+        "iterations": 2000,
+        "views": [
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn"
+          },
+          {
+            "player": "ip",
+            "hand": "AsAd",
+            "node": "turn/check"
+          },
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn/check/check/river",
+            "river_card": "2d"
+          }
+        ]
+      },
+      "samples": [
+        {
+          "baseline": {
+            "wall_seconds": 2.34427650005091,
+            "cpu_seconds": 2.296875
+          },
+          "candidate": {
+            "wall_seconds": 1.3232791000045836,
+            "cpu_seconds": 1.296875
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -21.59093993282089,
+            "ip_ev": 21.59093993282089,
+            "raw_nash_conv_chips": 0.022185180314451713,
+            "zero_sum_residual": 0.0,
+            "nash_conv_chips": 0.022185180314451713,
+            "nash_conv_pct_pot": 0.022185180314451713
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 2.3896350999129936,
+            "cpu_seconds": 2.359375
+          },
+          "candidate": {
+            "wall_seconds": 1.2966451999964193,
+            "cpu_seconds": 1.296875
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -21.59093993282089,
+            "ip_ev": 21.59093993282089,
+            "raw_nash_conv_chips": 0.022185180314451713,
+            "zero_sum_residual": 0.0,
+            "nash_conv_chips": 0.022185180314451713,
+            "nash_conv_pct_pot": 0.022185180314451713
+          }
+        },
+        {
+          "baseline": {
+            "wall_seconds": 2.3439455999759957,
+            "cpu_seconds": 2.328125
+          },
+          "candidate": {
+            "wall_seconds": 1.301890500006266,
+            "cpu_seconds": 1.28125
+          },
+          "exact_parity": true,
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -21.59093993282089,
+            "ip_ev": 21.59093993282089,
+            "raw_nash_conv_chips": 0.022185180314451713,
+            "zero_sum_residual": 0.0,
+            "nash_conv_chips": 0.022185180314451713,
+            "nash_conv_pct_pot": 0.022185180314451713
+          }
+        }
+      ],
+      "median_wall_seconds": {
+        "baseline": 2.34427650005091,
+        "candidate": 1.301890500006266
+      }
+    }
+  ]
+}
