@@ -1,7 +1,15 @@
 # Turn MCP pilot — Stage B activation and acceptance
 
-**Owner-authorized Stage B; activation change awaiting review/merge. No hosted
-turn acceptance yet.** Tracks #26, following merged PR #31 / main
+**Activated, but Stage B acceptance failed.** Owner-merged PR #32 deployed at
+`3f3aeb093c75c62dbb2665122f8d1fbe58c5a0e4`; the owner selected the hosted factory.
+The pinned game hit its worker deadline, reproduced on 24 October. A separate
+startup-related connector timeout also occurred. One simpler all-in diagnostic
+computed, which does not accept the pinned game or the admitted subset.
+See [the investigation, candidate changes and no-go decision](turn-hosted-timeout.md).
+Production settings are unchanged by that investigation; disabling the pilot or
+deploying its candidate requires separate owner approval. Keep #26 open.
+
+The following preparation history tracks #26, following merged PR #31 / main
 `d0eb8699a7c7924cbbc3b2a562bb1a8554a231a9`. Chosen design is bounded live-only; #25 catalog packaging,
 cold/warm cache hits and cache miss fallback do not apply. No cache ships.
 
@@ -158,7 +166,8 @@ attestation or independent correctness of range assumptions/low-reach EVs.
 
 An artificial pre-solved demo, localhost SDK roundtrip, passing resource study,
 `/health` or backend deployment is insufficient for ChatGPT acceptance. There is
-no actual hosted turn evidence yet. Four synthetic questions establish examples,
+now actual hosted failure evidence and one simpler completed diagnostic, but no
+acceptance of the pinned game or full subset. Four synthetic questions establish examples,
 not organic demand or broad usefulness. Stop if this tiny product isn't useful.
 
 ## Abort / rollback
@@ -177,6 +186,7 @@ do not alter Auth0 or widen budgets as a latency fix. No database migration or
 persistent user data is introduced, so rollback has no data-migration step.
 
 Do not merge automatically or claim Stage B acceptance from this document.
-The scoped new-tool release is owner-authorized; review/owner merge and actual
-Render/ChatGPT acceptance remain pending. Plugin publishing, OAuth changes,
+The scoped new-tool activation was owner-authorized and merged; actual
+Render/ChatGPT acceptance remains failed/open. Review, owner merge and explicit
+deployment approval are required for the optimization candidate. Plugin publishing, OAuth changes,
 broader tools/ranges/users, larger budgets and paid plans remain unauthorized.
