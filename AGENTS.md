@@ -16,6 +16,11 @@
   or benchmark imports. Stage B needs actual Render/authenticated ChatGPT
   acceptance; local SDK success is not that acceptance. Keep Issue #26 open
   until its remaining release/client gates have actual evidence.
+  Stage B's pinned game has timed out on Free Render. Training optimizations
+  must preserve exact differential parity with the retained two-player walk;
+  run benchmark_turn_training.py as well as the existing independent/pilot gates.
+  Timeout proc snapshots are bounded numeric diagnostics, never solution receipts.
+  CI or projected CPU scaling does not supersede actual Render/client failures.
 
 - Issue #21 is a development-only turn feasibility experiment. Keep full-policy
   storage/lookup under benchmarks and ignored/CI artifacts, not product imports
