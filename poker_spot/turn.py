@@ -154,7 +154,8 @@ class TurnSolver:
             return matrix @ r1, matrix.T @ r0
         return np.einsum('rij,rj->ri', matrix, r1), np.einsum('rij,ri->rj', matrix, r0)
 
-    def _terminal(self, leaf, r0, r1):
+    def _terminal_terms(self, leaf):
+        """Shared payoff ledger for training and two-player policy evaluation."""
         if leaf.kind == 'fold':
             payoff = self.pot/2+leaf.contrib[1] if leaf.winner == 0 else -self.pot/2-leaf.contrib[0]
             matrix = self.river_valid if leaf.street else self.valid
@@ -163,6 +164,10 @@ class TurnSolver:
                 raise AssertionError('Showdown requires matched contributions')
             payoff = self.pot/2+leaf.contrib[0]
             matrix = self.runout_sign if leaf.kind == 'runout' else self.river_sign
+        return matrix, payoff
+
+    def _terminal(self, leaf, r0, r1):
+        matrix, payoff = self._terminal_terms(leaf)
         left, right = self._product(matrix, r0, r1)
         return payoff*left, -payoff*right
 
@@ -202,6 +207,42 @@ class TurnSolver:
         other_value = np.sum([v[1-side] for v in values], axis=0)
         return (own_value, other_value) if side == 0 else (other_value, own_value)
 
+    def _train(self, node, r0, r1, iteration, side, chance_reach=1.0):
+        """Visit the same tree, returning only the updating player's value.
+
+        Alternating CFR+ never consumes the other player's returned value.
+        Keep both reaches for own-reach averaging, but omit unused terminal
+        products and value reductions. Evaluation/BR/projection use _walk.
+        """
+        if isinstance(node, Terminal):
+            matrix, payoff = self._terminal_terms(node)
+            if side == 0:
+                product = matrix @ r1 if matrix.ndim == 2 else np.einsum('rij,rj->ri', matrix, r1)
+                return payoff*product
+            product = matrix.T @ r0 if matrix.ndim == 2 else np.einsum('rij,ri->rj', matrix, r0)
+            return -payoff*product
+        if isinstance(node, Chance):
+            value = self._train(node.child, r0[None, :]*self.masks[0], r1[None, :]*self.masks[1],
+                                iteration, side, chance_reach/44)
+            return value.sum(axis=0)/44
+        strategy = node.strategy
+        own = r0 if side == 0 else r1
+        if node.player == side:
+            node.strategy_sum += iteration*chance_reach*own[..., None]*strategy
+        values = []
+        for index, child in enumerate(node.children):
+            reach0 = r0*strategy[..., index] if node.player == 0 else r0
+            reach1 = r1*strategy[..., index] if node.player == 1 else r1
+            values.append(self._train(child, reach0, reach1, iteration, side, chance_reach))
+        if node.player == side:
+            actor = np.stack(values, axis=-1)
+            mixed = (actor*strategy).sum(axis=-1)
+            node.regret = np.maximum(0, node.regret+chance_reach*(actor-mixed[..., None]))
+            return mixed
+        # Binary nodes need one addition; preserve the general reduction for
+        # check-only nodes and the local engine's two-size (three-action) trees.
+        return values[0]+values[1] if len(values) == 2 else np.sum(values, axis=0)
+
     def diagnostics(self):
         left, right = self._walk(self.root, *self.weights)
         best0 = self._walk(self.root, *self.weights, best_response=0)[0]
@@ -238,8 +279,11 @@ class TurnSolver:
         for iteration in range(1, iterations+1):
             for side in (0, 1):
                 for node in self.nodes.values():
-                    node.update_strategy()
-                self._walk(self.root, *self.weights, iteration=iteration, update_player=side)
+                    # Initialize every strategy, including externally seeded
+                    # regrets. Later only the previous updater changed regrets.
+                    if (iteration == 1 and side == 0) or node.player != side:
+                        node.update_strategy()
+                self._train(self.root, *self.weights, iteration, side)
             self.iterations = iteration
             if iteration in marks:
                 checkpoints.append(self.diagnostics())
