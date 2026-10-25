@@ -1,0 +1,4420 @@
+{
+  "version": "turn-reuse-study-v1",
+  "design": "Predeclared synthetic targets, no fitted parameters. Source family and card mapping supplied; not nearest-neighbour search or organic demand. Exact/equivalent targets excluded from approximation summaries.",
+  "source_sha256_lf": {
+    "benchmarks/turn_reuse.py": "d2a97ccb1b6003332cba79805caa1a4b6e4a99f477159b6175ada94bf984ea02",
+    "benchmarks/turn_reuse_worker.py": "15572ca21aad6eedd5d177cb2246c30b36d8aace568bd712c569b3fad83e2407",
+    "scripts/benchmark_turn_reuse.py": "384091d88b36f0b9cb6c2301482a2af2ddf4be109670a103acd9847e884df96c",
+    "benchmarks/turn-reuse-fixtures.json": "fa6c83e30d26dffbde756c9d172b4f27f710468051fa566f17ff5fdec946672e",
+    "benchmarks/turn_feasibility.py": "a0d14446603bc3c8c13b5e8e43f0ff04a34ddad0b4c93e896a7cdd74b11261d3",
+    "benchmarks/turn_independent.py": "086c43ea7b49921d63d898dfb52fc1c5733c869f26da052a779c3c4aca853074",
+    "benchmarks/turn_reference.py": "712739f94113a13e40c8692b5ae38309b95ce6f9c09821265a8841724381e4a6",
+    "benchmarks/turn_reference_worker.py": "e61c38f5ce9cfa2b8f9779eebc267659becb09c3cfcd70d9f8a2e531289d43b9",
+    "benchmarks/reference_worker.py": "e6e96eb272212b40428b6bb25bdbe64a91aa850d85323130b61ae214862d748b",
+    "benchmarks/turn_resources.py": "6866c5a418151f02ebcec8513f8d328c64aa4512a1563ad2bb7cd4e170e2925d",
+    "benchmarks/turn_performance.py": "9c56595a5d91905686b4a343eaafc933684dff177f11504d99bb18004ce4fb9f",
+    "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+    "poker_spot/turn.py": "3d2685e3d62911ca3769be09ff9eb9490d9947ed76d034ddce475030aaad5185"
+  },
+  "base_sha": "e07ab9d6b664688327af538a3d33c0b8a4ccac4e",
+  "runtime": {
+    "python": "3.14.8",
+    "numpy": "2.5.4",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "measurement": "Unlimited local in-process wall/CPU (imports excluded). Reference training isolated. Not hosted/Linux budget acceptance.",
+  "sources": {
+    "weighted_dry": {
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "file": "weighted_dry.json.gz",
+      "sha256": "6b2f638d251e766861307a3ad1f4d0ec3a02b1baf4591e0437ecc53210862063",
+      "compressed_bytes": 5087,
+      "solve": {
+        "wall_seconds": 0.814010199974291,
+        "cpu_seconds": 0.8125
+      },
+      "packing": {
+        "wall_seconds": 0.0060038999654352665,
+        "cpu_seconds": 0.0
+      },
+      "offline_wall_including_independent_policy_check": 0.8657546999165788,
+      "evaluation": {
+        "oop_ev": -48.633231987601356,
+        "ip_ev": 48.633231987601356,
+        "nash_conv_chips": 0.00527674821110935,
+        "oop_lower_bound": -48.63493535000765,
+        "oop_upper_bound": -48.62965860179654
+      },
+      "same_policy_numeric_delta": 7.105427357601002e-14
+    },
+    "weighted_collision": {
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 100,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "AsKs",
+            "weight": 0.3
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJs",
+            "weight": 0.5
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "file": "weighted_collision.json.gz",
+      "sha256": "d73bf24a073beb3736955d5a06db82c8118ffdcede43b1ddbfeedc4eacfc8dfe",
+      "compressed_bytes": 7590,
+      "solve": {
+        "wall_seconds": 0.8609785999869928,
+        "cpu_seconds": 0.875
+      },
+      "packing": {
+        "wall_seconds": 0.003475200035609305,
+        "cpu_seconds": 0.0
+      },
+      "offline_wall_including_independent_policy_check": 0.9193624999606982,
+      "evaluation": {
+        "oop_ev": -37.47935622881271,
+        "ip_ev": 37.47935622881271,
+        "nash_conv_chips": 0.0004767565754377756,
+        "oop_lower_bound": -37.47959719552469,
+        "oop_upper_bound": -37.47912043894925
+      },
+      "same_policy_numeric_delta": 1.4210854715202004e-14
+    },
+    "four_flush_4x4": {
+      "config": {
+        "board": [
+          "Ks",
+          "9s",
+          "5s",
+          "2s"
+        ],
+        "pot": 100,
+        "stack": 120,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsQh",
+            "weight": 1
+          },
+          {
+            "hand": "QsQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          },
+          {
+            "hand": "8s8h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 0.5
+          },
+          {
+            "hand": "QsJd",
+            "weight": 0.8
+          },
+          {
+            "hand": "TsTh",
+            "weight": 0.4
+          },
+          {
+            "hand": "7h7d",
+            "weight": 0.25
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "file": "four_flush_4x4.json.gz",
+      "sha256": "5ec9e43f99a5d21d1f16f1b353ff56bfbcbf0a56463e047af05f4ca061d457e4",
+      "compressed_bytes": 34558,
+      "solve": {
+        "wall_seconds": 1.9190899999812245,
+        "cpu_seconds": 1.890625
+      },
+      "packing": {
+        "wall_seconds": 0.01668910006992519,
+        "cpu_seconds": 0.015625
+      },
+      "offline_wall_including_independent_policy_check": 2.4020218999357894,
+      "evaluation": {
+        "oop_ev": 21.812607825302244,
+        "ip_ev": -21.812607825302244,
+        "nash_conv_chips": 0.001670460043431632,
+        "oop_lower_bound": 21.81223435073262,
+        "oop_upper_bound": 21.81390481077605
+      },
+      "same_policy_numeric_delta": 1.4210854715202004e-14
+    }
+  },
+  "targets": [
+    {
+      "id": "exact_repeat",
+      "source": "weighted_dry",
+      "kind": "exact",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.016593800042755902,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.001047199941240251,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.006817099987529218,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.0007799000013619661,
+          "cpu_seconds": 0.015625
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.0023096000077202916,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.002076700096949935,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.001139800064265728,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "equivalent_and_verified",
+      "strict_hit": true,
+      "equivalence_hit": true,
+      "policy_evaluation": {
+        "oop_ev": -48.63323198760137,
+        "ip_ev": 48.63323198760137,
+        "oop_lower_bound": -48.634935350007694,
+        "oop_upper_bound": -48.62965860179653,
+        "nash_conv_chips": 0.005276748211166193
+      },
+      "root_value_bound": {
+        "status": "bounded_root_value",
+        "lower": -48.634935350007694,
+        "upper": -48.62965860179653,
+        "midpoint": -48.63229697590211,
+        "maximum_equilibrium_value_error": 0.0026383841055830966,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": true,
+      "independent_build": {
+        "wall_seconds": 0.029898000066168606,
+        "cpu_seconds": 0.03125
+      },
+      "reference_training_parent": {
+        "wall_seconds": 1.962085200008005,
+        "cpu_seconds": 0.0
+      },
+      "independent_reference": {
+        "oop_ev": -48.63335219653627,
+        "ip_ev": 48.63335219653627,
+        "nash_conv_chips": 0.0026777541951048534,
+        "oop_lower_bound": -48.63392697769797,
+        "oop_upper_bound": -48.63124922350286
+      },
+      "reference_profile_sha256": "5db935b0da9a946d74b7154c47ca283f0514b6d3dbd77de5ec2ac63f163287c4",
+      "fresh_construction": {
+        "wall_seconds": 0.0005625000922009349,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.3200606000609696,
+        "cpu_seconds": 2.28125
+      },
+      "fresh_evaluation": {
+        "oop_ev": -48.633231987601356,
+        "ip_ev": 48.633231987601356,
+        "nash_conv_chips": 0.00527674821110935,
+        "oop_lower_bound": -48.63493535000765,
+        "oop_upper_bound": -48.62965860179654
+      },
+      "fresh_200": {
+        "wall_seconds": 0.2299145000288263,
+        "cpu_seconds": 0.21875
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -49.093836213580374,
+          "ip_ev": 49.093836213580374,
+          "raw_nash_conv_chips": 2.171352287459615,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 2.171352287459615,
+          "nash_conv_pct_pot": 2.171352287459615
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -48.73456522721542,
+          "ip_ev": 48.7345652272154,
+          "raw_nash_conv_chips": 0.9360576129028473,
+          "zero_sum_residual": -2.1316282072803006e-14,
+          "nash_conv_chips": 0.9360576129028473,
+          "nash_conv_pct_pot": 0.9360576129028473
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -48.627565771409664,
+          "ip_ev": 48.627565771409635,
+          "raw_nash_conv_chips": 0.23371384910833748,
+          "zero_sum_residual": -2.842170943040401e-14,
+          "nash_conv_chips": 0.23371384910833748,
+          "nash_conv_pct_pot": 0.23371384910833748
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -48.627565771409664,
+        "ip_ev": 48.627565771409664,
+        "nash_conv_chips": 0.23371384910841186,
+        "oop_lower_bound": -48.70495922847872,
+        "oop_upper_bound": -48.47124537937031
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -48.70495922847872,
+        "upper": -48.47124537937031,
+        "midpoint": -48.588102303924515,
+        "maximum_equilibrium_value_error": 0.11685693455420593,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 7.105427357601002e-14,
+      "scaled_source_value_delta": 1.4210854715202004e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 0.00012020893491637707,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 0.00012020893491637707,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -48.63323198760137,
+          "absolute_error_pct_pot": 0.00012020893490216622,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -48.63229697590211,
+          "absolute_error_pct_pot": 0.0010552206341643,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -48.627565771409664,
+          "absolute_error_pct_pot": 0.005786425126608208,
+          "distance_outside_reference_interval_pct_pot": 0.00368345209319898,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 0.0001707086011677461,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      },
+      "fresh_process_probe": {
+        "mode": "unlimited_local",
+        "limits": null,
+        "imports_parse_seconds": 0.11392559995874763,
+        "samples": [
+          {
+            "wall_seconds": 0.014979199972003698,
+            "cpu_seconds": 0.015625,
+            "evaluation": {
+              "oop_ev": -48.63323198760137,
+              "ip_ev": 48.63323198760137,
+              "oop_lower_bound": -48.634935350007694,
+              "oop_upper_bound": -48.62965860179653,
+              "nash_conv_chips": 0.005276748211166193
+            }
+          },
+          {
+            "wall_seconds": 0.013261300045996904,
+            "cpu_seconds": 0.0,
+            "evaluation": {
+              "oop_ev": -48.63323198760137,
+              "ip_ev": 48.63323198760137,
+              "oop_lower_bound": -48.634935350007694,
+              "oop_upper_bound": -48.62965860179653,
+              "nash_conv_chips": 0.005276748211166193
+            }
+          },
+          {
+            "wall_seconds": 0.011940500000491738,
+            "cpu_seconds": 0.015625,
+            "evaluation": {
+              "oop_ev": -48.63323198760137,
+              "ip_ev": 48.63323198760137,
+              "oop_lower_bound": -48.634935350007694,
+              "oop_upper_bound": -48.62965860179653,
+              "nash_conv_chips": 0.005276748211166193
+            }
+          }
+        ],
+        "worker_wall_through_snapshot_seconds": 0.15434989996720105,
+        "cpu_through_snapshot_seconds": 0.140625,
+        "linux_memory": null,
+        "peak_resident_memory": {
+          "bytes": 36978688,
+          "method": "Windows PeakWorkingSetSize"
+        },
+        "parent_wall_including_startup_serialization_reap": 0.28300009993836284,
+        "parent_deadline_seconds": 20
+      }
+    },
+    {
+      "id": "global_suits",
+      "source": "weighted_dry",
+      "kind": "equivalent",
+      "config": {
+        "board": [
+          "2s",
+          "3h",
+          "4d",
+          "8c"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KdKh",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AcAh",
+            "weight": 1
+          },
+          {
+            "hand": "QdJh",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "2c": "2s",
+        "2d": "2h",
+        "2h": "2d",
+        "2s": "2c",
+        "3c": "3s",
+        "3d": "3h",
+        "3h": "3d",
+        "3s": "3c",
+        "4c": "4s",
+        "4d": "4h",
+        "4h": "4d",
+        "4s": "4c",
+        "5c": "5s",
+        "5d": "5h",
+        "5h": "5d",
+        "5s": "5c",
+        "6c": "6s",
+        "6d": "6h",
+        "6h": "6d",
+        "6s": "6c",
+        "7c": "7s",
+        "7d": "7h",
+        "7h": "7d",
+        "7s": "7c",
+        "8c": "8s",
+        "8d": "8h",
+        "8h": "8d",
+        "8s": "8c",
+        "9c": "9s",
+        "9d": "9h",
+        "9h": "9d",
+        "9s": "9c",
+        "Tc": "Ts",
+        "Td": "Th",
+        "Th": "Td",
+        "Ts": "Tc",
+        "Jc": "Js",
+        "Jd": "Jh",
+        "Jh": "Jd",
+        "Js": "Jc",
+        "Qc": "Qs",
+        "Qd": "Qh",
+        "Qh": "Qd",
+        "Qs": "Qc",
+        "Kc": "Ks",
+        "Kd": "Kh",
+        "Kh": "Kd",
+        "Ks": "Kc",
+        "Ac": "As",
+        "Ad": "Ah",
+        "Ah": "Ad",
+        "As": "Ac"
+      },
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.029616200015880167,
+        "cpu_seconds": 0.03125
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0010916999308392406,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.00814289995469153,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.004114100011065602,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.004055100027471781,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.004260699963197112,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.00331729999743402,
+          "cpu_seconds": 0.015625
+        }
+      },
+      "status": "equivalent_and_verified",
+      "strict_hit": false,
+      "equivalence_hit": true,
+      "policy_evaluation": {
+        "oop_ev": -48.63323198760137,
+        "ip_ev": 48.63323198760137,
+        "oop_lower_bound": -48.634935350007694,
+        "oop_upper_bound": -48.62965860179653,
+        "nash_conv_chips": 0.005276748211166193
+      },
+      "root_value_bound": {
+        "status": "bounded_root_value",
+        "lower": -48.634935350007694,
+        "upper": -48.62965860179653,
+        "midpoint": -48.63229697590211,
+        "maximum_equilibrium_value_error": 0.0026383841055830966,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": true,
+      "independent_build": {
+        "wall_seconds": 0.0680980000179261,
+        "cpu_seconds": 0.0625
+      },
+      "reference_training_parent": {
+        "wall_seconds": 1.8831337000010535,
+        "cpu_seconds": 0.03125
+      },
+      "independent_reference": {
+        "oop_ev": -48.63335219653628,
+        "ip_ev": 48.63335219653628,
+        "nash_conv_chips": 0.002677754195119064,
+        "oop_lower_bound": -48.633926977697975,
+        "oop_upper_bound": -48.631249223502856
+      },
+      "reference_profile_sha256": "dc43efe6081e35e7725b55818bcf0d5dd900a40914405d2a8ca33b73d1b80b41",
+      "fresh_construction": {
+        "wall_seconds": 0.000977399991825223,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.3119294000789523,
+        "cpu_seconds": 2.3125
+      },
+      "fresh_evaluation": {
+        "oop_ev": -48.63323198760138,
+        "ip_ev": 48.63323198760138,
+        "nash_conv_chips": 0.005276748211116455,
+        "oop_lower_bound": -48.63493535000767,
+        "oop_upper_bound": -48.62965860179656
+      },
+      "fresh_200": {
+        "wall_seconds": 0.24053299997467548,
+        "cpu_seconds": 0.25
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -49.093836213580374,
+          "ip_ev": 49.09383621358037,
+          "raw_nash_conv_chips": 2.171352287459615,
+          "zero_sum_residual": -7.105427357601002e-15,
+          "nash_conv_chips": 2.171352287459615,
+          "nash_conv_pct_pot": 2.171352287459615
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -48.73456522721542,
+          "ip_ev": 48.734565227215406,
+          "raw_nash_conv_chips": 0.9360576129028222,
+          "zero_sum_residual": -1.4210854715202004e-14,
+          "nash_conv_chips": 0.9360576129028222,
+          "nash_conv_pct_pot": 0.9360576129028221
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -48.627565771409685,
+          "ip_ev": 48.62756577140967,
+          "raw_nash_conv_chips": 0.233713849108396,
+          "zero_sum_residual": -1.4210854715202004e-14,
+          "nash_conv_chips": 0.233713849108396,
+          "nash_conv_pct_pot": 0.233713849108396
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -48.627565771409664,
+        "ip_ev": 48.627565771409664,
+        "nash_conv_chips": 0.23371384910841897,
+        "oop_lower_bound": -48.70495922847873,
+        "oop_upper_bound": -48.47124537937031
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -48.70495922847873,
+        "upper": -48.47124537937031,
+        "midpoint": -48.588102303924515,
+        "maximum_equilibrium_value_error": 0.11685693455420948,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 5.684341886080802e-14,
+      "scaled_source_value_delta": 1.4210854715202004e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 0.0001202089349234825,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 0.0001202089349234825,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -48.63323198760137,
+          "absolute_error_pct_pot": 0.00012020893490927166,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -48.63229697590211,
+          "absolute_error_pct_pot": 0.0010552206341714054,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -48.627565771409664,
+          "absolute_error_pct_pot": 0.005786425126615313,
+          "distance_outside_reference_interval_pct_pot": 0.003683452093191874,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 0.00017070860118195696,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "double_money",
+      "source": "weighted_dry",
+      "kind": "equivalent",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 200,
+        "stack": 400,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.023026800015941262,
+        "cpu_seconds": 0.03125
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0007547000423073769,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.006948600057512522,
+          "cpu_seconds": 0.015625
+        },
+        "target_construction": {
+          "wall_seconds": 0.0009589000837877393,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.0035149999894201756,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.003972999984398484,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.002772800042293966,
+          "cpu_seconds": 0.015625
+        }
+      },
+      "status": "equivalent_and_verified",
+      "strict_hit": false,
+      "equivalence_hit": true,
+      "policy_evaluation": {
+        "oop_ev": -97.26646397520274,
+        "ip_ev": 97.26646397520274,
+        "oop_lower_bound": -97.26987070001539,
+        "oop_upper_bound": -97.25931720359306,
+        "nash_conv_chips": 0.010553496422332387
+      },
+      "root_value_bound": {
+        "status": "bounded_root_value",
+        "lower": -97.26987070001539,
+        "upper": -97.25931720359306,
+        "midpoint": -97.26459395180422,
+        "maximum_equilibrium_value_error": 0.005276758211166193,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": true,
+      "independent_build": {
+        "wall_seconds": 0.053412299952469766,
+        "cpu_seconds": 0.046875
+      },
+      "reference_training_parent": {
+        "wall_seconds": 1.9365491000935435,
+        "cpu_seconds": 0.0
+      },
+      "independent_reference": {
+        "oop_ev": -97.26670439307254,
+        "ip_ev": 97.26670439307254,
+        "nash_conv_chips": 0.005355508390209707,
+        "oop_lower_bound": -97.26785395539594,
+        "oop_upper_bound": -97.26249844700573
+      },
+      "reference_profile_sha256": "b4c406488a9f76a545c768d50b2fc379ce70addaf03e795757880a95e5c627dd",
+      "fresh_construction": {
+        "wall_seconds": 0.0010192000772804022,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.2251494999509305,
+        "cpu_seconds": 2.1875
+      },
+      "fresh_evaluation": {
+        "oop_ev": -97.26646397520271,
+        "ip_ev": 97.26646397520271,
+        "nash_conv_chips": 0.0105534964222187,
+        "oop_lower_bound": -97.2698707000153,
+        "oop_upper_bound": -97.25931720359308
+      },
+      "fresh_200": {
+        "wall_seconds": 0.24568289995659143,
+        "cpu_seconds": 0.25
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -98.18767242716075,
+          "ip_ev": 98.18767242716075,
+          "raw_nash_conv_chips": 4.34270457491923,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 4.34270457491923,
+          "nash_conv_pct_pot": 2.171352287459615
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -97.46913045443084,
+          "ip_ev": 97.4691304544308,
+          "raw_nash_conv_chips": 1.8721152258056946,
+          "zero_sum_residual": -4.263256414560601e-14,
+          "nash_conv_chips": 1.8721152258056946,
+          "nash_conv_pct_pot": 0.9360576129028473
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -97.25513154281933,
+          "ip_ev": 97.25513154281927,
+          "raw_nash_conv_chips": 0.46742769821667496,
+          "zero_sum_residual": -5.684341886080802e-14,
+          "nash_conv_chips": 0.46742769821667496,
+          "nash_conv_pct_pot": 0.23371384910833748
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -97.25513154281933,
+        "ip_ev": 97.25513154281933,
+        "nash_conv_chips": 0.46742769821682373,
+        "oop_lower_bound": -97.40991845695744,
+        "oop_upper_bound": -96.94249075874062
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -97.40991845695744,
+        "upper": -96.94249075874062,
+        "midpoint": -97.17620460784903,
+        "maximum_equilibrium_value_error": 0.23371385910841186,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 1.4210854715202004e-13,
+      "scaled_source_value_delta": 2.842170943040401e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -97.26646397520271,
+          "absolute_error_pct_pot": 0.00012020893491637707,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -97.26646397520271,
+          "absolute_error_pct_pot": 0.00012020893491637707,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -97.26646397520274,
+          "absolute_error_pct_pot": 0.00012020893490216622,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -97.26459395180422,
+          "absolute_error_pct_pot": 0.0010552206341643,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -97.25513154281933,
+          "absolute_error_pct_pot": 0.005786425126608208,
+          "distance_outside_reference_interval_pct_pot": 0.00368345209319898,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 0.0001707086011677461,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "suits_and_money",
+      "source": "weighted_collision",
+      "kind": "equivalent",
+      "config": {
+        "board": [
+          "2d",
+          "3h",
+          "4s",
+          "8c"
+        ],
+        "pot": 50.0,
+        "stack": 50.0,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KsKh",
+            "weight": 1
+          },
+          {
+            "hand": "AcKc",
+            "weight": 0.3
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AcAh",
+            "weight": 1
+          },
+          {
+            "hand": "QcJc",
+            "weight": 0.5
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "2c": "2d",
+        "2d": "2h",
+        "2h": "2s",
+        "2s": "2c",
+        "3c": "3d",
+        "3d": "3h",
+        "3h": "3s",
+        "3s": "3c",
+        "4c": "4d",
+        "4d": "4h",
+        "4h": "4s",
+        "4s": "4c",
+        "5c": "5d",
+        "5d": "5h",
+        "5h": "5s",
+        "5s": "5c",
+        "6c": "6d",
+        "6d": "6h",
+        "6h": "6s",
+        "6s": "6c",
+        "7c": "7d",
+        "7d": "7h",
+        "7h": "7s",
+        "7s": "7c",
+        "8c": "8d",
+        "8d": "8h",
+        "8h": "8s",
+        "8s": "8c",
+        "9c": "9d",
+        "9d": "9h",
+        "9h": "9s",
+        "9s": "9c",
+        "Tc": "Td",
+        "Td": "Th",
+        "Th": "Ts",
+        "Ts": "Tc",
+        "Jc": "Jd",
+        "Jd": "Jh",
+        "Jh": "Js",
+        "Js": "Jc",
+        "Qc": "Qd",
+        "Qd": "Qh",
+        "Qh": "Qs",
+        "Qs": "Qc",
+        "Kc": "Kd",
+        "Kd": "Kh",
+        "Kh": "Ks",
+        "Ks": "Kc",
+        "Ac": "Ad",
+        "Ad": "Ah",
+        "Ah": "As",
+        "As": "Ac"
+      },
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.029656800092197955,
+        "cpu_seconds": 0.03125
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0005223000189289451,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.008602399961091578,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.0035322000039741397,
+          "cpu_seconds": 0.015625
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.00397660001181066,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.005130199948325753,
+          "cpu_seconds": 0.015625
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.0032085999846458435,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "equivalent_and_verified",
+      "strict_hit": false,
+      "equivalence_hit": true,
+      "policy_evaluation": {
+        "oop_ev": -18.73967811440637,
+        "ip_ev": 18.73967811440637,
+        "oop_lower_bound": -18.73979859776235,
+        "oop_upper_bound": -18.739560219474626,
+        "nash_conv_chips": 0.00023837828772244052
+      },
+      "root_value_bound": {
+        "status": "bounded_root_value",
+        "lower": -18.73979859776235,
+        "upper": -18.739560219474626,
+        "midpoint": -18.739679408618485,
+        "maximum_equilibrium_value_error": 0.00011919914386122025,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": true,
+      "independent_build": {
+        "wall_seconds": 0.07160090003162622,
+        "cpu_seconds": 0.078125
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.4437854000134394,
+        "cpu_seconds": 0.0
+      },
+      "independent_reference": {
+        "oop_ev": -18.739671600299243,
+        "ip_ev": 18.739671600299243,
+        "nash_conv_chips": 0.00010171874893316613,
+        "oop_lower_bound": -18.73972514508055,
+        "oop_upper_bound": -18.739623426331615
+      },
+      "reference_profile_sha256": "e9ba55bacaf70678c0d02c181db0ffe613cd639fafffad842478a84d165bfcfa",
+      "fresh_construction": {
+        "wall_seconds": 0.000910300062969327,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.238117799977772,
+        "cpu_seconds": 2.15625
+      },
+      "fresh_evaluation": {
+        "oop_ev": -18.739678114406363,
+        "ip_ev": 18.739678114406363,
+        "nash_conv_chips": 0.0002383782877188878,
+        "oop_lower_bound": -18.739798597762345,
+        "oop_upper_bound": -18.739560219474626
+      },
+      "fresh_200": {
+        "wall_seconds": 0.23671339999418706,
+        "cpu_seconds": 0.234375
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -18.7420467376287,
+          "ip_ev": 18.742046737628698,
+          "raw_nash_conv_chips": 0.3145664511476317,
+          "zero_sum_residual": -3.552713678800501e-15,
+          "nash_conv_chips": 0.3145664511476317,
+          "nash_conv_pct_pot": 0.6291329022952634
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -18.742420203629052,
+          "ip_ev": 18.742420203629056,
+          "raw_nash_conv_chips": 0.19297572014645703,
+          "zero_sum_residual": 3.552713678800501e-15,
+          "nash_conv_chips": 0.19297572014645703,
+          "nash_conv_pct_pot": 0.38595144029291406
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -18.740498936585563,
+          "ip_ev": 18.74049893658557,
+          "raw_nash_conv_chips": 0.03925382943857611,
+          "zero_sum_residual": 7.105427357601002e-15,
+          "nash_conv_chips": 0.03925382943857611,
+          "nash_conv_pct_pot": 0.07850765887715222
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -18.740498936585567,
+        "ip_ev": 18.740498936585567,
+        "nash_conv_chips": 0.03925382943856448,
+        "oop_lower_bound": -18.749083525279065,
+        "oop_upper_bound": -18.7098296958405
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -18.749083525279065,
+        "upper": -18.7098296958405,
+        "midpoint": -18.729456610559783,
+        "maximum_equilibrium_value_error": 0.019626924719282242,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 1.0658141036401503e-14,
+      "scaled_source_value_delta": 7.105427357601002e-15,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -18.739678114406363,
+          "absolute_error_pct_pot": 1.3028214240762281e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -18.73967811440636,
+          "absolute_error_pct_pot": 1.3028214233656852e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -18.73967811440637,
+          "absolute_error_pct_pot": 1.3028214254973136e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -18.739679408618485,
+          "absolute_error_pct_pot": 1.561663848548278e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -18.740498936585567,
+          "absolute_error_pct_pot": 0.0016546725726485079,
+          "distance_outside_reference_interval_pct_pot": 0.0015475830100371013,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 0.0001560534862790064,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "dry_bluff_weight_0.1",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.1
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.01569200004450977,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.00042910000775009394,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.0039963999297469854,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.0010136000346392393,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.004063300089910626,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.003411700017750263,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.0021838999819010496,
+          "cpu_seconds": 0.015625
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -102.41006479284667,
+        "ip_ev": 102.41006479284667,
+        "oop_lower_bound": -102.41063971061138,
+        "oop_upper_bound": -49.699516706144685,
+        "nash_conv_chips": 52.71112300446669
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": -102.41063971061138,
+        "upper": -49.699516706144685,
+        "midpoint": -76.05507820837803,
+        "maximum_equilibrium_value_error": 26.355561512233347,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.320855614973262,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": -30.627126883811368,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.057009899988770485,
+        "cpu_seconds": 0.046875
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.0152738000033423,
+        "cpu_seconds": 0.015625
+      },
+      "independent_reference": {
+        "oop_ev": -50.00005299326872,
+        "ip_ev": 50.00005299326872,
+        "nash_conv_chips": 0.00012904385148715392,
+        "oop_lower_bound": -50.00009144304754,
+        "oop_upper_bound": -49.99996239919605
+      },
+      "reference_profile_sha256": "f8a5bbce43df134f07af7ae0606216465fbb7ddc48e8d4a929fdeb43daa2f2d1",
+      "fresh_construction": {
+        "wall_seconds": 0.001029699924401939,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.2235532000195235,
+        "cpu_seconds": 2.1875
+      },
+      "fresh_evaluation": {
+        "oop_ev": -50.000211920050525,
+        "ip_ev": 50.000211920050525,
+        "nash_conv_chips": 0.0005160464265401288,
+        "oop_lower_bound": -50.000365680792775,
+        "oop_upper_bound": -49.999849634366235
+      },
+      "fresh_200": {
+        "wall_seconds": 0.23363760008942336,
+        "cpu_seconds": 0.234375
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -50.332400949557965,
+          "ip_ev": 50.33240094955795,
+          "raw_nash_conv_chips": 0.8098893329744524,
+          "zero_sum_residual": -1.4210854715202004e-14,
+          "nash_conv_chips": 0.8098893329744524,
+          "nash_conv_pct_pot": 0.8098893329744524
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -50.08395868063658,
+          "ip_ev": 50.08395868063658,
+          "raw_nash_conv_chips": 0.20447700981038186,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.20447700981038186,
+          "nash_conv_pct_pot": 0.20447700981038186
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -50.02109636266785,
+          "ip_ev": 50.02109636266785,
+          "raw_nash_conv_chips": 0.05137357709167324,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.05137357709167324,
+          "nash_conv_pct_pot": 0.05137357709167324
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -50.02109636266784,
+        "ip_ev": 50.02109636266784,
+        "nash_conv_chips": 0.05137357709165968,
+        "oop_lower_bound": -50.03640434160993,
+        "oop_upper_bound": -49.98503076451827
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -50.03640434160993,
+        "upper": -49.98503076451827,
+        "midpoint": -50.0107175530641,
+        "maximum_equilibrium_value_error": 0.025686798545829843,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 5.684341886080802e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 1.3668210056673615,
+          "distance_outside_reference_interval_pct_pot": 1.3667304115946948,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -79.26035887141272,
+          "absolute_error_pct_pot": 29.260305878144006,
+          "distance_outside_reference_interval_pct_pot": 29.260267428365182,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -102.41006479284667,
+          "absolute_error_pct_pot": 52.41001179957795,
+          "distance_outside_reference_interval_pct_pot": 52.40997334979913,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -76.05507820837803,
+          "absolute_error_pct_pot": 26.055025215109318,
+          "distance_outside_reference_interval_pct_pot": 26.054986765330497,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -50.02109636266784,
+          "absolute_error_pct_pot": 0.021043369399123435,
+          "distance_outside_reference_interval_pct_pot": 0.021004919620303042,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 52.40995861330512,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      },
+      "fresh_process_probe": {
+        "mode": "unlimited_local",
+        "limits": null,
+        "imports_parse_seconds": 0.10665279999375343,
+        "samples": [
+          {
+            "wall_seconds": 0.012501300079748034,
+            "cpu_seconds": 0.015625,
+            "evaluation": {
+              "oop_ev": -102.41006479284667,
+              "ip_ev": 102.41006479284667,
+              "oop_lower_bound": -102.41063971061138,
+              "oop_upper_bound": -49.699516706144685,
+              "nash_conv_chips": 52.71112300446669
+            }
+          },
+          {
+            "wall_seconds": 0.008982000057585537,
+            "cpu_seconds": 0.0,
+            "evaluation": {
+              "oop_ev": -102.41006479284667,
+              "ip_ev": 102.41006479284667,
+              "oop_lower_bound": -102.41063971061138,
+              "oop_upper_bound": -49.699516706144685,
+              "nash_conv_chips": 52.71112300446669
+            }
+          },
+          {
+            "wall_seconds": 0.009236000012606382,
+            "cpu_seconds": 0.015625,
+            "evaluation": {
+              "oop_ev": -102.41006479284667,
+              "ip_ev": 102.41006479284667,
+              "oop_lower_bound": -102.41063971061138,
+              "oop_upper_bound": -49.699516706144685,
+              "nash_conv_chips": 52.71112300446669
+            }
+          }
+        ],
+        "worker_wall_through_snapshot_seconds": 0.13760780007578433,
+        "cpu_through_snapshot_seconds": 0.171875,
+        "linux_memory": null,
+        "peak_resident_memory": {
+          "bytes": 36855808,
+          "method": "Windows PeakWorkingSetSize"
+        },
+        "parent_wall_including_startup_serialization_reap": 0.25554489996284246,
+        "parent_deadline_seconds": 20
+      }
+    },
+    {
+      "id": "dry_bluff_weight_0.9",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.9
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.020824199891649187,
+        "cpu_seconds": 0.03125
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0011132999788969755,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.0064356999937444925,
+          "cpu_seconds": 0.015625
+        },
+        "target_construction": {
+          "wall_seconds": 0.000977099989540875,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.004242800059728324,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.0039022000273689628,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.0035285999765619636,
+          "cpu_seconds": 0.015625
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -38.25524670939613,
+        "ip_ev": 38.25524670939613,
+        "oop_lower_bound": -38.257167841821015,
+        "oop_upper_bound": -28.60234761005242,
+        "nash_conv_chips": 9.654820231768596
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": -38.257167841821015,
+        "upper": -28.60234761005242,
+        "midpoint": -33.42975772593672,
+        "maximum_equilibrium_value_error": 4.827410125884298,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0619195046439629,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 5.910498170560092,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.0580893000587821,
+        "cpu_seconds": 0.046875
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.0097379999933764,
+        "cpu_seconds": 0.015625
+      },
+      "independent_reference": {
+        "oop_ev": -38.25092327795499,
+        "ip_ev": 38.25092327795499,
+        "nash_conv_chips": 0.005986322129182042,
+        "oop_lower_bound": -38.254418827172614,
+        "oop_upper_bound": -38.24843250504343
+      },
+      "reference_profile_sha256": "94207d17e1af84a4ae41a3950059af45ad0ab8fa6be70d2daea5791f60976b31",
+      "fresh_construction": {
+        "wall_seconds": 0.0016543000238016248,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.3409468000754714,
+        "cpu_seconds": 2.296875
+      },
+      "fresh_evaluation": {
+        "oop_ev": -38.25090510539445,
+        "ip_ev": 38.25090510539445,
+        "nash_conv_chips": 0.01722483982850065,
+        "oop_lower_bound": -38.26224979136549,
+        "oop_upper_bound": -38.24502495153699
+      },
+      "fresh_200": {
+        "wall_seconds": 0.23355300002731383,
+        "cpu_seconds": 0.234375
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -38.218781823079055,
+          "ip_ev": 38.21878182307907,
+          "raw_nash_conv_chips": 0.9796171660340148,
+          "zero_sum_residual": 1.4210854715202004e-14,
+          "nash_conv_chips": 0.9796171660340148,
+          "nash_conv_pct_pot": 0.9796171660340148
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -38.24295156590914,
+          "ip_ev": 38.24295156590915,
+          "raw_nash_conv_chips": 0.5339819891586959,
+          "zero_sum_residual": 1.4210854715202004e-14,
+          "nash_conv_chips": 0.5339819891586959,
+          "nash_conv_pct_pot": 0.5339819891586959
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -38.248505014732366,
+          "ip_ev": 38.24850501473241,
+          "raw_nash_conv_chips": 0.21109082222054848,
+          "zero_sum_residual": 4.263256414560601e-14,
+          "nash_conv_chips": 0.21109082222054848,
+          "nash_conv_pct_pot": 0.21109082222054848
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -38.24850501473236,
+        "ip_ev": 38.24850501473236,
+        "nash_conv_chips": 0.2110908222205552,
+        "oop_lower_bound": -38.30228075322534,
+        "oop_upper_bound": -38.091189931004784
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -38.30228075322534,
+        "upper": -38.091189931004784,
+        "midpoint": -38.19673534211506,
+        "maximum_equilibrium_value_error": 0.10554542111027759,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 4.263256414560601e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 10.382308709646367,
+          "distance_outside_reference_interval_pct_pot": 10.378813160428741,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -42.72273381704127,
+          "absolute_error_pct_pot": 4.4718105390862775,
+          "distance_outside_reference_interval_pct_pot": 4.468314989868652,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -38.25524670939613,
+          "absolute_error_pct_pot": 0.004323431441143555,
+          "distance_outside_reference_interval_pct_pot": 0.0008278822235183725,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -33.42975772593672,
+          "absolute_error_pct_pot": 4.821165552018272,
+          "distance_outside_reference_interval_pct_pot": 4.818674779106715,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -38.24850501473236,
+          "absolute_error_pct_pot": 0.002418263222629946,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 1.3530685963372804,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "dry_stack_160",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 160,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.017836099956184626,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0009558000601828098,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.00522580009419471,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.000916799996048212,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.004298499901778996,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.0035949000157415867,
+          "cpu_seconds": 0.015625
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.0022804999025538564,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -48.63323198760137,
+        "ip_ev": 48.63323198760137,
+        "oop_lower_bound": -48.634935350007694,
+        "oop_upper_bound": -48.62965860179653,
+        "nash_conv_chips": 0.005276748211166193
+      },
+      "root_value_bound": {
+        "status": "bounded_root_value",
+        "lower": -48.634935350007694,
+        "upper": -48.62965860179653,
+        "midpoint": -48.63229697590211,
+        "maximum_equilibrium_value_error": 0.0026383841055830966,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": -0.3999999999999999
+      },
+      "same_mapped_strategic_game": true,
+      "independent_build": {
+        "wall_seconds": 0.05570290004834533,
+        "cpu_seconds": 0.046875
+      },
+      "reference_training_parent": {
+        "wall_seconds": 1.9522091000108048,
+        "cpu_seconds": 0.015625
+      },
+      "independent_reference": {
+        "oop_ev": -48.63335219653627,
+        "ip_ev": 48.63335219653627,
+        "nash_conv_chips": 0.0026777541951048534,
+        "oop_lower_bound": -48.63392697769797,
+        "oop_upper_bound": -48.63124922350286
+      },
+      "reference_profile_sha256": "5db935b0da9a946d74b7154c47ca283f0514b6d3dbd77de5ec2ac63f163287c4",
+      "fresh_construction": {
+        "wall_seconds": 0.0010273000225424767,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.2604387999745086,
+        "cpu_seconds": 2.234375
+      },
+      "fresh_evaluation": {
+        "oop_ev": -48.633231987601356,
+        "ip_ev": 48.633231987601356,
+        "nash_conv_chips": 0.00527674821110935,
+        "oop_lower_bound": -48.63493535000765,
+        "oop_upper_bound": -48.62965860179654
+      },
+      "fresh_200": {
+        "wall_seconds": 0.22775910003110766,
+        "cpu_seconds": 0.21875
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -49.093836213580374,
+          "ip_ev": 49.093836213580374,
+          "raw_nash_conv_chips": 2.171352287459615,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 2.171352287459615,
+          "nash_conv_pct_pot": 2.171352287459615
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -48.73456522721542,
+          "ip_ev": 48.7345652272154,
+          "raw_nash_conv_chips": 0.9360576129028473,
+          "zero_sum_residual": -2.1316282072803006e-14,
+          "nash_conv_chips": 0.9360576129028473,
+          "nash_conv_pct_pot": 0.9360576129028473
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -48.627565771409664,
+          "ip_ev": 48.627565771409635,
+          "raw_nash_conv_chips": 0.23371384910833748,
+          "zero_sum_residual": -2.842170943040401e-14,
+          "nash_conv_chips": 0.23371384910833748,
+          "nash_conv_pct_pot": 0.23371384910833748
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -48.627565771409664,
+        "ip_ev": 48.627565771409664,
+        "nash_conv_chips": 0.23371384910841186,
+        "oop_lower_bound": -48.70495922847872,
+        "oop_upper_bound": -48.47124537937031
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -48.70495922847872,
+        "upper": -48.47124537937031,
+        "midpoint": -48.588102303924515,
+        "maximum_equilibrium_value_error": 0.11685693455420593,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 7.105427357601002e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 0.00012020893491637707,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 0.00012020893491637707,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -48.63323198760137,
+          "absolute_error_pct_pot": 0.00012020893490216622,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -48.63229697590211,
+          "absolute_error_pct_pot": 0.0010552206341643,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -48.627565771409664,
+          "absolute_error_pct_pot": 0.005786425126608208,
+          "distance_outside_reference_interval_pct_pot": 0.00368345209319898,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 0.0001707086011677461,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "dry_turn_075",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.75
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.01872299995739013,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0011206000344827771,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.005253499955870211,
+          "cpu_seconds": 0.015625
+        },
+        "target_construction": {
+          "wall_seconds": 0.0009110999526455998,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.004002199973911047,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.0036898000398650765,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.003217100049369037,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -56.84833045705467,
+        "ip_ev": 56.84833045705467,
+        "oop_lower_bound": -63.46393812225455,
+        "oop_upper_bound": -48.63823374727204,
+        "nash_conv_chips": 14.825704374982507
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": -63.46393812225455,
+        "upper": -48.63823374727204,
+        "midpoint": -56.05108593476329,
+        "maximum_equilibrium_value_error": 7.412852197491254,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.04978949995711446,
+        "cpu_seconds": 0.0625
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.0502890999196097,
+        "cpu_seconds": 0.03125
+      },
+      "independent_reference": {
+        "oop_ev": -50.00003209389415,
+        "ip_ev": 50.00003209389415,
+        "nash_conv_chips": 9.864350659682941e-05,
+        "oop_lower_bound": -50.00006826826036,
+        "oop_upper_bound": -49.99996962475376
+      },
+      "reference_profile_sha256": "25561c9d7173dfe1a60ce5c41db8959bccba9b0f6c89f73ac2c17cf5b935a32a",
+      "fresh_construction": {
+        "wall_seconds": 0.0012643999652937055,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 1.9258504000026733,
+        "cpu_seconds": 1.90625
+      },
+      "fresh_evaluation": {
+        "oop_ev": -50.00012834139127,
+        "ip_ev": 50.00012834139127,
+        "nash_conv_chips": 0.00039447543220205716,
+        "oop_lower_bound": -50.000273004807276,
+        "oop_upper_bound": -49.999878529375074
+      },
+      "fresh_200": {
+        "wall_seconds": 0.20546890003606677,
+        "cpu_seconds": 0.203125
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -50.19450333610306,
+          "ip_ev": 50.19450333610307,
+          "raw_nash_conv_chips": 0.6190943841936805,
+          "zero_sum_residual": 7.105427357601002e-15,
+          "nash_conv_chips": 0.6190943841936805,
+          "nash_conv_pct_pot": 0.6190943841936805
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -50.050413594971644,
+          "ip_ev": 50.05041359497165,
+          "raw_nash_conv_chips": 0.15630600789047916,
+          "zero_sum_residual": 7.105427357601002e-15,
+          "nash_conv_chips": 0.15630600789047916,
+          "nash_conv_pct_pot": 0.15630600789047916
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -50.01274910212237,
+          "ip_ev": 50.01274910212237,
+          "raw_nash_conv_chips": 0.03927091243018227,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.03927091243018227,
+          "nash_conv_pct_pot": 0.03927091243018227
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -50.01274910212236,
+        "ip_ev": 50.01274910212236,
+        "nash_conv_chips": 0.03927091243019021,
+        "oop_lower_bound": -50.02717823976937,
+        "oop_upper_bound": -49.98790732733918
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -50.02717823976937,
+        "upper": -49.98790732733918,
+        "midpoint": -50.00754278355427,
+        "maximum_equilibrium_value_error": 0.019635466215095106,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 1.4210854715202004e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 1.3668001062927928,
+          "distance_outside_reference_interval_pct_pot": 1.3667376371524043,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 1.3668001062927928,
+          "distance_outside_reference_interval_pct_pot": 1.3667376371524043,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -56.84833045705467,
+          "absolute_error_pct_pot": 6.848298363160524,
+          "distance_outside_reference_interval_pct_pot": 6.848262188794315,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -56.05108593476329,
+          "absolute_error_pct_pot": 6.0510538408691446,
+          "distance_outside_reference_interval_pct_pot": 6.051017666502936,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -50.01274910212236,
+          "absolute_error_pct_pot": 0.012717008228214867,
+          "distance_outside_reference_interval_pct_pot": 0.012680833862006581,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 10.954397380585661,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "dry_river_pot",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          1
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.015534100006334484,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0009440999710932374,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.005374099942855537,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.0011409999569877982,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.003910600091330707,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.0022585000842809677,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.0011766999959945679,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -56.55197530361496,
+        "ip_ev": 56.55197530361496,
+        "oop_lower_bound": -60.51153021670025,
+        "oop_upper_bound": -48.62941486399871,
+        "nash_conv_chips": 11.88211535270154
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": -60.51153021670025,
+        "upper": -48.62941486399871,
+        "midpoint": -54.570472540349485,
+        "maximum_equilibrium_value_error": 5.94105768635077,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.054449900053441525,
+        "cpu_seconds": 0.046875
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.006027900031768,
+        "cpu_seconds": 0.0
+      },
+      "independent_reference": {
+        "oop_ev": -50.00006329928121,
+        "ip_ev": 50.00006329928121,
+        "nash_conv_chips": 0.00012962150785966742,
+        "oop_lower_bound": -50.00009757525209,
+        "oop_upper_bound": -49.99996795374423
+      },
+      "reference_profile_sha256": "1545d87c58b2cb17f8bc6303f90681842e8beac3550e9c61d71fc06d421a81d0",
+      "fresh_construction": {
+        "wall_seconds": 0.0006299000233411789,
+        "cpu_seconds": 0.015625
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.1124873999506235,
+        "cpu_seconds": 2.109375
+      },
+      "fresh_evaluation": {
+        "oop_ev": -50.00025313237905,
+        "ip_ev": 50.00025313237905,
+        "nash_conv_chips": 0.0005183564746573666,
+        "oop_lower_bound": -50.000390203481864,
+        "oop_upper_bound": -49.999871847007206
+      },
+      "fresh_200": {
+        "wall_seconds": 0.21988669992424548,
+        "cpu_seconds": 0.203125
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -50.392417381605554,
+          "ip_ev": 50.39241738160555,
+          "raw_nash_conv_chips": 0.8135147496359039,
+          "zero_sum_residual": -7.105427357601002e-15,
+          "nash_conv_chips": 0.8135147496359039,
+          "nash_conv_pct_pot": 0.813514749635904
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -50.099991900046945,
+          "ip_ev": 50.099991900046945,
+          "raw_nash_conv_chips": 0.20539233777936142,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.20539233777936142,
+          "nash_conv_pct_pot": 0.20539233777936142
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -50.02518055750878,
+          "ip_ev": 50.02518055750878,
+          "raw_nash_conv_chips": 0.05160354755152158,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.05160354755152158,
+          "nash_conv_pct_pot": 0.051603547551521585
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -50.02518055750878,
+        "ip_ev": 50.02518055750878,
+        "nash_conv_chips": 0.051603547551529516,
+        "oop_lower_bound": -50.038845630209764,
+        "oop_upper_bound": -49.987242082658234
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -50.038845630209764,
+        "upper": -49.987242082658234,
+        "midpoint": -50.013043856433995,
+        "maximum_equilibrium_value_error": 0.02580178377576476,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 4.973799150320701e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 1.366831311679853,
+          "distance_outside_reference_interval_pct_pot": 1.3667359661428762,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 1.366831311679853,
+          "distance_outside_reference_interval_pct_pot": 1.3667359661428762,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -56.55197530361496,
+          "absolute_error_pct_pot": 6.551912004333752,
+          "distance_outside_reference_interval_pct_pot": 6.551877728362868,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -54.570472540349485,
+          "absolute_error_pct_pot": 4.570409241068276,
+          "distance_outside_reference_interval_pct_pot": 4.570374965097393,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -50.02518055750878,
+          "absolute_error_pct_pot": 0.02511725822757427,
+          "distance_outside_reference_interval_pct_pot": 0.025082982256691366,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 6.551876294819429,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "dry_turn_9s",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "9s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "8s": "9s",
+        "9s": "8s"
+      },
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.020485499990172684,
+        "cpu_seconds": 0.03125
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0011718999594449997,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.005442699999548495,
+          "cpu_seconds": 0.015625
+        },
+        "target_construction": {
+          "wall_seconds": 0.0037088999524712563,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.003938799956813455,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.003592299995943904,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.002135300077497959,
+          "cpu_seconds": 0.015625
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -48.63323198760137,
+        "ip_ev": 48.63323198760137,
+        "oop_lower_bound": -48.634935350007694,
+        "oop_upper_bound": -48.62965860179653,
+        "nash_conv_chips": 0.005276748211166193
+      },
+      "root_value_bound": {
+        "status": "bounded_root_value",
+        "lower": -48.634935350007694,
+        "upper": -48.62965860179653,
+        "midpoint": -48.63229697590211,
+        "maximum_equilibrium_value_error": 0.0026383841055830966,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": true,
+      "independent_build": {
+        "wall_seconds": 0.06214089994318783,
+        "cpu_seconds": 0.0625
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.0185985999414697,
+        "cpu_seconds": 0.0
+      },
+      "independent_reference": {
+        "oop_ev": -48.63335219653627,
+        "ip_ev": 48.63335219653627,
+        "nash_conv_chips": 0.0026777541951048534,
+        "oop_lower_bound": -48.63392697769797,
+        "oop_upper_bound": -48.63124922350286
+      },
+      "reference_profile_sha256": "47ad2a4eaaca166e5345dadbb8125a65fcc329f4f44c589ae2ecb43fbc9dba81",
+      "fresh_construction": {
+        "wall_seconds": 0.0011005999986082315,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.02572980010882,
+        "cpu_seconds": 1.953125
+      },
+      "fresh_evaluation": {
+        "oop_ev": -48.633231987601356,
+        "ip_ev": 48.633231987601356,
+        "nash_conv_chips": 0.00527674821110935,
+        "oop_lower_bound": -48.63493535000765,
+        "oop_upper_bound": -48.62965860179654
+      },
+      "fresh_200": {
+        "wall_seconds": 0.22765070002060384,
+        "cpu_seconds": 0.21875
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -49.093836213580374,
+          "ip_ev": 49.093836213580374,
+          "raw_nash_conv_chips": 2.171352287459615,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 2.171352287459615,
+          "nash_conv_pct_pot": 2.171352287459615
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -48.73456522721542,
+          "ip_ev": 48.7345652272154,
+          "raw_nash_conv_chips": 0.9360576129028473,
+          "zero_sum_residual": -2.1316282072803006e-14,
+          "nash_conv_chips": 0.9360576129028473,
+          "nash_conv_pct_pot": 0.9360576129028473
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -48.627565771409664,
+          "ip_ev": 48.627565771409635,
+          "raw_nash_conv_chips": 0.23371384910833748,
+          "zero_sum_residual": -2.842170943040401e-14,
+          "nash_conv_chips": 0.23371384910833748,
+          "nash_conv_pct_pot": 0.23371384910833748
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -48.627565771409664,
+        "ip_ev": 48.627565771409664,
+        "nash_conv_chips": 0.23371384910841186,
+        "oop_lower_bound": -48.70495922847872,
+        "oop_upper_bound": -48.47124537937031
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -48.70495922847872,
+        "upper": -48.47124537937031,
+        "midpoint": -48.588102303924515,
+        "maximum_equilibrium_value_error": 0.11685693455420593,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 7.105427357601002e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 0.00012020893491637707,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 0.00012020893491637707,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -48.63323198760137,
+          "absolute_error_pct_pot": 0.00012020893490216622,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -48.63229697590211,
+          "absolute_error_pct_pot": 0.0010552206341643,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -48.627565771409664,
+          "absolute_error_pct_pot": 0.005786425126608208,
+          "distance_outside_reference_interval_pct_pot": 0.00368345209319898,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 0.0001707086011677461,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "dry_turn_Qs",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "Qs"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "8s": "Qs",
+        "Qs": "8s"
+      },
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.023643699940294027,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0010242999996989965,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.006331700016744435,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.0045013000490143895,
+          "cpu_seconds": 0.015625
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.004104599938727915,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.003525199950672686,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.00318100000731647,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -55.75465322709027,
+        "ip_ev": 55.75465322709027,
+        "oop_lower_bound": -56.94964203598137,
+        "oop_upper_bound": -48.63828131332113,
+        "nash_conv_chips": 8.31136072266024
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": -56.94964203598137,
+        "upper": -48.63828131332113,
+        "midpoint": -52.79396167465125,
+        "maximum_equilibrium_value_error": 4.15568037133012,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.04679144385026737,
+        "checkdown_ev_shift_pct_pot": -4.679144385026739,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.07039850007276982,
+        "cpu_seconds": 0.078125
+      },
+      "reference_training_parent": {
+        "wall_seconds": 1.9723828999558464,
+        "cpu_seconds": 0.015625
+      },
+      "independent_reference": {
+        "oop_ev": -50.000022491413375,
+        "ip_ev": 50.000022491413375,
+        "nash_conv_chips": 7.915986837048195e-05,
+        "oop_lower_bound": -50.00005407997806,
+        "oop_upper_bound": -49.999974920109686
+      },
+      "reference_profile_sha256": "1ff2b2bd4cd487dd336b593571d6e8b0a51e3b5f164a91d7963eafcff856dabb",
+      "fresh_construction": {
+        "wall_seconds": 0.0012437999248504639,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 1.8280381000367925,
+        "cpu_seconds": 1.8125
+      },
+      "fresh_evaluation": {
+        "oop_ev": -50.00008994189369,
+        "ip_ev": 50.00008994189369,
+        "nash_conv_chips": 0.00031656035316274256,
+        "oop_lower_bound": -50.00021626585929,
+        "oop_upper_bound": -49.999899705506124
+      },
+      "fresh_200": {
+        "wall_seconds": 0.19845869997516274,
+        "cpu_seconds": 0.203125
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -50.136955933221664,
+          "ip_ev": 50.13695593322168,
+          "raw_nash_conv_chips": 0.6235740968640738,
+          "zero_sum_residual": 1.4210854715202004e-14,
+          "nash_conv_chips": 0.6235740968640738,
+          "nash_conv_pct_pot": 0.6235740968640738
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -50.03537114815039,
+          "ip_ev": 50.03537114815039,
+          "raw_nash_conv_chips": 0.13031237124953818,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.13031237124953818,
+          "nash_conv_pct_pot": 0.13031237124953818
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -50.0089371765936,
+          "ip_ev": 50.0089371765936,
+          "raw_nash_conv_chips": 0.03151429187528767,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.03151429187528767,
+          "nash_conv_pct_pot": 0.03151429187528767
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -50.0089371765936,
+        "ip_ev": 50.0089371765936,
+        "nash_conv_chips": 0.03151429187529686,
+        "oop_lower_bound": -50.02152975047025,
+        "oop_upper_bound": -49.990015458594954
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -50.02152975047025,
+        "upper": -49.990015458594954,
+        "midpoint": -50.0057726045326,
+        "maximum_equilibrium_value_error": 0.015757155937648433,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 4.263256414560601e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 1.3667905038120196,
+          "distance_outside_reference_interval_pct_pot": 1.3667429325083305,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -53.312376372628094,
+          "absolute_error_pct_pot": 3.312353881214719,
+          "distance_outside_reference_interval_pct_pot": 3.3123222926500375,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -55.75465322709027,
+          "absolute_error_pct_pot": 5.754630735676898,
+          "distance_outside_reference_interval_pct_pot": 5.754599147112216,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -52.79396167465125,
+          "absolute_error_pct_pot": 2.7939391832378746,
+          "distance_outside_reference_interval_pct_pot": 2.7939075946731933,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -50.0089371765936,
+          "absolute_error_pct_pot": 0.008914685180222648,
+          "distance_outside_reference_interval_pct_pot": 0.00888309661554132,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 5.754608169519258,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "dry_turn_Js",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "Js"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "8s": "Js",
+        "Js": "8s"
+      },
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.019495700020343065,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0009679000359028578,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.004339500097557902,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.002976900083012879,
+          "cpu_seconds": 0.015625
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.003907299949787557,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.0033236000454053283,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.003405700088478625,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -55.75465322709027,
+        "ip_ev": 55.75465322709027,
+        "oop_lower_bound": -56.94964203598137,
+        "oop_upper_bound": -48.63828131332113,
+        "nash_conv_chips": 8.31136072266024
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": -56.94964203598137,
+        "upper": -48.63828131332113,
+        "midpoint": -52.79396167465125,
+        "maximum_equilibrium_value_error": 4.15568037133012,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.04679144385026737,
+        "checkdown_ev_shift_pct_pot": -4.679144385026739,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.04570919997058809,
+        "cpu_seconds": 0.046875
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.020349600003101,
+        "cpu_seconds": 0.015625
+      },
+      "independent_reference": {
+        "oop_ev": -50.000022491413375,
+        "ip_ev": 50.000022491413375,
+        "nash_conv_chips": 7.915986837048195e-05,
+        "oop_lower_bound": -50.00005407997806,
+        "oop_upper_bound": -49.999974920109686
+      },
+      "reference_profile_sha256": "4302bcc82c332111ad61e5f5953f265dc61f9387ac5d35a78832741f832a2bca",
+      "fresh_construction": {
+        "wall_seconds": 0.0012845000019297004,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 1.9812559999991208,
+        "cpu_seconds": 1.96875
+      },
+      "fresh_evaluation": {
+        "oop_ev": -50.00008994189369,
+        "ip_ev": 50.00008994189369,
+        "nash_conv_chips": 0.00031656035316274256,
+        "oop_lower_bound": -50.00021626585929,
+        "oop_upper_bound": -49.999899705506124
+      },
+      "fresh_200": {
+        "wall_seconds": 0.2070486000739038,
+        "cpu_seconds": 0.203125
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -50.136955933221664,
+          "ip_ev": 50.13695593322168,
+          "raw_nash_conv_chips": 0.6235740968640738,
+          "zero_sum_residual": 1.4210854715202004e-14,
+          "nash_conv_chips": 0.6235740968640738,
+          "nash_conv_pct_pot": 0.6235740968640738
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -50.03537114815039,
+          "ip_ev": 50.03537114815039,
+          "raw_nash_conv_chips": 0.13031237124953818,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.13031237124953818,
+          "nash_conv_pct_pot": 0.13031237124953818
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -50.0089371765936,
+          "ip_ev": 50.0089371765936,
+          "raw_nash_conv_chips": 0.03151429187528767,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.03151429187528767,
+          "nash_conv_pct_pot": 0.03151429187528767
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -50.0089371765936,
+        "ip_ev": 50.0089371765936,
+        "nash_conv_chips": 0.03151429187529686,
+        "oop_lower_bound": -50.02152975047025,
+        "oop_upper_bound": -49.990015458594954
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -50.02152975047025,
+        "upper": -49.990015458594954,
+        "midpoint": -50.0057726045326,
+        "maximum_equilibrium_value_error": 0.015757155937648433,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 4.263256414560601e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -48.633231987601356,
+          "absolute_error_pct_pot": 1.3667905038120196,
+          "distance_outside_reference_interval_pct_pot": 1.3667429325083305,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -53.312376372628094,
+          "absolute_error_pct_pot": 3.312353881214719,
+          "distance_outside_reference_interval_pct_pot": 3.3123222926500375,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -55.75465322709027,
+          "absolute_error_pct_pot": 5.754630735676898,
+          "distance_outside_reference_interval_pct_pot": 5.754599147112216,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -52.79396167465125,
+          "absolute_error_pct_pot": 2.7939391832378746,
+          "distance_outside_reference_interval_pct_pot": 2.7939075946731933,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -50.0089371765936,
+          "absolute_error_pct_pot": 0.008914685180222648,
+          "distance_outside_reference_interval_pct_pot": 0.00888309661554132,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 5.754608169519258,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "collision_weight_07",
+      "source": "weighted_collision",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 100,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "AsKs",
+            "weight": 0.7
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJs",
+            "weight": 0.5
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.017859000014141202,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.000686399987898767,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.005147999967448413,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.0011088000610470772,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.004601599997840822,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.0028074999572709203,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.002909099915996194,
+          "cpu_seconds": 0.015625
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -23.94350629625734,
+        "ip_ev": 23.94350629625734,
+        "oop_lower_bound": -25.6022191026923,
+        "oop_upper_bound": -23.943233514845787,
+        "nash_conv_chips": 1.6589855878465123
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": -25.6022191026923,
+        "upper": -23.943233514845787,
+        "midpoint": -24.772726308769045,
+        "maximum_equilibrium_value_error": 0.8294928039232562,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.09828009828009834,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 4.914004914004913,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.07859269995242357,
+        "cpu_seconds": 0.078125
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.486198000027798,
+        "cpu_seconds": 0.0
+      },
+      "independent_reference": {
+        "oop_ev": -23.94351689893127,
+        "ip_ev": 23.94351689893127,
+        "nash_conv_chips": 0.00047607744721744893,
+        "oop_lower_bound": -23.94381253521074,
+        "oop_upper_bound": -23.94333645776352
+      },
+      "reference_profile_sha256": "cc789d7fbdf8252276a1c0fad231a94271cdaed5fb3b5cffa267dd510db88a76",
+      "fresh_construction": {
+        "wall_seconds": 0.000835200073197484,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.2688599000684917,
+        "cpu_seconds": 2.234375
+      },
+      "fresh_evaluation": {
+        "oop_ev": -23.943600772673737,
+        "ip_ev": 23.943600772673737,
+        "nash_conv_chips": 0.0013449376207326225,
+        "oop_lower_bound": -23.944072498379047,
+        "oop_upper_bound": -23.942727560758314
+      },
+      "fresh_200": {
+        "wall_seconds": 0.19660210004076362,
+        "cpu_seconds": 0.1875
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -24.071748507906594,
+          "ip_ev": 24.071748507906594,
+          "raw_nash_conv_chips": 0.6331439194242359,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.6331439194242359,
+          "nash_conv_pct_pot": 0.6331439194242359
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -23.982740555485666,
+          "ip_ev": 23.982740555485673,
+          "raw_nash_conv_chips": 0.23417921496185978,
+          "zero_sum_residual": 7.105427357601002e-15,
+          "nash_conv_chips": 0.23417921496185978,
+          "nash_conv_pct_pot": 0.2341792149618598
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -23.954492025286196,
+          "ip_ev": 23.954492025286193,
+          "raw_nash_conv_chips": 0.056504784142317487,
+          "zero_sum_residual": -3.552713678800501e-15,
+          "nash_conv_chips": 0.056504784142317487,
+          "nash_conv_pct_pot": 0.056504784142317487
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -23.9544920252862,
+        "ip_ev": 23.9544920252862,
+        "nash_conv_chips": 0.05650478414233362,
+        "oop_lower_bound": -23.966447329912917,
+        "oop_upper_bound": -23.909942545770583
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -23.966447329912917,
+        "upper": -23.909942545770583,
+        "midpoint": -23.93819493784175,
+        "maximum_equilibrium_value_error": 0.02825240207116681,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 7.460698725481052e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -37.479356228812726,
+          "absolute_error_pct_pot": 13.535839329881455,
+          "distance_outside_reference_interval_pct_pot": 13.535543693601987,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -32.56535131480781,
+          "absolute_error_pct_pot": 8.621834415876542,
+          "distance_outside_reference_interval_pct_pot": 8.621538779597074,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -23.94350629625734,
+          "absolute_error_pct_pot": 1.0602673931714435e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -24.772726308769045,
+          "absolute_error_pct_pot": 0.8292094098377731,
+          "distance_outside_reference_interval_pct_pot": 0.8289137735583054,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -23.9544920252862,
+          "absolute_error_pct_pot": 0.010975126354928477,
+          "distance_outside_reference_interval_pct_pot": 0.010679490075460762,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 4.226446308055827,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "collision_turn_9s",
+      "source": "weighted_collision",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "9s"
+        ],
+        "pot": 100,
+        "stack": 100,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "AsKs",
+            "weight": 0.3
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJs",
+            "weight": 0.5
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "8s": "9s",
+        "9s": "8s"
+      },
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.02064579993020743,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0004972000606358051,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.006225200020708144,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.002648400026373565,
+          "cpu_seconds": 0.015625
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.004003699985332787,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.0035113999620079994,
+          "cpu_seconds": 0.0
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.0031849000370129943,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": -37.47935622881274,
+        "ip_ev": 37.47935622881274,
+        "oop_lower_bound": -37.4795971955247,
+        "oop_upper_bound": -37.47912043894925,
+        "nash_conv_chips": 0.00047675657544488104
+      },
+      "root_value_bound": {
+        "status": "bounded_root_value",
+        "lower": -37.4795971955247,
+        "upper": -37.47912043894925,
+        "midpoint": -37.47935881723697,
+        "maximum_equilibrium_value_error": 0.0002383882877224405,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 0.0,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": true,
+      "independent_build": {
+        "wall_seconds": 0.060668000020086765,
+        "cpu_seconds": 0.0625
+      },
+      "reference_training_parent": {
+        "wall_seconds": 2.2760380000108853,
+        "cpu_seconds": 0.015625
+      },
+      "independent_reference": {
+        "oop_ev": -37.47934320059848,
+        "ip_ev": 37.47934320059848,
+        "nash_conv_chips": 0.00020343749787343768,
+        "oop_lower_bound": -37.479450290161104,
+        "oop_upper_bound": -37.47924685266323
+      },
+      "reference_profile_sha256": "644c54114977ecca59822102dfba4566d675a919e4b36563b99416cf0d6b3217",
+      "fresh_construction": {
+        "wall_seconds": 0.0010520999785512686,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.0709947999566793,
+        "cpu_seconds": 2.0625
+      },
+      "fresh_evaluation": {
+        "oop_ev": -37.47935622881271,
+        "ip_ev": 37.47935622881271,
+        "nash_conv_chips": 0.0004767565754377756,
+        "oop_lower_bound": -37.47959719552469,
+        "oop_upper_bound": -37.47912043894925
+      },
+      "fresh_200": {
+        "wall_seconds": 0.21175310004036874,
+        "cpu_seconds": 0.203125
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": -37.484093475257374,
+          "ip_ev": 37.48409347525739,
+          "raw_nash_conv_chips": 0.6291329022952504,
+          "zero_sum_residual": 1.4210854715202004e-14,
+          "nash_conv_chips": 0.6291329022952504,
+          "nash_conv_pct_pot": 0.6291329022952504
+        },
+        {
+          "iterations": 100,
+          "oop_ev": -37.484840407258105,
+          "ip_ev": 37.48484040725811,
+          "raw_nash_conv_chips": 0.38595144029291406,
+          "zero_sum_residual": 7.105427357601002e-15,
+          "nash_conv_chips": 0.38595144029291406,
+          "nash_conv_pct_pot": 0.38595144029291406
+        },
+        {
+          "iterations": 200,
+          "oop_ev": -37.48099787317113,
+          "ip_ev": 37.48099787317114,
+          "raw_nash_conv_chips": 0.07850765887714792,
+          "zero_sum_residual": 1.4210854715202004e-14,
+          "nash_conv_chips": 0.07850765887714792,
+          "nash_conv_pct_pot": 0.07850765887714792
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": -37.480997873171134,
+        "ip_ev": 37.480997873171134,
+        "nash_conv_chips": 0.07850765887713607,
+        "oop_lower_bound": -37.49816705055813,
+        "oop_upper_bound": -37.419659391680995
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": -37.49816705055813,
+        "upper": -37.419659391680995,
+        "midpoint": -37.45891322111956,
+        "maximum_equilibrium_value_error": 0.039253839438568035,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 1.4210854715202004e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": -37.479356228812726,
+          "absolute_error_pct_pot": 1.302821424786771e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": -37.47935622881272,
+          "absolute_error_pct_pot": 1.3028214240762281e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": -37.47935622881274,
+          "absolute_error_pct_pot": 1.3028214262078563e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -37.47935881723697,
+          "absolute_error_pct_pot": 1.561663849258821e-05,
+          "distance_outside_reference_interval_pct_pot": 0.0,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": -37.480997873171134,
+          "absolute_error_pct_pot": 0.0016546725726556135,
+          "distance_outside_reference_interval_pct_pot": 0.001547583010029996,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 0.0001560534862790064,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "flush_loses_suit",
+      "source": "four_flush_4x4",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "Ks",
+          "9s",
+          "5s",
+          "2h"
+        ],
+        "pot": 100,
+        "stack": 120,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsQh",
+            "weight": 1
+          },
+          {
+            "hand": "QsQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          },
+          {
+            "hand": "8s8h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 0.5
+          },
+          {
+            "hand": "QsJd",
+            "weight": 0.8
+          },
+          {
+            "hand": "TsTh",
+            "weight": 0.4
+          },
+          {
+            "hand": "7h7d",
+            "weight": 0.25
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "2h": "2s",
+        "2s": "2h"
+      },
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.043139300076290965,
+        "cpu_seconds": 0.03125
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.001109899953007698,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.01956919999793172,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.007405999931506813,
+          "cpu_seconds": 0.015625
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.006210499908775091,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.005388400051742792,
+          "cpu_seconds": 0.015625
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.002785300021059811,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": 16.83575948382715,
+        "ip_ev": -16.83575948382715,
+        "oop_lower_bound": -28.306710763510903,
+        "oop_upper_bound": 26.371009128689163,
+        "nash_conv_chips": 54.67771989220007
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": -28.306710763510903,
+        "upper": 26.371009128689163,
+        "midpoint": -0.96785081741087,
+        "maximum_equilibrium_value_error": 27.338859956100034,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.0,
+        "runout_payoff_sign_change": 0.2724703557312253,
+        "checkdown_ev_shift_pct_pot": -11.673913043478263,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.45403049991000444,
+        "cpu_seconds": 0.453125
+      },
+      "reference_training_parent": {
+        "wall_seconds": 14.209035900072195,
+        "cpu_seconds": 0.03125
+      },
+      "independent_reference": {
+        "oop_ev": 0.4844525585175552,
+        "ip_ev": -0.4844525585175552,
+        "nash_conv_chips": 0.0009883262772927837,
+        "oop_lower_bound": 0.4840365264581874,
+        "oop_upper_bound": 0.4850248527354802
+      },
+      "reference_profile_sha256": "fcfd1945783adfb424dcc4b708653566cc2e75027f049035289163da2dfe47b0",
+      "fresh_construction": {
+        "wall_seconds": 0.0008386000990867615,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 3.113948000012897,
+        "cpu_seconds": 3.0625
+      },
+      "fresh_evaluation": {
+        "oop_ev": 0.4843953770825283,
+        "ip_ev": -0.4843953770825283,
+        "nash_conv_chips": 0.002037082987148997,
+        "oop_lower_bound": 0.483609345052339,
+        "oop_upper_bound": 0.485646428039488
+      },
+      "fresh_200": {
+        "wall_seconds": 0.24402049998752773,
+        "cpu_seconds": 0.234375
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": 0.3456156921093542,
+          "ip_ev": -0.34561569210933757,
+          "raw_nash_conv_chips": 0.7924342528392726,
+          "zero_sum_residual": 1.6653345369377348e-14,
+          "nash_conv_chips": 0.7924342528392726,
+          "nash_conv_pct_pot": 0.7924342528392726
+        },
+        {
+          "iterations": 100,
+          "oop_ev": 0.45082569139411593,
+          "ip_ev": -0.4508256913941345,
+          "raw_nash_conv_chips": 0.1472990017001522,
+          "zero_sum_residual": -1.8540724511240114e-14,
+          "nash_conv_chips": 0.1472990017001522,
+          "nash_conv_pct_pot": 0.1472990017001522
+        },
+        {
+          "iterations": 200,
+          "oop_ev": 0.4764334670427864,
+          "ip_ev": -0.4764334670427833,
+          "raw_nash_conv_chips": 0.04148772752293192,
+          "zero_sum_residual": 3.1086244689504383e-15,
+          "nash_conv_chips": 0.04148772752293192,
+          "nash_conv_pct_pot": 0.04148772752293192
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": 0.47643346704277517,
+        "ip_ev": -0.47643346704277517,
+        "nash_conv_chips": 0.04148772752294233,
+        "oop_lower_bound": 0.4582766975493587,
+        "oop_upper_bound": 0.499764425072301
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": 0.4582766975493587,
+        "upper": 0.499764425072301,
+        "midpoint": 0.4790205613108298,
+        "maximum_equilibrium_value_error": 0.020743873761471167,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 2.020605904817785e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": 21.81260782530226,
+          "absolute_error_pct_pot": 21.3281552667847,
+          "distance_outside_reference_interval_pct_pot": 21.327582972566777,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": 10.138694781823997,
+          "absolute_error_pct_pot": 9.654242223306442,
+          "distance_outside_reference_interval_pct_pot": 9.653669929088517,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": 16.83575948382715,
+          "absolute_error_pct_pot": 16.351306925309594,
+          "distance_outside_reference_interval_pct_pot": 16.35073463109167,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": -0.96785081741087,
+          "absolute_error_pct_pot": 1.4523033759284252,
+          "distance_outside_reference_interval_pct_pot": 1.4518873438690574,
+          "root_value_sign_error": true
+        },
+        "short_fresh_ev": {
+          "oop_ev": 0.47643346704277517,
+          "absolute_error_pct_pot": 0.008019091474780027,
+          "distance_outside_reference_interval_pct_pot": 0.007603059415412228,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 44.13515155031542,
+        "fixed_continuation_action_changes": [
+          {
+            "hand": [
+              "Qd",
+              "Qs"
+            ],
+            "chosen": "check",
+            "reference": "bet_50",
+            "reference_fixed_continuation_loss_pct_pot": 13.209123923386171
+          },
+          {
+            "hand": [
+              "Jd",
+              "Jh"
+            ],
+            "chosen": "check",
+            "reference": "bet_50",
+            "reference_fixed_continuation_loss_pct_pot": 6.838893105091421
+          }
+        ],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      },
+      "fresh_process_probe": {
+        "mode": "unlimited_local",
+        "limits": null,
+        "imports_parse_seconds": 0.10658720007631928,
+        "samples": [
+          {
+            "wall_seconds": 0.023506300058215857,
+            "cpu_seconds": 0.015625,
+            "evaluation": {
+              "oop_ev": 16.83575948382715,
+              "ip_ev": -16.83575948382715,
+              "oop_lower_bound": -28.306710763510903,
+              "oop_upper_bound": 26.371009128689163,
+              "nash_conv_chips": 54.67771989220007
+            }
+          },
+          {
+            "wall_seconds": 0.015157699934206903,
+            "cpu_seconds": 0.015625,
+            "evaluation": {
+              "oop_ev": 16.83575948382715,
+              "ip_ev": -16.83575948382715,
+              "oop_lower_bound": -28.306710763510903,
+              "oop_upper_bound": 26.371009128689163,
+              "nash_conv_chips": 54.67771989220007
+            }
+          },
+          {
+            "wall_seconds": 0.016389099997468293,
+            "cpu_seconds": 0.015625,
+            "evaluation": {
+              "oop_ev": 16.83575948382715,
+              "ip_ev": -16.83575948382715,
+              "oop_lower_bound": -28.306710763510903,
+              "oop_upper_bound": 26.371009128689163,
+              "nash_conv_chips": 54.67771989220007
+            }
+          }
+        ],
+        "worker_wall_through_snapshot_seconds": 0.16209140000864863,
+        "cpu_through_snapshot_seconds": 0.171875,
+        "linux_memory": null,
+        "peak_resident_memory": {
+          "bytes": 39464960,
+          "method": "Windows PeakWorkingSetSize"
+        },
+        "parent_wall_including_startup_serialization_reap": 0.2776973999571055,
+        "parent_deadline_seconds": 20
+      }
+    },
+    {
+      "id": "flush_ace_weight_0.1",
+      "source": "four_flush_4x4",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "Ks",
+          "9s",
+          "5s",
+          "2s"
+        ],
+        "pot": 100,
+        "stack": 120,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsQh",
+            "weight": 1
+          },
+          {
+            "hand": "QsQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          },
+          {
+            "hand": "8s8h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 0.1
+          },
+          {
+            "hand": "QsJd",
+            "weight": 0.8
+          },
+          {
+            "hand": "TsTh",
+            "weight": 0.4
+          },
+          {
+            "hand": "7h7d",
+            "weight": 0.25
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.026991399936378002,
+        "cpu_seconds": 0.03125
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0015842999564483762,
+          "cpu_seconds": 0.015625
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.009367199963890016,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.0013002000050619245,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.0045906000304967165,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.005273599992506206,
+          "cpu_seconds": 0.015625
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.004214700078591704,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": 42.961761173246536,
+        "ip_ev": -42.961761173246536,
+        "oop_lower_bound": 42.9613644140286,
+        "oop_upper_bound": 49.21460340547443,
+        "nash_conv_chips": 6.253238991445826
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": 42.9613644140286,
+        "upper": 49.21460340547443,
+        "midpoint": 46.087983909751514,
+        "maximum_equilibrium_value_error": 3.126619505722913,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.1461298098384073,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": 12.291402553343453,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.45959069998934865,
+        "cpu_seconds": 0.46875
+      },
+      "reference_training_parent": {
+        "wall_seconds": 13.50283470004797,
+        "cpu_seconds": 0.0
+      },
+      "independent_reference": {
+        "oop_ev": 43.30862828673522,
+        "ip_ev": -43.30862828673522,
+        "nash_conv_chips": 0.0013532689737516534,
+        "oop_lower_bound": 43.30855327605498,
+        "oop_upper_bound": 43.30990654502873
+      },
+      "reference_profile_sha256": "50544f5257248be3c1154db650d3c63ca2319f01ed65408d672d1e21c0497efd",
+      "fresh_construction": {
+        "wall_seconds": 0.0013577999779954553,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 2.8893545999890193,
+        "cpu_seconds": 2.875
+      },
+      "fresh_evaluation": {
+        "oop_ev": 43.308119116198434,
+        "ip_ev": -43.308119116198434,
+        "nash_conv_chips": 0.0047431557804884505,
+        "oop_lower_bound": 43.3079027572194,
+        "oop_upper_bound": 43.31264591299989
+      },
+      "fresh_200": {
+        "wall_seconds": 0.32078030006960034,
+        "cpu_seconds": 0.296875
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": 43.18217122734876,
+          "ip_ev": -43.18217122734875,
+          "raw_nash_conv_chips": 0.7405802672349485,
+          "zero_sum_residual": 7.105427357601002e-15,
+          "nash_conv_chips": 0.7405802672349485,
+          "nash_conv_pct_pot": 0.7405802672349485
+        },
+        {
+          "iterations": 100,
+          "oop_ev": 43.26513375887438,
+          "ip_ev": -43.26513375887437,
+          "raw_nash_conv_chips": 0.23522579182958273,
+          "zero_sum_residual": 7.105427357601002e-15,
+          "nash_conv_chips": 0.23522579182958273,
+          "nash_conv_pct_pot": 0.23522579182958273
+        },
+        {
+          "iterations": 200,
+          "oop_ev": 43.290012327811596,
+          "ip_ev": -43.290012327811596,
+          "raw_nash_conv_chips": 0.08843660326441866,
+          "zero_sum_residual": 0.0,
+          "nash_conv_chips": 0.08843660326441866,
+          "nash_conv_pct_pot": 0.08843660326441866
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": 43.29001232781159,
+        "ip_ev": -43.29001232781159,
+        "nash_conv_chips": 0.08843660326441238,
+        "oop_lower_bound": 43.277438586459155,
+        "oop_upper_bound": 43.36587518972357
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": 43.277438586459155,
+        "upper": 43.36587518972357,
+        "midpoint": 43.32165688809136,
+        "maximum_equilibrium_value_error": 0.04421831163220619,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 2.1316282072803006e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": 21.81260782530226,
+          "absolute_error_pct_pot": 21.496020461432963,
+          "distance_outside_reference_interval_pct_pot": 21.49594545075272,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": 34.10401037864571,
+          "absolute_error_pct_pot": 9.20461790808951,
+          "distance_outside_reference_interval_pct_pot": 9.204542897409269,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": 42.961761173246536,
+          "absolute_error_pct_pot": 0.3468671134886847,
+          "distance_outside_reference_interval_pct_pot": 0.3467921028084433,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": 46.087983909751514,
+          "absolute_error_pct_pot": 2.7793556230162935,
+          "distance_outside_reference_interval_pct_pot": 2.778077364722783,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": 43.29001232781159,
+          "absolute_error_pct_pot": 0.018615958923632547,
+          "distance_outside_reference_interval_pct_pot": 0.018540948243391142,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 28.89106022072985,
+        "fixed_continuation_action_changes": [
+          {
+            "hand": [
+              "Qd",
+              "Qs"
+            ],
+            "chosen": "bet_50",
+            "reference": "check",
+            "reference_fixed_continuation_loss_pct_pot": 0.026364834652881086
+          },
+          {
+            "hand": [
+              "Jd",
+              "Jh"
+            ],
+            "chosen": "bet_50",
+            "reference": "check",
+            "reference_fixed_continuation_loss_pct_pot": 0.0016809373810566799
+          }
+        ],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "flush_ace_weight_1",
+      "source": "four_flush_4x4",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "Ks",
+          "9s",
+          "5s",
+          "2s"
+        ],
+        "pot": 100,
+        "stack": 120,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsQh",
+            "weight": 1
+          },
+          {
+            "hand": "QsQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          },
+          {
+            "hand": "8s8h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJd",
+            "weight": 0.8
+          },
+          {
+            "hand": "TsTh",
+            "weight": 0.4
+          },
+          {
+            "hand": "7h7d",
+            "weight": 0.25
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "online_lookup_transfer_evaluate": {
+        "wall_seconds": 0.02834780002012849,
+        "cpu_seconds": 0.015625
+      },
+      "online_components": {
+        "source_construction": {
+          "wall_seconds": 0.0013578999787569046,
+          "cpu_seconds": 0.0
+        },
+        "read_hash_decode_validate": {
+          "wall_seconds": 0.011170999961905181,
+          "cpu_seconds": 0.0
+        },
+        "target_construction": {
+          "wall_seconds": 0.0012550000101327896,
+          "cpu_seconds": 0.0
+        },
+        "equivalence_search": {
+          "wall_seconds": 0.0044793999986723065,
+          "cpu_seconds": 0.0
+        },
+        "policy_transfer": {
+          "wall_seconds": 0.005363899981603026,
+          "cpu_seconds": 0.015625
+        },
+        "target_value_and_both_best_responses": {
+          "wall_seconds": 0.004192599910311401,
+          "cpu_seconds": 0.0
+        }
+      },
+      "status": "target_fixed_policy_evaluation",
+      "strict_hit": false,
+      "equivalence_hit": false,
+      "policy_evaluation": {
+        "oop_ev": 3.017648554410177,
+        "ip_ev": -3.017648554410177,
+        "oop_lower_bound": 3.0172957725845366,
+        "oop_upper_bound": 8.499506841562559,
+        "nash_conv_chips": 5.482211068978022
+      },
+      "root_value_bound": {
+        "status": "abstain_wide_bound",
+        "lower": 3.0172957725845366,
+        "upper": 8.499506841562559,
+        "midpoint": 5.758401307073548,
+        "maximum_equilibrium_value_error": 2.741105544489011,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "similarity": {
+        "compatible_deal_total_variation": 0.12986353538559187,
+        "runout_payoff_sign_change": 0.0,
+        "checkdown_ev_shift_pct_pot": -10.923198984449384,
+        "stack_pot_ratio_change": 0.0
+      },
+      "same_mapped_strategic_game": false,
+      "independent_build": {
+        "wall_seconds": 0.370190899935551,
+        "cpu_seconds": 0.359375
+      },
+      "reference_training_parent": {
+        "wall_seconds": 10.184429599903524,
+        "cpu_seconds": 0.015625
+      },
+      "independent_reference": {
+        "oop_ev": 5.6620947387176,
+        "ip_ev": -5.6620947387176,
+        "nash_conv_chips": 0.0005377863094331303,
+        "oop_lower_bound": 5.661882617449942,
+        "oop_upper_bound": 5.662420403759375
+      },
+      "reference_profile_sha256": "86f595245ee0502bddca411200a7b457881420ddc6892c623447ece2555dcbc8",
+      "fresh_construction": {
+        "wall_seconds": 0.0007868999382480979,
+        "cpu_seconds": 0.0
+      },
+      "fresh_2000": {
+        "wall_seconds": 1.3060945998877287,
+        "cpu_seconds": 1.3125
+      },
+      "fresh_evaluation": {
+        "oop_ev": 5.662038058016706,
+        "ip_ev": -5.662038058016706,
+        "nash_conv_chips": 0.001541618041213333,
+        "oop_lower_bound": 5.661482946578246,
+        "oop_upper_bound": 5.66302456461946
+      },
+      "fresh_200": {
+        "wall_seconds": 0.13803399994503707,
+        "cpu_seconds": 0.140625
+      },
+      "short_checkpoints": [
+        {
+          "iterations": 50,
+          "oop_ev": 5.661288931483185,
+          "ip_ev": -5.6612889314831785,
+          "raw_nash_conv_chips": 0.9824737084460822,
+          "zero_sum_residual": 6.217248937900877e-15,
+          "nash_conv_chips": 0.9824737084460822,
+          "nash_conv_pct_pot": 0.9824737084460822
+        },
+        {
+          "iterations": 100,
+          "oop_ev": 5.6171151119736145,
+          "ip_ev": -5.617115111973587,
+          "raw_nash_conv_chips": 0.2902561226052984,
+          "zero_sum_residual": 2.7533531010703882e-14,
+          "nash_conv_chips": 0.2902561226052984,
+          "nash_conv_pct_pot": 0.2902561226052984
+        },
+        {
+          "iterations": 200,
+          "oop_ev": 5.646870082242606,
+          "ip_ev": -5.6468700822425975,
+          "raw_nash_conv_chips": 0.10553123915810667,
+          "zero_sum_residual": 8.881784197001252e-15,
+          "nash_conv_chips": 0.10553123915810667,
+          "nash_conv_pct_pot": 0.10553123915810667
+        }
+      ],
+      "short_evaluation": {
+        "oop_ev": 5.646870082242603,
+        "ip_ev": -5.646870082242603,
+        "nash_conv_chips": 0.10553123915811202,
+        "oop_lower_bound": 5.617592410478754,
+        "oop_upper_bound": 5.723123649636866
+      },
+      "short_bound": {
+        "status": "bounded_root_value",
+        "lower": 5.617592410478754,
+        "upper": 5.723123649636866,
+        "midpoint": 5.670358030057811,
+        "maximum_equilibrium_value_error": 0.05276562957905601,
+        "warning": "Numerical best-response bracket in this constrained target game; no action/hand precision guarantee"
+      },
+      "same_policy_numeric_delta": 1.865174681370263e-14,
+      "estimates": {
+        "scaled_cached_ev": {
+          "oop_ev": 21.81260782530226,
+          "absolute_error_pct_pot": 16.15051308658466,
+          "distance_outside_reference_interval_pct_pot": 16.15018742154288,
+          "root_value_sign_error": false
+        },
+        "equity_adjusted_ev": {
+          "oop_ev": 10.889408840852877,
+          "absolute_error_pct_pot": 5.227314102135277,
+          "distance_outside_reference_interval_pct_pot": 5.226988437093501,
+          "root_value_sign_error": false
+        },
+        "target_fixed_policy_ev": {
+          "oop_ev": 3.017648554410177,
+          "absolute_error_pct_pot": 2.6444461843074225,
+          "distance_outside_reference_interval_pct_pot": 2.644234063039765,
+          "root_value_sign_error": false
+        },
+        "bound_midpoint": {
+          "oop_ev": 5.758401307073548,
+          "absolute_error_pct_pot": 0.09630656835594831,
+          "distance_outside_reference_interval_pct_pot": 0.09598090331417275,
+          "root_value_sign_error": false
+        },
+        "short_fresh_ev": {
+          "oop_ev": 5.646870082242603,
+          "absolute_error_pct_pot": 0.015224656474996934,
+          "distance_outside_reference_interval_pct_pot": 0.015012535207339361,
+          "root_value_sign_error": false
+        }
+      },
+      "root_action_comparison": {
+        "maximum_action_ev_error_pct_pot": 9.280718724591097,
+        "fixed_continuation_action_changes": [],
+        "warning": "Conditional fixed-policy action EVs are not certified by a root best-response gap"
+      }
+    },
+    {
+      "id": "new_hand",
+      "source": "weighted_dry",
+      "kind": "unsupported",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "status": "unsupported",
+      "reason": "Unmapped range support"
+    },
+    {
+      "id": "extra_size",
+      "source": "weighted_dry",
+      "kind": "unsupported",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5,
+          1
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "status": "unsupported",
+      "reason": "Incompatible actor/street/action order"
+    },
+    {
+      "id": "changed_allin_topology",
+      "source": "weighted_dry",
+      "kind": "unsupported",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 40,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {},
+      "status": "unsupported",
+      "reason": "Incompatible tree topology"
+    }
+  ],
+  "failures": [],
+  "summary": {
+    "targets": 20,
+    "strict_hits": 1,
+    "equivalent_hits": 4,
+    "unsupported": 3,
+    "changed_input_targets": 13,
+    "mapped_strategic_duplicates": 3,
+    "approximate_targets": 10,
+    "narrow_changed_input_bounds": 3,
+    "narrow_transfer_bounds": 0,
+    "narrow_short_solve_bounds": 10,
+    "compressed_catalog_bytes": 47235,
+    "errors": {
+      "scaled_cached_ev": {
+        "median_pct_pot": 5.87457001066311,
+        "max_pct_pot": 21.496020461432963
+      },
+      "equity_adjusted_ev": {
+        "median_pct_pot": 4.849562320610778,
+        "max_pct_pot": 29.260305878144006
+      },
+      "target_fixed_policy_ev": {
+        "median_pct_pot": 5.754630735676898,
+        "max_pct_pot": 52.41001179957795
+      },
+      "bound_midpoint": {
+        "median_pct_pot": 2.7939391832378746,
+        "max_pct_pot": 26.055025215109318
+      },
+      "short_fresh_ev": {
+        "median_pct_pot": 0.011846067291571671,
+        "max_pct_pot": 0.02511725822757427
+      }
+    },
+    "approximation_speedups": {
+      "median_fresh2000_over_lookup_transfer_br": 105.01260355077333,
+      "median_fresh2000_over_fresh200": 9.497968072764095
+    }
+  },
+  "peak_resident_memory_whole_study": {
+    "bytes": 136269824,
+    "method": "Windows PeakWorkingSetSize"
+  },
+  "profiles": {
+    "file": "turn-reuse-audited.profiles.json",
+    "sha256": "b6b0d2dfa6f9c1a90e4ee247a09a45f90b9dba75f509681f841a338e0695038a"
+  },
+  "catalog_directory": "turn-reuse-audited-policies"
+}

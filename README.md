@@ -34,6 +34,9 @@ The [development roadmap](docs/development-roadmap.md) tracks local implementati
 solver correctness, range-model quality and hosted acceptance separately.
 The local [turn feasibility experiment](docs/turn-feasibility.md) measures full
 policies, resource failures and strict exact-game reuse without exposing a tool.
+The local [turn reuse/estimation study](docs/turn-reuse.md) compares suit/money
+equivalence, heuristic EVs, target-policy bounds and short fresh solves. Approximate
+policy reuse often abstains; its results do not change hosted acceptance.
 Joint-range/node-locking and advanced hosted tools have their own acceptance gates.
 A separately opted-in [turn MCP pilot](docs/turn-pilot.md) implements Issue #26
 with two explicit combos/player, bounded views and shared authorization/resource

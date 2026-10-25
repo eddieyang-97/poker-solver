@@ -1,5 +1,45 @@
 # Audit and validation — 16 October 2026
 
+## Issue #25 local turn reuse/estimation — 25 October 2026
+
+[Study and recommendation](turn-reuse.md), [measured report](turn-reuse-results.json),
+[case table](turn-reuse-results.md). Three source policies, 20 declared queries,
+17 separately trained target references and three expected transfer rejections.
+Exact/suit/proportional-money reuse gives four hits; an explicit full mapped-game
+audit identifies three additional strategic duplicates. They remain visible and
+are excluded from the ten genuinely changed-game approximation statistics.
+All ten transferred-policy bounds abstain at the unchanged 0.5%-pot width gate.
+Fresh 200-iteration root estimates pass that gate in all ten; maximum error versus
+the independent 4,000-iteration reference is 0.02512% pot. Same-policy EV/each-BR
+comparison maximum is 1.42e-13 chips (unchanged 1e-8 gate). This is not precision
+for every conditional EV, realistic range-model validation, an external audit,
+or authorization to change the hosted 2,000-iteration contract.
+
+Local project-venv verification with `OPENBLAS_NUM_THREADS=1`:
+
+- Ruff on product/tests/scripts and new benchmark modules, compileall and
+  `git diff --check`: passed.
+- `python -m unittest discover -s tests -v`: **200 run, 197 passed, three
+  Linux-only skips**, 84.777s. Includes nine new study regressions and the
+  isolated CI failure/contract tests.
+- `python scripts/benchmark_turn_reuse.py --output .artifacts/turn-reuse-audited`:
+  all 17 independent target checks passed; three expected rejections; source,
+  raw-profile and catalog hashes independently checked. Both other BLAS thread
+  variables were also set to one. Windows process probes are explicitly unlimited.
+- `python scripts/benchmark.py --sensitivity --output .artifacts/turn-reuse-river`:
+  **10/10** and sensitivity passed.
+- `python scripts/benchmark_turn.py --output .artifacts/turn-reuse-turn`:
+  **8/8** passed.
+
+Recorded execution started from main `e07ab9d6b664688327af538a3d33c0b8a4ccac4e`
+plus the report's exact LF source manifest; it is not a claim that unmodified
+main contained the experiment. Those source hashes match implementation commit
+`dbb1e8c6364f2f6dfcad76f35c71d02ba5d70df6`. Full profiles/catalog are ignored local/CI files.
+CI adds the study within the existing turn job and artifact group, preserving
+the required aggregate and all eleven groups. Latest-head CI is pending until
+separately verified. No product solver, hosted integration, deployment or
+authorization files/settings changed; Issue #26's failed acceptance is retained.
+
 ## Issue #26 after PR #33 merge — 25 October 2026
 
 Owner-merged main `39e979c6bc0fd0b9cdcb10d5a5f3f9cdb7226e4f` passed

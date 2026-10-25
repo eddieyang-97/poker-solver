@@ -102,20 +102,28 @@ class CIGateTests(unittest.TestCase):
                 step['run'] = step['run'].replace(' --output', ' --reference-workers 2 --output')
             if step['name'] == 'Static checks':
                 step['run'] = step['run'].replace('benchmarks/raise_reference_worker.py\n',
-                    'benchmarks/raise_reference_worker.py benchmarks/turn_feasibility.py benchmarks/turn_feasibility_worker.py\n')
+                    'benchmarks/raise_reference_worker.py benchmarks/turn_feasibility.py benchmarks/turn_feasibility_worker.py benchmarks/turn_reuse.py benchmarks/turn_reuse_worker.py\n')
         expected.append({'name': 'Full-policy turn feasibility and exact-reuse experiment', 'timeout-minutes': 3,
                          'run': 'python scripts/benchmark_turn_feasibility.py --output .artifacts/turn-feasibility',
                          'env': {'OPENBLAS_NUM_THREADS': '1'}})
         expected.append({'name': 'Local opt-in turn MCP pilot resource and output gates', 'timeout-minutes': 3,
                          'run': 'python scripts/benchmark_turn_pilot.py --output .artifacts/turn-pilot',
                          'env': {'OPENBLAS_NUM_THREADS': '1'}})
+        expected.append({'name': 'Local exact and approximate turn reuse with independent targets', 'timeout-minutes': 6,
+                         'run': 'python scripts/benchmark_turn_reuse.py --output .artifacts/turn-reuse',
+                         'env': {'OPENBLAS_NUM_THREADS': '1', 'OMP_NUM_THREADS': '1', 'MKL_NUM_THREADS': '1'}})
         self.assertCountEqual(found, expected)
         expected_artifacts = deepcopy(contract['artifacts'])
         for step in expected_artifacts:
+            if step['with']['name'] == 'turn-policy-validation':
+                step['with']['path'] = '.artifacts/turn-benchmark.*\n.artifacts/turn-reuse.*\n.artifacts/turn-reuse-policies/\n'
             if step['with']['name'] == 'turn-resource-study':
                 step['with']['path'] = ('.artifacts/turn-resources.*\n.artifacts/turn-feasibility.*\n'
                                         '.artifacts/turn-feasibility-policies/\n.artifacts/turn-pilot.*\n')
         self.assertCountEqual(artifacts, expected_artifacts)
+        turn_names = [step.get('name') for step in jobs['turn']['steps']]
+        self.assertLess(turn_names.index('Local exact and approximate turn reuse with independent targets'),
+                        turn_names.index('Retain experimental turn validation'))
         # No path filters, feature pushes or main cancellation; latest PR supersedes only its own PR.
         events = workflow.get('on', workflow.get(True))  # YAML 1.1 compatibility
         self.assertEqual(events, {'push': {'branches': ['main']}, 'pull_request': None})
