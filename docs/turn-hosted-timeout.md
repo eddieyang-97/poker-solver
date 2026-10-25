@@ -1,12 +1,66 @@
 # Issue #26 Stage B: hosted timeout investigation
 
 **Decision: no-go for accepting the current bounded live-turn pilot on Free
-Render.** The pinned game failed twice. Keep #26 open. Recommend restoring the
-river-only entry point while investigating; that production change requires
-owner approval and was **not performed**. A measured optimization is prepared
-for review, not merged, deployed or accepted by the hosted client.
+Render.** After owner-merged PR #33, the pinned game now computes twice, but
+still fails the unchanged latency/headroom gates. Keep #26 open. Recommend
+restoring the river-only entry point while investigating; that production change
+requires owner approval and was **not performed**.
 
-## Observed deployment and calls
+## Post-merge hosted retest — 25 October 2026
+
+PR #33 merged at `39e979c6bc0fd0b9cdcb10d5a5f3f9cdb7226e4f` on 24 October
+22:00:14 UTC. Exact main [CI 40136664337](https://github.com/eddieyang-97/poker-solver/actions/runs/40136664337)
+passed all five jobs, exact required `test` after its four dependencies, all
+eleven artifact groups and **191/191 Linux tests, no skips**. PR-head
+[CI 40121852759](https://github.com/eddieyang-97/poker-solver/actions/runs/40121852759)
+also passed. Main resource ZIP SHA-256
+`aa6452211b9a94a6315204d351ab98df6e1b4146862309a43b6e5bf50217866b`
+and all eight pilot source/request/result/limit receipts verify. CI parent time
+was 0.363–0.966s, CPU 0.341–0.943s, peak AS <=119.832 MiB and SDK <=10,819
+bytes. These measurements remain separate from actual Render capacity.
+
+Existing `checksPass` automatically deployed that merge: deploy
+`dep-dbeio1cs728c73clkmeg`, Live 24 October 22:08:04 UTC. Readback confirms
+the existing hosted factory, Free plan and one worker/instance. Public smoke
+verified exact SHA, health/readiness 200 and unauthenticated MCP 401. This
+investigation performed no production configuration change or deploy trigger.
+
+Two warm authenticated connector calls used the exact pinned game and all three
+views, including the future `9c` projection. [Raw results and checks](turn-postmerge-hosted-evidence.json)
+retain original server text to preserve JSON spelling for result hashing.
+
+| UTC start, 25 October | Client wall | Parent wall | Worker CPU | Peak AS | Acceptance |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 08:57:44 | 18.114s | 16.995s | 2.468s | 115.270 MiB | FAIL latency/headroom |
+| 08:58:15 | 17.621s | 17.022s | 2.405s | 115.270 MiB | FAIL latency/headroom |
+
+Both return `source=computed_on_demand`, `status=computed`, identical result
+SHA `7d127276a0a3be869c33e0324eafc53e78757ddceff16a70f8c48672b3c47f59`,
+NashConv 0.00527675 chips and valid request/game/source/Linux-limit receipts.
+The calculation passes the existing 20s/384 MiB hard bounds and convergence gate.
+Both **fail** 10s parent headroom and 15s warm delivery. Do not relabel them
+timeouts or insufficient convergence; valid computed output is retained despite
+failed release acceptance. No strategy precision follows for low-reach rows.
+
+CPU/worker-wall is 0.14962 and 0.14597, further supporting limited CPU availability.
+Direct cgroup throttling counters remain unmeasured. A second optimization would
+need about 38–39% less **total** CPU work to approach 10s at an ideal sustained
+0.15 CPU, before allowing contention. There is no measured candidate achieving
+that. CI sub-second solves do not override these real hosted failures.
+
+Both exact river baselines were freshly checked: call EV 955 in 2.699s, and the
+polarized solve in 5.586s with full existing economics/policy/schema validation.
+An earlier turn attempt paused for reauthentication and is excluded from timing.
+The public checks and prior initialization primed these calls; no fresh idle
+cold-start or automatic OAuth lifecycle acceptance is claimed.
+
+Stop full-subset acceptance testing after this mandatory pinned case fails;
+additional cheap examples cannot repair that result. No further solver rewrite,
+cache, relaxed numerical/resource target, infrastructure upgrade or rollback
+was performed. Next decision remains owner-approved river-only rollback versus
+a separately scoped optimization/product/hosting change.
+
+## Initial deployment and calls — 24 October history
 
 PR #32 merged as `3f3aeb093c75c62dbb2665122f8d1fbe58c5a0e4`; its
 [post-merge CI](https://github.com/eddieyang-97/poker-solver/actions/runs/40026617454)
