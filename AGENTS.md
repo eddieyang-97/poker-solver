@@ -2,6 +2,12 @@
 
 ## Issue-driven development workflow
 
+- Issue #25 reuse/estimation is local-only under benchmarks. Run
+  `benchmark_turn_reuse.py` after its changes; preserve exact complete-game
+  equivalence, independent target evaluation, wide-bound abstentions and
+  held-out/non-equivalent cases. Short solves do not change the hosted
+  2000-iteration contract or establish conditional action-EV precision.
+
 - Issue #26 Stage A is merged; the owner authorized Stage B on 23 October 2026.
   Default HTTP/stdio tool lists stay river-only; local pilot construction still
   rejects Render. Only the separate `create_hosted_turn_pilot_app` factory may

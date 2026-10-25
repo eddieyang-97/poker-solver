@@ -1,0 +1,1159 @@
+{
+  "version": 1,
+  "design": "Predeclared synthetic targets, no fitted parameters. Source family and card mapping supplied; not nearest-neighbour search or organic demand. Exact/equivalent targets excluded from approximation summaries.",
+  "sources": {
+    "weighted_dry": {
+      "board": [
+        "2c",
+        "3d",
+        "4h",
+        "8s"
+      ],
+      "pot": 100,
+      "stack": 200,
+      "turn_bet_sizes": [
+        0.5
+      ],
+      "river_bet_sizes": [
+        0.5
+      ],
+      "oop": [
+        {
+          "hand": "KhKd",
+          "weight": 1
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AsAd",
+          "weight": 1
+        },
+        {
+          "hand": "QhJd",
+          "weight": 0.7
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    },
+    "weighted_collision": {
+      "board": [
+        "2c",
+        "3d",
+        "4h",
+        "8s"
+      ],
+      "pot": 100,
+      "stack": 100,
+      "turn_bet_sizes": [
+        0.5
+      ],
+      "river_bet_sizes": [
+        0.5
+      ],
+      "oop": [
+        {
+          "hand": "KhKd",
+          "weight": 1
+        },
+        {
+          "hand": "AsKs",
+          "weight": 0.3
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AsAd",
+          "weight": 1
+        },
+        {
+          "hand": "QsJs",
+          "weight": 0.5
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    },
+    "four_flush_4x4": {
+      "board": [
+        "Ks",
+        "9s",
+        "5s",
+        "2s"
+      ],
+      "pot": 100,
+      "stack": 120,
+      "turn_bet_sizes": [
+        0.5
+      ],
+      "river_bet_sizes": [
+        0.5,
+        1
+      ],
+      "oop": [
+        {
+          "hand": "AsQh",
+          "weight": 1
+        },
+        {
+          "hand": "QsQd",
+          "weight": 0.6
+        },
+        {
+          "hand": "JhJd",
+          "weight": 0.3
+        },
+        {
+          "hand": "8s8h",
+          "weight": 0.2
+        }
+      ],
+      "ip": [
+        {
+          "hand": "AsAd",
+          "weight": 0.5
+        },
+        {
+          "hand": "QsJd",
+          "weight": 0.8
+        },
+        {
+          "hand": "TsTh",
+          "weight": 0.4
+        },
+        {
+          "hand": "7h7d",
+          "weight": 0.25
+        }
+      ],
+      "rake": 0,
+      "max_raises": 0,
+      "include_all_in": false
+    }
+  },
+  "targets": [
+    {
+      "id": "exact_repeat",
+      "source": "weighted_dry",
+      "kind": "exact",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "global_suits",
+      "source": "weighted_dry",
+      "kind": "equivalent",
+      "config": {
+        "board": [
+          "2s",
+          "3h",
+          "4d",
+          "8c"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KdKh",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AcAh",
+            "weight": 1
+          },
+          {
+            "hand": "QdJh",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "2c": "2s",
+        "2d": "2h",
+        "2h": "2d",
+        "2s": "2c",
+        "3c": "3s",
+        "3d": "3h",
+        "3h": "3d",
+        "3s": "3c",
+        "4c": "4s",
+        "4d": "4h",
+        "4h": "4d",
+        "4s": "4c",
+        "5c": "5s",
+        "5d": "5h",
+        "5h": "5d",
+        "5s": "5c",
+        "6c": "6s",
+        "6d": "6h",
+        "6h": "6d",
+        "6s": "6c",
+        "7c": "7s",
+        "7d": "7h",
+        "7h": "7d",
+        "7s": "7c",
+        "8c": "8s",
+        "8d": "8h",
+        "8h": "8d",
+        "8s": "8c",
+        "9c": "9s",
+        "9d": "9h",
+        "9h": "9d",
+        "9s": "9c",
+        "Tc": "Ts",
+        "Td": "Th",
+        "Th": "Td",
+        "Ts": "Tc",
+        "Jc": "Js",
+        "Jd": "Jh",
+        "Jh": "Jd",
+        "Js": "Jc",
+        "Qc": "Qs",
+        "Qd": "Qh",
+        "Qh": "Qd",
+        "Qs": "Qc",
+        "Kc": "Ks",
+        "Kd": "Kh",
+        "Kh": "Kd",
+        "Ks": "Kc",
+        "Ac": "As",
+        "Ad": "Ah",
+        "Ah": "Ad",
+        "As": "Ac"
+      }
+    },
+    {
+      "id": "double_money",
+      "source": "weighted_dry",
+      "kind": "equivalent",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 200,
+        "stack": 400,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "suits_and_money",
+      "source": "weighted_collision",
+      "kind": "equivalent",
+      "config": {
+        "board": [
+          "2d",
+          "3h",
+          "4s",
+          "8c"
+        ],
+        "pot": 50.0,
+        "stack": 50.0,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KsKh",
+            "weight": 1
+          },
+          {
+            "hand": "AcKc",
+            "weight": 0.3
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AcAh",
+            "weight": 1
+          },
+          {
+            "hand": "QcJc",
+            "weight": 0.5
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "2c": "2d",
+        "2d": "2h",
+        "2h": "2s",
+        "2s": "2c",
+        "3c": "3d",
+        "3d": "3h",
+        "3h": "3s",
+        "3s": "3c",
+        "4c": "4d",
+        "4d": "4h",
+        "4h": "4s",
+        "4s": "4c",
+        "5c": "5d",
+        "5d": "5h",
+        "5h": "5s",
+        "5s": "5c",
+        "6c": "6d",
+        "6d": "6h",
+        "6h": "6s",
+        "6s": "6c",
+        "7c": "7d",
+        "7d": "7h",
+        "7h": "7s",
+        "7s": "7c",
+        "8c": "8d",
+        "8d": "8h",
+        "8h": "8s",
+        "8s": "8c",
+        "9c": "9d",
+        "9d": "9h",
+        "9h": "9s",
+        "9s": "9c",
+        "Tc": "Td",
+        "Td": "Th",
+        "Th": "Ts",
+        "Ts": "Tc",
+        "Jc": "Jd",
+        "Jd": "Jh",
+        "Jh": "Js",
+        "Js": "Jc",
+        "Qc": "Qd",
+        "Qd": "Qh",
+        "Qh": "Qs",
+        "Qs": "Qc",
+        "Kc": "Kd",
+        "Kd": "Kh",
+        "Kh": "Ks",
+        "Ks": "Kc",
+        "Ac": "Ad",
+        "Ad": "Ah",
+        "Ah": "As",
+        "As": "Ac"
+      }
+    },
+    {
+      "id": "dry_bluff_weight_0.1",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.1
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "dry_bluff_weight_0.9",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.9
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "dry_stack_160",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 160,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "dry_turn_075",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.75
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "dry_river_pot",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          1
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "dry_turn_9s",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "9s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "8s": "9s",
+        "9s": "8s"
+      }
+    },
+    {
+      "id": "dry_turn_Qs",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "Qs"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "8s": "Qs",
+        "Qs": "8s"
+      }
+    },
+    {
+      "id": "dry_turn_Js",
+      "source": "weighted_dry",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "Js"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "8s": "Js",
+        "Js": "8s"
+      }
+    },
+    {
+      "id": "collision_weight_07",
+      "source": "weighted_collision",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 100,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "AsKs",
+            "weight": 0.7
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJs",
+            "weight": 0.5
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "collision_turn_9s",
+      "source": "weighted_collision",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "9s"
+        ],
+        "pot": 100,
+        "stack": 100,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "AsKs",
+            "weight": 0.3
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJs",
+            "weight": 0.5
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "8s": "9s",
+        "9s": "8s"
+      }
+    },
+    {
+      "id": "flush_loses_suit",
+      "source": "four_flush_4x4",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "Ks",
+          "9s",
+          "5s",
+          "2h"
+        ],
+        "pot": 100,
+        "stack": 120,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsQh",
+            "weight": 1
+          },
+          {
+            "hand": "QsQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          },
+          {
+            "hand": "8s8h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 0.5
+          },
+          {
+            "hand": "QsJd",
+            "weight": 0.8
+          },
+          {
+            "hand": "TsTh",
+            "weight": 0.4
+          },
+          {
+            "hand": "7h7d",
+            "weight": 0.25
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {
+        "2h": "2s",
+        "2s": "2h"
+      }
+    },
+    {
+      "id": "flush_ace_weight_0.1",
+      "source": "four_flush_4x4",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "Ks",
+          "9s",
+          "5s",
+          "2s"
+        ],
+        "pot": 100,
+        "stack": 120,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsQh",
+            "weight": 1
+          },
+          {
+            "hand": "QsQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          },
+          {
+            "hand": "8s8h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 0.1
+          },
+          {
+            "hand": "QsJd",
+            "weight": 0.8
+          },
+          {
+            "hand": "TsTh",
+            "weight": 0.4
+          },
+          {
+            "hand": "7h7d",
+            "weight": 0.25
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "flush_ace_weight_1",
+      "source": "four_flush_4x4",
+      "kind": "approximate",
+      "config": {
+        "board": [
+          "Ks",
+          "9s",
+          "5s",
+          "2s"
+        ],
+        "pot": 100,
+        "stack": 120,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5,
+          1
+        ],
+        "oop": [
+          {
+            "hand": "AsQh",
+            "weight": 1
+          },
+          {
+            "hand": "QsQd",
+            "weight": 0.6
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          },
+          {
+            "hand": "8s8h",
+            "weight": 0.2
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QsJd",
+            "weight": 0.8
+          },
+          {
+            "hand": "TsTh",
+            "weight": 0.4
+          },
+          {
+            "hand": "7h7d",
+            "weight": 0.25
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "new_hand",
+      "source": "weighted_dry",
+      "kind": "unsupported",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          },
+          {
+            "hand": "JhJd",
+            "weight": 0.3
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "extra_size",
+      "source": "weighted_dry",
+      "kind": "unsupported",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 200,
+        "turn_bet_sizes": [
+          0.5,
+          1
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    },
+    {
+      "id": "changed_allin_topology",
+      "source": "weighted_dry",
+      "kind": "unsupported",
+      "config": {
+        "board": [
+          "2c",
+          "3d",
+          "4h",
+          "8s"
+        ],
+        "pot": 100,
+        "stack": 40,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "oop": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "rake": 0,
+        "max_raises": 0,
+        "include_all_in": false
+      },
+      "card_mapping": {}
+    }
+  ]
+}

@@ -20,7 +20,7 @@ jobs:
     - run: pip install -r requirements-dev.txt
     - name: Static checks
       run: |
-        python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py benchmarks/raises.py benchmarks/raise_reference_worker.py benchmarks/turn_feasibility.py benchmarks/turn_feasibility_worker.py
+        python -m ruff check poker_spot tests scripts benchmarks/harness.py benchmarks/reference_worker.py benchmarks/texas.py benchmarks/texas_blockers.py benchmarks/texas_experiment.py benchmarks/turn_policy.py benchmarks/turn_decomposition.py benchmarks/turn_performance.py benchmarks/turn_reference.py benchmarks/turn_reference_worker.py benchmarks/turn_independent.py benchmarks/turn_resources.py benchmarks/raises.py benchmarks/raise_reference_worker.py benchmarks/turn_feasibility.py benchmarks/turn_feasibility_worker.py benchmarks/turn_reuse.py benchmarks/turn_reuse_worker.py
         python -m compileall -q poker_spot scripts benchmarks
     - name: Run tests
       run: python -m unittest discover -s tests -v
@@ -130,6 +130,13 @@ jobs:
       run: python scripts/benchmark_turn.py --output .artifacts/turn-benchmark
       env:
         OPENBLAS_NUM_THREADS: '1'
+    - name: Local exact and approximate turn reuse with independent targets
+      timeout-minutes: 6
+      run: python scripts/benchmark_turn_reuse.py --output .artifacts/turn-reuse
+      env:
+        OPENBLAS_NUM_THREADS: '1'
+        OMP_NUM_THREADS: '1'
+        MKL_NUM_THREADS: '1'
     - name: Retain experimental turn validation
       if: always()
       uses: actions/upload-artifact@v4
@@ -137,7 +144,10 @@ jobs:
         name: turn-policy-validation
         include-hidden-files: true
         if-no-files-found: error
-        path: .artifacts/turn-benchmark.*
+        path: |
+          .artifacts/turn-benchmark.*
+          .artifacts/turn-reuse.*
+          .artifacts/turn-reuse-policies/
     - name: Independently trained strategic turn reference
       timeout-minutes: 4
       run: python scripts/benchmark_turn_independent.py --output .artifacts/turn-independent
