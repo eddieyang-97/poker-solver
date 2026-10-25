@@ -1,5 +1,26 @@
 # Audit and validation — 16 October 2026
 
+## Issue #26 after PR #33 merge — 25 October 2026
+
+Owner-merged main `39e979c6bc0fd0b9cdcb10d5a5f3f9cdb7226e4f` passed
+[CI 40136664337](https://github.com/eddieyang-97/poker-solver/actions/runs/40136664337):
+all five jobs, eleven artifacts and **191/191 Linux tests without skips**.
+Exact required `test`, Actions app 15368, head and dependency completion order
+verify. Resource ZIP and all eight source/request/result/kernel-limit receipts
+verify (0.363–0.966s CI parent wall). The original six resource probes completed
+in this run; historical maximum-workload failures remain valid evidence.
+
+Automatic deploy `dep-dbeio1cs728c73clkmeg` became Live at the merge SHA;
+applied hosted factory, Free plan and one worker are unchanged. Public exact-SHA
+health/ready/auth denial passed 200/200/401. Two real authenticated pinned-game
+calls now compute, with identical result hashes and verified provenance,
+convergence and 20s/384 MiB limits. They take **18.114/17.621s client** and
+**16.995/17.022s parent** with **2.468/2.405 CPU seconds**. Both fail unchanged
+15s warm delivery and 10s worker-headroom acceptance. Stage B remains **no-go**.
+Both existing river tools passed their exact baseline validators. No production
+setting, merge, deploy trigger or upgrade was performed in this retest.
+[Detailed decision](turn-hosted-timeout.md), [raw post-merge evidence](turn-postmerge-hosted-evidence.json).
+
 ## Issue #26 Stage B timeout investigation — 24 October 2026
 
 PR #32 is owner-merged and the explicit hosted factory is Live at

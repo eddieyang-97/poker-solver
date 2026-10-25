@@ -1,10 +1,11 @@
 # Turn MCP pilot — Stage B activation and acceptance
 
-**Activated, but Stage B acceptance failed.** Owner-merged PR #32 deployed at
-`3f3aeb093c75c62dbb2665122f8d1fbe58c5a0e4`; the owner selected the hosted factory.
-The pinned game hit its worker deadline, reproduced on 24 October. A separate
-startup-related connector timeout also occurred. One simpler all-in diagnostic
-computed, which does not accept the pinned game or the admitted subset.
+**Activated, but Stage B acceptance failed.** PR #33 is owner-merged and Live at
+`39e979c6bc0fd0b9cdcb10d5a5f3f9cdb7226e4f`. Two authenticated pinned-game calls
+now compute with verified receipts, but take 17.6–18.1s client / about 17.0s
+parent wall: both fail the unchanged 15s client and 10s headroom gates.
+Both legacy river tools pass their exact baseline checks. Earlier PR #32 worker
+and startup-related connector timeouts remain recorded.
 See [the investigation, candidate changes and no-go decision](turn-hosted-timeout.md).
 Production settings are unchanged by that investigation; disabling the pilot or
 deploying its candidate requires separate owner approval. Keep #26 open.
@@ -166,27 +167,31 @@ attestation or independent correctness of range assumptions/low-reach EVs.
 
 An artificial pre-solved demo, localhost SDK roundtrip, passing resource study,
 `/health` or backend deployment is insufficient for ChatGPT acceptance. There is
-now actual hosted failure evidence and one simpler completed diagnostic, but no
-acceptance of the pinned game or full subset. Four synthetic questions establish examples,
+now actual computed pinned-game results as well as earlier failures, but the
+latency/headroom gates still fail. Four synthetic questions establish examples,
 not organic demand or broad usefulness. Stop if this tiny product isn't useful.
 
 ## Abort / rollback
 
-Pinned river-only rollback source: `d0eb8699a7c7924cbbc3b2a562bb1a8554a231a9`,
-live deploy `dep-dbdogaflot8c738sol00`; existing start command:
+With owner approval, restore the default entry point using the current reviewed
+code (`39e979c6bc0fd0b9cdcb10d5a5f3f9cdb7226e4f` at this retest). This removes
+the opt-in turn registration without depending on an old retained build:
 `uvicorn poker_spot.http_server:app --host 0.0.0.0 --port $PORT --workers 1`.
 Two tools: `solve_river`, `evaluate_river_call`. Abort if tool list/auth changes
 unexpectedly, source receipts mismatch, root gate fails while strategy is shown,
 outputs exceed bounds, or worker/time/cold-start behavior violates acceptance.
 Disable the pilot and restore the existing river-only `poker_spot.http_server:app`
-entry point, or deploy the separately approved known-good prior SHA. If release
+entry point, or deploy a separately approved known-good SHA. The original
+river-only baseline was `d0eb8699a7c7924cbbc3b2a562bb1a8554a231a9` /
+`dep-dbdogaflot8c738sol00`; availability of that historical build is not assumed.
+If release
 ordering is suspect, pause automatic deploys under owner control and investigate.
 Re-verify exact SHA, `/ready`, unauthenticated denial and both existing tools;
 do not alter Auth0 or widen budgets as a latency fix. No database migration or
 persistent user data is introduced, so rollback has no data-migration step.
 
 Do not merge automatically or claim Stage B acceptance from this document.
-The scoped new-tool activation was owner-authorized and merged; actual
-Render/ChatGPT acceptance remains failed/open. Review, owner merge and explicit
-deployment approval are required for the optimization candidate. Plugin publishing, OAuth changes,
+The scoped new-tool activation and PR #33 optimization are owner-merged and Live;
+actual Render/ChatGPT acceptance remains failed/open. Further production changes,
+including disabling the pilot, require explicit owner approval. Plugin publishing, OAuth changes,
 broader tools/ranges/users, larger budgets and paid plans remain unauthorized.

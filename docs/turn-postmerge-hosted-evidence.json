@@ -1,0 +1,1668 @@
+{
+  "deployed_commit": "39e979c6bc0fd0b9cdcb10d5a5f3f9cdb7226e4f",
+  "classification": "Computed pinned requests, but both warm latency and worker headroom acceptance failed",
+  "receipt_checks": [
+    {
+      "file": "post33-pinned-2.json",
+      "receipt": {
+        "status": "computed",
+        "request_sha256": "59f051dd8cfd334187de3bc04978e89cb58c6a1cd7a52e6c837ad40b98c95cd7",
+        "result_sha256": "7d127276a0a3be869c33e0324eafc53e78757ddceff16a70f8c48672b3c47f59",
+        "game_identity_sha256": "3af70106a026619523f349948dcf1f47fa127802dd8a2d09ee98681676986b3a",
+        "observed_headroom": false
+      },
+      "client_wall_seconds": 18.114,
+      "warm_client_target_pass": false,
+      "parent_wall_seconds": 16.99483398348093,
+      "worker_cpu_seconds": 2.467733,
+      "cpu_per_worker_wall": 0.14961776286371686,
+      "peak_as_mib": 115.26953125,
+      "nash_conv_chips": 0.005276748211178315
+    },
+    {
+      "file": "post33-pinned-3.json",
+      "receipt": {
+        "status": "computed",
+        "request_sha256": "59f051dd8cfd334187de3bc04978e89cb58c6a1cd7a52e6c837ad40b98c95cd7",
+        "result_sha256": "7d127276a0a3be869c33e0324eafc53e78757ddceff16a70f8c48672b3c47f59",
+        "game_identity_sha256": "3af70106a026619523f349948dcf1f47fa127802dd8a2d09ee98681676986b3a",
+        "observed_headroom": false
+      },
+      "client_wall_seconds": 17.621,
+      "warm_client_target_pass": false,
+      "parent_wall_seconds": 17.02165593765676,
+      "worker_cpu_seconds": 2.405153,
+      "cpu_per_worker_wall": 0.14596906635281404,
+      "peak_as_mib": 115.26953125,
+      "nash_conv_chips": 0.005276748211178315
+    }
+  ],
+  "captures": [
+    {
+      "deployed_sha": "39e979c6bc0fd0b9cdcb10d5a5f3f9cdb7226e4f",
+      "started_utc": "2026-10-25T08:57:44.401Z",
+      "ended_utc": "2026-10-25T08:58:02.515Z",
+      "client_wall_seconds": 18.114,
+      "request": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip_range": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "pot_cents": 10000,
+        "stack_cents": 20000,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "iterations": 2000,
+        "views": [
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn"
+          },
+          {
+            "player": "ip",
+            "hand": "QhJd",
+            "node": "turn/check"
+          },
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn/check/check/river",
+            "river_card": "9c"
+          }
+        ]
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"schema_version\": \"turn-pilot-v1\", \"source\": \"computed_on_demand\", \"status\": \"computed\", \"game\": {\"board\": \"2c,3d,4h,8s\", \"oop_range\": [{\"hand\": \"KdKh\", \"weight\": 1.0}], \"ip_range\": [{\"hand\": \"AdAs\", \"weight\": 1.0}, {\"hand\": \"JdQh\", \"weight\": 0.7}], \"pot_cents\": 10000, \"stack_cents\": 20000, \"turn_bet_sizes\": [0.5], \"river_bet_sizes\": [0.5], \"iterations\": 2000}, \"game_identity_sha256\": \"3af70106a026619523f349948dcf1f47fa127802dd8a2d09ee98681676986b3a\", \"provenance\": {\"schema\": \"turn-pilot-v1\", \"game\": {\"board\": \"2c,3d,4h,8s\", \"oop_range\": [{\"hand\": \"KdKh\", \"weight\": 1.0}], \"ip_range\": [{\"hand\": \"AdAs\", \"weight\": 1.0}, {\"hand\": \"JdQh\", \"weight\": 0.7}], \"pot_cents\": 10000, \"stack_cents\": 20000, \"turn_bet_sizes\": [0.5], \"river_bet_sizes\": [0.5], \"iterations\": 2000}, \"sources_sha256_lf\": {\"core.py\": \"cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9\", \"turn.py\": \"3d2685e3d62911ca3769be09ff9eb9490d9947ed76d034ddce475030aaad5185\", \"turn_pilot.py\": \"bf49a154248ffbed6193732479f7bcbdfd1913615d53ff051ca304dd47631944\", \"turn_worker.py\": \"3337683af5b50d788f9e171266f8b8960a2be8203fefeacf055ffb9fe4f5152e\", \"execution.py\": \"bec30becc7b2a1636cd9b406883ddc820312ff093766960196bfea1cde2179e4\"}, \"algorithm\": \"Alternating CFR+, linear own-reach averaging, exact river enumeration\", \"python\": \"3.12.8\", \"numpy\": \"2.5.4\"}, \"request_sha256\": \"59f051dd8cfd334187de3bc04978e89cb58c6a1cd7a52e6c837ad40b98c95cd7\", \"diagnostics\": {\"iterations\": 2000, \"oop_ev\": -48.633231987601356, \"ip_ev\": 48.63323198760138, \"raw_nash_conv_chips\": 0.005276748211178315, \"zero_sum_residual\": 2.1316282072803006e-14, \"nash_conv_chips\": 0.005276748211178315, \"nash_conv_pct_pot\": 0.005276748211178315}, \"best_response_bounds\": {\"oop_best_response_ev\": -48.629658601796514, \"ip_best_response_ev\": 48.634935350007694, \"raw_nash_conv_chips\": 0.005276748211180404}, \"checkpoints\": [{\"iterations\": 500, \"oop_ev\": -48.63112189886544, \"ip_ev\": 48.631121898865494, \"raw_nash_conv_chips\": 0.04114690159976884, \"zero_sum_residual\": 5.684341886080802e-14, \"nash_conv_chips\": 0.04114690159976884, \"nash_conv_pct_pot\": 0.04114690159976884}, {\"iterations\": 1000, \"oop_ev\": -48.63275925868036, \"ip_ev\": 48.632759258680295, \"raw_nash_conv_chips\": 0.013243616387236845, \"zero_sum_residual\": -6.394884621840902e-14, \"nash_conv_chips\": 0.013243616387236845, \"nash_conv_pct_pot\": 0.013243616387236843}, {\"iterations\": 2000, \"oop_ev\": -48.633231987601356, \"ip_ev\": 48.63323198760138, \"raw_nash_conv_chips\": 0.005276748211178315, \"zero_sum_residual\": 2.1316282072803006e-14, \"nash_conv_chips\": 0.005276748211178315, \"nash_conv_pct_pot\": 0.005276748211178315}], \"chance\": {\"enumerated_public_rivers\": 48, \"legal_rivers_per_compatible_deal\": 44}, \"effective_bets_by_public_history\": {\"turn\": [50.0], \"turn/bet_50/call/river\": [100.0], \"turn/check/check/river\": [50.0], \"turn/check/bet_50/call/river\": [100.0]}, \"ev_baseline\": \"Half of the initial turn pot; cumulative turn and river contributions included\", \"action_ev_interpretation\": \"One action followed by fixed average continuation; future deviations are not optimized. Low-reach continuations may be poorly converged despite a small root gap.\", \"limitations\": \"Experimental tiny independent arrival ranges, no raises/rake/locking; root convergence does not establish low-reach EV precision, realistic ranges or full GTO. An individual result does not establish release or client acceptance.\", \"views\": [{\"player\": \"oop\", \"hand\": \"KdKh\", \"node\": \"turn\", \"river_card\": null, \"frequency\": {\"check\": 0.9999942125658532, \"bet_50\": 5.787434146802904e-06}, \"action_ev_relative_to_half_turn_pot\": {\"check\": -48.63316464931544, \"bet_50\": -60.26842203683995}, \"own_reach_given_hand\": 1.0, \"compatible_opponent_reach\": 1.7, \"chance_reach\": 1.0, \"reach_probability_given_hand\": 1.0}, {\"player\": \"ip\", \"hand\": \"JdQh\", \"node\": \"turn/check\", \"river_card\": null, \"frequency\": {\"check\": 0.033065248597126534, \"bet_50\": 0.9669347514028734}, \"action_ev_relative_to_half_turn_pot\": {\"check\": -50.009482231312624, \"bet_50\": -49.95584278199402}, \"own_reach_given_hand\": 1.0, \"compatible_opponent_reach\": 0.9999942125658532, \"chance_reach\": 1.0, \"reach_probability_given_hand\": 0.9999942125658532}, {\"player\": \"oop\", \"hand\": \"KdKh\", \"node\": \"turn/check/check/river\", \"river_card\": \"9c\", \"frequency\": {\"check\": 0.6571920999164543, \"bet_50\": 0.34280790008354567}, \"action_ev_relative_to_half_turn_pot\": {\"check\": 49.98142844468949, \"bet_50\": 49.9663410999904}, \"own_reach_given_hand\": 0.9999942125658532, \"compatible_opponent_reach\": 0.023151331275817484, \"chance_reach\": 0.022727272727272728, \"reach_probability_given_hand\": 0.0003095079851472235}], \"result_sha256\": \"7d127276a0a3be869c33e0324eafc53e78757ddceff16a70f8c48672b3c47f59\", \"execution\": {\"platform\": \"linux\", \"limits\": {\"cpu_seconds\": [20, 20], \"address_space_bytes\": [402653184, 402653184]}, \"worker_wall_seconds\": 16.493583066388965, \"budget_enforced\": true, \"stage_seconds\": {\"bootstrap_imports\": 1.4033826515078545, \"read_parse\": 3.9871782064437866e-05, \"validate_solve_br_project_receipt\": 15.089499417692423, \"result_serialization\": 0.0006561446934938431}, \"worker_cpu_seconds\": 2.467733, \"memory_bytes\": {\"VmPeak\": 120868864, \"VmHWM\": 44351488}, \"parent_wall_seconds\": 16.99483398348093}}"
+          }
+        ],
+        "isError": false
+      },
+      "capture_file_sha256": "7d9ecbde5f47393469028f5ce2f859f86e51c1cc63ce1d57319a4e77603e0811"
+    },
+    {
+      "deployed_sha": "39e979c6bc0fd0b9cdcb10d5a5f3f9cdb7226e4f",
+      "started_utc": "2026-10-25T08:58:15.522Z",
+      "ended_utc": "2026-10-25T08:58:33.143Z",
+      "client_wall_seconds": 17.621,
+      "request": {
+        "board": "2c,3d,4h,8s",
+        "oop_range": [
+          {
+            "hand": "KhKd",
+            "weight": 1
+          }
+        ],
+        "ip_range": [
+          {
+            "hand": "AsAd",
+            "weight": 1
+          },
+          {
+            "hand": "QhJd",
+            "weight": 0.7
+          }
+        ],
+        "pot_cents": 10000,
+        "stack_cents": 20000,
+        "turn_bet_sizes": [
+          0.5
+        ],
+        "river_bet_sizes": [
+          0.5
+        ],
+        "iterations": 2000,
+        "views": [
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn"
+          },
+          {
+            "player": "ip",
+            "hand": "QhJd",
+            "node": "turn/check"
+          },
+          {
+            "player": "oop",
+            "hand": "KhKd",
+            "node": "turn/check/check/river",
+            "river_card": "9c"
+          }
+        ]
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"schema_version\": \"turn-pilot-v1\", \"source\": \"computed_on_demand\", \"status\": \"computed\", \"game\": {\"board\": \"2c,3d,4h,8s\", \"oop_range\": [{\"hand\": \"KdKh\", \"weight\": 1.0}], \"ip_range\": [{\"hand\": \"AdAs\", \"weight\": 1.0}, {\"hand\": \"JdQh\", \"weight\": 0.7}], \"pot_cents\": 10000, \"stack_cents\": 20000, \"turn_bet_sizes\": [0.5], \"river_bet_sizes\": [0.5], \"iterations\": 2000}, \"game_identity_sha256\": \"3af70106a026619523f349948dcf1f47fa127802dd8a2d09ee98681676986b3a\", \"provenance\": {\"schema\": \"turn-pilot-v1\", \"game\": {\"board\": \"2c,3d,4h,8s\", \"oop_range\": [{\"hand\": \"KdKh\", \"weight\": 1.0}], \"ip_range\": [{\"hand\": \"AdAs\", \"weight\": 1.0}, {\"hand\": \"JdQh\", \"weight\": 0.7}], \"pot_cents\": 10000, \"stack_cents\": 20000, \"turn_bet_sizes\": [0.5], \"river_bet_sizes\": [0.5], \"iterations\": 2000}, \"sources_sha256_lf\": {\"core.py\": \"cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9\", \"turn.py\": \"3d2685e3d62911ca3769be09ff9eb9490d9947ed76d034ddce475030aaad5185\", \"turn_pilot.py\": \"bf49a154248ffbed6193732479f7bcbdfd1913615d53ff051ca304dd47631944\", \"turn_worker.py\": \"3337683af5b50d788f9e171266f8b8960a2be8203fefeacf055ffb9fe4f5152e\", \"execution.py\": \"bec30becc7b2a1636cd9b406883ddc820312ff093766960196bfea1cde2179e4\"}, \"algorithm\": \"Alternating CFR+, linear own-reach averaging, exact river enumeration\", \"python\": \"3.12.8\", \"numpy\": \"2.5.4\"}, \"request_sha256\": \"59f051dd8cfd334187de3bc04978e89cb58c6a1cd7a52e6c837ad40b98c95cd7\", \"diagnostics\": {\"iterations\": 2000, \"oop_ev\": -48.633231987601356, \"ip_ev\": 48.63323198760138, \"raw_nash_conv_chips\": 0.005276748211178315, \"zero_sum_residual\": 2.1316282072803006e-14, \"nash_conv_chips\": 0.005276748211178315, \"nash_conv_pct_pot\": 0.005276748211178315}, \"best_response_bounds\": {\"oop_best_response_ev\": -48.629658601796514, \"ip_best_response_ev\": 48.634935350007694, \"raw_nash_conv_chips\": 0.005276748211180404}, \"checkpoints\": [{\"iterations\": 500, \"oop_ev\": -48.63112189886544, \"ip_ev\": 48.631121898865494, \"raw_nash_conv_chips\": 0.04114690159976884, \"zero_sum_residual\": 5.684341886080802e-14, \"nash_conv_chips\": 0.04114690159976884, \"nash_conv_pct_pot\": 0.04114690159976884}, {\"iterations\": 1000, \"oop_ev\": -48.63275925868036, \"ip_ev\": 48.632759258680295, \"raw_nash_conv_chips\": 0.013243616387236845, \"zero_sum_residual\": -6.394884621840902e-14, \"nash_conv_chips\": 0.013243616387236845, \"nash_conv_pct_pot\": 0.013243616387236843}, {\"iterations\": 2000, \"oop_ev\": -48.633231987601356, \"ip_ev\": 48.63323198760138, \"raw_nash_conv_chips\": 0.005276748211178315, \"zero_sum_residual\": 2.1316282072803006e-14, \"nash_conv_chips\": 0.005276748211178315, \"nash_conv_pct_pot\": 0.005276748211178315}], \"chance\": {\"enumerated_public_rivers\": 48, \"legal_rivers_per_compatible_deal\": 44}, \"effective_bets_by_public_history\": {\"turn\": [50.0], \"turn/bet_50/call/river\": [100.0], \"turn/check/check/river\": [50.0], \"turn/check/bet_50/call/river\": [100.0]}, \"ev_baseline\": \"Half of the initial turn pot; cumulative turn and river contributions included\", \"action_ev_interpretation\": \"One action followed by fixed average continuation; future deviations are not optimized. Low-reach continuations may be poorly converged despite a small root gap.\", \"limitations\": \"Experimental tiny independent arrival ranges, no raises/rake/locking; root convergence does not establish low-reach EV precision, realistic ranges or full GTO. An individual result does not establish release or client acceptance.\", \"views\": [{\"player\": \"oop\", \"hand\": \"KdKh\", \"node\": \"turn\", \"river_card\": null, \"frequency\": {\"check\": 0.9999942125658532, \"bet_50\": 5.787434146802904e-06}, \"action_ev_relative_to_half_turn_pot\": {\"check\": -48.63316464931544, \"bet_50\": -60.26842203683995}, \"own_reach_given_hand\": 1.0, \"compatible_opponent_reach\": 1.7, \"chance_reach\": 1.0, \"reach_probability_given_hand\": 1.0}, {\"player\": \"ip\", \"hand\": \"JdQh\", \"node\": \"turn/check\", \"river_card\": null, \"frequency\": {\"check\": 0.033065248597126534, \"bet_50\": 0.9669347514028734}, \"action_ev_relative_to_half_turn_pot\": {\"check\": -50.009482231312624, \"bet_50\": -49.95584278199402}, \"own_reach_given_hand\": 1.0, \"compatible_opponent_reach\": 0.9999942125658532, \"chance_reach\": 1.0, \"reach_probability_given_hand\": 0.9999942125658532}, {\"player\": \"oop\", \"hand\": \"KdKh\", \"node\": \"turn/check/check/river\", \"river_card\": \"9c\", \"frequency\": {\"check\": 0.6571920999164543, \"bet_50\": 0.34280790008354567}, \"action_ev_relative_to_half_turn_pot\": {\"check\": 49.98142844468949, \"bet_50\": 49.9663410999904}, \"own_reach_given_hand\": 0.9999942125658532, \"compatible_opponent_reach\": 0.023151331275817484, \"chance_reach\": 0.022727272727272728, \"reach_probability_given_hand\": 0.0003095079851472235}], \"result_sha256\": \"7d127276a0a3be869c33e0324eafc53e78757ddceff16a70f8c48672b3c47f59\", \"execution\": {\"platform\": \"linux\", \"limits\": {\"cpu_seconds\": [20, 20], \"address_space_bytes\": [402653184, 402653184]}, \"worker_wall_seconds\": 16.47714176774025, \"budget_enforced\": true, \"stage_seconds\": {\"bootstrap_imports\": 1.78180898912251, \"read_parse\": 4.768930375576019e-05, \"validate_solve_br_project_receipt\": 14.69520915672183, \"result_serialization\": 7.327273488044739e-05}, \"worker_cpu_seconds\": 2.405153, \"memory_bytes\": {\"VmPeak\": 120868864, \"VmHWM\": 43782144}, \"parent_wall_seconds\": 17.02165593765676}}"
+          }
+        ],
+        "isError": false
+      },
+      "capture_file_sha256": "0fe4bfc3876b10f9a0ab43e0864feaa9810f0f9f395211b38ca71c1f192629a4"
+    },
+    {
+      "started_utc": "2026-10-25T08:59:09.843Z",
+      "ended_utc": "2026-10-25T08:59:12.542Z",
+      "client_wall_seconds": 2.699,
+      "request": {
+        "bet": 450,
+        "board": "Ks,9s,5h,Td,Ts",
+        "hero_hand": "KdQd",
+        "pot": 505,
+        "villain_betting_range": "AsJh"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"board\": [\"Ks\", \"9s\", \"5h\", \"Td\", \"Ts\"], \"hero_hand\": [\"Kd\", \"Qd\"], \"pot_before_bet\": 505.0, \"villain_bet\": 450.0, \"caller_pot_odds\": 0.320285, \"hero_equity_vs_assumed_betting_range\": 1.0, \"ev_call_minus_fold\": 955.0, \"best_action_given_range\": \"call\", \"opponent_combos_after_blockers\": 1, \"weighted_opponent_combos_after_blockers\": 1.0, \"assumption\": \"Villain betting range is given exogenously; result is exact for that range, not solver-derived equilibrium.\"}"
+          }
+        ],
+        "isError": false
+      },
+      "capture_file_sha256": "d385c45e39f5c885dd0deb84168529dd35805dec77d06aecf6cef93a888affc5"
+    },
+    {
+      "started_utc": "2026-10-25T08:59:24.227Z",
+      "ended_utc": "2026-10-25T08:59:29.813Z",
+      "client_wall_seconds": 5.586,
+      "request": {
+        "board": "2c,3d,4h,8s,9c",
+        "oop_range": "KhKd",
+        "ip_range": "AsAd,QhJd",
+        "pot": 100,
+        "stack": 100,
+        "bet_sizes": [
+          1
+        ],
+        "iterations": 1500,
+        "oop_hand": "KhKd",
+        "ip_hand": "QhJd"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"model\": \"two-player zero-sum, fixed river ranges, no raises, no rake\", \"board\": [\"2c\", \"3d\", \"4h\", \"8s\", \"9c\"], \"pot\": 100.0, \"stack\": 100.0, \"bet_sizes\": [1.0], \"iterations\": 1500, \"range_combos\": {\"oop\": 1, \"ip\": 2}, \"effective_bet_amounts\": [100.0], \"computation\": \"Alternating CFR+ with nonnegative regret clipping and linear strategy averaging\", \"root_ev_oop_relative_to_split_pot\": -25.0001, \"nash_conv_chips\": 0.0371, \"nash_conv_pct_pot\": 0.037, \"interpretation\": \"EVs are relative to receiving half the starting pot. Max regrets / EV exploitability depend on the restricted tree.\", \"hands\": {\"oop\": {\"combo\": [\"Kd\", \"Kh\"], \"node_strategy\": {\"oop_first\": {\"frequency\": {\"check\": 1.0, \"bet_1pot\": 0.0}, \"action_ev_relative_to_half_pot\": {\"check\": -25.0, \"bet_1pot\": -49.9999}, \"own_reach_probability\": 1.0}, \"oop_facing_ip_bet_1\": {\"frequency\": {\"fold\": 0.5007, \"call\": 0.4993}, \"action_ev_relative_to_half_pot\": {\"fold\": -50.0, \"call\": -49.9924}, \"own_reach_probability\": 1.0}}}, \"ip\": {\"combo\": [\"Jd\", \"Qh\"], \"node_strategy\": {\"ip_after_oop_check\": {\"frequency\": {\"check\": 0.4999, \"bet_1pot\": 0.5001}, \"action_ev_relative_to_half_pot\": {\"check\": -50.0, \"bet_1pot\": -49.8633}, \"own_reach_probability\": 1.0}, \"ip_facing_oop_bet_1\": {\"frequency\": {\"fold\": 1.0, \"call\": 0.0}, \"action_ev_relative_to_half_pot\": {\"fold\": -50.0, \"call\": -150.0}, \"own_reach_probability\": 1.0}}}}}"
+          }
+        ],
+        "isError": false
+      },
+      "capture_file_sha256": "bfd189867e3c4fe8ea1a6bdf302aecd33577dbe7fa9810352dc1bfe35ac9232a"
+    }
+  ],
+  "ci": {
+    "resource_zip_sha256": "aa6452211b9a94a6315204d351ab98df6e1b4146862309a43b6e5bf50217866b",
+    "pilot_rows": [
+      {
+        "case": "singleton_minimax",
+        "sample": 1,
+        "parent_wall_seconds": 0.8812587019999967,
+        "worker_cpu_seconds": 0.858343,
+        "peak_as_mib": 119.69921875,
+        "sdk_bytes": 10587,
+        "receipt": {
+          "status": "computed",
+          "request_sha256": "bd67f12558775e8f46fdf7aade3944e4d9a2dcfd82340ca55b0ab7d9526c4bc9",
+          "result_sha256": "ab956be93d3d6ece51cc8cc4bf9e8ee770eade71b2836ac49c8cbad11d4662fd",
+          "game_identity_sha256": "dbd5b59eec7196d016bec0faab318d1365388f8a408daa864d8b19d845802c3c",
+          "observed_headroom": true
+        }
+      },
+      {
+        "case": "singleton_minimax",
+        "sample": 2,
+        "parent_wall_seconds": 0.8877240440000094,
+        "worker_cpu_seconds": 0.866092,
+        "peak_as_mib": 119.69921875,
+        "sdk_bytes": 10591,
+        "receipt": {
+          "status": "computed",
+          "request_sha256": "bd67f12558775e8f46fdf7aade3944e4d9a2dcfd82340ca55b0ab7d9526c4bc9",
+          "result_sha256": "ab956be93d3d6ece51cc8cc4bf9e8ee770eade71b2836ac49c8cbad11d4662fd",
+          "game_identity_sha256": "dbd5b59eec7196d016bec0faab318d1365388f8a408daa864d8b19d845802c3c",
+          "observed_headroom": true
+        }
+      },
+      {
+        "case": "weighted_dry",
+        "sample": 1,
+        "parent_wall_seconds": 0.9265280839999832,
+        "worker_cpu_seconds": 0.905568,
+        "peak_as_mib": 119.69921875,
+        "sdk_bytes": 10724,
+        "receipt": {
+          "status": "computed",
+          "request_sha256": "8f584a20e047e437e943c8968ee1b2c660c4952211555d63178d939ee8c4aa98",
+          "result_sha256": "c57d57a568f0f3d18d94ffcc69c06b5374636b214db479eb464c244bd8302f1e",
+          "game_identity_sha256": "9465b53d22e4082c50dc82104c8eeeeab4d29e99258739523e27ed78a885c044",
+          "observed_headroom": true
+        }
+      },
+      {
+        "case": "weighted_dry",
+        "sample": 2,
+        "parent_wall_seconds": 0.9259896549999951,
+        "worker_cpu_seconds": 0.909045,
+        "peak_as_mib": 119.69921875,
+        "sdk_bytes": 10724,
+        "receipt": {
+          "status": "computed",
+          "request_sha256": "8f584a20e047e437e943c8968ee1b2c660c4952211555d63178d939ee8c4aa98",
+          "result_sha256": "c57d57a568f0f3d18d94ffcc69c06b5374636b214db479eb464c244bd8302f1e",
+          "game_identity_sha256": "9465b53d22e4082c50dc82104c8eeeeab4d29e99258739523e27ed78a885c044",
+          "observed_headroom": true
+        }
+      },
+      {
+        "case": "weighted_collision",
+        "sample": 1,
+        "parent_wall_seconds": 0.9657874709999987,
+        "worker_cpu_seconds": 0.943302,
+        "peak_as_mib": 119.83203125,
+        "sdk_bytes": 10819,
+        "receipt": {
+          "status": "computed",
+          "request_sha256": "7ff2b6352fe4a15f95e2430ae7bf0d1293a91f8f064278cd0a210d4b20408319",
+          "result_sha256": "fe8c5845a35ee7dc607fe1178167c207d1ba0ccb049fb2099d537ecd1416488a",
+          "game_identity_sha256": "6b041cd0c7f8e57855afc7dffa458522d1dafb33d4acdf84f1b2a223ad732ddf",
+          "observed_headroom": true
+        }
+      },
+      {
+        "case": "weighted_collision",
+        "sample": 2,
+        "parent_wall_seconds": 0.9593483090000063,
+        "worker_cpu_seconds": 0.93581,
+        "peak_as_mib": 119.83203125,
+        "sdk_bytes": 10817,
+        "receipt": {
+          "status": "computed",
+          "request_sha256": "7ff2b6352fe4a15f95e2430ae7bf0d1293a91f8f064278cd0a210d4b20408319",
+          "result_sha256": "fe8c5845a35ee7dc607fe1178167c207d1ba0ccb049fb2099d537ecd1416488a",
+          "game_identity_sha256": "6b041cd0c7f8e57855afc7dffa458522d1dafb33d4acdf84f1b2a223ad732ddf",
+          "observed_headroom": true
+        }
+      },
+      {
+        "case": "turn_allin",
+        "sample": 1,
+        "parent_wall_seconds": 0.3686618069999952,
+        "worker_cpu_seconds": 0.347047,
+        "peak_as_mib": 119.69921875,
+        "sdk_bytes": 10334,
+        "receipt": {
+          "status": "computed",
+          "request_sha256": "b6906a0b3fc4753cc679002e7e3af950184d9f177002dfe6d4266270725e64df",
+          "result_sha256": "0b2f4f39bb515c0f48e97c6d16665dc6413b39a52c0f6acebddb98f05e8c6bda",
+          "game_identity_sha256": "fd02ac844040a664903add0ce9cbc0fe269380f9c24af04e3e1c34d441c9f55b",
+          "observed_headroom": true
+        }
+      },
+      {
+        "case": "turn_allin",
+        "sample": 2,
+        "parent_wall_seconds": 0.36281357699999717,
+        "worker_cpu_seconds": 0.34128499999999995,
+        "peak_as_mib": 119.69921875,
+        "sdk_bytes": 10356,
+        "receipt": {
+          "status": "computed",
+          "request_sha256": "b6906a0b3fc4753cc679002e7e3af950184d9f177002dfe6d4266270725e64df",
+          "result_sha256": "0b2f4f39bb515c0f48e97c6d16665dc6413b39a52c0f6acebddb98f05e8c6bda",
+          "game_identity_sha256": "fd02ac844040a664903add0ce9cbc0fe269380f9c24af04e3e1c34d441c9f55b",
+          "observed_headroom": true
+        }
+      }
+    ],
+    "negative_cases": [
+      {
+        "id": "third_combo",
+        "status": "invalid_input"
+      },
+      {
+        "id": "two_sizes",
+        "status": "invalid_input"
+      },
+      {
+        "id": "fractional_cent",
+        "status": "invalid_input"
+      },
+      {
+        "id": "too_few_iterations",
+        "status": "invalid_input"
+      },
+      {
+        "id": "invalid_view",
+        "status": "invalid_input"
+      },
+      {
+        "id": "real_timeout",
+        "status": "timeout",
+        "slot_released": true
+      },
+      {
+        "id": "recovery_after_timeout",
+        "status": "computed",
+        "result": {
+          "schema_version": "turn-pilot-v1",
+          "source": "computed_on_demand",
+          "status": "computed",
+          "game": {
+            "board": "Js,Ts,2c,3d",
+            "oop_range": [
+              {
+                "hand": "KsAs",
+                "weight": 1.0
+              }
+            ],
+            "ip_range": [
+              {
+                "hand": "QdQh",
+                "weight": 1.0
+              }
+            ],
+            "pot_cents": 10000,
+            "stack_cents": 15000,
+            "turn_bet_sizes": [
+              0.5
+            ],
+            "river_bet_sizes": [
+              0.5
+            ],
+            "iterations": 2000
+          },
+          "game_identity_sha256": "dbd5b59eec7196d016bec0faab318d1365388f8a408daa864d8b19d845802c3c",
+          "provenance": {
+            "schema": "turn-pilot-v1",
+            "game": {
+              "board": "Js,Ts,2c,3d",
+              "oop_range": [
+                {
+                  "hand": "KsAs",
+                  "weight": 1.0
+                }
+              ],
+              "ip_range": [
+                {
+                  "hand": "QdQh",
+                  "weight": 1.0
+                }
+              ],
+              "pot_cents": 10000,
+              "stack_cents": 15000,
+              "turn_bet_sizes": [
+                0.5
+              ],
+              "river_bet_sizes": [
+                0.5
+              ],
+              "iterations": 2000
+            },
+            "sources_sha256_lf": {
+              "core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9",
+              "turn.py": "3d2685e3d62911ca3769be09ff9eb9490d9947ed76d034ddce475030aaad5185",
+              "turn_pilot.py": "bf49a154248ffbed6193732479f7bcbdfd1913615d53ff051ca304dd47631944",
+              "turn_worker.py": "3337683af5b50d788f9e171266f8b8960a2be8203fefeacf055ffb9fe4f5152e",
+              "execution.py": "bec30becc7b2a1636cd9b406883ddc820312ff093766960196bfea1cde2179e4"
+            },
+            "algorithm": "Alternating CFR+, linear own-reach averaging, exact river enumeration",
+            "python": "3.12.15",
+            "numpy": "2.5.4"
+          },
+          "request_sha256": "bd67f12558775e8f46fdf7aade3944e4d9a2dcfd82340ca55b0ab7d9526c4bc9",
+          "diagnostics": {
+            "iterations": 2000,
+            "oop_ev": -27.273017496735203,
+            "ip_ev": 27.273017496735207,
+            "raw_nash_conv_chips": 0.00044952383773377846,
+            "zero_sum_residual": 3.552713678800501e-15,
+            "nash_conv_chips": 0.00044952383773377846,
+            "nash_conv_pct_pot": 0.00044952383773377846
+          },
+          "best_response_bounds": {
+            "oop_best_response_ev": -27.272626829907423,
+            "ip_best_response_ev": 27.273076353745157,
+            "raw_nash_conv_chips": 0.00044952383773377846
+          },
+          "checkpoints": [
+            {
+              "iterations": 500,
+              "oop_ev": -27.27736373776967,
+              "ip_ev": 27.27736373776967,
+              "raw_nash_conv_chips": 0.007181614365620703,
+              "zero_sum_residual": 0.0,
+              "nash_conv_chips": 0.007181614365620703,
+              "nash_conv_pct_pot": 0.007181614365620704
+            },
+            {
+              "iterations": 1000,
+              "oop_ev": -27.273887580494062,
+              "ip_ev": 27.273887580494055,
+              "raw_nash_conv_chips": 0.0017971972013874904,
+              "zero_sum_residual": -7.105427357601002e-15,
+              "nash_conv_chips": 0.0017971972013874904,
+              "nash_conv_pct_pot": 0.0017971972013874904
+            },
+            {
+              "iterations": 2000,
+              "oop_ev": -27.273017496735203,
+              "ip_ev": 27.273017496735207,
+              "raw_nash_conv_chips": 0.00044952383773377846,
+              "zero_sum_residual": 3.552713678800501e-15,
+              "nash_conv_chips": 0.00044952383773377846,
+              "nash_conv_pct_pot": 0.00044952383773377846
+            }
+          ],
+          "chance": {
+            "enumerated_public_rivers": 48,
+            "legal_rivers_per_compatible_deal": 44
+          },
+          "effective_bets_by_public_history": {
+            "turn": [
+              50.0
+            ],
+            "turn/bet_50/call/river": [
+              100.0
+            ],
+            "turn/check/check/river": [
+              50.0
+            ],
+            "turn/check/bet_50/call/river": [
+              100.0
+            ]
+          },
+          "ev_baseline": "Half of the initial turn pot; cumulative turn and river contributions included",
+          "action_ev_interpretation": "One action followed by fixed average continuation; future deviations are not optimized. Low-reach continuations may be poorly converged despite a small root gap.",
+          "limitations": "Experimental tiny independent arrival ranges, no raises/rake/locking; root convergence does not establish low-reach EV precision, realistic ranges or full GTO. An individual result does not establish release or client acceptance.",
+          "views": [
+            {
+              "player": "oop",
+              "hand": "KsAs",
+              "node": "turn",
+              "river_card": null,
+              "frequency": {
+                "check": 0.4140271570577463,
+                "bet_50": 0.5859728429422537
+              },
+              "action_ev_relative_to_half_turn_pot": {
+                "check": -27.273297701513062,
+                "bet_50": -27.27281951420245
+              },
+              "own_reach_given_hand": 1.0,
+              "compatible_opponent_reach": 1.0,
+              "chance_reach": 1.0,
+              "reach_probability_given_hand": 1.0
+            },
+            {
+              "player": "ip",
+              "hand": "QdQh",
+              "node": "turn/check",
+              "river_card": null,
+              "frequency": {
+                "check": 2.390335755379264e-06,
+                "bet_50": 0.9999976096642446
+              },
+              "action_ev_relative_to_half_turn_pot": {
+                "check": 8.530763585271602,
+                "bet_50": 27.2733425025696
+              },
+              "own_reach_given_hand": 1.0,
+              "compatible_opponent_reach": 0.4140271570577463,
+              "chance_reach": 1.0,
+              "reach_probability_given_hand": 0.4140271570577463
+            },
+            {
+              "player": "oop",
+              "hand": "KsAs",
+              "node": "turn/check/check/river",
+              "river_card": "2d",
+              "frequency": {
+                "check": 0.8877063512803353,
+                "bet_50": 0.11229364871966485
+              },
+              "action_ev_relative_to_half_turn_pot": {
+                "check": -50.00000424917656,
+                "bet_50": -76.47950128807248
+              },
+              "own_reach_given_hand": 0.4140271570577463,
+              "compatible_opponent_reach": 2.390335755379264e-06,
+              "chance_reach": 0.022727272727272728,
+              "reach_probability_given_hand": 2.2492361754844482e-08
+            }
+          ],
+          "result_sha256": "ab956be93d3d6ece51cc8cc4bf9e8ee770eade71b2836ac49c8cbad11d4662fd",
+          "execution": {
+            "platform": "linux",
+            "limits": {
+              "cpu_seconds": [
+                20,
+                20
+              ],
+              "address_space_bytes": [
+                402653184,
+                402653184
+              ]
+            },
+            "worker_wall_seconds": 0.8332775290000143,
+            "budget_enforced": true,
+            "stage_seconds": {
+              "bootstrap_imports": 0.09820105599999351,
+              "read_parse": 3.3880000017916245e-05,
+              "validate_solve_br_project_receipt": 0.7350017729999934,
+              "result_serialization": 3.993900000409667e-05
+            },
+            "worker_cpu_seconds": 0.8486499999999999,
+            "memory_bytes": {
+              "VmPeak": 125513728,
+              "VmHWM": 45711360
+            },
+            "parent_wall_seconds": 0.8709831269999881
+          }
+        }
+      }
+    ],
+    "resources": {
+      "mode": "Development Linux budget probes of unchanged solver; separate instrumented profile",
+      "limitations": "Synthetic samples, not a portable runtime bound, Render capacity or authenticated hosted acceptance. Windows probes are unsupported. Instrumented profile is unlimited and not resource acceptance.",
+      "budgets": {
+        "parent_wall_seconds": 20,
+        "cpu_seconds": 20,
+        "address_space_bytes": 402653184
+      },
+      "source_sha256_lf": {
+        "benchmarks/turn-performance-fixtures.json": "31aa7cf5734e6354536d6df485d8d31a32b945c8575fbb284ae12d9487121e94",
+        "benchmarks/turn_resources.py": "6866c5a418151f02ebcec8513f8d328c64aa4512a1563ad2bb7cd4e170e2925d",
+        "benchmarks/turn_performance.py": "9c56595a5d91905686b4a343eaafc933684dff177f11504d99bb18004ce4fb9f",
+        "scripts/benchmark_turn_resources.py": "50fd2ed1177af3ca8135d33cc1372f890cdf7e79a3a3473f67ebb6cdf2c7934f",
+        "poker_spot/turn.py": "3d2685e3d62911ca3769be09ff9eb9490d9947ed76d034ddce475030aaad5185",
+        "poker_spot/core.py": "cb65e1c88ff65ea2580c67a2dbd26937326d2abc50c4a0e8be686aa290158fc9"
+      },
+      "cases": [
+        {
+          "id": "deep_dry_24x24",
+          "config": {
+            "board": "2c,3d,4h,8s",
+            "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+            "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+            "pot": 100,
+            "stack": 1000,
+            "turn_bet_sizes": [
+              0.5,
+              1.5
+            ],
+            "river_bet_sizes": [
+              0.5,
+              1.5
+            ]
+          },
+          "iterations": 2000,
+          "result": {
+            "mode": "limits",
+            "pid": 2359,
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.12.15",
+            "limits": {
+              "cpu_seconds": [
+                20,
+                20
+              ],
+              "address_space_bytes": [
+                402653184,
+                402653184
+              ]
+            },
+            "whole_process_cpu_seconds": 6.419282,
+            "status": "COMPLETED",
+            "measurement": {
+              "iterations": 2000,
+              "range_combos": {
+                "oop": 24,
+                "ip": 24
+              },
+              "decision_node_templates": 36,
+              "river_decision_templates": 30,
+              "public_rivers": 48,
+              "effective_bets": {
+                "turn": [
+                  50.0,
+                  150.0
+                ],
+                "turn/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/check/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/check/river": [
+                  50.0,
+                  150.0
+                ]
+              },
+              "initialization_seconds": 0.022615066000000184,
+              "solve_and_query_seconds": 6.323697776000003,
+              "serialization_seconds": 0.003750056000001223,
+              "total_seconds": 6.3500723320000105,
+              "cpu_seconds": 6.3497016020000006,
+              "peak_resident_memory": {
+                "bytes": 37662720,
+                "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+              },
+              "output_bytes": 372939,
+              "diagnostics": {
+                "iterations": 2000,
+                "oop_ev": 49.99937552038751,
+                "ip_ev": -49.99937552038747,
+                "raw_nash_conv_chips": 0.0009480595816433105,
+                "zero_sum_residual": 4.263256414560601e-14,
+                "nash_conv_chips": 0.0009480595816433105,
+                "nash_conv_pct_pot": 0.0009480595816433105
+              },
+              "python": "3.12.15",
+              "numpy": "2.5.4",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "processor": "x86_64",
+              "pid": 2359,
+              "blas_threads": {
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1"
+              }
+            },
+            "linux_memory": {
+              "method": "/proc/self/status; kB converted to bytes",
+              "VmPeak_bytes": 113725440,
+              "VmSize_bytes": 110706688,
+              "VmHWM_bytes": 37662720,
+              "VmRSS_bytes": 34992128
+            },
+            "worker_wall_seconds": 6.397494230999996,
+            "process_wall_seconds": 6.438470362000004,
+            "deadline_seconds": 20,
+            "within_observed_budgets": true,
+            "convergence_gate_passed": true
+          }
+        },
+        {
+          "id": "four_flush_weighted_24x24",
+          "config": {
+            "board": "Ks,9s,5s,2s",
+            "oop_range": "AcAd:0.2,AcAh:0.4,AcAs:0.6,AdAh:0.8,AdAs:1.0,AhAs:0.2,QcQd:0.4,QcQh:0.6,QcQs:0.8,QdQh:1.0,QdQs:0.2,QhQs:0.4,JcJd:0.6,JcJh:0.8,JcJs:1.0,JdJh:0.2,JdJs:0.4,JhJs:0.6,TcTd:0.8,TcTh:1.0,TcTs:0.2,TdTh:0.4,TdTs:0.6,ThTs:0.8",
+            "ip_range": "AcAd:0.2,AcAh:0.4,AcAs:0.6,AdAh:0.8,AdAs:1.0,AhAs:0.2,QcQd:0.4,QcQh:0.6,QcQs:0.8,QdQh:1.0,QdQs:0.2,QhQs:0.4,JcJd:0.6,JcJh:0.8,JcJs:1.0,JdJh:0.2,JdJs:0.4,JhJs:0.6,TcTd:0.8,TcTh:1.0,TcTs:0.2,TdTh:0.4,TdTs:0.6,ThTs:0.8",
+            "pot": 100,
+            "stack": 1000,
+            "turn_bet_sizes": [
+              0.5,
+              1.5
+            ],
+            "river_bet_sizes": [
+              0.5,
+              1.5
+            ]
+          },
+          "iterations": 2000,
+          "result": {
+            "mode": "limits",
+            "pid": 2362,
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.12.15",
+            "limits": {
+              "cpu_seconds": [
+                20,
+                20
+              ],
+              "address_space_bytes": [
+                402653184,
+                402653184
+              ]
+            },
+            "whole_process_cpu_seconds": 6.502686,
+            "status": "COMPLETED",
+            "measurement": {
+              "iterations": 2000,
+              "range_combos": {
+                "oop": 24,
+                "ip": 24
+              },
+              "decision_node_templates": 36,
+              "river_decision_templates": 30,
+              "public_rivers": 48,
+              "effective_bets": {
+                "turn": [
+                  50.0,
+                  150.0
+                ],
+                "turn/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/check/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/check/river": [
+                  50.0,
+                  150.0
+                ]
+              },
+              "initialization_seconds": 0.014005403999988175,
+              "solve_and_query_seconds": 6.420894395999994,
+              "serialization_seconds": 0.0038258119999881046,
+              "total_seconds": 6.438734736000001,
+              "cpu_seconds": 6.43834141,
+              "peak_resident_memory": {
+                "bytes": 37040128,
+                "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+              },
+              "output_bytes": 395516,
+              "diagnostics": {
+                "iterations": 2000,
+                "oop_ev": -1.7552156880236773,
+                "ip_ev": 1.7552156880236807,
+                "raw_nash_conv_chips": 0.00653338338607965,
+                "zero_sum_residual": 3.3306690738754696e-15,
+                "nash_conv_chips": 0.00653338338607965,
+                "nash_conv_pct_pot": 0.00653338338607965
+              },
+              "python": "3.12.15",
+              "numpy": "2.5.4",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "processor": "x86_64",
+              "pid": 2362,
+              "blas_threads": {
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1"
+              }
+            },
+            "linux_memory": {
+              "method": "/proc/self/status; kB converted to bytes",
+              "VmPeak_bytes": 113209344,
+              "VmSize_bytes": 112529408,
+              "VmHWM_bytes": 37040128,
+              "VmRSS_bytes": 36421632
+            },
+            "worker_wall_seconds": 6.473834773000007,
+            "process_wall_seconds": 6.517452454999997,
+            "deadline_seconds": 20,
+            "within_observed_budgets": true,
+            "convergence_gate_passed": true
+          }
+        },
+        {
+          "id": "deep_4x4_two_sizes",
+          "config": {
+            "board": "2c,3d,4h,8s",
+            "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1",
+            "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1",
+            "pot": 100,
+            "stack": 1000,
+            "turn_bet_sizes": [
+              0.5,
+              1.5
+            ],
+            "river_bet_sizes": [
+              0.5,
+              1.5
+            ]
+          },
+          "iterations": 2000,
+          "result": {
+            "mode": "limits",
+            "pid": 2364,
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.12.15",
+            "limits": {
+              "cpu_seconds": [
+                20,
+                20
+              ],
+              "address_space_bytes": [
+                402653184,
+                402653184
+              ]
+            },
+            "whole_process_cpu_seconds": 2.5379400000000003,
+            "status": "COMPLETED",
+            "measurement": {
+              "iterations": 2000,
+              "range_combos": {
+                "oop": 4,
+                "ip": 4
+              },
+              "decision_node_templates": 36,
+              "river_decision_templates": 30,
+              "public_rivers": 48,
+              "effective_bets": {
+                "turn": [
+                  50.0,
+                  150.0
+                ],
+                "turn/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/check/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/check/river": [
+                  50.0,
+                  150.0
+                ]
+              },
+              "initialization_seconds": 0.004770245000003115,
+              "solve_and_query_seconds": 2.4675859660000015,
+              "serialization_seconds": 0.0035145519999986163,
+              "total_seconds": 2.4758789750000005,
+              "cpu_seconds": 2.475929012,
+              "peak_resident_memory": {
+                "bytes": 34504704,
+                "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+              },
+              "output_bytes": 361037,
+              "diagnostics": {
+                "iterations": 2000,
+                "oop_ev": 49.99855995091757,
+                "ip_ev": -49.99855995091757,
+                "raw_nash_conv_chips": 0.001704382961868589,
+                "zero_sum_residual": 0.0,
+                "nash_conv_chips": 0.001704382961868589,
+                "nash_conv_pct_pot": 0.0017043829618685888
+              },
+              "python": "3.12.15",
+              "numpy": "2.5.4",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "processor": "x86_64",
+              "pid": 2364,
+              "blas_threads": {
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1"
+              }
+            },
+            "linux_memory": {
+              "method": "/proc/self/status; kB converted to bytes",
+              "VmPeak_bytes": 110997504,
+              "VmSize_bytes": 110268416,
+              "VmHWM_bytes": 34504704,
+              "VmRSS_bytes": 33968128
+            },
+            "worker_wall_seconds": 2.5097283470000065,
+            "process_wall_seconds": 2.549988242000012,
+            "deadline_seconds": 20,
+            "within_observed_budgets": true,
+            "convergence_gate_passed": true
+          }
+        },
+        {
+          "id": "deep_12x12_two_sizes",
+          "config": {
+            "board": "2c,3d,4h,8s",
+            "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1",
+            "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1",
+            "pot": 100,
+            "stack": 1000,
+            "turn_bet_sizes": [
+              0.5,
+              1.5
+            ],
+            "river_bet_sizes": [
+              0.5,
+              1.5
+            ]
+          },
+          "iterations": 2000,
+          "result": {
+            "mode": "limits",
+            "pid": 2366,
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.12.15",
+            "limits": {
+              "cpu_seconds": [
+                20,
+                20
+              ],
+              "address_space_bytes": [
+                402653184,
+                402653184
+              ]
+            },
+            "whole_process_cpu_seconds": 3.940832,
+            "status": "COMPLETED",
+            "measurement": {
+              "iterations": 2000,
+              "range_combos": {
+                "oop": 12,
+                "ip": 12
+              },
+              "decision_node_templates": 36,
+              "river_decision_templates": 30,
+              "public_rivers": 48,
+              "effective_bets": {
+                "turn": [
+                  50.0,
+                  150.0
+                ],
+                "turn/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/check/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/check/river": [
+                  50.0,
+                  150.0
+                ]
+              },
+              "initialization_seconds": 0.012799620000009782,
+              "solve_and_query_seconds": 3.8632829379999976,
+              "serialization_seconds": 0.00318216899999868,
+              "total_seconds": 3.8792724970000023,
+              "cpu_seconds": 3.8788732919999998,
+              "peak_resident_memory": {
+                "bytes": 35192832,
+                "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+              },
+              "output_bytes": 362858,
+              "diagnostics": {
+                "iterations": 2000,
+                "oop_ev": 49.99911894998352,
+                "ip_ev": -49.99911894998353,
+                "raw_nash_conv_chips": 0.001140959845618757,
+                "zero_sum_residual": -1.4210854715202004e-14,
+                "nash_conv_chips": 0.001140959845618757,
+                "nash_conv_pct_pot": 0.001140959845618757
+              },
+              "python": "3.12.15",
+              "numpy": "2.5.4",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "processor": "x86_64",
+              "pid": 2366,
+              "blas_threads": {
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1"
+              }
+            },
+            "linux_memory": {
+              "method": "/proc/self/status; kB converted to bytes",
+              "VmPeak_bytes": 111599616,
+              "VmSize_bytes": 111235072,
+              "VmHWM_bytes": 35192832,
+              "VmRSS_bytes": 34992128
+            },
+            "worker_wall_seconds": 3.912901609000002,
+            "process_wall_seconds": 3.9534615699999875,
+            "deadline_seconds": 20,
+            "within_observed_budgets": true,
+            "convergence_gate_passed": true
+          }
+        },
+        {
+          "id": "deep_24x24_one_size",
+          "config": {
+            "board": "2c,3d,4h,8s",
+            "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+            "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+            "pot": 100,
+            "stack": 1000,
+            "turn_bet_sizes": [
+              0.5
+            ],
+            "river_bet_sizes": [
+              0.5
+            ]
+          },
+          "iterations": 2000,
+          "result": {
+            "mode": "limits",
+            "pid": 2368,
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.12.15",
+            "limits": {
+              "cpu_seconds": [
+                20,
+                20
+              ],
+              "address_space_bytes": [
+                402653184,
+                402653184
+              ]
+            },
+            "whole_process_cpu_seconds": 2.467955,
+            "status": "COMPLETED",
+            "measurement": {
+              "iterations": 2000,
+              "range_combos": {
+                "oop": 24,
+                "ip": 24
+              },
+              "decision_node_templates": 16,
+              "river_decision_templates": 12,
+              "public_rivers": 48,
+              "effective_bets": {
+                "turn": [
+                  50.0
+                ],
+                "turn/bet_50/call/river": [
+                  100.0
+                ],
+                "turn/check/bet_50/call/river": [
+                  100.0
+                ],
+                "turn/check/check/river": [
+                  50.0
+                ]
+              },
+              "initialization_seconds": 0.024013654000000884,
+              "solve_and_query_seconds": 2.3792986840000054,
+              "serialization_seconds": 0.0011569379999940566,
+              "total_seconds": 2.404475384999998,
+              "cpu_seconds": 2.404895078,
+              "peak_resident_memory": {
+                "bytes": 34369536,
+                "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+              },
+              "output_bytes": 135622,
+              "diagnostics": {
+                "iterations": 2000,
+                "oop_ev": 49.9999513282315,
+                "ip_ev": -49.9999513282315,
+                "raw_nash_conv_chips": 0.00018432127158770788,
+                "zero_sum_residual": 0.0,
+                "nash_conv_chips": 0.00018432127158770788,
+                "nash_conv_pct_pot": 0.00018432127158770788
+              },
+              "python": "3.12.15",
+              "numpy": "2.5.4",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "processor": "x86_64",
+              "pid": 2368,
+              "blas_threads": {
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1"
+              }
+            },
+            "linux_memory": {
+              "method": "/proc/self/status; kB converted to bytes",
+              "VmPeak_bytes": 111104000,
+              "VmSize_bytes": 110415872,
+              "VmHWM_bytes": 34369536,
+              "VmRSS_bytes": 33796096
+            },
+            "worker_wall_seconds": 2.4394374459999995,
+            "process_wall_seconds": 2.480745184,
+            "deadline_seconds": 20,
+            "within_observed_budgets": true,
+            "convergence_gate_passed": true
+          }
+        },
+        {
+          "id": "deep_24x24_500_iterations",
+          "config": {
+            "board": "2c,3d,4h,8s",
+            "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+            "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+            "pot": 100,
+            "stack": 1000,
+            "turn_bet_sizes": [
+              0.5,
+              1.5
+            ],
+            "river_bet_sizes": [
+              0.5,
+              1.5
+            ]
+          },
+          "iterations": 500,
+          "result": {
+            "mode": "limits",
+            "pid": 2371,
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "python": "3.12.15",
+            "limits": {
+              "cpu_seconds": [
+                20,
+                20
+              ],
+              "address_space_bytes": [
+                402653184,
+                402653184
+              ]
+            },
+            "whole_process_cpu_seconds": 1.700635,
+            "status": "COMPLETED",
+            "measurement": {
+              "iterations": 500,
+              "range_combos": {
+                "oop": 24,
+                "ip": 24
+              },
+              "decision_node_templates": 36,
+              "river_decision_templates": 30,
+              "public_rivers": 48,
+              "effective_bets": {
+                "turn": [
+                  50.0,
+                  150.0
+                ],
+                "turn/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/check/bet_50/call/river": [
+                  100.0,
+                  300.0
+                ],
+                "turn/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/bet_150/call/river": [
+                  200.0,
+                  600.0
+                ],
+                "turn/check/check/river": [
+                  50.0,
+                  150.0
+                ]
+              },
+              "initialization_seconds": 0.023575320999995597,
+              "solve_and_query_seconds": 1.6128251100000028,
+              "serialization_seconds": 0.003480897999992294,
+              "total_seconds": 1.6398904129999892,
+              "cpu_seconds": 1.639974155,
+              "peak_resident_memory": {
+                "bytes": 37511168,
+                "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+              },
+              "output_bytes": 372389,
+              "diagnostics": {
+                "iterations": 500,
+                "oop_ev": 49.99003505702154,
+                "ip_ev": -49.99003505702155,
+                "raw_nash_conv_chips": 0.015146245292480815,
+                "zero_sum_residual": -1.4210854715202004e-14,
+                "nash_conv_chips": 0.015146245292480815,
+                "nash_conv_pct_pot": 0.015146245292480815
+              },
+              "python": "3.12.15",
+              "numpy": "2.5.4",
+              "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+              "processor": "x86_64",
+              "pid": 2371,
+              "blas_threads": {
+                "OPENBLAS_NUM_THREADS": "1",
+                "OMP_NUM_THREADS": "1",
+                "MKL_NUM_THREADS": "1"
+              }
+            },
+            "linux_memory": {
+              "method": "/proc/self/status; kB converted to bytes",
+              "VmPeak_bytes": 113430528,
+              "VmSize_bytes": 112459776,
+              "VmHWM_bytes": 37511168,
+              "VmRSS_bytes": 36700160
+            },
+            "worker_wall_seconds": 1.6735615019999983,
+            "process_wall_seconds": 1.7143709590000071,
+            "deadline_seconds": 20,
+            "within_observed_budgets": true,
+            "convergence_gate_passed": true
+          }
+        }
+      ],
+      "resource_failures": [],
+      "harness_failures": [],
+      "instrumented_profile": {
+        "id": "deep_dry_24x24",
+        "config": {
+          "board": "2c,3d,4h,8s",
+          "oop_range": "AcAd:1,AcAh:1,AcAs:1,AdAh:1,AdAs:1,AhAs:1,KcKd:1,KcKh:1,KcKs:1,KdKh:1,KdKs:1,KhKs:1,QcQd:1,QcQh:1,QcQs:1,QdQh:1,QdQs:1,QhQs:1,JcJd:1,JcJh:1,JcJs:1,JdJh:1,JdJs:1,JhJs:1",
+          "ip_range": "TcTd:1,TcTh:1,TcTs:1,TdTh:1,TdTs:1,ThTs:1,9c9d:1,9c9h:1,9c9s:1,9d9h:1,9d9s:1,9h9s:1,KcAc:1,KdAd:1,KhAh:1,KsAs:1,QcAc:1,QdAd:1,QhAh:1,QsAs:1,QcKc:1,QdKd:1,QhKh:1,QsKs:1",
+          "pot": 100,
+          "stack": 1000,
+          "turn_bet_sizes": [
+            0.5,
+            1.5
+          ],
+          "river_bet_sizes": [
+            0.5,
+            1.5
+          ]
+        },
+        "iterations": 2000,
+        "result": {
+          "mode": "profile",
+          "pid": 2373,
+          "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+          "python": "3.12.15",
+          "limits": null,
+          "hotspots": {
+            "self_seconds": [
+              {
+                "function": "poker_spot/turn.py:210:_train",
+                "primitive_calls": 4000,
+                "total_calls": 360000,
+                "self_seconds": 2.222534177,
+                "cumulative_seconds": 5.522785492000001
+              },
+              {
+                "function": "~:0:<built-in method numpy._core._multiarray_umath.c_einsum>",
+                "primitive_calls": 180960,
+                "total_calls": 180960,
+                "self_seconds": 1.7460238950000002,
+                "cumulative_seconds": 1.7460238950000002
+              },
+              {
+                "function": "~:0:<method 'reduce' of 'numpy.ufunc' objects>",
+                "primitive_calls": 189345,
+                "total_calls": 189345,
+                "self_seconds": 1.7145141350000002,
+                "cumulative_seconds": 1.7145141350000002
+              },
+              {
+                "function": "poker_spot/turn.py:47:update_strategy",
+                "primitive_calls": 72018,
+                "total_calls": 72018,
+                "self_seconds": 0.774319176,
+                "cumulative_seconds": 1.654704114
+              },
+              {
+                "function": "shape_base.py:378:stack",
+                "primitive_calls": 72360,
+                "total_calls": 72360,
+                "self_seconds": 0.225959704,
+                "cumulative_seconds": 0.262246305
+              },
+              {
+                "function": "einsumfunc.py:1234:_einsum_dispatcher",
+                "primitive_calls": 904800,
+                "total_calls": 904800,
+                "self_seconds": 0.067132394,
+                "cumulative_seconds": 0.067132394
+              },
+              {
+                "function": "~:0:<built-in method builtins.isinstance>",
+                "primitive_calls": 555606,
+                "total_calls": 555606,
+                "self_seconds": 0.052397291000000006,
+                "cumulative_seconds": 0.052397291000000006
+              },
+              {
+                "function": "~:0:<method 'sum' of 'numpy.ndarray' objects>",
+                "primitive_calls": 164876,
+                "total_calls": 164876,
+                "self_seconds": 0.046997282,
+                "cumulative_seconds": 1.724737505
+              },
+              {
+                "function": "~:0:<method 'append' of 'list' objects>",
+                "primitive_calls": 339384,
+                "total_calls": 339384,
+                "self_seconds": 0.043111191,
+                "cumulative_seconds": 0.043111191
+              },
+              {
+                "function": "~:0:<method 'fill' of 'numpy.ndarray' objects>",
+                "primitive_calls": 72018,
+                "total_calls": 72018,
+                "self_seconds": 0.041100093000000004,
+                "cumulative_seconds": 0.041100093000000004
+              },
+              {
+                "function": "poker_spot/turn.py:157:_terminal_terms",
+                "primitive_calls": 196490,
+                "total_calls": 196490,
+                "self_seconds": 0.039749204,
+                "cumulative_seconds": 0.039749204
+              },
+              {
+                "function": "einsumfunc.py:1242:einsum",
+                "primitive_calls": 180960,
+                "total_calls": 180960,
+                "self_seconds": 0.039583529,
+                "cumulative_seconds": 1.7856074240000002
+              },
+              {
+                "function": "poker_spot/turn.py:257:solve",
+                "primitive_calls": 1,
+                "total_calls": 1,
+                "self_seconds": 0.032705662,
+                "cumulative_seconds": 7.247037150000001
+              },
+              {
+                "function": "fromnumeric.py:66:_wrapreduction",
+                "primitive_calls": 24360,
+                "total_calls": 24360,
+                "self_seconds": 0.030020830000000002,
+                "cumulative_seconds": 0.110787782
+              },
+              {
+                "function": "_methods.py:47:_sum",
+                "primitive_calls": 164876,
+                "total_calls": 164876,
+                "self_seconds": 0.029169391000000003,
+                "cumulative_seconds": 1.677740223
+              },
+              {
+                "function": "~:0:<built-in method builtins.len>",
+                "primitive_calls": 253864,
+                "total_calls": 253942,
+                "self_seconds": 0.021917913,
+                "cumulative_seconds": 0.021931185000000002
+              },
+              {
+                "function": "shape_base.py:206:_arrays_for_stack_dispatcher",
+                "primitive_calls": 72360,
+                "total_calls": 72360,
+                "self_seconds": 0.017607656000000003,
+                "cumulative_seconds": 0.027110608
+              },
+              {
+                "function": "fromnumeric.py:2342:sum",
+                "primitive_calls": 24360,
+                "total_calls": 24360,
+                "self_seconds": 0.017506084,
+                "cumulative_seconds": 0.13129007
+              },
+              {
+                "function": "shape_base.py:368:_stack_dispatcher",
+                "primitive_calls": 72360,
+                "total_calls": 72360,
+                "self_seconds": 0.016328575,
+                "cumulative_seconds": 0.043439183
+              },
+              {
+                "function": "~:0:<built-in method builtins.getattr>",
+                "primitive_calls": 28131,
+                "total_calls": 28131,
+                "self_seconds": 0.014585587,
+                "cumulative_seconds": 0.014585587
+              }
+            ],
+            "cumulative_seconds": [
+              {
+                "function": "benchmarks/turn_performance.py:44:measure",
+                "primitive_calls": 1,
+                "total_calls": 1,
+                "self_seconds": 0.000137445,
+                "cumulative_seconds": 7.30034791
+              },
+              {
+                "function": "poker_spot/turn.py:257:solve",
+                "primitive_calls": 1,
+                "total_calls": 1,
+                "self_seconds": 0.032705662,
+                "cumulative_seconds": 7.247037150000001
+              },
+              {
+                "function": "poker_spot/turn.py:210:_train",
+                "primitive_calls": 4000,
+                "total_calls": 360000,
+                "self_seconds": 2.222534177,
+                "cumulative_seconds": 5.522785492000001
+              },
+              {
+                "function": "einsumfunc.py:1242:einsum",
+                "primitive_calls": 180960,
+                "total_calls": 180960,
+                "self_seconds": 0.039583529,
+                "cumulative_seconds": 1.7856074240000002
+              },
+              {
+                "function": "~:0:<built-in method numpy._core._multiarray_umath.c_einsum>",
+                "primitive_calls": 180960,
+                "total_calls": 180960,
+                "self_seconds": 1.7460238950000002,
+                "cumulative_seconds": 1.7460238950000002
+              },
+              {
+                "function": "~:0:<method 'sum' of 'numpy.ndarray' objects>",
+                "primitive_calls": 164876,
+                "total_calls": 164876,
+                "self_seconds": 0.046997282,
+                "cumulative_seconds": 1.724737505
+              },
+              {
+                "function": "~:0:<method 'reduce' of 'numpy.ufunc' objects>",
+                "primitive_calls": 189345,
+                "total_calls": 189345,
+                "self_seconds": 1.7145141350000002,
+                "cumulative_seconds": 1.7145141350000002
+              },
+              {
+                "function": "_methods.py:47:_sum",
+                "primitive_calls": 164876,
+                "total_calls": 164876,
+                "self_seconds": 0.029169391000000003,
+                "cumulative_seconds": 1.677740223
+              },
+              {
+                "function": "poker_spot/turn.py:47:update_strategy",
+                "primitive_calls": 72018,
+                "total_calls": 72018,
+                "self_seconds": 0.774319176,
+                "cumulative_seconds": 1.654704114
+              },
+              {
+                "function": "shape_base.py:378:stack",
+                "primitive_calls": 72360,
+                "total_calls": 72360,
+                "self_seconds": 0.225959704,
+                "cumulative_seconds": 0.262246305
+              },
+              {
+                "function": "fromnumeric.py:2342:sum",
+                "primitive_calls": 24360,
+                "total_calls": 24360,
+                "self_seconds": 0.017506084,
+                "cumulative_seconds": 0.13129007
+              },
+              {
+                "function": "fromnumeric.py:66:_wrapreduction",
+                "primitive_calls": 24360,
+                "total_calls": 24360,
+                "self_seconds": 0.030020830000000002,
+                "cumulative_seconds": 0.110787782
+              },
+              {
+                "function": "einsumfunc.py:1234:_einsum_dispatcher",
+                "primitive_calls": 904800,
+                "total_calls": 904800,
+                "self_seconds": 0.067132394,
+                "cumulative_seconds": 0.067132394
+              },
+              {
+                "function": "~:0:<built-in method builtins.isinstance>",
+                "primitive_calls": 555606,
+                "total_calls": 555606,
+                "self_seconds": 0.052397291000000006,
+                "cumulative_seconds": 0.052397291000000006
+              },
+              {
+                "function": "poker_spot/turn.py:67:__init__",
+                "primitive_calls": 1,
+                "total_calls": 1,
+                "self_seconds": 0.0032807080000000002,
+                "cumulative_seconds": 0.04939256
+              },
+              {
+                "function": "<frozen importlib._bootstrap>:1349:_find_and_load",
+                "primitive_calls": 2,
+                "total_calls": 107,
+                "self_seconds": 0.00036325500000000004,
+                "cumulative_seconds": 0.048640795
+              },
+              {
+                "function": "<frozen importlib._bootstrap>:1304:_find_and_load_unlocked",
+                "primitive_calls": 2,
+                "total_calls": 107,
+                "self_seconds": 0.00026786000000000003,
+                "cumulative_seconds": 0.04853003
+              },
+              {
+                "function": "<frozen importlib._bootstrap>:480:_call_with_frames_removed",
+                "primitive_calls": 6,
+                "total_calls": 261,
+                "self_seconds": 0.000249166,
+                "cumulative_seconds": 0.048201854
+              },
+              {
+                "function": "<frozen importlib._bootstrap>:911:_load_unlocked",
+                "primitive_calls": 3,
+                "total_calls": 105,
+                "self_seconds": 0.000192534,
+                "cumulative_seconds": 0.048121975000000004
+              },
+              {
+                "function": "<frozen importlib._bootstrap_external>:993:exec_module",
+                "primitive_calls": 1,
+                "total_calls": 96,
+                "self_seconds": 0.00014923100000000002,
+                "cumulative_seconds": 0.047910600000000005
+              }
+            ]
+          },
+          "whole_process_cpu_seconds": 7.401943,
+          "status": "COMPLETED",
+          "measurement": {
+            "iterations": 2000,
+            "range_combos": {
+              "oop": 24,
+              "ip": 24
+            },
+            "decision_node_templates": 36,
+            "river_decision_templates": 30,
+            "public_rivers": 48,
+            "effective_bets": {
+              "turn": [
+                50.0,
+                150.0
+              ],
+              "turn/bet_50/call/river": [
+                100.0,
+                300.0
+              ],
+              "turn/check/bet_50/call/river": [
+                100.0,
+                300.0
+              ],
+              "turn/bet_150/call/river": [
+                200.0,
+                600.0
+              ],
+              "turn/check/bet_150/call/river": [
+                200.0,
+                600.0
+              ],
+              "turn/check/check/river": [
+                50.0,
+                150.0
+              ]
+            },
+            "initialization_seconds": 0.049409866000004854,
+            "solve_and_query_seconds": 7.2470992319999965,
+            "serialization_seconds": 0.0034195289999985334,
+            "total_seconds": 7.299949378000008,
+            "cpu_seconds": 7.29974447,
+            "peak_resident_memory": {
+              "bytes": 38109184,
+              "method": "getrusage(RUSAGE_SELF).ru_maxrss; platform units converted to bytes"
+            },
+            "output_bytes": 372939,
+            "diagnostics": {
+              "iterations": 2000,
+              "oop_ev": 49.99937552038751,
+              "ip_ev": -49.99937552038747,
+              "raw_nash_conv_chips": 0.0009480595816433105,
+              "zero_sum_residual": 4.263256414560601e-14,
+              "nash_conv_chips": 0.0009480595816433105,
+              "nash_conv_pct_pot": 0.0009480595816433105
+            },
+            "python": "3.12.15",
+            "numpy": "2.5.4",
+            "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+            "processor": "x86_64",
+            "pid": 2373,
+            "blas_threads": {
+              "OPENBLAS_NUM_THREADS": "1",
+              "OMP_NUM_THREADS": "1",
+              "MKL_NUM_THREADS": "1"
+            }
+          },
+          "linux_memory": {
+            "method": "/proc/self/status; kB converted to bytes",
+            "VmPeak_bytes": 114733056,
+            "VmSize_bytes": 111878144,
+            "VmHWM_bytes": 38109184,
+            "VmRSS_bytes": 35524608
+          },
+          "worker_wall_seconds": 7.373965247000001,
+          "process_wall_seconds": 7.415563221999989,
+          "deadline_seconds": 180
+        }
+      }
+    }
+  }
+}
