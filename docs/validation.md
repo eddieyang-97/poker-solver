@@ -1,5 +1,61 @@
 # Audit and validation — 16 October 2026
 
+## Claude OAuth onboarding preflight — 26 October 2026
+
+Local source: `41a0282` (documentation-only work; no solver/transport changes).
+Reviewed repository instructions, hosting/distribution runbooks, prior Claude
+onboarding commit `8f1cc29`, `render.yaml`, resource auth/transport code and
+the hosted ChatGPT public-client configuration.
+
+- Anthropic's [authentication reference](https://claude.com/docs/connectors/building/authentication)
+  confirms hosted callback `https://claude.ai/api/mcp/auth_callback`, S256 PKCE
+  and public-client use when the optional secret is blank.
+- Browser-read tenant OIDC discovery advertises the expected poker issuer,
+  `/authorize`, `/oauth/token`, `none` and S256; no registration endpoint or
+  CIMD support flag. `offline_access` is advertised; actual refresh issuance,
+  rotation and expiry recovery remain unverified.
+- Browser-read protected-resource metadata returns the exact `/mcp` audience,
+  poker issuer and `poker:solve`. `/ready` reports ready; `/health` reports
+  `auth_configured: true`, `turn-pilot-v1`, deployed commit
+  `920d2bf2c54226caf16c8572bb531a9b2a91a489`.
+- A project-venv urllib probe could not resolve either host in the shell
+  sandbox (`getaddrinfo failed`); browser observations above succeeded. This
+  probe did not establish HTTP status/header checks or authenticated behavior.
+- After owner login and explicit setup approval, created third-party strict
+  Native/public **Poker Solver Claude**, ID `tpc_7RwSTacTTJwxRBUAPgZWEV`.
+  Saved callback read back as exactly `https://claude.ai/api/mcp/auth_callback`.
+  Authorization Code checked, Refresh Token unchecked, Client Credentials
+  unavailable; public Native grant controls refer to token authentication `none`.
+  API Access readback: Poker Solver delegated 1/1 (`poker:solve`), anonymous 0/1,
+  machine access denied by API policy; Management API 0 permissions. Connections:
+  existing Google enabled, database disabled. No secrets revealed/copied, no
+  tenant connection promotion, allowlist/Render/ChatGPT changes or paid resources.
+- Manual `/authorize` preflight with the new Client ID, exact callback, resource,
+  scope and S256 reached **Log in | Poker Solver Claude** with Google sign-in.
+  Stopped before sign-in/consent; this was a configuration probe, not Claude's
+  OAuth flow. No authorization code or access token obtained.
+- Actual signed-in Claude UI: **Add custom connector** disabled
+  (`aria-disabled=true`); existing **Trip Planning** custom connector connected.
+  Preserved that integration. An eligible account with an available connector
+  slot is needed to proceed; no plan upgrade or connector removal attempted.
+- No Claude consent/code exchange, authenticated tool discovery, river tool
+  payload, second-user access or negative/revocation test was observed.
+  Registration alone must not be described as Claude solver acceptance.
+
+Remaining: connect the registered client in an eligible Claude account,
+verify audience/scope and both river tool payloads with an allowed identity,
+then repeat with an invited friend's own verified Auth0 subject while checking
+unlisted denial and preserved owner access. Keep access registers outside Git.
+
+Documentation PR validation on base `920d2bf2c54226caf16c8572bb531a9b2a91a489`:
+project venv `python -m ruff check poker_spot tests scripts` and
+`python -m compileall -q poker_spot scripts` passed; `git diff --check` passed.
+With `OPENBLAS_NUM_THREADS=1`, `python -m unittest discover -s tests -v`
+passed outside the sandbox: 200 tests in 74.018s, 3 skipped. The initial
+sandboxed run stalled after the history tests and was interrupted; it is not
+counted as passing. No solver/benchmark changes required numerical reruns.
+These local checks do not establish Claude OAuth or solver acceptance.
+
 ## Issue #25 local turn reuse/estimation — 25 October 2026
 
 [Study and recommendation](turn-reuse.md), [measured report](turn-reuse-results.json),

@@ -80,6 +80,68 @@ Sources: [Auth0 MCP](https://auth0.com/ai/docs/mcp/overview),
 [OpenAI authentication](https://developers.openai.com/plugins/build/auth).
 The OBO/downstream API portions of Auth0's example are not needed here.
 
+## Claude public OAuth client (26 October 2026 preflight)
+
+Registered with owner approval on 26 October 2026, separately from the unchanged
+**Poker Solver ChatGPT** client:
+
+| Public setting | Saved configuration |
+| --- | --- |
+| Application | **Poker Solver Claude**, third-party strict, Native/public |
+| Client ID | `tpc_7RwSTacTTJwxRBUAPgZWEV` |
+| Grant | Authorization Code only; Refresh Token off; Client Credentials unavailable |
+| API | Existing **Poker Solver**, delegated `poker:solve` (1/1), no anonymous access |
+| Login | Existing domain-level `google-oauth2`; database connection disabled |
+| Client secret | Leave blank in Claude; public-client token authentication `none` |
+
+Saved callback (read back after leaving and reopening Settings):
+
+```text
+https://claude.ai/api/mcp/auth_callback
+```
+
+This callback is confirmed by [Anthropic's authentication documentation](https://claude.com/docs/connectors/building/authentication#callback-urls).
+Do not add speculative `claude.com`, wildcard or diagnostic loopback callbacks.
+Claude Code's local callback is a separate setup outside this onboarding flow.
+Retain consent, the existing Poker Solver API audience
+`https://poker-solver-vie0.onrender.com/mcp` and delegated permission `poker:solve`.
+The existing domain-level Google connection was already available; no connection
+promotion was needed. No client secret was revealed, copied or supplied. Auth0's
+Native/public grant controls identify token authentication as `none`; an actual
+Claude code exchange has not yet verified this integration boundary.
+
+Browser-read public discovery on 26 October confirmed issuer
+`https://dev-p1mh4uh1le8zh2am.us.auth0.com/`, authorization endpoint `/authorize`,
+token endpoint `/oauth/token`, S256 support and token authentication `none`.
+It advertises neither `registration_endpoint` nor
+`client_id_metadata_document_supported`. Use **Use your own OAuth client** in
+Claude, rather than automatic registration or its published identity. Leave
+the secret blank. The [custom connector guide](https://claude.com/docs/connectors/custom/add-unlisted#choose-authentication-settings)
+documents both the two-step dialog and the older **Advanced settings** layout.
+
+Auth0 advertises `offline_access`; Claude may append it to the requested scope.
+Refresh issuance and rotation have not been configured or tested for this client.
+Authorization code only is enabled; expect explicit reconnect after expiry;
+do not enable API offline access or alter the working ChatGPT client merely to
+make this onboarding pass. If refresh is subsequently enabled, use rotating,
+expiring refresh tokens and independently verify reconnect/revocation behavior.
+
+Live metadata confirmed the exact resource and only `poker:solve`. `/ready`
+reported ready; `/health` reported `turn-pilot-v1` at commit
+`920d2bf2c54226caf16c8572bb531a9b2a91a489`. These are configuration/liveness
+observations, not authenticated Claude acceptance. No deployment settings were
+changed. See [distribution flow](distribution-flow.md) for individual identities,
+allowlisting and actual river-tool acceptance requirements.
+
+A manual authorization preflight with this client, exact callback/resource,
+`poker:solve` and S256 reached **Log in | Poker Solver Claude** with Google
+sign-in. It stopped before login/consent and used no token exchange; it was not
+initiated by Claude and proves no authenticated tool execution. In the signed-in
+Claude account, **Add custom connector** was disabled and an existing custom
+**Trip Planning** connector was connected. No connector was removed or modified.
+Use an eligible account with an available custom-connector slot for acceptance;
+do not change the travel integration or upgrade plans as part of this setup.
+
 ## Update the existing private plugin
 
 The existing private personal plugin `poker-spot-study` was updated in place to
