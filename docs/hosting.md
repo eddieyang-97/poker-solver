@@ -7,17 +7,29 @@ session store, custom UI, downstream API, or OpenAI API key requirement.
 
 ## Deploy the dedicated Free Render service
 
-Use this repository's `render.yaml`, or create a Python Web Service with:
+**Initial river-only setup template, not a snapshot of the existing deployment:**
+Use this repository's `render.yaml`, or create a new Python Web Service with:
 
-| Setting | Value |
+| Setting | Initial setup value |
 | --- | --- |
 | Repository / branch | `eddieyang-97/poker-solver` / `main` |
 | Name / region / plan | `poker-solver` / Frankfurt / **Free** |
 | Build | `pip install -r requirements.txt` |
-| Start | `uvicorn poker_spot.http_server:app --host 0.0.0.0 --port $PORT --workers 1` |
+| Start (river-only baseline) | `uvicorn poker_spot.http_server:app --host 0.0.0.0 --port $PORT --workers 1` |
 | Health check | `/health` |
 | Environment | `PYTHON_VERSION=3.12.8`, `OPENBLAS_NUM_THREADS=1`, `OMP_NUM_THREADS=1`, `POKER_MODE=hosted` |
-| Auto deploy | Off |
+| Auto deploy (initial setup) | Off; enable only through the separately approved CI-gated release process |
+
+**Existing Render service — last recorded observations, not guaranteed current state:**
+The applied setting was **After CI Checks Pass** (`autoDeployTrigger: checksPass`),
+read back on 22 October 2026, not the template's `Off`. On 26 October 2026,
+`/health` reported **`turn-pilot-v1`** at commit
+`920d2bf2c54226caf16c8572bb531a9b2a91a489`, not the baseline river-only
+engine. These observations do not establish the current start command, release
+or successful turn acceptance. Before a release, check the actual Render settings,
+deployed SHA and enabled app factory; follow the [release and recovery runbook](releases.md)
+for the relevant river or experimental turn smoke. **Do not apply the template
+over the existing service without separate owner approval.**
 
 Do not attach a disk or database, upgrade plans, or reuse the travel service.
 An unconfigured deployment is intentionally reachable but refuses all computation
