@@ -1,6 +1,6 @@
 # Distribution flow
 
-Status: **design and pilot runbook**, not yet a validated friends/public launch. Last updated 17 October 2026. The owner completed Auth0 OAuth consent and actual ChatGPT calls to both tools, with inspectable computed payloads (see [validation](validation.md#direct-authenticated-connector-acceptance-after-reconnect)). Second-account and Claude acceptance remain unverified.
+Status: **design and pilot runbook**, not yet a validated friends/public launch. Last updated 26 October 2026. The owner completed Auth0 OAuth consent and actual ChatGPT calls to both tools, with inspectable computed payloads (see [validation](validation.md#direct-authenticated-connector-acceptance-after-reconnect)). Second-account and Claude acceptance remain unverified.
 
 ## Goal and scope
 
@@ -31,9 +31,15 @@ The initial distribution mechanism is **Add custom MCP server** in ChatGPT or **
 
 **OAuth client configuration fallback:** The current Auth0 tenant has **dynamic client registration disabled**. Simply pasting the endpoint may not be enough if ChatGPT's connection flow requires client details. The owner connected using the pre-registered **public Native client** documented in [hosting.md](hosting.md), with OAuth client ID `tpc_uZ1nakgLRZZ4t3ocxR6sUp`, token endpoint authentication **none**, scope **`poker:solve`**, resource `https://poker-solver-vie0.onrender.com/mcp`, and **OIDC off**. The redirect URI is ChatGPT's registered `https://chatgpt.com/connector_platform_oauth_redirect`. This is a *public client ID*, not a secret. UI fields may differ. Verify a second user's actual flow before sharing these steps as guaranteed plug-and-play instructions.
 
-### Claude: friend-facing installation (planned; not yet tested)
+### Claude: friend-facing installation (client registered; end-to-end unverified)
 
-**Short instructions to send a friend (only after the maintainer registers a Claude OAuth client and approves their account):**
+26 October 2026: verified the hosted callback and public-client option against
+Anthropic's current documentation and inspected live Auth0/resource discovery.
+Registered **Poker Solver Claude** after owner login and approval, with saved
+callback and delegated API scope readback. Public Client ID:
+`tpc_7RwSTacTTJwxRBUAPgZWEV`. See the [verified configuration and remaining setup](hosting.md#claude-public-oauth-client-26-october-2026-preflight).
+
+**Short instructions to send an approved friend:**
 
 1. Open [Claude](https://claude.ai) → **Customize → Connectors**. On individual accounts, choose **+ Add → Add custom connector**. On Team/Enterprise, an organization owner/admin first adds **Custom → Web** under Organization settings → Connectors; members then connect it from Customize → Connectors.
 2. Name the connector **Poker Solver** and enter:
@@ -42,14 +48,41 @@ The initial distribution mechanism is **Add custom MCP server** in ChatGPT or **
    https://poker-solver-vie0.onrender.com/mcp
    ```
 
-3. Review the detected authentication settings, select **Sign in now** (or **Sign in when needed**), and **do not select No sign in**. For **OAuth client**, use the *separately registered Claude public OAuth client* provided by the maintainer under **Use your own OAuth client**; do **not** reuse the ChatGPT-only client ID. Do not enter an OAuth secret for a public PKCE client or share a bearer token in headers.
-4. Complete Auth0 authentication and approve only **`poker:solve`** for the poker MCP resource.
+3. Choose **Sign in now** and **Use your own OAuth client**. Enter Client ID **`tpc_7RwSTacTTJwxRBUAPgZWEV`**, leaving the secret blank. In the older dialog these fields are under **Advanced settings**. Keep Streamable HTTP transport and leave fixed request headers empty.
+4. Sign in with **your own Google identity** through Auth0; verify the application name **Poker Solver Claude** and poker resource permission **`poker:solve`**. Claude may also request `offline_access`; refresh tokens are not enabled, so reconnect may be needed after expiry. The maintainer must independently verify your Auth0 subject and allowlist it before solver calls work. Do not send passwords or tokens.
 5. In a Claude conversation, enable **Poker Solver** via **+ → Connectors**, then ask Claude to list the available tools and invoke **`evaluate_river_call`** with explicit sample inputs. Verify an actual calculated result rather than the assistant's narrative alone.
 6. Report whether connector creation, OAuth consent, enablement, and tool execution succeeded independently. Send screenshots of errors **without tokens, authorization codes, or other credentials**.
 
-**Important setup caveat:** Claude offers **Use Claude's published identity (Recommended)**, **Register automatically**, and **Use your own OAuth client**. Our Auth0 setup currently disables dynamic client registration; **Register automatically** should not be assumed to work. Whether Auth0 accepts Claude's published client metadata identity has **not** been proven here. The pragmatic pilot path is a separately pre-registered Claude OAuth **public client**, with exact redirect URI(s) confirmed from Claude's published metadata or actual connection flow. The reported Claude web redirect is `https://claude.ai/api/mcp/auth_callback` (some clients may use `claude.com`); **verify it rather than adding a guessed or wildcard callback**. The private ChatGPT OAuth client, with its ChatGPT-specific redirect, is not a substitute.
+Post-session acceptance prompt (after the maintainer confirms allowlisting):
 
-**Current status:** Claude has not completed an Auth0 authorization-code/PKCE flow or a live solver-tool call in this project. The step-by-step instructions are a test plan, **not** a claim that Claude is already supported. Free accounts may have a single-custom-connector limit; organization plans may restrict connector creation to admins.
+```text
+Use Poker Solver to make these two actual tool calls and show their returned
+calculation results. Do not substitute your own poker estimates.
+1. evaluate_river_call: board="Ks,9s,5h,Td,Ts", hero_hand="KdQd",
+   villain_betting_range="AsJs,AsJh:0.5", pot=100, bet=100.
+2. solve_river: board="2c,3d,4h,8s,9c", oop_range="KhKd",
+   ip_range="AsAd,QhJd", pot=100, stack=100, bet_sizes=[1.0],
+   iterations=1500, ip_hand="QhJd", oop_hand="KhKd".
+```
+
+These are the existing hosted smoke fixtures: the first result should be
+`indifferent`; the second should report NashConv below 0.5% pot. Retain actual
+tool results and distinguish tool errors from failed OAuth/connector setup.
+
+**OAuth setup:** Use the separately registered Claude public Client ID above,
+with the secret blank. The exact hosted callback is
+`https://claude.ai/api/mcp/auth_callback`, verified in
+[Anthropic's documentation](https://claude.com/docs/connectors/building/authentication#callback-urls).
+Live Auth0 discovery advertises neither DCR nor CIMD; select **Use your own
+OAuth client** (or enter the ID under **Advanced settings** in older dialogs).
+Keep the existing ChatGPT-only client unchanged.
+
+**Current status:** Auth0 registration and an authorization-request preflight
+succeeded; Claude code exchange and tool calls remain unverified. In the owner's
+Claude session **Add custom connector** was disabled, with an existing connected
+**Trip Planning** custom connector. It was left untouched. Free accounts have
+one custom-connector slot; organization plans may restrict creation to admins.
+Test from an eligible account with a free slot before claiming Claude acceptance.
 
 Claude documentation: [Get started with custom connectors using remote MCP](https://support.claude.com/en/articles/11175166-get-started-with-custom-connectors-using-remote-mcp) and [Use connectors to extend Claude](https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities).
 
@@ -58,6 +91,12 @@ Claude documentation: [Get started with custom connectors using remote MCP](http
 1. **Preflight:** Check `/health` and `/ready` and verify a real authenticated MCP calculation from the owner's account. See [hosting](hosting.md) and [validation](validation.md). Do not claim either client is accepted until it returns inspectable computed results. For Claude, first register a separate public OAuth client in Auth0 with its **verified exact** Claude redirect, authorization-code + S256 PKCE, only `poker:solve`, and no client secret; keep ChatGPT's existing client unchanged.
 2. Invite one tester at a time, specify **ChatGPT or Claude** as the test client, and ask them to complete the Auth0 sign-in. Obtain their exact verified Auth0 **`user_id`** from the Auth0 user management dashboard (or another controlled, verified identity workflow); do not infer it from their email address.
 3. Add their user subject to the **comma-separated** Render secret `POKER_ALLOWED_SUBJECTS`, retaining the owner's subject and existing invitees. Do not commit identities, credentials or token values to GitHub.
+
+   This is a manual approval once per Auth0 identity, not per login or tool call.
+   Send the friend the MCP URL and public Claude Client ID above; Claude starts
+   the Auth0 redirect. A standalone Auth0 login link does not install a connector
+   or grant solver access. Self-service invitations/access enrollment are not
+   implemented by this registration.
 4. Apply/redeploy the Render configuration, check `/ready`, and validate that the new friend can call **both tools in their chosen client**. Auth0 consent can be completed before allowlisting, but the solver must reject unauthorized users until their subject is added.
 5. Record a minimal access register outside the public repo: invitee identity, verified subject, **client (ChatGPT/Claude)**, date, scope, approval, validation result, and revocation date. Do not collect/store their ChatGPT conversation or access tokens.
 6. Test a **non-invited** account cannot solve even if OAuth login succeeds; test owner access still works after every allowlist change.
@@ -75,7 +114,7 @@ Claude documentation: [Get started with custom connectors using remote MCP](http
 - [x] Owner ChatGPT conversation returns inspectable `evaluate_river_call` and `solve_river` payloads (not merely Auth0 consent / SDK diagnostic); retained actual payloads are linked in validation.
 - [ ] Friend A connects from a separate ChatGPT + Auth0 identity and executes both tools.
 - [ ] Friend B repeats onboarding with no cross-user access or credentials.
-- [ ] Claude-specific Auth0 public client registered with an independently verified callback (no reuse of the ChatGPT-only client).
+- [x] Claude-specific Auth0 public client registered with an independently verified callback (no reuse of the ChatGPT-only client); saved callback/API access read back 26 October 2026.
 - [ ] Claude connector creation → consent → enablement → both tool responses verified from a second account; record differences from ChatGPT.
 - [ ] Unlisted account is rejected; allowlist removal blocks a previously invited account.
 - [ ] Disconnect/reconnect and token expiry/refresh behavior observed and documented, including any required reauthorization.
