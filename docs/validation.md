@@ -80,6 +80,8 @@ that the population uses any of those bluff rates. They are separate from the
 solver-derived response nodes saved in the JSON.
 
 
+<a id="direct-authenticated-connector-acceptance-after-reconnect"></a>
+
 ## Hosted river — direct authenticated connector acceptance after reconnect
 
 Later on 16 October, invoked the actual **Poker Solver Hosted** connector tools
