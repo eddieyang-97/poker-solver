@@ -111,9 +111,12 @@ reproduction/owner-reported evidence; it was not repeated through the connector.
 [hosted-acceptance-results.json](hosted-acceptance-results.json) records the actual
 seven requests/results plus two analytical diagnostics, endpoint, deployed
 Python commit, service version, issuer and app binding. It contains no bearer
-tokens, authorization codes, passwords or owner subject. The service remains
-version 0.2.0 at `a4ba8e750582899642e468ba6c55d82bcc787d2f`; subsequent benchmark,
-packaging and evidence commits require no production redeployment.
+tokens, authorization codes, passwords or owner subject. **At the time
+of those 16 October 2026 calls**, the service ran version 0.2.0 at
+`a4ba8e750582899642e468ba6c55d82bcc787d2f`. This is historical
+acceptance provenance, **not a claim about the current live version or engine**:
+a later 26 October `/health` observation reported `turn-pilot-v1` at
+`920d2bf2c54226caf16c8572bb531a9b2a91a489` (see [hosting](hosting.md#claude-public-oauth-client-26-october-2026-preflight)).
 
 The £505 study above is directly confirmed by hosted
 payloads. For KdQd facing £450 into £505, the three hypothetical betting ranges
