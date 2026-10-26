@@ -1,124 +1,37 @@
 # Repository instructions
 
-## Issue-driven development workflow
+These are current **operational instructions**, not a milestone log. The [README](README.md) covers onboarding, [development scope](docs/development-roadmap.md) distinguishes capabilities, and [validation](docs/validation.md) indexes measured evidence. Read the assigned Issue, relevant contract, source/tests and active PRs before changing behavior; do not infer authorization from a roadmap.
 
-- Issue #25 reuse/estimation is local-only under benchmarks. Run
-  `benchmark_turn_reuse.py` after its changes; preserve exact complete-game
-  equivalence, independent target evaluation, wide-bound abstentions and
-  held-out/non-equivalent cases. Short solves do not change the hosted
-  2000-iteration contract or establish conditional action-EV precision.
+## Work autonomously, within scope
 
-- Issue #26 Stage A is merged; the owner authorized Stage B on 23 October 2026.
-  Default HTTP/stdio tool lists stay river-only; local pilot construction still
-  rejects Render. Only the separate `create_hosted_turn_pilot_app` factory may
-  enable `solve_turn_v1` on Render Linux with configured owner OAuth. Review and
-  owner merge must precede switching the live start command; preserve rollback
-  to `poker_spot.http_server:app`. Preserve two explicit combos/player,
-  one size/street, exactly 2000 iterations, cent-exact money, four output views,
-  unchanged 0.5%-pot convergence gate and shared worker/rate/body limits.
-  Run benchmark_turn_pilot.py after contract/worker/runner changes; retain real
-  Linux pre-import 20s CPU/384 MiB AS limits and deadline through serialization/
-  reap, result/source receipts, negatives and bounded SDK bytes. No product cache
-  or benchmark imports. Stage B needs actual Render/authenticated ChatGPT
-  acceptance; local SDK success is not that acceptance. Keep Issue #26 open
-  until its remaining release/client gates have actual evidence.
-  Stage B's pinned game has timed out on Free Render. Training optimizations
-  must preserve exact differential parity with the retained two-player walk;
-  run benchmark_turn_training.py as well as the existing independent/pilot gates.
-  Timeout proc snapshots are bounded numeric diagnostics, never solution receipts.
-  CI or projected CPU scaling does not supersede actual Render/client failures.
+- GitHub Issues define actionable scope, priorities and acceptance; [#11](https://github.com/eddieyang-97/poker-solver/issues/11) is the higher-level research roadmap. Prefer one scoped Issue per PR. Make practical decisions and finish the authorized outcome without repeated confirmation; reviews/investigations do not authorize implementation or new deployments.
+- Optimize for **speed, correctness and maintainability**, with effort proportional to consequences. Prefer simple, replaceable changes; avoid speculative frameworks, exhaustive test duplication or unrelated refactoring. For bugs, add a focused reproducer/regression when useful.
+- PRs own rationale, exact revision, changed behavior, tests, results, failed experiments and review chronology. After an accepted owner-approved merge, update the related Issue's acceptance and status. Do **not** auto-merge; owner authorization is required.
 
-- Issue #21 is a development-only turn feasibility experiment. Keep full-policy
-  storage/lookup under benchmarks and ignored/CI artifacts, not product imports
-  or a shipped cache. After changes run benchmark_turn_feasibility.py, retaining
-  actual Linux 20s/384 MiB probes, timeout/nonconvergence states, strict full-game
-  identities, fixed-policy replay gates and explicit unlimited Windows labels.
-  Synthetic repeated-view hits are not measured user demand or hosted acceptance.
-  Preserve the original six resource probes and independent numerical corpora.
+## Product boundaries
 
-- Issue #28 preserves the exact required GitHub Actions `test` context as an
-  unconditional aggregate of all numerical/artifact jobs. Keep its exact
-  dependency set, fail-closed result checks, main push validation and PR-only
-  supersession cancellation. Never skip gates by path or treat study failures
-  as hosted acceptance. Run the isolated CI gate/contract tests after DAG edits;
-  retain measured timing, runner-cost estimates and all eleven artifact groups.
-  Decomposition may use at most two independent reference subprocesses; retain
-  serial CLI default, all 188 games and ordered evaluation/aggregation. Keep
-  strict cross-run policy/resource discrepancies visible; replay of different
-  valid policies is not proof of identical frequencies or low-reach action EVs.
+- **Educational/post-session heads-up NLHE only**; no live real-money in-hand assistance. Current production river tools (`solve_river`, `evaluate_river_call`) use a **no-raise/no-rake** constrained model and caller-supplied arrival ranges, not a full GTO solver. Never invent a strategy/EV, infer a user's opponent range as fact, or label low NashConv as proof of realistic assumptions.
+- Local experimental turn, river raises, exact-size hand review and range explorer have **separate** contracts. Do not expose them through hosted tools without explicitly approved scope. The optional `solve_turn_v1` hosted factory is a narrow **experimental pilot**, not general turn support; Stage B's actual Render/client latency/headroom acceptance failed. Do not claim it passed from successful computation or CI. See [turn pilot](docs/turn-pilot.md), [hosted gate](docs/turn-pilot-release.md), [actual failures](docs/turn-hosted-timeout.md) and [Issue #26](https://github.com/eddieyang-97/poker-solver/issues/26).
+- [Issue #25](https://github.com/eddieyang-97/poker-solver/issues/25) measured development-only exact/approximate turn reuse: strict full-game equivalence, held-out games, independently evaluated target EV and wide-bound **abstentions** matter. No product cache, nearest-neighbour solution substitution or relaxation of the hosted 2,000-iteration/0.5%-pot pilot contract follows. Consult [reuse study](docs/turn-reuse.md).
 
-- Treat GitHub issues as the source of truth for milestone scope,
-  dependencies, deliverables, acceptance criteria, and exclusions.
-  Issue #11 is the parent roadmap; child issues define individual work.
+## Correctness and external safety
 
-- Before starting, read AGENTS.md, the assigned issue, linked
-  documentation, relevant prior PRs, and current main.
-  Check dependencies and avoid duplicating completed work.
+- Preserve legal-card removal, range weighting, correct chip/pot/refund accounting, street-specific information sets, action maps, convergence/reach semantics, exact-cent/rounding contracts, and unsupported-input rejection. Never silently adapt an incompatible tree, drop failure examples, relax numerical gates or mislabel approximate/fixed-policy evaluation as equilibrium proof.
+- `benchmarks/` and its pinned, licensed vendored references are **development only**, never runtime imports or hosted dependencies. Preserve raw corpora, independent comparison gates, provenance hashes, failure classifications and measured resource evidence. The independent turn reference must not train using product policies/trees; a common-tree evaluation oracle is not an independent trainer. See [benchmark methodology](docs/benchmarking.md), [independent turn](docs/turn-independent.md) and [numerical evidence index](docs/validation.md).
+- Maintain Auth0/OAuth issuer, signature, exact resource audience, expiry, scope, subject allowlist and JWT rejection at each HTTP MCP request. Hosted calculation workers remain disposable, **one at a time, no waiting queue**, with bounded body/rate, 20s wall/CPU and 384 MiB Linux address space; local longer limits do not raise hosted budgets. Only separately authorized Free Render/Auth0 resources; static tokens only under `POKER_MODE=local`. No unapproved public tools, spending, credential changes, plugin distribution or cross-project production operations.
+- Connected production services are **read-only by default**; access is not permission to mutate users, OAuth clients, deployments or live configuration. Preserve the default river app, private plugin identity, accepted Auth0 configuration and rollback route unless a scoped owner decision authorizes otherwise.
 
-- Work on one scoped issue per PR unless combining issues is explicitly
-  justified. Reference the issue in the PR and explain any deviations
-  from its requirements.
+## Verification and evidence
 
-- Do not expand scope, weaken numerical gates, change solver semantics,
-  or modify production integrations merely to complete a milestone.
-  Record material blockers and propose separate follow-up issues.
+- For changed Python, run focused tests early; required GitHub Actions **`test`** is the authoritative **aggregate** merge gate across all numerical/artifact jobs (see [CI design](docs/ci-throughput.md)). Keep the fail-closed dependency set, 11 artifact groups, PR-only supersession behavior and latest-head SHA checks. Never bypass or path-skip required solver gates. Local full-suite duplication is unnecessary if the exact checks pass in CI and no separate evidence is needed.
+- Baseline local checks: `python -m ruff check poker_spot tests scripts`; `python -m compileall -q poker_spot scripts`; `OPENBLAS_NUM_THREADS=1 python -m unittest discover -s tests -v`. Relevant numerical changes also require **targeted scripts** below and their recorded corpora; do not blindly run every benchmark for a docs-only change.
+- **River/no-raise:** `python scripts/benchmark.py --sensitivity`. **Local raises / exact-size review:** `python scripts/benchmark_river_raises.py --performance`, `python scripts/benchmark_raise_review.py` as applicable. **Range explorer:** `python scripts/benchmark_range_explorer.py`.
+- **Turn engine:** `python scripts/benchmark_turn.py`; independent model `python scripts/benchmark_turn_independent.py`; decomposition `python scripts/benchmark_turn_decomposition.py` (48 candidate rivers, compatible-pair mass / 44); feasibility `python scripts/benchmark_turn_feasibility.py`; performance/resources `python scripts/benchmark_turn_performance.py`; hosted pilot `python scripts/benchmark_turn_pilot.py`; training changes `python scripts/benchmark_turn_training.py`; reuse `python scripts/benchmark_turn_reuse.py`. Select by affected contract and preserve each script's existing numerical, real-resource and nonconvergence gates.
+- **Standalone Texas reference:** use `python scripts/benchmark_texas.py --evidence docs/texassolver-results.json --output .artifacts/texas-replay` after adapter changes; offline replay is not new external execution. `audit_texas_blockers.py` is a diagnostic intentionally failing its recorded cases; do not convert them into passing fixtures. See [Texas audit](docs/texas-blocker-audit.md).
+- Verify important expected results independently of implementation assumptions; check authorization, invalid input, concurrent/timeout paths, returned **and persisted** outcomes as relevant. Before review/merge, inspect the latest diff, required head CI, numerical artifacts and material unresolved findings. Report exactly which commands, models, environments and client/provider actions **actually** ran. Passing CI is not deployment, real ChatGPT/Claude acceptance or source/model validity.
 
-- Preserve existing behavior and regression evidence. Add focused tests
-  for new functionality rather than unnecessarily duplicating fixtures.
+## Documentation upkeep
 
-- Before requesting review, run relevant tests, static checks,
-  independent benchmarks, and reproducible examples.
-  Record exact commands, results, failures, source SHA, and CI evidence.
-  Never describe unrun tests or pending CI as passing.
-
-- PRs must summarize implementation, acceptance-criteria coverage,
-  validation evidence, remaining limitations, and any security,
-  resource, or deployment implications.
-
-- Address review findings with focused fixes and fresh validation.
-  Do not merge automatically. Wait for explicit owner authorization.
-
-- After an accepted merge, update the corresponding issue checklist
-  and milestone documentation. Close an issue only when its stated
-  acceptance criteria are satisfied; otherwise retain outstanding
-  work explicitly.
-
-- Keep local implementation, solver correctness, range-model quality,
-  and hosted acceptance as separate milestones. Until an owner-approved
-  CI-gated release policy is activated, production deployments require
-  separate authorization. Once activated, an owner-reviewed merge to
-  protected main with required latest-head CI permits routine deployment
-  of existing hosted-compatible application code; it does not authorize
-  adding hosted tools, changing OAuth/allowlists, lifting resource limits,
-  changing plugin permissions, or using paid resources.
-
-- Hosted scope: HEADS-UP NLHE river constrained decision analysis, plus only the separately owner-approved Issue #26 bounded turn pilot after its release gates. The broader experimental `poker_spot/turn.py` engine is local only. Neither engine is a full GTO solver.
-- Keep the core deterministic and dependency-light; separate game logic from MCP transports.
-- Never invent equilibrium frequencies or quote action EVs without computed outputs.
-- Results depend on caller-supplied river arrival ranges and simplified no-raise tree.
-- Maintain tests for card removal, rank evaluation, pot odds and transport authorization.
-- Bound resource use on hosted endpoints. Secrets are environment variables only.
-- Do not enable publicly unauthenticated solve requests or publish user-supplied tokens.
-- HTTP uses the official MCP SDK in stateless JSON-response mode. Keep OAuth issuer, exact resource audience, expiry, signature, scope and subject allowlist checks on every MCP request.
-- The external OAuth provider owns authorization-code/PKCE, consent, refresh and client registration. Do not build a homegrown authorization server or reuse travel credentials.
-- Static tokens are local development only (`POKER_MODE=local`); never allow that mode on Render.
-- Hosted tool calls run in disposable processes: 20s wall/CPU budget, Linux 384 MiB address-space cap, no waiting compute queue, one worker, 30 calculations/minute process-wide. Keep range and payload bounds.
-- `/health` is liveness; `/ready` checks configuration. A healthy process does not establish an authenticated ChatGPT integration.
-- Before commits run `python -m ruff check poker_spot tests scripts`, `python -m compileall -q poker_spot scripts`, and `OPENBLAS_NUM_THREADS=1 python -m unittest discover -s tests -v` using the project virtual environment.
-- Preserve the local plugin until the remote endpoint and OAuth connection work; package remote configuration separately. Preserve existing plugin identity, private audience, metadata and prompts.
-- Root manifests are the local development package; `plugins/hosted/` tracks the published account overlay and verified ChatGPT app binding. Preserve both, and read current account source/release before future guarded updates. A package upload alone did not register callable web tools; the custom MCP connection is a separate dependency.
-- Only Free Render/Auth0 resources are authorized. Do not upgrade plans or modify trip-planning-engine.
-- Record actual evidence and unresolved gates in docs/validation.md; do not label SDK/ASGI tests as real ChatGPT or hosted OAuth acceptance.
-- Educational/post-session use only; do not add live real-money in-hand assistance.
-- `benchmarks/` is development-only. Never import its vendored reference into `poker_spot` or add it to the hosted requirements. Preserve its MIT license, pinned commit and source hashes; review provenance before changing the reference.
-- Run `python scripts/benchmark.py --sensitivity` after solver or benchmark changes. Reject differing action trees/rounding rather than silently adapting them. Keep raise-enabled reference experiments separate from same-tree correctness gates and never expose them through the hosted tools.
-- TexasSolver is an opt-in standalone development reference, never a hosted dependency. Do not commit its binaries, resource tables or source. Its current adapter accepts only the documented rank-class pilot; reject unsupported concrete combos and mismatched trees.
-- After Texas adapter changes run `python scripts/benchmark_texas.py --evidence docs/texassolver-results.json --output .artifacts/texas-replay`. Label offline replay separately from actual external execution.
-- The separate `audit_texas_blockers.py` diagnostic intentionally exits 1 for the recorded reference convergence failures. Keep its FAIL classifications and unchanged gate visible; passing replay regression tests do not establish a passing external solve. Do not add it to the passing fixture corpus or silently replace the admitted pilot.
-- `texas_averaging_experiment.py` is a separately labelled, user-authorized source-build ablation. Preserve the pinned observer baseline, single-multiplier variant, matched checkpoints and original release failures. Never present its modified output as unmodified reference acceptance or deploy it; retain reports only, not upstream source/resources/binaries.
-- After local turn changes run `python scripts/benchmark_turn.py`. Keep exact 44-per-deal chance, street-specific information sets, chip carry/refunds, scalar policy/BR and singleton minimax tests. Its oracle reads the product tree/policy; never describe it as an independently trained external turn solver. Do not register or deploy a turn MCP tool in this milestone.
-- After turn decomposition/benchmark changes run `python scripts/benchmark_turn_decomposition.py`: preserve all 48 candidate rivers, compatible-pair mass divided by 44, independent river training, tree/rounding rejection and unchanged convergence gates. This special case has no turn betting and does not establish external two-street training correctness. After performance harness changes run `python scripts/benchmark_turn_performance.py`; retain actual time/RSS, platform and failure evidence. Maximum-dimension samples are not a universal worst-case bound or hosted memory/timeout acceptance.
-- After independent turn reference or adapter changes run `python scripts/benchmark_turn_independent.py`. The reference model/trainer and isolated worker must never import product modules or consume its tree/policy during training. Preserve explicit private deals, 44 legal rivers, information-set pooling before regret clipping/BR choices, cent-exact tree rejection, bidirectional policy evaluation, analytical checks and unchanged numerical/convergence gates. This is a separately implemented in-repository development reference, not an externally audited solver or proven gold standard; it does not establish hosted acceptance. Keep full profiles in local/CI artifacts and version concise measured outputs/hashes.
-- Issue #13 separately authorizes the experimental local river raise engine in `poker_spot/raises.py`, never a hosted tool or turn extension. Preserve one additional raise after the opening bet, cent-exact pot-after-call raise sizing, legal minimums/short all-ins, contribution/refund ledgers and positive-reach EV handling. After its product/adapter/worker changes run `python scripts/benchmark_river_raises.py --performance` plus the unchanged river benchmark/sensitivity. Keep pinned isolated reference training independent of product code/policies, reject differing trees/rounding/implicit all-ins, retain profiles/source hashes and unchanged gates. Local 60-second worker limits/measurements do not change hosted budgets or establish hosted acceptance.
-- Issue #11's local action-model explorer performs joint conditioning only, never solver/MCP dispatch. Preserve chronological public-card filtering, exact observed-action/amount binding, complete supplied probability rows, unknown-likelihood gaps, latent cards of modeled folded players, private decimal contexts and no automatic marginal-to-solver substitution. Exclude future actions/cards and all hole-card claims from inference. After explorer changes run `python scripts/benchmark_range_explorer.py` and the existing river benchmark/sensitivity; keep rational-oracle, scale/context, zero-support, bounds and actual timeout tests. Performance samples are not universal resource bounds or hosted acceptance. Node locking and hosted/turn orchestration remain separate milestones.
-- Issue #17's opt-in local raise review accepts explicit integer-cent opening/raise-to sizes alongside unchanged fractional trees. Preserve exact totals (no rounding/capping/implicit jam), the compact accounting regression, observed-but-unlocked semantics, explicit arrival hypotheses and request/result/tree/source receipts. After exact-size product/adapter/worker/review changes run `python scripts/benchmark_raise_review.py`, the existing `benchmark_river_raises.py --performance` and no-raise benchmark/sensitivity. The independent exact reference currently admits one opening amount using rational fractions; reject incompatible trees rather than adapting them. No joint-range substitution, node locking or hosted registration in this milestone.
+- **Issues:** scope, priorities, acceptance and unresolved work. **PRs/CI:** change implementation, test histories and review iterations. **Permanent docs:** current behavior, game semantics, numerical gates/reproduction, real hosted operations/recovery, known limits and result provenance. Keep one canonical current-status source; link rather than duplicating date-stamped diaries. Do not require a new feature guide or broad multi-doc reconciliation for every small edit.
+- **Retain durable scientific evidence:** versioned benchmark data, exact inputs/output and source hashes, independent reference assumptions, negative results, timeout/resource measurements, material security risks and production release receipts. Unlike routine PR chronology these underpin reproducibility; do not delete them simply to reduce markdown volume. Preserve or repair inbound heading links when consolidating.
+- Update the authoritative guide only when its present-day meaning changes; replace stale statements instead of appending new contradictory ones. Distinguish local feasibility, numerical correctness, owner-reported clients and **directly observed hosted** results. Report limitations honestly.
