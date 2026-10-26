@@ -1,58 +1,36 @@
-# CI-gated release preparation and activation
+# Production releases and recovery
 
-Status (22 October 2026): **manual release accepted; existing service now set to `checksPass`; automatic-deploy acceptance still pending**. Tracks [operations #23](https://github.com/eddieyang-97/poker-solver/issues/23). Follow the real staged evidence in [hosting](hosting.md) and [validation](validation.md). `AGENTS.md` remains authoritative for solver boundaries and approvals.
+This is the **current operational runbook**, not the initial rollout diary. [Issue #23](https://github.com/eddieyang-97/poker-solver/issues/23) and [PRs #24/#27](https://github.com/eddieyang-97/poker-solver/pull/27) contain historical activation decisions and evidence. `AGENTS.md` governs owner authorization and solver/tool boundaries.
 
-## Read-back baseline, not assumed platform state
+## Applied topology and invariants
 
-Issue #28's [concurrent CI design and measurements](ci-throughput.md) preserve
-the exact required `test` context as a fail-closed aggregate of every numerical
-and artifact job. That PR changes no branch protection or Render setting.
+- Existing dedicated **Free Render** `poker-solver` service (Frankfurt, single worker) plus **Auth0 Free**. The owner confirmed **no Render Blueprint** governs the service; `render.yaml`'s example `autoDeployTrigger: off` must not be mistaken for the **applied service setting**.
+- Owner-applied Render **After CI Checks Pass**, effective `autoDeployTrigger: checksPass`, was independently read back on **22 October 2026**. GitHub reported protected `main`, though fine-grained rules were not available through the connected API (403). Check applied settings again before consequential releases; recorded read-back is not a perpetual guarantee.
+- The required GitHub Actions **`test`** context must be an unconditional fail-closed aggregate of numerical, reference and artifact jobs; path/neutral/skipped shortcuts must not release code. [CI contract](ci-throughput.md). A green PR/head alone is not the merged-main test or Render deployment.
+- Ordinary owner-reviewed protected-`main` changes to **already-approved hosted-compatible code** may follow the CI-gated policy. **New tools, enabled experimental factories, Auth0/allowlist/security changes, additional users, worker limits, plugin distribution, paid plans and infrastructure** require separate owner approval. A docs PR does not authorize those changes.
 
-GitHub `main` at `959af0c633b2a98775a751a08d98e62521145553` was **unprotected** (`protected:false`, no active rulesets), although the `test` workflow was green. The existing unconditionally running GitHub Actions job `test` covers Ruff, compilation, tests, the independent river and raise suites, turn resources and historical replay gates; some resource studies retain explicitly failed/time-out *subcases* and must not be misreported as hosted acceptance.
+## Approved standard release checks
 
-At the initial preparation baseline, the actual Render account's **existing** `poker-solver` service (`main`, Frankfurt, Free, one Uvicorn worker) reported `autoDeployTrigger: off`. Its latest live **manual** deployment *at that time* was commit `a4ba8e750582899642e468ba6c55d82bcc787d2f` from 16 October, not the latest `main`. Source `render.yaml` also says `off`. Neither a green repository test nor the YAML proves a newer version has reached Render. The owner subsequently confirmed this service has **no Render Blueprint**; Blueprint Auto Sync is not applicable.
+1. **Before merge:** inspect the exact PR diff, risk, numerical/fixture/benchmark receipts and **current head** required `test`; resolve material review findings. Confirm expected deployed tool/factory surface, source SHA, owner authorization and the effect of an ongoing calculation's interruption.
+2. **After owner-approved merge:** verify unconditional required `main` CI for the **merged commit**. Compare its finish time against Render's automatic-deploy event/start time (must be **after** green CI), exact checked-out commit, startup/Live state and configured effective release policy. If CI was skipped/neutral, no auto event exists or the ordering is wrong, classify the release as **unverified** and investigate; do not infer it succeeded from a passing badge.
+3. **Public, read-only river-app smoke:** for a known-approved 40-character SHA on the standard river-only deployment, run:
+   
+   ```sh
+   python scripts/smoke_release.py https://poker-solver-vie0.onrender.com FULL_APPROVED_40_CHARACTER_GIT_SHA
+   ```
+   
+   This performs bounded unauthenticated GET checks against `/health` (exact SHA, reported `river-only` engine), `/ready` (configured) and `/mcp` (401 plus the expected OAuth resource challenge). It does **not** perform an authenticated tool call or prove client compatibility. A Render-provided SHA header/field is public provenance, not cryptographic attestation. A Free-tier cold start may need a separate check and **at most one read-only retry**.
+4. **Owner-approved authenticated smoke:** use `scripts/smoke_hosted.py` with an existing owner session/token to call the two authorized river tools and verify **returned numerical values**, then discard credentials. Never do authenticated calculations as part of public CI or publish the token. A new-user OAuth signup, refresh/revocation, Claude connection or permission change is **not** implied.
+5. **Experimental turn factory:** if a separately approved release uses `create_hosted_turn_pilot_app`, `/health` may report `turn-pilot-v1` rather than `river-only`; do **not** relabel an incompatible river smoke as a passing turn pilot. Use [Stage B acceptance](turn-pilot-release.md) with real Linux/Render/ChatGPT resource/latency/numerical gates and the same explicit owner scope. Stage B's pinned-game latency/headroom was observed **failing** even after the computation succeeded; [measurements](turn-hosted-timeout.md).
 
+### What remains unverified
 
-Subsequently, [PR #22](https://github.com/eddieyang-97/poker-solver/pull/22) merged on 22 October at `50f439b0b23b7bfa9693b9547266fc75c7469569`; the ops PR was updated to incorporate it without removing Issue #17's added `AGENTS.md` instructions. GitHub now reports `main` as `protected:true`, but this integration lacks read access to detailed protection rules (403), so strict CI, bypass and review settings still need independent verification. The new main CI was initially in progress. Render auto-deploy remained off **at the time of that original preparation**.
+Exact completed deployment evidence is release- and revision-specific. The initial [manual baseline and CI-gate activation](https://github.com/eddieyang-97/poker-solver/issues/23) are recorded historically; a successful future auto-release should have its own merged SHA/CI/Render/Live receipts. **Failed-CI nondeployment** must be demonstrated with safe permitted provider/nonproduction evidence, **not** by deliberately breaking protected production `main`. Do not claim the negative case was tested if it was not.
 
-**Do not change the active service or synchronize the Blueprint as part of this preparation PR.** Experimental turn/raise/range work merged to main is not thereby authorized for hosted MCP registration. No authorization/credentials or paid service change is included.
+## Pause and recover
 
-## Public read-only smoke (only after an approved deployment)
+- If unexpected deploys, mismatched SHA, incomplete CI or auth failures appear, **stop new changes**; with explicit authorization set the existing Render service **Auto Deploy = Off** and verify the effective value. Determine which factory/tool, code SHA and Auth0 audience/allowlist the service actually runs. Reconcile `render.yaml` separately if ever adopting Blueprint management.
+- For a compatibility break, owner-approve either a tested exact-SHA manual rollback or a forward repair; recheck startup, readiness, unauthenticated denial, authorized existing tool output and appropriate connected-client usage. Do not assume reverting code restores prior external Auth0 settings, user permissions or plugin bindings.
+- Workers are stateless and disposable; a deploy or idle wakeup may interrupt ongoing calculations. Never claim seamless reconnect or retry a paid/mutating external action generically; this project does not have a trip/booking database, but user-facing timeouts still require honest outcome reporting.
 
-Once the deployment containing the new `/health` metadata is live, and an exact full SHA is authorized:
-
-```sh
-python scripts/smoke_release.py https://poker-solver-vie0.onrender.com FULL_APPROVED_40_CHARACTER_GIT_SHA
-```
-
-The command uses only unauthenticated GET `/health`, `/ready` and `/mcp`, with no redirects, a 60s timeout per request, bounded responses, and sanitized errors. It checks that the public `RENDER_GIT_COMMIT` matches the approved commit exactly, `engine=river-only`, `auth_configured=true`, readiness 200 and unauthenticated MCP 401 with OAuth resource metadata challenge. A sleeping Free instance may need time to wake; if the first GET times out, separately confirm startup before **one safe read-only retry**. Never retry a metered or mutation request as a generic smoke step.
-
-A successful result **does not prove authenticated tool access or interactive ChatGPT consent**. With a separately authorized existing owner session/token, use `scripts/smoke_hosted.py` to exercise the two current tools, validate their outputs, and discard the token after use. That authenticated smoke includes computations and is deliberately not part of public CI. No new login, grant, plugin publishing, or live provider test is implied.
-
-The health commit field is the Render-provided Git SHA, or `null` if absent/malformed in a local or old environment. It is *public source provenance*, not authenticated attestation. A prior deployment lacking the metadata fails the new exact-SHA smoke, as intended.
-
-## Release checklist — owner-gated stages
-
-1. **Protect `main`** with an applied GitHub ruleset requiring PRs, strict/up-to-date unconditional `test` check from GitHub Actions, resolved review threads, blocked force pushes/deletion and no bypass. Zero required formal approvals may suit a sole maintainer; explicit owner review remains standard. Independently read back `protected:true` and the actual rules. If admin permissions are unavailable, request the owner to apply them; do not claim YAML establishes protection.
-2. **Before activation, hold automatic deploy OFF.** Confirm effective service settings and previously deployed SHA; for a Blueprint-managed service, require Blueprint Auto Sync **No** so unreviewed config syncing cannot race green CI. The owner confirmed there is **no Blueprint** for this service, so that particular check is not applicable.
-3. **Approve a controlled manual baseline release** of the exact reviewed SHA. Check main and head CI, build/start/Live, full deployed SHA, public exact-SHA smoke and a separately approved owner-authenticated safe read for both existing MCP tools. This is the first time the new health metadata can actually be verified on Render. Do not blindly assume an old deployment matches current source.
-4. **Approve and apply service-level activation** on the same existing Free service: Render Dashboard → Settings → Auto-Deploy → **After CI Checks Pass** (effective API value `autoDeployTrigger: checksPass`). The owner applied this setting and it was read back as `checksPass` / `autoDeploy: yes` on 22 October 2026. No Blueprint exists; the old `render.yaml` value `off` is **not the applied service setting** and should not be mistaken for it. Never use **On Commit** / `commit` fallback or expose deploy-hook secrets. Treat future migration to Blueprint management as a separate reviewed infrastructure change.
-5. **Harmless accepted merge proof:** compare full merged commit SHA, latest main `test` result and completion time with Render's *auto-deploy* event/start time, checked-out SHA and final Live state; repeat exact-SHA and authorized existing-tool smoke. If CI fails, skipped checks or other ambiguities require investigation; Render can treat neutral/skipped checks as passing, so required checks must not be conditional. A CI check must never depend on the Render deploy it gates.
-6. **Failed-CI nondeployment:** obtain a separately permitted platform/non-production observation; do not intentionally break production main. Leave the checkbox open until proven. Document failure alerts/recovery without assuming a notification was delivered merely because configured.
-
-## Current activation evidence and next acceptance step (22 October 2026)
-
-- Manual baseline: Render deployment `dep-dbd884d9fdbs73apn96g` completed **Live** at full SHA `502ed40415677b0ac5d627f356dec391acb6443f`. Exact-`main` GitHub Actions [test CI #39854268963](https://github.com/eddieyang-97/poker-solver/actions/runs/39854268963) passed before that release.
-- Production public smoke (owner-run): `/health` HTTP 200 with matching full deployed SHA and `engine=river-only`, `/ready` 200, and unauthenticated `/mcp` 401 with the expected OAuth challenge. Both existing authenticated MCP tools subsequently returned valid synthetic outputs. These checks establish a **manual** baseline, not automatic release acceptance.
-- GitHub `main` protection was owner-verified (GitHub API reads `protected:true`; this integration cannot read its detailed rules). The owner confirmed **no Blueprint**.
-- The existing Render service's applied setting was read back as `autoDeployTrigger: checksPass`, `autoDeploy: yes`, on 22 October 2026. **No CI-triggered deployment has yet been observed.**
-- **This documentation-only PR is a harmless test candidate**, not permission to merge it. After separate owner review/approval, merge via protected `main` and capture: exact merge SHA, GitHub `test` conclusion/completion time for that SHA, Render automatically triggered deploy ID/start time and matching exact commit, Live status, owner-run `scripts/smoke_release.py` with the **new** full SHA, and separately authorized authenticated tests of both existing tools. The required temporal order is **green main CI → automatic deployment start**. No new tools, OAuth, solver code, resource, infrastructure or environment changes are part of this PR.
-- If an automatic deployment starts before latest-`main` CI succeeds, or no deployment follows green CI, **leave #23 open** and investigate/pause auto-deploy; never label the release accepted based on PR CI alone. Establish failed-CI nondeployment from provider behavior or nonproduction evidence, **not by pushing a deliberately failing production commit**.
-
-## Pause and recovery
-
-If unexpected code deploys or auth failures occur, set the existing service's **Auto Deploy = Off** in Render; reconcile `render.yaml` and any later Blueprint sync before resuming. Verify effective settings by read-back. If a release breaks compatibility, choose a known-tested exact SHA for a separately approved manual rollback or a forward fix; re-check Render startup, `/ready`, unauth MCP 401, both existing tools and the connected ChatGPT path. Re-deploying an older build does not undo any separately changed Auth0/provider configuration.
-
-This service is stateless with disposable capped calculation workers; unlike trip planning it has no persistent booking database or supplier-journal workflow. Still, deploy/restart can interrupt an ongoing solver calculation, and Free-tier idle wakeups can disrupt the MCP connection. Do not claim uninterrupted work or silent OAuth reconnect.
-
-**No automatic production settings change, merge, plan upgrade, Auth0 change, new hosted tool, paid infrastructure or plugin republishing is authorized by this runbook or its PR.**
+Latest historical exact-SHA, manual baseline and setting activation receipts: [Issue #23](https://github.com/eddieyang-97/poker-solver/issues/23), [PR #27](https://github.com/eddieyang-97/poker-solver/pull/27) and the [frozen original release record](https://github.com/eddieyang-97/poker-solver/blob/920d2bf2c54226caf16c8572bb531a9b2a91a489/docs/releases.md). This runbook does not authorize changing production or paid infrastructure by itself.
