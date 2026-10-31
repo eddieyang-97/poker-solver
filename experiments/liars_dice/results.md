@@ -1,5 +1,7 @@
 # Reproduced baseline — 2026-10-31
 
+Historical archive receipt from PR #41. The follow-on [independent audit and full-rule feasibility study](research.md) reproduces these values and records the later checks and failed larger-game runs; the original observations below are retained.
+
 Executed from the two archived scripts (Python 3, C++17 with `g++ -O3 -Wall -Wextra -pedantic`, 200,000 sampled training iterations, C++ RNG seed 761245).
 
 ## Probability enumerator
