@@ -1,0 +1,443 @@
+{
+  "raw_results_sha256": "bb399cdd264b5192159d4cda0ef3d75c976a05e9dc14d793904391f08e97a300",
+  "assumed_rules": {
+    "face_one": true,
+    "all_ones_wild_seven": true,
+    "zhai_mixed_bonus": false,
+    "opening_zhai": true,
+    "quantity_floor": 1,
+    "max_quantity": 14
+  },
+  "complexity": {
+    "private_hands_per_player": 252,
+    "private_deals": 63504,
+    "opening_actions": 144,
+    "public_decision_histories": "1405295396651156298903336746774856905525297152",
+    "maximum_bids_before_challenge": 150,
+    "perfect_recall_infosets": "354134439956091387323640860187263940192374882304"
+  },
+  "exact_pre_action_probabilities": [
+    {
+      "hand": [
+        4,
+        4,
+        4,
+        2,
+        3
+      ],
+      "mode": "fly",
+      "own_count": 3,
+      "rows": [
+        {
+          "quantity": 3,
+          "truth_numerator_of_7776": 7776,
+          "truth_probability": 1.0,
+          "prior_challenge_ev": -1.0
+        },
+        {
+          "quantity": 4,
+          "truth_numerator_of_7776": 6752,
+          "truth_probability": 0.8683127572016461,
+          "prior_challenge_ev": -0.7366255144032922
+        },
+        {
+          "quantity": 5,
+          "truth_numerator_of_7776": 4192,
+          "truth_probability": 0.5390946502057613,
+          "prior_challenge_ev": -0.07818930041152264
+        },
+        {
+          "quantity": 6,
+          "truth_numerator_of_7776": 1632,
+          "truth_probability": 0.20987654320987653,
+          "prior_challenge_ev": 0.5802469135802469
+        },
+        {
+          "quantity": 7,
+          "truth_numerator_of_7776": 352,
+          "truth_probability": 0.04526748971193416,
+          "prior_challenge_ev": 0.9094650205761317
+        },
+        {
+          "quantity": 8,
+          "truth_numerator_of_7776": 32,
+          "truth_probability": 0.00411522633744856,
+          "prior_challenge_ev": 0.9917695473251029
+        },
+        {
+          "quantity": 9,
+          "truth_numerator_of_7776": 32,
+          "truth_probability": 0.00411522633744856,
+          "prior_challenge_ev": 0.9917695473251029
+        },
+        {
+          "quantity": 10,
+          "truth_numerator_of_7776": 2,
+          "truth_probability": 0.000257201646090535,
+          "prior_challenge_ev": 0.9994855967078189
+        }
+      ]
+    },
+    {
+      "hand": [
+        4,
+        4,
+        4,
+        2,
+        3
+      ],
+      "mode": "zhai",
+      "own_count": 3,
+      "rows": [
+        {
+          "quantity": 3,
+          "truth_numerator_of_7776": 7776,
+          "truth_probability": 1.0,
+          "prior_challenge_ev": -1.0
+        },
+        {
+          "quantity": 4,
+          "truth_numerator_of_7776": 4651,
+          "truth_probability": 0.5981224279835391,
+          "prior_challenge_ev": -0.1962448559670782
+        },
+        {
+          "quantity": 5,
+          "truth_numerator_of_7776": 1526,
+          "truth_probability": 0.1962448559670782,
+          "prior_challenge_ev": 0.6075102880658436
+        },
+        {
+          "quantity": 6,
+          "truth_numerator_of_7776": 276,
+          "truth_probability": 0.035493827160493825,
+          "prior_challenge_ev": 0.9290123456790124
+        },
+        {
+          "quantity": 7,
+          "truth_numerator_of_7776": 26,
+          "truth_probability": 0.0033436213991769547,
+          "prior_challenge_ev": 0.9933127572016461
+        },
+        {
+          "quantity": 8,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        },
+        {
+          "quantity": 9,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        },
+        {
+          "quantity": 10,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        }
+      ]
+    },
+    {
+      "hand": [
+        4,
+        4,
+        4,
+        1,
+        1
+      ],
+      "mode": "fly",
+      "own_count": 6,
+      "rows": [
+        {
+          "quantity": 3,
+          "truth_numerator_of_7776": 7776,
+          "truth_probability": 1.0,
+          "prior_challenge_ev": -1.0
+        },
+        {
+          "quantity": 4,
+          "truth_numerator_of_7776": 7776,
+          "truth_probability": 1.0,
+          "prior_challenge_ev": -1.0
+        },
+        {
+          "quantity": 5,
+          "truth_numerator_of_7776": 7776,
+          "truth_probability": 1.0,
+          "prior_challenge_ev": -1.0
+        },
+        {
+          "quantity": 6,
+          "truth_numerator_of_7776": 7776,
+          "truth_probability": 1.0,
+          "prior_challenge_ev": -1.0
+        },
+        {
+          "quantity": 7,
+          "truth_numerator_of_7776": 6752,
+          "truth_probability": 0.8683127572016461,
+          "prior_challenge_ev": -0.7366255144032922
+        },
+        {
+          "quantity": 8,
+          "truth_numerator_of_7776": 4192,
+          "truth_probability": 0.5390946502057613,
+          "prior_challenge_ev": -0.07818930041152264
+        },
+        {
+          "quantity": 9,
+          "truth_numerator_of_7776": 1632,
+          "truth_probability": 0.20987654320987653,
+          "prior_challenge_ev": 0.5802469135802469
+        },
+        {
+          "quantity": 10,
+          "truth_numerator_of_7776": 352,
+          "truth_probability": 0.04526748971193416,
+          "prior_challenge_ev": 0.9094650205761317
+        }
+      ]
+    },
+    {
+      "hand": [
+        4,
+        4,
+        4,
+        1,
+        1
+      ],
+      "mode": "zhai",
+      "own_count": 3,
+      "rows": [
+        {
+          "quantity": 3,
+          "truth_numerator_of_7776": 7776,
+          "truth_probability": 1.0,
+          "prior_challenge_ev": -1.0
+        },
+        {
+          "quantity": 4,
+          "truth_numerator_of_7776": 4651,
+          "truth_probability": 0.5981224279835391,
+          "prior_challenge_ev": -0.1962448559670782
+        },
+        {
+          "quantity": 5,
+          "truth_numerator_of_7776": 1526,
+          "truth_probability": 0.1962448559670782,
+          "prior_challenge_ev": 0.6075102880658436
+        },
+        {
+          "quantity": 6,
+          "truth_numerator_of_7776": 276,
+          "truth_probability": 0.035493827160493825,
+          "prior_challenge_ev": 0.9290123456790124
+        },
+        {
+          "quantity": 7,
+          "truth_numerator_of_7776": 26,
+          "truth_probability": 0.0033436213991769547,
+          "prior_challenge_ev": 0.9933127572016461
+        },
+        {
+          "quantity": 8,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        },
+        {
+          "quantity": 9,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        },
+        {
+          "quantity": 10,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        }
+      ]
+    },
+    {
+      "hand": [
+        1,
+        1,
+        2,
+        3,
+        5
+      ],
+      "mode": "fly",
+      "own_count": 2,
+      "rows": [
+        {
+          "quantity": 3,
+          "truth_numerator_of_7776": 6752,
+          "truth_probability": 0.8683127572016461,
+          "prior_challenge_ev": -0.7366255144032922
+        },
+        {
+          "quantity": 4,
+          "truth_numerator_of_7776": 4192,
+          "truth_probability": 0.5390946502057613,
+          "prior_challenge_ev": -0.07818930041152264
+        },
+        {
+          "quantity": 5,
+          "truth_numerator_of_7776": 1632,
+          "truth_probability": 0.20987654320987653,
+          "prior_challenge_ev": 0.5802469135802469
+        },
+        {
+          "quantity": 6,
+          "truth_numerator_of_7776": 352,
+          "truth_probability": 0.04526748971193416,
+          "prior_challenge_ev": 0.9094650205761317
+        },
+        {
+          "quantity": 7,
+          "truth_numerator_of_7776": 32,
+          "truth_probability": 0.00411522633744856,
+          "prior_challenge_ev": 0.9917695473251029
+        },
+        {
+          "quantity": 8,
+          "truth_numerator_of_7776": 32,
+          "truth_probability": 0.00411522633744856,
+          "prior_challenge_ev": 0.9917695473251029
+        },
+        {
+          "quantity": 9,
+          "truth_numerator_of_7776": 2,
+          "truth_probability": 0.000257201646090535,
+          "prior_challenge_ev": 0.9994855967078189
+        },
+        {
+          "quantity": 10,
+          "truth_numerator_of_7776": 0,
+          "truth_probability": 0.0,
+          "prior_challenge_ev": 1.0
+        }
+      ]
+    },
+    {
+      "hand": [
+        1,
+        1,
+        2,
+        3,
+        5
+      ],
+      "mode": "zhai",
+      "own_count": 0,
+      "rows": [
+        {
+          "quantity": 3,
+          "truth_numerator_of_7776": 276,
+          "truth_probability": 0.035493827160493825,
+          "prior_challenge_ev": 0.9290123456790124
+        },
+        {
+          "quantity": 4,
+          "truth_numerator_of_7776": 26,
+          "truth_probability": 0.0033436213991769547,
+          "prior_challenge_ev": 0.9933127572016461
+        },
+        {
+          "quantity": 5,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        },
+        {
+          "quantity": 6,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        },
+        {
+          "quantity": 7,
+          "truth_numerator_of_7776": 1,
+          "truth_probability": 0.0001286008230452675,
+          "prior_challenge_ev": 0.9997427983539094
+        },
+        {
+          "quantity": 8,
+          "truth_numerator_of_7776": 0,
+          "truth_probability": 0.0,
+          "prior_challenge_ev": 1.0
+        },
+        {
+          "quantity": 9,
+          "truth_numerator_of_7776": 0,
+          "truth_probability": 0.0,
+          "prior_challenge_ev": 1.0
+        },
+        {
+          "quantity": 10,
+          "truth_numerator_of_7776": 0,
+          "truth_probability": 0.0,
+          "prior_challenge_ev": 1.0
+        }
+      ]
+    }
+  ],
+  "full_game_response_lower_bounds": [
+    {
+      "profile": "baseline_assumptions",
+      "seed": 761245,
+      "empirical_candidate_br_sum": 1.926,
+      "nashconv_lower_bound_95_familywise": 1.7741010731335631,
+      "exploitability_lower_bound_95_familywise": 0.8870505365667816,
+      "exploitability_upper_bound": null,
+      "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+    },
+    {
+      "profile": "baseline_assumptions",
+      "seed": 42,
+      "empirical_candidate_br_sum": 1.9249999999999998,
+      "nashconv_lower_bound_95_familywise": 1.7731010731335632,
+      "exploitability_lower_bound_95_familywise": 0.8865505365667816,
+      "exploitability_upper_bound": null,
+      "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+    },
+    {
+      "profile": "no_face_one",
+      "seed": 761245,
+      "empirical_candidate_br_sum": 1.92,
+      "nashconv_lower_bound_95_familywise": 1.7681010731335631,
+      "exploitability_lower_bound_95_familywise": 0.8840505365667816,
+      "exploitability_upper_bound": null,
+      "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+    },
+    {
+      "profile": "zhai_mixed_bonus",
+      "seed": 761245,
+      "empirical_candidate_br_sum": 1.9249999999999998,
+      "nashconv_lower_bound_95_familywise": 1.7731010731335632,
+      "exploitability_lower_bound_95_familywise": 0.8865505365667816,
+      "exploitability_upper_bound": null,
+      "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+    },
+    {
+      "profile": "all_ones_six",
+      "seed": 761245,
+      "empirical_candidate_br_sum": 1.926,
+      "nashconv_lower_bound_95_familywise": 1.7741010731335631,
+      "exploitability_lower_bound_95_familywise": 0.8870505365667816,
+      "exploitability_upper_bound": null,
+      "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+    },
+    {
+      "profile": "fly_open_floor_three",
+      "seed": 761245,
+      "empirical_candidate_br_sum": 1.935,
+      "nashconv_lower_bound_95_familywise": 1.783101073133563,
+      "exploitability_lower_bound_95_familywise": 0.8915505365667815,
+      "exploitability_upper_bound": null,
+      "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+    }
+  ]
+}
