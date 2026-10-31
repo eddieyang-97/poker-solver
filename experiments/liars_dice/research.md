@@ -6,7 +6,7 @@ Historical experiment provenance (31 October 2026): the measured working tree wa
 
 ## Reproduction and audit
 
-The archived Python enumeration reproduced exactly. Independently enumerated unordered hands with multinomial weights reproduce all ordered-roll frequencies; binomial counts independently verify the nonbonus categories. Fly face-four contribution frequencies are `0:1024, 1:2560, 2:2560, 3:1280, 4:320, 6:30, 7:2`. Zhai frequencies are `0:3125, 1:3125, 2:1250, 3:250, 4:25, 7:1`. These are exact **pre-action** probabilities under the default scoring assumptions.
+The archived Python enumeration reproduced exactly. Independently enumerated unordered hands with multinomial weights reproduce all ordered-roll frequencies; binomial counts independently verify the nonbonus categories. Fly face-four contribution frequencies are `0:1024, 1:2560, 2:2560, 3:1280, 4:320, 6:30, 7:2`. Zhai frequencies are `0:3125, 1:3125, 2:1250, 3:250, 4:25, 7:1`. These are exact **pre-action** probabilities under the default scoring implementation, which the owner subsequently confirmed on 31 October 2026.
 
 The archived C++ solver ran with GCC 14.2.0, `-O3 -std=c++17 -Wall -Wextra -pedantic`, seed 761245 and 200,000 sampled deals. This machine measured 15.22 seconds training, versus the archive's machine-dependent 21.65 seconds. Its reported outputs reproduced to four decimals. `audit_baseline.cpp` exports all 4,096 history masks × seven hand types × thirteen padded action probabilities as little-endian doubles. `one_face.py` then independently traverses ordered bid tuples, computes expected utility and pools hidden types before each best-response choice.
 
@@ -27,7 +27,7 @@ No numerical mistake was found in the archived frequencies or the measured toy N
 - The archive uses chance sampling with positive clipping after individual samples. Clipping a noisy estimate is nonlinear; do not import deterministic CFR+ convergence guarantees without analysis. The independently measured policy gap remains meaningful regardless of that training issue.
 - Float regret/average accumulators, a single seed, rare contribution-seven hands and a finite training budget limit extrapolation. Longer runs are not certified by a short run's result.
 - Collapsing hands to one face's contribution is invalid once other faces or modes can be bid. The archive omits those actions entirely.
-- The Python script reports face four only and does not implement bid legality or action-conditioned beliefs. Its default scoring, including special all-ones treatment, is a rule assumption. Neither archived script validates arbitrary malformed input.
+- The Python script reports face four only and does not implement bid legality or action-conditioned beliefs. Its default scoring, including special all-ones treatment, was an assumption when the experiment ran and has since been owner-confirmed. Neither archived script validates arbitrary malformed input.
 
 The original Python script is preserved byte-for-byte (including its unused import). The C++ archive receives only an explicit `return 0`, needed when its `main` is renamed by the audit wrapper; training, RNG and evaluation logic are unchanged.
 
@@ -55,7 +55,7 @@ Method sources: [Lanctot et al., MCCFR (2009)](https://papers.nips.cc/paper_file
 
 ## Measured full-game failures
 
-Default assumptions allow 144 opening bids. Each of two seeds completed 10,000 iterations. Traced training memory was approximately 71 / 70 MiB, with 84,496 / 84,160 allocated information sets. Training plus model setup took 54.43 / 56.38 seconds while Python allocation tracing and other local checks were active. These are wall times, not isolated CPU measurements. Traced memory excludes some native/process allocations and is **not peak RSS** or a universal bound.
+The now-confirmed default rules allow 144 opening bids. Each of two seeds completed 10,000 iterations. Traced training memory was approximately 71 / 70 MiB, with 84,496 / 84,160 allocated information sets. Training plus model setup took 54.43 / 56.38 seconds while Python allocation tracing and other local checks were active. These are wall times, not isolated CPU measurements. Traced memory excludes some native/process allocations and is **not peak RSS** or a universal bound.
 
 Frozen average policies were evaluated with 2,000 independent fresh games per opponent and seat. Baselines are uniform legal play and probability-only policies with challenge thresholds 0.3/0.5/0.7. The latter choose the legal bid with highest unconditional truth probability, breaking ties by lower quantity, higher face, then 飞. They ignore signalling and are not equilibrium strategies. They act using their own hand only. Evaluation RNG seeds are separate from training.
 
@@ -78,6 +78,6 @@ Each individual match has a distribution-free Hoeffding interval for bounded ±1
 
 ## Practical next step
 
-Do not publish the sampled full-game frequencies as GTO advice. First settle `RULES.md`. A useful next research step is a probability-informed initial/fallback policy plus a variance-reduced outcome sampler, tested on the exact toy oracle and against stronger held-out adaptive responses. A public-belief/subgame approach could concentrate work on realistic histories, but must carry opponent-hand posteriors and continuation uncertainty. Last-bid-only state merging loses recall and requires explicit approximation validation. CFR/MCCFR with larger budgets alone is not a demonstrated solution to this history explosion.
+Do not publish the sampled full-game frequencies as GTO advice. The owner confirmed all house rules listed in `RULES.md` on 31 October 2026; no rule-clarification blocker remains. A useful next research step is a probability-informed initial/fallback policy plus a variance-reduced outcome sampler, tested on the exact toy oracle and against stronger held-out adaptive responses. A public-belief/subgame approach could concentrate work on realistic histories, but must carry opponent-hand posteriors and continuation uncertainty. Last-bid-only state merging loses recall and requires explicit approximation validation. CFR/MCCFR with larger budgets alone is not a demonstrated solution to this history explosion.
 
 `beliefs.py` already provides exact action-likelihood conditioning under an explicitly supplied opponent policy, including zero-support rejection. It does not infer a human's policy or repair the failed full-game equilibrium runs. The [strategy guide](strategy-guide.md) separates exact probability guidance from toy equilibrium findings and unvalidated approximation output.
