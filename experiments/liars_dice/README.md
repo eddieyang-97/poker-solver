@@ -2,10 +2,10 @@
 
 **Research only.** No dependency on the NLHE engine, hosted service, MCP/plugin, or production interfaces. See [Issue #40](https://github.com/eddieyang-97/poker-solver/issues/40) for follow-on research.
 
-## Rules supplied in chat
+## Owner-confirmed house rules
 Two players, five fair six-sided dice each, minimum opening quantity 3. 飞 (fly): ones are wild; 斋 (zhai): ones are not wild. A five-die hand containing only one named face and ones is counted as **6** of that face, while five equal dice count as **7**. Fly-to-zhai quantity may drop by one; zhai-to-fly increases by at least two. A lost challenge means drinking; no die elimination.
 
-**Still to settle before a full-game solver:** whether bonus applies in zhai when the 5 dice include ones; treatment of all-ones and claiming face 1; whether per-player bonuses are added; precise face ordering, start mode, and raise legality. The current scripts assume per-player additive bonuses. Do not quietly resolve these through convention.
+**All previously listed house-rule questions were confirmed by the owner on 31 October 2026.** The default game model follows those decisions: all-ones count as seven for another face in 飞; mixed 斋 hands get no bonus; face 1 is biddable and counts actual ones only; per-player bonuses add; same-mode raises use quantity then ascending face; mode switches can change faces; an opening 3飞 can be followed by 2斋; either mode may open; 飞→斋 may reduce by one, stay level, or increase; and bids cap at 14. Round winner/loser receive fixed ±1 utility, and each loss means one drink. See [confirmed rules](RULES.md) for the complete specification. Confirmation of the game does **not** imply solver convergence.
 
 ## Snapshots included
 - `liars_dice_analysis.py`: exact exhaustive enumeration of all 7,776 **opponent** 5-die sequences for bids on face 4. Probabilities are unconditional on opponents' actions. Fly treats a hand of 4s/1s as 6 except five equal as 7; zhai gives 7 only for five 4s.
@@ -25,12 +25,12 @@ Use an appropriate executable path on Windows. These original archive commands r
 
 The archive's 200,000-iteration results now reproduce, including an independent evaluation of its entire exported average policy: toy NashConv **0.026688617**. Exact CFR+ on a smaller 3..5 bid game reaches **0.000003731**. Full-rule outcome sampling and a smaller action-set experiment both **fail** useful convergence; their frequencies are not recommendations. Issue #40 remains open.
 
-- [Provisional complete rules and unresolved owner questions](RULES.md).
+- [Owner-confirmed complete house rules](RULES.md).
 - [Methods, independent checks, measured failures and next research step](research.md).
 - [中文 / English strategy guide](strategy-guide.md).
-- `game.py`: exact private multisets, contribution scoring, complete assumed legal actions and single-round utilities.
+- `game.py`: exact private multisets, contribution scoring, complete confirmed legal actions and single-round utilities.
 - `one_face.py`, `audit_baseline.cpp`: independent toy evaluation and exact small-game CFR+.
-- `mccfr.py`: full-history outcome sampling; `run_abstraction.py`: smallest-quantity-per-face/mode restriction evaluated in the full assumed game.
+- `mccfr.py`: full-history outcome sampling; `run_abstraction.py`: smallest-quantity-per-face/mode restriction evaluated in the full confirmed game.
 - `beliefs.py`: exact Bayesian update under an explicitly supplied opponent policy, not an inferred human model.
 - `outputs/`: raw seeded results, timing, exact probability numerators and response lower bounds. Full exported toy policy and compiler stay in ignored artifacts.
 
