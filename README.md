@@ -16,6 +16,10 @@
 
 **Current work and remaining acceptance:** [GitHub Issues](https://github.com/eddieyang-97/poker-solver/issues) are the only actionable queue. [#25 reuse](https://github.com/eddieyang-97/poker-solver/issues/25) has owner-merged research evidence pending issue disposition; [#26 hosted turn](https://github.com/eddieyang-97/poker-solver/issues/26) remains open for a viable acceptance/release decision. [Development scope](docs/development-roadmap.md) explains future milestones without repeating PR histories. New solver correctness is not evidence of deployment, useful range modelling or working connected-client tools.
 
+## Standalone Liar's Dice research
+
+Two-player **吹牛 / Liar's Dice** probability enumeration and a restricted one-face CFR prototype are archived under [`experiments/liars_dice/`](experiments/liars_dice/README.md), including rules, reproducible results and limitations. This experiment is **not** part of the NLHE solver or the hosted MCP service; [Issue #40](https://github.com/eddieyang-97/poker-solver/issues/40) tracks the full-rule research.
+
 ## Local quickstart
 
 Python **3.10+**; CI and Render use 3.12.
