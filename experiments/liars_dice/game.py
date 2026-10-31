@@ -7,7 +7,7 @@ from math import factorial
 
 @dataclass(frozen=True)
 class Rules:
-    # These are research assumptions, not confirmation of the owner's rules.
+    # Defaults are owner-confirmed house rules (31 October 2026); other values are research sensitivity profiles.
     face_one: bool = True
     all_ones_wild_seven: bool = True
     zhai_mixed_bonus: bool = False
