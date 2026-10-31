@@ -75,3 +75,13 @@ Practical study should vary truthful and weak bids under an explicit strategy mo
 - 完整游戏近似：目前失败；不能给出可信的开局、加叫或诈唬频率。
 
 The next useful milestone is an approximation that survives stronger held-out response tests; the house rules are now confirmed. Until then, use the exact calculations to understand risk and signalling, not as a complete-game GTO prescription.
+
+## 新实验：先验和叫法后的概率会反转 / Updated belief example
+
+后续实验已加入概率引导、修正采样估计，以及完整规则下的有限策略族求解。结果仍没有通过完整游戏的可利用度检验。尤其要注意：有限策略族内部的误差很小，也不代表完整游戏接近 GTO。[方法与结果](family-research.md)。
+
+一个可复现的例子：假设对手严格使用该实验给定的开局策略混合，自己是 **11235**，对手开 **5个4 飞**。在对手还没叫之前，这个叫法为真的概率是 **20.9877%**；观察到该模型选择这次开局后，条件概率变成接近 **100%**。因此“开”的 EV 从 **+0.580247** 变成 **−1**。若自己是 **22356**，同一模型下这次叫法反而必假，开的 EV 是 **+1**。
+
+This calculation integrates over the opponent's hand using only your own hand, the observed opening and an explicit frozen opponent policy. The input/output is in `outputs/family.json`. It does **not** assume people follow that policy. The practical lesson is to account for what a bid reveals; the exact posterior is only as credible as the opponent model.
+
+The guided sampler and finite-family equilibrium still lose heavily to posterior-aware opponents. Their opening mixes, confidence thresholds and component weights are diagnostic results, not recommended GTO frequencies or universal bluff ratios.

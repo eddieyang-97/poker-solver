@@ -35,3 +35,27 @@ The first sandboxed repository test attempt stalled after the history tests at t
 The baseline archive is merged through PR #41 (`27dfec1da6ea5b96921e4352537cd0097f215c0d`); follow-on PR #42 targets `main` and remains unmerged. The owner confirmed the previously open house rules on 31 October 2026. A useful full-game approximation, an exploitability upper bound and owner acceptance of the research deliverable remain outstanding. No deployment has been performed.
 
 The standalone suite now runs unconditionally in the existing required `river` CI job, with a two-minute timeout and one OpenBLAS thread. It therefore participates in the fail-closed required `test` aggregate. The four numerical jobs, their original checks and eleven artifact groups are preserved. `tests/test_ci_gate.py` checks this workflow contract. Required CI results still need verification against the exact PR head; the historical local results above do not establish a new head's CI success.
+
+## Confirmed-rule continuation
+
+The next experiment uses the owner-confirmed source context `3218e1d6a998509e8b42f548d0dabe1344b074d3` plus the LF-normalized working-source manifests in the new receipts. It preserves the original numerical corpora above. Executed with `OPENBLAS_NUM_THREADS=1` and the same project virtual environment:
+
+```text
+python experiments/liars_dice/run_guided.py --seeds 761245 42 --checkpoints 1000 10000 --games 2000 --adaptive-games 1000 --max-infos 200000
+python experiments/liars_dice/prior_control.py
+python experiments/liars_dice/run_family.py --games 5000 --adaptive-games 2000
+python -m unittest discover -s experiments/liars_dice/tests -v
+python -m unittest discover -s tests -p test_ci_gate.py -v
+python -m ruff check experiments/liars_dice --exclude liars_dice_analysis.py
+python -m ruff check poker_spot tests scripts
+python -m compileall -q poker_spot scripts experiments/liars_dice
+```
+
+- **25 research tests passed**, including all original fifteen and independent control-variate expectations, exact frozen estimator moments, posterior likelihood checks, matrix games, exact chance enumeration and realization-equivalent root mixtures.
+- **Four isolated CI gate/contract tests passed**, plus both lint commands, compileall and whitespace checks. An additional exhaustive check verified the prior guide against its declared baseline on all 42,588 hand/last-bid states.
+- **All eight sampler ablations completed 10,000 iterations.** Best tested guided/baseline variants still have 95% full-game NashConv lower bounds 1.1538 / 1.2178. Detailed compute, memory, convergence and failure interpretation: [guided research](guided-research.md), `outputs/guided.json`.
+- **Exact untrained control:** all 63,504 private deals enumerated, scalar EV −0.1744933564. Its numerical source receipt is `outputs/prior-control.json`.
+- **Exact finite-family payoffs:** 225 policy pairings × 63,504 private deals. Restricted gap 2.3923e−9; outside response tests still give a 95% full-game lower bound 1.2079. See [family research](family-research.md), `outputs/family.json`. This is a rejected full-game approximation despite the tiny restricted gap.
+- All listed new source hashes were independently checked after execution; the new JSON uses LF. The sampler's snapshot predates the separate finite-family/control test files, so those later files are covered by their own numerical receipts and latest-head test run instead of retroactively altering that snapshot.
+
+No NLHE implementation or contract changed, and numerical results have not been promoted as hosted or full-game equilibrium acceptance. The existing complete required CI DAG will run on the pushed head; a previously green head is not a claim of success for these additions. Full-suite and NLHE numerical checks are supplied by that unchanged CI workflow rather than duplicating the already-passing earlier local suite.

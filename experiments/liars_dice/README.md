@@ -54,3 +54,17 @@ On Windows use `.venv/Scripts/python.exe`, an `.exe` output name, and put the co
 The archived Python script retains an unused import, so only that unchanged archival file is excluded from the added research lint command. Existing repository checks remain unchanged. Timing and Python traced allocation figures are measurements on this Windows machine, not Linux resource-limit evidence. The adjacent experiment intentionally reports a budget stop; it must not be relabelled as 50,000 completed iterations.
 
 Current validation commands and outcomes are recorded in [validation.md](validation.md). Neither these experiments nor that document alter the NLHE solver, hosted tools, OAuth, deployment or plugin interfaces.
+
+## Confirmed-rule follow-on experiments
+
+The [guidance/control-variate study](guided-research.md) adds a probability-informed fallback and fixed value baselines, independently checked estimators, two training seeds and posterior-aware response tests. Guidance improves coverage, but the best tested variant still has full-game NashConv lower bounds above **1.15**. An exact [untrained prior-policy control](outputs/prior-control.json) prevents crediting the heuristic's strength to learning.
+
+The [finite-family study](family-research.md) enumerates all private deals for 225 complete-policy pairings and solves that restricted zero-sum game. Its family gap reaches **2.4e−9**, yet outside responses establish a full-game lower bound above **1.20**. These are full-rule policy approximations, not validated GTO strategies.
+
+```sh
+OPENBLAS_NUM_THREADS=1 python experiments/liars_dice/run_guided.py --seeds 761245 42 --checkpoints 1000 10000 --games 2000 --adaptive-games 1000 --max-infos 200000
+OPENBLAS_NUM_THREADS=1 python experiments/liars_dice/prior_control.py
+OPENBLAS_NUM_THREADS=1 python experiments/liars_dice/run_family.py --games 5000 --adaptive-games 2000
+```
+
+New receipts use LF-normalized source hashes and LF JSON output. Earlier receipts retain their original provenance. The required CI research step discovers both old and new standalone tests without changing the NLHE gates.

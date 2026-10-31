@@ -1,0 +1,30 @@
+{
+  "source_hash_format": "sha256-lf-normalized",
+  "source_sha256": {
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "prior_control.py": "7e271e89dcfd0145876cfeaef3902fd29402a326eda10c56b8980c9c222a5f11"
+  },
+  "policy": "untrained probability guide, threshold 0.5",
+  "private_deals": 63504,
+  "ordered_chance_outcomes": 60466176,
+  "p0_win_weight": 24957615,
+  "p0_loss_weight": 35508561,
+  "ev_p0_fraction": "-1758491/10077696",
+  "ev_p0": -0.1744933564179749,
+  "p0_drinks_probability": 0.5872466782089875,
+  "mean_bids": 3.046182794824002,
+  "minimum_bids": 1,
+  "maximum_bids": 10,
+  "opening_weights_out_of_7776": {
+    "26": 876,
+    "28": 1056,
+    "30": 1296,
+    "32": 1716,
+    "34": 2832
+  },
+  "certified_equilibrium": false,
+  "exploitability_upper_bound": null,
+  "wall_seconds": 0.20031879999442026
+}

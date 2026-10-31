@@ -1,0 +1,3275 @@
+{
+  "source_base": "3218e1d6a998509e8b42f548d0dabe1344b074d3",
+  "source_hash_format": "sha256-lf-normalized",
+  "source_sha256": {
+    "beliefs.py": "c5cd576da25a6aae49cea21c0119fa6b2d0d0bf873c13c86485b647de9021940",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "liars_dice_analysis.py": "df2ad17466568e0e78f6618cdbeb73968557efeed5689d0045f3afc453a662d9",
+    "mccfr.py": "0dadf73e47cd96cdfef51e493caab8ef77345772b4d645ac49d0338a92cdca2a",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "run_abstraction.py": "c6439d70181f951ebbeae535d4ade56f9cb90b4b2fdc1a0b9789b5a93af6441d",
+    "run_guided.py": "2d05e006e2781fd5d8aba7fd8fe7a83815079363232fcb6d821dad33f90a3181",
+    "run_research.py": "5606837e4fc46e7bfe87346401aa2afee9934c34c936628b3f4d58451a4ec4bc",
+    "summarize.py": "039e14b4f3f68e5c30569f9426682c998ea5ce9161f1579e7da9b3abe1437635",
+    "tests\\test_guidance.py": "c8f0e4a6d0faa69f04f541805ac6bc76ba3822746c82f8892e8589a09a845aae",
+    "tests\\test_research.py": "b3d4dfff6cfc33fcab50ff1e48c48a670e62d048ecf052f22a3ef435321d6a55"
+  },
+  "python": "3.14.8",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "arguments": {
+    "seeds": [
+      761245,
+      42
+    ],
+    "variants": [
+      "uniform",
+      "baseline_only",
+      "guided",
+      "guided_baseline"
+    ],
+    "checkpoints": [
+      1000,
+      10000
+    ],
+    "games": 2000,
+    "adaptive_games": 1000,
+    "max_infos": 200000,
+    "toy_only": false,
+    "output": "C:\\Eddie\\Projects\\poker-solver\\experiments\\liars_dice\\outputs\\guided.json"
+  },
+  "toy": {
+    "frozen_exact_moments": [
+      {
+        "policy": "uniform",
+        "baseline": false,
+        "updater": 0,
+        "mean": -0.03228392239213756,
+        "second_moment": 0.9999999999999999,
+        "variance": 0.9989577483549783
+      },
+      {
+        "policy": "uniform",
+        "baseline": false,
+        "updater": 1,
+        "mean": 0.03228392239213756,
+        "second_moment": 0.9999999999999999,
+        "variance": 0.9989577483549783
+      },
+      {
+        "policy": "uniform",
+        "baseline": true,
+        "updater": 0,
+        "mean": -0.03228392239213762,
+        "second_moment": 0.6747566543905734,
+        "variance": 0.6737144027455518
+      },
+      {
+        "policy": "uniform",
+        "baseline": true,
+        "updater": 1,
+        "mean": 0.03228392239213762,
+        "second_moment": 0.6747566543905734,
+        "variance": 0.6737144027455518
+      },
+      {
+        "policy": "probability_only",
+        "baseline": false,
+        "updater": 0,
+        "mean": 0.09986621280631341,
+        "second_moment": 2.3657483427598383,
+        "variance": 2.3557750822995622
+      },
+      {
+        "policy": "probability_only",
+        "baseline": false,
+        "updater": 1,
+        "mean": -0.09986621280631341,
+        "second_moment": 1.7625248787445476,
+        "variance": 1.7525516182842718
+      },
+      {
+        "policy": "probability_only",
+        "baseline": true,
+        "updater": 0,
+        "mean": 0.09986621280631347,
+        "second_moment": 2.5711252928972366,
+        "variance": 2.5611520324369605
+      },
+      {
+        "policy": "probability_only",
+        "baseline": true,
+        "updater": 1,
+        "mean": -0.09986621280631323,
+        "second_moment": 1.9814971202567286,
+        "variance": 1.9715238597964528
+      }
+    ],
+    "convergence": [
+      {
+        "variant": "uniform",
+        "seed": 761245,
+        "iterations": 1000,
+        "ev_p0": 0.004345148046205095,
+        "br0": 0.10926148667225456,
+        "br1": 0.07404329587981198,
+        "gain0": 0.10491633862604946,
+        "gain1": 0.07838844392601707,
+        "nashconv": 0.18330478255206656,
+        "exploitability": 0.09165239127603328
+      },
+      {
+        "variant": "uniform",
+        "seed": 761245,
+        "iterations": 10000,
+        "ev_p0": 0.020229012761459178,
+        "br0": 0.03505366447302043,
+        "br1": -0.01028805790100642,
+        "gain0": 0.014824651711561249,
+        "gain1": 0.009940954860452758,
+        "nashconv": 0.024765606572014008,
+        "exploitability": 0.012382803286007004
+      },
+      {
+        "variant": "uniform",
+        "seed": 761245,
+        "iterations": 100000,
+        "ev_p0": 0.022555982932922214,
+        "br0": 0.024471369319286618,
+        "br1": -0.021250100825284942,
+        "gain0": 0.0019153863863644038,
+        "gain1": 0.0013058821076372719,
+        "nashconv": 0.0032212684940016757,
+        "exploitability": 0.0016106342470008379
+      },
+      {
+        "variant": "uniform",
+        "seed": 42,
+        "iterations": 1000,
+        "ev_p0": 0.005720511127635783,
+        "br0": 0.06716554889990058,
+        "br1": 0.06412339915072265,
+        "gain0": 0.061445037772264795,
+        "gain1": 0.06984391027835844,
+        "nashconv": 0.13128894805062324,
+        "exploitability": 0.06564447402531162
+      },
+      {
+        "variant": "uniform",
+        "seed": 42,
+        "iterations": 10000,
+        "ev_p0": 0.017559330360517784,
+        "br0": 0.03620092336120886,
+        "br1": 0.00021332882589038054,
+        "gain0": 0.018641593000691074,
+        "gain1": 0.017772659186408163,
+        "nashconv": 0.03641425218709924,
+        "exploitability": 0.01820712609354962
+      },
+      {
+        "variant": "uniform",
+        "seed": 42,
+        "iterations": 100000,
+        "ev_p0": 0.02443869807765961,
+        "br0": 0.027498297970097188,
+        "br1": -0.02122305721310872,
+        "gain0": 0.0030595998924375784,
+        "gain1": 0.003215640864550888,
+        "nashconv": 0.006275240756988466,
+        "exploitability": 0.003137620378494233
+      },
+      {
+        "variant": "baseline_only",
+        "seed": 761245,
+        "iterations": 1000,
+        "ev_p0": 0.051089438035861565,
+        "br0": 0.14345712248424602,
+        "br1": 0.04920654387197326,
+        "gain0": 0.09236768444838446,
+        "gain1": 0.10029598190783483,
+        "nashconv": 0.1926636663562193,
+        "exploitability": 0.09633183317810964
+      },
+      {
+        "variant": "baseline_only",
+        "seed": 761245,
+        "iterations": 10000,
+        "ev_p0": 0.031651572849462815,
+        "br0": 0.05092038643565212,
+        "br1": -0.014077672575939486,
+        "gain0": 0.0192688135861893,
+        "gain1": 0.01757390027352333,
+        "nashconv": 0.036842713859712634,
+        "exploitability": 0.018421356929856317
+      },
+      {
+        "variant": "baseline_only",
+        "seed": 761245,
+        "iterations": 100000,
+        "ev_p0": 0.0248349267338178,
+        "br0": 0.025752914753133987,
+        "br1": -0.021689808630896954,
+        "gain0": 0.0009179880193161891,
+        "gain1": 0.0031451181029208443,
+        "nashconv": 0.004063106122237033,
+        "exploitability": 0.0020315530611185167
+      },
+      {
+        "variant": "baseline_only",
+        "seed": 42,
+        "iterations": 1000,
+        "ev_p0": 0.03114036653764271,
+        "br0": 0.05954412642281438,
+        "br1": 0.009299754288379645,
+        "gain0": 0.028403759885171666,
+        "gain1": 0.04044012082602236,
+        "nashconv": 0.06884388071119402,
+        "exploitability": 0.03442194035559701
+      },
+      {
+        "variant": "baseline_only",
+        "seed": 42,
+        "iterations": 10000,
+        "ev_p0": 0.024446395578790494,
+        "br0": 0.02943166801515701,
+        "br1": 0.0004934292356055495,
+        "gain0": 0.004985272436366515,
+        "gain1": 0.024939824814396043,
+        "nashconv": 0.029925097250762558,
+        "exploitability": 0.014962548625381279
+      },
+      {
+        "variant": "baseline_only",
+        "seed": 42,
+        "iterations": 100000,
+        "ev_p0": 0.023182649703009185,
+        "br0": 0.023978988530118928,
+        "br1": -0.02222868591418155,
+        "gain0": 0.0007963388271097424,
+        "gain1": 0.0009539637888276338,
+        "nashconv": 0.0017503026159373762,
+        "exploitability": 0.0008751513079686881
+      },
+      {
+        "variant": "guided",
+        "seed": 761245,
+        "iterations": 1000,
+        "ev_p0": 0.06646254267477046,
+        "br0": 0.11600500065751601,
+        "br1": -0.005582659875676054,
+        "gain0": 0.04954245798274555,
+        "gain1": 0.060879882799094405,
+        "nashconv": 0.11042234078183996,
+        "exploitability": 0.05521117039091998
+      },
+      {
+        "variant": "guided",
+        "seed": 761245,
+        "iterations": 10000,
+        "ev_p0": 0.029090542470376686,
+        "br0": 0.03417820374249429,
+        "br1": -0.01993285145986888,
+        "gain0": 0.0050876612721176065,
+        "gain1": 0.009157691010507805,
+        "nashconv": 0.014245352282625412,
+        "exploitability": 0.007122676141312706
+      },
+      {
+        "variant": "guided",
+        "seed": 761245,
+        "iterations": 100000,
+        "ev_p0": 0.02349108459976233,
+        "br0": 0.02435133945505817,
+        "br1": -0.022266921793567346,
+        "gain0": 0.0008602548552958424,
+        "gain1": 0.0012241628061949832,
+        "nashconv": 0.0020844176614908255,
+        "exploitability": 0.0010422088307454128
+      },
+      {
+        "variant": "guided",
+        "seed": 42,
+        "iterations": 1000,
+        "ev_p0": 0.016205353049633216,
+        "br0": 0.07033081004116214,
+        "br1": 0.03816793559659885,
+        "gain0": 0.05412545699152892,
+        "gain1": 0.05437328864623206,
+        "nashconv": 0.10849874563776099,
+        "exploitability": 0.054249372818880495
+      },
+      {
+        "variant": "guided",
+        "seed": 42,
+        "iterations": 10000,
+        "ev_p0": 0.0236422951350535,
+        "br0": 0.029914345181976387,
+        "br1": -0.018079105961147764,
+        "gain0": 0.006272050046922887,
+        "gain1": 0.005563189173905737,
+        "nashconv": 0.011835239220828624,
+        "exploitability": 0.005917619610414312
+      },
+      {
+        "variant": "guided",
+        "seed": 42,
+        "iterations": 100000,
+        "ev_p0": 0.024003396432796108,
+        "br0": 0.02515260960864632,
+        "br1": -0.02209449450859032,
+        "gain0": 0.0011492131758502125,
+        "gain1": 0.0019089019242057893,
+        "nashconv": 0.003058115100056002,
+        "exploitability": 0.001529057550028001
+      },
+      {
+        "variant": "guided_baseline",
+        "seed": 761245,
+        "iterations": 1000,
+        "ev_p0": 0.08168244344412193,
+        "br0": 0.11687743455880252,
+        "br1": -0.003410051725400014,
+        "gain0": 0.03519499111468059,
+        "gain1": 0.07827239171872191,
+        "nashconv": 0.1134673828334025,
+        "exploitability": 0.05673369141670125
+      },
+      {
+        "variant": "guided_baseline",
+        "seed": 761245,
+        "iterations": 10000,
+        "ev_p0": 0.03081202958422422,
+        "br0": 0.039275684388246544,
+        "br1": -0.015192241259431959,
+        "gain0": 0.008463654804022325,
+        "gain1": 0.01561978832479226,
+        "nashconv": 0.024083443128814587,
+        "exploitability": 0.012041721564407293
+      },
+      {
+        "variant": "guided_baseline",
+        "seed": 761245,
+        "iterations": 100000,
+        "ev_p0": 0.023881154036101644,
+        "br0": 0.025003845629730403,
+        "br1": -0.02180011555020405,
+        "gain0": 0.0011226915936287593,
+        "gain1": 0.0020810384858975933,
+        "nashconv": 0.0032037300795263526,
+        "exploitability": 0.0016018650397631763
+      },
+      {
+        "variant": "guided_baseline",
+        "seed": 42,
+        "iterations": 1000,
+        "ev_p0": 0.02992101118811427,
+        "br0": 0.11086467681927528,
+        "br1": 0.01171900493713602,
+        "gain0": 0.08094366563116101,
+        "gain1": 0.04164001612525029,
+        "nashconv": 0.1225836817564113,
+        "exploitability": 0.06129184087820565
+      },
+      {
+        "variant": "guided_baseline",
+        "seed": 42,
+        "iterations": 10000,
+        "ev_p0": 0.024683506230470158,
+        "br0": 0.037664538359444034,
+        "br1": -0.01741161933759636,
+        "gain0": 0.012981032128973877,
+        "gain1": 0.0072718868928737974,
+        "nashconv": 0.020252919021847674,
+        "exploitability": 0.010126459510923837
+      },
+      {
+        "variant": "guided_baseline",
+        "seed": 42,
+        "iterations": 100000,
+        "ev_p0": 0.0243092901497576,
+        "br0": 0.02529733314727381,
+        "br1": -0.021942865861678984,
+        "gain0": 0.00098804299751621,
+        "gain1": 0.0023664242880786154,
+        "nashconv": 0.0033544672855948254,
+        "exploitability": 0.0016772336427974127
+      }
+    ]
+  },
+  "full": [
+    {
+      "variant": "uniform",
+      "seed": 761245,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9237,
+          "cpu_seconds": 7.84375,
+          "wall_seconds": 7.879371599992737
+        },
+        {
+          "iterations": 10000,
+          "infos": 84496,
+          "cpu_seconds": 79.796875,
+          "wall_seconds": 80.34042920000502
+        }
+      ],
+      "infos": 84496,
+      "initial_regret": 0,
+      "exploration": 0.6,
+      "opponent_exploration": 0.05,
+      "training_wall_seconds": 80.44199339998886,
+      "training_cpu_seconds": 79.890625,
+      "training_traced_peak_bytes": 74687440,
+      "max_prefix_importance": 32691859199.99999,
+      "max_value_estimate": 12.39216966297016,
+      "evaluation_wall_seconds": 3.219513600022765,
+      "evaluation_cpu_seconds": 3.203125,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.012,
+          "hoeffding95": [
+            -0.07273614619083052,
+            0.04873614619083051
+          ],
+          "unseen_solver_fraction": 0.6318093385214008,
+          "mean_bids": 4.6745
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.013,
+          "hoeffding95": [
+            -0.07373614619083052,
+            0.04773614619083052
+          ],
+          "unseen_solver_fraction": 0.7899860917941586,
+          "mean_bids": 4.5265
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.961,
+          "hoeffding95": [
+            -1,
+            -0.9002638538091694
+          ],
+          "unseen_solver_fraction": 0.05827067669172932,
+          "mean_bids": 1.1275
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.965,
+          "hoeffding95": [
+            0.9042638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4376459598318543,
+          "mean_bids": 2.135
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.961,
+          "hoeffding95": [
+            -1,
+            -0.9002638538091694
+          ],
+          "unseen_solver_fraction": 0.05827067669172932,
+          "mean_bids": 1.1275
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.965,
+          "hoeffding95": [
+            0.9042638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4376459598318543,
+          "mean_bids": 2.135
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.915,
+          "hoeffding95": [
+            -0.9757361461908306,
+            -0.8542638538091695
+          ],
+          "unseen_solver_fraction": 0.02911208151382824,
+          "mean_bids": 1.061
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.919,
+          "hoeffding95": [
+            0.8582638538091695,
+            0.9797361461908306
+          ],
+          "unseen_solver_fraction": 0.40450538687561216,
+          "mean_bids": 2.037
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": 0.005,
+          "hoeffding95": [
+            -0.05573614619083052,
+            0.06573614619083051
+          ],
+          "unseen_solver_fraction": 0.695432843887938,
+          "mean_bids": 4.5505
+        },
+        "posterior_40_solver_seat0": {
+          "games": 1000,
+          "seed": 1061245,
+          "ev_p0": -0.962,
+          "hoeffding95": [
+            -1,
+            -0.8761061183306524
+          ],
+          "unseen_solver_fraction": 0.054613935969868174,
+          "mean_bids": 1.124
+        },
+        "posterior_40_solver_seat1": {
+          "games": 1000,
+          "seed": 1061246,
+          "ev_p0": 0.944,
+          "hoeffding95": [
+            0.8581061183306524,
+            1
+          ],
+          "unseen_solver_fraction": 0.4666666666666667,
+          "mean_bids": 2.155
+        },
+        "posterior_60_solver_seat0": {
+          "games": 1000,
+          "seed": 1061245,
+          "ev_p0": -0.942,
+          "hoeffding95": [
+            -1,
+            -0.8561061183306524
+          ],
+          "unseen_solver_fraction": 0.042938931297709926,
+          "mean_bids": 1.096
+        },
+        "posterior_60_solver_seat1": {
+          "games": 1000,
+          "seed": 1061246,
+          "ev_p0": 0.896,
+          "hoeffding95": [
+            0.8101061183306525,
+            0.9818938816693475
+          ],
+          "unseen_solver_fraction": 0.4249757986447241,
+          "mean_bids": 2.063
+        }
+      },
+      "response_lower_bound": {
+        "empirical_candidate_br_sum": 1.927,
+        "nashconv_lower_bound_95_familywise": 1.768853111976063,
+        "exploitability_lower_bound_95_familywise": 0.8844265559880315,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 6,
+                "mode": "zhai"
+              },
+              "p": 0.10031137715910984
+            },
+            {
+              "bid": {
+                "quantity": 13,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.07581590237015269
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.054689905920707556
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 24,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.1606675186900484
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.1143316782661138
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.10417894383248805
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_visits": 148,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.05025017103855451
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.04766991593854382
+            },
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.043436394303420146
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_visits": 3,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.46042999806088813
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.21086629823540817
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0023148148148148147
+            }
+          ]
+        }
+      ],
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    },
+    {
+      "variant": "uniform",
+      "seed": 42,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9157,
+          "cpu_seconds": 7.390625,
+          "wall_seconds": 7.448849600012181
+        },
+        {
+          "iterations": 10000,
+          "infos": 84160,
+          "cpu_seconds": 79.28125,
+          "wall_seconds": 79.77553929999704
+        }
+      ],
+      "infos": 84160,
+      "initial_regret": 0,
+      "exploration": 0.6,
+      "opponent_exploration": 0.05,
+      "training_wall_seconds": 79.87577770001371,
+      "training_cpu_seconds": 79.390625,
+      "training_traced_peak_bytes": 74418840,
+      "max_prefix_importance": 350075750399.99994,
+      "max_value_estimate": 13.698630227863406,
+      "evaluation_wall_seconds": 3.061963799991645,
+      "evaluation_cpu_seconds": 3.046875,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": 0.02,
+          "hoeffding95": [
+            -0.04073614619083052,
+            0.08073614619083051
+          ],
+          "unseen_solver_fraction": 0.6321108394458028,
+          "mean_bids": 4.625
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.011,
+          "hoeffding95": [
+            -0.07173614619083052,
+            0.04973614619083051
+          ],
+          "unseen_solver_fraction": 0.7862895305440974,
+          "mean_bids": 4.5855
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.962,
+          "hoeffding95": [
+            -1,
+            -0.9012638538091694
+          ],
+          "unseen_solver_fraction": 0.06220767072029935,
+          "mean_bids": 1.1375
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.963,
+          "hoeffding95": [
+            0.9022638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.5510299625468165,
+          "mean_bids": 2.127
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.962,
+          "hoeffding95": [
+            -1,
+            -0.9012638538091694
+          ],
+          "unseen_solver_fraction": 0.06220767072029935,
+          "mean_bids": 1.1375
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.963,
+          "hoeffding95": [
+            0.9022638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.5510299625468165,
+          "mean_bids": 2.127
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.911,
+          "hoeffding95": [
+            -0.9717361461908306,
+            -0.8502638538091695
+          ],
+          "unseen_solver_fraction": 0.028182701652089408,
+          "mean_bids": 1.0575
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.913,
+          "hoeffding95": [
+            0.8522638538091695,
+            0.9737361461908306
+          ],
+          "unseen_solver_fraction": 0.5129205265724037,
+          "mean_bids": 2.046
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 200042,
+          "ev_p0": -0.032,
+          "hoeffding95": [
+            -0.09273614619083051,
+            0.028736146190830515
+          ],
+          "unseen_solver_fraction": 0.6976351351351351,
+          "mean_bids": 4.624
+        },
+        "posterior_40_solver_seat0": {
+          "games": 1000,
+          "seed": 300042,
+          "ev_p0": -0.964,
+          "hoeffding95": [
+            -1,
+            -0.8781061183306524
+          ],
+          "unseen_solver_fraction": 0.0670391061452514,
+          "mean_bids": 1.147
+        },
+        "posterior_40_solver_seat1": {
+          "games": 1000,
+          "seed": 300043,
+          "ev_p0": 0.96,
+          "hoeffding95": [
+            0.8741061183306524,
+            1
+          ],
+          "unseen_solver_fraction": 0.5508707607699358,
+          "mean_bids": 2.172
+        },
+        "posterior_60_solver_seat0": {
+          "games": 1000,
+          "seed": 300042,
+          "ev_p0": -0.928,
+          "hoeffding95": [
+            -1,
+            -0.8421061183306525
+          ],
+          "unseen_solver_fraction": 0.040229885057471264,
+          "mean_bids": 1.087
+        },
+        "posterior_60_solver_seat1": {
+          "games": 1000,
+          "seed": 300043,
+          "ev_p0": 0.902,
+          "hoeffding95": [
+            0.8161061183306525,
+            0.9878938816693476
+          ],
+          "unseen_solver_fraction": 0.4819512195121951,
+          "mean_bids": 2.042
+        }
+      },
+      "response_lower_bound": {
+        "empirical_candidate_br_sum": 1.927,
+        "nashconv_lower_bound_95_familywise": 1.7678531119760632,
+        "exploitability_lower_bound_95_familywise": 0.8839265559880316,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.08174138307763255
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.04071654143109402
+            },
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.018124633762231654
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 23,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.15938640679038119
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.1420672237936068
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.10580371331883626
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_visits": 156,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0606660660635662
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.04994270678552942
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 6,
+                "mode": "zhai"
+              },
+              "p": 0.049319259325487926
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_visits": 1,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            }
+          ]
+        }
+      ],
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    },
+    {
+      "variant": "baseline_only",
+      "seed": 761245,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9277,
+          "cpu_seconds": 13.578125,
+          "wall_seconds": 13.638387900020462
+        },
+        {
+          "iterations": 10000,
+          "infos": 83399,
+          "cpu_seconds": 133.546875,
+          "wall_seconds": 134.1702510000032
+        }
+      ],
+      "infos": 83399,
+      "initial_regret": 0,
+      "exploration": 0.6,
+      "opponent_exploration": 0.05,
+      "training_wall_seconds": 134.27862460000324,
+      "training_cpu_seconds": 133.65625,
+      "training_traced_peak_bytes": 73257744,
+      "max_prefix_importance": 41185272269.81673,
+      "max_value_estimate": 13.101478565604479,
+      "evaluation_wall_seconds": 3.0517381000099704,
+      "evaluation_cpu_seconds": 3.015625,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": 0.01,
+          "hoeffding95": [
+            -0.050736146190830514,
+            0.07073614619083052
+          ],
+          "unseen_solver_fraction": 0.6243621399176955,
+          "mean_bids": 4.571
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.04,
+          "hoeffding95": [
+            -0.10073614619083052,
+            0.020736146190830515
+          ],
+          "unseen_solver_fraction": 0.7808654227868201,
+          "mean_bids": 4.518
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.969,
+          "hoeffding95": [
+            -1,
+            -0.9082638538091694
+          ],
+          "unseen_solver_fraction": 0.05782792665726375,
+          "mean_bids": 1.1265
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.958,
+          "hoeffding95": [
+            0.8972638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.5377140212864414,
+          "mean_bids": 2.155
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.969,
+          "hoeffding95": [
+            -1,
+            -0.9082638538091694
+          ],
+          "unseen_solver_fraction": 0.05782792665726375,
+          "mean_bids": 1.1265
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.958,
+          "hoeffding95": [
+            0.8972638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.5377140212864414,
+          "mean_bids": 2.155
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.928,
+          "hoeffding95": [
+            -0.9887361461908306,
+            -0.8672638538091695
+          ],
+          "unseen_solver_fraction": 0.021994134897360705,
+          "mean_bids": 1.0455
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.902,
+          "hoeffding95": [
+            0.8412638538091695,
+            0.9627361461908306
+          ],
+          "unseen_solver_fraction": 0.4968215158924205,
+          "mean_bids": 2.037
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": -0.001,
+          "hoeffding95": [
+            -0.06173614619083052,
+            0.059736146190830515
+          ],
+          "unseen_solver_fraction": 0.6916935773232867,
+          "mean_bids": 4.574
+        },
+        "posterior_40_solver_seat0": {
+          "games": 1000,
+          "seed": 1061245,
+          "ev_p0": -0.976,
+          "hoeffding95": [
+            -1,
+            -0.8901061183306525
+          ],
+          "unseen_solver_fraction": 0.050332383665717,
+          "mean_bids": 1.105
+        },
+        "posterior_40_solver_seat1": {
+          "games": 1000,
+          "seed": 1061246,
+          "ev_p0": 0.95,
+          "hoeffding95": [
+            0.8641061183306524,
+            1
+          ],
+          "unseen_solver_fraction": 0.5327715355805244,
+          "mean_bids": 2.133
+        },
+        "posterior_60_solver_seat0": {
+          "games": 1000,
+          "seed": 1061245,
+          "ev_p0": -0.954,
+          "hoeffding95": [
+            -1,
+            -0.8681061183306524
+          ],
+          "unseen_solver_fraction": 0.031945788964181994,
+          "mean_bids": 1.065
+        },
+        "posterior_60_solver_seat1": {
+          "games": 1000,
+          "seed": 1061246,
+          "ev_p0": 0.928,
+          "hoeffding95": [
+            0.8421061183306525,
+            1
+          ],
+          "unseen_solver_fraction": 0.5458937198067633,
+          "mean_bids": 2.066
+        }
+      },
+      "response_lower_bound": {
+        "empirical_candidate_br_sum": 1.934,
+        "nashconv_lower_bound_95_familywise": 1.769853111976063,
+        "exploitability_lower_bound_95_familywise": 0.8849265559880315,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 10,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.22823025823931994
+            },
+            {
+              "bid": {
+                "quantity": 11,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.16728042357301726
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.08949852033847253
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 25,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 11,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.270321656897165
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.2038477498208205
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.19539160145848458
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_visits": 152,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.06904538356912446
+            },
+            {
+              "bid": {
+                "quantity": 11,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.06496315650211394
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.05944910305421693
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_visits": 0,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            }
+          ]
+        }
+      ],
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    },
+    {
+      "variant": "baseline_only",
+      "seed": 42,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9221,
+          "cpu_seconds": 13.59375,
+          "wall_seconds": 13.694859800016275
+        },
+        {
+          "iterations": 10000,
+          "infos": 83288,
+          "cpu_seconds": 133.90625,
+          "wall_seconds": 134.4739103000029
+        }
+      ],
+      "infos": 83288,
+      "initial_regret": 0,
+      "exploration": 0.6,
+      "opponent_exploration": 0.05,
+      "training_wall_seconds": 134.58055710000917,
+      "training_cpu_seconds": 134.015625,
+      "training_traced_peak_bytes": 73421240,
+      "max_prefix_importance": 174763008000.0001,
+      "max_value_estimate": 10.091134089287362,
+      "evaluation_wall_seconds": 3.0259306999796536,
+      "evaluation_cpu_seconds": 3.015625,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.017,
+          "hoeffding95": [
+            -0.07773614619083052,
+            0.043736146190830515
+          ],
+          "unseen_solver_fraction": 0.6255117078762076,
+          "mean_bids": 4.6155
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.021,
+          "hoeffding95": [
+            -0.08173614619083051,
+            0.03973614619083052
+          ],
+          "unseen_solver_fraction": 0.782780410742496,
+          "mean_bids": 4.5535
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.962,
+          "hoeffding95": [
+            -1,
+            -0.9012638538091694
+          ],
+          "unseen_solver_fraction": 0.049786628733997154,
+          "mean_bids": 1.1085
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.96,
+          "hoeffding95": [
+            0.8992638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.5167441860465116,
+          "mean_bids": 2.1425
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.962,
+          "hoeffding95": [
+            -1,
+            -0.9012638538091694
+          ],
+          "unseen_solver_fraction": 0.049786628733997154,
+          "mean_bids": 1.1085
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.96,
+          "hoeffding95": [
+            0.8992638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.5167441860465116,
+          "mean_bids": 2.1425
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.935,
+          "hoeffding95": [
+            -0.9957361461908306,
+            -0.8742638538091695
+          ],
+          "unseen_solver_fraction": 0.018636586562040217,
+          "mean_bids": 1.0385
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.912,
+          "hoeffding95": [
+            0.8512638538091695,
+            0.9727361461908306
+          ],
+          "unseen_solver_fraction": 0.5068093385214008,
+          "mean_bids": 2.0485
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 200042,
+          "ev_p0": -0.036,
+          "hoeffding95": [
+            -0.09673614619083051,
+            0.02473614619083052
+          ],
+          "unseen_solver_fraction": 0.6939900426742532,
+          "mean_bids": 4.624
+        },
+        "posterior_40_solver_seat0": {
+          "games": 1000,
+          "seed": 300042,
+          "ev_p0": -0.962,
+          "hoeffding95": [
+            -1,
+            -0.8761061183306524
+          ],
+          "unseen_solver_fraction": 0.05471698113207547,
+          "mean_bids": 1.12
+        },
+        "posterior_40_solver_seat1": {
+          "games": 1000,
+          "seed": 300043,
+          "ev_p0": 0.962,
+          "hoeffding95": [
+            0.8761061183306524,
+            1
+          ],
+          "unseen_solver_fraction": 0.5353535353535354,
+          "mean_bids": 2.167
+        },
+        "posterior_60_solver_seat0": {
+          "games": 1000,
+          "seed": 300042,
+          "ev_p0": -0.944,
+          "hoeffding95": [
+            -1,
+            -0.8581061183306524
+          ],
+          "unseen_solver_fraction": 0.03753609239653513,
+          "mean_bids": 1.078
+        },
+        "posterior_60_solver_seat1": {
+          "games": 1000,
+          "seed": 300043,
+          "ev_p0": 0.91,
+          "hoeffding95": [
+            0.8241061183306525,
+            0.9958938816693476
+          ],
+          "unseen_solver_fraction": 0.5324298160696999,
+          "mean_bids": 2.057
+        }
+      },
+      "response_lower_bound": {
+        "empirical_candidate_br_sum": 1.924,
+        "nashconv_lower_bound_95_familywise": 1.764853111976063,
+        "exploitability_lower_bound_95_familywise": 0.8824265559880315,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 12,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.4291368746370762
+            },
+            {
+              "bid": {
+                "quantity": 13,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.12126523606030358
+            },
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.10998687522214314
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 26,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.17558154005820853
+            },
+            {
+              "bid": {
+                "quantity": 14,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.16208745148287607
+            },
+            {
+              "bid": {
+                "quantity": 11,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.15973068394960707
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_visits": 191,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 13,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.07016415076967827
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.05759986850228305
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.051462119569448316
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_visits": 1,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            }
+          ]
+        }
+      ],
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    },
+    {
+      "variant": "guided",
+      "seed": 761245,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 3664,
+          "cpu_seconds": 10.609375,
+          "wall_seconds": 10.677351599995745
+        },
+        {
+          "iterations": 10000,
+          "infos": 24791,
+          "cpu_seconds": 78.203125,
+          "wall_seconds": 78.83417590000317
+        }
+      ],
+      "infos": 24791,
+      "initial_regret": 5,
+      "exploration": 0.6,
+      "opponent_exploration": 0.05,
+      "training_wall_seconds": 78.86487879999913,
+      "training_cpu_seconds": 78.234375,
+      "training_traced_peak_bytes": 42682664,
+      "max_prefix_importance": 18517256.317689527,
+      "max_value_estimate": 45.82840966622253,
+      "evaluation_wall_seconds": 4.354170000005979,
+      "evaluation_cpu_seconds": 4.296875,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": 0.948,
+          "hoeffding95": [
+            0.8872638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4644372348390317,
+          "mean_bids": 2.031
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.964,
+          "hoeffding95": [
+            -1,
+            -0.9032638538091694
+          ],
+          "unseen_solver_fraction": 0.5496966868875408,
+          "mean_bids": 1.1435
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.575,
+          "hoeffding95": [
+            -0.6357361461908305,
+            -0.5142638538091694
+          ],
+          "unseen_solver_fraction": 0.15047744484688838,
+          "mean_bids": 1.806
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.027,
+          "hoeffding95": [
+            -0.08773614619083052,
+            0.03373614619083051
+          ],
+          "unseen_solver_fraction": 0.2766087221713937,
+          "mean_bids": 2.8935
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.575,
+          "hoeffding95": [
+            -0.6357361461908305,
+            -0.5142638538091694
+          ],
+          "unseen_solver_fraction": 0.15047744484688838,
+          "mean_bids": 1.806
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.027,
+          "hoeffding95": [
+            -0.08773614619083052,
+            0.03373614619083051
+          ],
+          "unseen_solver_fraction": 0.2766087221713937,
+          "mean_bids": 2.8935
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.343,
+          "hoeffding95": [
+            -0.40373614619083054,
+            -0.2822638538091695
+          ],
+          "unseen_solver_fraction": 0.059935639581657284,
+          "mean_bids": 1.403
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.474,
+          "hoeffding95": [
+            -0.5347361461908305,
+            -0.41326385380916947
+          ],
+          "unseen_solver_fraction": 0.1290594685786588,
+          "mean_bids": 2.216
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": -0.53,
+          "hoeffding95": [
+            -0.5907361461908306,
+            -0.4692638538091695
+          ],
+          "unseen_solver_fraction": 0.2814855671998529,
+          "mean_bids": 1.7195
+        },
+        "posterior_40_solver_seat0": {
+          "games": 1000,
+          "seed": 1061245,
+          "ev_p0": -0.852,
+          "hoeffding95": [
+            -0.9378938816693475,
+            -0.7661061183306525
+          ],
+          "unseen_solver_fraction": 0.23599320882852293,
+          "mean_bids": 2.141
+        },
+        "posterior_40_solver_seat1": {
+          "games": 1000,
+          "seed": 1061246,
+          "ev_p0": 0.764,
+          "hoeffding95": [
+            0.6781061183306525,
+            0.8498938816693475
+          ],
+          "unseen_solver_fraction": 0.44866576209859793,
+          "mean_bids": 3.697
+        },
+        "posterior_60_solver_seat0": {
+          "games": 1000,
+          "seed": 1061245,
+          "ev_p0": -0.85,
+          "hoeffding95": [
+            -0.9358938816693475,
+            -0.7641061183306525
+          ],
+          "unseen_solver_fraction": 0.21335697399527187,
+          "mean_bids": 2.048
+        },
+        "posterior_60_solver_seat1": {
+          "games": 1000,
+          "seed": 1061246,
+          "ev_p0": 0.746,
+          "hoeffding95": [
+            0.6601061183306525,
+            0.8318938816693475
+          ],
+          "unseen_solver_fraction": 0.4409090909090909,
+          "mean_bids": 3.697
+        }
+      },
+      "response_lower_bound": {
+        "empirical_candidate_br_sum": 1.616,
+        "nashconv_lower_bound_95_familywise": 1.3937607396718223,
+        "exploitability_lower_bound_95_familywise": 0.6968803698359112,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 17,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.3569816027723738
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.00472657380570537
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.00472657380570537
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 26,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.9593081408409823
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.04069185915901777
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_visits": 154,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.03860869511066597
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.029814090457390793
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.021015464708861255
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_visits": 2,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 1.0
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.0
+            }
+          ]
+        }
+      ],
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    },
+    {
+      "variant": "guided",
+      "seed": 42,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 3691,
+          "cpu_seconds": 10.265625,
+          "wall_seconds": 10.319753799994942
+        },
+        {
+          "iterations": 10000,
+          "infos": 24959,
+          "cpu_seconds": 51.984375,
+          "wall_seconds": 52.61214949999703
+        }
+      ],
+      "infos": 24959,
+      "initial_regret": 5,
+      "exploration": 0.6,
+      "opponent_exploration": 0.05,
+      "training_wall_seconds": 52.624716599995736,
+      "training_cpu_seconds": 51.984375,
+      "training_traced_peak_bytes": 42907432,
+      "max_prefix_importance": 2460040.9947089716,
+      "max_value_estimate": 45.889028826128964,
+      "evaluation_wall_seconds": 2.7386416000081226,
+      "evaluation_cpu_seconds": 2.6875,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": 0.941,
+          "hoeffding95": [
+            0.8802638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.46640119462419116,
+          "mean_bids": 2.0415
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.961,
+          "hoeffding95": [
+            -1,
+            -0.9002638538091694
+          ],
+          "unseen_solver_fraction": 0.5476635514018692,
+          "mean_bids": 1.141
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.522,
+          "hoeffding95": [
+            -0.5827361461908306,
+            -0.4612638538091695
+          ],
+          "unseen_solver_fraction": 0.13317911434236615,
+          "mean_bids": 1.8195
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.085,
+          "hoeffding95": [
+            -0.14573614619083053,
+            -0.02426385380916949
+          ],
+          "unseen_solver_fraction": 0.2783816425120773,
+          "mean_bids": 2.935
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.522,
+          "hoeffding95": [
+            -0.5827361461908306,
+            -0.4612638538091695
+          ],
+          "unseen_solver_fraction": 0.13317911434236615,
+          "mean_bids": 1.8195
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.085,
+          "hoeffding95": [
+            -0.14573614619083053,
+            -0.02426385380916949
+          ],
+          "unseen_solver_fraction": 0.2783816425120773,
+          "mean_bids": 2.935
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.343,
+          "hoeffding95": [
+            -0.40373614619083054,
+            -0.2822638538091695
+          ],
+          "unseen_solver_fraction": 0.05512454062882809,
+          "mean_bids": 1.3775
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.492,
+          "hoeffding95": [
+            -0.5527361461908306,
+            -0.4312638538091695
+          ],
+          "unseen_solver_fraction": 0.12947543713572024,
+          "mean_bids": 2.272
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 200042,
+          "ev_p0": -0.527,
+          "hoeffding95": [
+            -0.5877361461908306,
+            -0.4662638538091695
+          ],
+          "unseen_solver_fraction": 0.2804878048780488,
+          "mean_bids": 1.747
+        },
+        "posterior_40_solver_seat0": {
+          "games": 1000,
+          "seed": 300042,
+          "ev_p0": -0.862,
+          "hoeffding95": [
+            -0.9478938816693475,
+            -0.7761061183306525
+          ],
+          "unseen_solver_fraction": 0.23258426966292134,
+          "mean_bids": 2.188
+        },
+        "posterior_40_solver_seat1": {
+          "games": 1000,
+          "seed": 300043,
+          "ev_p0": 0.758,
+          "hoeffding95": [
+            0.6721061183306525,
+            0.8438938816693475
+          ],
+          "unseen_solver_fraction": 0.4246389891696751,
+          "mean_bids": 3.717
+        },
+        "posterior_60_solver_seat0": {
+          "games": 1000,
+          "seed": 300042,
+          "ev_p0": -0.854,
+          "hoeffding95": [
+            -0.9398938816693475,
+            -0.7681061183306525
+          ],
+          "unseen_solver_fraction": 0.2226027397260274,
+          "mean_bids": 2.148
+        },
+        "posterior_60_solver_seat1": {
+          "games": 1000,
+          "seed": 300043,
+          "ev_p0": 0.732,
+          "hoeffding95": [
+            0.6461061183306525,
+            0.8178938816693475
+          ],
+          "unseen_solver_fraction": 0.41815680880330125,
+          "mean_bids": 3.683
+        }
+      },
+      "response_lower_bound": {
+        "empirical_candidate_br_sum": 1.62,
+        "nashconv_lower_bound_95_familywise": 1.3977607396718223,
+        "exploitability_lower_bound_95_familywise": 0.6988803698359112,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 15,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.27095726659589103
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.05345641738398222
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.005022722735256933
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 26,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.5042642880446111
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.003751580304608224
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.003751580304608224
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_visits": 153,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.06360647752878001
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.037077778022837446
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.032361737845726365
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_visits": 1,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 1.0
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.0
+            }
+          ]
+        }
+      ],
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    },
+    {
+      "variant": "guided_baseline",
+      "seed": 761245,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 3689,
+          "cpu_seconds": 9.171875,
+          "wall_seconds": 9.276928599982057
+        },
+        {
+          "iterations": 10000,
+          "infos": 25649,
+          "cpu_seconds": 86.0625,
+          "wall_seconds": 87.0956774999795
+        }
+      ],
+      "infos": 25649,
+      "initial_regret": 5,
+      "exploration": 0.6,
+      "opponent_exploration": 0.05,
+      "training_wall_seconds": 87.13206599999103,
+      "training_cpu_seconds": 86.09375,
+      "training_traced_peak_bytes": 48104528,
+      "max_prefix_importance": 18517256.317689527,
+      "max_value_estimate": 70.19637998848764,
+      "evaluation_wall_seconds": 3.0381470999855082,
+      "evaluation_cpu_seconds": 3.015625,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": 0.944,
+          "hoeffding95": [
+            0.8832638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4671968190854871,
+          "mean_bids": 2.0425
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.966,
+          "hoeffding95": [
+            -1,
+            -0.9052638538091694
+          ],
+          "unseen_solver_fraction": 0.6314806165343297,
+          "mean_bids": 1.142
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.417,
+          "hoeffding95": [
+            -0.4777361461908305,
+            -0.3562638538091695
+          ],
+          "unseen_solver_fraction": 0.2208533653846154,
+          "mean_bids": 2.024
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.035,
+          "hoeffding95": [
+            -0.025736146190830513,
+            0.09573614619083051
+          ],
+          "unseen_solver_fraction": 0.300830513688096,
+          "mean_bids": 2.867
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.417,
+          "hoeffding95": [
+            -0.4777361461908305,
+            -0.3562638538091695
+          ],
+          "unseen_solver_fraction": 0.2208533653846154,
+          "mean_bids": 2.024
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.035,
+          "hoeffding95": [
+            -0.025736146190830513,
+            0.09573614619083051
+          ],
+          "unseen_solver_fraction": 0.300830513688096,
+          "mean_bids": 2.867
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.165,
+          "hoeffding95": [
+            -0.22573614619083052,
+            -0.1042638538091695
+          ],
+          "unseen_solver_fraction": 0.10857142857142857,
+          "mean_bids": 1.5115
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.375,
+          "hoeffding95": [
+            -0.4357361461908305,
+            -0.3142638538091695
+          ],
+          "unseen_solver_fraction": 0.125531914893617,
+          "mean_bids": 2.202
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": -0.29,
+          "hoeffding95": [
+            -0.3507361461908305,
+            -0.22926385380916947
+          ],
+          "unseen_solver_fraction": 0.29953379953379955,
+          "mean_bids": 2.003
+        },
+        "posterior_40_solver_seat0": {
+          "games": 1000,
+          "seed": 1061245,
+          "ev_p0": -0.662,
+          "hoeffding95": [
+            -0.7478938816693476,
+            -0.5761061183306525
+          ],
+          "unseen_solver_fraction": 0.3230527966544694,
+          "mean_bids": 2.324
+        },
+        "posterior_40_solver_seat1": {
+          "games": 1000,
+          "seed": 1061246,
+          "ev_p0": 0.708,
+          "hoeffding95": [
+            0.6221061183306524,
+            0.7938938816693475
+          ],
+          "unseen_solver_fraction": 0.45848880597014924,
+          "mean_bids": 3.596
+        },
+        "posterior_60_solver_seat0": {
+          "games": 1000,
+          "seed": 1061245,
+          "ev_p0": -0.668,
+          "hoeffding95": [
+            -0.7538938816693476,
+            -0.5821061183306525
+          ],
+          "unseen_solver_fraction": 0.30016583747927034,
+          "mean_bids": 2.194
+        },
+        "posterior_60_solver_seat1": {
+          "games": 1000,
+          "seed": 1061246,
+          "ev_p0": 0.69,
+          "hoeffding95": [
+            0.6041061183306524,
+            0.7758938816693475
+          ],
+          "unseen_solver_fraction": 0.45118483412322274,
+          "mean_bids": 3.549
+        }
+      },
+      "response_lower_bound": {
+        "empirical_candidate_br_sum": 1.376,
+        "nashconv_lower_bound_95_familywise": 1.1537607396718226,
+        "exploitability_lower_bound_95_familywise": 0.5768803698359113,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 21,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.06684063773700034
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.03034590950011094
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.025291409972785513
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 27,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.3729959436704244
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.1297053698256033
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.06523069623633898
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_visits": 158,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 6,
+                "mode": "zhai"
+              },
+              "p": 0.16672852271072838
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.13078741396470958
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.09124041696425123
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_visits": 1,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 1.0
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.0
+            }
+          ]
+        }
+      ],
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    },
+    {
+      "variant": "guided_baseline",
+      "seed": 42,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 3656,
+          "cpu_seconds": 9.046875,
+          "wall_seconds": 9.155237300001318
+        },
+        {
+          "iterations": 10000,
+          "infos": 25654,
+          "cpu_seconds": 85.953125,
+          "wall_seconds": 87.07772800000384
+        }
+      ],
+      "infos": 25654,
+      "initial_regret": 5,
+      "exploration": 0.6,
+      "opponent_exploration": 0.05,
+      "training_wall_seconds": 87.10848669998813,
+      "training_cpu_seconds": 85.984375,
+      "training_traced_peak_bytes": 48575592,
+      "max_prefix_importance": 624316.1688020674,
+      "max_value_estimate": 73.98844793334224,
+      "evaluation_wall_seconds": 3.4791880999982823,
+      "evaluation_cpu_seconds": 3.4375,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": 0.951,
+          "hoeffding95": [
+            0.8902638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.47113961519486924,
+          "mean_bids": 2.065
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.961,
+          "hoeffding95": [
+            -1,
+            -0.9002638538091694
+          ],
+          "unseen_solver_fraction": 0.6345530338119499,
+          "mean_bids": 1.1595
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.422,
+          "hoeffding95": [
+            -0.4827361461908305,
+            -0.3612638538091695
+          ],
+          "unseen_solver_fraction": 0.2191320293398533,
+          "mean_bids": 1.95
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.052,
+          "hoeffding95": [
+            -0.11273614619083051,
+            0.008736146190830518
+          ],
+          "unseen_solver_fraction": 0.30102198823165066,
+          "mean_bids": 2.8395
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.422,
+          "hoeffding95": [
+            -0.4827361461908305,
+            -0.3612638538091695
+          ],
+          "unseen_solver_fraction": 0.2191320293398533,
+          "mean_bids": 1.95
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.052,
+          "hoeffding95": [
+            -0.11273614619083051,
+            0.008736146190830518
+          ],
+          "unseen_solver_fraction": 0.30102198823165066,
+          "mean_bids": 2.8395
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.188,
+          "hoeffding95": [
+            -0.2487361461908305,
+            -0.1272638538091695
+          ],
+          "unseen_solver_fraction": 0.11603053435114503,
+          "mean_bids": 1.494
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.385,
+          "hoeffding95": [
+            -0.4457361461908305,
+            -0.3242638538091695
+          ],
+          "unseen_solver_fraction": 0.13880783659858273,
+          "mean_bids": 2.253
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 200042,
+          "ev_p0": -0.304,
+          "hoeffding95": [
+            -0.3647361461908305,
+            -0.24326385380916948
+          ],
+          "unseen_solver_fraction": 0.29308617234468937,
+          "mean_bids": 1.994
+        },
+        "posterior_40_solver_seat0": {
+          "games": 1000,
+          "seed": 300042,
+          "ev_p0": -0.702,
+          "hoeffding95": [
+            -0.7878938816693475,
+            -0.6161061183306524
+          ],
+          "unseen_solver_fraction": 0.34288537549407117,
+          "mean_bids": 2.485
+        },
+        "posterior_40_solver_seat1": {
+          "games": 1000,
+          "seed": 300043,
+          "ev_p0": 0.738,
+          "hoeffding95": [
+            0.6521061183306525,
+            0.8238938816693475
+          ],
+          "unseen_solver_fraction": 0.4437054631828979,
+          "mean_bids": 3.548
+        },
+        "posterior_60_solver_seat0": {
+          "games": 1000,
+          "seed": 300042,
+          "ev_p0": -0.636,
+          "hoeffding95": [
+            -0.7218938816693475,
+            -0.5501061183306525
+          ],
+          "unseen_solver_fraction": 0.30652995143011336,
+          "mean_bids": 2.272
+        },
+        "posterior_60_solver_seat1": {
+          "games": 1000,
+          "seed": 300043,
+          "ev_p0": 0.702,
+          "hoeffding95": [
+            0.6161061183306524,
+            0.7878938816693475
+          ],
+          "unseen_solver_fraction": 0.4433139534883721,
+          "mean_bids": 3.518
+        }
+      },
+      "response_lower_bound": {
+        "empirical_candidate_br_sum": 1.44,
+        "nashconv_lower_bound_95_familywise": 1.2177607396718224,
+        "exploitability_lower_bound_95_familywise": 0.6088803698359112,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.7747118145592743
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "zhai"
+              },
+              "p": 0.05632204636018142
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.05632204636018142
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_visits": 33,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.512474431371361
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "zhai"
+              },
+              "p": 0.3536009678761263
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.11500261597894895
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_visits": 152,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.11491721760047821
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.11259054233449901
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.07168623056164374
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_visits": 3,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.433980687309947
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.015533540237615391
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.015533540237615391
+            }
+          ]
+        }
+      ],
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    }
+  ],
+  "untrained_probability_control": {
+    "matches": {
+      "uniform_solver_seat0": {
+        "games": 2000,
+        "seed": 1261245,
+        "ev_p0": 0.965,
+        "hoeffding95": [
+          0.9042638538091694,
+          1
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 2.135
+      },
+      "uniform_solver_seat1": {
+        "games": 2000,
+        "seed": 1261246,
+        "ev_p0": -0.959,
+        "hoeffding95": [
+          -1,
+          -0.8982638538091694
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 1.144
+      },
+      "probability_30_solver_seat0": {
+        "games": 2000,
+        "seed": 1261245,
+        "ev_p0": -0.203,
+        "hoeffding95": [
+          -0.2637361461908305,
+          -0.1422638538091695
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.0215
+      },
+      "probability_30_solver_seat1": {
+        "games": 2000,
+        "seed": 1261246,
+        "ev_p0": -0.175,
+        "hoeffding95": [
+          -0.2357361461908305,
+          -0.11426385380916948
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.076
+      },
+      "probability_50_solver_seat0": {
+        "games": 2000,
+        "seed": 1261245,
+        "ev_p0": -0.203,
+        "hoeffding95": [
+          -0.2637361461908305,
+          -0.1422638538091695
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.0215
+      },
+      "probability_50_solver_seat1": {
+        "games": 2000,
+        "seed": 1261246,
+        "ev_p0": -0.175,
+        "hoeffding95": [
+          -0.2357361461908305,
+          -0.11426385380916948
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.076
+      },
+      "probability_70_solver_seat0": {
+        "games": 2000,
+        "seed": 1261245,
+        "ev_p0": 0.468,
+        "hoeffding95": [
+          0.4072638538091695,
+          0.5287361461908305
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 2.0845
+      },
+      "probability_70_solver_seat1": {
+        "games": 2000,
+        "seed": 1261246,
+        "ev_p0": -0.662,
+        "hoeffding95": [
+          -0.7227361461908306,
+          -0.6012638538091695
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 2.216
+      },
+      "selfplay": {
+        "games": 2000,
+        "seed": 1361245,
+        "ev_p0": -0.178,
+        "hoeffding95": [
+          -0.2387361461908305,
+          -0.11726385380916948
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.0855
+      },
+      "posterior_40_solver_seat0": {
+        "games": 1000,
+        "seed": 1461245,
+        "ev_p0": -0.848,
+        "hoeffding95": [
+          -0.9338938816693475,
+          -0.7621061183306524
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.741
+      },
+      "posterior_40_solver_seat1": {
+        "games": 1000,
+        "seed": 1461246,
+        "ev_p0": 0.682,
+        "hoeffding95": [
+          0.5961061183306525,
+          0.7678938816693476
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.866
+      },
+      "posterior_60_solver_seat0": {
+        "games": 1000,
+        "seed": 1461245,
+        "ev_p0": -0.746,
+        "hoeffding95": [
+          -0.8318938816693475,
+          -0.6601061183306525
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.501
+      },
+      "posterior_60_solver_seat1": {
+        "games": 1000,
+        "seed": 1461246,
+        "ev_p0": 0.63,
+        "hoeffding95": [
+          0.5441061183306525,
+          0.7158938816693475
+        ],
+        "unseen_solver_fraction": 1.0,
+        "mean_bids": 3.834
+      }
+    },
+    "response_lower_bound": {
+      "empirical_candidate_br_sum": 1.53,
+      "nashconv_lower_bound_95_familywise": 1.3077607396718225,
+      "exploitability_lower_bound_95_familywise": 0.6538803698359112,
+      "exploitability_upper_bound": null,
+      "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+    }
+  }
+}
