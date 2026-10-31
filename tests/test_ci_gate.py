@@ -112,6 +112,11 @@ class CIGateTests(unittest.TestCase):
         expected.append({'name': 'Local exact and approximate turn reuse with independent targets', 'timeout-minutes': 6,
                          'run': 'python scripts/benchmark_turn_reuse.py --output .artifacts/turn-reuse',
                          'env': {'OPENBLAS_NUM_THREADS': '1', 'OMP_NUM_THREADS': '1', 'MKL_NUM_THREADS': '1'}})
+        research_tests = {'name': "Standalone Liar's Dice research tests", 'timeout-minutes': 2,
+                          'run': 'python -m unittest discover -s experiments/liars_dice/tests -v',
+                          'env': {'OPENBLAS_NUM_THREADS': '1'}}
+        expected.append(research_tests)
+        self.assertIn(research_tests, jobs['river']['steps'])
         self.assertCountEqual(found, expected)
         expected_artifacts = deepcopy(contract['artifacts'])
         for step in expected_artifacts:

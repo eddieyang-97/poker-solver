@@ -1,6 +1,8 @@
 # Independent reproduction and full-rule feasibility
 
-Research date: 31 October 2026. Scope: Issue [#40](https://github.com/eddieyang-97/poker-solver/issues/40), following the unmerged archive PR [#41](https://github.com/eddieyang-97/poker-solver/pull/41). The branch starts at its head `f245b59ad9d34b4bb41075c0e2116e5b5a076f33`; current main was `f59e8d7c5009845acc4f9a2c82364e104b80395d`. This PR carries that archive rather than assuming it is already merged. Only standalone experiment files and the archive's existing README link are involved.
+Scope: Issue [#40](https://github.com/eddieyang-97/poker-solver/issues/40), following archive PR [#41](https://github.com/eddieyang-97/poker-solver/pull/41), now merged as `27dfec1da6ea5b96921e4352537cd0097f215c0d`. Follow-on PR [#42](https://github.com/eddieyang-97/poker-solver/pull/42) targets `main`. Solver code, tests and measured outputs remain under this standalone directory; the existing required `river` CI job also runs the research tests, preserving the other numerical gates and required `test` aggregate.
+
+Historical experiment provenance (31 October 2026): the measured working tree was based on archive head `f245b59ad9d34b4bb41075c0e2116e5b5a076f33`; main inspected at that time was `f59e8d7c5009845acc4f9a2c82364e104b80395d`. These hashes identify the original experiment context, not current merge status.
 
 ## Reproduction and audit
 
