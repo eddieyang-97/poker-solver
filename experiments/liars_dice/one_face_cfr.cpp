@@ -99,4 +99,5 @@ int main(int argc,char**argv){int iterations=argc>1?atoi(argv[1]):10000;infos.re
     }
   }
   cerr<<"total "<<chrono::duration<double>(chrono::steady_clock::now()-start).count()<<" sec\n";
+  return 0; // Explicit for the audit wrapper that renames main; no solver change.
 }

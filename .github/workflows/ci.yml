@@ -26,6 +26,11 @@ jobs:
       run: python -m unittest discover -s tests -v
       env:
         OPENBLAS_NUM_THREADS: '1'
+    - name: Standalone Liar's Dice research tests
+      timeout-minutes: 2
+      run: python -m unittest discover -s experiments/liars_dice/tests -v
+      env:
+        OPENBLAS_NUM_THREADS: '1'
     - name: Independent same-tree river benchmark
       timeout-minutes: 5
       run: python scripts/benchmark.py --output .artifacts/benchmark --sensitivity

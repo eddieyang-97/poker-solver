@@ -1,0 +1,2236 @@
+{
+  "source_base": "f245b59ad9d34b4bb41075c0e2116e5b5a076f33",
+  "source_sha256": {
+    "beliefs.py": "c5cd576da25a6aae49cea21c0119fa6b2d0d0bf873c13c86485b647de9021940",
+    "game.py": "cadac09bb2e7a422b284fc3a089efabe491cd8bae4566d84614c110657169383",
+    "liars_dice_analysis.py": "1c4111cdf869dceae6520f77e2287263898f6924e21949172b49e2dc7ad1abd0",
+    "mccfr.py": "809cdbdb4ae13b6d95a8bac259fa3b9b1025a085f401f04097f42a085bd89205",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "run_abstraction.py": "c6439d70181f951ebbeae535d4ade56f9cb90b4b2fdc1a0b9789b5a93af6441d",
+    "run_research.py": "5606837e4fc46e7bfe87346401aa2afee9934c34c936628b3f4d58451a4ec4bc",
+    "summarize.py": "039e14b4f3f68e5c30569f9426682c998ea5ce9161f1579e7da9b3abe1437635",
+    "audit_baseline.cpp": "0213690d49d5f48f1c351081f12a285616043e046071512848996f852d8ab330",
+    "one_face_cfr.cpp": "0ee8634780ad370ab8e3a0b6abc1f0094342198715cf66cfa8e28f7055cdf08c"
+  },
+  "python": "3.14.8",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "argv": {
+    "iterations": 10000,
+    "games": 2000,
+    "max_infos": 100000,
+    "seeds": [
+      761245,
+      42
+    ],
+    "policy_bin": ".artifacts\\liars_dice\\baseline-policy.bin",
+    "output": "C:\\Eddie\\Projects\\poker-solver\\experiments\\liars_dice\\outputs\\research.json"
+  },
+  "distributions": {
+    "fly": {
+      "0": 1024,
+      "1": 2560,
+      "2": 2560,
+      "3": 1280,
+      "4": 320,
+      "5": 0,
+      "6": 30,
+      "7": 2
+    },
+    "zhai": {
+      "0": 3125,
+      "1": 3125,
+      "2": 1250,
+      "3": 250,
+      "4": 25,
+      "5": 0,
+      "6": 0,
+      "7": 1
+    }
+  },
+  "archived_independent_evaluation": {
+    "ev_p0": 0.02068162284968016,
+    "br0": 0.03581005402181336,
+    "br1": -0.00912143678279998,
+    "gain0": 0.015128431172133198,
+    "gain1": 0.01156018606688018,
+    "nashconv": 0.026688617239013376,
+    "exploitability": 0.013344308619506688
+  },
+  "small_game": {
+    "maximum_bid": 5,
+    "exact_cfr": [
+      {
+        "iterations": 10,
+        "ev_p0": 0.017758347527106887,
+        "br0": 0.03888821435360643,
+        "br1": -0.00493852324667183,
+        "gain0": 0.021129866826499547,
+        "gain1": 0.012819824280435058,
+        "nashconv": 0.033949691106934604,
+        "exploitability": 0.016974845553467302
+      },
+      {
+        "iterations": 100,
+        "ev_p0": 0.022577425607858435,
+        "br0": 0.02281914905481297,
+        "br1": -0.022449399943747287,
+        "gain0": 0.00024172344695453513,
+        "gain1": 0.00012802566411114838,
+        "nashconv": 0.0003697491110656835,
+        "exploitability": 0.00018487455553284175
+      },
+      {
+        "iterations": 1000,
+        "ev_p0": 0.02264155743162671,
+        "br0": 0.022643997674811248,
+        "br1": -0.022640266939524752,
+        "gain0": 2.440243184537866e-06,
+        "gain1": 1.290492101957419e-06,
+        "nashconv": 3.7307352864952847e-06,
+        "exploitability": 1.8653676432476424e-06
+      }
+    ],
+    "outcome_sampling": [
+      {
+        "seed": 761245,
+        "iterations": 1000,
+        "ev_p0": 0.004345148046205095,
+        "br0": 0.10926148667225456,
+        "br1": 0.07404329587981198,
+        "gain0": 0.10491633862604946,
+        "gain1": 0.07838844392601707,
+        "nashconv": 0.18330478255206656,
+        "exploitability": 0.09165239127603328
+      },
+      {
+        "seed": 761245,
+        "iterations": 10000,
+        "ev_p0": 0.020229012761459178,
+        "br0": 0.03505366447302043,
+        "br1": -0.01028805790100642,
+        "gain0": 0.014824651711561249,
+        "gain1": 0.009940954860452758,
+        "nashconv": 0.024765606572014008,
+        "exploitability": 0.012382803286007004
+      },
+      {
+        "seed": 761245,
+        "iterations": 100000,
+        "ev_p0": 0.022555982932922214,
+        "br0": 0.024471369319286618,
+        "br1": -0.021250100825284942,
+        "gain0": 0.0019153863863644038,
+        "gain1": 0.0013058821076372719,
+        "nashconv": 0.0032212684940016757,
+        "exploitability": 0.0016106342470008379
+      },
+      {
+        "seed": 42,
+        "iterations": 1000,
+        "ev_p0": 0.005720511127635783,
+        "br0": 0.06716554889990058,
+        "br1": 0.06412339915072265,
+        "gain0": 0.061445037772264795,
+        "gain1": 0.06984391027835844,
+        "nashconv": 0.13128894805062324,
+        "exploitability": 0.06564447402531162
+      },
+      {
+        "seed": 42,
+        "iterations": 10000,
+        "ev_p0": 0.017559330360517784,
+        "br0": 0.03620092336120886,
+        "br1": 0.00021332882589038054,
+        "gain0": 0.018641593000691074,
+        "gain1": 0.017772659186408163,
+        "nashconv": 0.03641425218709924,
+        "exploitability": 0.01820712609354962
+      },
+      {
+        "seed": 42,
+        "iterations": 100000,
+        "ev_p0": 0.02443869807765961,
+        "br0": 0.027498297970097188,
+        "br1": -0.02122305721310872,
+        "gain0": 0.0030595998924375784,
+        "gain1": 0.003215640864550888,
+        "nashconv": 0.006275240756988466,
+        "exploitability": 0.003137620378494233
+      }
+    ]
+  },
+  "full_game_experiments": [
+    {
+      "profile": "baseline_assumptions",
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "seed": 761245,
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "information_sets": 84496,
+      "array_bytes": 38029728,
+      "python_traced_peak_bytes": 74206640,
+      "training_seconds": 54.43089790001977,
+      "max_importance": 32691859199.99999,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9237,
+          "seconds": 6.203927900001872
+        },
+        {
+          "iterations": 10000,
+          "infos": 84496,
+          "seconds": 54.33521780002047
+        }
+      ],
+      "exploitability": null,
+      "certified_equilibrium": false,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.012,
+          "hoeffding95": [
+            -0.07273614619083052,
+            0.04873614619083051
+          ],
+          "unseen_solver_fraction": 0.6318093385214008,
+          "mean_bids": 4.6745
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.013,
+          "hoeffding95": [
+            -0.07373614619083052,
+            0.04773614619083052
+          ],
+          "unseen_solver_fraction": 0.7899860917941586,
+          "mean_bids": 4.5265
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.961,
+          "hoeffding95": [
+            -1,
+            -0.9002638538091694
+          ],
+          "unseen_solver_fraction": 0.05827067669172932,
+          "mean_bids": 1.1275
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.965,
+          "hoeffding95": [
+            0.9042638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4376459598318543,
+          "mean_bids": 2.135
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.961,
+          "hoeffding95": [
+            -1,
+            -0.9002638538091694
+          ],
+          "unseen_solver_fraction": 0.05827067669172932,
+          "mean_bids": 1.1275
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.965,
+          "hoeffding95": [
+            0.9042638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4376459598318543,
+          "mean_bids": 2.135
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.915,
+          "hoeffding95": [
+            -0.9757361461908306,
+            -0.8542638538091695
+          ],
+          "unseen_solver_fraction": 0.02911208151382824,
+          "mean_bids": 1.061
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.919,
+          "hoeffding95": [
+            0.8582638538091695,
+            0.9797361461908306
+          ],
+          "unseen_solver_fraction": 0.40450538687561216,
+          "mean_bids": 2.037
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": 0.005,
+          "hoeffding95": [
+            -0.05573614619083052,
+            0.06573614619083051
+          ],
+          "unseen_solver_fraction": 0.695432843887938,
+          "mean_bids": 4.5505
+        }
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 6,
+                "mode": "zhai"
+              },
+              "p": 0.10031137715910984
+            },
+            {
+              "bid": {
+                "quantity": 13,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.07581590237015269
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.054689905920707556
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.037040524296582875
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.005338336753092448
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 24,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.1606675186900484
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.1143316782661138
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.10417894383248805
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.1021217741771807
+            },
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.09794528176672308
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_updates": 148,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.05025017103855451
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.04766991593854382
+            },
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.043436394303420146
+            },
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.042333047934223406
+            },
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.042200925855023406
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_updates": 3,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.46042999806088813
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.21086629823540817
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0023148148148148147
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.0023148148148148147
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.0023148148148148147
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "baseline_assumptions",
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "seed": 42,
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "information_sets": 84160,
+      "array_bytes": 37861440,
+      "python_traced_peak_bytes": 73506520,
+      "training_seconds": 56.380385399999795,
+      "max_importance": 350075750399.99994,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9157,
+          "seconds": 6.495725299988408
+        },
+        {
+          "iterations": 10000,
+          "infos": 84160,
+          "seconds": 56.27993809999316
+        }
+      ],
+      "exploitability": null,
+      "certified_equilibrium": false,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": 0.02,
+          "hoeffding95": [
+            -0.04073614619083052,
+            0.08073614619083051
+          ],
+          "unseen_solver_fraction": 0.6321108394458028,
+          "mean_bids": 4.625
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.011,
+          "hoeffding95": [
+            -0.07173614619083052,
+            0.04973614619083051
+          ],
+          "unseen_solver_fraction": 0.7862895305440974,
+          "mean_bids": 4.5855
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.962,
+          "hoeffding95": [
+            -1,
+            -0.9012638538091694
+          ],
+          "unseen_solver_fraction": 0.06220767072029935,
+          "mean_bids": 1.1375
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.963,
+          "hoeffding95": [
+            0.9022638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.5510299625468165,
+          "mean_bids": 2.127
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.962,
+          "hoeffding95": [
+            -1,
+            -0.9012638538091694
+          ],
+          "unseen_solver_fraction": 0.06220767072029935,
+          "mean_bids": 1.1375
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.963,
+          "hoeffding95": [
+            0.9022638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.5510299625468165,
+          "mean_bids": 2.127
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.911,
+          "hoeffding95": [
+            -0.9717361461908306,
+            -0.8502638538091695
+          ],
+          "unseen_solver_fraction": 0.028182701652089408,
+          "mean_bids": 1.0575
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.913,
+          "hoeffding95": [
+            0.8522638538091695,
+            0.9737361461908306
+          ],
+          "unseen_solver_fraction": 0.5129205265724037,
+          "mean_bids": 2.046
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 200042,
+          "ev_p0": -0.032,
+          "hoeffding95": [
+            -0.09273614619083051,
+            0.028736146190830515
+          ],
+          "unseen_solver_fraction": 0.6976351351351351,
+          "mean_bids": 4.624
+        }
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.08174138307763255
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.04071654143109402
+            },
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.018124633762231654
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.006282412224693791
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.006282412224693791
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 23,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.15938640679038119
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.1420672237936068
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.10580371331883626
+            },
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.07470670205320885
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.07131262947807332
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_updates": 156,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0606660660635662
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.04994270678552942
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 6,
+                "mode": "zhai"
+              },
+              "p": 0.049319259325487926
+            },
+            {
+              "bid": {
+                "quantity": 14,
+                "face": 4,
+                "mode": "zhai"
+              },
+              "p": 0.0412368665818932
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.04045741021674194
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_updates": 1,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.006944444444444444
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.006944444444444444
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "no_face_one",
+      "rules": {
+        "face_one": false,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "seed": 761245,
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "information_sets": 79694,
+      "array_bytes": 30501664,
+      "python_traced_peak_bytes": 64058056,
+      "training_seconds": 47.56939910000074,
+      "max_importance": 771452179264.1384,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 8883,
+          "seconds": 5.472619799984386
+        },
+        {
+          "iterations": 10000,
+          "infos": 79694,
+          "seconds": 47.47491059999447
+        }
+      ],
+      "exploitability": null,
+      "certified_equilibrium": false,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": 0.007,
+          "hoeffding95": [
+            -0.05373614619083052,
+            0.06773614619083052
+          ],
+          "unseen_solver_fraction": 0.6072936012156002,
+          "mean_bids": 4.4195
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.04,
+          "hoeffding95": [
+            -0.020736146190830515,
+            0.10073614619083052
+          ],
+          "unseen_solver_fraction": 0.7570342986239474,
+          "mean_bids": 4.388
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.969,
+          "hoeffding95": [
+            -1,
+            -0.9082638538091694
+          ],
+          "unseen_solver_fraction": 0.07208872458410351,
+          "mean_bids": 1.1625
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.951,
+          "hoeffding95": [
+            0.8902638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4230949041608228,
+          "mean_bids": 2.13
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.969,
+          "hoeffding95": [
+            -1,
+            -0.9082638538091694
+          ],
+          "unseen_solver_fraction": 0.07208872458410351,
+          "mean_bids": 1.1625
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.951,
+          "hoeffding95": [
+            0.8902638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4230949041608228,
+          "mean_bids": 2.13
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.918,
+          "hoeffding95": [
+            -0.9787361461908306,
+            -0.8572638538091695
+          ],
+          "unseen_solver_fraction": 0.030977734753146177,
+          "mean_bids": 1.065
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.901,
+          "hoeffding95": [
+            0.8402638538091695,
+            0.9617361461908306
+          ],
+          "unseen_solver_fraction": 0.3889161353604708,
+          "mean_bids": 2.032
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": 0.002,
+          "hoeffding95": [
+            -0.058736146190830514,
+            0.06273614619083051
+          ],
+          "unseen_solver_fraction": 0.6787784012510348,
+          "mean_bids": 4.4355
+        }
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 4,
+                "mode": "zhai"
+              },
+              "p": 0.07253581791157286
+            },
+            {
+              "bid": {
+                "quantity": 13,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.06395124434395591
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.044726302521234135
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.007272945710339033
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.007272945710339033
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 22,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.19849658320495128
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 4,
+                "mode": "zhai"
+              },
+              "p": 0.15789156362028864
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.14880504198192301
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.12350107097723874
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.06517994113574051
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_updates": 151,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 4,
+                "mode": "zhai"
+              },
+              "p": 0.05067866769078929
+            },
+            {
+              "bid": {
+                "quantity": 14,
+                "face": 4,
+                "mode": "zhai"
+              },
+              "p": 0.04247029887508523
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.04208355613784291
+            },
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.04164061562906473
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.04045727044835406
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_updates": 1,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.008333333333333333
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.008333333333333333
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.008333333333333333
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.008333333333333333
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.008333333333333333
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "zhai_mixed_bonus",
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": true,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "seed": 761245,
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "information_sets": 84496,
+      "array_bytes": 38029728,
+      "python_traced_peak_bytes": 73809456,
+      "training_seconds": 56.83220450000954,
+      "max_importance": 32691859199.99999,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9237,
+          "seconds": 6.425997599988477
+        },
+        {
+          "iterations": 10000,
+          "infos": 84496,
+          "seconds": 56.72320410000975
+        }
+      ],
+      "exploitability": null,
+      "certified_equilibrium": false,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.012,
+          "hoeffding95": [
+            -0.07273614619083052,
+            0.04873614619083051
+          ],
+          "unseen_solver_fraction": 0.6318093385214008,
+          "mean_bids": 4.6745
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.013,
+          "hoeffding95": [
+            -0.07373614619083052,
+            0.04773614619083052
+          ],
+          "unseen_solver_fraction": 0.7899860917941586,
+          "mean_bids": 4.5265
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.96,
+          "hoeffding95": [
+            -1,
+            -0.8992638538091694
+          ],
+          "unseen_solver_fraction": 0.05780075187969925,
+          "mean_bids": 1.1275
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.965,
+          "hoeffding95": [
+            0.9042638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4376459598318543,
+          "mean_bids": 2.135
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.96,
+          "hoeffding95": [
+            -1,
+            -0.8992638538091694
+          ],
+          "unseen_solver_fraction": 0.05780075187969925,
+          "mean_bids": 1.1275
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.965,
+          "hoeffding95": [
+            0.9042638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4376459598318543,
+          "mean_bids": 2.135
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.913,
+          "hoeffding95": [
+            -0.9737361461908306,
+            -0.8522638538091695
+          ],
+          "unseen_solver_fraction": 0.029083858458555503,
+          "mean_bids": 1.063
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.924,
+          "hoeffding95": [
+            0.8632638538091695,
+            0.9847361461908306
+          ],
+          "unseen_solver_fraction": 0.4079333986287953,
+          "mean_bids": 2.037
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": 0.005,
+          "hoeffding95": [
+            -0.05573614619083052,
+            0.06573614619083051
+          ],
+          "unseen_solver_fraction": 0.695432843887938,
+          "mean_bids": 4.5505
+        }
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 6,
+                "mode": "zhai"
+              },
+              "p": 0.10031137715910984
+            },
+            {
+              "bid": {
+                "quantity": 13,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.07581590237015269
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.054689905920707556
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.037040524296582875
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.005338336753092448
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 24,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.1606675186900484
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.1143316782661138
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.10417894383248805
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.1021217741771807
+            },
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.09794528176672308
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_updates": 148,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.05025017103855451
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.04766991593854382
+            },
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.043436394303420146
+            },
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.042333047934223406
+            },
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.042200925855023406
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_updates": 3,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.46042999806088813
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.21086629823540817
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0023148148148148147
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.0023148148148148147
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.0023148148148148147
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "all_ones_six",
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": false,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "seed": 761245,
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "information_sets": 84496,
+      "array_bytes": 38029728,
+      "python_traced_peak_bytes": 73523208,
+      "training_seconds": 56.64824999999837,
+      "max_importance": 32691859199.99999,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9237,
+          "seconds": 6.314655099995434
+        },
+        {
+          "iterations": 10000,
+          "infos": 84496,
+          "seconds": 56.54394219999085
+        }
+      ],
+      "exploitability": null,
+      "certified_equilibrium": false,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.012,
+          "hoeffding95": [
+            -0.07273614619083052,
+            0.04873614619083051
+          ],
+          "unseen_solver_fraction": 0.6318093385214008,
+          "mean_bids": 4.6745
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.013,
+          "hoeffding95": [
+            -0.07373614619083052,
+            0.04773614619083052
+          ],
+          "unseen_solver_fraction": 0.7899860917941586,
+          "mean_bids": 4.5265
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.961,
+          "hoeffding95": [
+            -1,
+            -0.9002638538091694
+          ],
+          "unseen_solver_fraction": 0.05827067669172932,
+          "mean_bids": 1.1275
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.965,
+          "hoeffding95": [
+            0.9042638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4376459598318543,
+          "mean_bids": 2.135
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.961,
+          "hoeffding95": [
+            -1,
+            -0.9002638538091694
+          ],
+          "unseen_solver_fraction": 0.05827067669172932,
+          "mean_bids": 1.1275
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.965,
+          "hoeffding95": [
+            0.9042638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.4376459598318543,
+          "mean_bids": 2.135
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.915,
+          "hoeffding95": [
+            -0.9757361461908306,
+            -0.8542638538091695
+          ],
+          "unseen_solver_fraction": 0.02911208151382824,
+          "mean_bids": 1.061
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.919,
+          "hoeffding95": [
+            0.8582638538091695,
+            0.9797361461908306
+          ],
+          "unseen_solver_fraction": 0.40450538687561216,
+          "mean_bids": 2.037
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": 0.005,
+          "hoeffding95": [
+            -0.05573614619083052,
+            0.06573614619083051
+          ],
+          "unseen_solver_fraction": 0.695432843887938,
+          "mean_bids": 4.5505
+        }
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 6,
+                "mode": "zhai"
+              },
+              "p": 0.10031137715910984
+            },
+            {
+              "bid": {
+                "quantity": 13,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.07581590237015269
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.054689905920707556
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.037040524296582875
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.005338336753092448
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 24,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 3,
+                "mode": "zhai"
+              },
+              "p": 0.1606675186900484
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.1143316782661138
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.10417894383248805
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.1021217741771807
+            },
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.09794528176672308
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_updates": 148,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 2,
+                "mode": "zhai"
+              },
+              "p": 0.05025017103855451
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.04766991593854382
+            },
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.043436394303420146
+            },
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 5,
+                "mode": "zhai"
+              },
+              "p": 0.042333047934223406
+            },
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.042200925855023406
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_updates": 3,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 9,
+                "face": 6,
+                "mode": "fly"
+              },
+              "p": 0.46042999806088813
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.21086629823540817
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0023148148148148147
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "zhai"
+              },
+              "p": 0.0023148148148148147
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.0023148148148148147
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "fly_open_floor_three",
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": false,
+        "quantity_floor": 3,
+        "max_quantity": 14
+      },
+      "seed": 761245,
+      "requested_iterations": 10000,
+      "completed_iterations": 10000,
+      "status": "completed_budget",
+      "information_sets": 84933,
+      "array_bytes": 37438960,
+      "python_traced_peak_bytes": 73589592,
+      "training_seconds": 45.08998469999642,
+      "max_importance": 37462258372.859146,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "infos": 9673,
+          "seconds": 5.3926099999807775
+        },
+        {
+          "iterations": 10000,
+          "infos": 84933,
+          "seconds": 44.986610899999505
+        }
+      ],
+      "exploitability": null,
+      "certified_equilibrium": false,
+      "matches": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.003,
+          "hoeffding95": [
+            -0.06373614619083051,
+            0.05773614619083051
+          ],
+          "unseen_solver_fraction": 0.6468740182218033,
+          "mean_bids": 4.8685
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.016,
+          "hoeffding95": [
+            -0.07673614619083052,
+            0.044736146190830516
+          ],
+          "unseen_solver_fraction": 0.7062297580491522,
+          "mean_bids": 4.7395
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.965,
+          "hoeffding95": [
+            -1,
+            -0.9042638538091694
+          ],
+          "unseen_solver_fraction": 0.102803738317757,
+          "mean_bids": 1.2465
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.97,
+          "hoeffding95": [
+            0.9092638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.291327264015333,
+          "mean_bids": 2.078
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.965,
+          "hoeffding95": [
+            -1,
+            -0.9042638538091694
+          ],
+          "unseen_solver_fraction": 0.102803738317757,
+          "mean_bids": 1.2465
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.97,
+          "hoeffding95": [
+            0.9092638538091694,
+            1
+          ],
+          "unseen_solver_fraction": 0.291327264015333,
+          "mean_bids": 2.078
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.899,
+          "hoeffding95": [
+            -0.9597361461908306,
+            -0.8382638538091695
+          ],
+          "unseen_solver_fraction": 0.04196471149260849,
+          "mean_bids": 1.097
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.927,
+          "hoeffding95": [
+            0.8662638538091695,
+            0.9877361461908306
+          ],
+          "unseen_solver_fraction": 0.2777777777777778,
+          "mean_bids": 2.0265
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": -0.004,
+          "hoeffding95": [
+            -0.06473614619083051,
+            0.05673614619083052
+          ],
+          "unseen_solver_fraction": 0.6749763603541649,
+          "mean_bids": 4.8165
+        }
+      },
+      "examples": [
+        {
+          "hand": [
+            1,
+            1,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 14,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 11,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.5358415844613041
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.24941132127452562
+            },
+            {
+              "bid": {
+                "quantity": 12,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.008753563110322531
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.0030799107922587646
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.0030799107922587646
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            4,
+            4
+          ],
+          "root_updates": 20,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.574898764527579
+            },
+            {
+              "bid": {
+                "quantity": 4,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.2045284217699189
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.08293347957645855
+            },
+            {
+              "bid": {
+                "quantity": 7,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.04398565487232806
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.029883344251505906
+            }
+          ]
+        },
+        {
+          "hand": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "root_updates": 154,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 6,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.07345648888974053
+            },
+            {
+              "bid": {
+                "quantity": 10,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.06768399067698475
+            },
+            {
+              "bid": {
+                "quantity": 11,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.06682400580755589
+            },
+            {
+              "bid": {
+                "quantity": 8,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.0634145230915207
+            },
+            {
+              "bid": {
+                "quantity": 5,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.06260840481035135
+            }
+          ]
+        },
+        {
+          "hand": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "root_updates": 2,
+          "top_openings": [
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 1,
+                "mode": "fly"
+              },
+              "p": 0.013888888888888888
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 2,
+                "mode": "fly"
+              },
+              "p": 0.013888888888888888
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 3,
+                "mode": "fly"
+              },
+              "p": 0.013888888888888888
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 4,
+                "mode": "fly"
+              },
+              "p": 0.013888888888888888
+            },
+            {
+              "bid": {
+                "quantity": 3,
+                "face": 5,
+                "mode": "fly"
+              },
+              "p": 0.013888888888888888
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "total_seconds": 328.17245749998256
+}

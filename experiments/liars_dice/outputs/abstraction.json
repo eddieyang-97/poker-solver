@@ -1,0 +1,273 @@
+{
+  "source_sha256": {
+    "beliefs.py": "c5cd576da25a6aae49cea21c0119fa6b2d0d0bf873c13c86485b647de9021940",
+    "game.py": "cadac09bb2e7a422b284fc3a089efabe491cd8bae4566d84614c110657169383",
+    "liars_dice_analysis.py": "1c4111cdf869dceae6520f77e2287263898f6924e21949172b49e2dc7ad1abd0",
+    "mccfr.py": "809cdbdb4ae13b6d95a8bac259fa3b9b1025a085f401f04097f42a085bd89205",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "run_abstraction.py": "c6439d70181f951ebbeae535d4ade56f9cb90b4b2fdc1a0b9789b5a93af6441d",
+    "run_research.py": "5606837e4fc46e7bfe87346401aa2afee9934c34c936628b3f4d58451a4ec4bc",
+    "summarize.py": "039e14b4f3f68e5c30569f9426682c998ea5ce9161f1579e7da9b3abe1437635"
+  },
+  "action_restriction": "smallest legal quantity for every face/mode",
+  "runs": [
+    {
+      "seed": 761245,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 50000,
+      "completed_iterations": 5070,
+      "status": "Information-set budget reached; run is incomplete",
+      "training_seconds": 15.501417099992977,
+      "python_traced_peak_bytes": 70326208,
+      "infos": 100000,
+      "max_importance": 5.420837913980727e+18,
+      "opening_actions": 12,
+      "matches_in_full_game": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": 0.181,
+          "hoeffding95": [
+            0.12026385380916949,
+            0.2417361461908305
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 6.519
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": -0.194,
+          "hoeffding95": [
+            -0.2547361461908305,
+            -0.1332638538091695
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 5.563
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.75,
+          "hoeffding95": [
+            -0.8107361461908306,
+            -0.6892638538091694
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 2.38
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.761,
+          "hoeffding95": [
+            0.7002638538091694,
+            0.8217361461908306
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 3.308
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.75,
+          "hoeffding95": [
+            -0.8107361461908306,
+            -0.6892638538091694
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 2.38
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.761,
+          "hoeffding95": [
+            0.7002638538091694,
+            0.8217361461908306
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 3.308
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 861245,
+          "ev_p0": -0.455,
+          "hoeffding95": [
+            -0.5157361461908305,
+            -0.3942638538091695
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 1.573
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 861246,
+          "ev_p0": 0.387,
+          "hoeffding95": [
+            0.3262638538091695,
+            0.4477361461908305
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 2.357
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 961245,
+          "ev_p0": -0.017,
+          "hoeffding95": [
+            -0.07773614619083052,
+            0.043736146190830515
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 10.618
+        }
+      },
+      "full_game_lower_bound": {
+        "empirical_candidate_br_sum": 1.5110000000000001,
+        "nashconv_lower_bound_95_familywise": 1.359101073133563,
+        "exploitability_lower_bound_95_familywise": 0.6795505365667815,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    },
+    {
+      "seed": 42,
+      "rules": {
+        "face_one": true,
+        "all_ones_wild_seven": true,
+        "zhai_mixed_bonus": false,
+        "opening_zhai": true,
+        "quantity_floor": 1,
+        "max_quantity": 14
+      },
+      "requested_iterations": 50000,
+      "completed_iterations": 5046,
+      "status": "Information-set budget reached; run is incomplete",
+      "training_seconds": 17.387347999989288,
+      "python_traced_peak_bytes": 65635376,
+      "infos": 100000,
+      "max_importance": 5.073904975870933e+18,
+      "opening_actions": 12,
+      "matches_in_full_game": {
+        "uniform_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": 0.226,
+          "hoeffding95": [
+            0.1652638538091695,
+            0.28673614619083054
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 6.4865
+        },
+        "uniform_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": -0.23,
+          "hoeffding95": [
+            -0.29073614619083055,
+            -0.1692638538091695
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 5.461
+        },
+        "probability_30_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.738,
+          "hoeffding95": [
+            -0.7987361461908306,
+            -0.6772638538091694
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 2.3145
+        },
+        "probability_30_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.742,
+          "hoeffding95": [
+            0.6812638538091694,
+            0.8027361461908306
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 3.246
+        },
+        "probability_50_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.738,
+          "hoeffding95": [
+            -0.7987361461908306,
+            -0.6772638538091694
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 2.3145
+        },
+        "probability_50_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.742,
+          "hoeffding95": [
+            0.6812638538091694,
+            0.8027361461908306
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 3.246
+        },
+        "probability_70_solver_seat0": {
+          "games": 2000,
+          "seed": 100042,
+          "ev_p0": -0.45,
+          "hoeffding95": [
+            -0.5107361461908305,
+            -0.3892638538091695
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 1.5605
+        },
+        "probability_70_solver_seat1": {
+          "games": 2000,
+          "seed": 100043,
+          "ev_p0": 0.376,
+          "hoeffding95": [
+            0.3152638538091695,
+            0.4367361461908305
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 2.2905
+        },
+        "selfplay": {
+          "games": 2000,
+          "seed": 200042,
+          "ev_p0": 0.034,
+          "hoeffding95": [
+            -0.026736146190830513,
+            0.09473614619083051
+          ],
+          "unseen_solver_fraction": null,
+          "mean_bids": 10.897
+        }
+      },
+      "full_game_lower_bound": {
+        "empirical_candidate_br_sum": 1.48,
+        "nashconv_lower_bound_95_familywise": 1.3281010731335632,
+        "exploitability_lower_bound_95_familywise": 0.6640505365667816,
+        "exploitability_upper_bound": null,
+        "note": "Candidate responses give only a lower bound; no best-response training or equilibrium certificate."
+      },
+      "certified_equilibrium": false,
+      "exploitability_upper_bound": null
+    }
+  ]
+}

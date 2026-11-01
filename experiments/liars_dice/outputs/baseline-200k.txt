@@ -1,0 +1,42 @@
+EV p0 self-play 0.0207
+BR player0 payoff 0.0358 BR player1 payoff -0.0091 NashConv 0.0267
+opening distribution for each hand type P(3),P(4),P(5),P(6),P(7),P(8),P(>8)
+my 0 (0.1317) 0.9920 0.0037 0.0019 0.0013 0.0005 0.0002 0.0003
+my 1 (0.3292) 0.9805 0.0152 0.0023 0.0010 0.0004 0.0002 0.0003
+my 2 (0.3292) 0.9352 0.0613 0.0017 0.0012 0.0003 0.0002 0.0002
+my 3 (0.1646) 0.9623 0.0287 0.0054 0.0031 0.0002 0.0001 0.0001
+my 4 (0.0412) 0.9574 0.0247 0.0105 0.0041 0.0020 0.0012 0.0002
+my 6 (0.0039) 0.7363 0.0619 0.0821 0.0926 0.0184 0.0046 0.0042
+my 7 (0.0003) 0.1745 0.1401 0.1614 0.1678 0.2275 0.0882 0.0405
+response to opening 3:
+my 0: challenge=0.9847 raise-next=0.0094 others=0.0059
+my 1: challenge=0.6022 raise-next=0.3941 others=0.0037
+my 2: challenge=0.0066 raise-next=0.9774 others=0.0160
+my 3: challenge=0.0000 raise-next=0.9735 others=0.0265
+my 4: challenge=0.0000 raise-next=0.9278 others=0.0722
+my 6: challenge=0.0001 raise-next=0.6602 others=0.3397
+my 7: challenge=0.0013 raise-next=0.2140 others=0.7847
+response to opening 4:
+my 0: challenge=0.9964 raise-next=0.0018 others=0.0018
+my 1: challenge=0.9897 raise-next=0.0083 others=0.0020
+my 2: challenge=0.3577 raise-next=0.6358 others=0.0065
+my 3: challenge=0.0005 raise-next=0.9821 others=0.0174
+my 4: challenge=0.0000 raise-next=0.9833 others=0.0167
+my 6: challenge=0.0001 raise-next=0.8636 others=0.1363
+my 7: challenge=0.0014 raise-next=0.0874 others=0.9112
+response to opening 5:
+my 0: challenge=0.9864 raise-next=0.0058 others=0.0078
+my 1: challenge=0.9805 raise-next=0.0064 others=0.0131
+my 2: challenge=0.9424 raise-next=0.0370 others=0.0206
+my 3: challenge=0.7234 raise-next=0.2322 others=0.0444
+my 4: challenge=0.0072 raise-next=0.4717 others=0.5211
+my 6: challenge=0.0001 raise-next=0.6003 others=0.3996
+my 7: challenge=0.0015 raise-next=0.2305 others=0.7679
+response to opening 6:
+my 0: challenge=0.9790 raise-next=0.0135 others=0.0076
+my 1: challenge=0.9763 raise-next=0.0144 others=0.0093
+my 2: challenge=0.9753 raise-next=0.0084 others=0.0163
+my 3: challenge=0.9338 raise-next=0.0291 others=0.0371
+my 4: challenge=0.2393 raise-next=0.5570 others=0.2037
+my 6: challenge=0.0001 raise-next=0.5052 others=0.4946
+my 7: challenge=0.0034 raise-next=0.2641 others=0.7325
