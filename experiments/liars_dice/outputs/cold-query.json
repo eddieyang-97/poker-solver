@@ -1,0 +1,85 @@
+{
+  "snapshot_sha256": "b972f00273f847e84072e2444b505f2f9ec06311c6a38534f26a6451be63c339",
+  "source_sha256_lf": {
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "finite_family.py": "d9a61615192a3b418bbde2ef34cdfe3a3646bb7cc98bad559e01faf99cb19cd9",
+    "policy_space.py": "655036068e0fb7fa212d64f1afd8742a0378072b1e0e8f9b08525d55aa5fd925",
+    "streaming_analysis.py": "a02ce4fe9cb91a1980e48521d59b12ec6b6a0cf6c5282b223d9c73d527a25b22",
+    "run_bounded_response.py": "ac9be3266c3a74de8d69de8b5b10c756551658a6acada3d43cc94ba8c4543922",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "mccfr.py": "0dadf73e47cd96cdfef51e493caab8ef77345772b4d645ac49d0338a92cdca2a",
+    "bounded_response.py": "036d53de36e6ad0b6d0834b868f22e9196192a5081d3fc73c4e5e6d76753d373",
+    "run_cold_query.py": "73b317648a82ac8c54284d5e9e3242efaa06d3bb7cd53bc0c1e7f79a640b215e",
+    "run_analysis_research.py": "b074d19086079e05ef26e2e1ff1cb8e7f500a805b139598cd3efce2970da4939"
+  },
+  "samples": [
+    {
+      "load_seconds": 0.2323208000161685,
+      "first_query_seconds": 0.0027099999715574086,
+      "status": "ok",
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "result_sha256": "f967ad10ced633fd9f085c9b41d0a7495f3a2d90c8d307b313b5e2912ab27c16",
+      "peak_memory": {
+        "bytes": 39493632,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "fresh_process_first_response_seconds": 0.5081741000176407
+    },
+    {
+      "load_seconds": 0.23043360002338886,
+      "first_query_seconds": 0.0025969999842345715,
+      "status": "ok",
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "result_sha256": "f967ad10ced633fd9f085c9b41d0a7495f3a2d90c8d307b313b5e2912ab27c16",
+      "peak_memory": {
+        "bytes": 39358464,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "fresh_process_first_response_seconds": 0.49335780000546947
+    },
+    {
+      "load_seconds": 0.2330488000297919,
+      "first_query_seconds": 0.0026384000084362924,
+      "status": "ok",
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "result_sha256": "f967ad10ced633fd9f085c9b41d0a7495f3a2d90c8d307b313b5e2912ab27c16",
+      "peak_memory": {
+        "bytes": 39682048,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "fresh_process_first_response_seconds": 0.4938001000555232
+    },
+    {
+      "load_seconds": 0.23016999999526888,
+      "first_query_seconds": 0.0024698000052012503,
+      "status": "ok",
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "result_sha256": "f967ad10ced633fd9f085c9b41d0a7495f3a2d90c8d307b313b5e2912ab27c16",
+      "peak_memory": {
+        "bytes": 39350272,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "fresh_process_first_response_seconds": 0.49251700000604615
+    },
+    {
+      "load_seconds": 0.23112040001433343,
+      "first_query_seconds": 0.0025605999981053174,
+      "status": "ok",
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "result_sha256": "f967ad10ced633fd9f085c9b41d0a7495f3a2d90c8d307b313b5e2912ab27c16",
+      "peak_memory": {
+        "bytes": 39309312,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "fresh_process_first_response_seconds": 0.4901848000008613
+    }
+  ],
+  "first_response_seconds": {
+    "samples": 5,
+    "median": 0.49335780000546947,
+    "p95": 0.5052993000252173,
+    "maximum": 0.5081741000176407
+  },
+  "meaning": "local process startup + imports + snapshot load + first supported query + output + process exit; no network/provider latency"
+}

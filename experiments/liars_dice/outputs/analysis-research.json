@@ -1,0 +1,1185 @@
+{
+  "source_base": "aa81e0a5b75e34fea04188aaa49add45059ec321",
+  "source_sha256_lf": {
+    "beliefs.py": "c5cd576da25a6aae49cea21c0119fa6b2d0d0bf873c13c86485b647de9021940",
+    "bounded_response.py": "036d53de36e6ad0b6d0834b868f22e9196192a5081d3fc73c4e5e6d76753d373",
+    "finite_family.py": "d9a61615192a3b418bbde2ef34cdfe3a3646bb7cc98bad559e01faf99cb19cd9",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "liars_dice_analysis.py": "df2ad17466568e0e78f6618cdbeb73968557efeed5689d0045f3afc453a662d9",
+    "mccfr.py": "0dadf73e47cd96cdfef51e493caab8ef77345772b4d645ac49d0338a92cdca2a",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "policy_space.py": "655036068e0fb7fa212d64f1afd8742a0378072b1e0e8f9b08525d55aa5fd925",
+    "prior_control.py": "7e271e89dcfd0145876cfeaef3902fd29402a326eda10c56b8980c9c222a5f11",
+    "run_abstraction.py": "c6439d70181f951ebbeae535d4ade56f9cb90b4b2fdc1a0b9789b5a93af6441d",
+    "run_analysis_research.py": "b074d19086079e05ef26e2e1ff1cb8e7f500a805b139598cd3efce2970da4939",
+    "run_bounded_response.py": "ac9be3266c3a74de8d69de8b5b10c756551658a6acada3d43cc94ba8c4543922",
+    "run_family.py": "f087a0c1062c944dc2bfff72c746d929f74740fa4fbd42e1f3ec99cacee6d7bc",
+    "run_guided.py": "2d05e006e2781fd5d8aba7fd8fe7a83815079363232fcb6d821dad33f90a3181",
+    "run_policy_space.py": "243cd827e34c0c11569085208ad222d34b88318f862e14e14c0e0862583de8a4",
+    "run_research.py": "5606837e4fc46e7bfe87346401aa2afee9934c34c936628b3f4d58451a4ec4bc",
+    "streaming_analysis.py": "a02ce4fe9cb91a1980e48521d59b12ec6b6a0cf6c5282b223d9c73d527a25b22",
+    "summarize.py": "039e14b4f3f68e5c30569f9426682c998ea5ce9161f1579e7da9b3abe1437635",
+    "tests/test_bounded_response.py": "0d67850e27ab30ba7781ec6d7af0364dc9146a9065e2c3f0d4c7547e5f9c2b53",
+    "tests/test_finite_family.py": "baa03021a473176fed2e1ee3e2c52c1d9c21531b84c74864bda854d04fa82ef9",
+    "tests/test_guidance.py": "c8f0e4a6d0faa69f04f541805ac6bc76ba3822746c82f8892e8589a09a845aae",
+    "tests/test_policy_space.py": "ca2c33164194b598c34a9f7efccbc69f0f1995ef25065f75ce24bceb7849502b",
+    "tests/test_prior_control.py": "36487aca2cdf8862a20fa15e17673cdd3c89e828498bf0b6a37eb36e4790f917",
+    "tests/test_research.py": "b3d4dfff6cfc33fcab50ff1e48c48a670e62d048ecf052f22a3ef435321d6a55",
+    "tests/test_streaming_analysis.py": "9775873c1fe8394996d6e2f4c81c426b2bd1cf9c413b75a68f9061dde9dab3ba"
+  },
+  "python": "3.14.8",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "seed": 460046,
+  "games_per_seat": 1000,
+  "snapshot_bytes": 3478,
+  "snapshot_sha256": "b972f00273f847e84072e2444b505f2f9ec06311c6a38534f26a6451be63c339",
+  "precompute": {
+    "private_hands_per_player": 252,
+    "private_deals": 63504,
+    "opening_actions": 144,
+    "public_decision_histories": "1405295396651156298903336746774856905525297152",
+    "maximum_bids_before_challenge": 150,
+    "perfect_recall_infosets": "354134439956091387323640860187263940192374882304",
+    "syntactic_bids": 168,
+    "reachable_bids": 150,
+    "distinct_views": 11,
+    "view_bytes": 2772,
+    "compact_score_payload_bytes": 3108,
+    "compact_sha256": "242bfd9d0c8a7f88e5ff123a27a9993eeba7b0a6203c0160de67864606e01e4e",
+    "truth_bytes": 10668672,
+    "packed_truth_bytes": 1333584,
+    "packed_sha256": "2d42927e52356d46ad77cf9932d5151004727fa3c82695576d41d1d03a2aaf31",
+    "model_math_build_seconds": 0.0913989000255242,
+    "compact_build_seconds": 0.0021995999850332737,
+    "packed_build_seconds": 0.03390550002222881,
+    "mean_query_seconds_including_equality_check": {
+      "counts": 4.032500030007214e-06,
+      "packed": 9.35950002167374e-06
+    },
+    "ordered_chance_mass": 60466176,
+    "persistence_decision": "retain compact policy JSON; recompute rule tables; full truth table not persisted"
+  },
+  "toy_abstractions": {
+    "recursive_reference": {
+      "ev_p0": -0.06847643482531453,
+      "br0": 0.18000476828566106,
+      "br1": 0.18474423783637317,
+      "gain0": 0.2484812031109756,
+      "gain1": 0.11626780301105864,
+      "nashconv": 0.3647490061220342,
+      "exploitability": 0.1823745030610171
+    },
+    "exact_stream": {
+      "ev_p0": -0.06847643482531453,
+      "br0": 0.18000476828566106,
+      "br1": 0.18474423783637317,
+      "gain0": 0.2484812031109756,
+      "gain1": 0.11626780301105864,
+      "nashconv": 0.3647490061220342,
+      "exploitability": 0.1823745030610171
+    },
+    "last_bid": {
+      "ev_p0": -0.05524343934698299,
+      "br0": 0.1485512296990635,
+      "br1": 0.21543883310894338,
+      "gain0": 0.20379466904604648,
+      "gain1": 0.1601953937619604,
+      "nashconv": 0.3639900628080069,
+      "exploitability": 0.18199503140400344
+    },
+    "last_two": {
+      "ev_p0": -0.06109125726091886,
+      "br0": 0.1810665982912497,
+      "br1": 0.21430079520821688,
+      "gain0": 0.24215785555216854,
+      "gain1": 0.15320953794729802,
+      "nashconv": 0.3953673934994666,
+      "exploitability": 0.1976836967497333
+    }
+  },
+  "cold_workers": [
+    {
+      "load_seconds": 0.2552127999952063,
+      "query_seconds": {
+        "samples": 161,
+        "median": 0.0036792000173591077,
+        "p95": 0.010289600002579391,
+        "maximum": 0.16914120002184063
+      },
+      "repeated_stress_query_seconds": {
+        "samples": 100,
+        "median": 0.0013640499964822084,
+        "p95": 0.0015780649671796709,
+        "maximum": 0.0021440000273287296
+      },
+      "cold_cache": {
+        "hits": 7,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "final_cache": {
+        "hits": 108,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "statuses": {
+        "ok": 159,
+        "zero_model_support": 2
+      },
+      "maximum_history": 150,
+      "response_bytes": {
+        "samples": 161,
+        "median": 7041,
+        "p95": 11208.0,
+        "maximum": 11208
+      },
+      "peak_process_memory": {
+        "bytes": 65409024,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "cpu_seconds": 2.375,
+      "wall_seconds": 2.396011799981352,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "digest": "7d8a84491ec16a19391d040afb8c95652aa82f6667dc4b237de2c122b6445a73",
+      "process_wall_seconds": 2.7075377999572083
+    },
+    {
+      "load_seconds": 0.28011459996923804,
+      "query_seconds": {
+        "samples": 161,
+        "median": 0.003658599976915866,
+        "p95": 0.010796200018376112,
+        "maximum": 0.21323639998445287
+      },
+      "repeated_stress_query_seconds": {
+        "samples": 100,
+        "median": 0.0013383000041358173,
+        "p95": 0.0016472400166094303,
+        "maximum": 0.002062199986539781
+      },
+      "cold_cache": {
+        "hits": 7,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "final_cache": {
+        "hits": 108,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "statuses": {
+        "ok": 159,
+        "zero_model_support": 2
+      },
+      "maximum_history": 150,
+      "response_bytes": {
+        "samples": 161,
+        "median": 7041,
+        "p95": 11208.0,
+        "maximum": 11208
+      },
+      "peak_process_memory": {
+        "bytes": 64925696,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "cpu_seconds": 2.46875,
+      "wall_seconds": 2.5075770000112243,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "digest": "7d8a84491ec16a19391d040afb8c95652aa82f6667dc4b237de2c122b6445a73",
+      "process_wall_seconds": 2.8478598999790847
+    },
+    {
+      "load_seconds": 0.2544706999906339,
+      "query_seconds": {
+        "samples": 161,
+        "median": 0.0035862000077031553,
+        "p95": 0.010203499987255782,
+        "maximum": 0.1771240999805741
+      },
+      "repeated_stress_query_seconds": {
+        "samples": 100,
+        "median": 0.0012902000162284821,
+        "p95": 0.00140519498672802,
+        "maximum": 0.0016214000061154366
+      },
+      "cold_cache": {
+        "hits": 7,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "final_cache": {
+        "hits": 108,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "statuses": {
+        "ok": 159,
+        "zero_model_support": 2
+      },
+      "maximum_history": 150,
+      "response_bytes": {
+        "samples": 161,
+        "median": 7041,
+        "p95": 11208.0,
+        "maximum": 11208
+      },
+      "peak_process_memory": {
+        "bytes": 64847872,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "cpu_seconds": 2.375,
+      "wall_seconds": 2.40080029994715,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "digest": "7d8a84491ec16a19391d040afb8c95652aa82f6667dc4b237de2c122b6445a73",
+      "process_wall_seconds": 2.704408699995838
+    },
+    {
+      "load_seconds": 0.2452515999902971,
+      "query_seconds": {
+        "samples": 161,
+        "median": 0.003618700022343546,
+        "p95": 0.011006999993696809,
+        "maximum": 0.18434939999133348
+      },
+      "repeated_stress_query_seconds": {
+        "samples": 100,
+        "median": 0.0012532999971881509,
+        "p95": 0.0013961700315121561,
+        "maximum": 0.0017013000324368477
+      },
+      "cold_cache": {
+        "hits": 7,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "final_cache": {
+        "hits": 108,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "statuses": {
+        "ok": 159,
+        "zero_model_support": 2
+      },
+      "maximum_history": 150,
+      "response_bytes": {
+        "samples": 161,
+        "median": 7041,
+        "p95": 11208.0,
+        "maximum": 11208
+      },
+      "peak_process_memory": {
+        "bytes": 64827392,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "cpu_seconds": 2.421875,
+      "wall_seconds": 2.4500358999939635,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "digest": "7d8a84491ec16a19391d040afb8c95652aa82f6667dc4b237de2c122b6445a73",
+      "process_wall_seconds": 2.7460889000212774
+    },
+    {
+      "load_seconds": 0.2602862000348978,
+      "query_seconds": {
+        "samples": 161,
+        "median": 0.004148899985011667,
+        "p95": 0.01256539998576045,
+        "maximum": 0.2010578000335954
+      },
+      "repeated_stress_query_seconds": {
+        "samples": 100,
+        "median": 0.0013066499959677458,
+        "p95": 0.0014376450009876863,
+        "maximum": 0.0018226999673061073
+      },
+      "cold_cache": {
+        "hits": 7,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "final_cache": {
+        "hits": 108,
+        "misses": 154,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "statuses": {
+        "ok": 159,
+        "zero_model_support": 2
+      },
+      "maximum_history": 150,
+      "response_bytes": {
+        "samples": 161,
+        "median": 7041,
+        "p95": 11208.0,
+        "maximum": 11208
+      },
+      "peak_process_memory": {
+        "bytes": 66289664,
+        "method": "Windows PeakWorkingSetSize"
+      },
+      "cpu_seconds": 2.53125,
+      "wall_seconds": 2.553507400036324,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "digest": "7d8a84491ec16a19391d040afb8c95652aa82f6667dc4b237de2c122b6445a73",
+      "process_wall_seconds": 2.843831299978774
+    }
+  ],
+  "full_game": [
+    {
+      "generation": 0,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=0",
+      "representation": "exact_stream",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.03758438436721977,
+          "upper": 0.9044861047604529,
+          "width": 0.8669017203932331,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 303,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460046,
+            "ev_p0": 0.052,
+            "hoeffding95": [
+              -0.033893881669347516,
+              0.13789388166934752
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.226
+          },
+          "wall_seconds": 0.7323519999627024
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.8412924276871746,
+          "upper": 0.9999999999999996,
+          "width": 0.15870757231282495,
+          "stats": {
+            "expanded_own_nodes": 25,
+            "depth_frontiers": 272,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 2931,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460047,
+            "ev_p0": -0.802,
+            "hoeffding95": [
+              -0.8878938816693476,
+              -0.7161061183306525
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.409
+          },
+          "wall_seconds": 9.005715299979784
+        }
+      ],
+      "nashconv_lower": 0.8788768120543944,
+      "nashconv_upper": 1.9044861047604524,
+      "cached_states": {
+        "hits": 37,
+        "misses": 3220,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 11592
+    },
+    {
+      "generation": 0,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=0",
+      "representation": "last_bid",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.03758438436721977,
+          "upper": 0.9044861047604529,
+          "width": 0.8669017203932331,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 303,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460046,
+            "ev_p0": 0.052,
+            "hoeffding95": [
+              -0.033893881669347516,
+              0.13789388166934752
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.226
+          },
+          "wall_seconds": 0.7399277999647893
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.8412924276871746,
+          "upper": 0.9999999999999996,
+          "width": 0.15870757231282495,
+          "stats": {
+            "expanded_own_nodes": 25,
+            "depth_frontiers": 272,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 2931,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460047,
+            "ev_p0": -0.802,
+            "hoeffding95": [
+              -0.8878938816693476,
+              -0.7161061183306525
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.409
+          },
+          "wall_seconds": 8.412167700007558
+        }
+      ],
+      "nashconv_lower": 0.8788768120543944,
+      "nashconv_upper": 1.9044861047604524,
+      "cached_states": {
+        "hits": 37,
+        "misses": 3220,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 11592
+    },
+    {
+      "generation": 0,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=0",
+      "representation": "last_two",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.03758438436721977,
+          "upper": 0.9044861047604529,
+          "width": 0.8669017203932331,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 303,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460046,
+            "ev_p0": 0.052,
+            "hoeffding95": [
+              -0.033893881669347516,
+              0.13789388166934752
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.226
+          },
+          "wall_seconds": 0.5676229999517091
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.8412924276871746,
+          "upper": 0.9999999999999996,
+          "width": 0.15870757231282495,
+          "stats": {
+            "expanded_own_nodes": 25,
+            "depth_frontiers": 272,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 2931,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460047,
+            "ev_p0": -0.802,
+            "hoeffding95": [
+              -0.8878938816693476,
+              -0.7161061183306525
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.409
+          },
+          "wall_seconds": 8.671113400021568
+        }
+      ],
+      "nashconv_lower": 0.8788768120543944,
+      "nashconv_upper": 1.9044861047604524,
+      "cached_states": {
+        "hits": 37,
+        "misses": 3220,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 11592
+    },
+    {
+      "generation": 1,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=1",
+      "representation": "exact_stream",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.20430903716737592,
+          "upper": 0.9044861047604529,
+          "width": 0.700177067593077,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 642,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460066,
+            "ev_p0": 0.25,
+            "hoeffding95": [
+              0.16410611833065247,
+              0.3358938816693475
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.489
+          },
+          "wall_seconds": 1.2350611999863759
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.44603143058518296,
+          "upper": 0.9451493225170768,
+          "width": 0.4991178919318939,
+          "stats": {
+            "expanded_own_nodes": 30,
+            "depth_frontiers": 606,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 3361,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460067,
+            "ev_p0": -0.492,
+            "hoeffding95": [
+              -0.5778938816693475,
+              -0.40610611833065247
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.265
+          },
+          "wall_seconds": 21.72498749999795
+        }
+      ],
+      "nashconv_lower": 0.6503404677525588,
+      "nashconv_upper": 1.8496354272775297,
+      "cached_states": {
+        "hits": 50,
+        "misses": 3737,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 17640
+    },
+    {
+      "generation": 1,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=1",
+      "representation": "last_bid",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.03758438436721979,
+          "upper": 0.9044861047604524,
+          "width": 0.8669017203932327,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 508,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460066,
+            "ev_p0": 0.07,
+            "hoeffding95": [
+              -0.015893881669347507,
+              0.15589388166934753
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.219
+          },
+          "wall_seconds": 0.7502906000008807
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.4900965554180599,
+          "upper": 0.942291526449404,
+          "width": 0.45219497103134404,
+          "stats": {
+            "expanded_own_nodes": 30,
+            "depth_frontiers": 1106,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 3361,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460067,
+            "ev_p0": -0.542,
+            "hoeffding95": [
+              -0.6278938816693476,
+              -0.4561061183306525
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.26
+          },
+          "wall_seconds": 11.857775899989065
+        }
+      ],
+      "nashconv_lower": 0.5276809397852797,
+      "nashconv_upper": 1.8467776312098563,
+      "cached_states": {
+        "hits": 43,
+        "misses": 3784,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 17640
+    },
+    {
+      "generation": 1,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=1",
+      "representation": "last_two",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.20430903716737592,
+          "upper": 0.9044861047604529,
+          "width": 0.700177067593077,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 642,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460066,
+            "ev_p0": 0.25,
+            "hoeffding95": [
+              0.16410611833065247,
+              0.3358938816693475
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.489
+          },
+          "wall_seconds": 1.0033337000058964
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.5015206858251674,
+          "upper": 0.9864369884448442,
+          "width": 0.4849163026196768,
+          "stats": {
+            "expanded_own_nodes": 30,
+            "depth_frontiers": 1313,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 3361,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460067,
+            "ev_p0": -0.524,
+            "hoeffding95": [
+              -0.6098938816693475,
+              -0.4381061183306525
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.329
+          },
+          "wall_seconds": 16.491623500012793
+        }
+      ],
+      "nashconv_lower": 0.7058297229925433,
+      "nashconv_upper": 1.8909230932052972,
+      "cached_states": {
+        "hits": 45,
+        "misses": 3733,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 17640
+    },
+    {
+      "generation": 2,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "representation": "exact_stream",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.48631139274226676,
+          "upper": 0.9479035288061346,
+          "width": 0.46159213606386784,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 673,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460086,
+            "ev_p0": 0.548,
+            "hoeffding95": [
+              0.4621061183306525,
+              0.6338938816693476
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.628
+          },
+          "wall_seconds": 0.7749928999692202
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.6962229207511496,
+          "upper": 1.0,
+          "width": 0.30377707924885045,
+          "stats": {
+            "expanded_own_nodes": 25,
+            "depth_frontiers": 1506,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 2931,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460087,
+            "ev_p0": -0.716,
+            "hoeffding95": [
+              -0.8018938816693475,
+              -0.6301061183306524
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.677
+          },
+          "wall_seconds": 17.071841400000267
+        }
+      ],
+      "nashconv_lower": 1.1825343134934163,
+      "nashconv_upper": 1.9479035288061346,
+      "cached_states": {
+        "hits": 40,
+        "misses": 3211,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 23688
+    },
+    {
+      "generation": 2,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "representation": "last_bid",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.03758438436721974,
+          "upper": 0.9044861047604532,
+          "width": 0.8669017203932334,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 573,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460086,
+            "ev_p0": 0.084,
+            "hoeffding95": [
+              -0.001893881669347508,
+              0.16989388166934752
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.2
+          },
+          "wall_seconds": 0.5747972999815829
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.6088417979108438,
+          "upper": 0.9979666868343195,
+          "width": 0.38912488892347574,
+          "stats": {
+            "expanded_own_nodes": 25,
+            "depth_frontiers": 1058,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 2931,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460087,
+            "ev_p0": -0.58,
+            "hoeffding95": [
+              -0.6658938816693475,
+              -0.49410611833065243
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.385
+          },
+          "wall_seconds": 12.551755900029093
+        }
+      ],
+      "nashconv_lower": 0.6464261822780636,
+      "nashconv_upper": 1.9024527915947727,
+      "cached_states": {
+        "hits": 44,
+        "misses": 3415,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 23688
+    },
+    {
+      "generation": 2,
+      "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+      "representation": "last_two",
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.48631139274226676,
+          "upper": 0.9479035288061346,
+          "width": 0.46159213606386784,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 673,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460086,
+            "ev_p0": 0.548,
+            "hoeffding95": [
+              0.4621061183306525,
+              0.6338938816693476
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 1.628
+          },
+          "wall_seconds": 1.5327995999832638
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.7706061014322724,
+          "upper": 1.0000000000000002,
+          "width": 0.22939389856772785,
+          "stats": {
+            "expanded_own_nodes": 25,
+            "depth_frontiers": 1811,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 2931,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "held_out_replay": {
+            "games": 1000,
+            "seed": 460087,
+            "ev_p0": -0.756,
+            "hoeffding95": [
+              -0.8418938816693475,
+              -0.6701061183306525
+            ],
+            "unseen_solver_fraction": null,
+            "mean_bids": 2.733
+          },
+          "wall_seconds": 23.044034099963028
+        }
+      ],
+      "nashconv_lower": 1.2569174941745391,
+      "nashconv_upper": 1.9479035288061348,
+      "cached_states": {
+        "hits": 36,
+        "misses": 3222,
+        "maxsize": 64,
+        "currsize": 64
+      },
+      "state_array_bytes": 23688
+    }
+  ],
+  "status": "completed",
+  "wall_seconds": 162.65696110000135,
+  "parent_cpu_seconds": 147.1875,
+  "same_last_bid_examples": [
+    {
+      "hero_seat": 0,
+      "hero_hand": [
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "histories": [
+        [
+          {
+            "quantity": 4,
+            "face": 2,
+            "mode": "fly"
+          },
+          {
+            "quantity": 4,
+            "face": 4,
+            "mode": "fly"
+          }
+        ],
+        [
+          {
+            "quantity": 3,
+            "face": 4,
+            "mode": "fly"
+          },
+          {
+            "quantity": 4,
+            "face": 4,
+            "mode": "fly"
+          }
+        ]
+      ],
+      "posterior_l1": 2.0,
+      "challenge_evs": [
+        -1.0,
+        1.0
+      ]
+    },
+    {
+      "hero_seat": 1,
+      "hero_hand": [
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "histories": [
+        [
+          {
+            "quantity": 3,
+            "face": 6,
+            "mode": "fly"
+          },
+          {
+            "quantity": 2,
+            "face": 6,
+            "mode": "zhai"
+          },
+          {
+            "quantity": 4,
+            "face": 6,
+            "mode": "fly"
+          }
+        ],
+        [
+          {
+            "quantity": 3,
+            "face": 6,
+            "mode": "fly"
+          },
+          {
+            "quantity": 4,
+            "face": 2,
+            "mode": "fly"
+          },
+          {
+            "quantity": 4,
+            "face": 6,
+            "mode": "fly"
+          }
+        ]
+      ],
+      "posterior_l1": 0.8516730464128612,
+      "challenge_evs": [
+        0.2753456358951132,
+        -0.5488510383728675
+      ]
+    },
+    {
+      "hero_seat": 0,
+      "hero_hand": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "histories": [
+        [
+          {
+            "quantity": 3,
+            "face": 4,
+            "mode": "fly"
+          },
+          {
+            "quantity": 2,
+            "face": 3,
+            "mode": "zhai"
+          }
+        ],
+        [
+          {
+            "quantity": 3,
+            "face": 6,
+            "mode": "fly"
+          },
+          {
+            "quantity": 2,
+            "face": 3,
+            "mode": "zhai"
+          }
+        ]
+      ],
+      "posterior_l1": 0.24861047869171826,
+      "challenge_evs": [
+        -1.0000000000000004,
+        -1.0
+      ]
+    }
+  ],
+  "parent_peak_memory": {
+    "bytes": 158044160,
+    "method": "Windows PeakWorkingSetSize"
+  }
+}

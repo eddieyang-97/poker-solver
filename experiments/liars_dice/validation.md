@@ -94,3 +94,7 @@ The focused policy-space suite passed all **five tests** locally; the full stand
 ## Bounded continuation-response milestone (#45)
 
 See [methods and reproduction](bounded-response-research.md). Five new focused tests passed. Both completed bounded-search receipts verify extracted policies by exact full-rule component-pair replay, plus 54 independent small-game BR/realization cases per receipt. Original numerical corpora are preserved. The unanchored allocation failure is pinned by source hashes to `0423c99`; final receipts record the incumbent-refinement implementation separately. Full-game bounds use float64, not formal outward-rounded intervals, and do not establish GTO or hosted suitability.
+
+## State/precomputation and query study (#46)
+
+See [analysis research](analysis-research.md) for commands, environment, process-memory method and measured limitations. Four new focused tests cover raw-roll scoring/priors, snapshot identity, strict query validation, cache isolation, both-seat stream/reference equivalence and history dependence. The numerical study compares exact stream plus two lossy controls across 15/19/23 policies, records independent toy BR values, 18 held-out payoff checks and five fresh-process query benchmarks. The separate replay comparison verifies posterior equality and records cache misses. Windows working-set receipts are not Linux address-space or hosted acceptance.
