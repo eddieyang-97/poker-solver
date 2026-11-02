@@ -32,7 +32,7 @@ Both experiment drivers default to seeds `761245 42`; the full driver uses the s
 
 The first sandboxed repository test attempt stalled after the history tests at the HTTP boundary and was stopped. Only its identified runner processes were terminated. The complete unsandboxed retry passed. This is an environment-specific observation; no HTTP or NLHE changes were made to obtain the pass. Detailed local test and river logs remain under ignored `.artifacts/liars_dice/`.
 
-The baseline archive is merged through PR #41 (`27dfec1da6ea5b96921e4352537cd0097f215c0d`); follow-on PR #42 targets `main` and remains unmerged. The owner confirmed the previously open house rules on 31 October 2026. A useful full-game approximation, an exploitability upper bound and owner acceptance of the research deliverable remain outstanding. No deployment has been performed.
+The baseline archive is merged through PR #41 (`27dfec1da6ea5b96921e4352537cd0097f215c0d`); follow-on PR #42 was owner-merged as `a6a9e7edf2bbc65491c10644ef9bf29c00a481f4` on 1 November 2026, with required PR-head [CI #41208869357](https://github.com/eddieyang-97/poker-solver/actions/runs/41208869357) successful. The owner confirmed the previously open house rules on 31 October 2026. Issue #40 is closed as an accepted experimental milestone. A useful full-game equilibrium approximation and an unrestricted exploitability upper bound remain outstanding under follow-on #43. No deployment has been performed.
 
 The standalone suite now runs unconditionally in the existing required `river` CI job, with a two-minute timeout and one OpenBLAS thread. It therefore participates in the fail-closed required `test` aggregate. The four numerical jobs, their original checks and eleven artifact groups are preserved. `tests/test_ci_gate.py` checks this workflow contract. Required CI results still need verification against the exact PR head; the historical local results above do not establish a new head's CI success.
 
@@ -59,3 +59,28 @@ python -m compileall -q poker_spot scripts experiments/liars_dice
 - All listed new source hashes were independently checked after execution; the new JSON uses LF. The sampler's snapshot predates the separate finite-family/control test files, so those later files are covered by their own numerical receipts and latest-head test run instead of retroactively altering that snapshot.
 
 No NLHE implementation or contract changed, and numerical results have not been promoted as hosted or full-game equilibrium acceptance. The existing complete required CI DAG will run on the pushed head; a previously green head is not a claim of success for these additions. Full-suite and NLHE numerical checks are supplied by that unchanged CI workflow rather than duplicating the already-passing earlier local suite.
+
+## History-conditioned policy populations (#43)
+
+Follow-on source context: merged `a6a9e7e`, initial unpruned implementation `47895c5`, then working source manifests retained in the numerical receipts. The experiment remains entirely under this standalone directory.
+
+Executed with the project virtual environment and one OpenBLAS thread:
+
+```text
+python experiments/liars_dice/run_policy_space.py --rounds 2 --iterations 100000 --tremble 0.02 --mixture-cutoff 0.000001 --max-seconds 600
+python experiments/liars_dice/run_policy_space.py --rounds 2 --iterations 100000 --tremble 0.10 --mixture-cutoff 0.000001 --max-seconds 600 --output experiments/liars_dice/outputs/policy-space-tremble10.json
+python -m unittest discover -s experiments/liars_dice/tests -v
+python -m unittest discover -s tests -p test_ci_gate.py -v
+python -m ruff check poker_spot tests scripts experiments/liars_dice --exclude liars_dice_analysis.py
+python -m compileall -q poker_spot scripts experiments/liars_dice
+```
+
+- **29 standalone tests passed** (four new), plus all four isolated CI-contract tests, Ruff, compileall and whitespace checks. Tests independently verify posterior histograms, off-model completion, exact policy-pair enumeration, history-dependent root-mixture realization, explicit support projection and inactive-component behavior.
+- The primary run completed: populations 15/19/23 have exact candidate-response NashConv lower bounds **1.364617 / 1.092897 / 0.825342**. The final deployed restricted gap is **2.3921e−6**. These lower bounds have no chance-sampling uncertainty and no unrestricted upper-bound interpretation.
+- Primary cost: **595.33 wall / 589.39 CPU seconds**, 713 policy pairs, 63,504 private deals per pair. Maximum observed pair: 16,656 public nodes and 21 bids. Maximum discarded root probability mass: 3.495e−7. No peak-memory measurement or controlled wall-time speedup is claimed.
+- The tremble-0.10 sensitivity run also completed both expansions: response lower bounds **1.363773 / 1.093170 / 0.826045**, final deployed restricted gap **2.6484e−6**, **603.13 wall / 597.08 CPU seconds**. The between-pair guard permits the last pair to complete after 600 seconds; no hard-deadline pass is claimed.
+- Every current source digest in both completed receipts, each serialized mixture value/restricted gap and all response lower bounds were independently recomputed and matched.
+- The interrupted unpruned pilot is retained separately, including its completed first round and observed 216.28 process CPU seconds. Its executable-source manifests match `47895c5`; its test-file digest predates the additional full-rule test, as explicitly recorded.
+- An isolated CLI node-budget probe (`--rounds 1 --iterations 10 --max-nodes 1`, ignored artifact output) exited nonzero and durably recorded `incomplete`, zero completed rounds and zero completed policy pairs. No false convergence was reported.
+
+See [policy-space research](policy-space-research.md) and the versioned JSON receipts for response definitions, exact numerators, projection mass, ancestry and limitations. Required latest-head CI remains a separate verification step. No NLHE implementation, hosted interface or deployment changed.

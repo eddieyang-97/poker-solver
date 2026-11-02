@@ -10,10 +10,27 @@ from finite_family import Family, exact_matrix
 from guidance import ProbabilityGuide
 from game import Bid, Game
 from one_face import OneFace, evaluate
-from policy_space import BayesianComponent, PopulationMixture, PriorComponent, exact_pair
+from policy_space import BayesianComponent, PopulationMixture, PriorComponent, exact_pair, prune_weights
 
 
 class PolicySpaceTests(unittest.TestCase):
+    def test_explicit_support_projection_and_inactive_components(self):
+        weights, lost = prune_weights([1e-8, .4, .6-1e-8], 1e-6)
+        self.assertEqual(weights[0], 0)
+        self.assertAlmostEqual(lost, 1e-8)
+        np.testing.assert_allclose(prune_weights([.5, .5], .9)[0], [1, 0])
+        class Inactive:
+            def choices(self, player, history):
+                raise AssertionError('Zero-weight component evaluated')
+        game = OneFace(5)
+        guide = ProbabilityGuide(game)
+        family = Family(game, guide, ((.5, None),))
+        mix = PopulationMixture(game, [PriorComponent(family, 0), Inactive()], [1, 0], [1, 0])
+        self.assertAlmostEqual(sum(mix.policy(0, 0, (3, 4))), 1)
+        for weights, cutoff in (([.2, .2], .1), ([1], -1), ([float('nan')], 0)):
+            with self.assertRaises(ValueError):
+                prune_weights(weights, cutoff)
+
     def setUp(self):
         self.game = OneFace(5)
         self.guide = ProbabilityGuide(self.game)

@@ -85,3 +85,9 @@ The next useful milestone is an approximation that survives stronger held-out re
 This calculation integrates over the opponent's hand using only your own hand, the observed opening and an explicit frozen opponent policy. The input/output is in `outputs/family.json`. It does **not** assume people follow that policy. The practical lesson is to account for what a bid reveals; the exact posterior is only as credible as the opponent model.
 
 The guided sampler and finite-family equilibrium still lose heavily to posterior-aware opponents. Their opening mixes, confidence thresholds and component weights are diagnostic results, not recommended GTO frequencies or universal bluff ratios.
+
+## 历史感知的策略迭代 / History-aware strategy iteration
+
+[新一轮实验](policy-space-research.md)把会根据公开叫法更新信念的对手加入策略族，再重新求解。两轮扩展后，新的应对策略仍证明完整游戏的 NashConv 至少为 **0.8253**（本项目的 exploitability 定义下至少 **0.4127**）。策略族内部误差约 **0.0000024**，不能当作完整游戏接近 GTO 的证据。
+
+The practical lesson is to study responses to your *whole bidding strategy*, including what earlier bids reveal. A rule such as “challenge below 50% truth” compares challenging with zero; it does not compare challenging with every legal continuation. This experiment still uses heuristic continuation choices, so its opening mixtures, raise styles, mode switches and root component weights remain research diagnostics. No new full-game GTO chart or bluff ratio is justified.

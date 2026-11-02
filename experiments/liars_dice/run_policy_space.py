@@ -13,7 +13,7 @@ import numpy as np
 from finite_family import Family, exact_matrix, solve_matrix
 from game import Game
 from guidance import ProbabilityGuide
-from policy_space import BayesianComponent, PopulationMixture, PriorComponent, exact_pair
+from policy_space import BayesianComponent, PopulationMixture, PriorComponent, exact_pair, prune_weights
 
 
 def main():
@@ -22,9 +22,12 @@ def main():
     parser.add_argument('--iterations', type=int, default=100000)
     parser.add_argument('--tremble', type=float, default=.02)
     parser.add_argument('--max-nodes', type=int, default=100000)
+    parser.add_argument('--mixture-cutoff', type=float, default=1e-6)
+    parser.add_argument('--max-seconds', type=float, default=600)
     parser.add_argument('--output', type=Path, default=Path(__file__).parent/'outputs/policy-space.json')
     args = parser.parse_args()
-    if min(args.rounds, args.iterations, args.max_nodes) < 1 or not 0 < args.tremble <= 1:
+    if (min(args.rounds, args.iterations, args.max_nodes, args.max_seconds) < 1
+            or not 0 < args.tremble <= 1 or not 0 <= args.mixture_cutoff < 1):
         parser.error('Positive budgets and tremble in (0,1] required')
     start, cpu = time.perf_counter(), time.process_time()
     base = Path(__file__).parent
@@ -55,29 +58,45 @@ def main():
         for iteration in range(args.rounds+1):
             round_start, round_cpu = time.perf_counter(), time.process_time()
             report = solve_matrix(matrix/denominator, (args.iterations,))[-1]
-            mix = PopulationMixture(game, components, report['mixture0'], report['mixture1'])
+            x, lost0 = prune_weights(report['mixture0'], args.mixture_cutoff)
+            y, lost1 = prune_weights(report['mixture1'], args.mixture_cutoff)
+            mix = PopulationMixture(game, components, x, y)
+            payoff = matrix/denominator
+            deployed = {'mixture0':x.tolist(), 'mixture1':y.tolist(), 'discarded_mass0':lost0,
+                        'discarded_mass1':lost1, 'value':float(x @ payoff @ y),
+                        'family_nashconv':float(max(payoff @ y)-min(x @ payoff)),
+                        'family_value_lower':float(min(x @ payoff)),
+                        'family_value_upper':float(max(payoff @ y))}
             # Same predeclared construction each round; no observed deal fitting.
             parameters = [(t, a) for t in (.4, .6) for a in (None, .8)]
             candidates = [BayesianComponent(game, guide, mix, t, a, args.tremble) for t, a in parameters]
             k, m = len(components), len(candidates)
             rows, columns = np.zeros((m, k), dtype=np.int64), np.zeros((k, m), dtype=np.int64)
             maximum_nodes, maximum_bids, pairs = 0, 0, 0
+            result['active_expansion'] = {'round':iteration, 'completed_pairs':0}
 
             def pair(a, b):
                 nonlocal maximum_nodes, maximum_bids, pairs
+                if time.perf_counter()-start > args.max_seconds:
+                    raise RuntimeError('Total experiment time budget exceeded between policy pairs')
                 value, stats = exact_pair(game, guide, a, b, args.max_nodes)
                 maximum_nodes = max(maximum_nodes, stats['public_nodes'])
                 maximum_bids = max(maximum_bids, stats['maximum_bids'])
                 pairs += 1
+                result['active_expansion']['completed_pairs'] = pairs
+                if pairs % 40 == 0:
+                    print(json.dumps({'round':iteration, 'completed_pairs':pairs}), flush=True)
                 return value
 
             for i, candidate in enumerate(candidates):
                 for j, existing in enumerate(components):
                     rows[i, j], columns[j, i] = pair(candidate, existing), pair(existing, candidate)
-            values0 = rows @ np.array(report['mixture1'])/denominator
-            values1 = -np.array(report['mixture0']) @ columns/denominator
-            lower = max(0., float(values0.max()+values1.max()))
+            values0 = rows @ y/denominator
+            values1 = -x @ columns/denominator
+            lower = max(0., float(max(values0.max(), max(payoff @ y))
+                                 + max(values1.max(), -min(x @ payoff))))
             record = {'round':iteration, 'population_size':k, 'restricted_equilibrium':report,
+                      'deployed_mixture':deployed,
                       'response_parameters':[{'threshold':t, 'aspiration':a, 'tremble':args.tremble} for t, a in parameters],
                       'response_row_numerators':rows.tolist(), 'response_column_numerators':columns.tolist(),
                       'response_values_player0':values0.tolist(), 'response_values_player1':values1.tolist(),
@@ -95,9 +114,11 @@ def main():
                 descriptions.extend({'type':'bayesian', 'reference_round':iteration,
                                      'challenge':t, 'aspiration':a, 'tremble':args.tremble} for t, a in parameters)
             record['exact_pairs_evaluated'] = pairs
+            record['maximum_pair_public_nodes'], record['maximum_bids'] = maximum_nodes, maximum_bids
             record['wall_seconds'], record['cpu_seconds'] = time.perf_counter()-round_start, time.process_time()-round_cpu
+            del result['active_expansion']
             save()
-            print(json.dumps({'round':iteration, 'population':k, 'family_gap':report['family_nashconv'],
+            print(json.dumps({'round':iteration, 'population':k, 'family_gap':deployed['family_nashconv'],
                               'full_game_nashconv_lower_bound':lower, 'wall_seconds':record['wall_seconds']}), flush=True)
         result['status'] = 'completed'
     except (RuntimeError, MemoryError) as error:

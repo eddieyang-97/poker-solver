@@ -8,6 +8,20 @@ from functools import lru_cache
 import numpy as np
 
 
+def prune_weights(weights, cutoff):
+    """Explicit root support projection; return normalized weights and lost mass."""
+    weights = np.asarray(weights, dtype=float)
+    if (not 0 <= cutoff < 1 or weights.ndim != 1 or not weights.size
+            or not np.isfinite(weights).all() or (weights < 0).any()
+            or not np.isclose(weights.sum(), 1, rtol=0, atol=1e-10)):
+        raise ValueError("Normalized weights and cutoff in [0,1) required")
+    keep = weights >= cutoff
+    keep[np.argmax(weights)] = True
+    removed = float(weights[~keep].sum())
+    result = np.where(keep, weights, 0.)
+    return result/result.sum(), removed
+
+
 class PriorComponent:
     def __init__(self, family, index):
         self.family, self.index = family, index
@@ -34,8 +48,10 @@ class PopulationMixture:
         previous = history[:-1]
         supported = self._support(player, previous)
         if len(previous) % 2 == player:
-            choices = np.array([c.choices(player, previous) for c in self.components])
-            return supported & (choices == history[-1])
+            result = supported.copy()
+            for index in np.flatnonzero(self.weights[player] > 0):
+                result[index] &= self.components[index].choices(player, previous) == history[-1]
+            return result
         return supported
 
     def likelihood(self, player, history, action):

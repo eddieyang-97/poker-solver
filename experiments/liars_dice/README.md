@@ -1,6 +1,6 @@
 # Two-player 吹牛 / Liar's Dice — standalone research
 
-**Research only.** No dependency on the NLHE engine, hosted service, MCP/plugin, or production interfaces. See [Issue #40](https://github.com/eddieyang-97/poker-solver/issues/40) for follow-on research.
+**Research only.** No dependency on the NLHE engine, hosted service, MCP/plugin, or production interfaces. Accepted baseline: [Issue #40](https://github.com/eddieyang-97/poker-solver/issues/40). Current follow-on: [Issue #43](https://github.com/eddieyang-97/poker-solver/issues/43).
 
 ## Owner-confirmed house rules
 Two players, five fair six-sided dice each, minimum opening quantity 3. 飞 (fly): ones are wild; 斋 (zhai): ones are not wild. A five-die hand containing only one named face and ones is counted as **6** of that face, while five equal dice count as **7**. Fly-to-zhai quantity may drop by one; zhai-to-fly increases by at least two. A lost challenge means drinking; no die elimination.
@@ -23,7 +23,7 @@ Use an appropriate executable path on Windows. These original archive commands r
 
 ## Follow-on independent validation
 
-The archive's 200,000-iteration results now reproduce, including an independent evaluation of its entire exported average policy: toy NashConv **0.026688617**. Exact CFR+ on a smaller 3..5 bid game reaches **0.000003731**. Full-rule outcome sampling and a smaller action-set experiment both **fail** useful convergence; their frequencies are not recommendations. Issue #40 remains open.
+The archive's 200,000-iteration results now reproduce, including an independent evaluation of its entire exported average policy: toy NashConv **0.026688617**. Exact CFR+ on a smaller 3..5 bid game reaches **0.000003731**. Full-rule outcome sampling and a smaller action-set experiment both **fail** useful convergence; their frequencies are not recommendations. Issue #40 accepted this experimental milestone; continued equilibrium research is tracked in #43.
 
 - [Owner-confirmed complete house rules](RULES.md).
 - [Methods, independent checks, measured failures and next research step](research.md).
@@ -68,3 +68,7 @@ OPENBLAS_NUM_THREADS=1 python experiments/liars_dice/run_family.py --games 5000 
 ```
 
 New receipts use LF-normalized source hashes and LF JSON output. Earlier receipts retain their original provenance. The required CI research step discovers both old and new standalone tests without changing the NLHE gates.
+
+## History-conditioned population follow-on
+
+[Policy-space research](policy-space-research.md) expands the complete-policy family with frozen Bayesian responses, exact private-deal evaluation and realization-correct mixtures. It records restricted gaps separately from full-game response lower bounds. Current policies remain unvalidated as GTO recommendations.
