@@ -1,3 +1,6 @@
+from collections import Counter
+from itertools import product
+import json
 from pathlib import Path
 import sys
 import unittest
@@ -103,6 +106,83 @@ class PolicySpaceTests(unittest.TestCase):
         numerator, _ = exact_pair(game, guide, components[0], components[1])
         old, _ = exact_matrix(family)
         self.assertEqual(numerator, old[0, 1])
+
+    def test_recorded_nested_full_rule_pair_against_scalar_roll_oracle(self):
+        receipt = json.loads((Path(__file__).resolve().parents[1]/'outputs/policy-space.json').read_text())
+        game = Game()
+        guide = ProbabilityGuide(game)
+        prior_count = receipt['rounds'][0]['population_size']
+        specs = receipt['components']
+        family = Family(game, guide, tuple((s['challenge'], s['aspiration']) for s in specs[:prior_count]))
+        components = [PriorComponent(family, i) for i in range(prior_count)]
+        for generation in (0, 1):
+            row = receipt['rounds'][generation]
+            weights = row['deployed_mixture']
+            self.assertEqual(len(components), row['population_size'])
+            target = PopulationMixture(game, components, weights['mixture0'], weights['mixture1'])
+            components.extend(BayesianComponent(game, guide, target, s['challenge'], s['aspiration'], s['tremble'])
+                              for s in specs if s.get('reference_round') == generation)
+        # Generation two vs generation one: both policies condition on full
+        # histories, with nested frozen references. This is a published entry.
+        first, second = 19, 15
+        pair = components[first], components[second]
+
+        # Enumerate ordered rolls independently of game.prior/multinomial code.
+        rolls = Counter(tuple(sorted(roll)) for roll in product(range(1, 7), repeat=5))
+        indices = {hand:i for i, hand in enumerate(game.hands)}
+
+        def score(hand, bid):
+            if all(d == bid.face for d in hand):
+                return 7
+            if bid.mode == 'zhai' or bid.face == 1:
+                return hand.count(bid.face)
+            if all(d == 1 for d in hand):
+                return 7
+            count = sum(d in (1, bid.face) for d in hand)
+            return 6 if count == 5 else count
+
+        # Cache only fixed-policy action vectors, not paths, chance masses or
+        # payoffs. Each private deal is traversed separately from the root.
+        choices, challengers, switches = {}, set(), set()
+        numerator, total_weight, longest = 0, 0, 0
+        for hand0, weight0 in rolls.items():
+            for hand1, weight1 in rolls.items():
+                hands, history = (hand0, hand1), ()
+                for _ in range(151):
+                    player = len(history)%2
+                    if history not in choices:
+                        choices[history] = pair[player].choices(player, history)
+                    action = int(choices[history][indices[hands[player]]])
+                    if action == -1:
+                        self.assertTrue(history)
+                        bid = game.bids[history[-1]]
+                        true = sum(score(hand, bid) for hand in hands) >= bid.quantity
+                        loser = player if true else 1-player
+                        utility = -1 if loser == 0 else 1
+                        numerator += utility*weight0*weight1
+                        total_weight += weight0*weight1
+                        challengers.add(player)
+                        longest = max(longest, len(history))
+                        break
+                    bid = game.bids[action]
+                    if not history:
+                        self.assertGreaterEqual(bid.quantity, 3)
+                    else:
+                        last = game.bids[history[-1]]
+                        if last.mode == bid.mode:
+                            self.assertGreater((bid.quantity, bid.face), (last.quantity, last.face))
+                        else:
+                            self.assertGreaterEqual(bid.quantity, last.quantity+(-1 if last.mode == 'fly' else 2))
+                            switches.add((last.mode, bid.mode))
+                    history += (action,)
+                else:
+                    self.fail('Scalar replay did not terminate')
+        self.assertEqual(total_weight, 6**10)
+        self.assertEqual(challengers, {0, 1})
+        self.assertEqual(switches, {('fly', 'zhai'), ('zhai', 'fly')})
+        self.assertGreaterEqual(longest, 3)
+        self.assertEqual(numerator, receipt['payoff_numerators'][first][second])
+        self.assertEqual(numerator, exact_pair(game, guide, *pair)[0])
 
 
 if __name__ == '__main__':

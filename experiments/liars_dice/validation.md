@@ -84,3 +84,9 @@ python -m compileall -q poker_spot scripts experiments/liars_dice
 - An isolated CLI node-budget probe (`--rounds 1 --iterations 10 --max-nodes 1`, ignored artifact output) exited nonzero and durably recorded `incomplete`, zero completed rounds and zero completed policy pairs. No false convergence was reported.
 
 See [policy-space research](policy-space-research.md) and the versioned JSON receipts for response definitions, exact numerators, projection mass, ancestry and limitations. Required latest-head CI remains a separate verification step. No NLHE implementation, hosted interface or deployment changed.
+
+## Full-rule nested-policy regression
+
+PR #44's review identified that independent history-conditioned payoff traversal was previously tested only on the one-face game. The added `test_recorded_nested_full_rule_pair_against_scalar_roll_oracle` rebuilds the first two recorded Bayesian generations, independently enumerates chance multiplicities from 7,776 ordered rolls, and traverses all 63,504 private deals for component pair **(19, 15)**. Scalar scoring reads the raw dice; no grouped traversal, production contribution table or terminal utility helper supplies the expected result. Both challengers and both mode-switch directions are required. Its numerator **−147,016** over **60,466,176** agrees exactly with the existing receipt and a fresh grouped evaluation.
+
+The focused policy-space suite passed all **five tests** locally; the full standalone suite passed **30 tests**, with repository/research Ruff, compileall and whitespace checks also passing. The original numerical receipts remain unchanged and retain their source/test context at `d4027db`; this additional regression postdates those runs. Numerical executable sources are unchanged. This verifies one complete full-rule nested-policy payoff rather than claiming an independent audit of all 488 added pairings.
