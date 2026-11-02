@@ -52,14 +52,20 @@ class ResponseSearch:
     all legal actions and every nonzero opponent response are still integrated
     at each expanded node. Budget exhaustion uses legal frontier play.
     """
-    def __init__(self, game, guide, model, seat, depth=1, max_nodes=256):
+    def __init__(self, game, guide, model, seat, depth=1, max_nodes=256, incumbent=None):
         if seat not in (0, 1) or type(depth) is not int or depth < 1 or type(max_nodes) is not int or max_nodes < 1:
             raise ValueError('Seat 0/1 and positive integer search budgets required')
         self.game, self.guide, self.model, self.seat = game, guide, model, seat
         self.depth, self.max_nodes = depth, max_nodes
-        self.decisions = {}
+        if incumbent is not None and (incumbent.result is None or incumbent.game is not game
+                                      or incumbent.guide is not guide or incumbent.model.target is not model.target
+                                      or incumbent.seat != seat or incumbent.depth > depth):
+            raise ValueError('Incumbent must be a solved compatible search against the same frozen target')
+        self.decisions = {} if incumbent is None else incumbent.decisions.copy()
+        self.bounds = {} if incumbent is None else incumbent.bounds.copy()
         self.stats = {'expanded_own_nodes':0, 'depth_frontiers':0, 'budget_frontiers':0,
-                      'forced_challenges':0, 'opponent_nodes':0, 'maximum_history':0}
+                      'forced_challenges':0, 'opponent_nodes':0, 'maximum_history':0,
+                      'incumbent_nodes':len(self.decisions), 'incumbent_frontiers':0}
         self.result = None
 
     def _claim_value(self, action, mass, challenging):
@@ -89,6 +95,9 @@ class ResponseSearch:
             if challenge is None:
                 raise AssertionError('Opening must be expanded to produce legal frontier play')
             self.stats['depth_frontiers' if remaining == 0 else 'budget_frontiers'] += 1
+            if history in self.bounds:
+                self.stats['incumbent_frontiers'] += 1
+                return self.bounds[history]
             return challenge, np.full(len(mass), mass.sum())
         self.stats['expanded_own_nodes'] += 1
         best_lower, best_upper = np.full(len(mass), -np.inf), np.full(len(mass), -np.inf)
@@ -113,7 +122,13 @@ class ResponseSearch:
             best_lower = np.maximum(best_lower, lower)
             best_upper = np.maximum(best_upper, upper)
         chosen.flags.writeable = False
+        if history in self.bounds:
+            old_lower, old_upper = self.bounds[history]
+            if (best_lower < old_lower-1e-12).any() or (best_upper > old_upper+1e-12).any():
+                raise ArithmeticError('Refinement invalidated incumbent bounds')
+        best_lower.flags.writeable = best_upper.flags.writeable = False
         self.decisions[history] = chosen
+        self.bounds[history] = best_lower, best_upper
         return best_lower, best_upper
 
     def solve(self):

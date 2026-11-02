@@ -104,6 +104,24 @@ class BoundedResponseTests(unittest.TestCase):
                     self.assertLessEqual(bound['lower'], bound['upper']+1e-12)
                     self.assertLessEqual(bound['stats']['expanded_own_nodes'], 2)
 
+    def test_incumbent_survives_smaller_refinement_budget(self):
+        game, guide, target = self.fixture(7)
+        model = PopulationModel(target)
+        for seat in (0, 1):
+            incumbent = ResponseSearch(game, guide, model, seat, depth=1)
+            original = incumbent.solve().copy()
+            refinement = ResponseSearch(game, guide, model, seat, depth=4, max_nodes=1, incumbent=incumbent)
+            result = refinement.solve()
+            self.assertGreaterEqual(result['lower'], original['lower']-1e-12)
+            self.assertLessEqual(result['upper'], original['upper']+1e-12)
+            self.assertEqual(incumbent.result, original)
+            policy = lambda p, t, h:(refinement.policy if p == seat else target.policy)(p, t, h)
+            self.assertAlmostEqual(evaluate(game, policy)['ev_p0']*(1 if seat == 0 else -1), result['lower'])
+            with self.assertRaises(ValueError):
+                ResponseSearch(game, guide, model, 1-seat, incumbent=incumbent)
+            with self.assertRaises(ValueError):
+                ResponseSearch(game, guide, PopulationModel(self.fixture(7)[2]), seat, incumbent=incumbent)
+
 
 if __name__ == '__main__':
     unittest.main()

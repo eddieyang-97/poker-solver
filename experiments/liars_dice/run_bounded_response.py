@@ -84,7 +84,8 @@ def main():
     parser.add_argument('--max-nodes', type=int, default=32)
     parser.add_argument('--output', type=Path, default=base/'outputs/bounded-response.json')
     args = parser.parse_args()
-    if min(*args.depths, args.max_nodes) < 1 or min(args.generations) < 0:
+    if (min(*args.depths, args.max_nodes) < 1 or min(args.generations) < 0
+            or args.depths != sorted(set(args.depths))):
         parser.error('Positive search budgets and nonnegative generation indices required')
     source = json.loads(args.population.read_text())
     if max(args.generations) >= len(source['rounds']):
@@ -108,15 +109,19 @@ def main():
 
     try:
         for generation in args.generations:
+            game, guide, target = population_at(source, generation)
+            model = PopulationModel(target)
+            incumbents = {}
             for depth in args.depths:
-                game, guide, target = population_at(source, generation)
-                model = PopulationModel(target)
                 row = {'generation':generation, 'population_size':len(target.components), 'depth':depth,
-                       'max_nodes_per_seat':args.max_nodes, 'seats':[]}
+                       'max_nodes_per_seat':args.max_nodes, 'seats':[],
+                       'incumbent_depth':max(incumbents[s].depth for s in incumbents) if incumbents else None}
                 for seat in (0, 1):
                     step_start, step_cpu = time.perf_counter(), time.process_time()
-                    search = ResponseSearch(game, guide, model, seat, depth, args.max_nodes)
+                    search = ResponseSearch(game, guide, model, seat, depth, args.max_nodes,
+                                            incumbent=incumbents.get(seat))
                     bound = search.solve()
+                    incumbents[seat] = search
                     search_wall, search_cpu = time.perf_counter()-step_start, time.process_time()-step_cpu
                     realized, terms = deployment_value(game, guide, target, search)
                     if abs(realized-bound['lower']) > 1e-10:

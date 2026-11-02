@@ -1,6 +1,6 @@
 # Two-player 吹牛 / Liar's Dice — standalone research
 
-**Research only.** No dependency on the NLHE engine, hosted service, MCP/plugin, or production interfaces. Accepted baseline: [Issue #40](https://github.com/eddieyang-97/poker-solver/issues/40). Current follow-on: [Issue #43](https://github.com/eddieyang-97/poker-solver/issues/43).
+**Research only.** No dependency on the NLHE engine, hosted service, MCP/plugin, or production interfaces. Accepted baseline: [Issue #40](https://github.com/eddieyang-97/poker-solver/issues/40). Population research #43 was accepted through PR #44. Current quality-search milestone: [Issue #45](https://github.com/eddieyang-97/poker-solver/issues/45); representation/serving feasibility: [#46](https://github.com/eddieyang-97/poker-solver/issues/46).
 
 ## Owner-confirmed house rules
 Two players, five fair six-sided dice each, minimum opening quantity 3. 飞 (fly): ones are wild; 斋 (zhai): ones are not wild. A five-die hand containing only one named face and ones is counted as **6** of that face, while five equal dice count as **7**. Fly-to-zhai quantity may drop by one; zhai-to-fly increases by at least two. A lost challenge means drinking; no die elimination.
@@ -72,3 +72,7 @@ New receipts use LF-normalized source hashes and LF JSON output. Earlier receipt
 ## History-conditioned population follow-on
 
 [Policy-space research](policy-space-research.md) expands the complete-policy family with frozen Bayesian responses, exact private-deal evaluation and realization-correct mixtures. It records restricted gaps separately from full-game response lower bounds. Current policies remain unvalidated as GTO recommendations.
+
+## Continuation response bounds
+
+[Bounded response research](bounded-response-research.md) checks continuation-aware responses against exact small-game best responses and replays their full-rule payoffs. A stronger search raises the 23-policy snapshot's known NashConv lower bound to **1.474843**, with a loose floating-point upper bound **1.928530**. This exposes further vulnerability in the existing policy; it does not supply a GTO strategy.

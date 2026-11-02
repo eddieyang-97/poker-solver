@@ -1,0 +1,1926 @@
+{
+  "source_base": "0423c992ba66e9a9ecd3e477f67528d67d6fbf48",
+  "source_hash_format": "sha256-lf-normalized",
+  "source_sha256": {
+    "beliefs.py": "c5cd576da25a6aae49cea21c0119fa6b2d0d0bf873c13c86485b647de9021940",
+    "bounded_response.py": "036d53de36e6ad0b6d0834b868f22e9196192a5081d3fc73c4e5e6d76753d373",
+    "finite_family.py": "d9a61615192a3b418bbde2ef34cdfe3a3646bb7cc98bad559e01faf99cb19cd9",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "liars_dice_analysis.py": "df2ad17466568e0e78f6618cdbeb73968557efeed5689d0045f3afc453a662d9",
+    "mccfr.py": "0dadf73e47cd96cdfef51e493caab8ef77345772b4d645ac49d0338a92cdca2a",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "policy_space.py": "655036068e0fb7fa212d64f1afd8742a0378072b1e0e8f9b08525d55aa5fd925",
+    "prior_control.py": "7e271e89dcfd0145876cfeaef3902fd29402a326eda10c56b8980c9c222a5f11",
+    "run_abstraction.py": "c6439d70181f951ebbeae535d4ade56f9cb90b4b2fdc1a0b9789b5a93af6441d",
+    "run_bounded_response.py": "ac9be3266c3a74de8d69de8b5b10c756551658a6acada3d43cc94ba8c4543922",
+    "run_family.py": "f087a0c1062c944dc2bfff72c746d929f74740fa4fbd42e1f3ec99cacee6d7bc",
+    "run_guided.py": "2d05e006e2781fd5d8aba7fd8fe7a83815079363232fcb6d821dad33f90a3181",
+    "run_policy_space.py": "243cd827e34c0c11569085208ad222d34b88318f862e14e14c0e0862583de8a4",
+    "run_research.py": "5606837e4fc46e7bfe87346401aa2afee9934c34c936628b3f4d58451a4ec4bc",
+    "summarize.py": "039e14b4f3f68e5c30569f9426682c998ea5ce9161f1579e7da9b3abe1437635",
+    "tests/test_bounded_response.py": "0d67850e27ab30ba7781ec6d7af0364dc9146a9065e2c3f0d4c7547e5f9c2b53",
+    "tests/test_finite_family.py": "baa03021a473176fed2e1ee3e2c52c1d9c21531b84c74864bda854d04fa82ef9",
+    "tests/test_guidance.py": "c8f0e4a6d0faa69f04f541805ac6bc76ba3822746c82f8892e8589a09a845aae",
+    "tests/test_policy_space.py": "ca2c33164194b598c34a9f7efccbc69f0f1995ef25065f75ce24bceb7849502b",
+    "tests/test_prior_control.py": "36487aca2cdf8862a20fa15e17673cdd3c89e828498bf0b6a37eb36e4790f917",
+    "tests/test_research.py": "b3d4dfff6cfc33fcab50ff1e48c48a670e62d048ecf052f22a3ef435321d6a55"
+  },
+  "population_file": "C:\\Eddie\\Projects\\poker-solver\\experiments\\liars_dice\\outputs\\policy-space.json",
+  "population_sha256_lf": "c4b67cb12efb143486005a8135156170b73de6bdc5f811d86e38874b69ad4dff",
+  "python": "3.14.8",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "arguments": {
+    "population": "C:\\Eddie\\Projects\\poker-solver\\experiments\\liars_dice\\outputs\\policy-space.json",
+    "generations": [
+      0,
+      1,
+      2
+    ],
+    "depths": [
+      1,
+      2
+    ],
+    "max_nodes": 32,
+    "output": "C:\\Eddie\\Projects\\poker-solver\\experiments\\liars_dice\\outputs\\bounded-response.json"
+  },
+  "toy_checks": [
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 1,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 1,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 8,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 8,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 10000,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 10000,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 1,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 1,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 8,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 8,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 10000,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 10000,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 1,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 1,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 8,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 8,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": 0.4017172179037748,
+      "independent_realized_value": 0.4017172179037748,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 10000,
+      "lower": 0.4017172179037748,
+      "upper": 0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 0,
+        "opponent_nodes": 1,
+        "maximum_history": 0,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 3,
+      "exact_best_response": -0.4017172179037748,
+      "independent_realized_value": -0.4017172179037748,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 10000,
+      "lower": -0.4017172179037748,
+      "upper": -0.4017172179037748,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 0,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 1,
+        "opponent_nodes": 1,
+        "maximum_history": 1,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.12750427610967166,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 1,
+      "lower": 0.12750427610967152,
+      "upper": 0.7183627157106809,
+      "width": 0.5908584396010094,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 1,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 3,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.07802672356856172,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 1,
+      "lower": 0.07802672356856168,
+      "upper": 0.16063608189808465,
+      "width": 0.08260935832952297,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 1,
+        "forced_challenges": 2,
+        "opponent_nodes": 3,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.12750427610967166,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 8,
+      "lower": 0.12750427610967152,
+      "upper": 0.7183627157106809,
+      "width": 0.5908584396010094,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 1,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 3,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.09560534471371238,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 8,
+      "lower": 0.09560534471371232,
+      "upper": 0.09560534471371232,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.12750427610967166,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 10000,
+      "lower": 0.12750427610967152,
+      "upper": 0.7183627157106809,
+      "width": 0.5908584396010094,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 1,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 3,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.09560534471371238,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 10000,
+      "lower": 0.09560534471371232,
+      "upper": 0.09560534471371232,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.12750427610967166,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 1,
+      "lower": 0.12750427610967152,
+      "upper": 0.7183627157106809,
+      "width": 0.5908584396010094,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 1,
+        "forced_challenges": 2,
+        "opponent_nodes": 3,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.07802672356856172,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 1,
+      "lower": 0.07802672356856168,
+      "upper": 0.16063608189808465,
+      "width": 0.08260935832952297,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 1,
+        "forced_challenges": 2,
+        "opponent_nodes": 3,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.16950329387457874,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 8,
+      "lower": 0.16950329387457863,
+      "upper": 0.16950329387457863,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.09560534471371238,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 8,
+      "lower": 0.09560534471371232,
+      "upper": 0.09560534471371232,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.16950329387457874,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 10000,
+      "lower": 0.16950329387457863,
+      "upper": 0.16950329387457863,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.09560534471371238,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 10000,
+      "lower": 0.09560534471371232,
+      "upper": 0.09560534471371232,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.12750427610967166,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 1,
+      "lower": 0.12750427610967152,
+      "upper": 0.7183627157106809,
+      "width": 0.5908584396010094,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 1,
+        "forced_challenges": 2,
+        "opponent_nodes": 3,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.07802672356856172,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 1,
+      "lower": 0.07802672356856168,
+      "upper": 0.16063608189808465,
+      "width": 0.08260935832952297,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 1,
+        "forced_challenges": 2,
+        "opponent_nodes": 3,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.16950329387457874,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 8,
+      "lower": 0.16950329387457863,
+      "upper": 0.16950329387457863,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.09560534471371238,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 8,
+      "lower": 0.09560534471371232,
+      "upper": 0.09560534471371232,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.1695032938745787,
+      "independent_realized_value": 0.16950329387457874,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 10000,
+      "lower": 0.16950329387457863,
+      "upper": 0.16950329387457863,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 5,
+      "exact_best_response": 0.09560534471371232,
+      "independent_realized_value": 0.09560534471371238,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 10000,
+      "lower": 0.09560534471371232,
+      "upper": 0.09560534471371232,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 2,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 2,
+        "opponent_nodes": 4,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.06937035343528256,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 1,
+      "lower": 0.06937035343528253,
+      "upper": 0.7588503430413723,
+      "width": 0.6894799896060898,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 6,
+        "budget_frontiers": 0,
+        "forced_challenges": 4,
+        "opponent_nodes": 5,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.07589078561872346,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 1,
+      "lower": 0.07589078561872344,
+      "upper": 0.44429562736032785,
+      "width": 0.3684048417416044,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 2,
+        "budget_frontiers": 3,
+        "forced_challenges": 2,
+        "opponent_nodes": 5,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.06937035343528256,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 8,
+      "lower": 0.06937035343528253,
+      "upper": 0.7588503430413723,
+      "width": 0.6894799896060898,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 6,
+        "budget_frontiers": 0,
+        "forced_challenges": 4,
+        "opponent_nodes": 5,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.10599819641314843,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 8,
+      "lower": 0.10599819641314842,
+      "upper": 0.3274435214821589,
+      "width": 0.22144532506901046,
+      "stats": {
+        "expanded_own_nodes": 4,
+        "depth_frontiers": 3,
+        "budget_frontiers": 0,
+        "forced_challenges": 3,
+        "opponent_nodes": 11,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.06937035343528256,
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 10000,
+      "lower": 0.06937035343528253,
+      "upper": 0.7588503430413723,
+      "width": 0.6894799896060898,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 6,
+        "budget_frontiers": 0,
+        "forced_challenges": 4,
+        "opponent_nodes": 5,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.10599819641314843,
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 10000,
+      "lower": 0.10599819641314842,
+      "upper": 0.3274435214821589,
+      "width": 0.22144532506901046,
+      "stats": {
+        "expanded_own_nodes": 4,
+        "depth_frontiers": 3,
+        "budget_frontiers": 0,
+        "forced_challenges": 3,
+        "opponent_nodes": 11,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.06937035343528256,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 1,
+      "lower": 0.06937035343528253,
+      "upper": 0.7588503430413723,
+      "width": 0.6894799896060898,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 6,
+        "forced_challenges": 4,
+        "opponent_nodes": 5,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.07589078561872346,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 1,
+      "lower": 0.07589078561872344,
+      "upper": 0.44429562736032785,
+      "width": 0.3684048417416044,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 5,
+        "forced_challenges": 2,
+        "opponent_nodes": 5,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.14225056997154908,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 8,
+      "lower": 0.142250569971549,
+      "upper": 0.19068492110365962,
+      "width": 0.048434351132110615,
+      "stats": {
+        "expanded_own_nodes": 7,
+        "depth_frontiers": 1,
+        "budget_frontiers": 0,
+        "forced_challenges": 6,
+        "opponent_nodes": 15,
+        "maximum_history": 4,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.16601826449220142,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 8,
+      "lower": 0.1660182644922014,
+      "upper": 0.1660182644922014,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 7,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 4,
+        "opponent_nodes": 15,
+        "maximum_history": 5,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.14225056997154908,
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 10000,
+      "lower": 0.142250569971549,
+      "upper": 0.19068492110365962,
+      "width": 0.048434351132110615,
+      "stats": {
+        "expanded_own_nodes": 7,
+        "depth_frontiers": 1,
+        "budget_frontiers": 0,
+        "forced_challenges": 6,
+        "opponent_nodes": 15,
+        "maximum_history": 4,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.16601826449220142,
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 10000,
+      "lower": 0.1660182644922014,
+      "upper": 0.1660182644922014,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 7,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 4,
+        "opponent_nodes": 15,
+        "maximum_history": 5,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.06937035343528256,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 1,
+      "lower": 0.06937035343528253,
+      "upper": 0.7588503430413723,
+      "width": 0.6894799896060898,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 6,
+        "forced_challenges": 4,
+        "opponent_nodes": 5,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.07589078561872346,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 1,
+      "lower": 0.07589078561872344,
+      "upper": 0.44429562736032785,
+      "width": 0.3684048417416044,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 0,
+        "budget_frontiers": 5,
+        "forced_challenges": 2,
+        "opponent_nodes": 5,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.14543436647953398,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 8,
+      "lower": 0.1454343664795339,
+      "upper": 0.1454343664795339,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 8,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 6,
+        "opponent_nodes": 16,
+        "maximum_history": 4,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.16601826449220142,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 8,
+      "lower": 0.1660182644922014,
+      "upper": 0.1660182644922014,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 7,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 4,
+        "opponent_nodes": 15,
+        "maximum_history": 5,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.14543436647953395,
+      "independent_realized_value": 0.14543436647953398,
+      "seat": 0,
+      "depth": 4,
+      "max_nodes": 10000,
+      "lower": 0.1454343664795339,
+      "upper": 0.1454343664795339,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 8,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 6,
+        "opponent_nodes": 16,
+        "maximum_history": 4,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    },
+    {
+      "maximum_quantity": 7,
+      "exact_best_response": 0.1660182644922014,
+      "independent_realized_value": 0.16601826449220142,
+      "seat": 1,
+      "depth": 4,
+      "max_nodes": 10000,
+      "lower": 0.1660182644922014,
+      "upper": 0.1660182644922014,
+      "width": 0.0,
+      "stats": {
+        "expanded_own_nodes": 7,
+        "depth_frontiers": 0,
+        "budget_frontiers": 0,
+        "forced_challenges": 4,
+        "opponent_nodes": 15,
+        "maximum_history": 5,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false
+    }
+  ],
+  "runs": [
+    {
+      "generation": 0,
+      "population_size": 15,
+      "depth": 1,
+      "max_nodes_per_seat": 32,
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.03758438436721977,
+          "upper": 0.9044861047604529,
+          "width": 0.8669017203932331,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 303,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 0.02782580000348389,
+          "search_cpu_seconds": 0.03125,
+          "deployment_value": 0.03758438436722045,
+          "deployment_terms": [
+            {
+              "opponent_component": 0,
+              "root_weight": 0.5,
+              "payoff_numerator_p0": 2272584,
+              "payoff_denominator": 60466176,
+              "public_nodes": 198,
+              "maximum_bids": 2
+            },
+            {
+              "opponent_component": 5,
+              "root_weight": 0.5,
+              "payoff_numerator_p0": 2272584,
+              "payoff_denominator": 60466176,
+              "public_nodes": 198,
+              "maximum_bids": 2
+            }
+          ],
+          "replay_wall_seconds": 0.01771570002892986,
+          "replay_cpu_seconds": 0.015625
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.8412924276871746,
+          "upper": 0.9999999999999996,
+          "width": 0.15870757231282495,
+          "stats": {
+            "expanded_own_nodes": 25,
+            "depth_frontiers": 272,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 2931,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 0.908857700007502,
+          "search_cpu_seconds": 0.90625,
+          "deployment_value": 0.841292427687175,
+          "deployment_terms": [
+            {
+              "opponent_component": 3,
+              "root_weight": 0.5,
+              "payoff_numerator_p0": -50869736,
+              "payoff_denominator": 60466176,
+              "public_nodes": 436,
+              "maximum_bids": 3
+            },
+            {
+              "opponent_component": 8,
+              "root_weight": 0.5,
+              "payoff_numerator_p0": -50869736,
+              "payoff_denominator": 60466176,
+              "public_nodes": 436,
+              "maximum_bids": 3
+            }
+          ],
+          "replay_wall_seconds": 0.03428259998327121,
+          "replay_cpu_seconds": 0.03125
+        }
+      ],
+      "incumbent_depth": null,
+      "nashconv_lower": 0.8788768120543944,
+      "nashconv_upper": 1.9044861047604524,
+      "exploitability_lower": 0.4394384060271972,
+      "exploitability_upper": 0.9522430523802262,
+      "model_action_cache": {
+        "hits": 0,
+        "misses": 3075,
+        "maxsize": 256,
+        "currsize": 256
+      }
+    },
+    {
+      "generation": 0,
+      "population_size": 15,
+      "depth": 2,
+      "max_nodes_per_seat": 32,
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 2,
+          "max_nodes": 32,
+          "lower": 0.4387384775250216,
+          "upper": 0.904486104760453,
+          "width": 0.4657476272354314,
+          "stats": {
+            "expanded_own_nodes": 32,
+            "depth_frontiers": 941,
+            "budget_frontiers": 272,
+            "forced_challenges": 0,
+            "opponent_nodes": 4240,
+            "maximum_history": 4,
+            "incumbent_nodes": 1,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 2.254001200024504,
+          "search_cpu_seconds": 2.21875,
+          "deployment_value": 0.4387384775250216,
+          "deployment_terms": [
+            {
+              "opponent_component": 0,
+              "root_weight": 0.5,
+              "payoff_numerator_p0": 26528838,
+              "payoff_denominator": 60466176,
+              "public_nodes": 545,
+              "maximum_bids": 4
+            },
+            {
+              "opponent_component": 5,
+              "root_weight": 0.5,
+              "payoff_numerator_p0": 26528838,
+              "payoff_denominator": 60466176,
+              "public_nodes": 545,
+              "maximum_bids": 4
+            }
+          ],
+          "replay_wall_seconds": 0.19432080001570284,
+          "replay_cpu_seconds": 0.203125
+        },
+        {
+          "seat": 1,
+          "depth": 2,
+          "max_nodes": 32,
+          "lower": 0.8689971728987786,
+          "upper": 0.9904740131077576,
+          "width": 0.12147684020897898,
+          "stats": {
+            "expanded_own_nodes": 32,
+            "depth_frontiers": 81,
+            "budget_frontiers": 29,
+            "forced_challenges": 0,
+            "opponent_nodes": 4093,
+            "maximum_history": 5,
+            "incumbent_nodes": 25,
+            "incumbent_frontiers": 23
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 5.621695600042585,
+          "search_cpu_seconds": 5.578125,
+          "deployment_value": 0.868997172898779,
+          "deployment_terms": [
+            {
+              "opponent_component": 3,
+              "root_weight": 0.5,
+              "payoff_numerator_p0": -52544936,
+              "payoff_denominator": 60466176,
+              "public_nodes": 482,
+              "maximum_bids": 5
+            },
+            {
+              "opponent_component": 8,
+              "root_weight": 0.5,
+              "payoff_numerator_p0": -52544936,
+              "payoff_denominator": 60466176,
+              "public_nodes": 482,
+              "maximum_bids": 5
+            }
+          ],
+          "replay_wall_seconds": 0.1720783999771811,
+          "replay_cpu_seconds": 0.171875
+        }
+      ],
+      "incumbent_depth": 1,
+      "nashconv_lower": 1.3077356504238002,
+      "nashconv_upper": 1.8949601178682105,
+      "exploitability_lower": 0.6538678252119001,
+      "exploitability_upper": 0.9474800589341053,
+      "model_action_cache": {
+        "hits": 0,
+        "misses": 11408,
+        "maxsize": 256,
+        "currsize": 256
+      }
+    },
+    {
+      "generation": 1,
+      "population_size": 19,
+      "depth": 1,
+      "max_nodes_per_seat": 32,
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.20430903716737592,
+          "upper": 0.9044861047604529,
+          "width": 0.700177067593077,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 642,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 0.4630687999888323,
+          "search_cpu_seconds": 0.46875,
+          "deployment_value": 0.2043090371673763,
+          "deployment_terms": [
+            {
+              "opponent_component": 3,
+              "root_weight": 0.26073046559187324,
+              "payoff_numerator_p0": -11114076,
+              "payoff_denominator": 60466176,
+              "public_nodes": 302,
+              "maximum_bids": 2
+            },
+            {
+              "opponent_component": 8,
+              "root_weight": 0.26073046559187324,
+              "payoff_numerator_p0": -11114076,
+              "payoff_denominator": 60466176,
+              "public_nodes": 302,
+              "maximum_bids": 2
+            },
+            {
+              "opponent_component": 16,
+              "root_weight": 0.4785390688162536,
+              "payoff_numerator_p0": 37926564,
+              "payoff_denominator": 60466176,
+              "public_nodes": 360,
+              "maximum_bids": 2
+            }
+          ],
+          "replay_wall_seconds": 0.1942198000033386,
+          "replay_cpu_seconds": 0.1875
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.44603143058518296,
+          "upper": 0.9451493225170768,
+          "width": 0.4991178919318939,
+          "stats": {
+            "expanded_own_nodes": 30,
+            "depth_frontiers": 606,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 3361,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 3.946578499977477,
+          "search_cpu_seconds": 3.921875,
+          "deployment_value": 0.4460314305851831,
+          "deployment_terms": [
+            {
+              "opponent_component": 2,
+              "root_weight": 0.10066979583219045,
+              "payoff_numerator_p0": -43171456,
+              "payoff_denominator": 60466176,
+              "public_nodes": 285,
+              "maximum_bids": 3
+            },
+            {
+              "opponent_component": 7,
+              "root_weight": 0.10066979583219045,
+              "payoff_numerator_p0": -43171456,
+              "payoff_denominator": 60466176,
+              "public_nodes": 285,
+              "maximum_bids": 3
+            },
+            {
+              "opponent_component": 15,
+              "root_weight": 0.798660408335619,
+              "payoff_numerator_p0": -22885436,
+              "payoff_denominator": 60466176,
+              "public_nodes": 409,
+              "maximum_bids": 3
+            }
+          ],
+          "replay_wall_seconds": 0.08762030000798404,
+          "replay_cpu_seconds": 0.078125
+        }
+      ],
+      "incumbent_depth": null,
+      "nashconv_lower": 0.6503404677525588,
+      "nashconv_upper": 1.8496354272775297,
+      "exploitability_lower": 0.3251702338762794,
+      "exploitability_upper": 0.9248177136387649,
+      "model_action_cache": {
+        "hits": 0,
+        "misses": 3505,
+        "maxsize": 256,
+        "currsize": 256
+      }
+    },
+    {
+      "generation": 1,
+      "population_size": 19,
+      "depth": 2,
+      "max_nodes_per_seat": 32,
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 2,
+          "max_nodes": 32,
+          "lower": 0.25066647668980885,
+          "upper": 0.9002124576695439,
+          "width": 0.649545980979735,
+          "stats": {
+            "expanded_own_nodes": 32,
+            "depth_frontiers": 278,
+            "budget_frontiers": 611,
+            "forced_challenges": 0,
+            "opponent_nodes": 3710,
+            "maximum_history": 4,
+            "incumbent_nodes": 1,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 3.7083739999798127,
+          "search_cpu_seconds": 3.671875,
+          "deployment_value": 0.25066647668980935,
+          "deployment_terms": [
+            {
+              "opponent_component": 3,
+              "root_weight": 0.26073046559187324,
+              "payoff_numerator_p0": -1092994,
+              "payoff_denominator": 60466176,
+              "public_nodes": 435,
+              "maximum_bids": 4
+            },
+            {
+              "opponent_component": 8,
+              "root_weight": 0.26073046559187324,
+              "payoff_numerator_p0": -1092994,
+              "payoff_denominator": 60466176,
+              "public_nodes": 435,
+              "maximum_bids": 4
+            },
+            {
+              "opponent_component": 16,
+              "root_weight": 0.4785390688162536,
+              "payoff_numerator_p0": 32864186,
+              "payoff_denominator": 60466176,
+              "public_nodes": 438,
+              "maximum_bids": 4
+            }
+          ],
+          "replay_wall_seconds": 0.1389389000250958,
+          "replay_cpu_seconds": 0.140625
+        },
+        {
+          "seat": 1,
+          "depth": 2,
+          "max_nodes": 32,
+          "lower": 0.628702077267625,
+          "upper": 0.9451493225170768,
+          "width": 0.3164472452494519,
+          "stats": {
+            "expanded_own_nodes": 32,
+            "depth_frontiers": 1061,
+            "budget_frontiers": 203,
+            "forced_challenges": 0,
+            "opponent_nodes": 4348,
+            "maximum_history": 5,
+            "incumbent_nodes": 30,
+            "incumbent_frontiers": 29
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 3.4733900999999605,
+          "search_cpu_seconds": 3.4375,
+          "deployment_value": 0.6287020772676247,
+          "deployment_terms": [
+            {
+              "opponent_component": 2,
+              "root_weight": 0.10066979583219045,
+              "payoff_numerator_p0": -42446656,
+              "payoff_denominator": 60466176,
+              "public_nodes": 295,
+              "maximum_bids": 4
+            },
+            {
+              "opponent_component": 7,
+              "root_weight": 0.10066979583219045,
+              "payoff_numerator_p0": -42446656,
+              "payoff_denominator": 60466176,
+              "public_nodes": 295,
+              "maximum_bids": 4
+            },
+            {
+              "opponent_component": 15,
+              "root_weight": 0.798660408335619,
+              "payoff_numerator_p0": -36898058,
+              "payoff_denominator": 60466176,
+              "public_nodes": 683,
+              "maximum_bids": 5
+            }
+          ],
+          "replay_wall_seconds": 0.1961617000051774,
+          "replay_cpu_seconds": 0.1875
+        }
+      ],
+      "incumbent_depth": 1,
+      "nashconv_lower": 0.8793685539574339,
+      "nashconv_upper": 1.8453617801866207,
+      "exploitability_lower": 0.4396842769787169,
+      "exploitability_upper": 0.9226808900933103,
+      "model_action_cache": {
+        "hits": 0,
+        "misses": 11563,
+        "maxsize": 256,
+        "currsize": 256
+      }
+    },
+    {
+      "generation": 2,
+      "population_size": 23,
+      "depth": 1,
+      "max_nodes_per_seat": 32,
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.48631139274226676,
+          "upper": 0.9479035288061346,
+          "width": 0.46159213606386784,
+          "stats": {
+            "expanded_own_nodes": 1,
+            "depth_frontiers": 673,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 144,
+            "maximum_history": 2,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 0.21815889998106286,
+          "search_cpu_seconds": 0.21875,
+          "deployment_value": 0.48631139274226703,
+          "deployment_terms": [
+            {
+              "opponent_component": 15,
+              "root_weight": 0.23700251384915172,
+              "payoff_numerator_p0": 43814004,
+              "payoff_denominator": 60466176,
+              "public_nodes": 138,
+              "maximum_bids": 2
+            },
+            {
+              "opponent_component": 16,
+              "root_weight": 0.3084309130172626,
+              "payoff_numerator_p0": 43820964,
+              "payoff_denominator": 60466176,
+              "public_nodes": 170,
+              "maximum_bids": 2
+            },
+            {
+              "opponent_component": 19,
+              "root_weight": 0.4545665731335858,
+              "payoff_numerator_p0": 12111804,
+              "payoff_denominator": 60466176,
+              "public_nodes": 154,
+              "maximum_bids": 2
+            }
+          ],
+          "replay_wall_seconds": 0.023143100028391927,
+          "replay_cpu_seconds": 0.015625
+        },
+        {
+          "seat": 1,
+          "depth": 1,
+          "max_nodes": 32,
+          "lower": 0.6962229207511496,
+          "upper": 1.0,
+          "width": 0.30377707924885045,
+          "stats": {
+            "expanded_own_nodes": 25,
+            "depth_frontiers": 1506,
+            "budget_frontiers": 0,
+            "forced_challenges": 0,
+            "opponent_nodes": 2931,
+            "maximum_history": 3,
+            "incumbent_nodes": 0,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 2.926276099984534,
+          "search_cpu_seconds": 2.859375,
+          "deployment_value": 0.6962229207511497,
+          "deployment_terms": [
+            {
+              "opponent_component": 15,
+              "root_weight": 0.31010409508076414,
+              "payoff_numerator_p0": -13255286,
+              "payoff_denominator": 60466176,
+              "public_nodes": 309,
+              "maximum_bids": 3
+            },
+            {
+              "opponent_component": 19,
+              "root_weight": 0.16160658531809435,
+              "payoff_numerator_p0": -42370386,
+              "payoff_denominator": 60466176,
+              "public_nodes": 317,
+              "maximum_bids": 3
+            },
+            {
+              "opponent_component": 20,
+              "root_weight": 0.5282893196011416,
+              "payoff_numerator_p0": -58945136,
+              "payoff_denominator": 60466176,
+              "public_nodes": 419,
+              "maximum_bids": 3
+            }
+          ],
+          "replay_wall_seconds": 0.24708140001166612,
+          "replay_cpu_seconds": 0.25
+        }
+      ],
+      "incumbent_depth": null,
+      "nashconv_lower": 1.1825343134934163,
+      "nashconv_upper": 1.9479035288061346,
+      "exploitability_lower": 0.5912671567467082,
+      "exploitability_upper": 0.9739517644030673,
+      "model_action_cache": {
+        "hits": 0,
+        "misses": 3075,
+        "maxsize": 256,
+        "currsize": 256
+      }
+    },
+    {
+      "generation": 2,
+      "population_size": 23,
+      "depth": 2,
+      "max_nodes_per_seat": 32,
+      "seats": [
+        {
+          "seat": 0,
+          "depth": 2,
+          "max_nodes": 32,
+          "lower": 0.49884384479066324,
+          "upper": 0.9479035288061346,
+          "width": 0.44905968401547136,
+          "stats": {
+            "expanded_own_nodes": 32,
+            "depth_frontiers": 523,
+            "budget_frontiers": 642,
+            "forced_challenges": 0,
+            "opponent_nodes": 3789,
+            "maximum_history": 4,
+            "incumbent_nodes": 1,
+            "incumbent_frontiers": 0
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 3.6915009999647737,
+          "search_cpu_seconds": 3.640625,
+          "deployment_value": 0.49884384479066346,
+          "deployment_terms": [
+            {
+              "opponent_component": 15,
+              "root_weight": 0.23700251384915172,
+              "payoff_numerator_p0": 44485836,
+              "payoff_denominator": 60466176,
+              "public_nodes": 138,
+              "maximum_bids": 4
+            },
+            {
+              "opponent_component": 16,
+              "root_weight": 0.3084309130172626,
+              "payoff_numerator_p0": 44503846,
+              "payoff_denominator": 60466176,
+              "public_nodes": 184,
+              "maximum_bids": 3
+            },
+            {
+              "opponent_component": 19,
+              "root_weight": 0.4545665731335858,
+              "payoff_numerator_p0": 12965236,
+              "payoff_denominator": 60466176,
+              "public_nodes": 154,
+              "maximum_bids": 4
+            }
+          ],
+          "replay_wall_seconds": 0.059242899995297194,
+          "replay_cpu_seconds": 0.0625
+        },
+        {
+          "seat": 1,
+          "depth": 2,
+          "max_nodes": 32,
+          "lower": 0.7534478459492998,
+          "upper": 1.0,
+          "width": 0.2465521540507002,
+          "stats": {
+            "expanded_own_nodes": 32,
+            "depth_frontiers": 1054,
+            "budget_frontiers": 228,
+            "forced_challenges": 0,
+            "opponent_nodes": 4316,
+            "maximum_history": 5,
+            "incumbent_nodes": 25,
+            "incumbent_frontiers": 24
+          },
+          "formally_interval_certified": false,
+          "search_wall_seconds": 15.996237300045323,
+          "search_cpu_seconds": 15.765625,
+          "deployment_value": 0.7534478459492997,
+          "deployment_terms": [
+            {
+              "opponent_component": 15,
+              "root_weight": 0.31010409508076414,
+              "payoff_numerator_p0": -24711538,
+              "payoff_denominator": 60466176,
+              "public_nodes": 666,
+              "maximum_bids": 5
+            },
+            {
+              "opponent_component": 19,
+              "root_weight": 0.16160658531809435,
+              "payoff_numerator_p0": -43704738,
+              "payoff_denominator": 60466176,
+              "public_nodes": 611,
+              "maximum_bids": 5
+            },
+            {
+              "opponent_component": 20,
+              "root_weight": 0.5282893196011416,
+              "payoff_numerator_p0": -58361936,
+              "payoff_denominator": 60466176,
+              "public_nodes": 495,
+              "maximum_bids": 5
+            }
+          ],
+          "replay_wall_seconds": 1.456507699971553,
+          "replay_cpu_seconds": 1.4375
+        }
+      ],
+      "incumbent_depth": 1,
+      "nashconv_lower": 1.252291690739963,
+      "nashconv_upper": 1.9479035288061346,
+      "exploitability_lower": 0.6261458453699815,
+      "exploitability_upper": 0.9739517644030673,
+      "model_action_cache": {
+        "hits": 0,
+        "misses": 11180,
+        "maxsize": 256,
+        "currsize": 256
+      }
+    }
+  ],
+  "status": "completed",
+  "certified_equilibrium": false,
+  "bound_arithmetic": "float64; structural bounds, not outward-rounded interval certification",
+  "wall_seconds": 47.900791399995796,
+  "cpu_seconds": 47.125
+}
