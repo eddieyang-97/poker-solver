@@ -59,4 +59,4 @@ OPENBLAS_NUM_THREADS=1 python -m unittest discover -s experiments/liars_dice/tes
 
 Payoff numerators, component parameters, root mixture weights, value brackets, source hashes, timing and test outcomes are retained in `outputs/family.json`. This is an in-repository model/evaluator, not an externally audited solver. No strategy is promoted as practical GTO.
 
-The next substantive step is to expand the strategy class with history-conditioned responses and repeat the response tests, potentially through a policy-space double-oracle procedure. A low gap after that expansion would still need progressively stronger response searches or a credible full-game upper bound. The present result rejects the current class; it does not authorize hiding its failure behind the tiny family gap.
+The [policy-space follow-on](policy-space-research.md) expands the strategy class with history-conditioned responses and repeats exact response tests. A low gap after that expansion would still need progressively stronger response searches or a credible full-game upper bound. The present result rejects the current class; it does not authorize hiding its failure behind the tiny family gap.
