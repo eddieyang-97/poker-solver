@@ -76,3 +76,7 @@ New receipts use LF-normalized source hashes and LF JSON output. Earlier receipt
 ## Continuation response bounds
 
 [Bounded response research](bounded-response-research.md) checks continuation-aware responses against exact small-game best responses and replays their full-rule payoffs. A stronger search raises the 23-policy snapshot's known NashConv lower bound to **1.474843**, with a loose floating-point upper bound **1.928530**. This exposes further vulnerability in the existing policy; it does not supply a GTO strategy.
+
+## Frozen-policy analysis feasibility (#46)
+
+[Analysis/state study](analysis-research.md) provides a versioned pure full-history analysis prototype, exact streaming state, lossy history controls, independent checks and local latency/peak-memory receipts. Rule math and model-conditional challenge EV are supported locally; continuation recommendations abstain. No MCP tool is registered.

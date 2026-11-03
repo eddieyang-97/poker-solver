@@ -1,0 +1,60 @@
+{
+  "model_id": "a5d87c94de9d8e380fefc8aa48dd0706e2a8176fee79a6b6f48ea4dbe79ae45f:generation=2",
+  "snapshot_sha256": "b972f00273f847e84072e2444b505f2f9ec06311c6a38534f26a6451be63c339",
+  "source_sha256_lf": {
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "finite_family.py": "d9a61615192a3b418bbde2ef34cdfe3a3646bb7cc98bad559e01faf99cb19cd9",
+    "policy_space.py": "655036068e0fb7fa212d64f1afd8742a0378072b1e0e8f9b08525d55aa5fd925",
+    "streaming_analysis.py": "a02ce4fe9cb91a1980e48521d59b12ec6b6a0cf6c5282b223d9c73d527a25b22",
+    "run_bounded_response.py": "ac9be3266c3a74de8d69de8b5b10c756551658a6acada3d43cc94ba8c4543922",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "mccfr.py": "0dadf73e47cd96cdfef51e493caab8ef77345772b4d645ac49d0338a92cdca2a",
+    "bounded_response.py": "036d53de36e6ad0b6d0834b868f22e9196192a5081d3fc73c4e5e6d76753d373",
+    "run_replay_comparison.py": "6be14c1d0b917bd4852a9036d800aea5de4d028048119d810c1ed73f12483fe1",
+    "run_analysis_research.py": "b074d19086079e05ef26e2e1ff1cb8e7f500a805b139598cd3efce2970da4939"
+  },
+  "corpus_cases": 78,
+  "held_out_cases": 58,
+  "maximum_history": 150,
+  "posterior_maximum_absolute_error": 0.0,
+  "posterior_only_seconds": {
+    "recursive": {
+      "samples": 78,
+      "median": 0.0010559000365901738,
+      "p95": 0.0012758149940054863,
+      "maximum": 0.0014380000066012144
+    },
+    "stream": {
+      "samples": 78,
+      "median": 0.004343700013123453,
+      "p95": 0.01043895000475457,
+      "maximum": 0.15851780003868043
+    },
+    "build_table": {
+      "samples": 78,
+      "median": 4.745001206174493e-05,
+      "p95": 5.178998690098524e-05,
+      "maximum": 6.51999725960195e-05
+    },
+    "reuse_table": {
+      "samples": 78,
+      "median": 4.399975296109915e-06,
+      "p95": 8.314996375702321e-06,
+      "maximum": 1.309998333454132e-05
+    }
+  },
+  "cached_likelihoods_before_holdout": 77,
+  "cached_likelihoods_after_holdout": 121,
+  "held_out_cache_misses": 44,
+  "held_out_seconds": {
+    "samples": 58,
+    "median": 0.00013039997429586947,
+    "p95": 0.001194330005091615,
+    "maximum": 0.0017056000069715083
+  },
+  "cached_vector_bytes_after_holdout": 243936,
+  "cache_key": "model_id, actor, full public prefix, observed action",
+  "miss_behavior": "compute exact recursive likelihood and add it; no approximate substitution",
+  "caveat": "corpus-only unbounded comparison cache; production prototype instead bounds full-query memoization; recursive model caches warm across passes"
+}
