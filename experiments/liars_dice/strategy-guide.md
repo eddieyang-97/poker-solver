@@ -91,3 +91,9 @@ The guided sampler and finite-family equilibrium still lose heavily to posterior
 [新一轮实验](policy-space-research.md)把会根据公开叫法更新信念的对手加入策略族，再重新求解。两轮扩展后，新的应对策略仍证明完整游戏的 NashConv 至少为 **0.8253**（本项目的 exploitability 定义下至少 **0.4127**）。策略族内部误差约 **0.0000024**，不能当作完整游戏接近 GTO 的证据。
 
 The practical lesson is to study responses to your *whole bidding strategy*, including what earlier bids reveal. A rule such as “challenge below 50% truth” compares challenging with zero; it does not compare challenging with every legal continuation. This experiment still uses heuristic continuation choices, so its opening mixtures, raise styles, mode switches and root component weights remain research diagnostics. No new full-game GTO chart or bluff ratio is justified.
+
+## 更强的应对检验 / Stronger continuation checks
+
+新的[继续行动搜索](bounded-response-research.md)比较“开”与加叫后的对手反应。同一套 23 策略混合的 NashConv 下界从此前的 0.8253 提高到至少 **1.4748**：这是发现了更强的利用方式，不是策略重新训练后变差。上界仍很宽，不能据此提供 GTO 开局表或诈唬比例。
+
+Immediate challenge EV can be calculated exactly under an explicit opponent model. Choosing among raises additionally requires continuation values. The new bounded searches expose large vulnerabilities, so current mixtures remain study examples rather than validated GTO recommendations.
