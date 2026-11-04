@@ -1,0 +1,8 @@
+# Optional isolated development reference; never a hosted/runtime dependency.
+open_spiel==2.0.2
+numpy==2.5.4
+scipy==1.18.1
+attrs==26.1.0
+absl-py==2.5.1
+ml-collections==1.1.0
+PyYAML==6.0.3

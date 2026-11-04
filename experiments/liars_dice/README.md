@@ -80,3 +80,13 @@ New receipts use LF-normalized source hashes and LF JSON output. Earlier receipt
 ## Frozen-policy analysis feasibility (#46)
 
 [Analysis/state study](analysis-research.md) provides a versioned pure full-history analysis prototype, exact streaming state, lossy history controls, independent checks and local latency/peak-memory receipts. Rule math and model-conditional challenge EV are supported locally; continuation recommendations abstain. No MCP tool is registered.
+
+## Fixed-strategy graph validation (#49)
+
+[Graph-trainer research](fixed-strategy-research.md) validates frozen-strategy
+forward/backward updates against explicit tree traversal and pinned OpenSpiel
+tiny-game training/best responses. It also counts house-rule recall/action tables
+before allocation. This is a cumulative-regret structural variant, not a
+reproduction of the original FSICFR update or a new five-dice strategy. OpenSpiel
+is an optional isolated development reference; ordinary CI replays recorded
+three-sided policy tables without installing it.
