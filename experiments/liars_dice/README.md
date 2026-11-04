@@ -90,3 +90,11 @@ before allocation. This is a cumulative-regret structural variant, not a
 reproduction of the original FSICFR update or a new five-dice strategy. OpenSpiel
 is an optional isolated development reference; ordinary CI replays recorded
 three-sided policy tables without installing it.
+
+## Chance-sampled house-rule recall training (#49)
+
+[One-bid training study](recall-training-research.md) trains new bounded-recall
+policies with true weighted private-deal sampling and exact public graph passes.
+It records three seeds, coverage, policy snapshots and full-history continuation
+response bounds, with independent sampled deployment checks. The experiment is
+standalone and does not replace the accepted frozen analysis model.
