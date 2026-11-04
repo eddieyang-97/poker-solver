@@ -98,3 +98,11 @@ policies with true weighted private-deal sampling and exact public graph passes.
 It records three seeds, coverage, policy snapshots and full-history continuation
 response bounds, with independent sampled deployment checks. The experiment is
 standalone and does not replace the accepted frozen analysis model.
+
+## Matched recall and training ablations (#49)
+
+[Restricted-house-game ablations](recall-ablation-research.md) compare exact-deal
+and sampled learning curves at recall 1/2/full in two six-bid fixtures. All use
+the same 56-profile private policy class and independent full-history evaluation.
+The fixture/compression limits are explicit; these results do not certify an
+unrestricted strategy or replace the original 252-hand policies.
