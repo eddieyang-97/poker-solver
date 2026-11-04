@@ -98,3 +98,17 @@ See [methods and reproduction](bounded-response-research.md). Five new focused t
 ## State/precomputation and query study (#46)
 
 See [analysis research](analysis-research.md) for commands, environment, process-memory method and measured limitations. Four new focused tests cover raw-roll scoring/priors, snapshot identity, strict query validation, cache isolation, both-seat stream/reference equivalence and history dependence. The numerical study compares exact stream plus two lossy controls across 15/19/23 policies, records independent toy BR values, 18 held-out payoff checks and five fresh-process query benchmarks. The separate replay comparison verifies posterior equality and records cache misses. Windows working-set receipts are not Linux address-space or hosted acceptance.
+
+## Fixed-strategy graph reference (#49)
+
+[Methods, matched rules and commands](fixed-strategy-research.md) define the
+cumulative-regret graph variant and its distinction from published FSICFR.
+`run_fixed_strategy.py` executes pinned OpenSpiel 2.0.2 C++ training, exhaustive
+game parity and independent EV/best-response comparisons for 1v1 dice games.
+`outputs/fixed-strategy.json` records source/wheel/binary hashes, all training
+inputs, checkpoints, external comparisons, local costs and process peak memory.
+Five focused tests cover every frozen-pass increment against scalar tree walks,
+zero-probability branches, repeated updates, tiny-game convergence, independent
+recall-state enumeration, budgets and recorded external-policy replay. No new
+house-rule policy or unrestricted quality certificate is produced. CI replay
+does not imply fresh execution of OpenSpiel.
