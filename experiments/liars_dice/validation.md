@@ -112,3 +112,23 @@ zero-probability branches, repeated updates, tiny-game convergence, independent
 recall-state enumeration, budgets and recorded external-policy replay. No new
 house-rule policy or unrestricted quality certificate is produced. CI replay
 does not imply fresh execution of OpenSpiel.
+
+## Chance-sampled one-bid house-rule trainer (#49)
+
+[Training definition and evidence](recall-training-research.md) specifies signed
+cumulative updates, weighted chance sampling, simultaneous frozen public passes
+and average-policy deployment. Focused tests compare expected sampled increments
+under nonuniform chance with the exact tiny trainer, verify deterministic seeds,
+own-hand row isolation, full-rule snapshot identity/legality and exact tiny-game
+full-history BR/payoff realization. The numerical driver retains every checkpoint
+and seed, uncertainty for sampled full-rule replay, peak process memory and
+source/policy hashes. This is new approximate training, not an equilibrium
+certificate or a hosted model change.
+
+All **49 standalone tests passed locally** (19.65 seconds), along with
+repository/research Ruff, compileall and whitespace checks. The complete three-seed
+run finished in 299.67 wall / 297.52 CPU seconds; final NashConv lower bounds are
+1.652970, 1.655147 and 1.658396. All final policies are retained losslessly.
+A deliberately tiny time-budget probe recorded `incomplete` with a timeout
+reason and no completed training runs. The three original policy snapshots and
+their recorded source fingerprints are checked by ordinary CI tests.
