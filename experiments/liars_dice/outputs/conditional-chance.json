@@ -1,0 +1,1933 @@
+{
+  "status": "completed",
+  "source_sha256_lf": {
+    "conditional_chance.py": "6444ca4b51183e5fe01162301d4262aa47a002aed19a982c09b4481cca0abf43",
+    "run_conditional_chance.py": "fd219d00004cec023923e8630537e4542ea688f7f2ab346f9163545e6d373e33",
+    "recall_training.py": "a1c924ba831d43223f83015b09a3c92ca06377fc3b207dde8cae6deae5113d9a",
+    "recall_ablation.py": "fe7d58662f6172389aaabd989fe371d20850cf532b7ab6e85693d272f488676b",
+    "fixed_strategy.py": "9bc2b509ad8e463aecbfa2c55664cef9e1041a799f9c5a87c5fdadcdaa6717f4",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "bounded_response.py": "036d53de36e6ad0b6d0834b868f22e9196192a5081d3fc73c4e5e6d76753d373",
+    "run_fixed_strategy.py": "02844fc09209a3d2a4d694b8c2b85207a71321b77acbcde2785802f27769b800",
+    "run_recall_ablation.py": "693df8abdb4a78fe2c15c0416c4e8eb6a6fa055c946023f5452b9c1b85e11210",
+    "run_recall_training.py": "5e9abecd619a95918504ece69290d826edbab30b1b3e1f1153482f7763be4328"
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.8",
+  "numpy": "2.5.4",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "seeds": [
+    490041,
+    490042,
+    490043
+  ],
+  "fixture_checkpoints": [
+    1000,
+    5000
+  ],
+  "full_cpu_budgets": [
+    15,
+    60
+  ],
+  "guard_seconds": 1500,
+  "execution_mode": "measured training CPU budgets",
+  "replay_input_sha256": null,
+  "guard_semantics": "between iterations/evaluations, not a hard deadline",
+  "variance_checks": [
+    {
+      "recall": 1,
+      "fixed_table_seed": 490041,
+      "private_pairs": 3136,
+      "maximum_mean_error": 1.1102230246251565e-16,
+      "paired_regret_trace_variance": 16.397230972234038,
+      "conditional_regret_trace_variance": 4.802212657810505,
+      "variance_ratio": 0.2928672936267256,
+      "cpu_seconds_per_frozen_pass": {
+        "paired": 0.00015625,
+        "conditional": 0.000625
+      },
+      "variance_times_cpu_ratio": 1.1714691745069021,
+      "scope": "fixed randomized policies, not learned-policy variance or convergence proof",
+      "enumeration_wall_seconds": 0.719076200039126,
+      "enumeration_cpu_seconds": 0.71875
+    },
+    {
+      "recall": 2,
+      "fixed_table_seed": 490041,
+      "private_pairs": 3136,
+      "maximum_mean_error": 6.938893903907228e-17,
+      "paired_regret_trace_variance": 9.983587469572488,
+      "conditional_regret_trace_variance": 2.3591321015003266,
+      "variance_ratio": 0.2363010399508573,
+      "cpu_seconds_per_frozen_pass": {
+        "paired": 0.0009375,
+        "conditional": 0.0025
+      },
+      "variance_times_cpu_ratio": 0.6301361065356195,
+      "scope": "fixed randomized policies, not learned-policy variance or convergence proof",
+      "enumeration_wall_seconds": 2.2034401000710204,
+      "enumeration_cpu_seconds": 2.1875
+    },
+    {
+      "recall": null,
+      "fixed_table_seed": 490041,
+      "private_pairs": 3136,
+      "maximum_mean_error": 6.938893903907228e-17,
+      "paired_regret_trace_variance": 9.36501663786107,
+      "conditional_regret_trace_variance": 1.966302832917269,
+      "variance_ratio": 0.2099625562829074,
+      "cpu_seconds_per_frozen_pass": {
+        "paired": 0.0021875,
+        "conditional": 0.00828125
+      },
+      "variance_times_cpu_ratio": 0.7948582487852922,
+      "scope": "fixed randomized policies, not learned-policy variance or convergence proof",
+      "enumeration_wall_seconds": 10.795956799993291,
+      "enumeration_cpu_seconds": 10.734375
+    }
+  ],
+  "fixtures": [
+    {
+      "recall": 1,
+      "seed": 490041,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 1.370342000038363,
+          "training_cpu_seconds": 1.375,
+          "full_history_evaluation": {
+            "ev_p0": 0.06237567257239613,
+            "br0": 0.1282816658150821,
+            "br1": 0.004608109285175742,
+            "gain0": 0.06590599324268598,
+            "gain1": 0.06698378185757187,
+            "nashconv": 0.13288977510025785,
+            "exploitability": 0.06644488755012892
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 8.423117400030605,
+          "training_cpu_seconds": 8.4375,
+          "full_history_evaluation": {
+            "ev_p0": 0.05909686126058262,
+            "br0": 0.09692576446199958,
+            "br1": -0.035505515943365186,
+            "gain0": 0.03782890320141696,
+            "gain1": 0.023591345317217433,
+            "nashconv": 0.06142024851863439,
+            "exploitability": 0.030710124259317195
+          },
+          "policy": {
+            "file": "conditional-fixture-m1-490041.json",
+            "sha256": "d73a732b5b6018bf43ce2416057c2e6072e9f16653cd1f5f144858551908cac3"
+          }
+        }
+      ]
+    },
+    {
+      "recall": 1,
+      "seed": 490042,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 1.7810644999844953,
+          "training_cpu_seconds": 1.78125,
+          "full_history_evaluation": {
+            "ev_p0": 0.06697211191645669,
+            "br0": 0.13469947799753157,
+            "br1": -0.0015065267974697428,
+            "gain0": 0.06772736608107488,
+            "gain1": 0.06546558511898695,
+            "nashconv": 0.13319295120006183,
+            "exploitability": 0.06659647560003092
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 8.832953599980101,
+          "training_cpu_seconds": 8.75,
+          "full_history_evaluation": {
+            "ev_p0": 0.0594050268128433,
+            "br0": 0.10098972058588374,
+            "br1": -0.02975880266144223,
+            "gain0": 0.041584693773040436,
+            "gain1": 0.029646224151401068,
+            "nashconv": 0.0712309179244415,
+            "exploitability": 0.03561545896222075
+          },
+          "policy": {
+            "file": "conditional-fixture-m1-490042.json",
+            "sha256": "fdff56e9439ecdfa28e7bf495ac8eef8657c6faded3b0632b685a51f552688e1"
+          }
+        }
+      ]
+    },
+    {
+      "recall": 1,
+      "seed": 490043,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 1.7713168000336736,
+          "training_cpu_seconds": 1.734375,
+          "full_history_evaluation": {
+            "ev_p0": 0.06624029440515034,
+            "br0": 0.1329051143294451,
+            "br1": 0.003529934606794138,
+            "gain0": 0.06666481992429477,
+            "gain1": 0.06977022901194448,
+            "nashconv": 0.13643504893623923,
+            "exploitability": 0.06821752446811961
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 8.849797400063835,
+          "training_cpu_seconds": 8.671875,
+          "full_history_evaluation": {
+            "ev_p0": 0.06101770621178919,
+            "br0": 0.09977755419778736,
+            "br1": -0.03489422259949109,
+            "gain0": 0.03875984798599817,
+            "gain1": 0.026123483612298097,
+            "nashconv": 0.06488333159829626,
+            "exploitability": 0.03244166579914813
+          },
+          "policy": {
+            "file": "conditional-fixture-m1-490043.json",
+            "sha256": "fefb0d643a2e8c839f6cf627ce2897186dd4089212424768a66e80dd770e4b0e"
+          }
+        }
+      ]
+    },
+    {
+      "recall": 2,
+      "seed": 490041,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 4.478187300032005,
+          "training_cpu_seconds": 4.453125,
+          "full_history_evaluation": {
+            "ev_p0": 0.06307207350954976,
+            "br0": 0.116776719128969,
+            "br1": -0.011546432590986888,
+            "gain0": 0.05370464561941925,
+            "gain1": 0.05152564091856287,
+            "nashconv": 0.10523028653798211,
+            "exploitability": 0.052615143268991055
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 22.362490899977274,
+          "training_cpu_seconds": 22.078125,
+          "full_history_evaluation": {
+            "ev_p0": 0.06542592335980242,
+            "br0": 0.07915745808814947,
+            "br1": -0.04903530597966369,
+            "gain0": 0.013731534728347053,
+            "gain1": 0.01639061738013873,
+            "nashconv": 0.030122152108485782,
+            "exploitability": 0.015061076054242891
+          },
+          "policy": {
+            "file": "conditional-fixture-m2-490041.json",
+            "sha256": "178315b009c3033f1c9d081ee2a6b2cb171dd70b08ecc0dfc7ed15a0c61bffb7"
+          }
+        }
+      ]
+    },
+    {
+      "recall": 2,
+      "seed": 490042,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 4.323743199929595,
+          "training_cpu_seconds": 4.265625,
+          "full_history_evaluation": {
+            "ev_p0": 0.0657581941104872,
+            "br0": 0.11992928486536387,
+            "br1": -0.008085243312140307,
+            "gain0": 0.05417109075487668,
+            "gain1": 0.05767295079834689,
+            "nashconv": 0.11184404155322357,
+            "exploitability": 0.055922020776611785
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 22.031585799879394,
+          "training_cpu_seconds": 21.828125,
+          "full_history_evaluation": {
+            "ev_p0": 0.06438885970853486,
+            "br0": 0.08064663552422087,
+            "br1": -0.04857712288698606,
+            "gain0": 0.016257775815686007,
+            "gain1": 0.0158117368215488,
+            "nashconv": 0.03206951263723481,
+            "exploitability": 0.016034756318617404
+          },
+          "policy": {
+            "file": "conditional-fixture-m2-490042.json",
+            "sha256": "eda01b02338e966033e40dde8a33595effb476af7360feb693f77073f918490f"
+          }
+        }
+      ]
+    },
+    {
+      "recall": 2,
+      "seed": 490043,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 4.390211399993859,
+          "training_cpu_seconds": 4.3125,
+          "full_history_evaluation": {
+            "ev_p0": 0.06369531175027494,
+            "br0": 0.11889354285146851,
+            "br1": -0.009437017487661572,
+            "gain0": 0.05519823110119357,
+            "gain1": 0.054258294262613374,
+            "nashconv": 0.10945652536380694,
+            "exploitability": 0.05472826268190347
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 22.345021599903703,
+          "training_cpu_seconds": 22.046875,
+          "full_history_evaluation": {
+            "ev_p0": 0.06439543645275198,
+            "br0": 0.08062607657770597,
+            "br1": -0.048426330944235804,
+            "gain0": 0.016230640124953996,
+            "gain1": 0.01596910550851617,
+            "nashconv": 0.03219974563347017,
+            "exploitability": 0.016099872816735084
+          },
+          "policy": {
+            "file": "conditional-fixture-m2-490043.json",
+            "sha256": "6dc039d0391b82e66a143c8b463fac304e2233563ac78359b22ff4d5acc8d957"
+          }
+        }
+      ]
+    },
+    {
+      "recall": null,
+      "seed": 490041,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 6.1676252000033855,
+          "training_cpu_seconds": 6.046875,
+          "full_history_evaluation": {
+            "ev_p0": 0.06348391794074135,
+            "br0": 0.11723566815878755,
+            "br1": -0.012510756375031514,
+            "gain0": 0.05375175021804621,
+            "gain1": 0.05097316156570983,
+            "nashconv": 0.10472491178375604,
+            "exploitability": 0.05236245589187802
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 35.52645370003302,
+          "training_cpu_seconds": 35.0625,
+          "full_history_evaluation": {
+            "ev_p0": 0.06536134625426758,
+            "br0": 0.07985888505186518,
+            "br1": -0.05176084261641543,
+            "gain0": 0.014497538797597603,
+            "gain1": 0.013600503637852153,
+            "nashconv": 0.028098042435449756,
+            "exploitability": 0.014049021217724878
+          },
+          "policy": {
+            "file": "conditional-fixture-mNone-490041.json",
+            "sha256": "98f58bd8564856a6f0a1a8f3b112d61de6cb61f30e3528be229d4b6edc8c7614"
+          }
+        }
+      ]
+    },
+    {
+      "recall": null,
+      "seed": 490042,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 8.32253679994028,
+          "training_cpu_seconds": 8.25,
+          "full_history_evaluation": {
+            "ev_p0": 0.06576708243237578,
+            "br0": 0.12112528014321526,
+            "br1": -0.010458023717525468,
+            "gain0": 0.05535819771083948,
+            "gain1": 0.05530905871485031,
+            "nashconv": 0.1106672564256898,
+            "exploitability": 0.0553336282128449
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 42.017616499913856,
+          "training_cpu_seconds": 41.6875,
+          "full_history_evaluation": {
+            "ev_p0": 0.06459377281966103,
+            "br0": 0.07919195110042584,
+            "br1": -0.05041217764039565,
+            "gain0": 0.014598178280764817,
+            "gain1": 0.014181595179265379,
+            "nashconv": 0.028779773460030196,
+            "exploitability": 0.014389886730015098
+          },
+          "policy": {
+            "file": "conditional-fixture-mNone-490042.json",
+            "sha256": "7424c6b682aa726b8c15e267924f6d5d0d1777cb158c1b329cbeaa6a1bb606dd"
+          }
+        }
+      ]
+    },
+    {
+      "recall": null,
+      "seed": 490043,
+      "checkpoints": [
+        {
+          "iterations": 1000,
+          "training_wall_seconds": 8.67608550004661,
+          "training_cpu_seconds": 8.609375,
+          "full_history_evaluation": {
+            "ev_p0": 0.06393255021987969,
+            "br0": 0.12170227111329075,
+            "br1": -0.01007831743214705,
+            "gain0": 0.057769720893411064,
+            "gain1": 0.05385423278773264,
+            "nashconv": 0.1116239536811437,
+            "exploitability": 0.05581197684057185
+          }
+        },
+        {
+          "iterations": 5000,
+          "training_wall_seconds": 44.10092200001236,
+          "training_cpu_seconds": 43.421875,
+          "full_history_evaluation": {
+            "ev_p0": 0.06357857944090292,
+            "br0": 0.07995485986066303,
+            "br1": -0.04933709482750375,
+            "gain0": 0.01637628041976011,
+            "gain1": 0.01424148461339917,
+            "nashconv": 0.03061776503315928,
+            "exploitability": 0.01530888251657964
+          },
+          "policy": {
+            "file": "conditional-fixture-mNone-490043.json",
+            "sha256": "56b04dc4fa6172c6d7607e7b180a100a2c91891d3054105b1e4ba96d23541f7e"
+          }
+        }
+      ]
+    }
+  ],
+  "full_game": [
+    {
+      "method": "paired",
+      "seed": 490041,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 1030,
+          "training_cpu_seconds": 15.0,
+          "training_wall_seconds": 15.233896400080994,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8988641260880206,
+                "upper": 0.9789891719886529,
+                "width": 0.0801250459006323,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640041,
+                  "games": 2000,
+                  "ev_p0": 0.894,
+                  "hoeffding95_individual": [
+                    0.8332638538091695,
+                    0.9547361461908306
+                  ],
+                  "mean_bids": 1.93,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9211432803506368,
+                "upper": 0.9554446926234424,
+                "width": 0.0343014122728057,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640042,
+                  "games": 2000,
+                  "ev_p0": -0.92,
+                  "hoeffding95_individual": [
+                    -0.9807361461908306,
+                    -0.8592638538091695
+                  ],
+                  "mean_bids": 2.114,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.8200074064386573,
+            "nashconv_upper": 1.9344338646120953,
+            "wall_seconds": 13.844003000063822,
+            "cpu_seconds": 13.625,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 36,
+              "unseen_prior_mass": 0.04179526748971194
+            },
+            {
+              "seat": 1,
+              "unseen_types": 35,
+              "unseen_prior_mass": 0.03986625514403293
+            }
+          ]
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 4136,
+          "training_cpu_seconds": 60.0,
+          "training_wall_seconds": 60.7079917001538,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8553153390682763,
+                "upper": 0.9691453819544045,
+                "width": 0.11383004288612819,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090041,
+                  "games": 2000,
+                  "ev_p0": 0.867,
+                  "hoeffding95_individual": [
+                    0.8062638538091694,
+                    0.9277361461908306
+                  ],
+                  "mean_bids": 1.9085,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8319526158794365,
+                "upper": 0.9111885210210803,
+                "width": 0.0792359051416438,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090042,
+                  "games": 2000,
+                  "ev_p0": -0.83,
+                  "hoeffding95_individual": [
+                    -0.8907361461908305,
+                    -0.7692638538091694
+                  ],
+                  "mean_bids": 2.56,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.6872679549477128,
+            "nashconv_upper": 1.8803339029754849,
+            "wall_seconds": 14.11287379998248,
+            "cpu_seconds": 13.984375,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.00205761316872428
+            },
+            {
+              "seat": 1,
+              "unseen_types": 7,
+              "unseen_prior_mass": 0.00360082304526749
+            }
+          ],
+          "policy": {
+            "file": "conditional-full-paired-490041.npz",
+            "bytes": 5155114,
+            "sha256": "260b6faddc1e6ce444c977591b1391603d78912a4dfcf96b5cc5415266281883",
+            "probabilities_sha256": "de97b36a1f21df26f3aa03a8606c08f076115d5258d073f8feb5e2acd122d937"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490071,
+              "games": 2000,
+              "ev_p0": -0.33,
+              "hoeffding95_individual": [
+                -0.3907361461908305,
+                -0.2692638538091695
+              ],
+              "mean_bids": 1.9225,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490072,
+              "games": 2000,
+              "ev_p0": 0.337,
+              "hoeffding95_individual": [
+                0.2762638538091695,
+                0.39773614619083053
+              ],
+              "mean_bids": 2.6205,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490111,
+              "games": 2000,
+              "ev_p0": -0.186,
+              "hoeffding95_individual": [
+                -0.2467361461908305,
+                -0.1252638538091695
+              ],
+              "mean_bids": 1.4155,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490112,
+              "games": 2000,
+              "ev_p0": 0.14,
+              "hoeffding95_individual": [
+                0.0792638538091695,
+                0.20073614619083052
+              ],
+              "mean_bids": 2.1165,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ],
+      "array_bytes": 91300608
+    },
+    {
+      "method": "paired",
+      "seed": 490042,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 1099,
+          "training_cpu_seconds": 15.0,
+          "training_wall_seconds": 15.205775600043125,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9021700226551803,
+                "upper": 0.9794599120937904,
+                "width": 0.07728988943861004,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640042,
+                  "games": 2000,
+                  "ev_p0": 0.896,
+                  "hoeffding95_individual": [
+                    0.8352638538091695,
+                    0.9567361461908306
+                  ],
+                  "mean_bids": 1.9335,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9124417058204094,
+                "upper": 0.9506169628309006,
+                "width": 0.03817525701049118,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640043,
+                  "games": 2000,
+                  "ev_p0": -0.915,
+                  "hoeffding95_individual": [
+                    -0.9757361461908306,
+                    -0.8542638538091695
+                  ],
+                  "mean_bids": 2.2145,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.8146117284755898,
+            "nashconv_upper": 1.930076874924691,
+            "wall_seconds": 14.369795700069517,
+            "cpu_seconds": 14.1875,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 26,
+              "unseen_prior_mass": 0.022505144032921812
+            },
+            {
+              "seat": 1,
+              "unseen_types": 31,
+              "unseen_prior_mass": 0.03729423868312758
+            }
+          ]
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 4506,
+          "training_cpu_seconds": 60.0,
+          "training_wall_seconds": 60.67115269997157,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8565698142267041,
+                "upper": 0.9698109857220357,
+                "width": 0.11324117149533164,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090042,
+                  "games": 2000,
+                  "ev_p0": 0.859,
+                  "hoeffding95_individual": [
+                    0.7982638538091694,
+                    0.9197361461908306
+                  ],
+                  "mean_bids": 1.904,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8137175971762878,
+                "upper": 0.9036334388127889,
+                "width": 0.08991584163650113,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090043,
+                  "games": 2000,
+                  "ev_p0": -0.807,
+                  "hoeffding95_individual": [
+                    -0.8677361461908306,
+                    -0.7462638538091695
+                  ],
+                  "mean_bids": 2.5745,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.6702874114029918,
+            "nashconv_upper": 1.8734444245348247,
+            "wall_seconds": 14.081106699886732,
+            "cpu_seconds": 13.96875,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0023148148148148147
+            },
+            {
+              "seat": 1,
+              "unseen_types": 6,
+              "unseen_prior_mass": 0.0012860082304526751
+            }
+          ],
+          "policy": {
+            "file": "conditional-full-paired-490042.npz",
+            "bytes": 5433575,
+            "sha256": "a68cc2dbfeb46a543fc2dabe06f2e958ba60d760ebe5a0e55298863b7bf07e67",
+            "probabilities_sha256": "127cf8c0b665de08721af51373489617eeec9ce2b2bff0dedbc126ada0aa235a"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490072,
+              "games": 2000,
+              "ev_p0": -0.325,
+              "hoeffding95_individual": [
+                -0.3857361461908305,
+                -0.2642638538091695
+              ],
+              "mean_bids": 2.0085,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490073,
+              "games": 2000,
+              "ev_p0": 0.341,
+              "hoeffding95_individual": [
+                0.2802638538091695,
+                0.40173614619083053
+              ],
+              "mean_bids": 2.642,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490112,
+              "games": 2000,
+              "ev_p0": -0.139,
+              "hoeffding95_individual": [
+                -0.19973614619083052,
+                -0.0782638538091695
+              ],
+              "mean_bids": 1.451,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490113,
+              "games": 2000,
+              "ev_p0": 0.168,
+              "hoeffding95_individual": [
+                0.1072638538091695,
+                0.22873614619083052
+              ],
+              "mean_bids": 2.1715,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ],
+      "array_bytes": 91300608
+    },
+    {
+      "method": "paired",
+      "seed": 490043,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 1201,
+          "training_cpu_seconds": 15.0,
+          "training_wall_seconds": 15.094515800010413,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9033220247268463,
+                "upper": 0.9811857210769369,
+                "width": 0.0778636963500906,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640043,
+                  "games": 2000,
+                  "ev_p0": 0.897,
+                  "hoeffding95_individual": [
+                    0.8362638538091695,
+                    0.9577361461908306
+                  ],
+                  "mean_bids": 1.925,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9079852287545583,
+                "upper": 0.94897298545886,
+                "width": 0.04098775670430166,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640044,
+                  "games": 2000,
+                  "ev_p0": -0.88,
+                  "hoeffding95_individual": [
+                    -0.9407361461908306,
+                    -0.8192638538091694
+                  ],
+                  "mean_bids": 2.2055,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.8113072534814045,
+            "nashconv_upper": 1.930158706535797,
+            "wall_seconds": 14.187967299949378,
+            "cpu_seconds": 14.078125,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 32,
+              "unseen_prior_mass": 0.03485082304526749
+            },
+            {
+              "seat": 1,
+              "unseen_types": 33,
+              "unseen_prior_mass": 0.03497942386831276
+            }
+          ]
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 4578,
+          "training_cpu_seconds": 60.0,
+          "training_wall_seconds": 60.45647730003111,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8582460949041438,
+                "upper": 0.970274720987548,
+                "width": 0.11202862608340414,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090043,
+                  "games": 2000,
+                  "ev_p0": 0.859,
+                  "hoeffding95_individual": [
+                    0.7982638538091694,
+                    0.9197361461908306
+                  ],
+                  "mean_bids": 1.9085,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8054353546509014,
+                "upper": 0.9038193117506454,
+                "width": 0.09838395709974401,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 257402,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4058,
+                  "opponent_nodes": 4090,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090044,
+                  "games": 2000,
+                  "ev_p0": -0.827,
+                  "hoeffding95_individual": [
+                    -0.8877361461908305,
+                    -0.7662638538091694
+                  ],
+                  "mean_bids": 2.547,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.6636814495550452,
+            "nashconv_upper": 1.8740940327381934,
+            "wall_seconds": 13.683488699956797,
+            "cpu_seconds": 13.484375,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025
+            },
+            {
+              "seat": 1,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0009002057613168725
+            }
+          ],
+          "policy": {
+            "file": "conditional-full-paired-490043.npz",
+            "bytes": 5393238,
+            "sha256": "bf2dbfbd42d854f507f637212837e6850e9be9c73deeafe1b8375280e98a33c7",
+            "probabilities_sha256": "9b1c1ad4219bf47441833406df7af0c8a1f5abde4687a3d8b96a5c64f06acdb7"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490073,
+              "games": 2000,
+              "ev_p0": -0.364,
+              "hoeffding95_individual": [
+                -0.4247361461908305,
+                -0.3032638538091695
+              ],
+              "mean_bids": 1.9815,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490074,
+              "games": 2000,
+              "ev_p0": 0.328,
+              "hoeffding95_individual": [
+                0.2672638538091695,
+                0.3887361461908305
+              ],
+              "mean_bids": 2.6455,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490113,
+              "games": 2000,
+              "ev_p0": -0.109,
+              "hoeffding95_individual": [
+                -0.16973614619083052,
+                -0.048263853809169484
+              ],
+              "mean_bids": 1.4315,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490114,
+              "games": 2000,
+              "ev_p0": 0.157,
+              "hoeffding95_individual": [
+                0.09626385380916949,
+                0.2177361461908305
+              ],
+              "mean_bids": 2.1485,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ],
+      "array_bytes": 91300608
+    },
+    {
+      "method": "conditional",
+      "seed": 490041,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 90,
+          "training_cpu_seconds": 15.09375,
+          "training_wall_seconds": 15.313012099941261,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9485410308850895,
+                "upper": 0.997707013100974,
+                "width": 0.04916598221588453,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640041,
+                  "games": 2000,
+                  "ev_p0": 0.945,
+                  "hoeffding95_individual": [
+                    0.8842638538091694,
+                    1
+                  ],
+                  "mean_bids": 1.9685,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9822962184993776,
+                "upper": 0.9933715411349221,
+                "width": 0.011075322635544449,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 255830,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4043,
+                  "opponent_nodes": 4075,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640042,
+                  "games": 2000,
+                  "ev_p0": -0.977,
+                  "hoeffding95_individual": [
+                    -1,
+                    -0.9162638538091694
+                  ],
+                  "mean_bids": 1.4065,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.9308372493844672,
+            "nashconv_upper": 1.9910785542358962,
+            "wall_seconds": 14.088111100019887,
+            "cpu_seconds": 13.921875,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 175,
+              "unseen_prior_mass": 0.5466820987654321
+            },
+            {
+              "seat": 1,
+              "unseen_types": 186,
+              "unseen_prior_mass": 0.6122685185185185
+            }
+          ]
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 343,
+          "training_cpu_seconds": 60.125,
+          "training_wall_seconds": 60.844128299853764,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9179672631980529,
+                "upper": 0.9892913341633539,
+                "width": 0.07132407096530102,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090041,
+                  "games": 2000,
+                  "ev_p0": 0.932,
+                  "hoeffding95_individual": [
+                    0.8712638538091695,
+                    0.9927361461908306
+                  ],
+                  "mean_bids": 1.9635,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9488273175706516,
+                "upper": 0.9742062184543199,
+                "width": 0.02537890088366823,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090042,
+                  "games": 2000,
+                  "ev_p0": -0.941,
+                  "hoeffding95_individual": [
+                    -1,
+                    -0.8802638538091694
+                  ],
+                  "mean_bids": 1.7565,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.8667945807687045,
+            "nashconv_upper": 1.9634975526176737,
+            "wall_seconds": 14.148265399970114,
+            "cpu_seconds": 14.046875,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 87,
+              "unseen_prior_mass": 0.17309670781893002
+            },
+            {
+              "seat": 1,
+              "unseen_types": 93,
+              "unseen_prior_mass": 0.19354423868312753
+            }
+          ],
+          "policy": {
+            "file": "conditional-full-conditional-490041.npz",
+            "bytes": 1858693,
+            "sha256": "d670b18cb32b0c9748613d0603c0e23f099aeb1312443f1ed43605badc1522cc",
+            "probabilities_sha256": "a31c41c9bb281266cb82718687e5b832b9221bfad44fd948596a52f107d838c0"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490071,
+              "games": 2000,
+              "ev_p0": -0.767,
+              "hoeffding95_individual": [
+                -0.8277361461908306,
+                -0.7062638538091695
+              ],
+              "mean_bids": 1.392,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490072,
+              "games": 2000,
+              "ev_p0": 0.71,
+              "hoeffding95_individual": [
+                0.6492638538091694,
+                0.7707361461908305
+              ],
+              "mean_bids": 2.3325,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490111,
+              "games": 2000,
+              "ev_p0": -0.62,
+              "hoeffding95_individual": [
+                -0.6807361461908306,
+                -0.5592638538091694
+              ],
+              "mean_bids": 1.1795,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490112,
+              "games": 2000,
+              "ev_p0": 0.564,
+              "hoeffding95_individual": [
+                0.5032638538091694,
+                0.6247361461908305
+              ],
+              "mean_bids": 2.0995,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ],
+      "array_bytes": 91300608
+    },
+    {
+      "method": "conditional",
+      "seed": 490042,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 88,
+          "training_cpu_seconds": 15.015625,
+          "training_wall_seconds": 15.13102460000664,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9572606724969325,
+                "upper": 0.9978538877531399,
+                "width": 0.040593215256207404,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640042,
+                  "games": 2000,
+                  "ev_p0": 0.947,
+                  "hoeffding95_individual": [
+                    0.8862638538091694,
+                    1
+                  ],
+                  "mean_bids": 1.968,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9798740840647464,
+                "upper": 0.9914813272778215,
+                "width": 0.011607243213075047,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 254801,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4037,
+                  "opponent_nodes": 4069,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640043,
+                  "games": 2000,
+                  "ev_p0": -0.977,
+                  "hoeffding95_individual": [
+                    -1,
+                    -0.9162638538091694
+                  ],
+                  "mean_bids": 1.448,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.937134756561679,
+            "nashconv_upper": 1.9893352150309613,
+            "wall_seconds": 14.15043160005007,
+            "cpu_seconds": 13.890625,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 186,
+              "unseen_prior_mass": 0.6585648148148149
+            },
+            {
+              "seat": 1,
+              "unseen_types": 179,
+              "unseen_prior_mass": 0.5859053497942387
+            }
+          ]
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 345,
+          "training_cpu_seconds": 60.0,
+          "training_wall_seconds": 60.54789340007119,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9193146207383848,
+                "upper": 0.9838504094179722,
+                "width": 0.06453578867958742,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090042,
+                  "games": 2000,
+                  "ev_p0": 0.926,
+                  "hoeffding95_individual": [
+                    0.8652638538091695,
+                    0.9867361461908306
+                  ],
+                  "mean_bids": 1.962,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9457048328300645,
+                "upper": 0.9726378550281615,
+                "width": 0.026933022198097012,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 254801,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4037,
+                  "opponent_nodes": 4069,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090043,
+                  "games": 2000,
+                  "ev_p0": -0.929,
+                  "hoeffding95_individual": [
+                    -0.9897361461908306,
+                    -0.8682638538091695
+                  ],
+                  "mean_bids": 1.827,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.8650194535684492,
+            "nashconv_upper": 1.9564882644461337,
+            "wall_seconds": 13.701904600020498,
+            "cpu_seconds": 13.625,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 85,
+              "unseen_prior_mass": 0.16859567901234565
+            },
+            {
+              "seat": 1,
+              "unseen_types": 93,
+              "unseen_prior_mass": 0.20588991769547324
+            }
+          ],
+          "policy": {
+            "file": "conditional-full-conditional-490042.npz",
+            "bytes": 1843275,
+            "sha256": "323dd5cca83011140124f8a7213b565def266c69dddb6fe4d9ee6971567da738",
+            "probabilities_sha256": "a74953d411cc9706b70e2b597303e82a2ae44833fefc6b5d40414ce306222229"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490072,
+              "games": 2000,
+              "ev_p0": -0.72,
+              "hoeffding95_individual": [
+                -0.7807361461908305,
+                -0.6592638538091694
+              ],
+              "mean_bids": 1.433,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490073,
+              "games": 2000,
+              "ev_p0": 0.725,
+              "hoeffding95_individual": [
+                0.6642638538091694,
+                0.7857361461908305
+              ],
+              "mean_bids": 2.319,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490112,
+              "games": 2000,
+              "ev_p0": -0.582,
+              "hoeffding95_individual": [
+                -0.6427361461908305,
+                -0.5212638538091694
+              ],
+              "mean_bids": 1.176,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490113,
+              "games": 2000,
+              "ev_p0": 0.612,
+              "hoeffding95_individual": [
+                0.5512638538091694,
+                0.6727361461908306
+              ],
+              "mean_bids": 2.08,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ],
+      "array_bytes": 91300608
+    },
+    {
+      "method": "conditional",
+      "seed": 490043,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 89,
+          "training_cpu_seconds": 15.109375,
+          "training_wall_seconds": 15.266556699993089,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9469541275729073,
+                "upper": 0.9984877079375758,
+                "width": 0.051533580364668485,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640043,
+                  "games": 2000,
+                  "ev_p0": 0.943,
+                  "hoeffding95_individual": [
+                    0.8822638538091694,
+                    1
+                  ],
+                  "mean_bids": 1.9665,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9797493608413893,
+                "upper": 0.9918245130575816,
+                "width": 0.012075152216192264,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 252966,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4020,
+                  "opponent_nodes": 4052,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640044,
+                  "games": 2000,
+                  "ev_p0": -0.983,
+                  "hoeffding95_individual": [
+                    -1,
+                    -0.9222638538091694
+                  ],
+                  "mean_bids": 1.38,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.9267034884142966,
+            "nashconv_upper": 1.9903122209951574,
+            "wall_seconds": 13.736014500027522,
+            "cpu_seconds": 13.609375,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 181,
+              "unseen_prior_mass": 0.5794753086419753
+            },
+            {
+              "seat": 1,
+              "unseen_types": 184,
+              "unseen_prior_mass": 0.5871913580246914
+            }
+          ]
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 348,
+          "training_cpu_seconds": 60.15625,
+          "training_wall_seconds": 60.67574430000968,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9180542600831123,
+                "upper": 0.9875052744396724,
+                "width": 0.06945101435656009,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090043,
+                  "games": 2000,
+                  "ev_p0": 0.922,
+                  "hoeffding95_individual": [
+                    0.8612638538091695,
+                    0.9827361461908306
+                  ],
+                  "mean_bids": 1.9605,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.9479552816385222,
+                "upper": 0.9728587662297961,
+                "width": 0.024903484591273894,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090044,
+                  "games": 2000,
+                  "ev_p0": -0.953,
+                  "hoeffding95_individual": [
+                    -1,
+                    -0.8922638538091694
+                  ],
+                  "mean_bids": 1.7865,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.8660095417216345,
+            "nashconv_upper": 1.9603640406694685,
+            "wall_seconds": 14.028437900007702,
+            "cpu_seconds": 13.859375,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "coverage": [
+            {
+              "seat": 0,
+              "unseen_types": 92,
+              "unseen_prior_mass": 0.18595679012345678
+            },
+            {
+              "seat": 1,
+              "unseen_types": 91,
+              "unseen_prior_mass": 0.16782407407407407
+            }
+          ],
+          "policy": {
+            "file": "conditional-full-conditional-490043.npz",
+            "bytes": 1785514,
+            "sha256": "04389cb514cfe2c5559d9b144b0a21f95d580d0b738149297625e26622c8e41f",
+            "probabilities_sha256": "5468be30bf096d85a6268b4418df250a0c5766797ed294dbe0cac37e5a3af8c1"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490073,
+              "games": 2000,
+              "ev_p0": -0.728,
+              "hoeffding95_individual": [
+                -0.7887361461908305,
+                -0.6672638538091694
+              ],
+              "mean_bids": 1.459,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490074,
+              "games": 2000,
+              "ev_p0": 0.698,
+              "hoeffding95_individual": [
+                0.6372638538091694,
+                0.7587361461908305
+              ],
+              "mean_bids": 2.348,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490113,
+              "games": 2000,
+              "ev_p0": -0.622,
+              "hoeffding95_individual": [
+                -0.6827361461908306,
+                -0.5612638538091694
+              ],
+              "mean_bids": 1.187,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490114,
+              "games": 2000,
+              "ev_p0": 0.6,
+              "hoeffding95_individual": [
+                0.5392638538091694,
+                0.6607361461908305
+              ],
+              "mean_bids": 2.06,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ],
+      "array_bytes": 91300608
+    }
+  ],
+  "certified_equilibrium": false,
+  "baseline_ablation_sha256_lf": "9a2d42d19b6a5f97e95ae807f13af4ea45f6a6c48ac3f0fd8fac738824b1b96c",
+  "wall_seconds": 777.0882355000358,
+  "cpu_seconds": 768.796875,
+  "peak_process_memory": {
+    "bytes": 323399680,
+    "kind": "Windows process peak working set"
+  },
+  "pilot_admission": {
+    "cpu_per_step": 0.178125,
+    "array_bytes": 91300608,
+    "gate": "correctness passed; measured step <=0.25 CPU seconds",
+    "decision": "bounded pilot admitted; quality unknown"
+  }
+}

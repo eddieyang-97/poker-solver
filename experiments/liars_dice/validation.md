@@ -148,3 +148,22 @@ and whitespace checks passing. All 24 runs completed 1,000/5,000/20,000 iteratio
 within the experiment guard. The run took 1,154.71 wall / 1,148.53 CPU seconds and
 50.65 MiB process peak. All 24 final policies and all checkpoints are retained;
 ordinary tests replay every final full-history table and verify source/file hashes.
+
+## Conditional opponent-hand integration (#49)
+
+[Estimator and experiment contract](conditional-chance-research.md) defines the
+seat-specific conditional expectation, simultaneous frozen updates, nonuniform
+chance checks and explicit information constraints. Tests compare conditional
+updates with direct opponent averages and exact expected updates, verify trace
+variance reduction, seed determinism and vector/scalar full-rule terminals, and
+replay all new final policies/source hashes. The driver measures fixed-policy
+variance, fixture learning and fresh paired/conditional full-game controls at
+15/60 training CPU seconds per seed. Equal-CPU results do not prove unrestricted
+strategy strength; all statistical and representation limits remain explicit.
+
+Observed locally on Windows with one OpenBLAS thread: all **56 standalone tests**
+pass (21.13 seconds), as do Ruff, compile and whitespace checks. The main study
+completed in 777.09 wall / 768.80 CPU seconds with 308.42 MiB process peak. All nine
+fixture tables and six full-game snapshots remain reproducible evidence; the
+current direct implementation shows no observed equal-CPU benefit and is not
+accepted for policy promotion.
