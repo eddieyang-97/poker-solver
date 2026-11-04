@@ -7,7 +7,7 @@ from __future__ import annotations
 
 import json
 import sys
-from .validation import calculate
+from .validation import InputError, calculate
 
 TOOL={
     'name':'solve_river',
@@ -22,14 +22,14 @@ TOOL={
     'inputSchema':{
         'type':'object',
         'properties':{
-            'board':{'type':'string','description':'Five river board cards e.g. Ks,9s,5h,Td,Ts'},
-            'oop_range':{'type':'string','description':'Out-of-position weighted range, e.g. AA,AKs:0.75,KQo:0.5,AsJh. Relative starting weights.'},
+            'board':{'type':'string','description':'Five cards, e.g. Ks,9s,5h,Td,Ts or Ks9s5hTdTs; spaces also accepted.'},
+            'oop_range':{'type':'string','description':'Explicit weighted range, e.g. AA, AKs: 0.75, KQo:0.5, AsJh. Weights are in [0,1].'},
             'ip_range':{'type':'string','description':'In-position weighted range. Same grammar.'},
             'pot':{'type':'number','exclusiveMinimum':0,'description':'Pot at the river BEFORE any bets.'},
             'stack':{'type':'number','exclusiveMinimum':0,'description':'Smaller remaining effective stack on the river.'},
             'bet_sizes':{'type':'array','items':{'type':'number','exclusiveMinimum':0,'maximum':3},'minItems':1,'maxItems':3,'description':'Bet fractions of starting river pot, e.g. [0.5,1.0]. Capped at effective stack.'},
-            'oop_hand':{'type':'string','description':'Optional concrete out-of-position two cards, e.g. KdQd (must belong to oop_range).'},
-            'ip_hand':{'type':'string','description':'Optional concrete in-position two cards, e.g. AsJh (must belong to ip_range).'},
+            'oop_hand':{'type':'string','description':'Optional concrete two cards, e.g. KdQd or Kd Qd (must belong to oop_range).'},
+            'ip_hand':{'type':'string','description':'Optional concrete two cards, e.g. AsJh or As Jh (must belong to ip_range).'},
             'iterations':{'type':'integer','minimum':20,'maximum':10000,'description':'CFR+ iterations; default 700. Run more if NashConv high.'},
         },
         'required':['board','oop_range','ip_range','pot','stack'],
@@ -49,8 +49,8 @@ CALL_TOOL={
     'inputSchema':{
         'type':'object',
         'properties':{
-            'board':{'type':'string','description':'Five board cards, e.g. Ks,9s,5h,Td,Ts'},
-            'hero_hand':{'type':'string','description':'Hero concrete combo, e.g. KdQd'},
+            'board':{'type':'string','description':'Five cards, e.g. Ks,9s,5h,Td,Ts or Ks9s5hTdTs; spaces also accepted.'},
+            'hero_hand':{'type':'string','description':'Hero concrete combo, e.g. KdQd or Kd Qd'},
             'villain_betting_range':{'type':'string','description':'Villain betting range e.g. QJs,99:0.5,AsJh:0.25'},
             'pot':{'type':'number','exclusiveMinimum':0,'description':'Pot BEFORE villain bets'},
             'bet':{'type':'number','exclusiveMinimum':0,'description':'Villain river bet / amount to call'},
@@ -76,7 +76,11 @@ def dispatch(req:dict):
     if method=='tools/call':
         params=req.get('params') or {}
         name=params.get('name')
-        result=calculate(name,params.get('arguments') or {})
+        try:
+            result=calculate(name,params.get('arguments') or {})
+        except InputError as exc:
+            error={'code':'invalid_input','message':str(exc),'details':exc.details}
+            return {'content':[{'type':'text','text':json.dumps(error)}], 'structuredContent':{'error':error}, 'isError':True}
         return {'content':[{'type':'text','text':json.dumps(result)}], 'structuredContent':result, 'isError':False}
     if method in ('resources/list','prompts/list'):
         return {'resources':[]} if method=='resources/list' else {'prompts':[]}

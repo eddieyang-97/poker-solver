@@ -8,7 +8,7 @@ import sys
 from collections import deque
 from time import monotonic
 
-from .validation import validate
+from .validation import InputError, validate
 
 logger = logging.getLogger(__name__)
 
@@ -56,8 +56,9 @@ def _turn_timeout_snapshot(pid):
 
 
 class CalculationError(Exception):
-    def __init__(self, code: str, message: str):
+    def __init__(self, code: str, message: str, details=None):
         self.code = code
+        self.details = details
         super().__init__(message)
 
 
@@ -76,6 +77,8 @@ class Runner:
                 args = prepare(arguments)
             else:
                 args = validate(name, arguments, hosted=True)
+        except InputError as exc:
+            raise CalculationError('invalid_input', str(exc), exc.details) from None
         except (ValueError, TypeError, KeyError):
             raise CalculationError('invalid_input', 'Invalid tool arguments; check schema, ranges and hosted limits') from None
         now = monotonic()

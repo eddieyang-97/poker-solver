@@ -51,6 +51,7 @@ See [hosting and release](docs/hosting.md), [CI/deployment operations](docs/rele
 
 - `solve_river` action EVs use the **half-starting-pot baseline**. Compare actions at the same node; checking is endogenous. Reach can be zero, in which case an action EV is `null`; don't interpret rare-node frequencies as precise predictions.
 - `evaluate_river_call` uses pot **before** the bet: EV versus folding = `equity * (pot + 2 * bet) - bet`; required equity = `bet / (pot + 2 * bet)`. It does **not** infer the opponent's betting range or solve equilibrium.
+- River tools accept boards such as `ThAsTd9h8d`, `Th As Td 9h 8d` or `Th,As,Td,9h,8d`, and concrete hands such as `Ad5d` or `Ad 5d`. Explicit ranges accept spaces around commas and weights, e.g. `AKs : 0.5, QQ`. Ranks use `T` for ten and suits use lowercase `c`, `d`, `h`, `s`. Input errors identify a field, reason and expected format where possible.
 - Low NashConv measures exploitability **inside the stated game** only. [£505 acceptance scenario](docs/validation.md#505-checked-river-acceptance-study) uses explicitly hypothetical weighted arrivals, not an observed range. See [benchmark evidence](docs/benchmarking.md) and [limits](docs/validation.md).
 
 This is a public MIT-licensed repository. Keep credentials and private hand/account data out of commits and artifacts; use post-session analysis only.
