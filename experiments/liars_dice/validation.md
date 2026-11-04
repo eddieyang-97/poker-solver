@@ -132,3 +132,19 @@ run finished in 299.67 wall / 297.52 CPU seconds; final NashConv lower bounds ar
 A deliberately tiny time-budget probe recorded `incomplete` with a timeout
 reason and no completed training runs. The three original policy snapshots and
 their recorded source fingerprints are checked by ordinary CI tests.
+
+## Matched restricted-game recall ablations (#49)
+
+[Methods and scope](recall-ablation-research.md) define two six-bid house-rule
+fixtures, common 56-profile private types, exact/sampled updates, recall 1/2/full
+and full-history evaluation. New tests independently enumerate raw-roll profile
+weights and legality, verify an expanded 252-type evaluation, compare layout
+adapter updates with scalar traversal/nonuniform chance expectations, and replay
+all final policy exports. The compression and restricted-action limitations are
+kept separate from any full-game strategy-quality claim.
+
+All **53 standalone tests passed locally** (28.22 seconds), with Ruff, compileall
+and whitespace checks passing. All 24 runs completed 1,000/5,000/20,000 iterations
+within the experiment guard. The run took 1,154.71 wall / 1,148.53 CPU seconds and
+50.65 MiB process peak. All 24 final policies and all checkpoints are retained;
+ordinary tests replay every final full-history table and verify source/file hashes.
