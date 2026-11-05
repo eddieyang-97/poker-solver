@@ -17,7 +17,8 @@ class InputError(ValueError):
 
 
 def normalized_cards(value, count, field):
-    value = value.strip()
+    # The original parser discarded empty comma/whitespace-delimited tokens.
+    value = re.sub(r'^[,\s]+|[,\s]+$', '', value)
     card = r'[2-9TJQKA][cdhs]'
     if not (re.fullmatch(f'(?:{card})+', value) or
             re.fullmatch(f'{card}(?:[,\\s]+{card})*', value)):

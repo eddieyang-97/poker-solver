@@ -23,6 +23,14 @@ class InputFormatsTest(unittest.TestCase):
         other = dict(args, board='Th As Td 9h 8d', hero_hand='Ad5d', villain_betting_range='AhKd:0.5,QQ')
         self.assertEqual(calculate('evaluate_river_call', args), calculate('evaluate_river_call', other))
 
+    def test_legacy_outer_separators(self):
+        original = validate('solve_river', self.solve)
+        variant = dict(self.solve, board=', Th,As,Td,9h,8d, ', oop_hand=',Ad,5d,', ip_hand='Ah,Kd,')
+        self.assertEqual(validate('solve_river', variant), original)
+        for board in ('Th,As,Td,9h,Xx,', 'Th,As,Td,9h,Th,'):
+            with self.subTest(board=board), self.assertRaises(InputError):
+                validate('solve_river', dict(self.solve, board=board))
+
     def test_actionable_errors(self):
         cases = [('board', 'ThAsTd9hXx', 'invalid_card'), ('board', 'ThAsTd9h', 'card_count'),
                  ('board', 'ThAsTd9hTh', 'duplicate_card'), ('oop_hand', 'Th5d', 'board_conflict'),
