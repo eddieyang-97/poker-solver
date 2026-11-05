@@ -89,6 +89,8 @@ def _create_app(settings=None, runner=None, *, pilot_mode=None):
         except CalculationError as exc:
             logger.info('calculation_failed code=%s', exc.code)
             error = {'code': exc.code, 'message': str(exc)}
+            if exc.details is not None:
+                error['details'] = exc.details
             return CallToolResult(content=[TextContent(type='text', text=json.dumps(error))],
                                   structuredContent={'error': error}, isError=True)
         except Exception:

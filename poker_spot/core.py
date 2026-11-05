@@ -24,8 +24,8 @@ CARD_INDEX = {c: i for i,c in enumerate(DECK)}
 def cards(text: str | list[str], n: int) -> tuple[str, ...]:
     if isinstance(text, str):
         value=text.strip()
-        if re.fullmatch(r'(?:[2-9TJQKA][cdhs]){2}',value) and n==2:
-            parts=[value[:2],value[2:]]
+        if re.fullmatch(r'(?:[2-9TJQKA][cdhs])+',value):
+            parts=[value[i:i+2] for i in range(0,len(value),2)]
         else:
             parts = [p for p in re.split(r'[,\s]+', value) if p]
     else:
@@ -45,7 +45,8 @@ def expand_range(spec: str, board: tuple[str, ...]) -> dict[tuple[str,str],float
     if not spec.strip(): raise ValueError('Ranges must not be empty')
     result: dict[tuple[str,str],float] = {}
     dead = set(board)
-    for raw in re.split(r'[,\s]+',spec.strip()):
+    spec = re.sub(r'\s*:\s*', ':', spec.strip())
+    for raw in re.split(r'[,\s]+',spec):
         if not raw:continue
         tok,sep,weight = raw.partition(':')
         w=float(weight) if sep else 1.0

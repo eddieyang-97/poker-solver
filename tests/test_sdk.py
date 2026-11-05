@@ -48,6 +48,12 @@ class SDKIntegrationTests(unittest.IsolatedAsyncioTestCase):
                         invalid = await session.call_tool('solve_river', {'board': 'bad'})
                         self.assertTrue(invalid.isError)
                         self.assertEqual(invalid.structuredContent['error']['code'], 'invalid_input')
+                        invalid_board = await session.call_tool('evaluate_river_call', {
+                            'board': 'Ks9s5hTdXx', 'hero_hand': 'Kd Qd',
+                            'villain_betting_range': 'AsJs', 'pot': 100, 'bet': 100})
+                        self.assertTrue(invalid_board.isError)
+                        self.assertEqual(invalid_board.structuredContent['error']['details']['field'], 'board')
+                        self.assertEqual(invalid_board.structuredContent['error']['details']['reason'], 'invalid_card')
 
 
 if __name__ == '__main__':
