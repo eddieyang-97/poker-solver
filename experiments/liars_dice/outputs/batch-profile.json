@@ -1,0 +1,304 @@
+{
+  "seed": 490054,
+  "warmup_steps": 2,
+  "profiled_steps": 20,
+  "batch_size": 8,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.8",
+  "numpy": "2.5.4",
+  "openblas_threads": "1",
+  "not_an_equal_cpu_learning_comparison": true,
+  "methods": [
+    {
+      "method": "diagonal8",
+      "instrumented_cpu_seconds": 0.515625,
+      "instrumented_wall_seconds": 0.5079244,
+      "top_functions": [
+        {
+          "file": "crossed_batches.py",
+          "line": 24,
+          "function": "batch_increments",
+          "calls": 20,
+          "primitive_calls": 20,
+          "instrumented_self_wall_seconds": 0.2837949,
+          "instrumented_cumulative_wall_seconds": 0.3969481
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'at' of 'numpy.ufunc' objects>",
+          "calls": 24040,
+          "primitive_calls": 24040,
+          "instrumented_self_wall_seconds": 0.11379320000000001,
+          "instrumented_cumulative_wall_seconds": 0.11379320000000001
+        },
+        {
+          "file": "crossed_batches.py",
+          "line": 69,
+          "function": "step",
+          "calls": 20,
+          "primitive_calls": 20,
+          "instrumented_self_wall_seconds": 0.0362661,
+          "instrumented_cumulative_wall_seconds": 0.5078947
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'reduce' of 'numpy.ufunc' objects>",
+          "calls": 24080,
+          "primitive_calls": 24080,
+          "instrumented_self_wall_seconds": 0.0212853,
+          "instrumented_cumulative_wall_seconds": 0.0212853
+        },
+        {
+          "file": "_methods.py",
+          "line": 96,
+          "function": "_clip",
+          "calls": 6000,
+          "primitive_calls": 6000,
+          "instrumented_self_wall_seconds": 0.012892,
+          "instrumented_cumulative_wall_seconds": 0.012892
+        },
+        {
+          "file": "numeric.py",
+          "line": 400,
+          "function": "full_like",
+          "calls": 6000,
+          "primitive_calls": 6000,
+          "instrumented_self_wall_seconds": 0.0076186000000000005,
+          "instrumented_cumulative_wall_seconds": 0.008475400000000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'sum' of 'numpy.ndarray' objects>",
+          "calls": 12000,
+          "primitive_calls": 12000,
+          "instrumented_self_wall_seconds": 0.0042395,
+          "instrumented_cumulative_wall_seconds": 0.0225535
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method numpy.zeros>",
+          "calls": 12040,
+          "primitive_calls": 12040,
+          "instrumented_self_wall_seconds": 0.003915,
+          "instrumented_cumulative_wall_seconds": 0.003915
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'reshape' of 'numpy.ndarray' objects>",
+          "calls": 18000,
+          "primitive_calls": 18000,
+          "instrumented_self_wall_seconds": 0.0037633000000000002,
+          "instrumented_cumulative_wall_seconds": 0.0037633000000000002
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'all' of 'numpy.ndarray' objects>",
+          "calls": 12040,
+          "primitive_calls": 12040,
+          "instrumented_self_wall_seconds": 0.0034827,
+          "instrumented_cumulative_wall_seconds": 0.010966100000000001
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'copy' of 'numpy.ndarray' objects>",
+          "calls": 6000,
+          "primitive_calls": 6000,
+          "instrumented_self_wall_seconds": 0.0030080000000000003,
+          "instrumented_cumulative_wall_seconds": 0.0030080000000000003
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'astype' of 'numpy.ndarray' objects>",
+          "calls": 5980,
+          "primitive_calls": 5980,
+          "instrumented_self_wall_seconds": 0.0023996,
+          "instrumented_cumulative_wall_seconds": 0.0023996
+        },
+        {
+          "file": "_methods.py",
+          "line": 47,
+          "function": "_sum",
+          "calls": 12000,
+          "primitive_calls": 12000,
+          "instrumented_self_wall_seconds": 0.0023599000000000003,
+          "instrumented_cumulative_wall_seconds": 0.018314
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'clip' of 'numpy.ndarray' objects>",
+          "calls": 6000,
+          "primitive_calls": 6000,
+          "instrumented_self_wall_seconds": 0.0022764,
+          "instrumented_cumulative_wall_seconds": 0.0151684
+        },
+        {
+          "file": "_methods.py",
+          "line": 64,
+          "function": "_all",
+          "calls": 12040,
+          "primitive_calls": 12040,
+          "instrumented_self_wall_seconds": 0.0022131,
+          "instrumented_cumulative_wall_seconds": 0.0074834
+        }
+      ]
+    },
+    {
+      "method": "crossed8",
+      "instrumented_cpu_seconds": 0.953125,
+      "instrumented_wall_seconds": 0.9343637,
+      "top_functions": [
+        {
+          "file": "crossed_batches.py",
+          "line": 24,
+          "function": "batch_increments",
+          "calls": 20,
+          "primitive_calls": 20,
+          "instrumented_self_wall_seconds": 0.41115470000000004,
+          "instrumented_cumulative_wall_seconds": 0.8214869
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'at' of 'numpy.ufunc' objects>",
+          "calls": 24040,
+          "primitive_calls": 24040,
+          "instrumented_self_wall_seconds": 0.40028410000000003,
+          "instrumented_cumulative_wall_seconds": 0.40028410000000003
+        },
+        {
+          "file": "crossed_batches.py",
+          "line": 69,
+          "function": "step",
+          "calls": 20,
+          "primitive_calls": 20,
+          "instrumented_self_wall_seconds": 0.0364938,
+          "instrumented_cumulative_wall_seconds": 0.9343441
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'reduce' of 'numpy.ufunc' objects>",
+          "calls": 24080,
+          "primitive_calls": 24080,
+          "instrumented_self_wall_seconds": 0.0241992,
+          "instrumented_cumulative_wall_seconds": 0.0241992
+        },
+        {
+          "file": "_methods.py",
+          "line": 96,
+          "function": "_clip",
+          "calls": 6000,
+          "primitive_calls": 6000,
+          "instrumented_self_wall_seconds": 0.011832400000000002,
+          "instrumented_cumulative_wall_seconds": 0.011832400000000002
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'copy' of 'numpy.ndarray' objects>",
+          "calls": 6000,
+          "primitive_calls": 6000,
+          "instrumented_self_wall_seconds": 0.0083963,
+          "instrumented_cumulative_wall_seconds": 0.0083963
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<built-in method numpy.zeros>",
+          "calls": 12040,
+          "primitive_calls": 12040,
+          "instrumented_self_wall_seconds": 0.0079547,
+          "instrumented_cumulative_wall_seconds": 0.0079547
+        },
+        {
+          "file": "numeric.py",
+          "line": 400,
+          "function": "full_like",
+          "calls": 6000,
+          "primitive_calls": 6000,
+          "instrumented_self_wall_seconds": 0.007841800000000001,
+          "instrumented_cumulative_wall_seconds": 0.0087224
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'sum' of 'numpy.ndarray' objects>",
+          "calls": 12000,
+          "primitive_calls": 12000,
+          "instrumented_self_wall_seconds": 0.0045975,
+          "instrumented_cumulative_wall_seconds": 0.025777500000000002
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'reshape' of 'numpy.ndarray' objects>",
+          "calls": 18000,
+          "primitive_calls": 18000,
+          "instrumented_self_wall_seconds": 0.0037817000000000003,
+          "instrumented_cumulative_wall_seconds": 0.0037817000000000003
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'all' of 'numpy.ndarray' objects>",
+          "calls": 12040,
+          "primitive_calls": 12040,
+          "instrumented_self_wall_seconds": 0.0034634,
+          "instrumented_cumulative_wall_seconds": 0.0110825
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'astype' of 'numpy.ndarray' objects>",
+          "calls": 5980,
+          "primitive_calls": 5980,
+          "instrumented_self_wall_seconds": 0.0026809000000000004,
+          "instrumented_cumulative_wall_seconds": 0.0026809000000000004
+        },
+        {
+          "file": "_methods.py",
+          "line": 47,
+          "function": "_sum",
+          "calls": 12000,
+          "primitive_calls": 12000,
+          "instrumented_self_wall_seconds": 0.0024622000000000003,
+          "instrumented_cumulative_wall_seconds": 0.02118
+        },
+        {
+          "file": "_methods.py",
+          "line": 64,
+          "function": "_all",
+          "calls": 12040,
+          "primitive_calls": 12040,
+          "instrumented_self_wall_seconds": 0.0022990000000000003,
+          "instrumented_cumulative_wall_seconds": 0.0076191
+        },
+        {
+          "file": "~",
+          "line": 0,
+          "function": "<method 'clip' of 'numpy.ndarray' objects>",
+          "calls": 6000,
+          "primitive_calls": 6000,
+          "instrumented_self_wall_seconds": 0.002268,
+          "instrumented_cumulative_wall_seconds": 0.0141004
+        }
+      ]
+    }
+  ],
+  "source_sha256_lf": {
+    "crossed_batches.py": "5e57992184e37edbc30445310f017c6ac10c4b54751c19b815832a4ed4ee4901",
+    "recall_training.py": "a1c924ba831d43223f83015b09a3c92ca06377fc3b207dde8cae6deae5113d9a",
+    "fixed_strategy.py": "9bc2b509ad8e463aecbfa2c55664cef9e1041a799f9c5a87c5fdadcdaa6717f4",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "profile_crossed_batches.py": "192d40848f7e6b69ad232b9688486515e9023da0a24602a33a9369819b278105"
+  }
+}
