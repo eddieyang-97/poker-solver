@@ -167,3 +167,22 @@ completed in 777.09 wall / 768.80 CPU seconds with 308.42 MiB process peak. All 
 fixture tables and six full-game snapshots remain reproducible evidence; the
 current direct implementation shows no observed equal-CPU benefit and is not
 accepted for policy promotion.
+
+## Crossed private-hand minibatches (#49)
+
+[Operator, experiment and reproduction contract](crossed-batches-research.md)
+defines diagonal and crossed frozen blocks, including true-prior sampling,
+duplicate multiplicities and normalization of both regret and average updates.
+Tests compare singleton/full-rule passes with scalar updates, enumerate diagonal
+permutations, and independently check nonuniform-chance exact expectations and
+trace variance at recall 1/2/full. Equal-CPU fixture controls and an explicit
+admission heuristic precede any full-rule quality probe. Recorded policies are
+replayed through full-history evaluation and checked against source/file hashes.
+
+Observed locally on Windows with one OpenBLAS thread: all **62 standalone tests**
+pass in 52.51 seconds; Ruff, compile and whitespace checks pass. All 72 fixture
+runs/144 checkpoints and nine admitted full-rule runs completed. The whole main
+study used 1,200.36 wall / 1,188.77 CPU seconds and 314.17 MiB process peak. Retain
+all 81 final policies. Crossed blocks improve the measured fixture corpus and
+all matched held-out full-rule payoff means, while overlapping full-game bounds
+still demonstrate substantial vulnerability. No policy promotion follows.

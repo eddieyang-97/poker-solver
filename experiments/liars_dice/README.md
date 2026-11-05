@@ -113,3 +113,10 @@ unrestricted strategy or replace the original 252-hand policies.
 own-hand-sampled/opponent-hand-integrated graph update, fixed-policy variance,
 fixture learning curves and a predeclared equal-CPU full-game pilot. All policy
 promotion and hosted acceptance remain separate decisions.
+
+## Crossed chance blocks (#49)
+
+[Crossed-batch study](crossed-batches-research.md) compares scalar paired,
+diagonal-block, Cartesian-block and conditional updates at matched fixture CPU
+budgets. An explicit fixture gate controls the bounded full-rule pilot. The
+frozen-block expectation and duplicate-hand semantics are independently checked.
