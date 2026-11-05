@@ -98,3 +98,72 @@ See [methods and reproduction](bounded-response-research.md). Five new focused t
 ## State/precomputation and query study (#46)
 
 See [analysis research](analysis-research.md) for commands, environment, process-memory method and measured limitations. Four new focused tests cover raw-roll scoring/priors, snapshot identity, strict query validation, cache isolation, both-seat stream/reference equivalence and history dependence. The numerical study compares exact stream plus two lossy controls across 15/19/23 policies, records independent toy BR values, 18 held-out payoff checks and five fresh-process query benchmarks. The separate replay comparison verifies posterior equality and records cache misses. Windows working-set receipts are not Linux address-space or hosted acceptance.
+
+## Fixed-strategy graph reference (#49)
+
+[Methods, matched rules and commands](fixed-strategy-research.md) define the
+cumulative-regret graph variant and its distinction from published FSICFR.
+`run_fixed_strategy.py` executes pinned OpenSpiel 2.0.2 C++ training, exhaustive
+game parity and independent EV/best-response comparisons for 1v1 dice games.
+`outputs/fixed-strategy.json` records source/wheel/binary hashes, all training
+inputs, checkpoints, external comparisons, local costs and process peak memory.
+Five focused tests cover every frozen-pass increment against scalar tree walks,
+zero-probability branches, repeated updates, tiny-game convergence, independent
+recall-state enumeration, budgets and recorded external-policy replay. No new
+house-rule policy or unrestricted quality certificate is produced. CI replay
+does not imply fresh execution of OpenSpiel.
+
+## Chance-sampled one-bid house-rule trainer (#49)
+
+[Training definition and evidence](recall-training-research.md) specifies signed
+cumulative updates, weighted chance sampling, simultaneous frozen public passes
+and average-policy deployment. Focused tests compare expected sampled increments
+under nonuniform chance with the exact tiny trainer, verify deterministic seeds,
+own-hand row isolation, full-rule snapshot identity/legality and exact tiny-game
+full-history BR/payoff realization. The numerical driver retains every checkpoint
+and seed, uncertainty for sampled full-rule replay, peak process memory and
+source/policy hashes. This is new approximate training, not an equilibrium
+certificate or a hosted model change.
+
+All **49 standalone tests passed locally** (19.65 seconds), along with
+repository/research Ruff, compileall and whitespace checks. The complete three-seed
+run finished in 299.67 wall / 297.52 CPU seconds; final NashConv lower bounds are
+1.652970, 1.655147 and 1.658396. All final policies are retained losslessly.
+A deliberately tiny time-budget probe recorded `incomplete` with a timeout
+reason and no completed training runs. The three original policy snapshots and
+their recorded source fingerprints are checked by ordinary CI tests.
+
+## Matched restricted-game recall ablations (#49)
+
+[Methods and scope](recall-ablation-research.md) define two six-bid house-rule
+fixtures, common 56-profile private types, exact/sampled updates, recall 1/2/full
+and full-history evaluation. New tests independently enumerate raw-roll profile
+weights and legality, verify an expanded 252-type evaluation, compare layout
+adapter updates with scalar traversal/nonuniform chance expectations, and replay
+all final policy exports. The compression and restricted-action limitations are
+kept separate from any full-game strategy-quality claim.
+
+All **53 standalone tests passed locally** (28.22 seconds), with Ruff, compileall
+and whitespace checks passing. All 24 runs completed 1,000/5,000/20,000 iterations
+within the experiment guard. The run took 1,154.71 wall / 1,148.53 CPU seconds and
+50.65 MiB process peak. All 24 final policies and all checkpoints are retained;
+ordinary tests replay every final full-history table and verify source/file hashes.
+
+## Conditional opponent-hand integration (#49)
+
+[Estimator and experiment contract](conditional-chance-research.md) defines the
+seat-specific conditional expectation, simultaneous frozen updates, nonuniform
+chance checks and explicit information constraints. Tests compare conditional
+updates with direct opponent averages and exact expected updates, verify trace
+variance reduction, seed determinism and vector/scalar full-rule terminals, and
+replay all new final policies/source hashes. The driver measures fixed-policy
+variance, fixture learning and fresh paired/conditional full-game controls at
+15/60 training CPU seconds per seed. Equal-CPU results do not prove unrestricted
+strategy strength; all statistical and representation limits remain explicit.
+
+Observed locally on Windows with one OpenBLAS thread: all **56 standalone tests**
+pass (21.13 seconds), as do Ruff, compile and whitespace checks. The main study
+completed in 777.09 wall / 768.80 CPU seconds with 308.42 MiB process peak. All nine
+fixture tables and six full-game snapshots remain reproducible evidence; the
+current direct implementation shows no observed equal-CPU benefit and is not
+accepted for policy promotion.
