@@ -106,3 +106,10 @@ and sampled learning curves at recall 1/2/full in two six-bid fixtures. All use
 the same 56-profile private policy class and independent full-history evaluation.
 The fixture/compression limits are explicit; these results do not certify an
 unrestricted strategy or replace the original 252-hand policies.
+
+## Conditional chance updates (#49)
+
+[Conditional-integration study](conditional-chance-research.md) tests an unbiased
+own-hand-sampled/opponent-hand-integrated graph update, fixed-policy variance,
+fixture learning curves and a predeclared equal-CPU full-game pilot. All policy
+promotion and hosted acceptance remain separate decisions.

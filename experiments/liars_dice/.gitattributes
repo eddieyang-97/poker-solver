@@ -1,2 +1,3 @@
 # Exported policy hashes cover exact LF bytes, including on Windows checkout.
 outputs/ablation-*.json text eol=lf
+outputs/conditional-fixture-*.json text eol=lf
