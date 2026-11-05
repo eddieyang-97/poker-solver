@@ -1,0 +1,3629 @@
+{
+  "status": "completed",
+  "source_sha256_lf": {
+    "recall_ablation.py": "fe7d58662f6172389aaabd989fe371d20850cf532b7ab6e85693d272f488676b",
+    "run_recall_ablation.py": "693df8abdb4a78fe2c15c0416c4e8eb6a6fa055c946023f5452b9c1b85e11210",
+    "recall_training.py": "a1c924ba831d43223f83015b09a3c92ca06377fc3b207dde8cae6deae5113d9a",
+    "fixed_strategy.py": "9bc2b509ad8e463aecbfa2c55664cef9e1041a799f9c5a87c5fdadcdaa6717f4",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "run_fixed_strategy.py": "02844fc09209a3d2a4d694b8c2b85207a71321b77acbcde2785802f27769b800"
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "python": "3.14.8",
+  "numpy": "2.5.4",
+  "checkpoints": [
+    1000,
+    5000,
+    20000
+  ],
+  "sampled_seeds": [
+    490021,
+    490022,
+    490023
+  ],
+  "arithmetic": "exact chance enumeration/evaluation in float64, not rational/interval certification",
+  "scope": "two action-restricted single-round house games; no full-game exploitability bound",
+  "guard_semantics": "between iterations and evaluations; not a hard deadline",
+  "fixtures": [
+    {
+      "zhai_quantity": 2,
+      "selected_bids": [
+        {
+          "quantity": 3,
+          "face": 2,
+          "mode": "fly"
+        },
+        {
+          "quantity": 3,
+          "face": 4,
+          "mode": "fly"
+        },
+        {
+          "quantity": 2,
+          "face": 2,
+          "mode": "zhai"
+        },
+        {
+          "quantity": 2,
+          "face": 4,
+          "mode": "zhai"
+        },
+        {
+          "quantity": 4,
+          "face": 2,
+          "mode": "fly"
+        },
+        {
+          "quantity": 4,
+          "face": 4,
+          "mode": "fly"
+        }
+      ],
+      "types": 56,
+      "integer_weights_out_of_7776": [
+        243,
+        405,
+        270,
+        90,
+        15,
+        1,
+        405,
+        405,
+        540,
+        540,
+        270,
+        270,
+        60,
+        60,
+        5,
+        5,
+        270,
+        540,
+        270,
+        270,
+        540,
+        90,
+        270,
+        180,
+        10,
+        90,
+        20,
+        10,
+        90,
+        270,
+        60,
+        270,
+        180,
+        10,
+        90,
+        180,
+        30,
+        60,
+        30,
+        10,
+        15,
+        60,
+        5,
+        90,
+        20,
+        60,
+        30,
+        15,
+        20,
+        5,
+        5,
+        10,
+        10,
+        5,
+        1,
+        1
+      ],
+      "profiles": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          3,
+          0,
+          3,
+          0,
+          3
+        ],
+        [
+          0,
+          4,
+          0,
+          4,
+          0,
+          4
+        ],
+        [
+          0,
+          7,
+          0,
+          7,
+          0,
+          7
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          0,
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          3,
+          0,
+          2,
+          1,
+          3
+        ],
+        [
+          1,
+          3,
+          1,
+          3,
+          1,
+          3
+        ],
+        [
+          1,
+          4,
+          0,
+          3,
+          1,
+          4
+        ],
+        [
+          1,
+          4,
+          1,
+          4,
+          1,
+          4
+        ],
+        [
+          1,
+          6,
+          0,
+          4,
+          1,
+          6
+        ],
+        [
+          2,
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        [
+          2,
+          1,
+          1,
+          0,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          1,
+          2,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          2,
+          3,
+          2,
+          3
+        ],
+        [
+          2,
+          4,
+          0,
+          2,
+          2,
+          4
+        ],
+        [
+          2,
+          4,
+          1,
+          3,
+          2,
+          4
+        ],
+        [
+          2,
+          6,
+          0,
+          3,
+          2,
+          6
+        ],
+        [
+          3,
+          0,
+          3,
+          0,
+          3,
+          0
+        ],
+        [
+          3,
+          1,
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          3,
+          1,
+          3,
+          1,
+          3,
+          1
+        ],
+        [
+          3,
+          2,
+          1,
+          0,
+          3,
+          2
+        ],
+        [
+          3,
+          2,
+          2,
+          1,
+          3,
+          2
+        ],
+        [
+          3,
+          2,
+          3,
+          2,
+          3,
+          2
+        ],
+        [
+          3,
+          3,
+          0,
+          0,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          1,
+          1,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          2,
+          2,
+          3,
+          3
+        ],
+        [
+          3,
+          4,
+          0,
+          1,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          6,
+          0,
+          2,
+          3,
+          6
+        ],
+        [
+          4,
+          0,
+          4,
+          0,
+          4,
+          0
+        ],
+        [
+          4,
+          1,
+          3,
+          0,
+          4,
+          1
+        ],
+        [
+          4,
+          1,
+          4,
+          1,
+          4,
+          1
+        ],
+        [
+          4,
+          2,
+          2,
+          0,
+          4,
+          2
+        ],
+        [
+          4,
+          2,
+          3,
+          1,
+          4,
+          2
+        ],
+        [
+          4,
+          3,
+          1,
+          0,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          2,
+          1,
+          4,
+          3
+        ],
+        [
+          4,
+          4,
+          0,
+          0,
+          4,
+          4
+        ],
+        [
+          4,
+          4,
+          1,
+          1,
+          4,
+          4
+        ],
+        [
+          4,
+          6,
+          0,
+          1,
+          4,
+          6
+        ],
+        [
+          6,
+          1,
+          4,
+          0,
+          6,
+          1
+        ],
+        [
+          6,
+          2,
+          3,
+          0,
+          6,
+          2
+        ],
+        [
+          6,
+          3,
+          2,
+          0,
+          6,
+          3
+        ],
+        [
+          6,
+          4,
+          1,
+          0,
+          6,
+          4
+        ],
+        [
+          7,
+          0,
+          7,
+          0,
+          7,
+          0
+        ],
+        [
+          7,
+          7,
+          0,
+          0,
+          7,
+          7
+        ]
+      ],
+      "projection_from_252": [
+        55,
+        53,
+        47,
+        49,
+        47,
+        47,
+        52,
+        45,
+        48,
+        45,
+        45,
+        34,
+        37,
+        34,
+        34,
+        39,
+        37,
+        37,
+        34,
+        34,
+        34,
+        51,
+        43,
+        46,
+        43,
+        43,
+        31,
+        35,
+        31,
+        31,
+        38,
+        35,
+        35,
+        31,
+        31,
+        31,
+        19,
+        22,
+        19,
+        19,
+        25,
+        22,
+        22,
+        19,
+        19,
+        19,
+        27,
+        25,
+        25,
+        22,
+        22,
+        22,
+        19,
+        19,
+        19,
+        19,
+        50,
+        41,
+        44,
+        41,
+        41,
+        29,
+        32,
+        29,
+        29,
+        36,
+        32,
+        32,
+        29,
+        29,
+        29,
+        17,
+        20,
+        17,
+        17,
+        23,
+        20,
+        20,
+        17,
+        17,
+        17,
+        26,
+        23,
+        23,
+        20,
+        20,
+        20,
+        17,
+        17,
+        17,
+        17,
+        7,
+        9,
+        7,
+        7,
+        11,
+        9,
+        9,
+        7,
+        7,
+        7,
+        13,
+        11,
+        11,
+        9,
+        9,
+        9,
+        7,
+        7,
+        7,
+        7,
+        15,
+        13,
+        13,
+        11,
+        11,
+        11,
+        9,
+        9,
+        9,
+        9,
+        7,
+        7,
+        7,
+        7,
+        7,
+        54,
+        40,
+        42,
+        40,
+        40,
+        28,
+        30,
+        28,
+        28,
+        33,
+        30,
+        30,
+        28,
+        28,
+        28,
+        16,
+        18,
+        16,
+        16,
+        21,
+        18,
+        18,
+        16,
+        16,
+        16,
+        24,
+        21,
+        21,
+        18,
+        18,
+        18,
+        16,
+        16,
+        16,
+        16,
+        6,
+        8,
+        6,
+        6,
+        10,
+        8,
+        8,
+        6,
+        6,
+        6,
+        12,
+        10,
+        10,
+        8,
+        8,
+        8,
+        6,
+        6,
+        6,
+        6,
+        14,
+        12,
+        12,
+        10,
+        10,
+        10,
+        8,
+        8,
+        8,
+        8,
+        6,
+        6,
+        6,
+        6,
+        6,
+        0,
+        1,
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        3,
+        2,
+        2,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        4,
+        3,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        4,
+        4,
+        3,
+        3,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "runs": [
+        {
+          "method": "exact_deals",
+          "recall": 1,
+          "seed": null,
+          "public_nodes": 12,
+          "table_or_estimated_array_bytes": 1895936,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 1.0106634999392554,
+              "training_cpu_seconds": 0.984375,
+              "full_history_evaluation": {
+                "ev_p0": 0.09488101781815371,
+                "br0": 0.09985686578276508,
+                "br1": -0.09022696046065268,
+                "gain0": 0.0049758479646113685,
+                "gain1": 0.004654057357501032,
+                "nashconv": 0.0096299053221124,
+                "exploitability": 0.0048149526610562
+              }
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 8.475004799896851,
+              "training_cpu_seconds": 8.40625,
+              "full_history_evaluation": {
+                "ev_p0": 0.09433748978289273,
+                "br0": 0.09808494968265392,
+                "br1": -0.09052903704819813,
+                "gain0": 0.0037474598997611908,
+                "gain1": 0.0038084527346946007,
+                "nashconv": 0.007555912634455791,
+                "exploitability": 0.0037779563172278957
+              }
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 43.55474869988393,
+              "training_cpu_seconds": 43.28125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09450461161803812,
+                "br0": 0.09970746177416831,
+                "br1": -0.09136030088053626,
+                "gain0": 0.005202850156130187,
+                "gain1": 0.0031443107375018625,
+                "nashconv": 0.00834716089363205,
+                "exploitability": 0.004173580446816025
+              },
+              "policy": {
+                "file": "ablation-q2-m1-None.json",
+                "sha256": "b84c5894bba53c5407e253539469009ab72a5a7851a1d98bce8dc297b0490bd6"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 1,
+          "seed": 490021,
+          "public_nodes": 12,
+          "table_or_estimated_array_bytes": 35840,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 0.5479480000212789,
+              "training_cpu_seconds": 0.546875,
+              "full_history_evaluation": {
+                "ev_p0": 0.10494293366173152,
+                "br0": 0.19482307177663238,
+                "br1": 0.021375274029626672,
+                "gain0": 0.08988013811490086,
+                "gain1": 0.12631820769135818,
+                "nashconv": 0.21619834580625905,
+                "exploitability": 0.10809917290312952
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 9,
+                  "unseen_prior_mass": 0.007458847736625514
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 8,
+                  "unseen_prior_mass": 0.004886831275720165
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 2.7197137001203373,
+              "training_cpu_seconds": 2.703125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09314447218139568,
+                "br0": 0.13548349104258806,
+                "br1": -0.045314964067057845,
+                "gain0": 0.04233901886119237,
+                "gain1": 0.04782950811433784,
+                "nashconv": 0.09016852697553021,
+                "exploitability": 0.045084263487765106
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 10.852006300119683,
+              "training_cpu_seconds": 10.828125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09248682791667569,
+                "br0": 0.11125781260282841,
+                "br1": -0.07397761783205542,
+                "gain0": 0.018770984686152722,
+                "gain1": 0.018509210084620267,
+                "nashconv": 0.03728019477077299,
+                "exploitability": 0.018640097385386495
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-m1-490021.json",
+                "sha256": "ba9bd5b5c657dbcc510542f19855132fc45e450df03434d37c55485ac01ad43c"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 1,
+          "seed": 490022,
+          "public_nodes": 12,
+          "table_or_estimated_array_bytes": 35840,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 0.5435269000008702,
+              "training_cpu_seconds": 0.546875,
+              "full_history_evaluation": {
+                "ev_p0": 0.09217536587076529,
+                "br0": 0.19112537433029303,
+                "br1": 0.018628738391962454,
+                "gain0": 0.09895000845952774,
+                "gain1": 0.11080410426272774,
+                "nashconv": 0.20975411272225547,
+                "exploitability": 0.10487705636112774
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.00617283950617284
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.008744855967078188
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 2.671925399918109,
+              "training_cpu_seconds": 2.671875,
+              "full_history_evaluation": {
+                "ev_p0": 0.09206141244347214,
+                "br0": 0.12972924022822188,
+                "br1": -0.05108695458028228,
+                "gain0": 0.03766782778474974,
+                "gain1": 0.040974457863189866,
+                "nashconv": 0.0786422856479396,
+                "exploitability": 0.0393211428239698
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 10.626387199969031,
+              "training_cpu_seconds": 10.578125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09470293311498271,
+                "br0": 0.11333009539580018,
+                "br1": -0.07439530960189408,
+                "gain0": 0.01862716228081747,
+                "gain1": 0.020307623513088624,
+                "nashconv": 0.03893478579390609,
+                "exploitability": 0.019467392896953047
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-m1-490022.json",
+                "sha256": "03b281595edbf9eef140f8ec8d57649e3eb93200306346c6367687b8341e51bf"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 1,
+          "seed": 490023,
+          "public_nodes": 12,
+          "table_or_estimated_array_bytes": 35840,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 0.5475535999285057,
+              "training_cpu_seconds": 0.546875,
+              "full_history_evaluation": {
+                "ev_p0": 0.10471199235422142,
+                "br0": 0.2275548795695523,
+                "br1": 0.02783812079933757,
+                "gain0": 0.12284288721533089,
+                "gain1": 0.132550113153559,
+                "nashconv": 0.2553930003688899,
+                "exploitability": 0.12769650018444495
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.006815843621399177
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 5,
+                  "unseen_prior_mass": 0.002957818930041152
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 2.735714399954304,
+              "training_cpu_seconds": 2.734375,
+              "full_history_evaluation": {
+                "ev_p0": 0.09397377467885477,
+                "br0": 0.14080710471204913,
+                "br1": -0.043881002283479804,
+                "gain0": 0.046833330033194356,
+                "gain1": 0.05009277239537497,
+                "nashconv": 0.09692610242856933,
+                "exploitability": 0.048463051214284666
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 3,
+                  "unseen_prior_mass": 0.0003858024691358025
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 10.36183519999031,
+              "training_cpu_seconds": 10.328125,
+              "full_history_evaluation": {
+                "ev_p0": 0.0926045875242957,
+                "br0": 0.12286426310542818,
+                "br1": -0.06971331070896077,
+                "gain0": 0.030259675581132475,
+                "gain1": 0.02289127681533494,
+                "nashconv": 0.053150952396467416,
+                "exploitability": 0.026575476198233708
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-m1-490023.json",
+                "sha256": "855641284aa6736ef22e0aaa7afe1944149c0c3514f029739e4073d0d849e8c2"
+              }
+            }
+          ]
+        },
+        {
+          "method": "exact_deals",
+          "recall": 2,
+          "seed": null,
+          "public_nodes": 30,
+          "table_or_estimated_array_bytes": 4679360,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 4.943207300035283,
+              "training_cpu_seconds": 4.90625,
+              "full_history_evaluation": {
+                "ev_p0": 0.094148156283562,
+                "br0": 0.09586373753641463,
+                "br1": -0.0921428543587707,
+                "gain0": 0.0017155812528526215,
+                "gain1": 0.0020053019247913,
+                "nashconv": 0.0037208831776439216,
+                "exploitability": 0.0018604415888219608
+              }
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 24.54337320011109,
+              "training_cpu_seconds": 24.328125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09418038242141069,
+                "br0": 0.09454824531275792,
+                "br1": -0.09365764485065238,
+                "gain0": 0.0003678628913472287,
+                "gain1": 0.000522737570758311,
+                "nashconv": 0.0008906004621055397,
+                "exploitability": 0.00044530023105276983
+              }
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 95.13660760014318,
+              "training_cpu_seconds": 94.453125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09410961578787937,
+                "br0": 0.0942499005751574,
+                "br1": -0.09392097271362296,
+                "gain0": 0.00014028478727803884,
+                "gain1": 0.0001886430742564088,
+                "nashconv": 0.00032892786153444764,
+                "exploitability": 0.00016446393076722382
+              },
+              "policy": {
+                "file": "ablation-q2-m2-None.json",
+                "sha256": "b946d0e5a9bb02e1e884a0feb35749335f6fa987666dcabf06ef525451c9b24e"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 2,
+          "seed": 490021,
+          "public_nodes": 30,
+          "table_or_estimated_array_bytes": 65408,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 1.3024545999942347,
+              "training_cpu_seconds": 1.296875,
+              "full_history_evaluation": {
+                "ev_p0": 0.10220120309518387,
+                "br0": 0.19656736262969013,
+                "br1": 0.02194592940466101,
+                "gain0": 0.09436615953450626,
+                "gain1": 0.12414713249984488,
+                "nashconv": 0.21851329203435113,
+                "exploitability": 0.10925664601717557
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 9,
+                  "unseen_prior_mass": 0.007458847736625514
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 8,
+                  "unseen_prior_mass": 0.004886831275720165
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 6.567780900048092,
+              "training_cpu_seconds": 6.546875,
+              "full_history_evaluation": {
+                "ev_p0": 0.09713853961530972,
+                "br0": 0.1417380626916667,
+                "br1": -0.047838144905915245,
+                "gain0": 0.04459952307635698,
+                "gain1": 0.04930039470939447,
+                "nashconv": 0.09389991778575145,
+                "exploitability": 0.046949958892875725
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 25.950828400091268,
+              "training_cpu_seconds": 25.859375,
+              "full_history_evaluation": {
+                "ev_p0": 0.0927554987523712,
+                "br0": 0.11409772299105446,
+                "br1": -0.07353605763938563,
+                "gain0": 0.02134222423868326,
+                "gain1": 0.01921944111298557,
+                "nashconv": 0.04056166535166883,
+                "exploitability": 0.020280832675834415
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-m2-490021.json",
+                "sha256": "66bd3c4017b4d9aabd89fc5a3cf155cb71c796fc64d23ed261c2ff38de1a1807"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 2,
+          "seed": 490022,
+          "public_nodes": 30,
+          "table_or_estimated_array_bytes": 65408,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 1.2361041000112891,
+              "training_cpu_seconds": 1.234375,
+              "full_history_evaluation": {
+                "ev_p0": 0.09576712833479209,
+                "br0": 0.19717769402089558,
+                "br1": 0.01097692762267393,
+                "gain0": 0.10141056568610349,
+                "gain1": 0.10674405595746603,
+                "nashconv": 0.20815462164356952,
+                "exploitability": 0.10407731082178476
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.00617283950617284
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.008744855967078188
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 6.521824200055562,
+              "training_cpu_seconds": 6.484375,
+              "full_history_evaluation": {
+                "ev_p0": 0.09155815158534969,
+                "br0": 0.13367670667757228,
+                "br1": -0.048717626275382314,
+                "gain0": 0.04211855509222259,
+                "gain1": 0.042840525309967376,
+                "nashconv": 0.08495908040218997,
+                "exploitability": 0.042479540201094984
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 25.96805980009958,
+              "training_cpu_seconds": 25.828125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09424220862930249,
+                "br0": 0.1102840669555437,
+                "br1": -0.07779307331984034,
+                "gain0": 0.016041858326241207,
+                "gain1": 0.016449135309462154,
+                "nashconv": 0.03249099363570336,
+                "exploitability": 0.01624549681785168
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-m2-490022.json",
+                "sha256": "691c89ada9b684b06c0373d189645f1963186bdbadbe7ce791fde961f4e9e4d0"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 2,
+          "seed": 490023,
+          "public_nodes": 30,
+          "table_or_estimated_array_bytes": 65408,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 1.2896518000634387,
+              "training_cpu_seconds": 1.265625,
+              "full_history_evaluation": {
+                "ev_p0": 0.11209342120791278,
+                "br0": 0.21513732077187508,
+                "br1": 0.022048664854344646,
+                "gain0": 0.1030438995639623,
+                "gain1": 0.13414208606225742,
+                "nashconv": 0.23718598562621973,
+                "exploitability": 0.11859299281310987
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.006815843621399177
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 5,
+                  "unseen_prior_mass": 0.002957818930041152
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 5.873524000053294,
+              "training_cpu_seconds": 5.84375,
+              "full_history_evaluation": {
+                "ev_p0": 0.09911408737062266,
+                "br0": 0.1439601972253783,
+                "br1": -0.03916640104263999,
+                "gain0": 0.04484610985475565,
+                "gain1": 0.05994768632798267,
+                "nashconv": 0.10479379618273832,
+                "exploitability": 0.05239689809136916
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 3,
+                  "unseen_prior_mass": 0.0003858024691358025
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 25.439044000115246,
+              "training_cpu_seconds": 25.34375,
+              "full_history_evaluation": {
+                "ev_p0": 0.09191293927701373,
+                "br0": 0.11526547047515116,
+                "br1": -0.0687276878582305,
+                "gain0": 0.023352531198137433,
+                "gain1": 0.023185251418783234,
+                "nashconv": 0.04653778261692067,
+                "exploitability": 0.023268891308460334
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-m2-490023.json",
+                "sha256": "241a392f46a61a0be52f157142ffb921674599ac5618d0d50fc7f6194bbb8bad"
+              }
+            }
+          ]
+        },
+        {
+          "method": "exact_deals",
+          "recall": null,
+          "seed": null,
+          "public_nodes": 52,
+          "table_or_estimated_array_bytes": 8055936,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 7.495735000004061,
+              "training_cpu_seconds": 7.484375,
+              "full_history_evaluation": {
+                "ev_p0": 0.09394629280160123,
+                "br0": 0.09579499701995617,
+                "br1": -0.09242550944682434,
+                "gain0": 0.001848704218354938,
+                "gain1": 0.0015207833547768862,
+                "nashconv": 0.003369487573131824,
+                "exploitability": 0.001684743786565912
+              }
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 37.30979819991626,
+              "training_cpu_seconds": 37.078125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09409546873919707,
+                "br0": 0.09454792282379679,
+                "br1": -0.09364631578682939,
+                "gain0": 0.00045245408459972103,
+                "gain1": 0.00044915295236767905,
+                "nashconv": 0.0009016070369674001,
+                "exploitability": 0.00045080351848370004
+              }
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 150.0598924999358,
+              "training_cpu_seconds": 149.171875,
+              "full_history_evaluation": {
+                "ev_p0": 0.09408100948635828,
+                "br0": 0.09423908025985253,
+                "br1": -0.09393418326873729,
+                "gain0": 0.00015807077349425103,
+                "gain1": 0.00014682621762099335,
+                "nashconv": 0.0003048969911152444,
+                "exploitability": 0.0001524484955576222
+              },
+              "policy": {
+                "file": "ablation-q2-mNone-None.json",
+                "sha256": "42dcf0f7b0f97d9d2f6e1642e58e00e7a9c7727a69eba8c2d1553769ab96ec60"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": null,
+          "seed": 490021,
+          "public_nodes": 52,
+          "table_or_estimated_array_bytes": 91392,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 1.9877784999553114,
+              "training_cpu_seconds": 1.984375,
+              "full_history_evaluation": {
+                "ev_p0": 0.10108990408536471,
+                "br0": 0.19443525325022673,
+                "br1": 0.020200286654508615,
+                "gain0": 0.09334534916486202,
+                "gain1": 0.12129019073987332,
+                "nashconv": 0.21463553990473536,
+                "exploitability": 0.10731776995236768
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 9,
+                  "unseen_prior_mass": 0.007458847736625514
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 8,
+                  "unseen_prior_mass": 0.004886831275720165
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 8.754852999933064,
+              "training_cpu_seconds": 8.75,
+              "full_history_evaluation": {
+                "ev_p0": 0.09447715842457548,
+                "br0": 0.13849047081000299,
+                "br1": -0.048093478835005025,
+                "gain0": 0.04401331238542751,
+                "gain1": 0.04638367958957045,
+                "nashconv": 0.09039699197499795,
+                "exploitability": 0.04519849598749898
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 38.54416539997328,
+              "training_cpu_seconds": 38.34375,
+              "full_history_evaluation": {
+                "ev_p0": 0.0936590948056803,
+                "br0": 0.11337580692039899,
+                "br1": -0.07925163688472506,
+                "gain0": 0.01971671211471869,
+                "gain1": 0.014407457920955241,
+                "nashconv": 0.03412417003567393,
+                "exploitability": 0.017062085017836966
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-mNone-490021.json",
+                "sha256": "7aea229aa006ec72767c2630a1e0d6f2f69f6a122d0c03d0a01039ae61289286"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": null,
+          "seed": 490022,
+          "public_nodes": 52,
+          "table_or_estimated_array_bytes": 91392,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 2.2489257999695837,
+              "training_cpu_seconds": 2.25,
+              "full_history_evaluation": {
+                "ev_p0": 0.09668016692951226,
+                "br0": 0.20358568863910598,
+                "br1": 0.013603621449640854,
+                "gain0": 0.10690552170959372,
+                "gain1": 0.1102837883791531,
+                "nashconv": 0.21718931008874684,
+                "exploitability": 0.10859465504437342
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.00617283950617284
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.008744855967078188
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 11.119274999946356,
+              "training_cpu_seconds": 11.078125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09071848460359906,
+                "br0": 0.13246597801383464,
+                "br1": -0.04635027426523329,
+                "gain0": 0.04174749341023558,
+                "gain1": 0.04436821033836577,
+                "nashconv": 0.08611570374860135,
+                "exploitability": 0.043057851874300675
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 43.91932410001755,
+              "training_cpu_seconds": 43.796875,
+              "full_history_evaluation": {
+                "ev_p0": 0.09416766986097272,
+                "br0": 0.11008201200965438,
+                "br1": -0.07847625670988442,
+                "gain0": 0.015914342148681662,
+                "gain1": 0.015691413151088296,
+                "nashconv": 0.03160575529976996,
+                "exploitability": 0.01580287764988498
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-mNone-490022.json",
+                "sha256": "537bc56b5077fc29b4036525cbc52485520880537053060aa89f27e40ae3a060"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": null,
+          "seed": 490023,
+          "public_nodes": 52,
+          "table_or_estimated_array_bytes": 91392,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 2.2526087999576703,
+              "training_cpu_seconds": 2.265625,
+              "full_history_evaluation": {
+                "ev_p0": 0.11230047360389045,
+                "br0": 0.21542972158559748,
+                "br1": 0.020164045256824147,
+                "gain0": 0.10312924798170703,
+                "gain1": 0.1324645188607146,
+                "nashconv": 0.23559376684242161,
+                "exploitability": 0.11779688342121081
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.006815843621399177
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 5,
+                  "unseen_prior_mass": 0.002957818930041152
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 11.170516399899498,
+              "training_cpu_seconds": 11.171875,
+              "full_history_evaluation": {
+                "ev_p0": 0.09947455814508602,
+                "br0": 0.14324717570580572,
+                "br1": -0.04364884503861586,
+                "gain0": 0.04377261756071971,
+                "gain1": 0.05582571310647016,
+                "nashconv": 0.09959833066718987,
+                "exploitability": 0.049799165333594936
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 3,
+                  "unseen_prior_mass": 0.0003858024691358025
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 44.50724959990475,
+              "training_cpu_seconds": 44.390625,
+              "full_history_evaluation": {
+                "ev_p0": 0.09228746719835382,
+                "br0": 0.11591251986227524,
+                "br1": -0.06920184487736693,
+                "gain0": 0.023625052663921425,
+                "gain1": 0.02308562232098689,
+                "nashconv": 0.046710674984908315,
+                "exploitability": 0.023355337492454158
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q2-mNone-490023.json",
+                "sha256": "0bbc960353e5470ded6a0fc82869e547b86dc5c5f86171efdba34c302d479378"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "zhai_quantity": 3,
+      "selected_bids": [
+        {
+          "quantity": 3,
+          "face": 2,
+          "mode": "fly"
+        },
+        {
+          "quantity": 3,
+          "face": 4,
+          "mode": "fly"
+        },
+        {
+          "quantity": 3,
+          "face": 2,
+          "mode": "zhai"
+        },
+        {
+          "quantity": 3,
+          "face": 4,
+          "mode": "zhai"
+        },
+        {
+          "quantity": 5,
+          "face": 2,
+          "mode": "fly"
+        },
+        {
+          "quantity": 5,
+          "face": 4,
+          "mode": "fly"
+        }
+      ],
+      "types": 56,
+      "integer_weights_out_of_7776": [
+        243,
+        405,
+        270,
+        90,
+        15,
+        1,
+        405,
+        405,
+        540,
+        540,
+        270,
+        270,
+        60,
+        60,
+        5,
+        5,
+        270,
+        540,
+        270,
+        270,
+        540,
+        90,
+        270,
+        180,
+        10,
+        90,
+        20,
+        10,
+        90,
+        270,
+        60,
+        270,
+        180,
+        10,
+        90,
+        180,
+        30,
+        60,
+        30,
+        10,
+        15,
+        60,
+        5,
+        90,
+        20,
+        60,
+        30,
+        15,
+        20,
+        5,
+        5,
+        10,
+        10,
+        5,
+        1,
+        1
+      ],
+      "profiles": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          2,
+          0,
+          2,
+          0,
+          2
+        ],
+        [
+          0,
+          3,
+          0,
+          3,
+          0,
+          3
+        ],
+        [
+          0,
+          4,
+          0,
+          4,
+          0,
+          4
+        ],
+        [
+          0,
+          7,
+          0,
+          7,
+          0,
+          7
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          0,
+          1,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1,
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          3,
+          0,
+          2,
+          1,
+          3
+        ],
+        [
+          1,
+          3,
+          1,
+          3,
+          1,
+          3
+        ],
+        [
+          1,
+          4,
+          0,
+          3,
+          1,
+          4
+        ],
+        [
+          1,
+          4,
+          1,
+          4,
+          1,
+          4
+        ],
+        [
+          1,
+          6,
+          0,
+          4,
+          1,
+          6
+        ],
+        [
+          2,
+          0,
+          2,
+          0,
+          2,
+          0
+        ],
+        [
+          2,
+          1,
+          1,
+          0,
+          2,
+          1
+        ],
+        [
+          2,
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          3,
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          1,
+          2,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          2,
+          3,
+          2,
+          3
+        ],
+        [
+          2,
+          4,
+          0,
+          2,
+          2,
+          4
+        ],
+        [
+          2,
+          4,
+          1,
+          3,
+          2,
+          4
+        ],
+        [
+          2,
+          6,
+          0,
+          3,
+          2,
+          6
+        ],
+        [
+          3,
+          0,
+          3,
+          0,
+          3,
+          0
+        ],
+        [
+          3,
+          1,
+          2,
+          0,
+          3,
+          1
+        ],
+        [
+          3,
+          1,
+          3,
+          1,
+          3,
+          1
+        ],
+        [
+          3,
+          2,
+          1,
+          0,
+          3,
+          2
+        ],
+        [
+          3,
+          2,
+          2,
+          1,
+          3,
+          2
+        ],
+        [
+          3,
+          2,
+          3,
+          2,
+          3,
+          2
+        ],
+        [
+          3,
+          3,
+          0,
+          0,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          1,
+          1,
+          3,
+          3
+        ],
+        [
+          3,
+          3,
+          2,
+          2,
+          3,
+          3
+        ],
+        [
+          3,
+          4,
+          0,
+          1,
+          3,
+          4
+        ],
+        [
+          3,
+          4,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          3,
+          6,
+          0,
+          2,
+          3,
+          6
+        ],
+        [
+          4,
+          0,
+          4,
+          0,
+          4,
+          0
+        ],
+        [
+          4,
+          1,
+          3,
+          0,
+          4,
+          1
+        ],
+        [
+          4,
+          1,
+          4,
+          1,
+          4,
+          1
+        ],
+        [
+          4,
+          2,
+          2,
+          0,
+          4,
+          2
+        ],
+        [
+          4,
+          2,
+          3,
+          1,
+          4,
+          2
+        ],
+        [
+          4,
+          3,
+          1,
+          0,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          2,
+          1,
+          4,
+          3
+        ],
+        [
+          4,
+          4,
+          0,
+          0,
+          4,
+          4
+        ],
+        [
+          4,
+          4,
+          1,
+          1,
+          4,
+          4
+        ],
+        [
+          4,
+          6,
+          0,
+          1,
+          4,
+          6
+        ],
+        [
+          6,
+          1,
+          4,
+          0,
+          6,
+          1
+        ],
+        [
+          6,
+          2,
+          3,
+          0,
+          6,
+          2
+        ],
+        [
+          6,
+          3,
+          2,
+          0,
+          6,
+          3
+        ],
+        [
+          6,
+          4,
+          1,
+          0,
+          6,
+          4
+        ],
+        [
+          7,
+          0,
+          7,
+          0,
+          7,
+          0
+        ],
+        [
+          7,
+          7,
+          0,
+          0,
+          7,
+          7
+        ]
+      ],
+      "projection_from_252": [
+        55,
+        53,
+        47,
+        49,
+        47,
+        47,
+        52,
+        45,
+        48,
+        45,
+        45,
+        34,
+        37,
+        34,
+        34,
+        39,
+        37,
+        37,
+        34,
+        34,
+        34,
+        51,
+        43,
+        46,
+        43,
+        43,
+        31,
+        35,
+        31,
+        31,
+        38,
+        35,
+        35,
+        31,
+        31,
+        31,
+        19,
+        22,
+        19,
+        19,
+        25,
+        22,
+        22,
+        19,
+        19,
+        19,
+        27,
+        25,
+        25,
+        22,
+        22,
+        22,
+        19,
+        19,
+        19,
+        19,
+        50,
+        41,
+        44,
+        41,
+        41,
+        29,
+        32,
+        29,
+        29,
+        36,
+        32,
+        32,
+        29,
+        29,
+        29,
+        17,
+        20,
+        17,
+        17,
+        23,
+        20,
+        20,
+        17,
+        17,
+        17,
+        26,
+        23,
+        23,
+        20,
+        20,
+        20,
+        17,
+        17,
+        17,
+        17,
+        7,
+        9,
+        7,
+        7,
+        11,
+        9,
+        9,
+        7,
+        7,
+        7,
+        13,
+        11,
+        11,
+        9,
+        9,
+        9,
+        7,
+        7,
+        7,
+        7,
+        15,
+        13,
+        13,
+        11,
+        11,
+        11,
+        9,
+        9,
+        9,
+        9,
+        7,
+        7,
+        7,
+        7,
+        7,
+        54,
+        40,
+        42,
+        40,
+        40,
+        28,
+        30,
+        28,
+        28,
+        33,
+        30,
+        30,
+        28,
+        28,
+        28,
+        16,
+        18,
+        16,
+        16,
+        21,
+        18,
+        18,
+        16,
+        16,
+        16,
+        24,
+        21,
+        21,
+        18,
+        18,
+        18,
+        16,
+        16,
+        16,
+        16,
+        6,
+        8,
+        6,
+        6,
+        10,
+        8,
+        8,
+        6,
+        6,
+        6,
+        12,
+        10,
+        10,
+        8,
+        8,
+        8,
+        6,
+        6,
+        6,
+        6,
+        14,
+        12,
+        12,
+        10,
+        10,
+        10,
+        8,
+        8,
+        8,
+        8,
+        6,
+        6,
+        6,
+        6,
+        6,
+        0,
+        1,
+        0,
+        0,
+        2,
+        1,
+        1,
+        0,
+        0,
+        0,
+        3,
+        2,
+        2,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        4,
+        3,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        4,
+        4,
+        3,
+        3,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "runs": [
+        {
+          "method": "exact_deals",
+          "recall": 1,
+          "seed": null,
+          "public_nodes": 12,
+          "table_or_estimated_array_bytes": 1900416,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 2.477019799989648,
+              "training_cpu_seconds": 2.46875,
+              "full_history_evaluation": {
+                "ev_p0": 0.06078140024877863,
+                "br0": 0.0898535988326431,
+                "br1": -0.047610898803237406,
+                "gain0": 0.02907219858386447,
+                "gain1": 0.013170501445541223,
+                "nashconv": 0.042242700029405694,
+                "exploitability": 0.021121350014702847
+              }
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 12.479791200021282,
+              "training_cpu_seconds": 12.46875,
+              "full_history_evaluation": {
+                "ev_p0": 0.06011395003181219,
+                "br0": 0.09298662709266423,
+                "br1": -0.04677473574160154,
+                "gain0": 0.032872677060852035,
+                "gain1": 0.01333921429021065,
+                "nashconv": 0.046211891351062684,
+                "exploitability": 0.023105945675531342
+              }
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 50.09734810004011,
+              "training_cpu_seconds": 49.828125,
+              "full_history_evaluation": {
+                "ev_p0": 0.05987573426425053,
+                "br0": 0.09549723995847088,
+                "br1": -0.04309153549521282,
+                "gain0": 0.03562150569422035,
+                "gain1": 0.01678419876903771,
+                "nashconv": 0.05240570446325806,
+                "exploitability": 0.02620285223162903
+              },
+              "policy": {
+                "file": "ablation-q3-m1-None.json",
+                "sha256": "7b68aded0f810504af8a9a86d8aab1067223bd676d64fd8ff3eef47e1a2ab252"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 1,
+          "seed": 490021,
+          "public_nodes": 12,
+          "table_or_estimated_array_bytes": 37632,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 0.5301504000090063,
+              "training_cpu_seconds": 0.53125,
+              "full_history_evaluation": {
+                "ev_p0": 0.07070927162977256,
+                "br0": 0.23605250118056936,
+                "br1": 0.09407464265407152,
+                "gain0": 0.1653432295507968,
+                "gain1": 0.1647839142838441,
+                "nashconv": 0.33012714383464087,
+                "exploitability": 0.16506357191732043
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 9,
+                  "unseen_prior_mass": 0.007458847736625514
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 8,
+                  "unseen_prior_mass": 0.004886831275720165
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 2.69638350000605,
+              "training_cpu_seconds": 2.703125,
+              "full_history_evaluation": {
+                "ev_p0": 0.060505466622866905,
+                "br0": 0.13771186349262934,
+                "br1": 0.0070380569687088675,
+                "gain0": 0.07720639686976244,
+                "gain1": 0.06754352359157577,
+                "nashconv": 0.14474992046133822,
+                "exploitability": 0.07237496023066911
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 10.892566599999554,
+              "training_cpu_seconds": 10.859375,
+              "full_history_evaluation": {
+                "ev_p0": 0.06060987012263851,
+                "br0": 0.09988682914743938,
+                "br1": -0.023461950082080442,
+                "gain0": 0.03927695902480087,
+                "gain1": 0.037147920040558065,
+                "nashconv": 0.07642487906535894,
+                "exploitability": 0.03821243953267947
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-m1-490021.json",
+                "sha256": "0adedebb19941e102583eb67767cb58ea681c119d5cb18e74740b68602163f70"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 1,
+          "seed": 490022,
+          "public_nodes": 12,
+          "table_or_estimated_array_bytes": 37632,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 0.5356611999450251,
+              "training_cpu_seconds": 0.53125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09307157012984583,
+                "br0": 0.25701697658083084,
+                "br1": 0.07121521165292426,
+                "gain0": 0.163945406450985,
+                "gain1": 0.1642867817827701,
+                "nashconv": 0.3282321882337551,
+                "exploitability": 0.16411609411687755
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.00617283950617284
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.008744855967078188
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 2.709480999968946,
+              "training_cpu_seconds": 2.703125,
+              "full_history_evaluation": {
+                "ev_p0": 0.06770954995992931,
+                "br0": 0.13436867697827584,
+                "br1": 0.004850458198316801,
+                "gain0": 0.06665912701834653,
+                "gain1": 0.0725600081582461,
+                "nashconv": 0.13921913517659265,
+                "exploitability": 0.06960956758829633
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 10.567022199975327,
+              "training_cpu_seconds": 10.5,
+              "full_history_evaluation": {
+                "ev_p0": 0.057101440579048486,
+                "br0": 0.11140083578475075,
+                "br1": -0.022671596351398104,
+                "gain0": 0.05429939520570227,
+                "gain1": 0.034429844227650386,
+                "nashconv": 0.08872923943335265,
+                "exploitability": 0.04436461971667632
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-m1-490022.json",
+                "sha256": "ae260253bd46a959b8d006aea61177c918057799142d44d00b9f5e957f1fe14f"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 1,
+          "seed": 490023,
+          "public_nodes": 12,
+          "table_or_estimated_array_bytes": 37632,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 0.5512850000523031,
+              "training_cpu_seconds": 0.515625,
+              "full_history_evaluation": {
+                "ev_p0": 0.09211428481155519,
+                "br0": 0.23251408925719833,
+                "br1": 0.07481480216970222,
+                "gain0": 0.14039980444564315,
+                "gain1": 0.1669290869812574,
+                "nashconv": 0.30732889142690056,
+                "exploitability": 0.15366444571345028
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.006815843621399177
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 5,
+                  "unseen_prior_mass": 0.002957818930041152
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 2.7005492000607774,
+              "training_cpu_seconds": 2.65625,
+              "full_history_evaluation": {
+                "ev_p0": 0.06870896697420438,
+                "br0": 0.13687261707357096,
+                "br1": 0.010815914817253598,
+                "gain0": 0.06816365009936658,
+                "gain1": 0.07952488179145797,
+                "nashconv": 0.14768853189082456,
+                "exploitability": 0.07384426594541228
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 3,
+                  "unseen_prior_mass": 0.0003858024691358025
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 10.376921500079334,
+              "training_cpu_seconds": 10.25,
+              "full_history_evaluation": {
+                "ev_p0": 0.05834410215284522,
+                "br0": 0.10660467314852597,
+                "br1": -0.012819092220058196,
+                "gain0": 0.04826057099568075,
+                "gain1": 0.04552500993278702,
+                "nashconv": 0.09378558092846777,
+                "exploitability": 0.046892790464233884
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-m1-490023.json",
+                "sha256": "6aae759d46d26b9e0cedc824e86f2171ae0ab94bb7ae9ea3b120215d0a301aad"
+              }
+            }
+          ]
+        },
+        {
+          "method": "exact_deals",
+          "recall": 2,
+          "seed": null,
+          "public_nodes": 32,
+          "table_or_estimated_array_bytes": 5000576,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 5.488851599977352,
+              "training_cpu_seconds": 5.453125,
+              "full_history_evaluation": {
+                "ev_p0": 0.06542413218203652,
+                "br0": 0.06765457593558734,
+                "br1": -0.061369161042928944,
+                "gain0": 0.0022304437535508176,
+                "gain1": 0.004054971139107577,
+                "nashconv": 0.006285414892658395,
+                "exploitability": 0.0031427074463291974
+              }
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 26.64794339996297,
+              "training_cpu_seconds": 26.453125,
+              "full_history_evaluation": {
+                "ev_p0": 0.06527206131135785,
+                "br0": 0.06593699298306138,
+                "br1": -0.06310977871064706,
+                "gain0": 0.0006649316717035336,
+                "gain1": 0.002162282600710788,
+                "nashconv": 0.0028272142724143218,
+                "exploitability": 0.0014136071362071609
+              }
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 106.2990588999819,
+              "training_cpu_seconds": 105.59375,
+              "full_history_evaluation": {
+                "ev_p0": 0.0652936576043722,
+                "br0": 0.06554794238796814,
+                "br1": -0.06320431701921128,
+                "gain0": 0.00025428478359594553,
+                "gain1": 0.002089340585160915,
+                "nashconv": 0.0023436253687568603,
+                "exploitability": 0.0011718126843784302
+              },
+              "policy": {
+                "file": "ablation-q3-m2-None.json",
+                "sha256": "7da9d53533a3f43a8af99b9b37f8f3e4c4c073ae6644c2dace194e86ccce849f"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 2,
+          "seed": 490021,
+          "public_nodes": 32,
+          "table_or_estimated_array_bytes": 73472,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 1.3972186000319198,
+              "training_cpu_seconds": 1.390625,
+              "full_history_evaluation": {
+                "ev_p0": 0.07258588428833626,
+                "br0": 0.24589567084614372,
+                "br1": 0.09429401866532328,
+                "gain0": 0.17330978655780746,
+                "gain1": 0.16687990295365954,
+                "nashconv": 0.340189689511467,
+                "exploitability": 0.1700948447557335
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 9,
+                  "unseen_prior_mass": 0.007458847736625514
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 8,
+                  "unseen_prior_mass": 0.004886831275720165
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 6.89554890000727,
+              "training_cpu_seconds": 6.859375,
+              "full_history_evaluation": {
+                "ev_p0": 0.06440883346883992,
+                "br0": 0.14278182575537804,
+                "br1": 0.008967864951780041,
+                "gain0": 0.07837299228653812,
+                "gain1": 0.07337669842061996,
+                "nashconv": 0.15174969070715807,
+                "exploitability": 0.07587484535357904
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 27.831445100018755,
+              "training_cpu_seconds": 27.75,
+              "full_history_evaluation": {
+                "ev_p0": 0.060186978963211284,
+                "br0": 0.09156022372568283,
+                "br1": -0.030433334125304048,
+                "gain0": 0.031373244762471546,
+                "gain1": 0.029753644837907236,
+                "nashconv": 0.06112688960037878,
+                "exploitability": 0.03056344480018939
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-m2-490021.json",
+                "sha256": "8df21abb9bf1ae013de086ec3ef468eaa4ac1bb621ccbb758ea4a1ec9698b755"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 2,
+          "seed": 490022,
+          "public_nodes": 32,
+          "table_or_estimated_array_bytes": 73472,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 1.4122042000526562,
+              "training_cpu_seconds": 1.40625,
+              "full_history_evaluation": {
+                "ev_p0": 0.09390799380840845,
+                "br0": 0.2402256730625419,
+                "br1": 0.0768679364239647,
+                "gain0": 0.14631767925413344,
+                "gain1": 0.17077593023237314,
+                "nashconv": 0.31709360948650656,
+                "exploitability": 0.15854680474325328
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.00617283950617284
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.008744855967078188
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 7.024071000050753,
+              "training_cpu_seconds": 6.984375,
+              "full_history_evaluation": {
+                "ev_p0": 0.07165180121817619,
+                "br0": 0.12268956895826222,
+                "br1": -0.004157419481372477,
+                "gain0": 0.05103776774008603,
+                "gain1": 0.06749438173680371,
+                "nashconv": 0.11853214947688974,
+                "exploitability": 0.05926607473844487
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 25.55786490009632,
+              "training_cpu_seconds": 25.453125,
+              "full_history_evaluation": {
+                "ev_p0": 0.06377601377732792,
+                "br0": 0.08898853771049829,
+                "br1": -0.036078065756698904,
+                "gain0": 0.025212523933170375,
+                "gain1": 0.027697948020629012,
+                "nashconv": 0.05291047195379939,
+                "exploitability": 0.026455235976899694
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-m2-490022.json",
+                "sha256": "8e77d7d1d42178821b475a27581ccb044d104e9cdfcb7488a2a0df60f472bba8"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": 2,
+          "seed": 490023,
+          "public_nodes": 32,
+          "table_or_estimated_array_bytes": 73472,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 1.389871699968353,
+              "training_cpu_seconds": 1.375,
+              "full_history_evaluation": {
+                "ev_p0": 0.09327091665695661,
+                "br0": 0.23031653585700204,
+                "br1": 0.09089499714447816,
+                "gain0": 0.13704561920004543,
+                "gain1": 0.18416591380143477,
+                "nashconv": 0.3212115330014802,
+                "exploitability": 0.1606057665007401
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.006815843621399177
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 5,
+                  "unseen_prior_mass": 0.002957818930041152
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 7.007003300008364,
+              "training_cpu_seconds": 6.96875,
+              "full_history_evaluation": {
+                "ev_p0": 0.06818651953098347,
+                "br0": 0.1371797240256554,
+                "br1": 0.008611218009517469,
+                "gain0": 0.06899320449467193,
+                "gain1": 0.07679773754050094,
+                "nashconv": 0.14579094203517287,
+                "exploitability": 0.07289547101758644
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 3,
+                  "unseen_prior_mass": 0.0003858024691358025
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 27.946195199969225,
+              "training_cpu_seconds": 27.859375,
+              "full_history_evaluation": {
+                "ev_p0": 0.06106033258085308,
+                "br0": 0.09489941197770209,
+                "br1": -0.02630444985652699,
+                "gain0": 0.033839079396849006,
+                "gain1": 0.034755882724326094,
+                "nashconv": 0.06859496212117511,
+                "exploitability": 0.034297481060587554
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-m2-490023.json",
+                "sha256": "e56a0cca593f1adb7de53594b170b07dcbb385917ce1c72517a8215a9d43836c"
+              }
+            }
+          ]
+        },
+        {
+          "method": "exact_deals",
+          "recall": null,
+          "seed": null,
+          "public_nodes": 64,
+          "table_or_estimated_array_bytes": 9916032,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 9.417593800113536,
+              "training_cpu_seconds": 9.3125,
+              "full_history_evaluation": {
+                "ev_p0": 0.0649672286655387,
+                "br0": 0.06683616435700793,
+                "br1": -0.06256762639588291,
+                "gain0": 0.0018689356914692312,
+                "gain1": 0.0023996022696557845,
+                "nashconv": 0.004268537961125016,
+                "exploitability": 0.002134268980562508
+              }
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 47.03759610012639,
+              "training_cpu_seconds": 46.640625,
+              "full_history_evaluation": {
+                "ev_p0": 0.0651459577680867,
+                "br0": 0.06576247251923216,
+                "br1": -0.06449126411121839,
+                "gain0": 0.0006165147511454638,
+                "gain1": 0.0006546936568683076,
+                "nashconv": 0.0012712084080137714,
+                "exploitability": 0.0006356042040068857
+              }
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 186.5314211001387,
+              "training_cpu_seconds": 185.359375,
+              "full_history_evaluation": {
+                "ev_p0": 0.06516454914190312,
+                "br0": 0.06541215245713518,
+                "br1": -0.06491097019151001,
+                "gain0": 0.0002476033152320617,
+                "gain1": 0.00025357895039310185,
+                "nashconv": 0.0005011822656251635,
+                "exploitability": 0.0002505911328125818
+              },
+              "policy": {
+                "file": "ablation-q3-mNone-None.json",
+                "sha256": "9ee5dfa3d93b853a736057074009d87db866a23ab608cafbf64a68b789c8f60e"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": null,
+          "seed": 490021,
+          "public_nodes": 64,
+          "table_or_estimated_array_bytes": 112896,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 2.7483128999592736,
+              "training_cpu_seconds": 2.734375,
+              "full_history_evaluation": {
+                "ev_p0": 0.0722791600950227,
+                "br0": 0.2463464133044902,
+                "br1": 0.09406625424581498,
+                "gain0": 0.1740672532094675,
+                "gain1": 0.16634541434083766,
+                "nashconv": 0.3404126675503052,
+                "exploitability": 0.1702063337751526
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 9,
+                  "unseen_prior_mass": 0.007458847736625514
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 8,
+                  "unseen_prior_mass": 0.004886831275720165
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 13.774559999932535,
+              "training_cpu_seconds": 13.703125,
+              "full_history_evaluation": {
+                "ev_p0": 0.06591344111762827,
+                "br0": 0.14202940438550551,
+                "br1": 0.008408664256839638,
+                "gain0": 0.07611596326787724,
+                "gain1": 0.07432210537446791,
+                "nashconv": 0.15043806864234516,
+                "exploitability": 0.07521903432117258
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 53.66663209989201,
+              "training_cpu_seconds": 53.453125,
+              "full_history_evaluation": {
+                "ev_p0": 0.060092102848780624,
+                "br0": 0.09397006985323426,
+                "br1": -0.031219891778052657,
+                "gain0": 0.03387796700445364,
+                "gain1": 0.028872211070727967,
+                "nashconv": 0.0627501780751816,
+                "exploitability": 0.0313750890375908
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-mNone-490021.json",
+                "sha256": "64c8c3acdf0cf0dc4beca7edd24a36e1d7fd6da807804c819e26ab21179c7bb1"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": null,
+          "seed": 490022,
+          "public_nodes": 64,
+          "table_or_estimated_array_bytes": 112896,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 2.7661235999548808,
+              "training_cpu_seconds": 2.765625,
+              "full_history_evaluation": {
+                "ev_p0": 0.0947915383889238,
+                "br0": 0.2392701737860508,
+                "br1": 0.07560097264597901,
+                "gain0": 0.14447863539712702,
+                "gain1": 0.17039251103490283,
+                "nashconv": 0.31487114643202985,
+                "exploitability": 0.15743557321601492
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.00617283950617284
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.008744855967078188
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 13.558718699845485,
+              "training_cpu_seconds": 13.484375,
+              "full_history_evaluation": {
+                "ev_p0": 0.07231941528049946,
+                "br0": 0.12805075177475447,
+                "br1": -0.003496642294188802,
+                "gain0": 0.05573133649425502,
+                "gain1": 0.06882277298631065,
+                "nashconv": 0.12455410948056567,
+                "exploitability": 0.06227705474028283
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 1,
+                  "unseen_prior_mass": 0.0001286008230452675
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 54.567867799894884,
+              "training_cpu_seconds": 54.25,
+              "full_history_evaluation": {
+                "ev_p0": 0.06393655076543277,
+                "br0": 0.09129793954803082,
+                "br1": -0.03841685175318976,
+                "gain0": 0.027361388782598056,
+                "gain1": 0.025519699012243005,
+                "nashconv": 0.05288108779484106,
+                "exploitability": 0.02644054389742053
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-mNone-490022.json",
+                "sha256": "dad5a2afd9d2558ccd894c928dd86318a017d3ba5387c74952b20ceeb8d8541a"
+              }
+            }
+          ]
+        },
+        {
+          "method": "sampled_deals",
+          "recall": null,
+          "seed": 490023,
+          "public_nodes": 64,
+          "table_or_estimated_array_bytes": 112896,
+          "completed_iterations": 20000,
+          "checkpoints": [
+            {
+              "iterations": 1000,
+              "training_wall_seconds": 2.774235099903308,
+              "training_cpu_seconds": 2.78125,
+              "full_history_evaluation": {
+                "ev_p0": 0.09253276206922538,
+                "br0": 0.23027360747698286,
+                "br1": 0.0916338695844093,
+                "gain0": 0.1377408454077575,
+                "gain1": 0.18416663165363467,
+                "nashconv": 0.32190747706139217,
+                "exploitability": 0.16095373853069608
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 10,
+                  "unseen_prior_mass": 0.006815843621399177
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 5,
+                  "unseen_prior_mass": 0.002957818930041152
+                }
+              ]
+            },
+            {
+              "iterations": 5000,
+              "training_wall_seconds": 11.556210699840449,
+              "training_cpu_seconds": 11.515625,
+              "full_history_evaluation": {
+                "ev_p0": 0.06884031040515279,
+                "br0": 0.13970926545525397,
+                "br1": 0.007466378993022922,
+                "gain0": 0.07086895505010118,
+                "gain1": 0.07630668939817571,
+                "nashconv": 0.14717564444827688,
+                "exploitability": 0.07358782222413844
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 2,
+                  "unseen_prior_mass": 0.000257201646090535
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 3,
+                  "unseen_prior_mass": 0.0003858024691358025
+                }
+              ]
+            },
+            {
+              "iterations": 20000,
+              "training_wall_seconds": 52.61907749983948,
+              "training_cpu_seconds": 52.359375,
+              "full_history_evaluation": {
+                "ev_p0": 0.06191552582663556,
+                "br0": 0.09324827325911673,
+                "br1": -0.028104762816055024,
+                "gain0": 0.03133274743248118,
+                "gain1": 0.03381076301058053,
+                "nashconv": 0.06514351044306171,
+                "exploitability": 0.03257175522153086
+              },
+              "coverage": [
+                {
+                  "seat": 0,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                },
+                {
+                  "seat": 1,
+                  "unseen_types": 0,
+                  "unseen_prior_mass": 0.0
+                }
+              ],
+              "policy": {
+                "file": "ablation-q3-mNone-490023.json",
+                "sha256": "a5b34912c64c6098f1ded32ec7c99405d08eb026cf8fcc6ef3d95ad37ac783bd"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "wall_seconds": 1154.7074071000097,
+  "cpu_seconds": 1148.53125,
+  "peak_process_memory": {
+    "bytes": 53108736,
+    "kind": "Windows process peak working set"
+  }
+}

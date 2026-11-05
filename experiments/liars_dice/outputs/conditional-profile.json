@@ -1,0 +1,154 @@
+{
+  "seed": 490044,
+  "warmup_steps": 2,
+  "profiled_steps": 20,
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.8",
+  "openblas_threads": "1",
+  "source_sha256_lf": {
+    "conditional_chance.py": "6444ca4b51183e5fe01162301d4262aa47a002aed19a982c09b4481cca0abf43",
+    "recall_training.py": "a1c924ba831d43223f83015b09a3c92ca06377fc3b207dde8cae6deae5113d9a",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "profile_conditional_chance.py": "e05444304213a940c706d257fc53a68e9a6cb7efc63e4f35cd1d7c1057577829"
+  },
+  "instrumented_cpu_seconds": 1.671875,
+  "instrumented_wall_seconds": 1.6807004000000003,
+  "not_an_equal_cpu_learning_comparison": true,
+  "top_functions": [
+    {
+      "file": "conditional_chance.py",
+      "line": 14,
+      "function": "increments",
+      "calls": 20,
+      "primitive_calls": 20,
+      "instrumented_self_wall_seconds": 1.121747,
+      "instrumented_cumulative_wall_seconds": 1.5837698
+    },
+    {
+      "file": "_methods.py",
+      "line": 96,
+      "function": "_clip",
+      "calls": 6000,
+      "primitive_calls": 6000,
+      "instrumented_self_wall_seconds": 0.2252792,
+      "instrumented_cumulative_wall_seconds": 0.2252792
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'reduce' of 'numpy.ufunc' objects>",
+      "calls": 36120,
+      "primitive_calls": 36120,
+      "instrumented_self_wall_seconds": 0.11005590000000001,
+      "instrumented_cumulative_wall_seconds": 0.11005590000000001
+    },
+    {
+      "file": "recall_training.py",
+      "line": 82,
+      "function": "step",
+      "calls": 20,
+      "primitive_calls": 20,
+      "instrumented_self_wall_seconds": 0.0796704,
+      "instrumented_cumulative_wall_seconds": 1.6806749
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'copy' of 'numpy.ndarray' objects>",
+      "calls": 12000,
+      "primitive_calls": 12000,
+      "instrumented_self_wall_seconds": 0.047719500000000005,
+      "instrumented_cumulative_wall_seconds": 0.047719500000000005
+    },
+    {
+      "file": "numeric.py",
+      "line": 400,
+      "function": "full_like",
+      "calls": 6000,
+      "primitive_calls": 6000,
+      "instrumented_self_wall_seconds": 0.032249,
+      "instrumented_cumulative_wall_seconds": 0.0331491
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method numpy.asarray>",
+      "calls": 40,
+      "primitive_calls": 40,
+      "instrumented_self_wall_seconds": 0.021564200000000002,
+      "instrumented_cumulative_wall_seconds": 0.021564200000000002
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'sum' of 'numpy.ndarray' objects>",
+      "calls": 24000,
+      "primitive_calls": 24000,
+      "instrumented_self_wall_seconds": 0.0098794,
+      "instrumented_cumulative_wall_seconds": 0.1186606
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'astype' of 'numpy.ndarray' objects>",
+      "calls": 11960,
+      "primitive_calls": 11960,
+      "instrumented_self_wall_seconds": 0.0067702000000000005,
+      "instrumented_cumulative_wall_seconds": 0.0067702000000000005
+    },
+    {
+      "file": "recall_training.py",
+      "line": 27,
+      "function": "row",
+      "calls": 12000,
+      "primitive_calls": 12000,
+      "instrumented_self_wall_seconds": 0.005876200000000001,
+      "instrumented_cumulative_wall_seconds": 0.0067463
+    },
+    {
+      "file": "_methods.py",
+      "line": 47,
+      "function": "_sum",
+      "calls": 24000,
+      "primitive_calls": 24000,
+      "instrumented_self_wall_seconds": 0.0049309,
+      "instrumented_cumulative_wall_seconds": 0.10878120000000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'all' of 'numpy.ndarray' objects>",
+      "calls": 12080,
+      "primitive_calls": 12080,
+      "instrumented_self_wall_seconds": 0.003287,
+      "instrumented_cumulative_wall_seconds": 0.010436200000000001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'clip' of 'numpy.ndarray' objects>",
+      "calls": 6000,
+      "primitive_calls": 6000,
+      "instrumented_self_wall_seconds": 0.0024448,
+      "instrumented_cumulative_wall_seconds": 0.227724
+    },
+    {
+      "file": "_methods.py",
+      "line": 64,
+      "function": "_all",
+      "calls": 12080,
+      "primitive_calls": 12080,
+      "instrumented_self_wall_seconds": 0.0022358,
+      "instrumented_cumulative_wall_seconds": 0.0071492000000000005
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<method 'reshape' of 'numpy.ndarray' objects>",
+      "calls": 6000,
+      "primitive_calls": 6000,
+      "instrumented_self_wall_seconds": 0.001619,
+      "instrumented_cumulative_wall_seconds": 0.001619
+    }
+  ]
+}
