@@ -120,3 +120,10 @@ promotion and hosted acceptance remain separate decisions.
 diagonal-block, Cartesian-block and conditional updates at matched fixture CPU
 budgets. An explicit fixture gate controls the bounded full-rule pilot. The
 frozen-block expectation and duplicate-hand semantics are independently checked.
+
+## Axis aggregation (#49)
+
+[Axis-reduction study](axis-batches-research.md) compares an equivalent pair-axis
+sum with the frozen scatter implementation. Fixed-count trajectory sensitivity,
+balanced frozen-pass cost and fresh equal-CPU fixtures gate a bounded full-rule
+comparison; duplicate private-hand updates retain their original semantics.

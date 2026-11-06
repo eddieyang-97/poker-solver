@@ -186,3 +186,21 @@ study used 1,200.36 wall / 1,188.77 CPU seconds and 314.17 MiB process peak. Ret
 all 81 final policies. Crossed blocks improve the measured fixture corpus and
 all matched held-out full-rule payoff means, while overlapping full-game bounds
 still demonstrate substantial vulnerability. No policy promotion follows.
+
+## Axis reduction of sample-pair positions (#49)
+
+[Operator, measured gates and reproduction](axis-batches-research.md) covers
+reference parity in both seats/modes, duplicate samples, exact nonuniform-chance
+means, and fixed-count sensitivity to summation order. The historical pass stays
+unchanged. Balanced frozen full-rule timings and equal-CPU fixture controls
+precede any admitted full-rule adaptive pilot. Source/file hashes and every final
+fixture table/snapshot remain replayable; cost improvements do not establish
+equilibrium quality or authorize model promotion.
+
+Observed locally on Windows with one OpenBLAS thread: all **68 standalone tests**
+pass in 63.31 seconds; Ruff, compile and whitespace checks pass. All six paired
+fixed-count controls, 36 equal-CPU fixture runs and six admitted full-rule pilots
+completed. The main run used 761.00 wall / 754.125 CPU seconds and 314.69 MiB
+process peak. Retain all 54 final policies. The measured full-rule throughput
+gain and held-out payoff means do not establish an unrestricted strength ranking;
+the response intervals still overlap and demonstrate substantial vulnerability.

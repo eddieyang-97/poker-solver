@@ -1,0 +1,4782 @@
+{
+  "status": "completed",
+  "source_sha256_lf": {
+    "axis_batches.py": "2348e1a74ab4167fb10b60fd2a1593f9fcec242265c9c1b05f5cdecd604bc6a2",
+    "run_axis_batches.py": "ac2dcc91d74466ea3dc50d31b89bb5bd930bbfa9b1b68b4932eaf53652c052ab",
+    "crossed_batches.py": "5e57992184e37edbc30445310f017c6ac10c4b54751c19b815832a4ed4ee4901",
+    "run_crossed_batches.py": "f2323cfe81b90f90b03fc56cebc7f7efa2b63b050843d614782c76cd3495471a",
+    "recall_training.py": "a1c924ba831d43223f83015b09a3c92ca06377fc3b207dde8cae6deae5113d9a",
+    "recall_ablation.py": "fe7d58662f6172389aaabd989fe371d20850cf532b7ab6e85693d272f488676b",
+    "fixed_strategy.py": "9bc2b509ad8e463aecbfa2c55664cef9e1041a799f9c5a87c5fdadcdaa6717f4",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "bounded_response.py": "036d53de36e6ad0b6d0834b868f22e9196192a5081d3fc73c4e5e6d76753d373",
+    "run_fixed_strategy.py": "02844fc09209a3d2a4d694b8c2b85207a71321b77acbcde2785802f27769b800",
+    "run_recall_ablation.py": "693df8abdb4a78fe2c15c0416c4e8eb6a6fa055c946023f5452b9c1b85e11210",
+    "run_recall_training.py": "5e9abecd619a95918504ece69290d826edbab30b1b3e1f1153482f7763be4328"
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.8",
+  "numpy": "2.5.4",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "openblas_threads": "1",
+  "seeds": [
+    490061,
+    490062,
+    490063
+  ],
+  "batch_size": 8,
+  "fixed_count_checkpoints": [
+    100,
+    500
+  ],
+  "fixture_cpu_budgets": [
+    1,
+    5
+  ],
+  "full_cpu_budgets": [
+    15,
+    60
+  ],
+  "execution_mode": "measured training CPU budgets",
+  "replay_input_sha256": null,
+  "guard_seconds": 1800,
+  "guard_semantics": "between work units, not a hard deadline",
+  "fixed_count_runs": [
+    {
+      "quantity": 2,
+      "recall": 1,
+      "seed": 490061,
+      "checkpoints": [
+        {
+          "iterations": 100,
+          "paired_training_cpu_seconds": 0.328125,
+          "paired_training_wall_seconds": 0.32728189998306334,
+          "maximum_policy_probability_difference": 1.1102230246251565e-15,
+          "reference": {
+            "ev_p0": 0.07911061583058618,
+            "br0": 0.16554972733707854,
+            "br1": -0.007857879801142071,
+            "gain0": 0.08643911150649236,
+            "gain1": 0.07125273602944411,
+            "nashconv": 0.15769184753593646,
+            "exploitability": 0.07884592376796823
+          },
+          "axis": {
+            "ev_p0": 0.07911061583058615,
+            "br0": 0.16554972733707857,
+            "br1": -0.007857879801142064,
+            "gain0": 0.08643911150649242,
+            "gain1": 0.07125273602944408,
+            "nashconv": 0.1576918475359365,
+            "exploitability": 0.07884592376796826
+          }
+        },
+        {
+          "iterations": 500,
+          "paired_training_cpu_seconds": 1.25,
+          "paired_training_wall_seconds": 1.2648501999210566,
+          "maximum_policy_probability_difference": 2.55351295663786e-15,
+          "reference": {
+            "ev_p0": 0.08608576450849215,
+            "br0": 0.12005124846022097,
+            "br1": -0.058069943041219325,
+            "gain0": 0.033965483951728825,
+            "gain1": 0.02801582146727282,
+            "nashconv": 0.061981305419001646,
+            "exploitability": 0.030990652709500823,
+            "policy": {
+              "file": "axis-trace-q2-m1-reference-490061.json",
+              "sha256": "aff13773da6c0b4f8864d10dcaf877afae7d385a870aa2b93eb25c927662d2f7"
+            }
+          },
+          "axis": {
+            "ev_p0": 0.08608576450849215,
+            "br0": 0.12005124846022097,
+            "br1": -0.05806994304121936,
+            "gain0": 0.033965483951728825,
+            "gain1": 0.028015821467272786,
+            "nashconv": 0.06198130541900161,
+            "exploitability": 0.030990652709500806,
+            "policy": {
+              "file": "axis-trace-q2-m1-axis-490061.json",
+              "sha256": "86989df78a2897ac1ecb2cef780c66aa1449bce650aed6d90a711cfaaf573f74"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 2,
+      "seed": 490061,
+      "checkpoints": [
+        {
+          "iterations": 100,
+          "paired_training_cpu_seconds": 0.765625,
+          "paired_training_wall_seconds": 0.7650523000629619,
+          "maximum_policy_probability_difference": 7.049916206369744e-15,
+          "reference": {
+            "ev_p0": 0.08136781568819172,
+            "br0": 0.16557477783279992,
+            "br1": -0.013614825996141822,
+            "gain0": 0.0842069621446082,
+            "gain1": 0.0677529896920499,
+            "nashconv": 0.15195995183665809,
+            "exploitability": 0.07597997591832904
+          },
+          "axis": {
+            "ev_p0": 0.08136781568819174,
+            "br0": 0.16557477783279995,
+            "br1": -0.013614825996141812,
+            "gain0": 0.08420696214460821,
+            "gain1": 0.06775298969204993,
+            "nashconv": 0.15195995183665814,
+            "exploitability": 0.07597997591832907
+          }
+        },
+        {
+          "iterations": 500,
+          "paired_training_cpu_seconds": 2.96875,
+          "paired_training_wall_seconds": 2.984930200036615,
+          "maximum_policy_probability_difference": 8.74508798709428e-14,
+          "reference": {
+            "ev_p0": 0.08954943606871571,
+            "br0": 0.11644412402148026,
+            "br1": -0.06382865080728911,
+            "gain0": 0.02689468795276455,
+            "gain1": 0.0257207852614266,
+            "nashconv": 0.05261547321419115,
+            "exploitability": 0.026307736607095573,
+            "policy": {
+              "file": "axis-trace-q2-m2-reference-490061.json",
+              "sha256": "c1ba443c594c8ac2af2842f79ae3ec76534749b9ec8245e305b0b8b8ea8dfadb"
+            }
+          },
+          "axis": {
+            "ev_p0": 0.0895494360687158,
+            "br0": 0.11644412402148017,
+            "br1": -0.06382865080728939,
+            "gain0": 0.02689468795276438,
+            "gain1": 0.025720785261426404,
+            "nashconv": 0.052615473214190786,
+            "exploitability": 0.026307736607095393,
+            "policy": {
+              "file": "axis-trace-q2-m2-axis-490061.json",
+              "sha256": "9d6e2c180d867c6d53cf7569b44fe4d552105e0ed6fe6231218a66a70bbf2184"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": null,
+      "seed": 490061,
+      "checkpoints": [
+        {
+          "iterations": 100,
+          "paired_training_cpu_seconds": 1.21875,
+          "paired_training_wall_seconds": 1.2503649999853224,
+          "maximum_policy_probability_difference": 1.0325074129013956e-14,
+          "reference": {
+            "ev_p0": 0.0802986746460366,
+            "br0": 0.16389458134786028,
+            "br1": -0.010121826690545071,
+            "gain0": 0.08359590670182368,
+            "gain1": 0.07017684795549153,
+            "nashconv": 0.1537727546573152,
+            "exploitability": 0.0768863773286576
+          },
+          "axis": {
+            "ev_p0": 0.08029867464603661,
+            "br0": 0.16389458134786028,
+            "br1": -0.010121826690545082,
+            "gain0": 0.08359590670182367,
+            "gain1": 0.07017684795549153,
+            "nashconv": 0.15377275465731519,
+            "exploitability": 0.07688637732865759
+          }
+        },
+        {
+          "iterations": 500,
+          "paired_training_cpu_seconds": 5.03125,
+          "paired_training_wall_seconds": 5.085126299993135,
+          "maximum_policy_probability_difference": 1.1324274851176597e-14,
+          "reference": {
+            "ev_p0": 0.08931819462606384,
+            "br0": 0.11649461757156611,
+            "br1": -0.06447280133514802,
+            "gain0": 0.027176422945502265,
+            "gain1": 0.024845393290915826,
+            "nashconv": 0.05202181623641809,
+            "exploitability": 0.026010908118209046,
+            "policy": {
+              "file": "axis-trace-q2-mNone-reference-490061.json",
+              "sha256": "eaf9f8a5a118967a1a02956d59d1a76a4a6dda6b85a93b1d62e55b54d184af4d"
+            }
+          },
+          "axis": {
+            "ev_p0": 0.08931819462606384,
+            "br0": 0.11649461757156611,
+            "br1": -0.064472801335148,
+            "gain0": 0.027176422945502265,
+            "gain1": 0.02484539329091584,
+            "nashconv": 0.052021816236418106,
+            "exploitability": 0.026010908118209053,
+            "policy": {
+              "file": "axis-trace-q2-mNone-axis-490061.json",
+              "sha256": "63d40f468ef2eb97ed4e13979934fdebfc5ddb6f6d463352fe296f4074639c47"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 1,
+      "seed": 490061,
+      "checkpoints": [
+        {
+          "iterations": 100,
+          "paired_training_cpu_seconds": 0.3125,
+          "paired_training_wall_seconds": 0.31020820001140237,
+          "maximum_policy_probability_difference": 6.106226635438361e-16,
+          "reference": {
+            "ev_p0": 0.056224257297577275,
+            "br0": 0.16122703010998596,
+            "br1": 0.0478005600235302,
+            "gain0": 0.10500277281240869,
+            "gain1": 0.10402481732110747,
+            "nashconv": 0.20902759013351616,
+            "exploitability": 0.10451379506675808
+          },
+          "axis": {
+            "ev_p0": 0.056224257297577254,
+            "br0": 0.16122703010998596,
+            "br1": 0.047800560023530184,
+            "gain0": 0.1050027728124087,
+            "gain1": 0.10402481732110744,
+            "nashconv": 0.20902759013351613,
+            "exploitability": 0.10451379506675806
+          }
+        },
+        {
+          "iterations": 500,
+          "paired_training_cpu_seconds": 1.3125,
+          "paired_training_wall_seconds": 1.3211524999933317,
+          "maximum_policy_probability_difference": 5.662137425588298e-15,
+          "reference": {
+            "ev_p0": 0.06260032658348778,
+            "br0": 0.11374880081757434,
+            "br1": -0.017689717087872675,
+            "gain0": 0.051148474234086555,
+            "gain1": 0.04491060949561511,
+            "nashconv": 0.09605908372970166,
+            "exploitability": 0.04802954186485083,
+            "policy": {
+              "file": "axis-trace-q3-m1-reference-490061.json",
+              "sha256": "e7624cd8cd90f4b2490ee5c7b7ceab195a6d35a5a9955aa6ff712d5853b68b1b"
+            }
+          },
+          "axis": {
+            "ev_p0": 0.06260032658348777,
+            "br0": 0.11374880081757434,
+            "br1": -0.017689717087872665,
+            "gain0": 0.05114847423408657,
+            "gain1": 0.04491060949561511,
+            "nashconv": 0.09605908372970168,
+            "exploitability": 0.04802954186485084,
+            "policy": {
+              "file": "axis-trace-q3-m1-axis-490061.json",
+              "sha256": "fa7df3d152878cac189803fea3e764f1940a3810f9c9bdebe41d7d2bbc5f9beb"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 2,
+      "seed": 490061,
+      "checkpoints": [
+        {
+          "iterations": 100,
+          "paired_training_cpu_seconds": 0.609375,
+          "paired_training_wall_seconds": 0.6155299000674859,
+          "maximum_policy_probability_difference": 7.771561172376096e-16,
+          "reference": {
+            "ev_p0": 0.05342192733914034,
+            "br0": 0.16176938896382084,
+            "br1": 0.042247350142016415,
+            "gain0": 0.10834746162468051,
+            "gain1": 0.09566927748115675,
+            "nashconv": 0.20401673910583726,
+            "exploitability": 0.10200836955291863
+          },
+          "axis": {
+            "ev_p0": 0.05342192733914033,
+            "br0": 0.16176938896382084,
+            "br1": 0.042247350142016415,
+            "gain0": 0.10834746162468051,
+            "gain1": 0.09566927748115675,
+            "nashconv": 0.20401673910583726,
+            "exploitability": 0.10200836955291863
+          }
+        },
+        {
+          "iterations": 500,
+          "paired_training_cpu_seconds": 3.265625,
+          "paired_training_wall_seconds": 3.2732226999942213,
+          "maximum_policy_probability_difference": 3.219646771412954e-15,
+          "reference": {
+            "ev_p0": 0.06434624728944693,
+            "br0": 0.1007684174348883,
+            "br1": -0.02668092612683621,
+            "gain0": 0.03642217014544137,
+            "gain1": 0.037665321162610725,
+            "nashconv": 0.07408749130805209,
+            "exploitability": 0.037043745654026045,
+            "policy": {
+              "file": "axis-trace-q3-m2-reference-490061.json",
+              "sha256": "0cee6348d1038df0e90e0a6ed405143f3c41e9c09fa27896a17efa0b9ee713cc"
+            }
+          },
+          "axis": {
+            "ev_p0": 0.06434624728944693,
+            "br0": 0.1007684174348883,
+            "br1": -0.026680926126836223,
+            "gain0": 0.03642217014544137,
+            "gain1": 0.03766532116261071,
+            "nashconv": 0.07408749130805209,
+            "exploitability": 0.037043745654026045,
+            "policy": {
+              "file": "axis-trace-q3-m2-axis-490061.json",
+              "sha256": "5675a6dd2f5341c824145f7ab78b719af24003da97be3862bfd40f59857ca0f0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": null,
+      "seed": 490061,
+      "checkpoints": [
+        {
+          "iterations": 100,
+          "paired_training_cpu_seconds": 1.59375,
+          "paired_training_wall_seconds": 1.6040190999628976,
+          "maximum_policy_probability_difference": 4.3298697960381105e-15,
+          "reference": {
+            "ev_p0": 0.05345621744401381,
+            "br0": 0.16292413588486757,
+            "br1": 0.04391202727386729,
+            "gain0": 0.10946791844085375,
+            "gain1": 0.09736824471788111,
+            "nashconv": 0.20683616315873485,
+            "exploitability": 0.10341808157936742
+          },
+          "axis": {
+            "ev_p0": 0.053456217444013805,
+            "br0": 0.16292413588486757,
+            "br1": 0.04391202727386728,
+            "gain0": 0.10946791844085377,
+            "gain1": 0.09736824471788108,
+            "nashconv": 0.20683616315873485,
+            "exploitability": 0.10341808157936742
+          }
+        },
+        {
+          "iterations": 500,
+          "paired_training_cpu_seconds": 6.09375,
+          "paired_training_wall_seconds": 6.124609700054862,
+          "maximum_policy_probability_difference": 8.992806499463768e-15,
+          "reference": {
+            "ev_p0": 0.06439781836589846,
+            "br0": 0.10348764991376336,
+            "br1": -0.027617418937825232,
+            "gain0": 0.0390898315478649,
+            "gain1": 0.03678039942807323,
+            "nashconv": 0.07587023097593812,
+            "exploitability": 0.03793511548796906,
+            "policy": {
+              "file": "axis-trace-q3-mNone-reference-490061.json",
+              "sha256": "30da32b28c0dd38d1bf1463eb012b4d0636af0f19842872d99caaf50280a4041"
+            }
+          },
+          "axis": {
+            "ev_p0": 0.06439781836589845,
+            "br0": 0.10348764991376333,
+            "br1": -0.027617418937825232,
+            "gain0": 0.039089831547864884,
+            "gain1": 0.036780399428073214,
+            "nashconv": 0.07587023097593809,
+            "exploitability": 0.037935115487969046,
+            "policy": {
+              "file": "axis-trace-q3-mNone-axis-490061.json",
+              "sha256": "c0b1f0775b17c75db6c4cb4c8f8c5c78b82c4e1c7f38d601b6c92551a296ebea"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "fixture_runs": [
+    {
+      "quantity": 2,
+      "recall": 1,
+      "seed": 490061,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 649,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.024723200011067,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5192,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5192,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 5.183577361543529,
+          "full_history_evaluation": {
+            "ev_p0": 0.08804181492916827,
+            "br0": 0.1164212144047208,
+            "br1": -0.06522924258997485,
+            "gain0": 0.028379399475552528,
+            "gain1": 0.022812572339193413,
+            "nashconv": 0.05119197181474594,
+            "exploitability": 0.02559598590737297
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3086,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.090871799970046,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 24688,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 24688,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            }
+          ],
+          "maximum_summed_reach": 5.183577361543529,
+          "full_history_evaluation": {
+            "ev_p0": 0.09448712955406043,
+            "br0": 0.10557005861603609,
+            "br1": -0.08523527819919256,
+            "gain0": 0.011082929061975666,
+            "gain1": 0.009251851354867863,
+            "nashconv": 0.02033478041684353,
+            "exploitability": 0.010167390208421764
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m1-reference-490061.json",
+            "sha256": "6ad14eea88ee32332df0374c9577c0684348c17f6ed9d3b2e377bde35b3d00ee"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 1,
+      "seed": 490061,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 617,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9995052000740543,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 4936,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 4936,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 5.183577361543529,
+          "full_history_evaluation": {
+            "ev_p0": 0.08773850736162842,
+            "br0": 0.11733574604629482,
+            "br1": -0.06430607558098222,
+            "gain0": 0.029597238684666405,
+            "gain1": 0.02343243178064619,
+            "nashconv": 0.053029670465312595,
+            "exploitability": 0.026514835232656297
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3212,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.021720800083131,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 25696,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 25696,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            }
+          ],
+          "maximum_summed_reach": 5.183577361543529,
+          "full_history_evaluation": {
+            "ev_p0": 0.09446567661054307,
+            "br0": 0.10609773868534907,
+            "br1": -0.08572415204499377,
+            "gain0": 0.011632062074805993,
+            "gain1": 0.008741524565549302,
+            "nashconv": 0.020373586640355296,
+            "exploitability": 0.010186793320177648
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m1-axis-490061.json",
+            "sha256": "4bc20d15a22a9185003922143bdb35b106136941610d253056e4fc36f64c2fde"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 1,
+      "seed": 490062,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 630,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9907747000688687,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5040,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5040,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 5.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0851690838020813,
+            "br0": 0.11404770358657144,
+            "br1": -0.06088431038576118,
+            "gain0": 0.028878619784490148,
+            "gain1": 0.02428477341632012,
+            "nashconv": 0.05316339320081027,
+            "exploitability": 0.026581696600405134
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3203,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.0340611999854445,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 25624,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 25624,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            }
+          ],
+          "maximum_summed_reach": 5.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09194368588818252,
+            "br0": 0.10139775271689971,
+            "br1": -0.08475236384194793,
+            "gain0": 0.00945406682871719,
+            "gain1": 0.0071913220462345995,
+            "nashconv": 0.01664538887495179,
+            "exploitability": 0.008322694437475894
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m1-axis-490062.json",
+            "sha256": "ab507c8be30df4994d8d61c220fdd902e7cad5137256370af299b33c74d707fb"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 1,
+      "seed": 490062,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 621,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.014067400014028,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 4968,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 4968,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 5.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08512457466415407,
+            "br0": 0.11415942983612579,
+            "br1": -0.06105041576001289,
+            "gain0": 0.029034855171971713,
+            "gain1": 0.024074158904141184,
+            "nashconv": 0.0531090140761129,
+            "exploitability": 0.02655450703805645
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3139,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.050344300107099,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 25112,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 25112,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 5.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09188932520922871,
+            "br0": 0.10133541556301365,
+            "br1": -0.08469175312284043,
+            "gain0": 0.009446090353784936,
+            "gain1": 0.007197572086388285,
+            "nashconv": 0.01664366244017322,
+            "exploitability": 0.00832183122008661
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m1-reference-490062.json",
+            "sha256": "b4342d71bf82b0be67cf613f06d142276174601fd341036580571373d27d3e28"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 1,
+      "seed": 490063,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 600,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9940097000217065,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 4800,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 4800,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 5.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09047123621179252,
+            "br0": 0.11442892906563767,
+            "br1": -0.06590377911842729,
+            "gain0": 0.02395769285384515,
+            "gain1": 0.024567457093365233,
+            "nashconv": 0.04852514994721038,
+            "exploitability": 0.02426257497360519
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3054,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.031913200044073,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 24432,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 24432,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            }
+          ],
+          "maximum_summed_reach": 5.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09391985415055672,
+            "br0": 0.10691429794163447,
+            "br1": -0.08533714080044377,
+            "gain0": 0.012994443791077753,
+            "gain1": 0.008582713350112944,
+            "nashconv": 0.021577157141190698,
+            "exploitability": 0.010788578570595349
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m1-reference-490063.json",
+            "sha256": "d7d6f2710b59fe5c0e7e33c32e78bafbf4200cae2650b4a223dbc8903df251e2"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 1,
+      "seed": 490063,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 684,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0283736999845132,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5472,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5472,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 5.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09056298027456222,
+            "br0": 0.11396503996584302,
+            "br1": -0.06937394382593232,
+            "gain0": 0.0234020596912808,
+            "gain1": 0.021189036448629905,
+            "nashconv": 0.044591096139910705,
+            "exploitability": 0.022295548069955352
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3276,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.050784399965778,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 26208,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 26208,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            }
+          ],
+          "maximum_summed_reach": 5.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09407426616469544,
+            "br0": 0.10701161943876973,
+            "br1": -0.08570461853632004,
+            "gain0": 0.01293735327407429,
+            "gain1": 0.008369647628375401,
+            "nashconv": 0.02130700090244969,
+            "exploitability": 0.010653500451224845
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m1-axis-490063.json",
+            "sha256": "4b90ae825d19c05d72eaef5c9c00f3870a4c6956c471e128fc995fecac217d7b"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 2,
+      "seed": 490061,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 262,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0148682000581175,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2096,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0016718106995884776,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2096,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0021862139917695473,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08752819841601539,
+            "br0": 0.1272044177142573,
+            "br1": -0.04829459939056699,
+            "gain0": 0.039676219298241916,
+            "gain1": 0.0392335990254484,
+            "nashconv": 0.07890981832369032,
+            "exploitability": 0.03945490916184516
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1296,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.051306000095792,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10368,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10368,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            }
+          ],
+          "maximum_summed_reach": 3.254576175222856,
+          "full_history_evaluation": {
+            "ev_p0": 0.09254408621134606,
+            "br0": 0.10505618665761851,
+            "br1": -0.07794050762410575,
+            "gain0": 0.012512100446272448,
+            "gain1": 0.014603578587240318,
+            "nashconv": 0.027115679033512766,
+            "exploitability": 0.013557839516756383
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m2-reference-490061.json",
+            "sha256": "063ac891c3d0c91556946fad8bc405066865bfbb68c5827fcd28fcfed1b55c67"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 2,
+      "seed": 490061,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 254,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9904779000207782,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2032,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0016718106995884776,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2032,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0021862139917695473,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0874457361396474,
+            "br0": 0.1278044548744721,
+            "br1": -0.04788341248704469,
+            "gain0": 0.04035871873482469,
+            "gain1": 0.03956232365260271,
+            "nashconv": 0.0799210423874274,
+            "exploitability": 0.0399605211937137
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1315,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.046660299994983,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10520,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10520,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            }
+          ],
+          "maximum_summed_reach": 3.254576175222856,
+          "full_history_evaluation": {
+            "ev_p0": 0.09255163177887796,
+            "br0": 0.10487699813705507,
+            "br1": -0.07833104760999128,
+            "gain0": 0.012325366358177117,
+            "gain1": 0.014220584168886677,
+            "nashconv": 0.026545950527063794,
+            "exploitability": 0.013272975263531897
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m2-axis-490061.json",
+            "sha256": "2dd0a5b36115407798a766355f30a6401ee6fee7e9b9e56772feccf6490c36f8"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 2,
+      "seed": 490062,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 274,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9946400000480935,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2192,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0009002057613168725,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2192,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0833176006922817,
+            "br0": 0.1284036540054344,
+            "br1": -0.04632917731415482,
+            "gain0": 0.04508605331315271,
+            "gain1": 0.036988423378126876,
+            "nashconv": 0.0820744766912796,
+            "exploitability": 0.0410372383456398
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1355,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.001326300087385,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10840,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10840,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09058602666065219,
+            "br0": 0.1037156779123986,
+            "br1": -0.07864449142475778,
+            "gain0": 0.013129651251746408,
+            "gain1": 0.011941535235894404,
+            "nashconv": 0.025071186487640812,
+            "exploitability": 0.012535593243820406
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m2-axis-490062.json",
+            "sha256": "bef64368a8f5c4b127b8ffa33fbc322502f5754edb0524a98e5d5e0a0b8718f6"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 2,
+      "seed": 490062,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 268,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.018726700101979,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2144,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0009002057613168725,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2144,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08318407977603609,
+            "br0": 0.12876323585072336,
+            "br1": -0.04545842074170407,
+            "gain0": 0.045579156074687266,
+            "gain1": 0.03772565903433202,
+            "nashconv": 0.08330481510901928,
+            "exploitability": 0.04165240755450964
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1330,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.066221500164829,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10640,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10640,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0905536312775711,
+            "br0": 0.1036781676500279,
+            "br1": -0.07813179217261272,
+            "gain0": 0.013124536372456794,
+            "gain1": 0.01242183910495838,
+            "nashconv": 0.025546375477415173,
+            "exploitability": 0.012773187738707587
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m2-reference-490062.json",
+            "sha256": "4a07c6e30b101775aa1d8ad9434099d0f09edd0084b638dea2d67c93f7abec5d"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 2,
+      "seed": 490063,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 260,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9918477000901476,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2080,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.0023148148148148143,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2080,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.00102880658436214,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08755620355350206,
+            "br0": 0.12561525844749624,
+            "br1": -0.05157696744093486,
+            "gain0": 0.03805905489399418,
+            "gain1": 0.0359792361125672,
+            "nashconv": 0.07403829100656138,
+            "exploitability": 0.03701914550328069
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1316,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.0180947000626475,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10528,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10528,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09308781907468294,
+            "br0": 0.11028790805155136,
+            "br1": -0.08144208895117144,
+            "gain0": 0.017200088976868422,
+            "gain1": 0.0116457301235115,
+            "nashconv": 0.02884581910037992,
+            "exploitability": 0.01442290955018996
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m2-reference-490063.json",
+            "sha256": "3d6c7713acb8e83cd8f5461ac338e5fe4b84f6b5da42d8f94bc33e1b6a813631"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": 2,
+      "seed": 490063,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 268,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.01576459989883,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2144,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.0023148148148148143,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2144,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.00102880658436214,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08747124664989402,
+            "br0": 0.12464042331342766,
+            "br1": -0.051961791534219794,
+            "gain0": 0.03716917666353364,
+            "gain1": 0.03550945511567422,
+            "nashconv": 0.07267863177920786,
+            "exploitability": 0.03633931588960393
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1335,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.041068799910136,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10680,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10680,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 3.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0931811355912626,
+            "br0": 0.11023300082539748,
+            "br1": -0.08167026308568011,
+            "gain0": 0.017051865234134878,
+            "gain1": 0.011510872505582498,
+            "nashconv": 0.028562737739717375,
+            "exploitability": 0.014281368869858688
+          },
+          "policy": {
+            "file": "axis-fixture-q2-m2-axis-490063.json",
+            "sha256": "bd85de670d1d23d958772d0d7adb6f652a1645d495d036713e8eb530d3afe944"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": null,
+      "seed": 490061,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 155,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0009374000364915,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1240,
+              "unseen_types": 7,
+              "unseen_prior_mass": 0.004243827160493828,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1240,
+              "unseen_types": 6,
+              "unseen_prior_mass": 0.003472222222222222,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08115355198182968,
+            "br0": 0.14845189802859052,
+            "br1": -0.027735287243316264,
+            "gain0": 0.06729834604676084,
+            "gain1": 0.05341826473851341,
+            "nashconv": 0.12071661078527425,
+            "exploitability": 0.060358305392637125
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 800,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.031934200087562,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 6400,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 6400,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09016583178113399,
+            "br0": 0.11359347933044787,
+            "br1": -0.07219149090483296,
+            "gain0": 0.023427647549313882,
+            "gain1": 0.017974340876301037,
+            "nashconv": 0.04140198842561492,
+            "exploitability": 0.02070099421280746
+          },
+          "policy": {
+            "file": "axis-fixture-q2-mNone-reference-490061.json",
+            "sha256": "9e8df9bfd3f15e5ccb9363e29662e6bb89e2e72d57356ae4fe60085218f56221"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": null,
+      "seed": 490061,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 154,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9908118000021204,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1232,
+              "unseen_types": 7,
+              "unseen_prior_mass": 0.004243827160493828,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1232,
+              "unseen_types": 6,
+              "unseen_prior_mass": 0.003472222222222222,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08102901960883784,
+            "br0": 0.14850628809524172,
+            "br1": -0.027587148577970143,
+            "gain0": 0.06747726848640388,
+            "gain1": 0.05344187103086769,
+            "nashconv": 0.12091913951727157,
+            "exploitability": 0.060459569758635784
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 853,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.020308800041676,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 6824,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 6824,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09048567082027444,
+            "br0": 0.11376679381949406,
+            "br1": -0.07481158652535702,
+            "gain0": 0.023281122999219625,
+            "gain1": 0.015674084294917415,
+            "nashconv": 0.03895520729413704,
+            "exploitability": 0.01947760364706852
+          },
+          "policy": {
+            "file": "axis-fixture-q2-mNone-axis-490061.json",
+            "sha256": "5b5b76e1f344edcc6fa7bdada2f4bacb0ce97832db025b3b74d6db8281087d3f"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": null,
+      "seed": 490062,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 172,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0160251000197604,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1376,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.002186213991769547,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1376,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.003472222222222222,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.07909508706549251,
+            "br0": 0.13818090455274812,
+            "br1": -0.02907242295294928,
+            "gain0": 0.05908581748725561,
+            "gain1": 0.05002266411254323,
+            "nashconv": 0.10910848159979884,
+            "exploitability": 0.05455424079989942
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 819,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.073197000077926,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 6552,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 6552,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0890959599637587,
+            "br0": 0.10953688326841698,
+            "br1": -0.07223800327156935,
+            "gain0": 0.020440923304658284,
+            "gain1": 0.016857956692189355,
+            "nashconv": 0.03729887999684764,
+            "exploitability": 0.01864943999842382
+          },
+          "policy": {
+            "file": "axis-fixture-q2-mNone-axis-490062.json",
+            "sha256": "4c9c7b1d39feb44d676e5cb090ee61417a54060904ee71be3ca35b280bd82bfd"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": null,
+      "seed": 490062,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 156,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0267573000164703,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1248,
+              "unseen_types": 7,
+              "unseen_prior_mass": 0.004758230452674898,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1248,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.003472222222222222,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.07975200310937872,
+            "br0": 0.14350285992117232,
+            "br1": -0.02410032652305056,
+            "gain0": 0.0637508568117936,
+            "gain1": 0.05565167658632816,
+            "nashconv": 0.11940253339812176,
+            "exploitability": 0.05970126669906088
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 801,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.027016100008041,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 6408,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 6408,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08909496808602473,
+            "br0": 0.10989906170622554,
+            "br1": -0.07217346538451953,
+            "gain0": 0.020804093620200817,
+            "gain1": 0.016921502701505192,
+            "nashconv": 0.03772559632170601,
+            "exploitability": 0.018862798160853005
+          },
+          "policy": {
+            "file": "axis-fixture-q2-mNone-reference-490062.json",
+            "sha256": "e23442b14146d7c07a71292cc024ddf99894115d265c0eff8c1fb67b19a78e3a"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": null,
+      "seed": 490063,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 154,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0000981000484899,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1232,
+              "unseen_types": 11,
+              "unseen_prior_mass": 0.010030864197530864,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1232,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0016718106995884776,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08344510788258397,
+            "br0": 0.13916735607310884,
+            "br1": -0.03235476076075002,
+            "gain0": 0.055722248190524876,
+            "gain1": 0.05109034712183395,
+            "nashconv": 0.10681259531235882,
+            "exploitability": 0.05340629765617941
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 815,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.023385100066662,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 6520,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 6520,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.09135566933819139,
+            "br0": 0.10816560691949104,
+            "br1": -0.07295363654165485,
+            "gain0": 0.016809937581299644,
+            "gain1": 0.018402032796536544,
+            "nashconv": 0.03521197037783619,
+            "exploitability": 0.017605985188918094
+          },
+          "policy": {
+            "file": "axis-fixture-q2-mNone-reference-490063.json",
+            "sha256": "3abfadd96868ed7470a166684c780e4316858702514bf7b969e56cb24abd6fc8"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 2,
+      "recall": null,
+      "seed": 490063,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 163,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0227372999070212,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1304,
+              "unseen_types": 10,
+              "unseen_prior_mass": 0.007458847736625515,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1304,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0016718106995884776,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.08363614835747918,
+            "br0": 0.13612317701984702,
+            "br1": -0.033497658795113565,
+            "gain0": 0.052487028662367846,
+            "gain1": 0.050138489562365614,
+            "nashconv": 0.10262551822473345,
+            "exploitability": 0.051312759112366726
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 798,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.047153899911791,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 6384,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 6384,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0913307803313395,
+            "br0": 0.10835477137573091,
+            "br1": -0.07241850723266326,
+            "gain0": 0.01702399104439141,
+            "gain1": 0.01891227309867624,
+            "nashconv": 0.03593626414306765,
+            "exploitability": 0.017968132071533825
+          },
+          "policy": {
+            "file": "axis-fixture-q2-mNone-axis-490063.json",
+            "sha256": "d280f2fcb137bc0c90057ae6de4df65ffcb46aec896a75302929e7782957a976"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 1,
+      "seed": 490061,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 690,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0025239000096917,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5520,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5520,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.061806782589085396,
+            "br0": 0.10615406771449165,
+            "br1": -0.028782888196472022,
+            "gain0": 0.044347285125406255,
+            "gain1": 0.03302389439261337,
+            "nashconv": 0.07737117951801963,
+            "exploitability": 0.03868558975900981
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3222,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.035701200016774,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 25776,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 25776,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06077011496378676,
+            "br0": 0.0921145349576522,
+            "br1": -0.039214514853516506,
+            "gain0": 0.03134441999386545,
+            "gain1": 0.021555600110270252,
+            "nashconv": 0.0529000201041357,
+            "exploitability": 0.02645001005206785
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m1-reference-490061.json",
+            "sha256": "74994d73da71e1fdee3191e62953351e8d01be441d148ef32fb8f7a9a47d4698"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 1,
+      "seed": 490061,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 644,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0002349000424147,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5152,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5152,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06217117625973655,
+            "br0": 0.10760415564586166,
+            "br1": -0.02730497445427171,
+            "gain0": 0.04543297938612511,
+            "gain1": 0.03486620180546485,
+            "nashconv": 0.08029918119158995,
+            "exploitability": 0.040149590595794975
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3585,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.046534600085579,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 28680,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 28680,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.059962165614640746,
+            "br0": 0.09889541535128077,
+            "br1": -0.038483771922354415,
+            "gain0": 0.03893324973664002,
+            "gain1": 0.02147839369228633,
+            "nashconv": 0.060411643428926354,
+            "exploitability": 0.030205821714463177
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m1-axis-490061.json",
+            "sha256": "1547b141368357b6f2680f31f69f8ae30f8e45fbbaa0715e37d2615e0ad6ce57"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 1,
+      "seed": 490062,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 690,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0017987000755966,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5520,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5520,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06312003717691385,
+            "br0": 0.10495608860798447,
+            "br1": -0.02697644695584612,
+            "gain0": 0.04183605143107062,
+            "gain1": 0.03614359022106773,
+            "nashconv": 0.07797964165213836,
+            "exploitability": 0.03898982082606918
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3267,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.012828900129534,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 26136,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 26136,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06261636395161183,
+            "br0": 0.0960256446092755,
+            "br1": -0.040396193587077835,
+            "gain0": 0.03340928065766367,
+            "gain1": 0.02222017036453399,
+            "nashconv": 0.055629451022197664,
+            "exploitability": 0.027814725511098832
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m1-axis-490062.json",
+            "sha256": "837db5cede1158cb239c895d6d4633f2f5b04bfd21ec357ee1552c68cac4cd85"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 1,
+      "seed": 490062,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 614,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0017850999720395,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 4912,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 4912,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0645898566915844,
+            "br0": 0.10790923506041164,
+            "br1": -0.023407100552863925,
+            "gain0": 0.04331937836882724,
+            "gain1": 0.04118275613872048,
+            "nashconv": 0.08450213450754772,
+            "exploitability": 0.04225106725377386
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3076,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.090658799977973,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 24608,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 24608,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06258795246266112,
+            "br0": 0.09628099633623383,
+            "br1": -0.03957141431005496,
+            "gain0": 0.033693043873572706,
+            "gain1": 0.02301653815260616,
+            "nashconv": 0.056709582026178866,
+            "exploitability": 0.028354791013089433
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m1-reference-490062.json",
+            "sha256": "981315751f82877333acf1ff53e0417281b0bb8b56ac471ae62480ac4d4427df"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 1,
+      "seed": 490063,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 605,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9992255000397563,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 4840,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 4840,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06062087643729017,
+            "br0": 0.11534468537599261,
+            "br1": -0.020133297958849238,
+            "gain0": 0.05472380893870244,
+            "gain1": 0.040487578478440936,
+            "nashconv": 0.09521138741714338,
+            "exploitability": 0.04760569370857169
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3093,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.05176850000862,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 24744,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 24744,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.05713552709409068,
+            "br0": 0.09321459861957196,
+            "br1": -0.0275656667305692,
+            "gain0": 0.03607907152548128,
+            "gain1": 0.029569860363521477,
+            "nashconv": 0.06564893188900275,
+            "exploitability": 0.03282446594450138
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m1-reference-490063.json",
+            "sha256": "8879360219d87d96d7cecc3fde949b4ab605e52966933a36ce150d7864ccb390"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 1,
+      "seed": 490063,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 639,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.996177599998191,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5112,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5112,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06093230516480053,
+            "br0": 0.11495168812106096,
+            "br1": -0.021119228654165295,
+            "gain0": 0.05401938295626043,
+            "gain1": 0.03981307651063524,
+            "nashconv": 0.09383245946689567,
+            "exploitability": 0.046916229733447834
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 3213,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.01326599996537,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 25704,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 25704,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 3
+            }
+          ],
+          "maximum_summed_reach": 7.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.0572372800618425,
+            "br0": 0.09353310776484976,
+            "br1": -0.03181197754160525,
+            "gain0": 0.03629582770300726,
+            "gain1": 0.025425302520237246,
+            "nashconv": 0.061721130223244505,
+            "exploitability": 0.030860565111622253
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m1-axis-490063.json",
+            "sha256": "17fc10afb638f59873b9820a6d2699c0ae6a93a03c4d4713d58b533c55f3c9a2"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 2,
+      "seed": 490061,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 240,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0089633000316098,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1920,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0016718106995884776,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1920,
+              "unseen_types": 6,
+              "unseen_prior_mass": 0.003472222222222222,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.8269654370430684,
+          "full_history_evaluation": {
+            "ev_p0": 0.0599468167150792,
+            "br0": 0.11907279164998505,
+            "br1": -0.007147233543328655,
+            "gain0": 0.05912597493490585,
+            "gain1": 0.05279958317175054,
+            "nashconv": 0.1119255581066564,
+            "exploitability": 0.0559627790533282
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1211,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.030931500019506,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 9688,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 9688,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            }
+          ],
+          "maximum_summed_reach": 4.025216523543103,
+          "full_history_evaluation": {
+            "ev_p0": 0.06602160704097496,
+            "br0": 0.08436757327989497,
+            "br1": -0.04413969553822227,
+            "gain0": 0.018345966238920014,
+            "gain1": 0.021881911502752684,
+            "nashconv": 0.0402278777416727,
+            "exploitability": 0.02011393887083635
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m2-reference-490061.json",
+            "sha256": "61f33cc01ab671f3a63a35abac56f792b12ebdde07ca5239339da79d326cc02a"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 2,
+      "seed": 490061,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 266,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0135007000062615,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2128,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0016718106995884776,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2128,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0021862139917695473,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 3.826965437043068,
+          "full_history_evaluation": {
+            "ev_p0": 0.06160603425385521,
+            "br0": 0.11484611075331126,
+            "br1": -0.009845412206099835,
+            "gain0": 0.05324007649945605,
+            "gain1": 0.051760622047755375,
+            "nashconv": 0.10500069854721143,
+            "exploitability": 0.052500349273605716
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1313,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.048269500024617,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10504,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10504,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 2
+            }
+          ],
+          "maximum_summed_reach": 4.0252165235431026,
+          "full_history_evaluation": {
+            "ev_p0": 0.06604847508879806,
+            "br0": 0.08287801714905761,
+            "br1": -0.04559320542557623,
+            "gain0": 0.01682954206025955,
+            "gain1": 0.02045526966322183,
+            "nashconv": 0.03728481172348138,
+            "exploitability": 0.01864240586174069
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m2-axis-490061.json",
+            "sha256": "2232388c6f6a462be9dd09dc9be5b5b24a0569d63c8564ef3f865ac828dc08f8"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 2,
+      "seed": 490062,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 255,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0294462000019848,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2040,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0009002057613168725,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2040,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 4.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06563110624631946,
+            "br0": 0.12290086550530052,
+            "br1": -0.013045887259748971,
+            "gain0": 0.05726975925898106,
+            "gain1": 0.05258521898657049,
+            "nashconv": 0.10985497824555154,
+            "exploitability": 0.05492748912277577
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1431,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.116819399991073,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 11448,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 11448,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 4.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06363986818251131,
+            "br0": 0.07971769881552189,
+            "br1": -0.04934607408825792,
+            "gain0": 0.016077830633010576,
+            "gain1": 0.014293794094253395,
+            "nashconv": 0.03037162472726397,
+            "exploitability": 0.015185812363631986
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m2-axis-490062.json",
+            "sha256": "bc644b7eb4dcb518ee9d604c98a354cf4d8bac538c58e40cedcfb32513d28be3"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 2,
+      "seed": 490062,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 278,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9907254000427201,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 2224,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0009002057613168725,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 2224,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 4.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06574013622367267,
+            "br0": 0.12143503209968566,
+            "br1": -0.015388964999778619,
+            "gain0": 0.05569489587601299,
+            "gain1": 0.05035117122389405,
+            "nashconv": 0.10604606709990705,
+            "exploitability": 0.053023033549953524
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1290,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.052021500072442,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10320,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10320,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 4.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06361514241251703,
+            "br0": 0.08148269757462764,
+            "br1": -0.049006810596770034,
+            "gain0": 0.01786755516211061,
+            "gain1": 0.014608331815747,
+            "nashconv": 0.03247588697785761,
+            "exploitability": 0.016237943488928805
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m2-reference-490062.json",
+            "sha256": "8149dc23f1e9ab958b4273bfe772f7a6fe65666d7cef6fe0785c756f7169af27"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 2,
+      "seed": 490063,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 232,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9877271999139339,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1856,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0036008230452674894,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1856,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.0016718106995884776,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 4.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.07192256149130483,
+            "br0": 0.12347394135371256,
+            "br1": -0.013288345361672341,
+            "gain0": 0.05155137986240774,
+            "gain1": 0.05863421612963249,
+            "nashconv": 0.11018559599204023,
+            "exploitability": 0.05509279799602011
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1250,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.04538769996725,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10000,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10000,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 4.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06522820400215171,
+            "br0": 0.08164758733089993,
+            "br1": -0.048717404083197136,
+            "gain0": 0.01641938332874822,
+            "gain1": 0.016510799918954572,
+            "nashconv": 0.03293018324770279,
+            "exploitability": 0.016465091623851395
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m2-reference-490063.json",
+            "sha256": "682af261a7ee0cdce04d82343019d746fc21e7efe1e63ad5a422f4fa1b9b4da3"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": 2,
+      "seed": 490063,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 248,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9968327999813482,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1984,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.0023148148148148143,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1984,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.00102880658436214,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 4.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.07201128846872724,
+            "br0": 0.12133651710133439,
+            "br1": -0.015489685320142613,
+            "gain0": 0.049325228632607146,
+            "gain1": 0.056521603148584634,
+            "nashconv": 0.10584683178119178,
+            "exploitability": 0.05292341589059589
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 1271,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.069431399926543,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 10168,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 10168,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 4.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06523743380300207,
+            "br0": 0.0816866349122614,
+            "br1": -0.048827209992433,
+            "gain0": 0.016449201109259334,
+            "gain1": 0.016410223810569065,
+            "nashconv": 0.0328594249198284,
+            "exploitability": 0.0164297124599142
+          },
+          "policy": {
+            "file": "axis-fixture-q3-m2-axis-490063.json",
+            "sha256": "545bbfd8a23e8fec2ba981c7315ed0dc8b78f41bcbf4b9c7a4542e547bd95569"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": null,
+      "seed": 490061,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 122,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9960519999731332,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 976,
+              "unseen_types": 9,
+              "unseen_prior_mass": 0.008744855967078188,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 976,
+              "unseen_types": 8,
+              "unseen_prior_mass": 0.006172839506172839,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.052036292977111945,
+            "br0": 0.15229240056168308,
+            "br1": 0.03327434078275127,
+            "gain0": 0.10025610758457114,
+            "gain1": 0.08531063375986322,
+            "nashconv": 0.18556674134443435,
+            "exploitability": 0.09278337067221717
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 618,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.033731899922714,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 4944,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 4944,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06486317506036368,
+            "br0": 0.09622515466654054,
+            "br1": -0.03408447658296153,
+            "gain0": 0.03136197960617686,
+            "gain1": 0.030778698477402153,
+            "nashconv": 0.06214067808357901,
+            "exploitability": 0.031070339041789505
+          },
+          "policy": {
+            "file": "axis-fixture-q3-mNone-reference-490061.json",
+            "sha256": "5a1763c7c82d08aa7fffb1908f52bc79d5bd774a13b08d439380e4fc702e3575"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": null,
+      "seed": 490061,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 142,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9919760000193492,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1136,
+              "unseen_types": 8,
+              "unseen_prior_mass": 0.008101851851851851,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1136,
+              "unseen_types": 7,
+              "unseen_prior_mass": 0.006044238683127572,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.05436392508630227,
+            "br0": 0.1437785952862006,
+            "br1": 0.025530175633012617,
+            "gain0": 0.08941467019989832,
+            "gain1": 0.07989410071931488,
+            "nashconv": 0.1693087709192132,
+            "exploitability": 0.0846543854596066
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 673,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.054913100088015,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5384,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5384,
+              "unseen_types": 0,
+              "unseen_prior_mass": 0.0,
+              "minimum_samples": 1
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06506658224407143,
+            "br0": 0.09476955425190345,
+            "br1": -0.036990944937489535,
+            "gain0": 0.02970297200783202,
+            "gain1": 0.028075637306581892,
+            "nashconv": 0.05777860931441391,
+            "exploitability": 0.028889304657206957
+          },
+          "policy": {
+            "file": "axis-fixture-q3-mNone-axis-490061.json",
+            "sha256": "7e406d6e2afa8db7d0686bad5ac02dbadb2969fc406c3819b3bf1d9dfa41c4a6"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": null,
+      "seed": 490062,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 137,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.046138699981384,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1096,
+              "unseen_types": 7,
+              "unseen_prior_mass": 0.004758230452674898,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1096,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.003472222222222222,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06811083983537912,
+            "br0": 0.14442567011605414,
+            "br1": 0.016635196309402567,
+            "gain0": 0.07631483028067503,
+            "gain1": 0.08474603614478168,
+            "nashconv": 0.16106086642545672,
+            "exploitability": 0.08053043321272836
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 660,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.072526999982074,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5280,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5280,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06417397579855516,
+            "br0": 0.09081558578036361,
+            "br1": -0.03797324059576722,
+            "gain0": 0.02664160998180845,
+            "gain1": 0.026200735202787942,
+            "nashconv": 0.05284234518459639,
+            "exploitability": 0.026421172592298196
+          },
+          "policy": {
+            "file": "axis-fixture-q3-mNone-axis-490062.json",
+            "sha256": "e0bb36da121ff09a5d2f7c6982e7321b28ae5cc4dd5e8a11cc8d6f9ff1dc8fb2"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": null,
+      "seed": 490062,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 135,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 1.0428523999871686,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1080,
+              "unseen_types": 7,
+              "unseen_prior_mass": 0.004758230452674898,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1080,
+              "unseen_types": 5,
+              "unseen_prior_mass": 0.003472222222222222,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06818242002808354,
+            "br0": 0.14467542981326154,
+            "br1": 0.01713557933201094,
+            "gain0": 0.07649300978517799,
+            "gain1": 0.08531799936009449,
+            "nashconv": 0.16181100914527247,
+            "exploitability": 0.08090550457263623
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 663,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.137092699995264,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5304,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5304,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06413408607092738,
+            "br0": 0.09065690651146512,
+            "br1": -0.038015647275816716,
+            "gain0": 0.026522820440537734,
+            "gain1": 0.026118438795110666,
+            "nashconv": 0.0526412592356484,
+            "exploitability": 0.0263206296178242
+          },
+          "policy": {
+            "file": "axis-fixture-q3-mNone-reference-490062.json",
+            "sha256": "793f403586694bc4b74ebbd02714639456562dcc8864a70f9d6f3b9abea3e7df"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": null,
+      "seed": 490063,
+      "method": "reference",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 127,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9977122000418603,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1016,
+              "unseen_types": 13,
+              "unseen_prior_mass": 0.014531893004115226,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1016,
+              "unseen_types": 6,
+              "unseen_prior_mass": 0.0029578189300411522,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.07584593149980216,
+            "br0": 0.15205193104694897,
+            "br1": 0.014619600191804628,
+            "gain0": 0.07620599954714681,
+            "gain1": 0.09046553169160679,
+            "nashconv": 0.1666715312387536,
+            "exploitability": 0.0833357656193768
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 647,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.016424700035714,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5176,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5176,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06526430543277903,
+            "br0": 0.0918490149532252,
+            "br1": -0.03227250663168119,
+            "gain0": 0.02658470952044617,
+            "gain1": 0.03299179880109784,
+            "nashconv": 0.05957650832154401,
+            "exploitability": 0.029788254160772003
+          },
+          "policy": {
+            "file": "axis-fixture-q3-mNone-reference-490063.json",
+            "sha256": "3cbb82cf3b152ccd03f930e90628039145ca8cf3b2693868a804d2bd8dc6f9db"
+          }
+        }
+      ]
+    },
+    {
+      "quantity": 3,
+      "recall": null,
+      "seed": 490063,
+      "method": "axis",
+      "checkpoints": [
+        {
+          "cpu_budget": 1,
+          "iterations": 130,
+          "training_cpu_seconds": 1.0,
+          "training_wall_seconds": 0.9966190999839455,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1040,
+              "unseen_types": 13,
+              "unseen_prior_mass": 0.014531893004115226,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1040,
+              "unseen_types": 6,
+              "unseen_prior_mass": 0.0029578189300411522,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.07598543678485702,
+            "br0": 0.15106039011160036,
+            "br1": 0.013023155175354417,
+            "gain0": 0.07507495332674334,
+            "gain1": 0.08900859196021144,
+            "nashconv": 0.16408354528695476,
+            "exploitability": 0.08204177264347738
+          }
+        },
+        {
+          "cpu_budget": 5,
+          "iterations": 655,
+          "training_cpu_seconds": 5.0,
+          "training_wall_seconds": 5.028505399939604,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5240,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5240,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1.0,
+          "full_history_evaluation": {
+            "ev_p0": 0.06519337162873436,
+            "br0": 0.09178986890283992,
+            "br1": -0.03263105681638915,
+            "gain0": 0.02659649727410557,
+            "gain1": 0.03256231481234521,
+            "nashconv": 0.059158812086450775,
+            "exploitability": 0.029579406043225388
+          },
+          "policy": {
+            "file": "axis-fixture-q3-mNone-axis-490063.json",
+            "sha256": "46a6fde9f40df2b677ade400d356c6ac43cf7154b553a93fb94a2daf050278f0"
+          }
+        }
+      ]
+    }
+  ],
+  "full_runs": [
+    {
+      "method": "reference",
+      "seed": 490061,
+      "array_bytes": 91300608,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 146,
+          "training_cpu_seconds": 15.09375,
+          "training_wall_seconds": 15.268096600077115,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1168,
+              "unseen_types": 26,
+              "unseen_prior_mass": 0.02700617283950617,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1168,
+              "unseen_types": 35,
+              "unseen_prior_mass": 0.03279320987654321,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 209521537.58834213,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8921799692726459,
+                "upper": 0.9703537015594829,
+                "width": 0.078173732286837,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640061,
+                  "games": 2000,
+                  "ev_p0": 0.89,
+                  "hoeffding95_individual": [
+                    0.8292638538091694,
+                    0.9507361461908306
+                  ],
+                  "mean_bids": 1.9395,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8805550724207862,
+                "upper": 0.9363838622019164,
+                "width": 0.05582878978113015,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640062,
+                  "games": 2000,
+                  "ev_p0": -0.88,
+                  "hoeffding95_individual": [
+                    -0.9407361461908306,
+                    -0.8192638538091694
+                  ],
+                  "mean_bids": 2.349,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.7727350416934322,
+            "nashconv_upper": 1.9067375637613992,
+            "wall_seconds": 14.035385999944992,
+            "cpu_seconds": 13.90625,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          }
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 631,
+          "training_cpu_seconds": 60.03125,
+          "training_wall_seconds": 60.63987580011599,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 5048,
+              "unseen_types": 7,
+              "unseen_prior_mass": 0.002443415637860082,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 5048,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.00102880658436214,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1248223181.1888213,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8333528616937899,
+                "upper": 0.9622513752076769,
+                "width": 0.12889851351388704,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090061,
+                  "games": 2000,
+                  "ev_p0": 0.828,
+                  "hoeffding95_individual": [
+                    0.7672638538091694,
+                    0.8887361461908305
+                  ],
+                  "mean_bids": 1.9105,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.7430168458738466,
+                "upper": 0.8946518343472317,
+                "width": 0.15163498847338508,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090062,
+                  "games": 2000,
+                  "ev_p0": -0.745,
+                  "hoeffding95_individual": [
+                    -0.8057361461908306,
+                    -0.6842638538091694
+                  ],
+                  "mean_bids": 2.6805,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.5763697075676366,
+            "nashconv_upper": 1.8569032095549085,
+            "wall_seconds": 14.248722600052133,
+            "cpu_seconds": 14.078125,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "policy": {
+            "file": "axis-full-reference-490061.npz",
+            "bytes": 4193759,
+            "sha256": "7d339daa3b9b615eb61bf3ca7157cde6791f5ffa6987829773d729c8ec8f21fd",
+            "probabilities_sha256": "87f841eae69f682e42d1aa1bab1f9017a029a828fba2e8138007bf5655c88c59"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490091,
+              "games": 2000,
+              "ev_p0": -0.058,
+              "hoeffding95_individual": [
+                -0.11873614619083052,
+                0.002736146190830513
+              ],
+              "mean_bids": 2.233,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490092,
+              "games": 2000,
+              "ev_p0": 0.039,
+              "hoeffding95_individual": [
+                -0.021736146190830516,
+                0.09973614619083052
+              ],
+              "mean_bids": 2.88,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490131,
+              "games": 2000,
+              "ev_p0": 0.17,
+              "hoeffding95_individual": [
+                0.1092638538091695,
+                0.23073614619083052
+              ],
+              "mean_bids": 1.57,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490132,
+              "games": 2000,
+              "ev_p0": -0.105,
+              "hoeffding95_individual": [
+                -0.16573614619083052,
+                -0.04426385380916948
+              ],
+              "mean_bids": 2.223,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": "axis",
+      "seed": 490061,
+      "array_bytes": 91300608,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 233,
+          "training_cpu_seconds": 15.015625,
+          "training_wall_seconds": 15.096805599983782,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1864,
+              "unseen_types": 14,
+              "unseen_prior_mass": 0.007587448559670782,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1864,
+              "unseen_types": 19,
+              "unseen_prior_mass": 0.014789094650205762,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 554431445.7015727,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8772704460623355,
+                "upper": 0.965051507626303,
+                "width": 0.08778106156396748,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640061,
+                  "games": 2000,
+                  "ev_p0": 0.884,
+                  "hoeffding95_individual": [
+                    0.8232638538091694,
+                    0.9447361461908306
+                  ],
+                  "mean_bids": 1.9395,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8428969244857797,
+                "upper": 0.9204324210449899,
+                "width": 0.07753549655921022,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640062,
+                  "games": 2000,
+                  "ev_p0": -0.842,
+                  "hoeffding95_individual": [
+                    -0.9027361461908305,
+                    -0.7812638538091694
+                  ],
+                  "mean_bids": 2.494,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.7201673705481153,
+            "nashconv_upper": 1.885483928671293,
+            "wall_seconds": 14.058686900069006,
+            "cpu_seconds": 13.9375,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          }
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 899,
+          "training_cpu_seconds": 60.0,
+          "training_wall_seconds": 60.528610799927264,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 7192,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 7192,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.0007716049382716049,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 1248223181.188856,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8144191379704989,
+                "upper": 0.9636342575261057,
+                "width": 0.14921511955560673,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090061,
+                  "games": 2000,
+                  "ev_p0": 0.818,
+                  "hoeffding95_individual": [
+                    0.7572638538091694,
+                    0.8787361461908305
+                  ],
+                  "mean_bids": 1.9055,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.7117743173332218,
+                "upper": 0.8947292204801507,
+                "width": 0.18295490314692886,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090062,
+                  "games": 2000,
+                  "ev_p0": -0.708,
+                  "hoeffding95_individual": [
+                    -0.7687361461908305,
+                    -0.6472638538091694
+                  ],
+                  "mean_bids": 2.725,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.5261934553037206,
+            "nashconv_upper": 1.8583634780062563,
+            "wall_seconds": 13.926416900008917,
+            "cpu_seconds": 13.84375,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "policy": {
+            "file": "axis-full-axis-490061.npz",
+            "bytes": 4302631,
+            "sha256": "2c22f609d827484c401a6df78396e60b82bd83115534e89aa14ac6e47d8c9b43",
+            "probabilities_sha256": "637e0b6a246cd5245258e53c49856950cd7e795321df7b28c9b34d08970f3a72"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490091,
+              "games": 2000,
+              "ev_p0": 0.005,
+              "hoeffding95_individual": [
+                -0.05573614619083052,
+                0.06573614619083051
+              ],
+              "mean_bids": 2.341,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490092,
+              "games": 2000,
+              "ev_p0": -0.024,
+              "hoeffding95_individual": [
+                -0.08473614619083052,
+                0.036736146190830515
+              ],
+              "mean_bids": 2.951,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490131,
+              "games": 2000,
+              "ev_p0": 0.235,
+              "hoeffding95_individual": [
+                0.17426385380916948,
+                0.2957361461908305
+              ],
+              "mean_bids": 1.594,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490132,
+              "games": 2000,
+              "ev_p0": -0.147,
+              "hoeffding95_individual": [
+                -0.2077361461908305,
+                -0.08626385380916948
+              ],
+              "mean_bids": 2.236,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": "axis",
+      "seed": 490062,
+      "array_bytes": 91300608,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 224,
+          "training_cpu_seconds": 15.015625,
+          "training_wall_seconds": 15.185332300025038,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1792,
+              "unseen_types": 22,
+              "unseen_prior_mass": 0.01684670781893004,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1792,
+              "unseen_types": 20,
+              "unseen_prior_mass": 0.012345679012345677,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 498008887.66407424,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8750920289516388,
+                "upper": 0.9659370436801432,
+                "width": 0.09084501472850437,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640062,
+                  "games": 2000,
+                  "ev_p0": 0.879,
+                  "hoeffding95_individual": [
+                    0.8182638538091694,
+                    0.9397361461908306
+                  ],
+                  "mean_bids": 1.935,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8576583081341926,
+                "upper": 0.9277268540485982,
+                "width": 0.07006854591440559,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640063,
+                  "games": 2000,
+                  "ev_p0": -0.84,
+                  "hoeffding95_individual": [
+                    -0.9007361461908305,
+                    -0.7792638538091694
+                  ],
+                  "mean_bids": 2.5205,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.7327503370858315,
+            "nashconv_upper": 1.8936638977287414,
+            "wall_seconds": 13.165979799930938,
+            "cpu_seconds": 13.0,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          }
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 943,
+          "training_cpu_seconds": 60.046875,
+          "training_wall_seconds": 60.74925950006582,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 7544,
+              "unseen_types": 1,
+              "unseen_prior_mass": 0.0001286008230452675,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 7544,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 753484476.7138534,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8102202868931241,
+                "upper": 0.9643856316885008,
+                "width": 0.1541653447953767,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090062,
+                  "games": 2000,
+                  "ev_p0": 0.818,
+                  "hoeffding95_individual": [
+                    0.7572638538091694,
+                    0.8787361461908305
+                  ],
+                  "mean_bids": 1.8975,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.7271043673667474,
+                "upper": 0.8990930803011293,
+                "width": 0.1719887129343819,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090063,
+                  "games": 2000,
+                  "ev_p0": -0.735,
+                  "hoeffding95_individual": [
+                    -0.7957361461908306,
+                    -0.6742638538091694
+                  ],
+                  "mean_bids": 2.7535,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.5373246542598715,
+            "nashconv_upper": 1.86347871198963,
+            "wall_seconds": 13.696331199957058,
+            "cpu_seconds": 13.5625,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "policy": {
+            "file": "axis-full-axis-490062.npz",
+            "bytes": 4517836,
+            "sha256": "f89877859367689917b64dc543cce21df76eac6e27000461f0cf925186292d58",
+            "probabilities_sha256": "40f1289e55a0c10776b64bef57a9d1f1d4bce5b919edf57a0178afd74d33c88b"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490092,
+              "games": 2000,
+              "ev_p0": 0.02,
+              "hoeffding95_individual": [
+                -0.04073614619083052,
+                0.08073614619083051
+              ],
+              "mean_bids": 2.333,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490093,
+              "games": 2000,
+              "ev_p0": -0.033,
+              "hoeffding95_individual": [
+                -0.09373614619083051,
+                0.027736146190830514
+              ],
+              "mean_bids": 2.8695,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490132,
+              "games": 2000,
+              "ev_p0": 0.148,
+              "hoeffding95_individual": [
+                0.08726385380916948,
+                0.2087361461908305
+              ],
+              "mean_bids": 1.6095,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490133,
+              "games": 2000,
+              "ev_p0": -0.194,
+              "hoeffding95_individual": [
+                -0.2547361461908305,
+                -0.1332638538091695
+              ],
+              "mean_bids": 2.222,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": "reference",
+      "seed": 490062,
+      "array_bytes": 91300608,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 157,
+          "training_cpu_seconds": 15.03125,
+          "training_wall_seconds": 15.09891019994393,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1256,
+              "unseen_types": 28,
+              "unseen_prior_mass": 0.025205761316872428,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1256,
+              "unseen_types": 34,
+              "unseen_prior_mass": 0.03613683127572016,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 79335139.05970088,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8915778177616179,
+                "upper": 0.97313305295734,
+                "width": 0.08155523519572205,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640062,
+                  "games": 2000,
+                  "ev_p0": 0.892,
+                  "hoeffding95_individual": [
+                    0.8312638538091695,
+                    0.9527361461908306
+                  ],
+                  "mean_bids": 1.9425,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8826694465920154,
+                "upper": 0.9375401817170719,
+                "width": 0.05487073512505647,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640063,
+                  "games": 2000,
+                  "ev_p0": -0.879,
+                  "hoeffding95_individual": [
+                    -0.9397361461908306,
+                    -0.8182638538091694
+                  ],
+                  "mean_bids": 2.4365,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.7742472643536333,
+            "nashconv_upper": 1.910673234674412,
+            "wall_seconds": 13.949213300016709,
+            "cpu_seconds": 13.84375,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          }
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 614,
+          "training_cpu_seconds": 60.015625,
+          "training_wall_seconds": 60.312532499898225,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 4912,
+              "unseen_types": 4,
+              "unseen_prior_mass": 0.00154320987654321,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 4912,
+              "unseen_types": 6,
+              "unseen_prior_mass": 0.0012860082304526751,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 753484476.7138633,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8292434069569503,
+                "upper": 0.9612569679183637,
+                "width": 0.13201356096141337,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090062,
+                  "games": 2000,
+                  "ev_p0": 0.824,
+                  "hoeffding95_individual": [
+                    0.7632638538091694,
+                    0.8847361461908305
+                  ],
+                  "mean_bids": 1.9075,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.768453494642397,
+                "upper": 0.9040023170251431,
+                "width": 0.13554882238274613,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090063,
+                  "games": 2000,
+                  "ev_p0": -0.766,
+                  "hoeffding95_individual": [
+                    -0.8267361461908306,
+                    -0.7052638538091694
+                  ],
+                  "mean_bids": 2.7055,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.5976969015993472,
+            "nashconv_upper": 1.8652592849435068,
+            "wall_seconds": 14.122784600011073,
+            "cpu_seconds": 14.046875,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "policy": {
+            "file": "axis-full-reference-490062.npz",
+            "bytes": 4392076,
+            "sha256": "7285b0448f1a41b3abff2686879e9c47d663138f933aa0adb07c1669800f368c",
+            "probabilities_sha256": "1d98da268cc70348513163940f3aff45d1a3aa3758585de66435a02854c991e2"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490092,
+              "games": 2000,
+              "ev_p0": -0.037,
+              "hoeffding95_individual": [
+                -0.09773614619083051,
+                0.023736146190830518
+              ],
+              "mean_bids": 2.2995,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490093,
+              "games": 2000,
+              "ev_p0": 0.042,
+              "hoeffding95_individual": [
+                -0.018736146190830513,
+                0.10273614619083052
+              ],
+              "mean_bids": 2.8345,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490132,
+              "games": 2000,
+              "ev_p0": 0.127,
+              "hoeffding95_individual": [
+                0.06626385380916949,
+                0.1877361461908305
+              ],
+              "mean_bids": 1.549,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490133,
+              "games": 2000,
+              "ev_p0": -0.122,
+              "hoeffding95_individual": [
+                -0.1827361461908305,
+                -0.06126385380916948
+              ],
+              "mean_bids": 2.197,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": "reference",
+      "seed": 490063,
+      "array_bytes": 91300608,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 152,
+          "training_cpu_seconds": 15.0625,
+          "training_wall_seconds": 15.111514099990018,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1216,
+              "unseen_types": 29,
+              "unseen_prior_mass": 0.024434156378600823,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1216,
+              "unseen_types": 30,
+              "unseen_prior_mass": 0.025077160493827164,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 431499044.4695154,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8865402128532609,
+                "upper": 0.9723630108522127,
+                "width": 0.08582279799895176,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640063,
+                  "games": 2000,
+                  "ev_p0": 0.89,
+                  "hoeffding95_individual": [
+                    0.8292638538091694,
+                    0.9507361461908306
+                  ],
+                  "mean_bids": 1.9395,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8841679869639724,
+                "upper": 0.9377399946332006,
+                "width": 0.053572007669228205,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640064,
+                  "games": 2000,
+                  "ev_p0": -0.881,
+                  "hoeffding95_individual": [
+                    -0.9417361461908306,
+                    -0.8202638538091694
+                  ],
+                  "mean_bids": 2.3505,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.7707081998172334,
+            "nashconv_upper": 1.9101030054854133,
+            "wall_seconds": 13.758234899956733,
+            "cpu_seconds": 13.6875,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          }
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 595,
+          "training_cpu_seconds": 60.078125,
+          "training_wall_seconds": 60.48068160004914,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 4760,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0003858024691358025,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 4760,
+              "unseen_types": 6,
+              "unseen_prior_mass": 0.0018004115226337451,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 768706966.6355774,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8285234251399501,
+                "upper": 0.9628020949514089,
+                "width": 0.13427866981145875,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090063,
+                  "games": 2000,
+                  "ev_p0": 0.821,
+                  "hoeffding95_individual": [
+                    0.7602638538091694,
+                    0.8817361461908305
+                  ],
+                  "mean_bids": 1.906,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.7699177953395057,
+                "upper": 0.897023398450236,
+                "width": 0.12710560311073038,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090064,
+                  "games": 2000,
+                  "ev_p0": -0.764,
+                  "hoeffding95_individual": [
+                    -0.8247361461908306,
+                    -0.7032638538091694
+                  ],
+                  "mean_bids": 2.68,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.5984412204794558,
+            "nashconv_upper": 1.859825493401645,
+            "wall_seconds": 13.366048899944872,
+            "cpu_seconds": 13.25,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "policy": {
+            "file": "axis-full-reference-490063.npz",
+            "bytes": 4113996,
+            "sha256": "15b31d34244eb58afd7d2af741c142f3c68530065c5d9768956687cdab2b3793",
+            "probabilities_sha256": "a87d267cb0e60c7e8a2674e8caec52bfafd53ffb18c5a1b3c914e8db7583a715"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490093,
+              "games": 2000,
+              "ev_p0": 0.001,
+              "hoeffding95_individual": [
+                -0.059736146190830515,
+                0.06173614619083052
+              ],
+              "mean_bids": 2.251,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490094,
+              "games": 2000,
+              "ev_p0": 0.085,
+              "hoeffding95_individual": [
+                0.02426385380916949,
+                0.14573614619083053
+              ],
+              "mean_bids": 2.82,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490133,
+              "games": 2000,
+              "ev_p0": 0.057,
+              "hoeffding95_individual": [
+                -0.003736146190830514,
+                0.11773614619083052
+              ],
+              "mean_bids": 1.5345,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490134,
+              "games": 2000,
+              "ev_p0": -0.096,
+              "hoeffding95_individual": [
+                -0.1567361461908305,
+                -0.035263853809169486
+              ],
+              "mean_bids": 2.216,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": "axis",
+      "seed": 490063,
+      "array_bytes": 91300608,
+      "checkpoints": [
+        {
+          "cpu_budget": 15,
+          "iterations": 232,
+          "training_cpu_seconds": 15.015625,
+          "training_wall_seconds": 15.143500900012441,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 1856,
+              "unseen_types": 16,
+              "unseen_prior_mass": 0.010802469135802469,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 1856,
+              "unseen_types": 17,
+              "unseen_prior_mass": 0.010802469135802469,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 431499044.46953714,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8695481517002553,
+                "upper": 0.9659943691232575,
+                "width": 0.09644621742300219,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640063,
+                  "games": 2000,
+                  "ev_p0": 0.864,
+                  "hoeffding95_individual": [
+                    0.8032638538091694,
+                    0.9247361461908306
+                  ],
+                  "mean_bids": 1.93,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.8531063040875848,
+                "upper": 0.9233566472613083,
+                "width": 0.07025034317372347,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 640064,
+                  "games": 2000,
+                  "ev_p0": -0.847,
+                  "hoeffding95_individual": [
+                    -0.9077361461908305,
+                    -0.7862638538091694
+                  ],
+                  "mean_bids": 2.4795,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.7226544557878403,
+            "nashconv_upper": 1.8893510163845657,
+            "wall_seconds": 13.862526600016281,
+            "cpu_seconds": 13.796875,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          }
+        },
+        {
+          "cpu_budget": 60,
+          "iterations": 1019,
+          "training_cpu_seconds": 60.015625,
+          "training_wall_seconds": 60.54051740001887,
+          "coverage": [
+            {
+              "seat": 0,
+              "own_private_samples": 8152,
+              "unseen_types": 2,
+              "unseen_prior_mass": 0.000257201646090535,
+              "minimum_samples": 0
+            },
+            {
+              "seat": 1,
+              "own_private_samples": 8152,
+              "unseen_types": 3,
+              "unseen_prior_mass": 0.0009002057613168725,
+              "minimum_samples": 0
+            }
+          ],
+          "maximum_summed_reach": 768706966.6355834,
+          "quality": {
+            "seats": [
+              {
+                "seat": 0,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.7954395285700705,
+                "upper": 0.964663019711658,
+                "width": 0.16922349114158752,
+                "stats": {
+                  "expanded_own_nodes": 1,
+                  "depth_frontiers": 10189,
+                  "budget_frontiers": 0,
+                  "forced_challenges": 143,
+                  "opponent_nodes": 144,
+                  "maximum_history": 2,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090063,
+                  "games": 2000,
+                  "ev_p0": 0.792,
+                  "hoeffding95_individual": [
+                    0.7312638538091695,
+                    0.8527361461908306
+                  ],
+                  "mean_bids": 1.8895,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              },
+              {
+                "seat": 1,
+                "depth": 1,
+                "max_nodes": 32,
+                "lower": 0.7211629660758335,
+                "upper": 0.8931673281785772,
+                "width": 0.17200436210274372,
+                "stats": {
+                  "expanded_own_nodes": 32,
+                  "depth_frontiers": 253893,
+                  "budget_frontiers": 111,
+                  "forced_challenges": 4029,
+                  "opponent_nodes": 4061,
+                  "maximum_history": 3,
+                  "incumbent_nodes": 0,
+                  "incumbent_frontiers": 0
+                },
+                "formally_interval_certified": false,
+                "independent_scalar_replay": {
+                  "seed": 1090064,
+                  "games": 2000,
+                  "ev_p0": -0.707,
+                  "hoeffding95_individual": [
+                    -0.7677361461908305,
+                    -0.6462638538091694
+                  ],
+                  "mean_bids": 2.7165,
+                  "not_simultaneous_intervals": true
+                },
+                "replay_matches_lower_within_individual95": true
+              }
+            ],
+            "nashconv_lower": 1.516602494645904,
+            "nashconv_upper": 1.8578303478902352,
+            "wall_seconds": 4.9677307000383735,
+            "cpu_seconds": 4.9375,
+            "arithmetic": "float64 structural bounds, not formal interval certificates",
+            "responder": "full-history depth-one continuation search; every legal action, bounded own nodes"
+          },
+          "policy": {
+            "file": "axis-full-axis-490063.npz",
+            "bytes": 4312161,
+            "sha256": "454fe9da2ad0f55bf3e5c5282f4d6761ca8f1e3ddfe3bd00415b922e4b86ee6e",
+            "probabilities_sha256": "317815f522f162c95433414d7aa06e5a326ca2ab41897bb2437e36b3f084f015"
+          },
+          "heldout": [
+            {
+              "threshold": 0.3,
+              "candidate_seat": 0,
+              "seed": 3490093,
+              "games": 2000,
+              "ev_p0": 0.08,
+              "hoeffding95_individual": [
+                0.019263853809169486,
+                0.14073614619083052
+              ],
+              "mean_bids": 2.389,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.3,
+              "candidate_seat": 1,
+              "seed": 3490094,
+              "games": 2000,
+              "ev_p0": -0.033,
+              "hoeffding95_individual": [
+                -0.09373614619083051,
+                0.027736146190830514
+              ],
+              "mean_bids": 2.923,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 0,
+              "seed": 3490133,
+              "games": 2000,
+              "ev_p0": 0.181,
+              "hoeffding95_individual": [
+                0.12026385380916949,
+                0.2417361461908305
+              ],
+              "mean_bids": 1.574,
+              "not_simultaneous_intervals": true
+            },
+            {
+              "threshold": 0.7,
+              "candidate_seat": 1,
+              "seed": 3490134,
+              "games": 2000,
+              "ev_p0": -0.156,
+              "hoeffding95_individual": [
+                -0.2167361461908305,
+                -0.09526385380916949
+              ],
+              "mean_bids": 2.2435,
+              "not_simultaneous_intervals": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "certified_equilibrium": false,
+  "wall_seconds": 760.9965454000048,
+  "cpu_seconds": 754.125,
+  "peak_process_memory": {
+    "bytes": 329973760,
+    "kind": "Windows process peak working set"
+  },
+  "frozen_probe": {
+    "seed": 490061,
+    "sample_blocks": 32,
+    "randomized_regret_sha256": "57175e99f4298df29fbcab78848f4410843a7e845aa1bd80b870da4cc3d2cd2d",
+    "maximum_scaled_increment_error": 4.0487154427557723e-16,
+    "order": "reference / axis / axis / reference",
+    "measurements": [
+      {
+        "method": "reference",
+        "passes": 32,
+        "cpu_seconds": 1.265625,
+        "wall_seconds": 1.2557181000011042
+      },
+      {
+        "method": "axis",
+        "passes": 32,
+        "cpu_seconds": 0.75,
+        "wall_seconds": 0.7774672999512404
+      },
+      {
+        "method": "axis",
+        "passes": 32,
+        "cpu_seconds": 1.828125,
+        "wall_seconds": 1.8194644999457523
+      },
+      {
+        "method": "reference",
+        "passes": 32,
+        "cpu_seconds": 2.890625,
+        "wall_seconds": 2.927472800016403
+      }
+    ],
+    "axis_over_reference_cpu_ratios": [
+      0.5925925925925926,
+      0.6324324324324324
+    ],
+    "median_cpu_ratio": 0.6125125125125125,
+    "scope": "frozen full-rule graph passes, excludes step updates, not a quality benchmark"
+  },
+  "admission": {
+    "contract": "frozen CPU median <=0.85; fixed-count endpoint EV/NC drift <=0.01; recall-2/full equal-CPU NC median ratio <=1 and maximum <=1.1",
+    "statistical_significance_claim": false,
+    "cost_passed": true,
+    "sensitivity_passed": true,
+    "quality_passed": true,
+    "fixture_nc_ratios": [
+      0.9789889640696501,
+      0.9813989663545633,
+      0.9901863989482338,
+      0.9409018449470392,
+      0.9886889442059568,
+      1.020569532390819,
+      0.9268401371533813,
+      0.9352053955592238,
+      0.9978512622495253,
+      0.9298033284526099,
+      1.003819930447481,
+      0.9929889104470698
+    ],
+    "median_fixture_nc_ratio": 0.98504395528026,
+    "maximum_fixture_nc_ratio": 1.020569532390819,
+    "fixture_wins": 10,
+    "maximum_fixed_count_ev_drift": 8.326672684688674e-17,
+    "maximum_fixed_count_nc_drift": 3.608224830031759e-16,
+    "passed": true
+  },
+  "full_pilot_decision": "admitted"
+}
