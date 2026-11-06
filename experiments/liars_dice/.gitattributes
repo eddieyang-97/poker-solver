@@ -4,3 +4,5 @@ outputs/conditional-fixture-*.json text eol=lf
 outputs/batch-fixture-*.json text eol=lf
 outputs/axis-fixture-*.json text eol=lf
 outputs/axis-trace-*.json text eol=lf
+outputs/response-plan-*.json text eol=lf
+outputs/response-calibration-seat*.json text eol=lf

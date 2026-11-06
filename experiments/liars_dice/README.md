@@ -127,3 +127,10 @@ frozen-block expectation and duplicate-hand semantics are independently checked.
 sum with the frozen scatter implementation. Fixed-count trajectory sensitivity,
 balanced frozen-pass cost and fresh equal-CPU fixtures gate a bounded full-rule
 comparison; duplicate private-hand updates retain their original semantics.
+
+## Same-target response refinement (#49)
+
+[Response-refinement study](response-refinement-research.md) keeps all six #58
+final targets fixed, compares breadth/depth and incumbent-priority allocation,
+exports complete pure response plans, and independently checks their realized
+values. Same-target envelopes retain the strongest valid bounds with provenance.
