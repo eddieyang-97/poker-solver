@@ -2,3 +2,5 @@
 outputs/ablation-*.json text eol=lf
 outputs/conditional-fixture-*.json text eol=lf
 outputs/batch-fixture-*.json text eol=lf
+outputs/axis-fixture-*.json text eol=lf
+outputs/axis-trace-*.json text eol=lf
