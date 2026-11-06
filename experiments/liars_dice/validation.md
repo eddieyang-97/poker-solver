@@ -204,3 +204,29 @@ completed. The main run used 761.00 wall / 754.125 CPU seconds and 314.69 MiB
 process peak. Retain all 54 final policies. The measured full-rule throughput
 gain and held-out payoff means do not establish an unrestricted strength ranking;
 the response intervals still overlap and demonstrate substantial vulnerability.
+
+## Full-history response refinement on retained targets (#49)
+
+[Study, calibration and replay contract](response-refinement-research.md) keeps
+all six #58 final policies fixed. Tests cover exact target-cache parity, both
+search algorithms against independent tiny-game BRs, pure response realization,
+raw scoring, resource abstention, persisted-plan validation and same-target
+envelope provenance. Historical sources/targets are unchanged; full-history
+search never collapses opposing beliefs or observes hidden dice. Exhaustive
+replay is weighted float64 enumeration, with explicit budget failures and no
+partial value substituted. Sampled replay retains individual uncertainty.
+
+The calibration and predeclared main commands in the guide both completed.
+All 48 main saved plans completed independent exhaustive replay, with maximum
+lower-value error 9.99e-16; both calibration plans also matched. All 48 sampled
+checks fall within their individual Hoeffding intervals. NashConv lower
+endpoints rise 0.007800–0.008504, while intervals remain wide. Legal order gives
+tighter endpoints than incumbent-priority on all six targets; the priority
+heuristic contributes no envelope endpoint. This is no strategy promotion.
+
+The main study used 713.24 wall / 708.625 CPU seconds and 185.41 MiB Windows
+process peak. All 75 standalone tests pass locally in 65.14 seconds, including
+source/target/50-plan fingerprints, all persisted plan loads and a fresh full-rule
+exact replay. Ruff (`poker_spot tests scripts experiments/liars_dice`, excluding
+the unchanged archive), compile and whitespace checks pass. Required latest-head
+CI remains a separate PR gate; no hosted/client/deployment checks ran.

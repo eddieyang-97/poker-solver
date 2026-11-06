@@ -1,0 +1,3649 @@
+{
+  "status": "completed",
+  "source_sha256_lf": {
+    "run_response_refinement.py": "3f7fd46a0e3ad623dbda41be1ef5d831d2f878daf0c6fa2c4a88000eb3fc6f86",
+    "response_refinement.py": "d253a96da01ab7401beb56d1f74eb9dedd1b09e6e446a4fc882663017a443b34",
+    "ordered_response.py": "c1b68f6cce3d0b31efcb7a1b1ffc161a5f222c1570495d6bb988a41720161230",
+    "bounded_response.py": "036d53de36e6ad0b6d0834b868f22e9196192a5081d3fc73c4e5e6d76753d373",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "one_face.py": "30cc6d519f4f6a07cdb0908673719cfa811762da566f06fafc5cf77054c3a9fc",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "recall_training.py": "a1c924ba831d43223f83015b09a3c92ca06377fc3b207dde8cae6deae5113d9a",
+    "fixed_strategy.py": "9bc2b509ad8e463aecbfa2c55664cef9e1041a799f9c5a87c5fdadcdaa6717f4",
+    "run_fixed_strategy.py": "02844fc09209a3d2a4d694b8c2b85207a71321b77acbcde2785802f27769b800",
+    "run_recall_training.py": "5e9abecd619a95918504ece69290d826edbab30b1b3e1f1153482f7763be4328",
+    "calibrate_response_refinement.py": "5ae42f4601b9a339b666ae63d02e51cb05033d4cb325d05cc5f0414206ac37d5"
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.8",
+  "numpy": "2.5.4",
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "openblas_threads": "1",
+  "target_receipt_sha256_lf": "b133fe696fbc73ed8e64b5fe7909d1019c6e97688f1ce255dde9c9be03923c8d",
+  "calibration_receipt_sha256_lf": "320e45d92471d97568d4cb77a291135bfe07fd0fea9a534fb8041dd82ef416e5",
+  "schedule": [
+    [
+      "base32",
+      1,
+      32,
+      "legacy"
+    ],
+    [
+      "breadth128",
+      1,
+      128,
+      "legacy"
+    ],
+    [
+      "legacy128",
+      2,
+      128,
+      "legacy"
+    ],
+    [
+      "priority128",
+      2,
+      128,
+      "priority"
+    ]
+  ],
+  "sampling_games_per_seat": 2000,
+  "exact_replay_limits": {
+    "nodes": 200000,
+    "seconds": 10
+  },
+  "guard_seconds": 1800,
+  "guard_semantics": "between search/replay work units, not a hard process deadline",
+  "targets": [
+    {
+      "method": "axis",
+      "seed": 490061,
+      "training_cpu_budget": 60,
+      "training_iterations": 899,
+      "target": {
+        "file": "axis-full-axis-490061.npz",
+        "bytes": 4302631,
+        "sha256": "2c22f609d827484c401a6df78396e60b82bd83115534e89aa14ac6e47d8c9b43",
+        "probabilities_sha256": "637e0b6a246cd5245258e53c49856950cd7e795321df7b28c9b34d08970f3a72"
+      },
+      "game": {
+        "kind": "house",
+        "rules": {
+          "face_one": true,
+          "all_ones_wild_seven": true,
+          "zhai_mixed_bonus": false,
+          "opening_zhai": true,
+          "quantity_floor": 1,
+          "max_quantity": 14
+        }
+      },
+      "cache_public_keys": 300,
+      "cache_probability_views": 22644,
+      "stages": [
+        {
+          "label": "base32",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 32,
+          "target_file_sha256": "2c22f609d827484c401a6df78396e60b82bd83115534e89aa14ac6e47d8c9b43",
+          "target_probabilities_sha256": "637e0b6a246cd5245258e53c49856950cd7e795321df7b28c9b34d08970f3a72",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": null,
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.8144191379704989,
+              "upper": 0.9636342575261057,
+              "width": 0.14921511955560673,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.1621084000216797,
+              "search_cpu_seconds": 0.15625,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-axis-490061-base32-seat0.json",
+                "bytes": 1343,
+                "sha256": "4aff2b6a189e6c1e928a2b46f85a4f8fe0ff9a1cef6223a0692474fe22f3a5c6",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8144191379704985,
+                "stats": {
+                  "public_nodes": 840,
+                  "terminals": 839,
+                  "scalar_target_rows": 2520
+                },
+                "wall_seconds": 0.02470419998280704,
+                "cpu_seconds": 0.015625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 4.440892098500626e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980132,
+                "games": 2000,
+                "ev_p0": 0.808,
+                "hoeffding95_individual": [
+                  0.7472638538091695,
+                  0.8687361461908306
+                ],
+                "mean_bids": 1.899,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.7117743173332218,
+              "upper": 0.8947292204801507,
+              "width": 0.18295490314692886,
+              "stats": {
+                "expanded_own_nodes": 32,
+                "depth_frontiers": 253893,
+                "budget_frontiers": 111,
+                "forced_challenges": 4029,
+                "opponent_nodes": 4061,
+                "maximum_history": 3,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 7.926903399988078,
+              "search_cpu_seconds": 7.875,
+              "retained_decision_nodes": 32,
+              "retained_bound_nodes": 32,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-axis-490061-base32-seat1.json",
+                "bytes": 31979,
+                "sha256": "35aa0f4d5840e92900306cc448c713d98b0b91937a335568243b2a9387c69f80",
+                "decision_nodes": 32
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7117743173332219,
+                "stats": {
+                  "public_nodes": 45801,
+                  "terminals": 45773,
+                  "scalar_target_rows": 13356
+                },
+                "wall_seconds": 1.7464839000022039,
+                "cpu_seconds": 1.75,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980133,
+                "games": 2000,
+                "ev_p0": -0.698,
+                "hoeffding95_individual": [
+                  -0.7587361461908305,
+                  -0.6372638538091694
+                ],
+                "mean_bids": 2.7315,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5261934553037206,
+          "nashconv_upper": 1.8583634780062563,
+          "width": 0.3321700227025357
+        },
+        {
+          "label": "breadth128",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "2c22f609d827484c401a6df78396e60b82bd83115534e89aa14ac6e47d8c9b43",
+          "target_probabilities_sha256": "637e0b6a246cd5245258e53c49856950cd7e795321df7b28c9b34d08970f3a72",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "base32",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.8144191379704989,
+              "upper": 0.9636342575261057,
+              "width": 0.14921511955560673,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.49474580003879964,
+              "search_cpu_seconds": 0.484375,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "plan": {
+                "file": "response-plan-axis-490061-breadth128-seat0.json",
+                "bytes": 1343,
+                "sha256": "4aff2b6a189e6c1e928a2b46f85a4f8fe0ff9a1cef6223a0692474fe22f3a5c6",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8144191379704985,
+                "stats": {
+                  "public_nodes": 840,
+                  "terminals": 839,
+                  "scalar_target_rows": 2520
+                },
+                "wall_seconds": 0.040743199991993606,
+                "cpu_seconds": 0.046875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 4.440892098500626e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990132,
+                "games": 2000,
+                "ev_p0": 0.825,
+                "hoeffding95_individual": [
+                  0.7642638538091694,
+                  0.8857361461908305
+                ],
+                "mean_bids": 1.912,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.7173824129681055,
+              "upper": 0.8918494286588634,
+              "width": 0.17446701569075795,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 478698,
+                "budget_frontiers": 15,
+                "forced_challenges": 9860,
+                "opponent_nodes": 9988,
+                "maximum_history": 3,
+                "incumbent_nodes": 32,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 22.98032269999385,
+              "search_cpu_seconds": 22.90625,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490061-breadth128-seat1.json",
+                "bytes": 110143,
+                "sha256": "a55e0a7ff18ced624f3640095f960d64f0227b762098e6d5b59b665a0ed047fd",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7173824129681053,
+                "stats": {
+                  "public_nodes": 55710,
+                  "terminals": 55682,
+                  "scalar_target_rows": 14112
+                },
+                "wall_seconds": 2.1050813000183553,
+                "cpu_seconds": 2.09375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990133,
+                "games": 2000,
+                "ev_p0": -0.709,
+                "hoeffding95_individual": [
+                  -0.7697361461908305,
+                  -0.6482638538091694
+                ],
+                "mean_bids": 2.772,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5318015509386043,
+          "nashconv_upper": 1.855483686184969,
+          "width": 0.3236821352463648
+        },
+        {
+          "label": "legacy128",
+          "algorithm": "legacy",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "2c22f609d827484c401a6df78396e60b82bd83115534e89aa14ac6e47d8c9b43",
+          "target_probabilities_sha256": "637e0b6a246cd5245258e53c49856950cd7e795321df7b28c9b34d08970f3a72",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.816599277791869,
+              "upper": 0.9636342575261057,
+              "width": 0.14703497973423663,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 512311,
+                "budget_frontiers": 10062,
+                "forced_challenges": 10464,
+                "opponent_nodes": 10592,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 24.779772500041872,
+              "search_cpu_seconds": 24.6875,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490061-legacy128-seat0.json",
+                "bytes": 111426,
+                "sha256": "2919ac77c37bbe0141a7a460db23a539b6a42a3e353308536cdb043715ed6ef7",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8165992777918685,
+                "stats": {
+                  "public_nodes": 9379,
+                  "terminals": 9321,
+                  "scalar_target_rows": 7308
+                },
+                "wall_seconds": 0.32935679994989187,
+                "cpu_seconds": 0.3125,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 5.551115123125783e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000132,
+                "games": 2000,
+                "ev_p0": 0.812,
+                "hoeffding95_individual": [
+                  0.7512638538091695,
+                  0.8727361461908306
+                ],
+                "mean_bids": 1.935,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7180527076895724,
+              "upper": 0.890745296979831,
+              "width": 0.17269258929025855,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 466725,
+                "budget_frontiers": 10168,
+                "forced_challenges": 10050,
+                "opponent_nodes": 10178,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 22.845867099938914,
+              "search_cpu_seconds": 22.765625,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-axis-490061-legacy128-seat1.json",
+                "bytes": 217279,
+                "sha256": "97298c1e39af57511c36080663ddb24a6b4213fee9b510cde04afb7584d0b568",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7180527076895724,
+                "stats": {
+                  "public_nodes": 77132,
+                  "terminals": 77069,
+                  "scalar_target_rows": 15624
+                },
+                "wall_seconds": 2.9356471999781206,
+                "cpu_seconds": 2.9375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 0.0
+              },
+              "independent_scalar_replay": {
+                "seed": 1000133,
+                "games": 2000,
+                "ev_p0": -0.719,
+                "hoeffding95_individual": [
+                  -0.7797361461908305,
+                  -0.6582638538091694
+                ],
+                "mean_bids": 2.787,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5346519854814415,
+          "nashconv_upper": 1.8543795545059365,
+          "width": 0.31972756902449495
+        },
+        {
+          "label": "priority128",
+          "algorithm": "priority",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "2c22f609d827484c401a6df78396e60b82bd83115534e89aa14ac6e47d8c9b43",
+          "target_probabilities_sha256": "637e0b6a246cd5245258e53c49856950cd7e795321df7b28c9b34d08970f3a72",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8154807758119255,
+              "upper": 0.9636342575261057,
+              "width": 0.1481534817141802,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 238303,
+                "budget_frontiers": 10062,
+                "forced_challenges": 6639,
+                "opponent_nodes": 6767,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.28638810000848,
+              "search_cpu_seconds": 12.1875,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490061-priority128-seat0.json",
+                "bytes": 105664,
+                "sha256": "e6676b3439be9d0b507cd296045833157f8c43641e35db9851c3763b878edef6",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8154807758119249,
+                "stats": {
+                  "public_nodes": 6056,
+                  "terminals": 6038,
+                  "scalar_target_rows": 7308
+                },
+                "wall_seconds": 0.24624649994075298,
+                "cpu_seconds": 0.25,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 5.551115123125783e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010132,
+                "games": 2000,
+                "ev_p0": 0.791,
+                "hoeffding95_individual": [
+                  0.7302638538091695,
+                  0.8517361461908306
+                ],
+                "mean_bids": 1.886,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7175265376196406,
+              "upper": 0.8918494286588634,
+              "width": 0.17432289103922283,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 264001,
+                "budget_frontiers": 10168,
+                "forced_challenges": 7101,
+                "opponent_nodes": 7229,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 13.485068000038154,
+              "search_cpu_seconds": 13.40625,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-axis-490061-priority128-seat1.json",
+                "bytes": 213241,
+                "sha256": "1d50047022144562789ae53a839f230dbcccab85285b21ee8a04bbb6933b5f6f",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7175265376196405,
+                "stats": {
+                  "public_nodes": 59795,
+                  "terminals": 59755,
+                  "scalar_target_rows": 14364
+                },
+                "wall_seconds": 2.290423300000839,
+                "cpu_seconds": 2.265625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010133,
+                "games": 2000,
+                "ev_p0": -0.719,
+                "hoeffding95_individual": [
+                  -0.7797361461908305,
+                  -0.6582638538091694
+                ],
+                "mean_bids": 2.7565,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.533007313431566,
+          "nashconv_upper": 1.855483686184969,
+          "width": 0.322476372753403
+        }
+      ],
+      "envelope": {
+        "seats": [
+          {
+            "seat": 0,
+            "lower": 0.816599277791869,
+            "upper": 0.9636342575261057,
+            "lower_stage": "legacy128",
+            "upper_stage": "base32",
+            "lower_plan": {
+              "file": "response-plan-axis-490061-legacy128-seat0.json",
+              "bytes": 111426,
+              "sha256": "2919ac77c37bbe0141a7a460db23a539b6a42a3e353308536cdb043715ed6ef7",
+              "decision_nodes": 128
+            }
+          },
+          {
+            "seat": 1,
+            "lower": 0.7180527076895724,
+            "upper": 0.890745296979831,
+            "lower_stage": "legacy128",
+            "upper_stage": "legacy128",
+            "lower_plan": {
+              "file": "response-plan-axis-490061-legacy128-seat1.json",
+              "bytes": 217279,
+              "sha256": "97298c1e39af57511c36080663ddb24a6b4213fee9b510cde04afb7584d0b568",
+              "decision_nodes": 255
+            }
+          }
+        ],
+        "nashconv_lower": 1.5346519854814415,
+        "nashconv_upper": 1.8543795545059365,
+        "width": 0.31972756902449495,
+        "exploitability_lower": 0.7673259927407208,
+        "exploitability_upper": 0.9271897772529683,
+        "arithmetic": "float64 structural envelope, not interval certified"
+      }
+    },
+    {
+      "method": "reference",
+      "seed": 490061,
+      "training_cpu_budget": 60,
+      "training_iterations": 631,
+      "target": {
+        "file": "axis-full-reference-490061.npz",
+        "bytes": 4193759,
+        "sha256": "7d339daa3b9b615eb61bf3ca7157cde6791f5ffa6987829773d729c8ec8f21fd",
+        "probabilities_sha256": "87f841eae69f682e42d1aa1bab1f9017a029a828fba2e8138007bf5655c88c59"
+      },
+      "game": {
+        "kind": "house",
+        "rules": {
+          "face_one": true,
+          "all_ones_wild_seven": true,
+          "zhai_mixed_bonus": false,
+          "opening_zhai": true,
+          "quantity_floor": 1,
+          "max_quantity": 14
+        }
+      },
+      "cache_public_keys": 300,
+      "cache_probability_views": 22644,
+      "stages": [
+        {
+          "label": "base32",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 32,
+          "target_file_sha256": "7d339daa3b9b615eb61bf3ca7157cde6791f5ffa6987829773d729c8ec8f21fd",
+          "target_probabilities_sha256": "87f841eae69f682e42d1aa1bab1f9017a029a828fba2e8138007bf5655c88c59",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": null,
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.8333528616937899,
+              "upper": 0.9622513752076769,
+              "width": 0.12889851351388704,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.48991150001529604,
+              "search_cpu_seconds": 0.484375,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-reference-490061-base32-seat0.json",
+                "bytes": 1343,
+                "sha256": "bb72efd806a95f7e6fe574bc53a78fa02254c76ff6e6bccbd32ef39378ada03a",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8333528616937893,
+                "stats": {
+                  "public_nodes": 841,
+                  "terminals": 840,
+                  "scalar_target_rows": 2520
+                },
+                "wall_seconds": 0.040864699985831976,
+                "cpu_seconds": 0.03125,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 5.551115123125783e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980132,
+                "games": 2000,
+                "ev_p0": 0.83,
+                "hoeffding95_individual": [
+                  0.7692638538091694,
+                  0.8907361461908305
+                ],
+                "mean_bids": 1.909,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.7430168458738466,
+              "upper": 0.8946518343472317,
+              "width": 0.15163498847338508,
+              "stats": {
+                "expanded_own_nodes": 32,
+                "depth_frontiers": 253893,
+                "budget_frontiers": 111,
+                "forced_challenges": 4029,
+                "opponent_nodes": 4061,
+                "maximum_history": 3,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.132994999992661,
+              "search_cpu_seconds": 12.0625,
+              "retained_decision_nodes": 32,
+              "retained_bound_nodes": 32,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-reference-490061-base32-seat1.json",
+                "bytes": 32089,
+                "sha256": "137d41e20358a0dfd462fbbdf4ee5b4eadcc183293ca56d7982d19dd9ff8913c",
+                "decision_nodes": 32
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7430168458738468,
+                "stats": {
+                  "public_nodes": 44751,
+                  "terminals": 44725,
+                  "scalar_target_rows": 11844
+                },
+                "wall_seconds": 1.6879007000243291,
+                "cpu_seconds": 1.671875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980133,
+                "games": 2000,
+                "ev_p0": -0.748,
+                "hoeffding95_individual": [
+                  -0.8087361461908306,
+                  -0.6872638538091694
+                ],
+                "mean_bids": 2.691,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5763697075676366,
+          "nashconv_upper": 1.8569032095549085,
+          "width": 0.2805335019872719
+        },
+        {
+          "label": "breadth128",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "7d339daa3b9b615eb61bf3ca7157cde6791f5ffa6987829773d729c8ec8f21fd",
+          "target_probabilities_sha256": "87f841eae69f682e42d1aa1bab1f9017a029a828fba2e8138007bf5655c88c59",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "base32",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.8333528616937899,
+              "upper": 0.9622513752076769,
+              "width": 0.12889851351388704,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.48922010010574013,
+              "search_cpu_seconds": 0.484375,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "plan": {
+                "file": "response-plan-reference-490061-breadth128-seat0.json",
+                "bytes": 1343,
+                "sha256": "bb72efd806a95f7e6fe574bc53a78fa02254c76ff6e6bccbd32ef39378ada03a",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8333528616937893,
+                "stats": {
+                  "public_nodes": 841,
+                  "terminals": 840,
+                  "scalar_target_rows": 2520
+                },
+                "wall_seconds": 0.041146299918182194,
+                "cpu_seconds": 0.03125,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 5.551115123125783e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990132,
+                "games": 2000,
+                "ev_p0": 0.83,
+                "hoeffding95_individual": [
+                  0.7692638538091694,
+                  0.8907361461908305
+                ],
+                "mean_bids": 1.915,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.7486669818437841,
+              "upper": 0.8914607537599649,
+              "width": 0.1427937719161808,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 478698,
+                "budget_frontiers": 15,
+                "forced_challenges": 9860,
+                "opponent_nodes": 9988,
+                "maximum_history": 3,
+                "incumbent_nodes": 32,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 22.606538300053217,
+              "search_cpu_seconds": 22.40625,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490061-breadth128-seat1.json",
+                "bytes": 110207,
+                "sha256": "e3dec978e81bfe19b523193e62d967773eb0e4d1f150df9f194e215aa2e9c7b8",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7486669818437842,
+                "stats": {
+                  "public_nodes": 50616,
+                  "terminals": 50590,
+                  "scalar_target_rows": 12348
+                },
+                "wall_seconds": 1.8996526999399066,
+                "cpu_seconds": 1.90625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990133,
+                "games": 2000,
+                "ev_p0": -0.732,
+                "hoeffding95_individual": [
+                  -0.7927361461908305,
+                  -0.6712638538091694
+                ],
+                "mean_bids": 2.708,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5820198435375739,
+          "nashconv_upper": 1.8537121289676417,
+          "width": 0.27169228543006785
+        },
+        {
+          "label": "legacy128",
+          "algorithm": "legacy",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "7d339daa3b9b615eb61bf3ca7157cde6791f5ffa6987829773d729c8ec8f21fd",
+          "target_probabilities_sha256": "87f841eae69f682e42d1aa1bab1f9017a029a828fba2e8138007bf5655c88c59",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8352621548978748,
+              "upper": 0.9622513752076769,
+              "width": 0.1269892203098021,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 512447,
+                "budget_frontiers": 10062,
+                "forced_challenges": 10481,
+                "opponent_nodes": 10609,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 25.154733099974692,
+              "search_cpu_seconds": 25.046875,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490061-legacy128-seat0.json",
+                "bytes": 111117,
+                "sha256": "66edef54cb54b99c915478fd5a85ba7f063281b1afed91b19678c3ef7ec66034",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8352621548978738,
+                "stats": {
+                  "public_nodes": 7524,
+                  "terminals": 7470,
+                  "scalar_target_rows": 6048
+                },
+                "wall_seconds": 0.29665979999117553,
+                "cpu_seconds": 0.296875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 9.992007221626409e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000132,
+                "games": 2000,
+                "ev_p0": 0.829,
+                "hoeffding95_individual": [
+                  0.7682638538091694,
+                  0.8897361461908305
+                ],
+                "mean_bids": 1.95,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7492784439588618,
+              "upper": 0.8904640832657046,
+              "width": 0.1411856393068428,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 466725,
+                "budget_frontiers": 10168,
+                "forced_challenges": 10050,
+                "opponent_nodes": 10178,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 23.012606199947186,
+              "search_cpu_seconds": 22.921875,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-reference-490061-legacy128-seat1.json",
+                "bytes": 217220,
+                "sha256": "004f506dff25df2e4c14a0a73c4f83dd1d88eb0826be717d009396501447ca67",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7492784439588618,
+                "stats": {
+                  "public_nodes": 71453,
+                  "terminals": 71393,
+                  "scalar_target_rows": 13104
+                },
+                "wall_seconds": 2.682142800069414,
+                "cpu_seconds": 2.6875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 0.0
+              },
+              "independent_scalar_replay": {
+                "seed": 1000133,
+                "games": 2000,
+                "ev_p0": -0.77,
+                "hoeffding95_individual": [
+                  -0.8307361461908306,
+                  -0.7092638538091695
+                ],
+                "mean_bids": 2.7405,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5845405988567367,
+          "nashconv_upper": 1.8527154584733814,
+          "width": 0.26817485961664467
+        },
+        {
+          "label": "priority128",
+          "algorithm": "priority",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "7d339daa3b9b615eb61bf3ca7157cde6791f5ffa6987829773d729c8ec8f21fd",
+          "target_probabilities_sha256": "87f841eae69f682e42d1aa1bab1f9017a029a828fba2e8138007bf5655c88c59",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8342158208887464,
+              "upper": 0.9622513752076769,
+              "width": 0.12803555431893054,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 232710,
+                "budget_frontiers": 10062,
+                "forced_challenges": 6545,
+                "opponent_nodes": 6673,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 11.954281500075012,
+              "search_cpu_seconds": 11.921875,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490061-priority128-seat0.json",
+                "bytes": 105411,
+                "sha256": "fbb77e7bc508cd5fb265ef0c1d9a81d10bc33da6cbc9bd72f077171dfaa4c064",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8342158208887457,
+                "stats": {
+                  "public_nodes": 5746,
+                  "terminals": 5730,
+                  "scalar_target_rows": 7056
+                },
+                "wall_seconds": 0.23456139990594238,
+                "cpu_seconds": 0.234375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 6.661338147750939e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010132,
+                "games": 2000,
+                "ev_p0": 0.817,
+                "hoeffding95_individual": [
+                  0.7562638538091694,
+                  0.8777361461908305
+                ],
+                "mean_bids": 1.9005,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7487586420545185,
+              "upper": 0.8914607537599649,
+              "width": 0.14270211170544644,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 258426,
+                "budget_frontiers": 10168,
+                "forced_challenges": 7003,
+                "opponent_nodes": 7131,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 13.227151199942455,
+              "search_cpu_seconds": 13.21875,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-reference-490061-priority128-seat1.json",
+                "bytes": 213380,
+                "sha256": "a1e90eefc5117f88d8804dd65429dc054030233dd825f667c115bda10a2fae22",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7487586420545184,
+                "stats": {
+                  "public_nodes": 55317,
+                  "terminals": 55281,
+                  "scalar_target_rows": 13104
+                },
+                "wall_seconds": 2.119494099984877,
+                "cpu_seconds": 2.109375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010133,
+                "games": 2000,
+                "ev_p0": -0.762,
+                "hoeffding95_individual": [
+                  -0.8227361461908306,
+                  -0.7012638538091694
+                ],
+                "mean_bids": 2.6935,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5829744629432647,
+          "nashconv_upper": 1.8537121289676417,
+          "width": 0.270737666024377
+        }
+      ],
+      "envelope": {
+        "seats": [
+          {
+            "seat": 0,
+            "lower": 0.8352621548978748,
+            "upper": 0.9622513752076769,
+            "lower_stage": "legacy128",
+            "upper_stage": "base32",
+            "lower_plan": {
+              "file": "response-plan-reference-490061-legacy128-seat0.json",
+              "bytes": 111117,
+              "sha256": "66edef54cb54b99c915478fd5a85ba7f063281b1afed91b19678c3ef7ec66034",
+              "decision_nodes": 128
+            }
+          },
+          {
+            "seat": 1,
+            "lower": 0.7492784439588618,
+            "upper": 0.8904640832657046,
+            "lower_stage": "legacy128",
+            "upper_stage": "legacy128",
+            "lower_plan": {
+              "file": "response-plan-reference-490061-legacy128-seat1.json",
+              "bytes": 217220,
+              "sha256": "004f506dff25df2e4c14a0a73c4f83dd1d88eb0826be717d009396501447ca67",
+              "decision_nodes": 255
+            }
+          }
+        ],
+        "nashconv_lower": 1.5845405988567367,
+        "nashconv_upper": 1.8527154584733814,
+        "width": 0.26817485961664467,
+        "exploitability_lower": 0.7922702994283684,
+        "exploitability_upper": 0.9263577292366907,
+        "arithmetic": "float64 structural envelope, not interval certified"
+      }
+    },
+    {
+      "method": "axis",
+      "seed": 490062,
+      "training_cpu_budget": 60,
+      "training_iterations": 943,
+      "target": {
+        "file": "axis-full-axis-490062.npz",
+        "bytes": 4517836,
+        "sha256": "f89877859367689917b64dc543cce21df76eac6e27000461f0cf925186292d58",
+        "probabilities_sha256": "40f1289e55a0c10776b64bef57a9d1f1d4bce5b919edf57a0178afd74d33c88b"
+      },
+      "game": {
+        "kind": "house",
+        "rules": {
+          "face_one": true,
+          "all_ones_wild_seven": true,
+          "zhai_mixed_bonus": false,
+          "opening_zhai": true,
+          "quantity_floor": 1,
+          "max_quantity": 14
+        }
+      },
+      "cache_public_keys": 300,
+      "cache_probability_views": 22644,
+      "stages": [
+        {
+          "label": "base32",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 32,
+          "target_file_sha256": "f89877859367689917b64dc543cce21df76eac6e27000461f0cf925186292d58",
+          "target_probabilities_sha256": "40f1289e55a0c10776b64bef57a9d1f1d4bce5b919edf57a0178afd74d33c88b",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": null,
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.8102202868931241,
+              "upper": 0.9643856316885008,
+              "width": 0.1541653447953767,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.4894143999554217,
+              "search_cpu_seconds": 0.484375,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-axis-490062-base32-seat0.json",
+                "bytes": 1332,
+                "sha256": "65026d8fa1329b17be99d0c8da8a9f816f7b23142b3c034ffabece599d7c64c3",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8102202868931236,
+                "stats": {
+                  "public_nodes": 1292,
+                  "terminals": 1291,
+                  "scalar_target_rows": 3528
+                },
+                "wall_seconds": 0.06179400009568781,
+                "cpu_seconds": 0.0625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 4.440892098500626e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980133,
+                "games": 2000,
+                "ev_p0": 0.83,
+                "hoeffding95_individual": [
+                  0.7692638538091694,
+                  0.8907361461908305
+                ],
+                "mean_bids": 1.9065,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.7271043673667474,
+              "upper": 0.8990930803011293,
+              "width": 0.1719887129343819,
+              "stats": {
+                "expanded_own_nodes": 32,
+                "depth_frontiers": 253893,
+                "budget_frontiers": 111,
+                "forced_challenges": 4029,
+                "opponent_nodes": 4061,
+                "maximum_history": 3,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.13469710003119,
+              "search_cpu_seconds": 12.09375,
+              "retained_decision_nodes": 32,
+              "retained_bound_nodes": 32,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-axis-490062-base32-seat1.json",
+                "bytes": 32065,
+                "sha256": "e1d4fb742b6de10519c8fa059e3bf5803d0885572c27a8d35cb9b3c29222a2ef",
+                "decision_nodes": 32
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7271043673667477,
+                "stats": {
+                  "public_nodes": 44443,
+                  "terminals": 44417,
+                  "scalar_target_rows": 11844
+                },
+                "wall_seconds": 1.698219500016421,
+                "cpu_seconds": 1.6875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 2.220446049250313e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980134,
+                "games": 2000,
+                "ev_p0": -0.738,
+                "hoeffding95_individual": [
+                  -0.7987361461908306,
+                  -0.6772638538091694
+                ],
+                "mean_bids": 2.712,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5373246542598715,
+          "nashconv_upper": 1.86347871198963,
+          "width": 0.3261540577297586
+        },
+        {
+          "label": "breadth128",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "f89877859367689917b64dc543cce21df76eac6e27000461f0cf925186292d58",
+          "target_probabilities_sha256": "40f1289e55a0c10776b64bef57a9d1f1d4bce5b919edf57a0178afd74d33c88b",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "base32",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.8102202868931241,
+              "upper": 0.9643856316885008,
+              "width": 0.1541653447953767,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.4854295999975875,
+              "search_cpu_seconds": 0.484375,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "plan": {
+                "file": "response-plan-axis-490062-breadth128-seat0.json",
+                "bytes": 1332,
+                "sha256": "65026d8fa1329b17be99d0c8da8a9f816f7b23142b3c034ffabece599d7c64c3",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8102202868931236,
+                "stats": {
+                  "public_nodes": 1292,
+                  "terminals": 1291,
+                  "scalar_target_rows": 3528
+                },
+                "wall_seconds": 0.058410200057551265,
+                "cpu_seconds": 0.046875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 4.440892098500626e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990133,
+                "games": 2000,
+                "ev_p0": 0.803,
+                "hoeffding95_individual": [
+                  0.7422638538091695,
+                  0.8637361461908306
+                ],
+                "mean_bids": 1.8955,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.7325977632430956,
+              "upper": 0.896185869926454,
+              "width": 0.16358810668335844,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 474243,
+                "budget_frontiers": 15,
+                "forced_challenges": 9695,
+                "opponent_nodes": 9823,
+                "maximum_history": 3,
+                "incumbent_nodes": 32,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 22.065643099951558,
+              "search_cpu_seconds": 21.921875,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490062-breadth128-seat1.json",
+                "bytes": 110112,
+                "sha256": "2dfaf43de15bc41b9855168d4520ea6ad0d2ee25908ffda40f79c8ffabd2ab97",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7325977632430957,
+                "stats": {
+                  "public_nodes": 54998,
+                  "terminals": 54972,
+                  "scalar_target_rows": 12096
+                },
+                "wall_seconds": 2.0315168999368325,
+                "cpu_seconds": 2.03125,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990134,
+                "games": 2000,
+                "ev_p0": -0.752,
+                "hoeffding95_individual": [
+                  -0.8127361461908306,
+                  -0.6912638538091694
+                ],
+                "mean_bids": 2.7555,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5428180501362196,
+          "nashconv_upper": 1.8605715016149547,
+          "width": 0.317753451478735
+        },
+        {
+          "label": "legacy128",
+          "algorithm": "legacy",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "f89877859367689917b64dc543cce21df76eac6e27000461f0cf925186292d58",
+          "target_probabilities_sha256": "40f1289e55a0c10776b64bef57a9d1f1d4bce5b919edf57a0178afd74d33c88b",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8123144648732706,
+              "upper": 0.9643856316885008,
+              "width": 0.15207116681523014,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 517218,
+                "budget_frontiers": 10062,
+                "forced_challenges": 10415,
+                "opponent_nodes": 10543,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 25.384944899939,
+              "search_cpu_seconds": 25.234375,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490062-legacy128-seat0.json",
+                "bytes": 111401,
+                "sha256": "528dc74d525774918eb76f174cf1736c41fbee586cfc1704243205307eb4c820",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8123144648732704,
+                "stats": {
+                  "public_nodes": 11065,
+                  "terminals": 11006,
+                  "scalar_target_rows": 7308
+                },
+                "wall_seconds": 0.4370290000224486,
+                "cpu_seconds": 0.4375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 2.220446049250313e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000133,
+                "games": 2000,
+                "ev_p0": 0.822,
+                "hoeffding95_individual": [
+                  0.7612638538091694,
+                  0.8827361461908305
+                ],
+                "mean_bids": 1.947,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7331170159392382,
+              "upper": 0.8961188650066608,
+              "width": 0.16300184906742266,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 466725,
+                "budget_frontiers": 10455,
+                "forced_challenges": 10052,
+                "opponent_nodes": 10180,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 21.575617299997248,
+              "search_cpu_seconds": 21.4375,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-axis-490062-legacy128-seat1.json",
+                "bytes": 216649,
+                "sha256": "63d76b4425c0ec4ae7d3ac57826c22eeca351f9581b893c614a4665434a4533b",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7331170159392383,
+                "stats": {
+                  "public_nodes": 72396,
+                  "terminals": 72340,
+                  "scalar_target_rows": 13356
+                },
+                "wall_seconds": 2.697494199965149,
+                "cpu_seconds": 2.671875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000134,
+                "games": 2000,
+                "ev_p0": -0.735,
+                "hoeffding95_individual": [
+                  -0.7957361461908306,
+                  -0.6742638538091694
+                ],
+                "mean_bids": 2.7515,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5454314808125087,
+          "nashconv_upper": 1.8605044966951616,
+          "width": 0.3150730158826529
+        },
+        {
+          "label": "priority128",
+          "algorithm": "priority",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "f89877859367689917b64dc543cce21df76eac6e27000461f0cf925186292d58",
+          "target_probabilities_sha256": "40f1289e55a0c10776b64bef57a9d1f1d4bce5b919edf57a0178afd74d33c88b",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8107709398202507,
+              "upper": 0.9643856316885008,
+              "width": 0.15361469186825005,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 247191,
+                "budget_frontiers": 10062,
+                "forced_challenges": 6776,
+                "opponent_nodes": 6904,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.52579749992583,
+              "search_cpu_seconds": 12.46875,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490062-priority128-seat0.json",
+                "bytes": 105785,
+                "sha256": "47ec08b437783db27ba2ddbd3f9ec4a872c353261efe4b69be8d1ec3c53b3cff",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8107709398202503,
+                "stats": {
+                  "public_nodes": 3591,
+                  "terminals": 3576,
+                  "scalar_target_rows": 7560
+                },
+                "wall_seconds": 0.15794180007651448,
+                "cpu_seconds": 0.171875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 4.440892098500626e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010133,
+                "games": 2000,
+                "ev_p0": 0.827,
+                "hoeffding95_individual": [
+                  0.7662638538091694,
+                  0.8877361461908305
+                ],
+                "mean_bids": 1.9045,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7327205209043974,
+              "upper": 0.896185869926454,
+              "width": 0.16346534902205656,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 263191,
+                "budget_frontiers": 10455,
+                "forced_challenges": 7094,
+                "opponent_nodes": 7222,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 13.56117710005492,
+              "search_cpu_seconds": 13.5,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-axis-490062-priority128-seat1.json",
+                "bytes": 212779,
+                "sha256": "514dd3d31ed70b6f7265ef644158f90751b929026cb15442d582f043e3fb47a6",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7327205209043974,
+                "stats": {
+                  "public_nodes": 58892,
+                  "terminals": 58858,
+                  "scalar_target_rows": 12852
+                },
+                "wall_seconds": 2.1890078999567777,
+                "cpu_seconds": 2.1875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 0.0
+              },
+              "independent_scalar_replay": {
+                "seed": 1010134,
+                "games": 2000,
+                "ev_p0": -0.709,
+                "hoeffding95_individual": [
+                  -0.7697361461908305,
+                  -0.6482638538091694
+                ],
+                "mean_bids": 2.7365,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5434914607246482,
+          "nashconv_upper": 1.8605715016149547,
+          "width": 0.3170800408903065
+        }
+      ],
+      "envelope": {
+        "seats": [
+          {
+            "seat": 0,
+            "lower": 0.8123144648732706,
+            "upper": 0.9643856316885008,
+            "lower_stage": "legacy128",
+            "upper_stage": "base32",
+            "lower_plan": {
+              "file": "response-plan-axis-490062-legacy128-seat0.json",
+              "bytes": 111401,
+              "sha256": "528dc74d525774918eb76f174cf1736c41fbee586cfc1704243205307eb4c820",
+              "decision_nodes": 128
+            }
+          },
+          {
+            "seat": 1,
+            "lower": 0.7331170159392382,
+            "upper": 0.8961188650066608,
+            "lower_stage": "legacy128",
+            "upper_stage": "legacy128",
+            "lower_plan": {
+              "file": "response-plan-axis-490062-legacy128-seat1.json",
+              "bytes": 216649,
+              "sha256": "63d76b4425c0ec4ae7d3ac57826c22eeca351f9581b893c614a4665434a4533b",
+              "decision_nodes": 255
+            }
+          }
+        ],
+        "nashconv_lower": 1.5454314808125087,
+        "nashconv_upper": 1.8605044966951616,
+        "width": 0.3150730158826529,
+        "exploitability_lower": 0.7727157404062543,
+        "exploitability_upper": 0.9302522483475808,
+        "arithmetic": "float64 structural envelope, not interval certified"
+      }
+    },
+    {
+      "method": "reference",
+      "seed": 490062,
+      "training_cpu_budget": 60,
+      "training_iterations": 614,
+      "target": {
+        "file": "axis-full-reference-490062.npz",
+        "bytes": 4392076,
+        "sha256": "7285b0448f1a41b3abff2686879e9c47d663138f933aa0adb07c1669800f368c",
+        "probabilities_sha256": "1d98da268cc70348513163940f3aff45d1a3aa3758585de66435a02854c991e2"
+      },
+      "game": {
+        "kind": "house",
+        "rules": {
+          "face_one": true,
+          "all_ones_wild_seven": true,
+          "zhai_mixed_bonus": false,
+          "opening_zhai": true,
+          "quantity_floor": 1,
+          "max_quantity": 14
+        }
+      },
+      "cache_public_keys": 300,
+      "cache_probability_views": 22644,
+      "stages": [
+        {
+          "label": "base32",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 32,
+          "target_file_sha256": "7285b0448f1a41b3abff2686879e9c47d663138f933aa0adb07c1669800f368c",
+          "target_probabilities_sha256": "1d98da268cc70348513163940f3aff45d1a3aa3758585de66435a02854c991e2",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": null,
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.8292434069569503,
+              "upper": 0.9612569679183637,
+              "width": 0.13201356096141337,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.4915813999250531,
+              "search_cpu_seconds": 0.484375,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-reference-490062-base32-seat0.json",
+                "bytes": 1337,
+                "sha256": "098297a175bbcb8c7b5fca01b0374afb1952e96d3409bbbe2dcffdbc16c8e94c",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8292434069569496,
+                "stats": {
+                  "public_nodes": 1178,
+                  "terminals": 1177,
+                  "scalar_target_rows": 3276
+                },
+                "wall_seconds": 0.05648349993862212,
+                "cpu_seconds": 0.0625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 6.661338147750939e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980133,
+                "games": 2000,
+                "ev_p0": 0.839,
+                "hoeffding95_individual": [
+                  0.7782638538091694,
+                  0.8997361461908305
+                ],
+                "mean_bids": 1.9135,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.768453494642397,
+              "upper": 0.9040023170251431,
+              "width": 0.13554882238274613,
+              "stats": {
+                "expanded_own_nodes": 32,
+                "depth_frontiers": 253893,
+                "budget_frontiers": 111,
+                "forced_challenges": 4029,
+                "opponent_nodes": 4061,
+                "maximum_history": 3,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.028666300000623,
+              "search_cpu_seconds": 11.96875,
+              "retained_decision_nodes": 32,
+              "retained_bound_nodes": 32,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-reference-490062-base32-seat1.json",
+                "bytes": 32106,
+                "sha256": "c0dd2723d741f711228fa2c288be769422fb32d7b9bb01ab0b9ed0e01704ad8f",
+                "decision_nodes": 32
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7684534946423967,
+                "stats": {
+                  "public_nodes": 42752,
+                  "terminals": 42727,
+                  "scalar_target_rows": 9828
+                },
+                "wall_seconds": 1.5363327999366447,
+                "cpu_seconds": 1.53125,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 3.3306690738754696e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980134,
+                "games": 2000,
+                "ev_p0": -0.768,
+                "hoeffding95_individual": [
+                  -0.8287361461908306,
+                  -0.7072638538091695
+                ],
+                "mean_bids": 2.675,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5976969015993472,
+          "nashconv_upper": 1.8652592849435068,
+          "width": 0.2675623833441596
+        },
+        {
+          "label": "breadth128",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "7285b0448f1a41b3abff2686879e9c47d663138f933aa0adb07c1669800f368c",
+          "target_probabilities_sha256": "1d98da268cc70348513163940f3aff45d1a3aa3758585de66435a02854c991e2",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "base32",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.8292434069569503,
+              "upper": 0.9612569679183637,
+              "width": 0.13201356096141337,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.4893180000362918,
+              "search_cpu_seconds": 0.5,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "plan": {
+                "file": "response-plan-reference-490062-breadth128-seat0.json",
+                "bytes": 1337,
+                "sha256": "098297a175bbcb8c7b5fca01b0374afb1952e96d3409bbbe2dcffdbc16c8e94c",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8292434069569496,
+                "stats": {
+                  "public_nodes": 1178,
+                  "terminals": 1177,
+                  "scalar_target_rows": 3276
+                },
+                "wall_seconds": 0.056547700078226626,
+                "cpu_seconds": 0.0625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 6.661338147750939e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990133,
+                "games": 2000,
+                "ev_p0": 0.819,
+                "hoeffding95_individual": [
+                  0.7582638538091694,
+                  0.8797361461908305
+                ],
+                "mean_bids": 1.906,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.7743068344011635,
+              "upper": 0.9007682055765996,
+              "width": 0.1264613711754361,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 474243,
+                "budget_frontiers": 15,
+                "forced_challenges": 9695,
+                "opponent_nodes": 9823,
+                "maximum_history": 3,
+                "incumbent_nodes": 32,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 23.03658950002864,
+              "search_cpu_seconds": 22.875,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490062-breadth128-seat1.json",
+                "bytes": 109960,
+                "sha256": "12f93520c0c063340d56d58070e31835d890c603b1af149ffd22ef503e7b0308",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7743068344011629,
+                "stats": {
+                  "public_nodes": 48308,
+                  "terminals": 48283,
+                  "scalar_target_rows": 9828
+                },
+                "wall_seconds": 1.8298148000612855,
+                "cpu_seconds": 1.828125,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 6.661338147750939e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990134,
+                "games": 2000,
+                "ev_p0": -0.758,
+                "hoeffding95_individual": [
+                  -0.8187361461908306,
+                  -0.6972638538091694
+                ],
+                "mean_bids": 2.68,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.6035502413581137,
+          "nashconv_upper": 1.8620251734949633,
+          "width": 0.2584749321368496
+        },
+        {
+          "label": "legacy128",
+          "algorithm": "legacy",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "7285b0448f1a41b3abff2686879e9c47d663138f933aa0adb07c1669800f368c",
+          "target_probabilities_sha256": "1d98da268cc70348513163940f3aff45d1a3aa3758585de66435a02854c991e2",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8312257878103632,
+              "upper": 0.9612569679183637,
+              "width": 0.13003118010800052,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 523215,
+                "budget_frontiers": 10062,
+                "forced_challenges": 10517,
+                "opponent_nodes": 10645,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 25.728987099952064,
+              "search_cpu_seconds": 25.5625,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490062-legacy128-seat0.json",
+                "bytes": 110900,
+                "sha256": "3ce6d75dd7459e2e8038ba10d78ed344741ae5c337ea6506348d15f30ea2ff50",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8312257878103624,
+                "stats": {
+                  "public_nodes": 14119,
+                  "terminals": 14067,
+                  "scalar_target_rows": 8064
+                },
+                "wall_seconds": 0.5763233000179753,
+                "cpu_seconds": 0.578125,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 7.771561172376096e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000133,
+                "games": 2000,
+                "ev_p0": 0.831,
+                "hoeffding95_individual": [
+                  0.7702638538091694,
+                  0.8917361461908305
+                ],
+                "mean_bids": 1.9495,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7747025049510159,
+              "upper": 0.9006956580582327,
+              "width": 0.12599315310721682,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 466725,
+                "budget_frontiers": 10455,
+                "forced_challenges": 10052,
+                "opponent_nodes": 10180,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 22.95305119990371,
+              "search_cpu_seconds": 22.890625,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-reference-490062-legacy128-seat1.json",
+                "bytes": 216564,
+                "sha256": "2c0146ff04f40c926acf34c38461165c92dc61c0c3ef05aa08b5e81b8d6f7a44",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7747025049510153,
+                "stats": {
+                  "public_nodes": 66033,
+                  "terminals": 65978,
+                  "scalar_target_rows": 10836
+                },
+                "wall_seconds": 2.501789000001736,
+                "cpu_seconds": 2.484375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 5.551115123125783e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000134,
+                "games": 2000,
+                "ev_p0": -0.765,
+                "hoeffding95_individual": [
+                  -0.8257361461908306,
+                  -0.7042638538091694
+                ],
+                "mean_bids": 2.7565,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.6059282927613792,
+          "nashconv_upper": 1.8619526259765964,
+          "width": 0.2560243332152172
+        },
+        {
+          "label": "priority128",
+          "algorithm": "priority",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "7285b0448f1a41b3abff2686879e9c47d663138f933aa0adb07c1669800f368c",
+          "target_probabilities_sha256": "1d98da268cc70348513163940f3aff45d1a3aa3758585de66435a02854c991e2",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8297272576307477,
+              "upper": 0.9612569679183637,
+              "width": 0.13152971028761595,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 247269,
+                "budget_frontiers": 10062,
+                "forced_challenges": 6788,
+                "opponent_nodes": 6916,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.83003140008077,
+              "search_cpu_seconds": 12.703125,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490062-priority128-seat0.json",
+                "bytes": 105910,
+                "sha256": "733935c39966b19a1a6ee8bb33b75ec83b29effb5b8c6e857759ee650de53b91",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8297272576307473,
+                "stats": {
+                  "public_nodes": 3627,
+                  "terminals": 3612,
+                  "scalar_target_rows": 7308
+                },
+                "wall_seconds": 0.1580688999965787,
+                "cpu_seconds": 0.15625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 4.440892098500626e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010133,
+                "games": 2000,
+                "ev_p0": 0.847,
+                "hoeffding95_individual": [
+                  0.7862638538091694,
+                  0.9077361461908305
+                ],
+                "mean_bids": 1.919,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.774407476777884,
+              "upper": 0.9007682055765996,
+              "width": 0.12636072879871563,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 259564,
+                "budget_frontiers": 10455,
+                "forced_challenges": 7016,
+                "opponent_nodes": 7144,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 13.461519799893722,
+              "search_cpu_seconds": 13.4375,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-reference-490062-priority128-seat1.json",
+                "bytes": 212526,
+                "sha256": "b23bc44d78579e74473c230e594f8cf35ecc30978692a7d55495fa3605b99a87",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7744074767778834,
+                "stats": {
+                  "public_nodes": 51689,
+                  "terminals": 51658,
+                  "scalar_target_rows": 10332
+                },
+                "wall_seconds": 1.975102199940011,
+                "cpu_seconds": 1.984375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 6.661338147750939e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010134,
+                "games": 2000,
+                "ev_p0": -0.758,
+                "hoeffding95_individual": [
+                  -0.8187361461908306,
+                  -0.6972638538091694
+                ],
+                "mean_bids": 2.702,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.6041347344086319,
+          "nashconv_upper": 1.8620251734949633,
+          "width": 0.25789043908633147
+        }
+      ],
+      "envelope": {
+        "seats": [
+          {
+            "seat": 0,
+            "lower": 0.8312257878103632,
+            "upper": 0.9612569679183637,
+            "lower_stage": "legacy128",
+            "upper_stage": "base32",
+            "lower_plan": {
+              "file": "response-plan-reference-490062-legacy128-seat0.json",
+              "bytes": 110900,
+              "sha256": "3ce6d75dd7459e2e8038ba10d78ed344741ae5c337ea6506348d15f30ea2ff50",
+              "decision_nodes": 128
+            }
+          },
+          {
+            "seat": 1,
+            "lower": 0.7747025049510159,
+            "upper": 0.9006956580582327,
+            "lower_stage": "legacy128",
+            "upper_stage": "legacy128",
+            "lower_plan": {
+              "file": "response-plan-reference-490062-legacy128-seat1.json",
+              "bytes": 216564,
+              "sha256": "2c0146ff04f40c926acf34c38461165c92dc61c0c3ef05aa08b5e81b8d6f7a44",
+              "decision_nodes": 255
+            }
+          }
+        ],
+        "nashconv_lower": 1.6059282927613792,
+        "nashconv_upper": 1.8619526259765964,
+        "width": 0.2560243332152172,
+        "exploitability_lower": 0.8029641463806896,
+        "exploitability_upper": 0.9309763129882982,
+        "arithmetic": "float64 structural envelope, not interval certified"
+      }
+    },
+    {
+      "method": "axis",
+      "seed": 490063,
+      "training_cpu_budget": 60,
+      "training_iterations": 1019,
+      "target": {
+        "file": "axis-full-axis-490063.npz",
+        "bytes": 4312161,
+        "sha256": "454fe9da2ad0f55bf3e5c5282f4d6761ca8f1e3ddfe3bd00415b922e4b86ee6e",
+        "probabilities_sha256": "317815f522f162c95433414d7aa06e5a326ca2ab41897bb2437e36b3f084f015"
+      },
+      "game": {
+        "kind": "house",
+        "rules": {
+          "face_one": true,
+          "all_ones_wild_seven": true,
+          "zhai_mixed_bonus": false,
+          "opening_zhai": true,
+          "quantity_floor": 1,
+          "max_quantity": 14
+        }
+      },
+      "cache_public_keys": 300,
+      "cache_probability_views": 22644,
+      "stages": [
+        {
+          "label": "base32",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 32,
+          "target_file_sha256": "454fe9da2ad0f55bf3e5c5282f4d6761ca8f1e3ddfe3bd00415b922e4b86ee6e",
+          "target_probabilities_sha256": "317815f522f162c95433414d7aa06e5a326ca2ab41897bb2437e36b3f084f015",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": null,
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.7954395285700705,
+              "upper": 0.964663019711658,
+              "width": 0.16922349114158752,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.4916076000081375,
+              "search_cpu_seconds": 0.5,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-axis-490063-base32-seat0.json",
+                "bytes": 1334,
+                "sha256": "e56a218018931f9234e67322f98071dcc79dbb2b1c6f4d3dbb013e4791a10326",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7954395285700704,
+                "stats": {
+                  "public_nodes": 1177,
+                  "terminals": 1176,
+                  "scalar_target_rows": 3276
+                },
+                "wall_seconds": 0.0565596999367699,
+                "cpu_seconds": 0.046875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980134,
+                "games": 2000,
+                "ev_p0": 0.778,
+                "hoeffding95_individual": [
+                  0.7172638538091695,
+                  0.8387361461908306
+                ],
+                "mean_bids": 1.8825,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.7211629660758335,
+              "upper": 0.8931673281785772,
+              "width": 0.17200436210274372,
+              "stats": {
+                "expanded_own_nodes": 32,
+                "depth_frontiers": 253893,
+                "budget_frontiers": 111,
+                "forced_challenges": 4029,
+                "opponent_nodes": 4061,
+                "maximum_history": 3,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.267789599951357,
+              "search_cpu_seconds": 12.234375,
+              "retained_decision_nodes": 32,
+              "retained_bound_nodes": 32,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-axis-490063-base32-seat1.json",
+                "bytes": 31950,
+                "sha256": "8c93e6b3ab7a54f1812143d3357413703df715f44c70e185bd3ed1c51bb79709",
+                "decision_nodes": 32
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7211629660758336,
+                "stats": {
+                  "public_nodes": 44784,
+                  "terminals": 44759,
+                  "scalar_target_rows": 13608
+                },
+                "wall_seconds": 1.7013110999250785,
+                "cpu_seconds": 1.6875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980135,
+                "games": 2000,
+                "ev_p0": -0.703,
+                "hoeffding95_individual": [
+                  -0.7637361461908305,
+                  -0.6422638538091694
+                ],
+                "mean_bids": 2.7015,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.516602494645904,
+          "nashconv_upper": 1.8578303478902352,
+          "width": 0.34122785324433114
+        },
+        {
+          "label": "breadth128",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "454fe9da2ad0f55bf3e5c5282f4d6761ca8f1e3ddfe3bd00415b922e4b86ee6e",
+          "target_probabilities_sha256": "317815f522f162c95433414d7aa06e5a326ca2ab41897bb2437e36b3f084f015",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "base32",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.7954395285700705,
+              "upper": 0.964663019711658,
+              "width": 0.16922349114158752,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.4449002000037581,
+              "search_cpu_seconds": 0.453125,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "plan": {
+                "file": "response-plan-axis-490063-breadth128-seat0.json",
+                "bytes": 1334,
+                "sha256": "e56a218018931f9234e67322f98071dcc79dbb2b1c6f4d3dbb013e4791a10326",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7954395285700704,
+                "stats": {
+                  "public_nodes": 1177,
+                  "terminals": 1176,
+                  "scalar_target_rows": 3276
+                },
+                "wall_seconds": 0.05656320007983595,
+                "cpu_seconds": 0.046875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990134,
+                "games": 2000,
+                "ev_p0": 0.824,
+                "hoeffding95_individual": [
+                  0.7632638538091694,
+                  0.8847361461908305
+                ],
+                "mean_bids": 1.9025,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.7266257314103145,
+              "upper": 0.8901903397125954,
+              "width": 0.16356460830228092,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 477010,
+                "budget_frontiers": 15,
+                "forced_challenges": 9792,
+                "opponent_nodes": 9920,
+                "maximum_history": 3,
+                "incumbent_nodes": 32,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 23.097679099999368,
+              "search_cpu_seconds": 22.984375,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490063-breadth128-seat1.json",
+                "bytes": 110329,
+                "sha256": "5e31281ad447c93c476e313d5127332300c8df66a29eee9be64e3fb22bbf3ea5",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7266257314103147,
+                "stats": {
+                  "public_nodes": 53761,
+                  "terminals": 53734,
+                  "scalar_target_rows": 14868
+                },
+                "wall_seconds": 2.0633348000701517,
+                "cpu_seconds": 2.046875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 2.220446049250313e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990135,
+                "games": 2000,
+                "ev_p0": -0.688,
+                "hoeffding95_individual": [
+                  -0.7487361461908305,
+                  -0.6272638538091694
+                ],
+                "mean_bids": 2.7175,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.522065259980385,
+          "nashconv_upper": 1.8548533594242533,
+          "width": 0.33278809944386833
+        },
+        {
+          "label": "legacy128",
+          "algorithm": "legacy",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "454fe9da2ad0f55bf3e5c5282f4d6761ca8f1e3ddfe3bd00415b922e4b86ee6e",
+          "target_probabilities_sha256": "317815f522f162c95433414d7aa06e5a326ca2ab41897bb2437e36b3f084f015",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7978462287412444,
+              "upper": 0.964663019711658,
+              "width": 0.16681679097041358,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 513174,
+                "budget_frontiers": 10062,
+                "forced_challenges": 10463,
+                "opponent_nodes": 10591,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 25.152084399946034,
+              "search_cpu_seconds": 25.09375,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490063-legacy128-seat0.json",
+                "bytes": 110899,
+                "sha256": "50fc02872447272e1333c1320f1651fcb278eb25f8d154ca88e46e1112b3bb28",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7978462287412443,
+                "stats": {
+                  "public_nodes": 9194,
+                  "terminals": 9140,
+                  "scalar_target_rows": 7308
+                },
+                "wall_seconds": 0.3646599999628961,
+                "cpu_seconds": 0.359375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000134,
+                "games": 2000,
+                "ev_p0": 0.798,
+                "hoeffding95_individual": [
+                  0.7372638538091695,
+                  0.8587361461908306
+                ],
+                "mean_bids": 1.9215,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7272602551084458,
+              "upper": 0.8898842162403653,
+              "width": 0.16262396113191946,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 466725,
+                "budget_frontiers": 10311,
+                "forced_challenges": 10051,
+                "opponent_nodes": 10179,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 23.06173850002233,
+              "search_cpu_seconds": 22.90625,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-axis-490063-legacy128-seat1.json",
+                "bytes": 217244,
+                "sha256": "ced5bfc065e958d44375643022defaa589dbabb095bf7b9c5066b360431ff687",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.727260255108446,
+                "stats": {
+                  "public_nodes": 71204,
+                  "terminals": 71144,
+                  "scalar_target_rows": 15120
+                },
+                "wall_seconds": 2.5700405999086797,
+                "cpu_seconds": 2.515625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 2.220446049250313e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000135,
+                "games": 2000,
+                "ev_p0": -0.75,
+                "hoeffding95_individual": [
+                  -0.8107361461908306,
+                  -0.6892638538091694
+                ],
+                "mean_bids": 2.7635,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5251064838496902,
+          "nashconv_upper": 1.8545472359520234,
+          "width": 0.32944075210233326
+        },
+        {
+          "label": "priority128",
+          "algorithm": "priority",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "454fe9da2ad0f55bf3e5c5282f4d6761ca8f1e3ddfe3bd00415b922e4b86ee6e",
+          "target_probabilities_sha256": "317815f522f162c95433414d7aa06e5a326ca2ab41897bb2437e36b3f084f015",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7959909502369715,
+              "upper": 0.964663019711658,
+              "width": 0.1686720694746865,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 253644,
+                "budget_frontiers": 10062,
+                "forced_challenges": 6870,
+                "opponent_nodes": 6998,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.96814919996541,
+              "search_cpu_seconds": 12.953125,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-axis-490063-priority128-seat0.json",
+                "bytes": 106144,
+                "sha256": "c170bcbe76db032fbc532664bd2ef5f72cb8b116b8efe98e301de9a173794ac7",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7959909502369713,
+                "stats": {
+                  "public_nodes": 4445,
+                  "terminals": 4427,
+                  "scalar_target_rows": 7560
+                },
+                "wall_seconds": 0.18086289998609573,
+                "cpu_seconds": 0.171875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 2.220446049250313e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010134,
+                "games": 2000,
+                "ev_p0": 0.788,
+                "hoeffding95_individual": [
+                  0.7272638538091695,
+                  0.8487361461908306
+                ],
+                "mean_bids": 1.89,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7267200972387492,
+              "upper": 0.8901903397125954,
+              "width": 0.16347024247384623,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 264196,
+                "budget_frontiers": 10311,
+                "forced_challenges": 7104,
+                "opponent_nodes": 7232,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 13.569477499928325,
+              "search_cpu_seconds": 13.53125,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-axis-490063-priority128-seat1.json",
+                "bytes": 213484,
+                "sha256": "dc9b8252947c202fab6a7ebe7f2cdaac0eed4f39c01711b5df2e080be4b16187",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7267200972387494,
+                "stats": {
+                  "public_nodes": 59535,
+                  "terminals": 59498,
+                  "scalar_target_rows": 15372
+                },
+                "wall_seconds": 2.1750106998952106,
+                "cpu_seconds": 2.171875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 2.220446049250313e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010135,
+                "games": 2000,
+                "ev_p0": -0.727,
+                "hoeffding95_individual": [
+                  -0.7877361461908305,
+                  -0.6662638538091694
+                ],
+                "mean_bids": 2.702,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5227110474757208,
+          "nashconv_upper": 1.8548533594242533,
+          "width": 0.3321423119485325
+        }
+      ],
+      "envelope": {
+        "seats": [
+          {
+            "seat": 0,
+            "lower": 0.7978462287412444,
+            "upper": 0.964663019711658,
+            "lower_stage": "legacy128",
+            "upper_stage": "base32",
+            "lower_plan": {
+              "file": "response-plan-axis-490063-legacy128-seat0.json",
+              "bytes": 110899,
+              "sha256": "50fc02872447272e1333c1320f1651fcb278eb25f8d154ca88e46e1112b3bb28",
+              "decision_nodes": 128
+            }
+          },
+          {
+            "seat": 1,
+            "lower": 0.7272602551084458,
+            "upper": 0.8898842162403653,
+            "lower_stage": "legacy128",
+            "upper_stage": "legacy128",
+            "lower_plan": {
+              "file": "response-plan-axis-490063-legacy128-seat1.json",
+              "bytes": 217244,
+              "sha256": "ced5bfc065e958d44375643022defaa589dbabb095bf7b9c5066b360431ff687",
+              "decision_nodes": 255
+            }
+          }
+        ],
+        "nashconv_lower": 1.5251064838496902,
+        "nashconv_upper": 1.8545472359520234,
+        "width": 0.32944075210233326,
+        "exploitability_lower": 0.7625532419248451,
+        "exploitability_upper": 0.9272736179760117,
+        "arithmetic": "float64 structural envelope, not interval certified"
+      }
+    },
+    {
+      "method": "reference",
+      "seed": 490063,
+      "training_cpu_budget": 60,
+      "training_iterations": 595,
+      "target": {
+        "file": "axis-full-reference-490063.npz",
+        "bytes": 4113996,
+        "sha256": "15b31d34244eb58afd7d2af741c142f3c68530065c5d9768956687cdab2b3793",
+        "probabilities_sha256": "a87d267cb0e60c7e8a2674e8caec52bfafd53ffb18c5a1b3c914e8db7583a715"
+      },
+      "game": {
+        "kind": "house",
+        "rules": {
+          "face_one": true,
+          "all_ones_wild_seven": true,
+          "zhai_mixed_bonus": false,
+          "opening_zhai": true,
+          "quantity_floor": 1,
+          "max_quantity": 14
+        }
+      },
+      "cache_public_keys": 300,
+      "cache_probability_views": 22644,
+      "stages": [
+        {
+          "label": "base32",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 32,
+          "target_file_sha256": "15b31d34244eb58afd7d2af741c142f3c68530065c5d9768956687cdab2b3793",
+          "target_probabilities_sha256": "a87d267cb0e60c7e8a2674e8caec52bfafd53ffb18c5a1b3c914e8db7583a715",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": null,
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.8285234251399501,
+              "upper": 0.9628020949514089,
+              "width": 0.13427866981145875,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.4883856000378728,
+              "search_cpu_seconds": 0.46875,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-reference-490063-base32-seat0.json",
+                "bytes": 1340,
+                "sha256": "7c29cee46161e284fd452903f57a9c189e61445a9b9a045a7574cc2756e52beb",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8285234251399496,
+                "stats": {
+                  "public_nodes": 1061,
+                  "terminals": 1060,
+                  "scalar_target_rows": 3024
+                },
+                "wall_seconds": 0.05093619995750487,
+                "cpu_seconds": 0.046875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 5.551115123125783e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980134,
+                "games": 2000,
+                "ev_p0": 0.833,
+                "hoeffding95_individual": [
+                  0.7722638538091694,
+                  0.8937361461908305
+                ],
+                "mean_bids": 1.912,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 32,
+              "lower": 0.7699177953395057,
+              "upper": 0.897023398450236,
+              "width": 0.12710560311073038,
+              "stats": {
+                "expanded_own_nodes": 32,
+                "depth_frontiers": 253893,
+                "budget_frontiers": 111,
+                "forced_challenges": 4029,
+                "opponent_nodes": 4061,
+                "maximum_history": 3,
+                "incumbent_nodes": 0,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 12.239589100005105,
+              "search_cpu_seconds": 12.1875,
+              "retained_decision_nodes": 32,
+              "retained_bound_nodes": 32,
+              "historical_baseline_error": 0.0,
+              "plan": {
+                "file": "response-plan-reference-490063-base32-seat1.json",
+                "bytes": 32080,
+                "sha256": "884a2350c0ace7b1d74d8f79167fc27f8000f0ec218b1583fd03acaf593466bc",
+                "decision_nodes": 32
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7699177953395049,
+                "stats": {
+                  "public_nodes": 43073,
+                  "terminals": 43049,
+                  "scalar_target_rows": 11844
+                },
+                "wall_seconds": 1.638453399995342,
+                "cpu_seconds": 1.625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 7.771561172376096e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 980135,
+                "games": 2000,
+                "ev_p0": -0.767,
+                "hoeffding95_individual": [
+                  -0.8277361461908306,
+                  -0.7062638538091695
+                ],
+                "mean_bids": 2.678,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.5984412204794558,
+          "nashconv_upper": 1.859825493401645,
+          "width": 0.26138427292218913
+        },
+        {
+          "label": "breadth128",
+          "algorithm": "legacy",
+          "depth": 1,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "15b31d34244eb58afd7d2af741c142f3c68530065c5d9768956687cdab2b3793",
+          "target_probabilities_sha256": "a87d267cb0e60c7e8a2674e8caec52bfafd53ffb18c5a1b3c914e8db7583a715",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "base32",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.8285234251399501,
+              "upper": 0.9628020949514089,
+              "width": 0.13427866981145875,
+              "stats": {
+                "expanded_own_nodes": 1,
+                "depth_frontiers": 10189,
+                "budget_frontiers": 0,
+                "forced_challenges": 143,
+                "opponent_nodes": 144,
+                "maximum_history": 2,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 0.48886549996677786,
+              "search_cpu_seconds": 0.484375,
+              "retained_decision_nodes": 1,
+              "retained_bound_nodes": 1,
+              "plan": {
+                "file": "response-plan-reference-490063-breadth128-seat0.json",
+                "bytes": 1340,
+                "sha256": "7c29cee46161e284fd452903f57a9c189e61445a9b9a045a7574cc2756e52beb",
+                "decision_nodes": 1
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8285234251399496,
+                "stats": {
+                  "public_nodes": 1061,
+                  "terminals": 1060,
+                  "scalar_target_rows": 3024
+                },
+                "wall_seconds": 0.05134889995679259,
+                "cpu_seconds": 0.0625,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 5.551115123125783e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 990134,
+                "games": 2000,
+                "ev_p0": 0.843,
+                "hoeffding95_individual": [
+                  0.7822638538091694,
+                  0.9037361461908305
+                ],
+                "mean_bids": 1.9175,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 1,
+              "max_nodes": 128,
+              "lower": 0.7755172818499038,
+              "upper": 0.8936455286603341,
+              "width": 0.11812824681043033,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 477480,
+                "budget_frontiers": 15,
+                "forced_challenges": 9812,
+                "opponent_nodes": 9940,
+                "maximum_history": 3,
+                "incumbent_nodes": 32,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 23.209526500082575,
+              "search_cpu_seconds": 23.140625,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490063-breadth128-seat1.json",
+                "bytes": 110373,
+                "sha256": "c05478244b49a0c44b3a5cb27a3160635fde04f66800c88d0f065bbfa3f72342",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7755172818499038,
+                "stats": {
+                  "public_nodes": 48561,
+                  "terminals": 48537,
+                  "scalar_target_rows": 11844
+                },
+                "wall_seconds": 1.8504594000987709,
+                "cpu_seconds": 1.84375,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 0.0
+              },
+              "independent_scalar_replay": {
+                "seed": 990135,
+                "games": 2000,
+                "ev_p0": -0.736,
+                "hoeffding95_individual": [
+                  -0.7967361461908306,
+                  -0.6752638538091694
+                ],
+                "mean_bids": 2.6795,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.604040706989854,
+          "nashconv_upper": 1.8564476236117429,
+          "width": 0.25240691662188897
+        },
+        {
+          "label": "legacy128",
+          "algorithm": "legacy",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "15b31d34244eb58afd7d2af741c142f3c68530065c5d9768956687cdab2b3793",
+          "target_probabilities_sha256": "a87d267cb0e60c7e8a2674e8caec52bfafd53ffb18c5a1b3c914e8db7583a715",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8304514454980222,
+              "upper": 0.9628020949514089,
+              "width": 0.1323506494533867,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 527100,
+                "budget_frontiers": 10062,
+                "forced_challenges": 10727,
+                "opponent_nodes": 10855,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 26.059616799931973,
+              "search_cpu_seconds": 25.984375,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490063-legacy128-seat0.json",
+                "bytes": 111004,
+                "sha256": "0c55c109ccdf87ea47961de3ca7790e83cb598e389f806705615364dcd967ee0",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8304514454980219,
+                "stats": {
+                  "public_nodes": 12103,
+                  "terminals": 12050,
+                  "scalar_target_rows": 6804
+                },
+                "wall_seconds": 0.4729929000604898,
+                "cpu_seconds": 0.46875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 3.3306690738754696e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000134,
+                "games": 2000,
+                "ev_p0": 0.83,
+                "hoeffding95_individual": [
+                  0.7692638538091694,
+                  0.8907361461908305
+                ],
+                "mean_bids": 1.9485,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.7757899057705484,
+              "upper": 0.8935576144893048,
+              "width": 0.11776770871875641,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 357750,
+                "budget_frontiers": 8530,
+                "forced_challenges": 8508,
+                "opponent_nodes": 8636,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 17.8777989000082,
+              "search_cpu_seconds": 17.765625,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-reference-490063-legacy128-seat1.json",
+                "bytes": 215223,
+                "sha256": "b03e0992916a54ef65b53b589bc1bf0842c0be4652504a0d3e575dd563ce28c3",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7757899057705483,
+                "stats": {
+                  "public_nodes": 62991,
+                  "terminals": 62933,
+                  "scalar_target_rows": 14616
+                },
+                "wall_seconds": 1.6883321000495926,
+                "cpu_seconds": 1.6875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1000135,
+                "games": 2000,
+                "ev_p0": -0.784,
+                "hoeffding95_individual": [
+                  -0.8447361461908306,
+                  -0.7232638538091695
+                ],
+                "mean_bids": 2.695,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.6062413512685705,
+          "nashconv_upper": 1.8563597094407136,
+          "width": 0.2501183581721431
+        },
+        {
+          "label": "priority128",
+          "algorithm": "priority",
+          "depth": 2,
+          "max_nodes_per_seat": 128,
+          "target_file_sha256": "15b31d34244eb58afd7d2af741c142f3c68530065c5d9768956687cdab2b3793",
+          "target_probabilities_sha256": "a87d267cb0e60c7e8a2674e8caec52bfafd53ffb18c5a1b3c914e8db7583a715",
+          "game": {
+            "kind": "house",
+            "rules": {
+              "face_one": true,
+              "all_ones_wild_seven": true,
+              "zhai_mixed_bonus": false,
+              "opening_zhai": true,
+              "quantity_floor": 1,
+              "max_quantity": 14
+            }
+          },
+          "incumbent_stage": "breadth128",
+          "seats": [
+            {
+              "seat": 0,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.8295500018277745,
+              "upper": 0.9628020949514089,
+              "width": 0.1332520931236344,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 232490,
+                "budget_frontiers": 10062,
+                "forced_challenges": 6543,
+                "opponent_nodes": 6671,
+                "maximum_history": 4,
+                "incumbent_nodes": 1,
+                "incumbent_frontiers": 0
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 8.1254687999608,
+              "search_cpu_seconds": 8.046875,
+              "retained_decision_nodes": 128,
+              "retained_bound_nodes": 128,
+              "plan": {
+                "file": "response-plan-reference-490063-priority128-seat0.json",
+                "bytes": 104805,
+                "sha256": "76d4cf0a36473e48ea85665bc99edc8bce529b52fa89f28df7dc20da843ea08f",
+                "decision_nodes": 128
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.8295500018277742,
+                "stats": {
+                  "public_nodes": 5451,
+                  "terminals": 5440,
+                  "scalar_target_rows": 6300
+                },
+                "wall_seconds": 0.2226250000530854,
+                "cpu_seconds": 0.21875,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 3.3306690738754696e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010134,
+                "games": 2000,
+                "ev_p0": 0.811,
+                "hoeffding95_individual": [
+                  0.7502638538091695,
+                  0.8717361461908306
+                ],
+                "mean_bids": 1.8975,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            },
+            {
+              "seat": 1,
+              "depth": 2,
+              "max_nodes": 128,
+              "lower": 0.775580234079665,
+              "upper": 0.8936455286603341,
+              "width": 0.11806529458066906,
+              "stats": {
+                "expanded_own_nodes": 128,
+                "depth_frontiers": 241510,
+                "budget_frontiers": 8530,
+                "forced_challenges": 6764,
+                "opponent_nodes": 6892,
+                "maximum_history": 5,
+                "incumbent_nodes": 128,
+                "incumbent_frontiers": 127
+              },
+              "formally_interval_certified": false,
+              "search_wall_seconds": 11.999700999935158,
+              "search_cpu_seconds": 11.921875,
+              "retained_decision_nodes": 255,
+              "retained_bound_nodes": 255,
+              "plan": {
+                "file": "response-plan-reference-490063-priority128-seat1.json",
+                "bytes": 213651,
+                "sha256": "db93d397c914353b2bdeb50fa854cd984fa3bce2daafd804e1af2f64080dc985",
+                "decision_nodes": 255
+              },
+              "exact_replay": {
+                "status": "completed",
+                "value": 0.7755802340796649,
+                "stats": {
+                  "public_nodes": 53103,
+                  "terminals": 53072,
+                  "scalar_target_rows": 13356
+                },
+                "wall_seconds": 1.506089000031352,
+                "cpu_seconds": 1.5,
+                "arithmetic": "float64 exhaustive weighted policy replay, not interval certified",
+                "lower_error": 1.1102230246251565e-16
+              },
+              "independent_scalar_replay": {
+                "seed": 1010135,
+                "games": 2000,
+                "ev_p0": -0.773,
+                "hoeffding95_individual": [
+                  -0.8337361461908306,
+                  -0.7122638538091695
+                ],
+                "mean_bids": 2.6785,
+                "not_simultaneous_intervals": true
+              },
+              "replay_matches_lower_within_individual95": true
+            }
+          ],
+          "nashconv_lower": 1.6051302359074395,
+          "nashconv_upper": 1.8564476236117429,
+          "width": 0.25131738770430334
+        }
+      ],
+      "envelope": {
+        "seats": [
+          {
+            "seat": 0,
+            "lower": 0.8304514454980222,
+            "upper": 0.9628020949514089,
+            "lower_stage": "legacy128",
+            "upper_stage": "base32",
+            "lower_plan": {
+              "file": "response-plan-reference-490063-legacy128-seat0.json",
+              "bytes": 111004,
+              "sha256": "0c55c109ccdf87ea47961de3ca7790e83cb598e389f806705615364dcd967ee0",
+              "decision_nodes": 128
+            }
+          },
+          {
+            "seat": 1,
+            "lower": 0.7757899057705484,
+            "upper": 0.8935576144893048,
+            "lower_stage": "legacy128",
+            "upper_stage": "legacy128",
+            "lower_plan": {
+              "file": "response-plan-reference-490063-legacy128-seat1.json",
+              "bytes": 215223,
+              "sha256": "b03e0992916a54ef65b53b589bc1bf0842c0be4652504a0d3e575dd563ce28c3",
+              "decision_nodes": 255
+            }
+          }
+        ],
+        "nashconv_lower": 1.6062413512685705,
+        "nashconv_upper": 1.8563597094407136,
+        "width": 0.2501183581721431,
+        "exploitability_lower": 0.8031206756342852,
+        "exploitability_upper": 0.9281798547203568,
+        "arithmetic": "float64 structural envelope, not interval certified"
+      }
+    }
+  ],
+  "certified_equilibrium": false,
+  "new_training": false,
+  "wall_seconds": 713.237471899949,
+  "cpu_seconds": 708.625,
+  "peak_process_memory": {
+    "bytes": 194416640,
+    "kind": "Windows process peak working set"
+  }
+}

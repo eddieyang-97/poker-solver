@@ -1,0 +1,199 @@
+{
+  "purpose": "cost/parity calibration, not target selection",
+  "target": "axis / 490061 / 60 CPU seconds",
+  "source_sha256_lf": {
+    "calibrate_response_refinement.py": "5ae42f4601b9a339b666ae63d02e51cb05033d4cb325d05cc5f0414206ac37d5",
+    "response_refinement.py": "d253a96da01ab7401beb56d1f74eb9dedd1b09e6e446a4fc882663017a443b34",
+    "bounded_response.py": "036d53de36e6ad0b6d0834b868f22e9196192a5081d3fc73c4e5e6d76753d373",
+    "recall_training.py": "a1c924ba831d43223f83015b09a3c92ca06377fc3b207dde8cae6deae5113d9a",
+    "fixed_strategy.py": "9bc2b509ad8e463aecbfa2c55664cef9e1041a799f9c5a87c5fdadcdaa6717f4",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "run_fixed_strategy.py": "02844fc09209a3d2a4d694b8c2b85207a71321b77acbcde2785802f27769b800"
+  },
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.8",
+  "status": "completed",
+  "runs": [
+    {
+      "model": "uncached",
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 32,
+      "lower": 0.8144191379704989,
+      "upper": 0.9636342575261057,
+      "width": 0.14921511955560673,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 10189,
+        "budget_frontiers": 0,
+        "forced_challenges": 143,
+        "opponent_nodes": 144,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false,
+      "search_wall_seconds": 0.18603280000388622,
+      "search_cpu_seconds": 0.1875
+    },
+    {
+      "model": "uncached",
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 32,
+      "lower": 0.7117743173332218,
+      "upper": 0.8947292204801507,
+      "width": 0.18295490314692886,
+      "stats": {
+        "expanded_own_nodes": 32,
+        "depth_frontiers": 253893,
+        "budget_frontiers": 111,
+        "forced_challenges": 4029,
+        "opponent_nodes": 4061,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false,
+      "search_wall_seconds": 9.510959699982777,
+      "search_cpu_seconds": 9.4375
+    },
+    {
+      "model": "cached",
+      "seat": 0,
+      "depth": 1,
+      "max_nodes": 32,
+      "lower": 0.8144191379704989,
+      "upper": 0.9636342575261057,
+      "width": 0.14921511955560673,
+      "stats": {
+        "expanded_own_nodes": 1,
+        "depth_frontiers": 10189,
+        "budget_frontiers": 0,
+        "forced_challenges": 143,
+        "opponent_nodes": 144,
+        "maximum_history": 2,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false,
+      "search_wall_seconds": 0.45783379999920726,
+      "search_cpu_seconds": 0.4375
+    },
+    {
+      "model": "cached",
+      "seat": 1,
+      "depth": 1,
+      "max_nodes": 32,
+      "lower": 0.7117743173332218,
+      "upper": 0.8947292204801507,
+      "width": 0.18295490314692886,
+      "stats": {
+        "expanded_own_nodes": 32,
+        "depth_frontiers": 253893,
+        "budget_frontiers": 111,
+        "forced_challenges": 4029,
+        "opponent_nodes": 4061,
+        "maximum_history": 3,
+        "incumbent_nodes": 0,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false,
+      "search_wall_seconds": 12.017251900047995,
+      "search_cpu_seconds": 11.921875
+    },
+    {
+      "model": "cached",
+      "seat": 0,
+      "depth": 2,
+      "max_nodes": 32,
+      "lower": 0.8147460269574528,
+      "upper": 0.9636342575261057,
+      "width": 0.14888823056865286,
+      "stats": {
+        "expanded_own_nodes": 32,
+        "depth_frontiers": 262320,
+        "budget_frontiers": 10158,
+        "forced_challenges": 4176,
+        "opponent_nodes": 4208,
+        "maximum_history": 4,
+        "incumbent_nodes": 1,
+        "incumbent_frontiers": 0
+      },
+      "formally_interval_certified": false,
+      "search_wall_seconds": 12.877725899918005,
+      "search_cpu_seconds": 12.75,
+      "plan": {
+        "file": "response-calibration-seat0.json",
+        "bytes": 32037,
+        "sha256": "73c9864438a7f1b45211d4168f06c4a1d03a88f2857bb530f2b149f9caf8bb85",
+        "decision_nodes": 32
+      },
+      "exact_replay": {
+        "status": "completed",
+        "value": 0.8147460269574526,
+        "stats": {
+          "public_nodes": 6922,
+          "terminals": 6890,
+          "scalar_target_rows": 5544
+        },
+        "wall_seconds": 0.28784929995890707,
+        "cpu_seconds": 0.265625,
+        "arithmetic": "float64 exhaustive weighted policy replay, not interval certified"
+      }
+    },
+    {
+      "model": "cached",
+      "seat": 1,
+      "depth": 2,
+      "max_nodes": 32,
+      "lower": 0.7124321050761464,
+      "upper": 0.8936250888011184,
+      "width": 0.18119298372497195,
+      "stats": {
+        "expanded_own_nodes": 32,
+        "depth_frontiers": 241857,
+        "budget_frontiers": 10264,
+        "forced_challenges": 4019,
+        "opponent_nodes": 4051,
+        "maximum_history": 5,
+        "incumbent_nodes": 32,
+        "incumbent_frontiers": 31
+      },
+      "formally_interval_certified": false,
+      "search_wall_seconds": 12.122559200040996,
+      "search_cpu_seconds": 12.03125,
+      "plan": {
+        "file": "response-calibration-seat1.json",
+        "bytes": 60746,
+        "sha256": "1069778664f2920dd119eec5e35ad36bbdda1c222d17dc30af05b203b389a7bb",
+        "decision_nodes": 63
+      },
+      "exact_replay": {
+        "status": "completed",
+        "value": 0.7124321050761466,
+        "stats": {
+          "public_nodes": 61590,
+          "terminals": 61538,
+          "scalar_target_rows": 15372
+        },
+        "wall_seconds": 2.393822200014256,
+        "cpu_seconds": 2.359375,
+        "arithmetic": "float64 exhaustive weighted policy replay, not interval certified"
+      }
+    }
+  ],
+  "target_file": {
+    "file": "axis-full-axis-490061.npz",
+    "bytes": 4302631,
+    "sha256": "2c22f609d827484c401a6df78396e60b82bd83115534e89aa14ac6e47d8c9b43",
+    "probabilities_sha256": "637e0b6a246cd5245258e53c49856950cd7e795321df7b28c9b34d08970f3a72"
+  },
+  "wall_seconds": 50.058043600060046,
+  "cpu_seconds": 49.609375,
+  "peak_process_memory": {
+    "bytes": 186380288,
+    "kind": "Windows process peak working set"
+  }
+}
