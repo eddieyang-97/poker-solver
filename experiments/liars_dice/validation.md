@@ -243,3 +243,14 @@ Gap priority reduces partial widths in 12/12 cases, but cap-16 CPU exceeds the
 threshold against legacy. The separate width-0.02 comparison reaches that
 precision at 0.750 times legacy's aggregate CPU on these fixtures. The
 full-rule extension remains gated.
+
+## Prepared response kernels (#49)
+
+[Study and reproduction](response-kernels-research.md) compare prepared
+terminal and opponent-branch calculations on the same six frozen targets.
+All 432 endpoint and lower-plan checks preserve the original trajectories.
+The prepared terminal kernel agrees with direct payoff matrices under
+sparse, zero and tiny opposing reach. Branch ordering retains exact ties
+and positive support. Combined gap uses 0.653 times original gap CPU at
+cap 16 and 1.262 times original depth-first CPU. The original 1.25 cost
+gate keeps the full-rule extension deferred.
