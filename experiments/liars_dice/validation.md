@@ -230,3 +230,16 @@ source/target/50-plan fingerprints, all persisted plan loads and a fresh full-ru
 exact replay. Ruff (`poker_spot tests scripts experiments/liars_dice`, excluding
 the unchanged archive), compile and whitespace checks pass. Required latest-head
 CI remains a separate PR gate; no hosted/client/deployment checks ran.
+
+## Gap allocation on exact fixtures (#49)
+
+[Study and reproduction](gap-response-research.md) compare legal-order
+depth-first search, incremental reach priority, and incremental gap priority
+on six fixed, exactly evaluable targets from both seats. The independent
+public-tree evaluator checks 216 realized lower plans and all 36 exhaustive
+closures. A history cap test checks that incomplete expansions preserve the
+last valid interval and that a failed initialization returns no interval.
+Gap priority reduces partial widths in 12/12 cases, but cap-16 CPU exceeds the
+threshold against legacy. The separate width-0.02 comparison reaches that
+precision at 0.750 times legacy's aggregate CPU on these fixtures. The
+full-rule extension remains gated.
