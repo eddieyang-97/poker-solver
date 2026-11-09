@@ -138,3 +138,7 @@ values. Same-target envelopes retain the strongest valid bounds with provenance.
 [Gap-allocation study](gap-response-research.md) compares incremental reach
 and unresolved-gap scheduling against depth-first search on six frozen
 fixtures with independent exhaustive best responses.
+
+[Prepared-kernel study](response-kernels-research.md) profiles the fixture
+searches and compares shared terminal and opponent-branch optimizations
+with the original implementations.
