@@ -134,3 +134,7 @@ comparison; duplicate private-hand updates retain their original semantics.
 final targets fixed, compares breadth/depth and incumbent-priority allocation,
 exports complete pure response plans, and independently checks their realized
 values. Same-target envelopes retain the strongest valid bounds with provenance.
+
+[Gap-allocation study](gap-response-research.md) compares incremental reach
+and unresolved-gap scheduling against depth-first search on six frozen
+fixtures with independent exhaustive best responses.
