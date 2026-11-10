@@ -148,3 +148,6 @@ tighter optimistic values against the prepared search on exact fixtures.
 
 [Frontier cost study](frontier-cost-research.md) compares demand-built
 exact and one-reply bounds with the prepared and dense controls.
+
+[Full-rule frontier feasibility](full-frontier-feasibility.md) measures
+fixed query costs and limit behavior with the archived 252-hand targets.
