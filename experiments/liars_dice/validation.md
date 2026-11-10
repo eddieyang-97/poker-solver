@@ -265,3 +265,13 @@ All 168 lower values replay independently, and the 24 exhaustive
 intervals close to the exact best response. Median summed upper slack
 falls to 0.376 times the control. At width 0.02, CPU including setup is
 4.821 times the control and the full-rule pilot remains deferred.
+
+## Demand-built frontier bounds (#49)
+
+[Study and reproduction](frontier-cost-research.md) compare lazy exact,
+direct one-reply and factored one-reply bounds with the prepared and dense
+controls. Scalar checks verify the cutoff for full-history and cached
+one-bid models. All 420 independent lower replays and 60 exhaustive
+closures match. Factored reply preserves the measured dense tightness and
+uses 0.276 times its CPU to reach width 0.02. Its cold CPU ratio against
+prepared is 1.265, above the 1.25 full-rule pilot gate.

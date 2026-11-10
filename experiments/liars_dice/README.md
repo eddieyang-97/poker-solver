@@ -145,3 +145,6 @@ with the original implementations.
 
 [Revealed-hand frontier study](revealed-frontier-research.md) measures
 tighter optimistic values against the prepared search on exact fixtures.
+
+[Frontier cost study](frontier-cost-research.md) compares demand-built
+exact and one-reply bounds with the prepared and dense controls.
