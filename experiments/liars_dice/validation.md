@@ -275,3 +275,14 @@ one-bid models. All 420 independent lower replays and 60 exhaustive
 closures match. Factored reply preserves the measured dense tightness and
 uses 0.276 times its CPU to reach width 0.02. Its cold CPU ratio against
 prepared is 1.265, above the 1.25 full-rule pilot gate.
+
+## Bounded full-rule frontier feasibility (#49)
+
+[Study and reproduction](full-frontier-feasibility.md) measure two
+fixed query corpora for the archived axis/reference 252-hand targets.
+Both methods complete 22,148 queries. Independent direct action maxima
+agree within 5.56e-16 across 177,184 checked values. All cap probes stop
+after successful narrower queries, and a focused test compares retained
+NumPy array bytes with the cache estimate after a cap failure.
+The largest factored matrix estimate is 18.52 MiB, and its isolated
+process peaks at 220.92 MiB. The full-rule search pilot remains gated.

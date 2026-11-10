@@ -1,0 +1,884 @@
+{
+  "status": "completed",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.8",
+  "numpy": "2.5.4",
+  "openblas_threads": "1",
+  "source_sha256_lf": {
+    "run_full_frontier_feasibility.py": "6ed7f4748cfe3deecb42beb916e512926aa885cd08cd2cb95a19e82de5988d90",
+    "frontier_cost.py": "1322e99eb0cebd0076be9003c4c1b1135c46f1b7231c5ccd4861b7c3aa83fc04",
+    "game.py": "08e6a2c71656695bf0eebb2b0d2e481a47c1c6077860529e8066cec0ba9b79c4",
+    "guidance.py": "404d9b6bf24023f7b3856f17a9baf6c8b5f83704145924d54272033abc42f443",
+    "response_refinement.py": "d253a96da01ab7401beb56d1f74eb9dedd1b09e6e446a4fc882663017a443b34",
+    "response_kernels.py": "51297e2e3288250fa71a750c9b12f1750a28da81c3198e046a5c6c25218b5659",
+    "recall_training.py": "a1c924ba831d43223f83015b09a3c92ca06377fc3b207dde8cae6deae5113d9a",
+    "fixed_strategy.py": "9bc2b509ad8e463aecbfa2c55664cef9e1041a799f9c5a87c5fdadcdaa6717f4",
+    "run_fixed_strategy.py": "02844fc09209a3d2a4d694b8c2b85207a71321b77acbcde2785802f27769b800",
+    "run_gap_response.py": "f0c5598a96f60ce5fec5ed2522083357cc4d84509d1c0c7494d483951015e484"
+  },
+  "target_receipt_sha256_lf": "0be4e9d37ce3977020e50c4c7ac34f13e0b4c06487e9b52a5e07a00ece135a91",
+  "seed": 490061,
+  "limits": {
+    "max_opening_queries": 25000,
+    "matrix_bytes": 33554432,
+    "pair_edges": 2000000000,
+    "wall_guard_seconds": 360,
+    "memory_worker_timeout_seconds": 60
+  },
+  "timing_blocks": 5,
+  "full_game_admission": "unchanged_no_go",
+  "targets": [
+    {
+      "method": "axis",
+      "target": {
+        "file": "axis-full-axis-490061.npz",
+        "bytes": 4302631,
+        "sha256": "2c22f609d827484c401a6df78396e60b82bd83115534e89aa14ac6e47d8c9b43",
+        "probabilities_sha256": "637e0b6a246cd5245258e53c49856950cd7e795321df7b28c9b34d08970f3a72"
+      },
+      "seats": [
+        {
+          "seat": 0,
+          "workloads": {
+            "opening": {
+              "queries": 10332,
+              "zero_reach_omitted": 0,
+              "prior_stress_queries": 0,
+              "forced_challenge_queries": 143,
+              "maximum_bids": 2,
+              "maximum_legal_actions": 149,
+              "min_positive_reach": 5.9481872162735914e-05,
+              "unique_last_bids": 149,
+              "query_sha256": "d67078237d2dbc356999855aa807202883c7b93d82ea4a53a2234b316f205754",
+              "repeats_per_block": {
+                "prepared": 32,
+                "factored": 2
+              },
+              "timing_blocks": [
+                {
+                  "prepared": {
+                    "cpu_ns": 687500000,
+                    "wall_ns": 684667500
+                  },
+                  "factored": {
+                    "cpu_ns": 1515625000,
+                    "wall_ns": 1542748400
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1406250000,
+                    "wall_ns": 1416911400
+                  },
+                  "prepared": {
+                    "cpu_ns": 593750000,
+                    "wall_ns": 635195700
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 625000000,
+                    "wall_ns": 617045700
+                  },
+                  "factored": {
+                    "cpu_ns": 1453125000,
+                    "wall_ns": 1472290500
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1234375000,
+                    "wall_ns": 1250346400
+                  },
+                  "prepared": {
+                    "cpu_ns": 531250000,
+                    "wall_ns": 528932600
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 734375000,
+                    "wall_ns": 736287300
+                  },
+                  "factored": {
+                    "cpu_ns": 1656250000,
+                    "wall_ns": 1676359000
+                  }
+                }
+              ],
+              "checksum": {
+                "prepared": 13834.497585113728,
+                "factored": 13809.7960128636
+              },
+              "independent_value_count": 82656,
+              "max_abs_error": 5.551115123125783e-17,
+              "factored_resources": {
+                "cached_matrices": 0,
+                "pair_edges": 1366098048,
+                "estimated_matrix_bytes": 19294128,
+                "rule_masks": 148,
+                "truth_masks": 149,
+                "opponent_vectors": 148
+              }
+            },
+            "inventory": {
+              "queries": 298,
+              "zero_reach_omitted": 0,
+              "prior_stress_queries": 149,
+              "forced_challenge_queries": 2,
+              "maximum_bids": 150,
+              "maximum_legal_actions": 149,
+              "min_positive_reach": 0.00027516457554199736,
+              "unique_last_bids": 149,
+              "query_sha256": "e1d3b8c74dfadff553e2adea34d6c5a8793497c2cc0cf029ad054089c6f89608",
+              "repeats_per_block": {
+                "prepared": 1024,
+                "factored": 12
+              },
+              "timing_blocks": [
+                {
+                  "prepared": {
+                    "cpu_ns": 453125000,
+                    "wall_ns": 475707800
+                  },
+                  "factored": {
+                    "cpu_ns": 1406250000,
+                    "wall_ns": 1416515300
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1156250000,
+                    "wall_ns": 1181139800
+                  },
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 362715900
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 387123900
+                  },
+                  "factored": {
+                    "cpu_ns": 1109375000,
+                    "wall_ns": 1106351600
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1171875000,
+                    "wall_ns": 1181977000
+                  },
+                  "prepared": {
+                    "cpu_ns": 406250000,
+                    "wall_ns": 401255500
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 384986100
+                  },
+                  "factored": {
+                    "cpu_ns": 1109375000,
+                    "wall_ns": 1105516100
+                  }
+                }
+              ],
+              "checksum": {
+                "prepared": 37716.86592334204,
+                "factored": 37684.78168947045
+              },
+              "independent_value_count": 2384,
+              "max_abs_error": 5.551115123125783e-16,
+              "factored_resources": {
+                "cached_matrices": 0,
+                "pair_edges": 737852976,
+                "estimated_matrix_bytes": 19294128,
+                "rule_masks": 148,
+                "truth_masks": 149,
+                "opponent_vectors": 148
+              }
+            }
+          },
+          "cap_probes": {
+            "matrix": {
+              "status": "blocked",
+              "completed_queries": 12,
+              "history": [
+                24,
+                153
+              ],
+              "reason": "Factored reply cache exceeds pair-memory cap",
+              "resources": {
+                "cached_matrices": 0,
+                "pair_edges": 3492720,
+                "estimated_matrix_bytes": 1038240,
+                "rule_masks": 6,
+                "truth_masks": 8,
+                "opponent_vectors": 7
+              }
+            },
+            "work": {
+              "status": "blocked",
+              "completed_queries": 14,
+              "history": [
+                24,
+                151
+              ],
+              "reason": "Lazy oracle pair-edge cap exceeded",
+              "resources": {
+                "cached_matrices": 0,
+                "pair_edges": 3937248,
+                "estimated_matrix_bytes": 1167264,
+                "rule_masks": 7,
+                "truth_masks": 9,
+                "opponent_vectors": 8
+              }
+            }
+          }
+        },
+        {
+          "seat": 1,
+          "workloads": {
+            "opening": {
+              "queries": 144,
+              "zero_reach_omitted": 0,
+              "prior_stress_queries": 0,
+              "forced_challenge_queries": 1,
+              "maximum_bids": 1,
+              "maximum_legal_actions": 150,
+              "min_positive_reach": 0.0002598052748586854,
+              "unique_last_bids": 144,
+              "query_sha256": "286e4ba354fbb9eeeeafe71ec5604c4898e511671a04fb17d049ff8b3717c757",
+              "repeats_per_block": {
+                "prepared": 2048,
+                "factored": 16
+              },
+              "timing_blocks": [
+                {
+                  "prepared": {
+                    "cpu_ns": 359375000,
+                    "wall_ns": 366064600
+                  },
+                  "factored": {
+                    "cpu_ns": 1312500000,
+                    "wall_ns": 1331303000
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1265625000,
+                    "wall_ns": 1261575000
+                  },
+                  "prepared": {
+                    "cpu_ns": 343750000,
+                    "wall_ns": 354841400
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 343750000,
+                    "wall_ns": 354944300
+                  },
+                  "factored": {
+                    "cpu_ns": 1203125000,
+                    "wall_ns": 1208408300
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1265625000,
+                    "wall_ns": 1270164700
+                  },
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 368472200
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 343750000,
+                    "wall_ns": 360662800
+                  },
+                  "factored": {
+                    "cpu_ns": 1296875000,
+                    "wall_ns": 1317438700
+                  }
+                }
+              ],
+              "checksum": {
+                "prepared": 251.99999821387766,
+                "factored": 251.68862478458493
+              },
+              "independent_value_count": 1152,
+              "max_abs_error": 2.7755575615628914e-17,
+              "factored_resources": {
+                "cached_matrices": 0,
+                "pair_edges": 683811072,
+                "estimated_matrix_bytes": 19030032,
+                "rule_masks": 143,
+                "truth_masks": 150,
+                "opponent_vectors": 143
+              }
+            },
+            "inventory": {
+              "queries": 300,
+              "zero_reach_omitted": 0,
+              "prior_stress_queries": 150,
+              "forced_challenge_queries": 2,
+              "maximum_bids": 149,
+              "maximum_legal_actions": 150,
+              "min_positive_reach": 0.00012983179352515445,
+              "unique_last_bids": 150,
+              "query_sha256": "5fdf35b9ba2c5c39ff9bb80ad9d42387420e258631d3c3893039df6e1814ed7a",
+              "repeats_per_block": {
+                "prepared": 1024,
+                "factored": 12
+              },
+              "timing_blocks": [
+                {
+                  "prepared": {
+                    "cpu_ns": 359375000,
+                    "wall_ns": 372981600
+                  },
+                  "factored": {
+                    "cpu_ns": 1109375000,
+                    "wall_ns": 1129110100
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1078125000,
+                    "wall_ns": 1084779600
+                  },
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 374186700
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 421875000,
+                    "wall_ns": 411528900
+                  },
+                  "factored": {
+                    "cpu_ns": 1125000000,
+                    "wall_ns": 1153300800
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1140625000,
+                    "wall_ns": 1134043400
+                  },
+                  "prepared": {
+                    "cpu_ns": 437500000,
+                    "wall_ns": 449861400
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 375774300
+                  },
+                  "factored": {
+                    "cpu_ns": 1093750000,
+                    "wall_ns": 1100305200
+                  }
+                }
+              ],
+              "checksum": {
+                "prepared": 38052.35394665177,
+                "factored": 38009.76542091719
+              },
+              "independent_value_count": 2400,
+              "max_abs_error": 5.551115123125783e-16,
+              "factored_resources": {
+                "cached_matrices": 0,
+                "pair_edges": 747569088,
+                "estimated_matrix_bytes": 19423152,
+                "rule_masks": 149,
+                "truth_masks": 150,
+                "opponent_vectors": 149
+              }
+            }
+          },
+          "cap_probes": {
+            "matrix": {
+              "status": "blocked",
+              "completed_queries": 12,
+              "history": [
+                153
+              ],
+              "reason": "Factored reply cache exceeds pair-memory cap",
+              "resources": {
+                "cached_matrices": 0,
+                "pair_edges": 3492720,
+                "estimated_matrix_bytes": 1038240,
+                "rule_masks": 6,
+                "truth_masks": 8,
+                "opponent_vectors": 7
+              }
+            },
+            "work": {
+              "status": "blocked",
+              "completed_queries": 14,
+              "history": [
+                151
+              ],
+              "reason": "Lazy oracle pair-edge cap exceeded",
+              "resources": {
+                "cached_matrices": 0,
+                "pair_edges": 3937248,
+                "estimated_matrix_bytes": 1167264,
+                "rule_masks": 7,
+                "truth_masks": 9,
+                "opponent_vectors": 8
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "method": "reference",
+      "target": {
+        "file": "axis-full-reference-490061.npz",
+        "bytes": 4193759,
+        "sha256": "7d339daa3b9b615eb61bf3ca7157cde6791f5ffa6987829773d729c8ec8f21fd",
+        "probabilities_sha256": "87f841eae69f682e42d1aa1bab1f9017a029a828fba2e8138007bf5655c88c59"
+      },
+      "seats": [
+        {
+          "seat": 0,
+          "workloads": {
+            "opening": {
+              "queries": 10332,
+              "zero_reach_omitted": 0,
+              "prior_stress_queries": 0,
+              "forced_challenge_queries": 143,
+              "maximum_bids": 2,
+              "maximum_legal_actions": 149,
+              "min_positive_reach": 8.214343882404423e-05,
+              "unique_last_bids": 149,
+              "query_sha256": "af7a7a3d32b8c4fc160531424632f82f69837e124c7937f3f61f93e39528d7e5",
+              "repeats_per_block": {
+                "prepared": 32,
+                "factored": 2
+              },
+              "timing_blocks": [
+                {
+                  "prepared": {
+                    "cpu_ns": 437500000,
+                    "wall_ns": 439657200
+                  },
+                  "factored": {
+                    "cpu_ns": 1140625000,
+                    "wall_ns": 1172055000
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1156250000,
+                    "wall_ns": 1164115300
+                  },
+                  "prepared": {
+                    "cpu_ns": 515625000,
+                    "wall_ns": 528518400
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 421875000,
+                    "wall_ns": 418589000
+                  },
+                  "factored": {
+                    "cpu_ns": 1140625000,
+                    "wall_ns": 1147554600
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1078125000,
+                    "wall_ns": 1082684300
+                  },
+                  "prepared": {
+                    "cpu_ns": 421875000,
+                    "wall_ns": 423586200
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 468750000,
+                    "wall_ns": 472643600
+                  },
+                  "factored": {
+                    "cpu_ns": 1125000000,
+                    "wall_ns": 1145843200
+                  }
+                }
+              ],
+              "checksum": {
+                "prepared": 14599.56551662663,
+                "factored": 14575.329925085669
+              },
+              "independent_value_count": 82656,
+              "max_abs_error": 1.1102230246251565e-16,
+              "factored_resources": {
+                "cached_matrices": 0,
+                "pair_edges": 1366098048,
+                "estimated_matrix_bytes": 19294128,
+                "rule_masks": 148,
+                "truth_masks": 149,
+                "opponent_vectors": 148
+              }
+            },
+            "inventory": {
+              "queries": 298,
+              "zero_reach_omitted": 0,
+              "prior_stress_queries": 149,
+              "forced_challenge_queries": 2,
+              "maximum_bids": 150,
+              "maximum_legal_actions": 149,
+              "min_positive_reach": 0.00038500554358521265,
+              "unique_last_bids": 149,
+              "query_sha256": "b84a3bce3503f4ab1bbd22933612574a1ddc5ce37a7b612429ec5b75f935cc32",
+              "repeats_per_block": {
+                "prepared": 1024,
+                "factored": 12
+              },
+              "timing_blocks": [
+                {
+                  "prepared": {
+                    "cpu_ns": 421875000,
+                    "wall_ns": 419295600
+                  },
+                  "factored": {
+                    "cpu_ns": 1093750000,
+                    "wall_ns": 1091485000
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1062500000,
+                    "wall_ns": 1068401500
+                  },
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 367010100
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 343750000,
+                    "wall_ns": 370659000
+                  },
+                  "factored": {
+                    "cpu_ns": 1093750000,
+                    "wall_ns": 1082776600
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1078125000,
+                    "wall_ns": 1082458700
+                  },
+                  "prepared": {
+                    "cpu_ns": 359375000,
+                    "wall_ns": 382854800
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 390625000,
+                    "wall_ns": 384372600
+                  },
+                  "factored": {
+                    "cpu_ns": 1171875000,
+                    "wall_ns": 1167319200
+                  }
+                }
+              ],
+              "checksum": {
+                "prepared": 37721.48147435224,
+                "factored": 37691.17449591672
+              },
+              "independent_value_count": 2384,
+              "max_abs_error": 5.551115123125783e-16,
+              "factored_resources": {
+                "cached_matrices": 0,
+                "pair_edges": 737852976,
+                "estimated_matrix_bytes": 19294128,
+                "rule_masks": 148,
+                "truth_masks": 149,
+                "opponent_vectors": 148
+              }
+            }
+          },
+          "cap_probes": {
+            "matrix": {
+              "status": "blocked",
+              "completed_queries": 12,
+              "history": [
+                24,
+                153
+              ],
+              "reason": "Factored reply cache exceeds pair-memory cap",
+              "resources": {
+                "cached_matrices": 0,
+                "pair_edges": 3492720,
+                "estimated_matrix_bytes": 1038240,
+                "rule_masks": 6,
+                "truth_masks": 8,
+                "opponent_vectors": 7
+              }
+            },
+            "work": {
+              "status": "blocked",
+              "completed_queries": 14,
+              "history": [
+                24,
+                151
+              ],
+              "reason": "Lazy oracle pair-edge cap exceeded",
+              "resources": {
+                "cached_matrices": 0,
+                "pair_edges": 3937248,
+                "estimated_matrix_bytes": 1167264,
+                "rule_masks": 7,
+                "truth_masks": 9,
+                "opponent_vectors": 8
+              }
+            }
+          }
+        },
+        {
+          "seat": 1,
+          "workloads": {
+            "opening": {
+              "queries": 144,
+              "zero_reach_omitted": 0,
+              "prior_stress_queries": 0,
+              "forced_challenge_queries": 1,
+              "maximum_bids": 1,
+              "maximum_legal_actions": 150,
+              "min_positive_reach": 0.0003827589911992393,
+              "unique_last_bids": 144,
+              "query_sha256": "d37e711dc4613c37f51ed8356cf8561f55d36f2da3e459960801d18f7c86f5ed",
+              "repeats_per_block": {
+                "prepared": 2048,
+                "factored": 16
+              },
+              "timing_blocks": [
+                {
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 384477400
+                  },
+                  "factored": {
+                    "cpu_ns": 1375000000,
+                    "wall_ns": 1367250900
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1281250000,
+                    "wall_ns": 1298748500
+                  },
+                  "prepared": {
+                    "cpu_ns": 390625000,
+                    "wall_ns": 401931200
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 390625000,
+                    "wall_ns": 392860300
+                  },
+                  "factored": {
+                    "cpu_ns": 1250000000,
+                    "wall_ns": 1280595900
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1250000000,
+                    "wall_ns": 1286350900
+                  },
+                  "prepared": {
+                    "cpu_ns": 359375000,
+                    "wall_ns": 363794600
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 359375000,
+                    "wall_ns": 352113600
+                  },
+                  "factored": {
+                    "cpu_ns": 1437500000,
+                    "wall_ns": 1486454400
+                  }
+                }
+              ],
+              "checksum": {
+                "prepared": 251.99999821387735,
+                "factored": 251.6224712457337
+              },
+              "independent_value_count": 1152,
+              "max_abs_error": 1.3877787807814457e-17,
+              "factored_resources": {
+                "cached_matrices": 0,
+                "pair_edges": 683811072,
+                "estimated_matrix_bytes": 19030032,
+                "rule_masks": 143,
+                "truth_masks": 150,
+                "opponent_vectors": 143
+              }
+            },
+            "inventory": {
+              "queries": 300,
+              "zero_reach_omitted": 0,
+              "prior_stress_queries": 150,
+              "forced_challenge_queries": 2,
+              "maximum_bids": 149,
+              "maximum_legal_actions": 150,
+              "min_positive_reach": 0.0001819345052869002,
+              "unique_last_bids": 150,
+              "query_sha256": "a23c541b10c33a173925f9ae135e4b3de0c4eeac6b0a404f0fd74afc49b95e94",
+              "repeats_per_block": {
+                "prepared": 1024,
+                "factored": 12
+              },
+              "timing_blocks": [
+                {
+                  "prepared": {
+                    "cpu_ns": 343750000,
+                    "wall_ns": 365568400
+                  },
+                  "factored": {
+                    "cpu_ns": 1140625000,
+                    "wall_ns": 1129973200
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1140625000,
+                    "wall_ns": 1198863800
+                  },
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 369947400
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 531250000,
+                    "wall_ns": 548264300
+                  },
+                  "factored": {
+                    "cpu_ns": 1156250000,
+                    "wall_ns": 1147897200
+                  }
+                },
+                {
+                  "factored": {
+                    "cpu_ns": 1140625000,
+                    "wall_ns": 1164182400
+                  },
+                  "prepared": {
+                    "cpu_ns": 406250000,
+                    "wall_ns": 401319300
+                  }
+                },
+                {
+                  "prepared": {
+                    "cpu_ns": 375000000,
+                    "wall_ns": 379687300
+                  },
+                  "factored": {
+                    "cpu_ns": 1171875000,
+                    "wall_ns": 1194144600
+                  }
+                }
+              ],
+              "checksum": {
+                "prepared": 38052.48153245706,
+                "factored": 38012.091125421866
+              },
+              "independent_value_count": 2400,
+              "max_abs_error": 5.551115123125783e-16,
+              "factored_resources": {
+                "cached_matrices": 0,
+                "pair_edges": 747569088,
+                "estimated_matrix_bytes": 19423152,
+                "rule_masks": 149,
+                "truth_masks": 150,
+                "opponent_vectors": 149
+              }
+            }
+          },
+          "cap_probes": {
+            "matrix": {
+              "status": "blocked",
+              "completed_queries": 12,
+              "history": [
+                153
+              ],
+              "reason": "Factored reply cache exceeds pair-memory cap",
+              "resources": {
+                "cached_matrices": 0,
+                "pair_edges": 3492720,
+                "estimated_matrix_bytes": 1038240,
+                "rule_masks": 6,
+                "truth_masks": 8,
+                "opponent_vectors": 7
+              }
+            },
+            "work": {
+              "status": "blocked",
+              "completed_queries": 14,
+              "history": [
+                151
+              ],
+              "reason": "Lazy oracle pair-edge cap exceeded",
+              "resources": {
+                "cached_matrices": 0,
+                "pair_edges": 3937248,
+                "estimated_matrix_bytes": 1167264,
+                "rule_masks": 7,
+                "truth_masks": 9,
+                "opponent_vectors": 8
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "isolated_memory": {
+    "prepared": {
+      "process_peak": {
+        "bytes": 231776256,
+        "kind": "Windows process peak working set"
+      },
+      "queries": 22148
+    },
+    "factored": {
+      "process_peak": {
+        "bytes": 231649280,
+        "kind": "Windows process peak working set"
+      },
+      "queries": 22148
+    }
+  },
+  "wall_seconds": 85.2450962997973,
+  "cpu_seconds": 81.1875,
+  "peak_process_memory": {
+    "bytes": 234758144,
+    "kind": "Windows process peak working set"
+  }
+}
