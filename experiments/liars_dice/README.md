@@ -142,3 +142,6 @@ fixtures with independent exhaustive best responses.
 [Prepared-kernel study](response-kernels-research.md) profiles the fixture
 searches and compares shared terminal and opponent-branch optimizations
 with the original implementations.
+
+[Revealed-hand frontier study](revealed-frontier-research.md) measures
+tighter optimistic values against the prepared search on exact fixtures.

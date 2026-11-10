@@ -254,3 +254,14 @@ sparse, zero and tiny opposing reach. Branch ordering retains exact ties
 and positive support. Combined gap uses 0.653 times original gap CPU at
 cap 16 and 1.262 times original depth-first CPU. The original 1.25 cost
 gate keeps the full-rule extension deferred.
+
+## Revealed-hand frontier bounds (#49)
+
+[Study and reproduction](revealed-frontier-research.md) compare the
+prepared gap search with a revealed-hand upper bound on the same six
+frozen fixtures. A separate scalar recursion verifies the per-deal
+values and tests both full-history and cached one-bid target paths.
+All 168 lower values replay independently, and the 24 exhaustive
+intervals close to the exact best response. Median summed upper slack
+falls to 0.376 times the control. At width 0.02, CPU including setup is
+4.821 times the control and the full-rule pilot remains deferred.
