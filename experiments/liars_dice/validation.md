@@ -286,3 +286,12 @@ after successful narrower queries, and a focused test compares retained
 NumPy array bytes with the cache estimate after a cap failure.
 The largest factored matrix estimate is 18.52 MiB, and its isolated
 process peaks at 220.92 MiB. The full-rule search pilot remains gated.
+
+## Selective frontier queries (#49)
+
+[Combined study](selective-frontier-research.md) retains six methods,
+three query budgets, all 504 independent lower-plan checks and 72 exact
+closure checks. Fresh tests cover zero-query parity, memory-failure
+fallback, cumulative query caps and replayed selective curves. Selective
+querying reduces calls but all variants fail the combined quality/cost
+gate. The full-rule pilot remains deferred.
