@@ -154,3 +154,6 @@ fixed query costs and limit behavior with the archived 252-hand targets.
 
 [Selective frontier study](selective-frontier-research.md) combines query
 budgets, feasible-response checks and cold-cost comparisons on exact fixtures.
+
+[Precision/work study](precision-work-research.md) combines root-effect
+traces, three precision targets and interleaved cold timing of fixed methods.

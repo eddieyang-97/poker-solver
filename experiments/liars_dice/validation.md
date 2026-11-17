@@ -295,3 +295,13 @@ closure checks. Fresh tests cover zero-query parity, memory-failure
 fallback, cumulative query caps and replayed selective curves. Selective
 querying reduces calls but all variants fail the combined quality/cost
 gate. The full-rule pilot remains deferred.
+
+## Precision and query-effect diagnostics (#49)
+
+[Combined study](precision-work-research.md) retains 1,162 integer-cap
+points, 192 independently verified lower values and 48 exact closures.
+Read-only event instrumentation matches fresh uninstrumented endpoints
+and actions. Paired cold timing covers three precision targets and
+six interleaved blocks. Prepared search has the lowest median CPU
+throughout. Query-only work preserves feasible lower values, and the
+historical full-rule admission remains a no-go.
