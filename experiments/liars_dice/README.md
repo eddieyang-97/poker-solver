@@ -152,5 +152,8 @@ exact and one-reply bounds with the prepared and dense controls.
 [Full-rule frontier feasibility](full-frontier-feasibility.md) measures
 fixed query costs and limit behavior with the archived 252-hand targets.
 
+[Stratified training study](stratified-chance-research.md) measures learned
+policy quality across three recall depths and three training budgets.
+
 [Selective frontier study](selective-frontier-research.md) combines query
 budgets, feasible-response checks and cold-cost comparisons on exact fixtures.
