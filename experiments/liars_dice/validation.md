@@ -287,6 +287,15 @@ NumPy array bytes with the cache estimate after a cap failure.
 The largest factored matrix estimate is 18.52 MiB, and its isolated
 process peaks at 220.92 MiB. The full-rule search pilot remains gated.
 
+## Stratified training quality (#49)
+
+[Study and reproduction](stratified-chance-research.md) retain 108
+checkpoint policies from 18 paired comparisons. Independent full-history
+evaluation reads each saved table and checks both-seat best responses,
+EV and NashConv. An exhaustive small integer chance law checks crossed
+pair multiplicities. At 2,048 blocks the median stratified/IID NashConv
+ratio is 0.734 with two-bid recall and 0.762 with full recall.
+
 ## Selective frontier queries (#49)
 
 [Combined study](selective-frontier-research.md) retains six methods,
