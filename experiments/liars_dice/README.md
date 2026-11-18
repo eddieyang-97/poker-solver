@@ -157,3 +157,6 @@ policy quality across three recall depths and three training budgets.
 
 [Selective frontier study](selective-frontier-research.md) combines query
 budgets, feasible-response checks and cold-cost comparisons on exact fixtures.
+
+[Precision/work study](precision-work-research.md) combines root-effect
+traces, three precision targets and interleaved cold timing of fixed methods.
