@@ -322,6 +322,17 @@ has the lowest final absolute NashConv in all 12 comparisons.
 Across-depth transfer misses its full-recall quality threshold and
 one-second CPU tolerance. The full-rule search gate remains closed.
 
+## Regret and averaging at matched CPU (#49)
+
+[Study and reproduction](regret-updates-research.md) record 72 scores and
+retain 24 final policies from the ten-bid fixtures. Focused tests cover
+signed-control parity, linear averaging, duplicate-safe regret clipping,
+final policy replay, an independent dense comparison and timed-checkpoint
+count replay. Signed-linear's final median ratio is 0.622 at two-bid
+recall and 0.971 at one-bid recall, so it misses the combined criterion.
+The clipped variant loses all eight final comparisons. The full-rule
+response-search gate remains closed.
+
 ## Selective frontier queries (#49)
 
 [Combined study](selective-frontier-research.md) retains six methods,

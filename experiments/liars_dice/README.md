@@ -163,6 +163,10 @@ measures frozen-update variance and duplicate draws.
 hands, adds three-bid recall, and checks both seats against exact
 full-history best responses within the two retained bid menus.
 
+[Regret and averaging study](regret-updates-research.md) compares signed
+regret, linear averaging and sampled regret clipping at matched CPU in
+the ten-bid games.
+
 [Selective frontier study](selective-frontier-research.md) combines query
 budgets, feasible-response checks and cold-cost comparisons on exact fixtures.
 
