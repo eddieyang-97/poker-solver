@@ -159,6 +159,10 @@ policy quality across three recall depths and three training budgets.
 three profile orderings with an IID control at matched training CPU, and
 measures frozen-update variance and duplicate draws.
 
+[Ten-bid recall study](recall-bridge-research.md) keeps all 252 private
+hands, adds three-bid recall, and checks both seats against exact
+full-history best responses within the two retained bid menus.
+
 [Selective frontier study](selective-frontier-research.md) combines query
 budgets, feasible-response checks and cold-cost comparisons on exact fixtures.
 
