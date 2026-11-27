@@ -309,6 +309,19 @@ pairs, with median NashConv ratios 0.771 and 0.739. The shuffled order
 misses the held-out criterion at both depths, so the across-orderings
 criterion fails. The full-rule search gate remains closed.
 
+## Ten-bid, 252-hand recall study (#49)
+
+[Study and reproduction](recall-bridge-research.md) record matched-CPU
+curves at four recall depths and retain all 48 final policies. The
+exact grouped-count terminal evaluator checks both full-history
+responses, with direct deal arithmetic and an independent dense
+traversal as controls. A count replay checks a saved timed checkpoint
+independently of timing. The final profile/IID median ratios are
+0.905 / 0.927 / 0.928 / 0.968 at recall 1/2/3/full. One-bid recall
+has the lowest final absolute NashConv in all 12 comparisons.
+Across-depth transfer misses its full-recall quality threshold and
+one-second CPU tolerance. The full-rule search gate remains closed.
+
 ## Selective frontier queries (#49)
 
 [Combined study](selective-frontier-research.md) retains six methods,
