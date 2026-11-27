@@ -155,6 +155,10 @@ fixed query costs and limit behavior with the archived 252-hand targets.
 [Stratified training study](stratified-chance-research.md) measures learned
 policy quality across three recall depths and three training budgets.
 
+[Held-out stratification study](stratified-holdout-research.md) compares
+three profile orderings with an IID control at matched training CPU, and
+measures frozen-update variance and duplicate draws.
+
 [Selective frontier study](selective-frontier-research.md) combines query
 budgets, feasible-response checks and cold-cost comparisons on exact fixtures.
 

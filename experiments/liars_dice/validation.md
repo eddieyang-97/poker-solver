@@ -296,6 +296,19 @@ EV and NashConv. An exhaustive small integer chance law checks crossed
 pair multiplicities. At 2,048 blocks the median stratified/IID NashConv
 ratio is 0.734 with two-bid recall and 0.762 with full recall.
 
+## Held-out stratified training at matched CPU (#49)
+
+[Study and reproduction](stratified-holdout-research.md) retain 216
+checkpoint policies across three fixtures, three recall depths and two
+fresh seeds. Both-seat full-history responses are evaluated independently
+of training. The receipt also keeps 144 frozen diagnostic groups and nine
+source regret tables. Tests check lossless fixture compression, integer
+chance weights under remapping, replay of all policies and frozen-update
+moments. At 5 seconds the original order improves all 12 richer-recall
+pairs, with median NashConv ratios 0.771 and 0.739. The shuffled order
+misses the held-out criterion at both depths, so the across-orderings
+criterion fails. The full-rule search gate remains closed.
+
 ## Selective frontier queries (#49)
 
 [Combined study](selective-frontier-research.md) retains six methods,
